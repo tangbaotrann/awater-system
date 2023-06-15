@@ -1,13 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ConfigProvider } from "antd";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import GlobalStyles from "./components/GlobalStyles/GlobalStyles";
+import store from "./redux/store";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ConfigProvider
+      theme={{
+        token: {
+          fontFamily: `Quicksand !important`,
+        },
+      }}
+    >
+      <GlobalStyles>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </GlobalStyles>
+    </ConfigProvider>
   </React.StrictMode>
 );
 
