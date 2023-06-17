@@ -1,0 +1,52 @@
+.inner-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 86px;
+    font-weight: 600;
+    width: 42%;
+}
+
+.record-title-name {
+    background-color: var(--blue-e6f4ff);
+}
+
+.title-report-cus {
+    margin-top: 20px;
+}
+
+.title-report-cus h1 {
+    text-align: left;
+}
+
+.title-tbl-report-cus h1 {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.title-tbl-report-cus p {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* footer  */
+.footer-signature {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    line-height: 2.4rem;
+}
+
+.footer-signature-inner {
+    margin-right: 42px;
+}
+
+.footer-signature p {
+    text-align: end;
+}
+
+.signature-creator {
+    font-weight: 600;
+}

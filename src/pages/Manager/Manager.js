@@ -4,6 +4,8 @@ import DefaultLayout from "../../layouts/DefaultLayout/DefaultLayout";
 import { btnClickSidebarMenuSelector } from "../../redux/selector";
 import constants from "../../utils/constants";
 import Contract from "./Contract/Contract";
+import CustomerDevelop from "./CustomerDevelop/CustomerDevelop";
+import CustomerList from "./CustomerList/CustomerList";
 
 function Manager() {
   // change layout
@@ -24,9 +26,9 @@ function Manager() {
       ) : sidebarMenu === constants.REGISTRATION_OF_INSTALL.key ? ( // sub menu 1.1
         <h1>REGISTRATION_OF_INSTALL</h1>
       ) : sidebarMenu === constants.DEV_CUSTOMER.key ? (
-        <h1>DEV_CUSTOMER</h1>
+        <CustomerDevelop />
       ) : sidebarMenu === constants.LIST_CUSTOMER.key ? (
-        <h1>LIST_CUSTOMER</h1>
+        <CustomerList />
       ) : sidebarMenu === constants.RECORD_INDEX_PARENT.key ? ( // menu 2
         <h1>RECORD_INDEX_PARENT</h1>
       ) : sidebarMenu === constants.READINGS_INDEX.key ? (
