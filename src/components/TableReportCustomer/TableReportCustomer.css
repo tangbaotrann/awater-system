@@ -50,3 +50,9 @@
 .signature-creator {
     font-weight: 600;
 }
+
+/* container table report customer */
+.container-tbl-report-cus {
+    margin-right: 24px;
+    overflow-x: auto;
+}

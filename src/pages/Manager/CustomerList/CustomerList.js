@@ -3,16 +3,26 @@ import {
   Checkbox,
   Col,
   DatePicker,
+  Divider,
   Form,
   Input,
   Row,
   Select,
 } from "antd";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import "./CustomerList.css";
 import TableListOfCustomer from "../../../components/TableListOfCustomer/TableListOfCustomer";
-import ExportFile from "../../../components/ExportFile/ExportFile";
+import Reporter from "../../../components/Reporter/Reporter";
+import reportContractSlice from "../../../redux/slices/reportContractSlice/reportContractSlice";
+import { btnClickOptionFactory } from "../../../redux/selector";
 
 function CustomerList() {
+  const dispatch = useDispatch();
+
+  const optionNameFactory = useSelector(btnClickOptionFactory);
+
   // handle submit form
   const handleSubmit = (values) => {
     console.log("values", values);
@@ -23,16 +33,27 @@ function CustomerList() {
     console.log({ error });
   };
 
+  useEffect(() => {
+    dispatch(reportContractSlice.actions.btnClickOptionFactory("all"));
+  }, []);
+
+  // handle filter change name factory
+  const handleChangeNameFactory = (value) => {
+    dispatch(reportContractSlice.actions.btnClickOptionFactory(value));
+  };
+
   return (
     <>
       <Form
         onFinish={handleSubmit}
         onFinishFailed={handleFailed}
+        initialValues={{
+          unit: "all",
+          employee: "all",
+          reading_line: "all",
+          watch_style: "all",
+        }}
         fields={[
-          { name: "unit", value: "all" },
-          { name: "employee", value: "all" },
-          { name: "reading_line", value: "all" },
-          { name: "watch_style", value: "all" },
           { name: "no_val_one", value: false },
           { name: "no_val_two", value: false },
           { name: "district", value: "all" },
@@ -46,7 +67,15 @@ function CustomerList() {
         <Row>
           <Col xs={24} sm={24} md={24} lg={10} className="gutter-item">
             <Form.Item name="unit" label="Đơn vị: ">
-              <Select options={[{ value: "all", label: "Tất cả" }]} />
+              <Select
+                fieldNames="unit"
+                options={[
+                  { value: "all", label: "Tất cả" },
+                  { value: "opt_1", label: "Nhà máy nước Hiệp Hòa 1" },
+                  { value: "opt_2", label: "Nhà máy nước Hiệp Hòa 2" },
+                ]}
+                onSelect={handleChangeNameFactory}
+              />
             </Form.Item>
           </Col>
 
@@ -181,10 +210,20 @@ function CustomerList() {
         </Row>
       </Form>
 
-      {/* Export file */}
-      <ExportFile />
+      <Divider />
 
-      <TableListOfCustomer />
+      <Reporter />
+
+      <Divider />
+
+      {/* render table */}
+      {optionNameFactory === "all" ? (
+        <TableListOfCustomer />
+      ) : (
+        <p className="message-empty">
+          <i>-- Hiện tại chưa có dữ liệu. --</i>
+        </p>
+      )}
     </>
   );
 }

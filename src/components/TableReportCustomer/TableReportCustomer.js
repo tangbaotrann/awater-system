@@ -108,7 +108,7 @@ function TableReportCustomer() {
         </div>
       </div>
 
-      <div className="custom-page-size">
+      <div className="container-tbl-report-cus">
         <Table
           columns={cols}
           dataSource={data.map((_customer, index) => ({

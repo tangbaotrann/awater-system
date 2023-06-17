@@ -138,29 +138,31 @@ function TableListOfCustomer() {
           <p>Đối tượng giá: Tất cả</p>
         </div>
 
-        <Table
-          columns={cols}
-          dataSource={data.map((_customer, index) => ({
-            index: index + 1,
-            code: _customer.code,
-            full_name: _customer.full_name,
-            num_contract: _customer.num_contract,
-            phone: _customer.phone,
-            price_obj: _customer.price_obj,
-            size: _customer.size,
-            status: _customer.status,
-            type_watch: _customer.type_watch,
-            index_watch: _customer.index_watch,
-            note: _customer.note,
-            staff_reading: _customer.staff_reading,
-            line_reading: _customer.line_reading,
-            cs_last: _customer.cs_last,
-          }))}
-          rowKey="index"
-          pagination={{
-            pageSize: 10,
-          }}
-        ></Table>
+        <div className="container-tbl-list-cus">
+          <Table
+            columns={cols}
+            dataSource={data.map((_customer, index) => ({
+              index: index + 1,
+              code: _customer.code,
+              full_name: _customer.full_name,
+              num_contract: _customer.num_contract,
+              phone: _customer.phone,
+              price_obj: _customer.price_obj,
+              size: _customer.size,
+              status: _customer.status,
+              type_watch: _customer.type_watch,
+              index_watch: _customer.index_watch,
+              note: _customer.note,
+              staff_reading: _customer.staff_reading,
+              line_reading: _customer.line_reading,
+              cs_last: _customer.cs_last,
+            }))}
+            rowKey="index"
+            pagination={{
+              pageSize: 10,
+            }}
+          ></Table>
+        </div>
       </div>
     </>
   );

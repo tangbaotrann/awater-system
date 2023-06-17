@@ -16,14 +16,12 @@ import TableReportCustomer from "../../../components/TableReportCustomer/TableRe
 import reportContractSlice from "../../../redux/slices/reportContractSlice/reportContractSlice";
 import { btnClickOptionFactory } from "../../../redux/selector";
 import { useEffect } from "react";
-import ExportFile from "../../../components/ExportFile/ExportFile";
+import Reporter from "../../../components/Reporter/Reporter";
 
 function CustomerDevelop() {
   const dispatch = useDispatch();
 
   const optionNameFactory = useSelector(btnClickOptionFactory);
-
-  console.log(optionNameFactory);
 
   // handle submit form
   const handleSubmit = (values) => {
@@ -39,9 +37,8 @@ function CustomerDevelop() {
     dispatch(reportContractSlice.actions.btnClickOptionFactory("all"));
   }, []);
 
-  // handle change name factory
+  // handle filter change name factory
   const handleChangeNameFactory = (value) => {
-    console.log(value);
     dispatch(reportContractSlice.actions.btnClickOptionFactory(value));
   };
 
@@ -189,9 +186,11 @@ function CustomerDevelop() {
 
       <Divider />
 
-      {/* Export file */}
-      <ExportFile />
+      <Reporter />
 
+      <Divider />
+
+      {/* render table */}
       {optionNameFactory === "all" ? (
         <TableReportCustomer />
       ) : (
