@@ -17,7 +17,7 @@ function SidebarMenu() {
       className="custom-sidebar-menu"
       items={[
         {
-          key: constants.REGISTRATION_FORM_PARENT.key,
+          key: constants.REGISTRATION_FORM_PARENT.key, 
           icon: <TableOutlined />,
           label: constants.REGISTRATION_FORM_PARENT.label,
           children: [

@@ -10,6 +10,6 @@ const sidebarSlice = createSlice({
       state.data = action.payload;
     },
   },
-});
+}); 
 
 export default sidebarSlice;

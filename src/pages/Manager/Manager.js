@@ -4,6 +4,7 @@ import DefaultLayout from "../../layouts/DefaultLayout/DefaultLayout";
 import { btnClickSidebarMenuSelector } from "../../redux/selector";
 import constants from "../../utils/constants";
 import Contract from "./Contract/Contract";
+import ReadingIndex from "../ReadingIndex/ReadingIndex";
 import CustomerDevelop from "./CustomerDevelop/CustomerDevelop";
 import CustomerList from "./CustomerList/CustomerList";
 
@@ -32,7 +33,7 @@ function Manager() {
       ) : sidebarMenu === constants.RECORD_INDEX_PARENT.key ? ( // menu 2
         <h1>RECORD_INDEX_PARENT</h1>
       ) : sidebarMenu === constants.READINGS_INDEX.key ? (
-        <h1>READINGS_INDEX</h1>
+        <ReadingIndex />
       ) : sidebarMenu === constants.ENTER_INDEX.key ? (
         <h1>ENTER_INDEX</h1>
       ) : sidebarMenu === constants.BILL_ORDER.key ? (

@@ -34,6 +34,9 @@
     align-items: center;
     justify-content: flex-end;
     margin-right: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .site-layout-info h4 {
@@ -43,6 +46,10 @@
 .text-welcome {
     display: flex;
     justify-content: center;
+}
+
+.header-top {
+    position: relative;
 }
 
 /* Custom menu icon  */
