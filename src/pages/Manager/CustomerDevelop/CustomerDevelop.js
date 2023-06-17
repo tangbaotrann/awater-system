@@ -57,6 +57,7 @@ function CustomerDevelop() {
           { name: "no_val_one", value: false },
           { name: "no_val_two", value: false },
         ]}
+        className="container-form-cus-dev"
       >
         {/* Đơn vị + Nhân viên */}
         <Row>
@@ -70,6 +71,7 @@ function CustomerDevelop() {
                   { value: "opt_2", label: "Nhà máy nước Hiệp Hòa 2" },
                 ]}
                 onSelect={handleChangeNameFactory}
+                className="gutter-item-inp"
               />
             </Form.Item>
           </Col>
@@ -112,13 +114,13 @@ function CustomerDevelop() {
 
         {/* Từ ngày + Đến ngày */}
         <Row>
-          <Col xs={24} sm={24} md={6} lg={6} className="gutter-item">
+          <Col xs={24} sm={16} md={6} lg={6} className="gutter-item">
             <Form.Item name="start_date" label="Từ ngày: ">
-              <DatePicker placeholder="Chọn ngày" />
+              <DatePicker className="date-time-inp" placeholder="Chọn ngày" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={4} lg={4}>
+          <Col xs={24} sm={6} md={4} lg={4}>
             <Form.Item
               rules={[
                 {
@@ -133,13 +135,13 @@ function CustomerDevelop() {
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={6} lg={6} className="gutter-item">
+          <Col xs={24} sm={16} md={6} lg={6} className="gutter-item">
             <Form.Item name="end_start" label="Đến ngày: ">
-              <DatePicker placeholder="Chọn ngày" />
+              <DatePicker className="date-time-inp" placeholder="Chọn ngày" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={4} lg={4}>
+          <Col xs={24} sm={6} md={4} lg={4}>
             <Form.Item
               rules={[
                 {
@@ -176,7 +178,7 @@ function CustomerDevelop() {
             </Form.Item>
           </Col>
 
-          <Col span={2}>
+          <Col>
             <Button htmlType="submit" type="primary">
               Xem báo cáo
             </Button>

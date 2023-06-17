@@ -16,11 +16,11 @@ function Reporter() {
 
   return (
     <Row>
-      <Col>
+      <Col xs={24} sm={12} md={11} lg={8}>
         <AutoComplete
           // dropdownMatchSelectWidth={250}
           // options={options}
-          style={{ width: 275 }}
+          className="reporter-auto-search-input"
           filterOption={true}
           onSearch={handleSearch}
           onSelect={handleSelect}
@@ -29,13 +29,13 @@ function Reporter() {
         </AutoComplete>
       </Col>
 
-      <Col>
+      <Col xs={24} sm={6} md={6} lg={6}>
         <Button type="primary" className="reset-report-btn">
           Làm mới <UndoOutlined />
         </Button>
       </Col>
 
-      <Col>
+      <Col xs={24} sm={6} md={6} lg={6}>
         {/* Export file */}
         <ExportFile />
       </Col>

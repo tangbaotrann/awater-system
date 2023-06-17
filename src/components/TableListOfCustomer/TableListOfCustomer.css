@@ -3,3 +3,9 @@
     margin-right: 24px;
     overflow-x: auto;
 }
+
+/* custom page size -> to left */
+.container-tbl-list-cus .ant-table-pagination-right {
+    display: flex;
+    justify-content: flex-start !important;
+}

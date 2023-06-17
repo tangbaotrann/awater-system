@@ -2,10 +2,11 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from "@ant-design/icons/lib/icons";
-import { UserOutlined } from "@ant-design/icons";
-import { Layout, Popover } from "antd";
+import { UserOutlined, MenuOutlined } from "@ant-design/icons";
+import { Drawer, Layout, Popover } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 import "./DefaultLayout.css";
 import { btnClickSidebarMenuSelector } from "../../redux/selector";
@@ -15,22 +16,62 @@ const { Header, Sider, Content } = Layout;
 
 function DefaultLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [placement, setPlacement] = useState("left");
 
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
 
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
+  const showDrawer = () => {
+    setOpen(true);
+    setCollapsed(false);
+  };
+
+  const onChange = (e) => {
+    setPlacement(e.target.value);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Layout>
-      <Sider
-        trigger={null}
-        collapsible
-        collapsed={collapsed}
-        width={270}
-        className="sidebar"
-      >
-        {!collapsed && <h1 className="logo-primary">AWATER</h1>}
+      {/* Screen tablet */}
+      {isTabletOrMobile ? (
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+          width={50}
+          className="sidebar"
+        >
+          <MenuOutlined onClick={showDrawer} className="custom-menu-icon" />
 
-        <SidebarMenu />
-      </Sider>
+          {/* show option menu */}
+          <Drawer
+            placement={placement}
+            width={400}
+            onClose={onClose}
+            open={open}
+          >
+            <SidebarMenu />
+          </Drawer>
+        </Sider>
+      ) : (
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+          width={270}
+          className="sidebar"
+        >
+          {!collapsed && <h1 className="logo-primary">AWATER</h1>}
+
+          <SidebarMenu />
+        </Sider>
+      )}
 
       <Layout className="site-layout">
         <Header>
@@ -43,13 +84,14 @@ function DefaultLayout({ children }) {
             <h4>Manager Name</h4>
           </div>
 
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}
+          {!isTabletOrMobile &&
+            React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: "trigger",
+                onClick: () => setCollapsed(!collapsed),
+              }
+            )}
         </Header>
         <Content
           style={{

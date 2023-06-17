@@ -57,3 +57,46 @@ html *::-webkit-scrollbar-track {
     font-size: 1.5rem;
     font-weight: 600;
 }
+
+/* ----- RESPONSIVE HERE ----- */
+
+/* Thiết kế cho kích thước màn hình dưới 576px (mobile) */
+@media (max-width: 575px) {
+    /* customer dev */
+    .container-form-cus-dev {
+        padding-right: 18px;
+    }
+
+    .reset-report-btn {
+        margin: 12px 0;
+    }
+
+    .reporter-auto-search-input {
+        width: 100%;
+        padding-right: 18px;
+    }
+}
+  
+/* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
+@media (min-width: 576px) and (max-width: 767px) {
+    /* customer dev */
+    .container-form-cus-dev {
+        padding-right: 18px;
+    }
+}
+  
+/* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
+@media (min-width: 768px) {
+    /* customer dev */
+    .container-form-cus-dev {
+        padding-right: 18px;
+    }
+}
+  
+/* Thiết kế cho kích thước màn hình từ 992px trở lên (large desktop) */
+@media (min-width: 992px) {
+    
+}
+
+/* ----- END RESPONSIVE ----- */
+  

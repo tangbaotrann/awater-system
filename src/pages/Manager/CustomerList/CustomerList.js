@@ -62,6 +62,7 @@ function CustomerList() {
           { name: "type_customer", value: "all" },
           { name: "form_tt", value: "all" },
         ]}
+        className="container-form-cus-dev"
       >
         {/* Đơn vị + Nhân viên */}
         <Row>
@@ -103,13 +104,13 @@ function CustomerList() {
 
         {/* Từ ngày + Đến ngày */}
         <Row>
-          <Col xs={24} sm={24} md={6} lg={6} className="gutter-item">
+          <Col xs={24} sm={16} md={6} lg={6} className="gutter-item">
             <Form.Item name="start_date" label="Từ ngày: ">
-              <DatePicker placeholder="Chọn ngày" />
+              <DatePicker className="date-time-inp" placeholder="Chọn ngày" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={4} lg={4}>
+          <Col xs={24} sm={6} md={4} lg={4}>
             <Form.Item
               rules={[
                 {
@@ -119,19 +120,18 @@ function CustomerList() {
               valuePropName="checked"
               hasFeedback
               name="no_val_one"
-              // label="Không có giá trị"
             >
               <Checkbox>Không có giá trị</Checkbox>
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={6} lg={6} className="gutter-item">
+          <Col xs={24} sm={16} md={6} lg={6} className="gutter-item">
             <Form.Item name="end_start" label="Đến ngày: ">
-              <DatePicker placeholder="Chọn ngày" />
+              <DatePicker className="date-time-inp" placeholder="Chọn ngày" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={4} lg={4}>
+          <Col xs={24} sm={6} md={4} lg={4}>
             <Form.Item
               rules={[
                 {
@@ -141,7 +141,6 @@ function CustomerList() {
               hasFeedback
               valuePropName="checked"
               name="no_val_two"
-              // label="Không có giá trị"
             >
               <Checkbox>Không có giá trị</Checkbox>
             </Form.Item>
