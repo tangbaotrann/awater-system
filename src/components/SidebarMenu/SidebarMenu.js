@@ -2,6 +2,7 @@ import { TableOutlined } from "@ant-design/icons/lib/icons";
 import { Menu } from "antd";
 import { useDispatch } from "react-redux";
 
+import "./SidebarMenu.css";
 import constants from "../../utils/constants";
 import sidebarSlice from "../../redux/slices/sidebarSlice/sidebarSlice";
 
@@ -13,6 +14,7 @@ function SidebarMenu() {
       theme="light"
       mode="inline"
       style={{ fontSize: "1.5rem", fontWeight: "800" }}
+      className="custom-sidebar-menu"
       items={[
         {
           key: constants.REGISTRATION_FORM_PARENT.key, 
