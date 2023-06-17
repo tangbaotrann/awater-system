@@ -1,7 +1,7 @@
 const endPoints = {
   PUBLIC: "/",
   HOME: "",
-  ALL: "*",
+  ALL: "*", 
   LOGIN: "login",
 };
 

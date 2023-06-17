@@ -15,7 +15,7 @@ function SidebarMenu() {
       style={{ fontSize: "1.5rem", fontWeight: "800" }}
       items={[
         {
-          key: constants.REGISTRATION_FORM_PARENT.key,
+          key: constants.REGISTRATION_FORM_PARENT.key, 
           icon: <TableOutlined />,
           label: constants.REGISTRATION_FORM_PARENT.label,
           children: [

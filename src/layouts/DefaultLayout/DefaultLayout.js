@@ -33,7 +33,17 @@ function DefaultLayout({ children }) {
       </Sider>
 
       <Layout className="site-layout">
-        <Header>
+        <Header className="header-top">
+          {React.createElement(
+            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+            {
+              className: "trigger",
+              onClick: () => setCollapsed(!collapsed),
+              style: {
+                marginLeft: "20px",
+              },
+            }
+          )}
           <div className="site-layout-info">
             <Popover content="Đăng xuất">
               {/* Đổi thành img */}
@@ -42,22 +52,13 @@ function DefaultLayout({ children }) {
 
             <h4>Manager Name</h4>
           </div>
-
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}
         </Header>
         <Content
           style={{
-            marginTop: "12px",
-            marginLeft: "22px",
+            margin: "13px",
           }}
         >
-          {sidebarMenu === null ? (
+          {sidebarMenu === null ? ( 
             <h1 className="text-welcome">
               CHÀO MỪNG BẠN ĐẾN VỚI AWATER CỦA CHÚNG TÔI.
             </h1>

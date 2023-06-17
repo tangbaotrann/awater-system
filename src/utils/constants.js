@@ -6,7 +6,7 @@ const constants = {
   },
   REGISTRATION_FORM: {
     label: "Đơn đăng ký",
-    key: "REGISTRATION_FORM",
+    key: "REGISTRATION_FORM", 
   },
   ESTIMATES: {
     label: "Dự toán",
