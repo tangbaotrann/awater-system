@@ -75,16 +75,6 @@ function DefaultLayout({ children }) {
 
       <Layout className="site-layout">
         <Header className="header-top">
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-              style: {
-                marginLeft: "20px",
-              },
-            }
-          )}
           <div className="site-layout-info">
             <Popover content="Đăng xuất">
               {/* Đổi thành img */}
@@ -100,6 +90,9 @@ function DefaultLayout({ children }) {
               {
                 className: "trigger",
                 onClick: () => setCollapsed(!collapsed),
+                style: {
+                  marginLeft: "20px",
+                },
               }
             )}
         </Header>
