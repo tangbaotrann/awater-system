@@ -18,8 +18,6 @@ import { btnClickOptionFactorySelector } from "../../../redux/selector";
 import { useEffect } from "react";
 import Reporter from "../../../components/Reporter/Reporter";
 
-// let id = "export-table";
-
 function CustomerDevelop() {
   const dispatch = useDispatch();
 
