@@ -2,22 +2,7 @@ import { Table } from "antd";
 
 import "./TableReportCustomer.css";
 import TableChildReportCustomer from "./TableChildReportCustomer/TableChildReportCustomer";
-
-// data
-const data = [
-  {
-    key: "1",
-    code: "Hà Thị Đảm",
-    num_gcn: 2,
-    line: "Tuyến 1 - Đông Lỗ", // tuyến
-  },
-  {
-    key: "2",
-    code: "Trần Văn Huệ",
-    num_gcn: 1,
-    line: "Tuyến 7 - Đông Bái - Thôn Bái Thượng",
-  },
-];
+import { dataTableReportCustomer } from "../../utils/dataCustomer";
 
 function TableReportCustomer() {
   const cols = [
@@ -110,8 +95,9 @@ function TableReportCustomer() {
 
       <div className="container-tbl-report-cus">
         <Table
+          id="table"
           columns={cols}
-          dataSource={data.map((_customer, index) => ({
+          dataSource={dataTableReportCustomer.map((_customer, index) => ({
             key: _customer.key,
             index: index + 1,
             code: _customer.code,
@@ -132,7 +118,8 @@ function TableReportCustomer() {
                 </>
               );
             },
-            defaultExpandedRowKeys: ["0"],
+            defaultExpandAllRows: true,
+            expandRowByClick: true,
           }}
           pagination={{
             pageSize: 10,

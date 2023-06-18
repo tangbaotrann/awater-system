@@ -14,14 +14,16 @@ import { useDispatch, useSelector } from "react-redux";
 import "./CustomerDevelop.css";
 import TableReportCustomer from "../../../components/TableReportCustomer/TableReportCustomer";
 import reportContractSlice from "../../../redux/slices/reportContractSlice/reportContractSlice";
-import { btnClickOptionFactory } from "../../../redux/selector";
+import { btnClickOptionFactorySelector } from "../../../redux/selector";
 import { useEffect } from "react";
 import Reporter from "../../../components/Reporter/Reporter";
+
+// let id = "export-table";
 
 function CustomerDevelop() {
   const dispatch = useDispatch();
 
-  const optionNameFactory = useSelector(btnClickOptionFactory);
+  const optionNameFactory = useSelector(btnClickOptionFactorySelector);
 
   // handle submit form
   const handleSubmit = (values) => {

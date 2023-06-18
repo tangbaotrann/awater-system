@@ -140,6 +140,7 @@ function TableListOfCustomer() {
 
         <div className="container-tbl-list-cus">
           <Table
+            id="table"
             columns={cols}
             dataSource={data.map((_customer, index) => ({
               index: index + 1,

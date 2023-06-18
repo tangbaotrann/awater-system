@@ -16,12 +16,12 @@ import "./CustomerList.css";
 import TableListOfCustomer from "../../../components/TableListOfCustomer/TableListOfCustomer";
 import Reporter from "../../../components/Reporter/Reporter";
 import reportContractSlice from "../../../redux/slices/reportContractSlice/reportContractSlice";
-import { btnClickOptionFactory } from "../../../redux/selector";
+import { btnClickOptionFactorySelector } from "../../../redux/selector";
 
 function CustomerList() {
   const dispatch = useDispatch();
 
-  const optionNameFactory = useSelector(btnClickOptionFactory);
+  const optionNameFactory = useSelector(btnClickOptionFactorySelector);
 
   // handle submit form
   const handleSubmit = (values) => {
