@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { initialData } from "./data";
 import { otherData } from "./otherData.js";
 import WaterPriceTable from "./WaterPriceTable";
+import ImageModal from "./ImageModel";
+
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
@@ -64,6 +66,12 @@ function EnterIndexPage() {
   const handleButtonClick4 = () => {
     setIsModalVisible4(true);
   };
+  const handleButtonClick5 = () => {
+    setIsModalVisible5(true);
+  };
+  const handleButtonClick6 = () => {
+    setIsModalVisible6(true);
+  };
   const handleModalCancel = () => {
     setIsModalVisible(false);
   };
@@ -78,6 +86,12 @@ function EnterIndexPage() {
   };
   const handleModalCancel4 = () => {
     setIsModalVisible4(false);
+  };
+  const handleModalCancel5 = () => {
+    setIsModalVisible5(false);
+  };
+  const handleModalCancel6 = () => {
+    setIsModalVisible6(false);
   };
   const onFinish = (values) => {
     dispatch(updateSearchCriteria(values));
@@ -97,7 +111,8 @@ function EnterIndexPage() {
   const [isModalVisible2, setIsModalVisible2] = useState(false);
   const [isModalVisible3, setIsModalVisible3] = useState(false);
   const [isModalVisible4, setIsModalVisible4] = useState(false);
-
+  const [isModalVisible5, setIsModalVisible5] = useState(false);
+  const [isModalVisible6, setIsModalVisible6] = useState(false);
   const { Option } = Select;
   const [data1, setData1] = useState(initialData);
   const [data2, setData2] = useState(otherData);
@@ -650,6 +665,31 @@ function EnterIndexPage() {
         </Menu.Item>
       </Menu>
     );
+    const getTableData1 = () => {
+      return initialData;
+    };
+    const [showChart1, setShowChart1] = useState(false);
+    const [chartData1, setChartData1] = useState([]);
+    const handleExportChartClick1 = () => {
+      // Lấy dữ liệu từ bảng
+      const tableData1 = getTableData1();
+
+      // Lọc dữ liệu chỉ lấy 4 tháng gần nhất
+      const filteredData = tableData1.filter((row) => {
+        const readingDate = moment(row.readingDate, "DD/MM/YYYY");
+        return readingDate.isAfter(moment().subtract(4, "months"));
+      });
+
+      // Chuyển đổi dữ liệu bảng thành dạng phù hợp để vẽ biểu đồ
+      const chartData1 = filteredData.map((row) => ({
+        date: row.readingDate,
+        value: row.consumption,
+      }));
+
+      // Hiển thị biểu đồ
+      setChartData(chartData);
+      setShowChart(true);
+    };
     return (
       <Form
         form={form}
@@ -954,7 +994,49 @@ function EnterIndexPage() {
               </Button>
             </Row>
           </Modal>
-
+          <div className="button-container1">
+            <Button size="small" onClick={handleButtonClick5}>
+              Xem biểu đồ
+            </Button>
+          </div>
+          <Modal
+            title="Xem biểu đồ"
+            visible={isModalVisible5}
+            onCancel={handleModalCancel5}
+            footer={null}
+          >
+            {showChart1 && (
+              <Column
+                data={chartData1}
+                xField="date"
+                yField="value"
+                legend={{ position: "top" }}
+              />
+            )}
+            <Row justify="end">
+              <Button>Cập Nhật</Button>
+              <Button onClick={handleModalCancel5}>Đóng</Button>
+            </Row>
+          </Modal>
+          <div>
+            <ImageModal />
+          </div>
+          {/* <div className="button-container1">
+            <Button size="small" onClick={handleButtonClick6}>
+              Xem hình ảnh
+            </Button>
+          </div>
+          <Modal
+            title="Thông tin tệp đính kèm"
+            visible={isModalVisible6}
+            onCancel={handleModalCancel6}
+            footer={null}
+          >
+            <Row justify="end">
+              <Button>Cập Nhật</Button>
+              <Button onClick={handleModalCancel6}>Đóng</Button>
+            </Row>
+          </Modal> */}
           {/* <div className="button-container">
         <Button onClick={handleButtonClick}>
           Xem tình hình nước lệch về phí
@@ -1004,11 +1086,6 @@ function EnterIndexPage() {
             strokeColor="#ff8033"
             format={(percent) => `${percent * 10}`}
           />
-
-          {/* <Progress percent={10} size={[300, 20]} />
-          <Progress percent={60} size={[300, 20]} strokeColor="yellow" />
-          <Progress percent={70} size={[300, 20]} strokeColor="red" />
-          <Progress percent={30} size={[300, 20]} strokeColor="#ff8033" /> */}
         </div>
       </div>
       <AdvanceFooterForm />
