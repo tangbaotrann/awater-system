@@ -8,6 +8,7 @@ import ReadingIndex from "../ReadingIndex/ReadingIndex";
 import CustomerDevelop from "./CustomerDevelop/CustomerDevelop";
 import CustomerList from "./CustomerList/CustomerList";
 import EnterIndexPage from "../EnterIndexPage/EnterIndexPage.jsx";
+import Invoice from "../Invoice/Invoice";
 
 function Manager() {
   // change layout
@@ -38,7 +39,7 @@ function Manager() {
       ) : sidebarMenu === constants.ENTER_INDEX.key ? (
         <EnterIndexPage />
       ) : sidebarMenu === constants.BILL_ORDER.key ? (
-        <h1>BILL_ORDER</h1>
+        <Invoice />
       ) : sidebarMenu === constants.PRINT_BILL_ORDER.key ? (
         <h1>PRINT_BILL_ORDER</h1>
       ) : sidebarMenu === constants.EXPORT_PRINT_BILL_ORDER.key ? (
