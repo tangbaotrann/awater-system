@@ -356,33 +356,15 @@ function EnterIndexPage() {
         name="advanced_search"
         size="small"
         onFinish={onFinish}
-<<<<<<< .mine
         style={{
           maxWidth: "none",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
           padding: 24,
         }}
-
-
-=======
-        style={
-          {
-            maxWidth: "none",
-            background: token.colorFillAlter,
-            borderRadius: token.borderRadiusLG,
-            padding: 24,
-          }
-        }
->>>>>>> .theirs
       >
-<<<<<<< .mine
         <Row gutter={8}>
           <Col span={4}>
-=======
-        <Row gutter={24}>
-          <Col span={4}>
->>>>>>> .theirs
             <Form.Item
               size="small"
               className="custom-form-item"
@@ -399,15 +381,9 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-<<<<<<< .mine
           <Col span={4}>
             <Form.Item size="small" label="Cán bộ đọc" name="1">
               <Select style={{ width: "100%" }} size="small" name="s1">
-=======
-          <Col span={4}>
-            <Form.Item size="small" label="Cán bộ đọc" name="1" >
-              <Select style={{ width: "100%" }} size="small" name="s1">
->>>>>>> .theirs
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
               </Select>
@@ -451,27 +427,9 @@ function EnterIndexPage() {
             <Form.Item
               size="small"
               className="custom-form-item"
-<<<<<<< .mine
               style={{
                 width: "100%",
               }}
-
-
-
-
-
-
-=======
-              style={{
-                width: "100%",
-              }}
-              label={
-                <>
-                  Số HĐ
-                  <br />
-                </>
-              }
->>>>>>> .theirs
               name="4"
             >
               <Input
@@ -500,13 +458,8 @@ function EnterIndexPage() {
           </Col>
         </Row>
 
-<<<<<<< .mine
         <Row gutter={8}>
           <Col span={5}>
-=======
-        <Row gutter={14}>
-          <Col span={4}>
->>>>>>> .theirs
             <Form.Item
               size="small"
               // className="custom-form-item"
@@ -538,38 +491,22 @@ function EnterIndexPage() {
               </Select>
             </Form.Item>
           </Col>
-<<<<<<< .mine
           <Col span={3}>
-=======
-          <Col span={4}>
->>>>>>> .theirs
             <Form.Item
               size="small"
               // className="custom-form-item"
               label="Tiêu thụ"
               name="8"
             >
-<<<<<<< .mine
               <Select style={{ width: "100%" }} size="small" name="s1">
                 <Option value="1"> 1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
                 <Option value="3">3</Option>
-=======
-              <Select style={{ width: "100%" }} size="small" name="s1">
-                <Option value="1">Lựa chọn 1</Option>
-                <Option value="2">Lựa chọn 2</Option>
-                <Option value="3">Lựa chọn 3</Option>
-                <Option value="3">Lựa chọn 3</Option>
->>>>>>> .theirs
               </Select>
             </Form.Item>
           </Col>
-<<<<<<< .mine
           <Col span={2}>
-=======
-          <Col span={4}>
->>>>>>> .theirs
             <Form.Item className="custom-form-item" label="" name="quantity">
               <InputNumber
                 size="small"
@@ -579,11 +516,7 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-<<<<<<< .mine
           <Col span={7}>
-=======
-          <Col span={4}>
->>>>>>> .theirs
             <Form.Item
               size=" small"
               lassName="custom-form-item"
@@ -598,7 +531,6 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-<<<<<<< .mine
           <Col span={3}>
             <div>
               <Space size="small">
@@ -617,62 +549,6 @@ function EnterIndexPage() {
             </div>
           </Col>
         </Row>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-          <Col span={4}>
-            <div
-              style={{
-                textAlign: "right",
-              }}
-            >
-              <Space size="small">
-                <Button
-                  style={{
-                    textAlign: "right",
-                    maxWidth: "100%",
-                  }}
-                  size="small"
-                  type="primary"
-                  htmlType="submit"
-                >
-                  <SearchOutlined />
-                  Tìm kiếm
-                </Button>
-
-                <Button
-                  size="small"
-                  style={{
-                    width: "100%",
-                  }}
-                  className="small-button"
-                  onClick={handleReset}
-                  icon={<RedoOutlined />}
-                >
-                  Làm mới
-                </Button>
-              </Space>
-            </div>
-          </Col>
-        </Row>
-
->>>>>>> .theirs
       </Form>
     );
   };
@@ -764,22 +640,14 @@ function EnterIndexPage() {
       >
         <div
           style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}
+          className="footer-buttons"
         >
-<<<<<<< .mine
           <Button
             onClick={handleButtonClick3}
             icon={<SearchOutlined />}
             style={{ marginRight: "10px" }}
             type="primary"
           >
-=======
-          <Button onClick={handleButtonClick3} icon={<SearchOutlined />} style={{ marginRight: '10px' }} type='primary'>
-
-
-
-
-
->>>>>>> .theirs
             Tìm kiếm
           </Button>
           <Modal
@@ -870,7 +738,6 @@ function EnterIndexPage() {
             </Form>
           </Modal>
           <div className="button-container1">
-<<<<<<< .mine
             <Button
               icon={<FileExcelOutlined />}
               size="small"
@@ -878,15 +745,6 @@ function EnterIndexPage() {
               style={{ marginRight: "10px" }}
               type="primary"
             >
-=======
-            <Button size="small" onClick={handleButtonClick1} style={{ marginRight: '10px' }} type='primary'>
-
-
-
-
-
-
->>>>>>> .theirs
               Nhập excel
             </Button>
           </div>
@@ -902,7 +760,6 @@ function EnterIndexPage() {
             </Row>
           </Modal>
           <div className="button-container2">
-<<<<<<< .mine
             <Button
               size="small"
               onClick={handleButtonClick2}
@@ -910,15 +767,6 @@ function EnterIndexPage() {
               type="primary"
               icon={<UploadOutlined />}
             >
-=======
-            <Button size="small" onClick={handleButtonClick2} style={{ marginRight: '10px' }} type='primary'>
-
-
-
-
-
-
->>>>>>> .theirs
               Nhập tệp
             </Button>
           </div>
@@ -963,7 +811,6 @@ function EnterIndexPage() {
             </Row>
           </Modal>
           <Dropdown overlay={menu}>
-<<<<<<< .mine
             <Button
               style={{ marginRight: "10px" }}
               type="primary"
@@ -971,18 +818,8 @@ function EnterIndexPage() {
             >
               Tiện ích
             </Button>
-=======
-            <Button style={{ marginRight: '10px' }} type='primary'>Tiện ích</Button>
-
-
-
-
-
-
->>>>>>> .theirs
           </Dropdown>
           <div className="button-container1">
-<<<<<<< .mine
             <Button
               size="small"
               onClick={handleButtonClick4}
@@ -990,15 +827,6 @@ function EnterIndexPage() {
               type="primary"
               icon={<TableOutlined />}
             >
-=======
-            <Button size="small" onClick={handleButtonClick4} style={{ marginRight: '10px' }} type='primary'>
-
-
-
-
-
-
->>>>>>> .theirs
               Bảng giá
             </Button>
           </div>
@@ -1016,7 +844,6 @@ function EnterIndexPage() {
             </Row>
           </Modal>
           <div className="button-container">
-<<<<<<< .mine
             <Button
               size="small"
               onClick={handleButtonClick}
@@ -1024,15 +851,6 @@ function EnterIndexPage() {
               type="primary"
               icon={<FundOutlined />}
             >
-=======
-            <Button size="small" onClick={handleButtonClick} style={{ marginRight: '10px' }} type='primary'>
-
-
-
-
-
-
->>>>>>> .theirs
               Xem TH SD
             </Button>
           </div>
@@ -1151,7 +969,6 @@ function EnterIndexPage() {
             </Row>
           </Modal>
           <div className="button-container1">
-<<<<<<< .mine
             <Button
               size="small"
               onClick={handleButtonClick5}
@@ -1159,15 +976,6 @@ function EnterIndexPage() {
               type="primary"
               icon={<LineChartOutlined />}
             >
-=======
-            <Button size="small" onClick={handleButtonClick5} style={{ marginRight: '10px' }} type='primary'>
-
-
-
-
-
-
->>>>>>> .theirs
               Xem biểu đồ
             </Button>
           </div>
@@ -1221,7 +1029,6 @@ function EnterIndexPage() {
   return (
     <>
       <AdvancedSearchForm />
-<<<<<<< .mine
       <div
         style={{
           lineHeight: "200px",
@@ -1246,32 +1053,6 @@ function EnterIndexPage() {
           dataSource={data1}
           onChange={handleData1Change}
         />
-=======
-      <div style={{
-        lineHeight: "200px",
-        textAlign: "center",
-        background: token.colorFillAlter,
-        borderRadius: token.borderRadiusLG,
-        marginTop: 16,
-        padding: "10px 10px",
-        height: "640px",
-        position: "relative",
-      }}>
-        <Table
-          size="small"
-          pagination={{
-            current: 1,
-            total: 10000,
-            pageSize: 50,
-          }}
-          scroll={{ x: 3000, y: 450 }}
-          columns={columns}
-          dataSource={data1}
-          onChange={handleData1Change}
-        />
-
-
->>>>>>> .theirs
         <div style={{ display: "flex", position: "absolute", bottom: "300" }}>
           <Progress
             percent={10}

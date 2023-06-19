@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { initialData } from "./data";
-import WaterPriceTable from "./WaterPriceTable";
-
+import { initialData, initialData2 } from "./data";
+import "./InvoicePrint.css";
+import InvoicingDetailsModal from "./InvoicingDetailsModal";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
@@ -178,12 +178,30 @@ function InvoicePrint() {
     {
       title: "",
       key: "actions",
-      render: (text, record) => (
-        <>
-          <Button icon={<FormOutlined />}></Button>
-          <Button icon={<SnippetsOutlined />}></Button>
-        </>
-      ),
+      render: (text, record) => {
+        const handleButtonClick = () => {
+          setIsModalVisible(true);
+        };
+
+        const handleModalCancel = () => {
+          setIsModalVisible(false);
+        };
+
+        return (
+          <>
+            <Button
+              icon={<FormOutlined />}
+              onClick={handleButtonClick}
+            ></Button>
+            <Button icon={<SnippetsOutlined />}></Button>
+            <InvoicingDetailsModal
+              visible={isModalVisible}
+              onCancel={handleModalCancel}
+              data={initialData2}
+            />
+          </>
+        );
+      },
     },
   ];
 
@@ -371,6 +389,7 @@ function InvoicePrint() {
       >
         <div
           style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}
+          className="footer-buttons"
         >
           <Button
             onClick={handleButtonClick1}
