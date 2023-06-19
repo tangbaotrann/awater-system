@@ -7,6 +7,7 @@ import Contract from "./Contract/Contract";
 import ReadingIndex from "../ReadingIndex/ReadingIndex";
 import CustomerDevelop from "./CustomerDevelop/CustomerDevelop";
 import CustomerList from "./CustomerList/CustomerList";
+import EnterIndexPage from "../EnterIndexPage/EnterIndexPage.jsx";
 
 function Manager() {
   // change layout
@@ -35,7 +36,7 @@ function Manager() {
       ) : sidebarMenu === constants.READINGS_INDEX.key ? (
         <ReadingIndex />
       ) : sidebarMenu === constants.ENTER_INDEX.key ? (
-        <h1>ENTER_INDEX</h1>
+        <EnterIndexPage />
       ) : sidebarMenu === constants.BILL_ORDER.key ? (
         <h1>BILL_ORDER</h1>
       ) : sidebarMenu === constants.PRINT_BILL_ORDER.key ? (
