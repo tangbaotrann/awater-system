@@ -24,6 +24,7 @@ import {
   Modal,
   Upload,
   Progress,
+  Space,
 } from "antd";
 import {
   SearchOutlined,
@@ -36,6 +37,7 @@ import {
   RetweetOutlined,
   CheckCircleOutlined,
   CalendarOutlined,
+  RedoOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "./EnterIndexPage.css";
@@ -329,7 +331,7 @@ function EnterIndexPage() {
       maxWidth: "none",
       background: token.colorFillAlter,
       borderRadius: token.borderRadiusLG,
-      padding: 24,
+      // padding: 24,
     };
     const onFinish = (values) => {
       console.log("Received values of form: ", values);
@@ -348,19 +350,10 @@ function EnterIndexPage() {
         onFinish={onFinish}
       >
         <Row gutter={24}>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
+          <Col>
             <Form.Item
               size="small"
-              style={{
-                width: "100%",
-              }}
+              style={{ width: "200px" }}
               className="custom-form-item"
               label="Tháng: "
               name="month"
@@ -368,125 +361,78 @@ function EnterIndexPage() {
               <DatePicker
                 locale={viVN}
                 size="small"
-                style={{
-                  width: "100%",
-                }}
+                style={{ width: "100%" }}
                 picker="month"
                 onChange={handleMonthChange}
                 format="M/YYYY"
               />
             </Form.Item>
           </Col>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
+          <Col>
             <Form.Item size="small" label="Cán bộ đọc" name="1">
-              <Select size="small" name="s1">
-                <Option value="1"> 1</Option>
-                <Option value="2"> 2</Option>
+              <Select style={{ width: "150px" }} size="small" name="s1">
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
+          <Col>
             <Form.Item
               size="small"
               className="custom-form-item"
-              label="Tuyến đọc"
+              label={
+                <>
+                  Tuyến đọc
+                  <br />
+                </>
+              }
               name="2"
             >
-              <Select size="small" name="s1">
+              <Select style={{ width: "100px" }} size="small" name="s1">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
+          <Col>
             <Form.Item
               size="small"
+              className="custom-form-item"
               style={{
+                textAlign: "left",
                 width: "100%",
               }}
-              className="custom-form-item"
-              label="Mã KH"
+              label={
+                <>
+                  Mã KH
+                  <br />
+                </>
+              }
               name="3"
             >
               <Input size="small" />
             </Form.Item>
           </Col>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
+          <Col>
             <Form.Item
               size="small"
-              style={{
-                width: "100%",
-              }}
               className="custom-form-item"
-              label="Số HĐ"
+              label={
+                <>
+                  Số HĐ
+                  <br />
+                </>
+              }
               name="4"
             >
               <Input size="small" />
             </Form.Item>
           </Col>
-
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
-            <Form.Item size="small" className="custom-form-item">
-              <Button
-                style={{
-                  textAlign: "right",
-                  maxWidth: "100%",
-                }}
-                size="small"
-                type="primary"
-                htmlType="submit"
-              >
-                <SearchOutlined />
-                Tìm kiếm
-              </Button>
-            </Form.Item>
-          </Col>
         </Row>
-        <Row gutter={24}>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
+
+        <Row gutter={14}>
+          <Col>
             <Form.Item
               size="small"
               style={{
@@ -497,45 +443,35 @@ function EnterIndexPage() {
               label="Trạng thái đọc"
               name="6"
             >
-              <Select size="small" name="s1" dropdownStyle={{ width: "200px" }}>
+              <Select style={{ width: "150px" }} size="small">
                 <Option value="1"> 1</Option>
                 <Option value="2"> 2</Option>
                 <Option value="3"> 3</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
+          <Col>
             <Form.Item
               size="small"
               style={{
                 width: "100%",
               }}
               className="custom-form-item"
-              label="Bất thường"
-              name="7"
+              label={
+                <>
+                  Bất thường
+                  <br />
+                </>
+              }
             >
-              <Select size="small" name="s1">
+              <Select style={{ width: "100px" }} size="small" name="s1">
                 <Option value="1">Lựa chọn 1</Option>
                 <Option value="2">Lựa chọn 2</Option>
                 <Option value="3">Lựa chọn 3</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
+          <Col>
             <Form.Item
               size="small"
               style={{
@@ -545,13 +481,7 @@ function EnterIndexPage() {
               label="Tiêu thụ"
               name="8"
             >
-              <Select
-                style={{
-                  width: "100%",
-                }}
-                size="small"
-                name="s1"
-              >
+              <Select style={{ width: "200px" }} size="small" name="s1">
                 <Option value="1">Lựa chọn 1</Option>
                 <Option value="2">Lựa chọn 2</Option>
                 <Option value="3">Lựa chọn 3</Option>
@@ -559,7 +489,7 @@ function EnterIndexPage() {
               </Select>
             </Form.Item>
           </Col>
-          <Col className="full-width-col" xs={24} sm={12} md={8} lg={4}>
+          <Col>
             <Form.Item className="custom-form-item" label="" name="quantity">
               <InputNumber
                 size="small"
@@ -569,7 +499,7 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col className="full-width-col" xs={24} sm={12} md={8} lg={4}>
+          <Col>
             <Form.Item
               size=" small"
               style={{
@@ -587,28 +517,40 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col
-            className="full-width-col"
-            xs={24}
-            sm={12}
-            md={8}
-            lg={4}
-            span={8}
-          >
-            <Form.Item className="custom-form-item">
-              <Button
-                size="small"
-                style={{
-                  width: "100%",
-                }}
-                className="small-button"
-                onClick={handleReset}
-              >
-                Làm mới
-              </Button>
-            </Form.Item>
-          </Col>
         </Row>
+
+        <div
+          style={{
+            textAlign: "right",
+          }}
+        >
+          <Space size="small">
+            <Button
+              style={{
+                textAlign: "right",
+                maxWidth: "100%",
+              }}
+              size="small"
+              type="primary"
+              htmlType="submit"
+            >
+              <SearchOutlined />
+              Tìm kiếm
+            </Button>
+
+            <Button
+              size="small"
+              style={{
+                width: "100%",
+              }}
+              className="small-button"
+              onClick={handleReset}
+              icon={<RedoOutlined />}
+            >
+              Làm mới
+            </Button>
+          </Space>
+        </div>
       </Form>
     );
   };
@@ -950,7 +892,6 @@ function EnterIndexPage() {
               </Col>
               <Col span={12}>
                 Tuyến đọc:
-                <br />
                 <Input />
               </Col>
             </Row>

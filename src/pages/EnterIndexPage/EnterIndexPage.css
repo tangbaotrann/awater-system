@@ -1,14 +1,14 @@
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .custom-form-item {
       flex-direction: column;
     }
-  }
+  } */
   /* .table.d1 {
     font-size: 50%;
 } */
 
-  .full-width-col {
+  /* .full-width-col {
     flex-grow: 0;
   }
 .custom-row {
@@ -28,9 +28,9 @@
     height: 30px;
     padding: 5px 10px;
     font-size: 14px;
-  }
+  } */
   /* các ô xanh đỏ tím vàng  */
-  .color-boxes {
+  /* .color-boxes {
     display: flex;
   }
   
@@ -58,7 +58,7 @@
   
   .yellow {
     border: 2px solid yellow;
-  }
+  } */
   
   /* kich thước các ô */
   /* input#month {
