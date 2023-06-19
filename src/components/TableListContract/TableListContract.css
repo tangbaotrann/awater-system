@@ -34,3 +34,28 @@
 .gutter-item-chk {
     margin-top: 5px;
 }
+
+/* date picker on modal */
+.gutter-item-date-picker {
+    width: 100% !important;
+}
+
+.space-col {
+    margin: 10px 0;
+}
+
+/* table clock on modal  */
+/* custom page size -> to left */
+.tablist-tbl-clock-on-modal .ant-table-pagination-right {
+    display: flex;
+    justify-content: flex-start !important;
+}
+
+.tablist-tbl-clock-on-modal {
+    overflow-x: auto;
+}
+
+/* func clock on modal */
+.tablist-func-clock-btn {
+    margin-bottom: 6px;
+}
