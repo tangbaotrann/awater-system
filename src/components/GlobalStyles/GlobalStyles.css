@@ -6,6 +6,7 @@
     /* color */
     --white: #fff;
     --blue-e6f4ff: #e6f4ff;
+    --blue-1677ff: #1677ff;
 
     /* font-family */
     --font-family: 'Quicksand', 'sans-serif' !important;
@@ -75,6 +76,27 @@ html *::-webkit-scrollbar-track {
         width: 100%;
         padding-right: 18px;
     }
+
+    /* contract */
+    .contract-search-btn {
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
+
+    .container-tbl-contract {
+        margin-top: 12px;
+    }
+
+    /* tabs bottom (page contract) */
+    .contract-bottom-func {
+        position: fixed;
+        left: 16px;
+        bottom: 12px;
+        font-size: 2rem;
+        font-weight: 800;
+        background-color: var(--white);
+    }
+
 }
   
 /* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
@@ -83,6 +105,23 @@ html *::-webkit-scrollbar-track {
     .container-form-cus-dev {
         padding-right: 18px;
     }
+
+    /* contract */
+    .contract-search-btn {
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
+
+    /* tabs bottom (page contract) */
+    .contract-bottom-func {
+        position: fixed;
+        left: 16px;
+        bottom: 12px;
+        font-size: 2rem;
+        font-weight: 800;
+        background-color: var(--white);
+    }
+
 }
   
 /* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
@@ -90,6 +129,26 @@ html *::-webkit-scrollbar-track {
     /* customer dev */
     .container-form-cus-dev {
         padding-right: 18px;
+    }
+
+    /* contract */
+    .contract-search-btn {
+        /* margin-left: 0; */
+        margin-bottom: 12px;
+    }
+
+}
+
+/* Thiết kế cho kích thước màn hình từ 769px đến 991px (desktop - large desktop) */
+@media (min-width: 769px) and (max-width: 991px) {
+    /* tabs bottom (page contract) */
+    .contract-bottom-func {
+        position: fixed;
+        left: 16px;
+        bottom: 12px;
+        font-size: 2rem;
+        font-weight: 800;
+        background-color: var(--white);
     }
 }
   
