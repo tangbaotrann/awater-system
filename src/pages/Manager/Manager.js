@@ -5,6 +5,9 @@ import { btnClickSidebarMenuSelector } from "../../redux/selector";
 import constants from "../../utils/constants";
 import Contract from "./Contract/Contract";
 import ReadingIndex from "../ReadingIndex/ReadingIndex";
+import CustomerDevelop from "./CustomerDevelop/CustomerDevelop";
+import CustomerList from "./CustomerList/CustomerList";
+import EnterIndexPage from "../EnterIndexPage/EnterIndexPage.jsx";
 import Invoice from "../Invoice/Invoice";
 
 function Manager() {
@@ -26,15 +29,15 @@ function Manager() {
       ) : sidebarMenu === constants.REGISTRATION_OF_INSTALL.key ? ( // sub menu 1.1
         <h1>REGISTRATION_OF_INSTALL</h1>
       ) : sidebarMenu === constants.DEV_CUSTOMER.key ? (
-        <h1>DEV_CUSTOMER</h1>
+        <CustomerDevelop />
       ) : sidebarMenu === constants.LIST_CUSTOMER.key ? (
-        <h1>LIST_CUSTOMER</h1>
+        <CustomerList />
       ) : sidebarMenu === constants.RECORD_INDEX_PARENT.key ? ( // menu 2
         <h1>RECORD_INDEX_PARENT</h1>
       ) : sidebarMenu === constants.READINGS_INDEX.key ? (
-        <ReadingIndex/>
+        <ReadingIndex />
       ) : sidebarMenu === constants.ENTER_INDEX.key ? (
-        <h1>ENTER_INDEX</h1>
+        <EnterIndexPage />
       ) : sidebarMenu === constants.BILL_ORDER.key ? (
         <Invoice />
       ) : sidebarMenu === constants.PRINT_BILL_ORDER.key ? (

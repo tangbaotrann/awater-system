@@ -5,6 +5,8 @@
 :root {
     /* color */
     --white: #fff;
+    --blue-e6f4ff: #e6f4ff;
+    --blue-1677ff: #1677ff;
 
     /* font-family */
     --font-family: 'Quicksand', 'sans-serif' !important;
@@ -29,3 +31,131 @@ a {
     text-decoration: none;
     color: var(--black);
 }
+
+/* Scrollbar Css */
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .15);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* Table antd */
+.ant-table-thead .ant-table-cell {
+    font-size: 1.6rem;
+    font-weight: 800 !important;
+}
+
+.ant-table-cell {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* ----- RESPONSIVE HERE ----- */
+
+/* Thiết kế cho kích thước màn hình dưới 576px (mobile) */
+@media (max-width: 575px) {
+    /* customer dev */
+    .container-form-cus-dev {
+        padding-right: 18px;
+    }
+
+    .reset-report-btn {
+        margin: 12px 0;
+    }
+
+    .reporter-auto-search-input {
+        width: 100%;
+        padding-right: 18px;
+    }
+
+    /* contract */
+    .contract-search-btn {
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
+
+    .container-tbl-contract {
+        margin-top: 12px;
+    }
+
+    /* tabs bottom (page contract) */
+    .contract-bottom-func {
+        position: fixed;
+        left: 16px;
+        bottom: 12px;
+        font-size: 2rem;
+        font-weight: 800;
+        background-color: var(--white);
+    }
+
+}
+  
+/* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
+@media (min-width: 576px) and (max-width: 767px) {
+    /* customer dev */
+    .container-form-cus-dev {
+        padding-right: 18px;
+    }
+
+    /* contract */
+    .contract-search-btn {
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
+
+    /* tabs bottom (page contract) */
+    .contract-bottom-func {
+        position: fixed;
+        left: 16px;
+        bottom: 12px;
+        font-size: 2rem;
+        font-weight: 800;
+        background-color: var(--white);
+    }
+
+}
+  
+/* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
+@media (min-width: 768px) {
+    /* customer dev */
+    .container-form-cus-dev {
+        padding-right: 18px;
+    }
+
+    /* contract */
+    .contract-search-btn {
+        /* margin-left: 0; */
+        margin-bottom: 12px;
+    }
+
+}
+
+/* Thiết kế cho kích thước màn hình từ 769px đến 991px (desktop - large desktop) */
+@media (min-width: 769px) and (max-width: 991px) {
+    /* tabs bottom (page contract) */
+    .contract-bottom-func {
+        position: fixed;
+        left: 16px;
+        bottom: 12px;
+        font-size: 2rem;
+        font-weight: 800;
+        background-color: var(--white);
+    }
+}
+  
+/* Thiết kế cho kích thước màn hình từ 992px trở lên (large desktop) */
+@media (min-width: 992px) {
+    
+}
+
+/* ----- END RESPONSIVE ----- */
+  
