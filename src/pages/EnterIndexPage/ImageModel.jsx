@@ -73,6 +73,7 @@ const ImageModal = () => {
 
   return (
     <>
+<<<<<<< .mine
       <Button
         onClick={() => setVisible(true)}
         type="primary"
@@ -80,6 +81,15 @@ const ImageModal = () => {
       >
         Xem hình ảnh
       </Button>
+=======
+      <Button onClick={() => setVisible(true)} type="primary">Xem hình ảnh</Button>
+
+
+
+
+
+
+>>>>>>> .theirs
       <Modal
         title="Thông tin tệp đính kèm"
         visible={visible}
