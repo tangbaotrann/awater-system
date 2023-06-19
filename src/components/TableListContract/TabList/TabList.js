@@ -6,9 +6,11 @@ import {
   DatePicker,
   Form,
   Input,
+  InputNumber,
   Modal,
   Row,
   Select,
+  Table,
   Tabs,
 } from "antd";
 import {
@@ -20,8 +22,13 @@ import {
   BarsOutlined,
   DashboardOutlined,
   RedoOutlined,
+  DownloadOutlined,
+  FormOutlined,
+  PrinterOutlined,
+  SaveOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
+import { dataContractClockOnModal } from "../../../utils/dataContract";
 
 // Tabs bottom
 const tabs = [
@@ -88,7 +95,7 @@ function TabList({ isTabletOrMobile }) {
     console.log({ error });
   };
 
-  // items content collapse
+  // collapse (Thông tin khách hàng)
   const items = [
     {
       key: "1",
@@ -148,8 +155,10 @@ function TabList({ isTabletOrMobile }) {
             </Col>
 
             {/* Button ... (tên khách hàng) */}
-            <Col xs={24} sm={24} md={12} lg={2} className="gutter-item-chk">
-              <Checkbox />
+            <Col xs={24} sm={24} md={12} lg={2}>
+              <Form.Item name="">
+                <Checkbox />
+              </Form.Item>
             </Col>
           </Row>
 
@@ -226,8 +235,10 @@ function TabList({ isTabletOrMobile }) {
             </Col>
 
             {/* Checkbox (số CMND) */}
-            <Col xs={24} sm={24} md={12} lg={1} className="gutter-item-chk">
-              <Checkbox />
+            <Col xs={24} sm={24} md={12} lg={1}>
+              <Form.Item name="">
+                <Checkbox />
+              </Form.Item>
             </Col>
 
             {/* Ngày cấp */}
@@ -274,8 +285,10 @@ function TabList({ isTabletOrMobile }) {
             </Col>
 
             {/* Checkbox (số GCN) */}
-            <Col xs={24} sm={24} md={12} lg={1} className="gutter-item-chk">
-              <Checkbox />
+            <Col xs={24} sm={24} md={12} lg={1}>
+              <Form.Item name="">
+                <Checkbox />
+              </Form.Item>
             </Col>
           </Row>
 
@@ -348,12 +361,593 @@ function TabList({ isTabletOrMobile }) {
     },
   ];
 
+  // collapse (Thông tin hợp đồng)
+  const itemsInfoContract = [
+    {
+      key: "2",
+      label: "Thông tin hợp đồng",
+      children: (
+        <>
+          <Row>
+            {/* Mã đăng ký */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Mã đăng ký: ">
+                <Input name="" placeholder="Nhập mã đăng ký" />
+              </Form.Item>
+            </Col>
+
+            {/* Button ... (Mã đăng ký) */}
+            <Col xs={24} sm={24} md={12} lg={2}>
+              <Button type="primary">...</Button>
+            </Col>
+
+            {/* Số hợp đồng*/}
+            <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
+              <Form.Item name="" label="Số hợp đồng: (*)">
+                <Input name="" placeholder="Nhập số hợp đồng" />
+              </Form.Item>
+            </Col>
+
+            {/* Button reset (mã khách hàng) */}
+            <Col xs={24} sm={24} md={12} lg={1}>
+              <Button type="primary">
+                <RedoOutlined />
+              </Button>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* ĐT giá */}
+            <Col xs={24} sm={24} md={12} lg={23} className="gutter-item">
+              <Form.Item name="" label="ĐT giá: (*)">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "100000" },
+                    { value: "2", label: "200000" },
+                  ]}
+                  placeholder="Chọn giá"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Mục đích SD */}
+            <Col xs={24} sm={24} md={12} lg={23} className="gutter-item">
+              <Form.Item name="" label="Mục đích SD: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "SD 1" },
+                    { value: "2", label: "SD 2" },
+                  ]}
+                  placeholder="Chọn mục đích SD"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Khu vực TT */}
+            <Col xs={24} sm={24} md={12} lg={23} className="gutter-item">
+              <Form.Item name="" label="Khu vực TT: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "KV 1" },
+                    { value: "2", label: "KV 2" },
+                  ]}
+                  placeholder="Chọn khu vực TT"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Hình thức TT */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Hình thức TT: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "HT 1" },
+                    { value: "2", label: "HT 2" },
+                  ]}
+                  placeholder="Chọn hình thức TT"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Mã vạch */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Mã vạch: ">
+                <Input name="" placeholder="Nhập mã vạch" />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Ngày ký hợp đồng */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Ngày ký HĐ: ">
+                <DatePicker
+                  name=""
+                  placeholder="Chọn ngày ký hợp đồng"
+                  className="gutter-item-date-picker"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Ngày lắp đặt */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Ngày lắp đặt: ">
+                <DatePicker
+                  name=""
+                  placeholder="Chọn ngày lắp đặt"
+                  className="gutter-item-date-picker"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Người lắp đặt */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Người lắp đặt: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Văn Tèo" },
+                    { value: "2", label: "Tài Siêu" },
+                  ]}
+                  placeholder="Chọn người lắp đặt"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Ngày NT */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Ngày NT: ">
+                <DatePicker
+                  name=""
+                  placeholder="Chọn ngày NT"
+                  className="gutter-item-date-picker"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+        </>
+      ),
+    },
+  ];
+
+  // cols (collapse Đồng hồ)
+  const colsClock = [
+    {
+      key: "index",
+      title: "#",
+      dataIndex: "index",
+    },
+    {
+      key: "status",
+      title: "Trạng thái",
+      dataIndex: "status",
+    },
+    {
+      key: "code",
+      title: "Mã",
+      dataIndex: "code",
+    },
+    {
+      key: "seri",
+      title: "seri",
+      dataIndex: "seri",
+    },
+    {
+      key: "date_use",
+      title: "Ngày sử dụng",
+      dataIndex: "date_use",
+    },
+  ];
+
+  // collapse (Đồng hồ)
+  const itemsClock = [
+    {
+      key: "3",
+      label: "Đồng hồ",
+      children: (
+        <>
+          <Row>
+            {/* Table */}
+            <Col xs={24} sm={24} md={12} lg={20} className="gutter-item">
+              <div className="tablist-tbl-clock-on-modal">
+                <Table
+                  columns={colsClock}
+                  dataSource={dataContractClockOnModal.map((_clock, index) => ({
+                    index: index + 1,
+                    status: _clock.status,
+                    code: _clock.code,
+                    seri: _clock.seri,
+                    date_use: _clock.date_use,
+                  }))}
+                  pagination={{
+                    pageSize: 5,
+                  }}
+                  rowKey="index"
+                ></Table>
+              </div>
+            </Col>
+
+            {/* Func */}
+            <Col xs={24} sm={24} md={12} lg={2}>
+              <Button type="primary" className="tablist-func-clock-btn">
+                <PlusCircleOutlined />
+                Thêm
+              </Button>
+              <Button type="primary" className="tablist-func-clock-btn">
+                <DashboardOutlined />
+                Thay
+              </Button>
+              <Button type="primary" className="tablist-func-clock-btn">
+                <DownloadOutlined />
+                Xuất
+              </Button>
+              <Button type="primary">
+                <CloseCircleOutlined />
+                Xóa
+              </Button>
+            </Col>
+          </Row>
+        </>
+      ),
+    },
+  ];
+
+  // collapse (Chi tiết đồng hồ)
+  const itemsDetailClock = [
+    {
+      key: "4",
+      label: "Chi tiết đồng hồ",
+      children: (
+        <>
+          <Row>
+            {/* Đơn vị HC */}
+            <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
+              <Form.Item name="" label="Đơn vị HC: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Đơn vị 1" },
+                    { value: "2", label: "Đơn vị 2" },
+                  ]}
+                  placeholder="Chọn đơn vị"
+                />
+              </Form.Item>
+            </Col>
+
+            {/*  */}
+            <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
+              <Form.Item name="">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Đơn vị 1" },
+                    { value: "2", label: "Đơn vị 2" },
+                  ]}
+                  placeholder="Chọn đơn vị"
+                />
+              </Form.Item>
+            </Col>
+
+            {/*  */}
+            <Col xs={24} sm={24} md={12} lg={7}>
+              <Form.Item name="">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Đơn vị 1" },
+                    { value: "2", label: "Đơn vị 2" },
+                  ]}
+                  placeholder="Chọn đơn vị"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Vùng */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Vùng: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Vùng 1" },
+                    { value: "2", label: "Vùng 2" },
+                  ]}
+                  placeholder="Chọn vùng"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Khu vực */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Khu vực: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Khu vực 1" },
+                    { value: "2", label: "Khu vực 2" },
+                  ]}
+                  placeholder="Chọn khu vực"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Nhân viên */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Nhân viên: (*)">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Nhân viên 1" },
+                    { value: "2", label: "Nhân viên 2" },
+                  ]}
+                  placeholder="Chọn nhân viên"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Tuyến đọc */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Tuyến đọc: (*)">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Tuyến đọc 1" },
+                    { value: "2", label: "Tuyến đọc 2" },
+                  ]}
+                  placeholder="Chọn tuyến đọc"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Phạm vi */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Phạm vi: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Phạm vi 1" },
+                    { value: "2", label: "Phạm vi 2" },
+                  ]}
+                  placeholder="Chọn phạm vi"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Mã */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Mã: (*)">
+                <Input name="" placeholder="Nhập mã" />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Đồng hồ block */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Đồng hồ block: ">
+                <Select
+                  fieldNames=""
+                  options={[
+                    { value: "1", label: "Đồng hồ block 1" },
+                    { value: "2", label: "Đồng hồ block 2" },
+                  ]}
+                  placeholder="Chọn đồng hồ block"
+                />
+              </Form.Item>
+            </Col>
+
+            {/*  */}
+            <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
+              <Form.Item name="" label="Là đồng hồ phụ: ">
+                <Button type="primary"></Button>
+              </Form.Item>
+            </Col>
+
+            {/* Thứ tự */}
+            <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
+              <Form.Item name="" label="Thứ tự: ">
+                <Input placeholder="Nhập thứ tự" />
+              </Form.Item>
+            </Col>
+
+            {/* button (Thứ tự) */}
+            <Col xs={24} sm={24} md={12} lg={1} className="gutter-item">
+              <Button type="primary">
+                <RedoOutlined />
+              </Button>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Seri */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="" label="Seri: ">
+                <Input name="" placeholder="Nhập seri" />
+              </Form.Item>
+            </Col>
+
+            {/* Checkbox (Seri) */}
+            <Col xs={24} sm={24} md={12} lg={1}>
+              <Form.Item name="">
+                <Checkbox />
+              </Form.Item>
+            </Col>
+
+            {/* Chỉ số bắt đầu */}
+            <Col xs={24} sm={24} md={12} lg={7}>
+              <Form.Item name="num_start" label="Chỉ số bắt đầu: ">
+                <InputNumber name="num_start" placeholder="Số đầu" />
+              </Form.Item>
+            </Col>
+
+            {/* Chỉ số cuối */}
+            <Col xs={24} sm={24} md={12} lg={4}>
+              <Form.Item name="num_end" label="Cuối: ">
+                <InputNumber name="num_end" placeholder="Số cuối" />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Seri chì */}
+            <Col xs={24} sm={24} md={12} lg={6} className="gutter-item">
+              <Form.Item name="" label="Seri chì: ">
+                <Input name="" placeholder="Nhập seri chì" />
+              </Form.Item>
+            </Col>
+
+            {/* Ngày lắp đặt */}
+            <Col
+              xs={24}
+              sm={24}
+              md={12}
+              lg={8}
+              className="gutter-item gutter-item-date-picker"
+            >
+              <Form.Item name="" label="Ngày lắp đặt: ">
+                <DatePicker name="" placeholder="Chọn ngày lắp đặt" />
+              </Form.Item>
+            </Col>
+
+            {/* Ngày sử dụng */}
+            <Col xs={24} sm={24} md={12} lg={8}>
+              <Form.Item name="" label="Ngày sử dụng: ">
+                <DatePicker
+                  name=""
+                  placeholder="Chọn ngày sử dụng"
+                  className="gutter-item-date-picker"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Địa chỉ */}
+            <Col xs={24} sm={24} md={12} lg={22} className="gutter-item">
+              <Form.Item name="" label="Địa chỉ (*)">
+                <Input name="" placeholder="Nhập địa chỉ" />
+              </Form.Item>
+            </Col>
+
+            {/* Checkbox (Seri) */}
+            <Col xs={24} sm={24} md={12} lg={1}>
+              <Form.Item name="">
+                <Checkbox />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Trạng thái */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Trạng thái">
+                <Select
+                  fieldNames=""
+                  options={[{ value: "1", label: "Đang sử dụng" }]}
+                  placeholder="Chọn trạng thái"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Lý do hủy */}
+            <Col xs={24} sm={24} md={12} lg={11}>
+              <Form.Item name="" label="Lý do hủy">
+                <Input name="" placeholder="Nhập lý do hủy" />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Nước sản xuất */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Nước SX">
+                <Select
+                  fieldNames=""
+                  options={[{ value: "1", label: "Nước 1" }]}
+                  placeholder="Chọn nước"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Hãng sản xuất */}
+            <Col xs={24} sm={24} md={12} lg={11}>
+              <Form.Item name="" label="Hãng SX">
+                <Select
+                  fieldNames=""
+                  options={[{ value: "1", label: "Nước 1" }]}
+                  placeholder="Chọn hãng"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Kiểu đồng hồ */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Kiểu đồng hồ">
+                <Select
+                  fieldNames=""
+                  options={[{ value: "1", label: "Kiểu 1" }]}
+                  placeholder="Chọn kiểu đồng hồ"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Đường kính */}
+            <Col xs={24} sm={24} md={12} lg={11}>
+              <Form.Item name="" label="Đường kính">
+                <Input name="" placeholder="Nhập đường kính" />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Hộp bảo vệ */}
+            <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+              <Form.Item name="" label="Hộp bảo vệ">
+                <Select
+                  fieldNames=""
+                  options={[{ value: "1", label: "Hộp 1" }]}
+                  placeholder="Chọn hộp bảo vệ"
+                />
+              </Form.Item>
+            </Col>
+
+            {/* Vị trí lắt đặt */}
+            <Col xs={24} sm={24} md={12} lg={11}>
+              <Form.Item name="" label="Vị trí lắt đặt">
+                <Input name="" placeholder="Nhập vị trí lắt đặt" />
+              </Form.Item>
+            </Col>
+          </Row>
+        </>
+      ),
+    },
+  ];
+
   return (
     <>
       <Tabs
         type={isTabletOrMobile ? "line" : "card"}
         tabPosition={isTabletOrMobile ? "left" : "top"}
-        activeKey=""
+        activeKey="0"
         items={tabs.map((_tab) => {
           return {
             label: (
@@ -392,8 +986,89 @@ function TabList({ isTabletOrMobile }) {
 
           {/* Thông tin khách hàng */}
           <Row>
+            <Col
+              xs={24}
+              sm={24}
+              md={12}
+              lg={12}
+              style={{ paddingRight: "10px" }}
+            >
+              <Collapse
+                key="1"
+                items={items}
+                accordion={false}
+                defaultActiveKey={["1"]}
+              />
+            </Col>
+
             <Col xs={24} sm={24} md={12} lg={12}>
-              <Collapse items={items} />
+              <Collapse
+                key="3"
+                items={itemsClock}
+                accordion={false}
+                defaultActiveKey={["3"]}
+              />
+            </Col>
+          </Row>
+
+          {/* Thông tin hợp đồng */}
+          <Row className="space-col">
+            <Col
+              xs={24}
+              sm={24}
+              md={12}
+              lg={12}
+              style={{ paddingRight: "10px" }}
+            >
+              <Collapse
+                key="2"
+                items={itemsInfoContract}
+                accordion={false}
+                defaultActiveKey={["2"]}
+              />
+            </Col>
+
+            <Col xs={24} sm={24} md={12} lg={12}>
+              <Collapse
+                key="4"
+                items={itemsDetailClock}
+                accordion={false}
+                defaultActiveKey={["4"]}
+              />
+            </Col>
+          </Row>
+
+          {/* Bottom */}
+          <Row justify="end">
+            <Col xs={24} sm={24} md={12} lg={4}>
+              <Button htmlType="submit" type="primary">
+                <FormOutlined />
+                Biên bản thỏa thuận
+              </Button>
+            </Col>
+            <Col xs={24} sm={24} md={12} lg={3}>
+              <Button htmlType="submit" type="primary">
+                <PrinterOutlined />
+                In hợp đồng
+              </Button>
+            </Col>
+            <Col xs={24} sm={24} md={12} lg={3}>
+              <Button htmlType="submit" type="primary">
+                <SaveOutlined />
+                Lưu và thêm tiếp
+              </Button>
+            </Col>
+            <Col xs={24} sm={24} md={12} lg={2} style={{ marginLeft: "28px" }}>
+              <Button htmlType="submit" type="primary">
+                <SaveOutlined />
+                Lưu
+              </Button>
+            </Col>
+            <Col xs={24} sm={24} md={12} lg={1} style={{ marginRight: "28px" }}>
+              <Button htmlType="submit" type="primary">
+                <CloseCircleOutlined />
+                Đóng
+              </Button>
             </Col>
           </Row>
         </Form>

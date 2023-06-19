@@ -203,4 +203,29 @@ const dataContractOnModal = [
   },
 ];
 
-export { dataContract, dataContractOnModal };
+// data table clock on modal
+const dataContractClockOnModal = [
+  {
+    id: "1",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+  {
+    id: "2",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+  {
+    id: "3",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+];
+
+export { dataContract, dataContractOnModal, dataContractClockOnModal };
