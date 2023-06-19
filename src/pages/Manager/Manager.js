@@ -5,6 +5,7 @@ import { btnClickSidebarMenuSelector } from "../../redux/selector";
 import constants from "../../utils/constants";
 import Contract from "./Contract/Contract";
 import ReadingIndex from "../ReadingIndex/ReadingIndex";
+import Invoice from "../Invoice/Invoice";
 
 function Manager() {
   // change layout
@@ -35,7 +36,7 @@ function Manager() {
       ) : sidebarMenu === constants.ENTER_INDEX.key ? (
         <h1>ENTER_INDEX</h1>
       ) : sidebarMenu === constants.BILL_ORDER.key ? (
-        <h1>BILL_ORDER</h1>
+        <Invoice />
       ) : sidebarMenu === constants.PRINT_BILL_ORDER.key ? (
         <h1>PRINT_BILL_ORDER</h1>
       ) : sidebarMenu === constants.EXPORT_PRINT_BILL_ORDER.key ? (

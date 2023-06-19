@@ -1,0 +1,134 @@
+import { SaveFilled } from "@ant-design/icons";
+import {
+  Button,
+  Checkbox,
+  DatePicker,
+  Form,
+  Input,
+  Modal,
+  Select,
+  theme,
+} from "antd";
+import { useState } from "react";
+
+export const Instalments = (props) => {
+  const { isOpen, handleCancel, handleOk } = props;
+  const { token } = theme.useToken();
+  const [form] = Form.useForm();
+
+  const onFinish = (values) => {
+    console.log("Received values of form: ", values);
+  };
+
+  const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+
+  return (
+    <Modal
+      title="Tính tiền hóa đơn trả góp"
+      open={isOpen}
+      onOk={() => handleOk("", "instalments")}
+      onCancel={() => handleCancel("", "instalments")}
+      width={600}
+      footer={null}
+      style={{
+        top: 50,
+      }}
+      labelCol={{
+        span: 4,
+      }}
+      wrapperCol={{
+        span: 14,
+      }}
+    >
+      <Form
+        {...layout}
+        name="nest-messages"
+        onFinish={onFinish}
+        style={{
+          maxWidth: "none",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          padding: 24,
+        }}
+      >
+        <Form.Item name="date" label="Tháng" style={{ marginRight: "70px" }}>
+          <DatePicker
+            allowClear
+            placeholder="Chọn tháng"
+            style={{ width: "100%" }}
+            format="MM-YYYY"
+            picker="month"
+          />
+        </Form.Item>
+        <Form.Item
+          name="person"
+          label="Ngày đầu kỳ"
+          style={{ marginRight: "70px" }}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <DatePicker
+            allowClear
+            placeholder="Chọn tháng"
+            style={{ width: "100%" }}
+            format="MM-YYYY"
+          />
+        </Form.Item>
+        <Form.Item
+          name="tuyendoc"
+          label="Ngày cuối kỳ"
+          style={{ marginRight: "70px" }}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <DatePicker
+            allowClear
+            placeholder="Chọn tháng"
+            style={{ width: "100%" }}
+            format="MM-YYYY"
+          />
+        </Form.Item>
+      </Form>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "justify-between",
+          marginBottom: 16,
+          marginTop: 16,
+          width: "100%",
+        }}
+      >
+        <div style={{ marginLeft: "auto" }}>
+          <Button
+            type="primary"
+            icon={<SaveFilled />}
+            style={{ marginRight: 5 }}
+            size="middle"
+          >
+            Bắt đầu thực hiện
+          </Button>
+          <Button
+            key="submit"
+            onClick={() => handleCancel("", "instalments")}
+            size="middle"
+          >
+            Đóng
+          </Button>
+        </div>
+      </div>
+    </Modal>
+  );
+};
