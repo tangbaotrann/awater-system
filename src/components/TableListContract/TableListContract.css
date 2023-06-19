@@ -1,0 +1,36 @@
+.contract-tbl-icon-btn {
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    color: var(--blue-1677ff);
+}
+
+/* container table list contract  */
+.container-tbl-contract {
+    margin-bottom: 28px;
+    overflow-x: auto;
+}
+
+/* custom page size -> to left */
+.container-tbl-contract .ant-table-pagination-right {
+    display: flex;
+    justify-content: flex-start !important;
+}
+
+/* Modal tbl contract */
+.title-update-info-contract {
+    margin-bottom: 12px;
+}
+
+.container-modal-tbl-contract {
+    position: relative;
+}
+
+.inner-modal-tbl-contract {
+    overflow-x: auto;
+}
+
+/* checkbox on modal */
+.gutter-item-chk {
+    margin-top: 5px;
+}

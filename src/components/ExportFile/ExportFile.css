@@ -1,0 +1,8 @@
+.wrapper-file {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper-file button {
+    margin: 6px 0;
+}
