@@ -1,0 +1,126 @@
+import { CloseCircleFilled, SaveFilled } from "@ant-design/icons";
+import {
+  Button,
+  Checkbox,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  Modal,
+  Row,
+  Select,
+  theme,
+} from "antd";
+
+const TableModifyPrice = (props) => {
+  const { isOpen, setIsOpen } = props;
+  const { token } = theme.useToken();
+
+  return (
+    <Modal
+      title="Nhập giá mới"
+      open={isOpen}
+      onOk={() => setIsOpen(false)}
+      onCancel={() => setIsOpen(false)}
+      width={800}
+      footer={null}
+    >
+      <Form
+        size="small"
+        style={{
+          maxWidth: "none",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          padding: 10,
+        }}
+      >
+        <Row gutter={24}>
+          <Col span={12}>
+            <Form.Item name="date" label="Mã khách hàng">
+              <DatePicker
+                allowClear
+                placeholder="Chọn tháng"
+                style={{ width: "100%" }}
+                format="MM-YYYY"
+                picker="month"
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item name="person" label="Tên KH">
+              <Input placeholder="Tên khách hàng" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col span={24}>
+            <Form.Item name="date" label="Địa chỉ">
+              <Input placeholder="địa chỉ" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col span={12}>
+            <Form.Item name="date" label="Tiêu thụ">
+              <Input placeholder="tiêu thụ" />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name="person"
+              label="ĐT giá"
+              rules={[{ required: true }]}
+            >
+              <Select
+                style={{
+                  width: "100%",
+                }}
+                options={[
+                  {
+                    value: "jack",
+                    label: "Jack",
+                  },
+                  {
+                    value: "lucy",
+                    label: "Lucy",
+                  },
+                ]}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col span={24}>
+            <Form.Item name="date" label="Ghi chú">
+              <Input placeholder="ghi chú" />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Checkbox style={{ marginRight: "13px" }}>
+          Áp dụng cho cả tháng sau & lưu vào hợp đồng
+        </Checkbox>
+      </Form>
+      <div
+        style={{ marginTop: "10px", marginLeft: "auto", width: "fit-content" }}
+      >
+        <Button
+          type="primary"
+          icon={<SaveFilled />}
+          style={{ marginLeft: "10px" }}
+        >
+          Thực hiện
+        </Button>
+        <Button
+          type="primary"
+          icon={<CloseCircleFilled />}
+          style={{ marginLeft: "10px" }}
+          onClick={() => setIsOpen(false)}
+        >
+          Đóng
+        </Button>
+      </div>
+    </Modal>
+  );
+};
+
+export default TableModifyPrice;
