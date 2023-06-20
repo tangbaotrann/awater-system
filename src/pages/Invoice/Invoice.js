@@ -31,6 +31,7 @@ import { CalculateMoney } from "./CalculateMoney/CalculateMoney";
 // import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
 // import locale from "antd/es/date-picker/locale/vi_VN";
 import "./Invoice.css";
+import { AddInvoice } from "./AddInvoice/AddInvoice";
 
 const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
@@ -222,6 +223,7 @@ const Invoice = () => {
   const [open, setOpen] = useState(false);
   const [isOpenModalBill, setIsOpenModalBill] = useState(false);
   const [isModalInstalmentsOpen, setIsModalInstalmentsOpen] = useState(false);
+  const [isOpenModalAddInvoice, setIsOpenModalAddInvoice] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -235,12 +237,18 @@ const Invoice = () => {
     if (type === "instalments") {
       setIsModalInstalmentsOpen(false);
     }
+    if (type === "addInvoice") {
+      setIsOpenModalAddInvoice(false);
+    }
   };
 
   const handleCancel = (_, type) => {
     setIsOpenModalBill(false);
     if (type === "instalments") {
       setIsModalInstalmentsOpen(false);
+    }
+    if (type === "addInvoice") {
+      setIsOpenModalAddInvoice(false);
     }
   };
 
@@ -414,7 +422,7 @@ const Invoice = () => {
             type="primary"
             icon={<PlusCircleFilled />}
             style={{ marginLeft: "10px" }}
-            // onClick={() => setIsModalOpenMCreate(true)}
+            onClick={() => setIsOpenModalAddInvoice(true)}
             size="small"
           >
             Thêm hóa đơn
@@ -497,6 +505,11 @@ const Invoice = () => {
         handleCancel={handleCancel}
         handleOk={handleOk}
         isOpen={isModalInstalmentsOpen}
+      />
+      <AddInvoice
+        handleCancel={handleCancel}
+        handleOk={handleOk}
+        isOpen={isOpenModalAddInvoice}
       />
       {/* <CreateMultipleBook
         handleCancel={handleCancel}
