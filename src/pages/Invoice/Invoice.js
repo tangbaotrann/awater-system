@@ -251,11 +251,11 @@ const Invoice = () => {
     borderRadius: token.borderRadiusLG,
     marginTop: 16,
     padding: "10px 10px",
-    height: "640px",
+    height: "527px",
     position: "relative",
   };
 
-  const data = Array.from({ length: 1000 }, (_, key) => ({
+  const data = Array.from({ length: 10 }, (_, key) => ({
     key: key + 1,
     stt: key + 1,
     contractNumber: "abc",
