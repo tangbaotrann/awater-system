@@ -5,7 +5,7 @@ import { initialData } from "./data";
 import { otherData } from "./otherData.js";
 import WaterPriceTable from "./WaterPriceTable";
 import ImageModal from "./ImageModel";
-
+import "./EnterIndexPage.css";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
@@ -38,6 +38,12 @@ import {
   CheckCircleOutlined,
   CalendarOutlined,
   RedoOutlined,
+  FileExcelOutlined,
+  UploadOutlined,
+  ToolOutlined,
+  TableOutlined,
+  FundOutlined,
+  LineChartOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "./EnterIndexPage.css";
@@ -329,6 +335,8 @@ function EnterIndexPage() {
   const AdvancedSearchForm = () => {
     const { token } = theme.useToken();
     const [form] = Form.useForm();
+    const [isInputFocused, setIsInputFocused] = useState(false);
+
     const formStyle = {
       maxWidth: "none",
       background: token.colorFillAlter,
@@ -348,21 +356,19 @@ function EnterIndexPage() {
         name="advanced_search"
         size="small"
         onFinish={onFinish}
-        style={
-          {
-            maxWidth: "none",
-            background: token.colorFillAlter,
-            borderRadius: token.borderRadiusLG,
-            padding: 24,
-          }
-        }
+        style={{
+          maxWidth: "none",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          padding: 24,
+        }}
       >
-        <Row gutter={24}>
+        <Row gutter={8}>
           <Col span={4}>
             <Form.Item
               size="small"
               className="custom-form-item"
-              label="Tháng: "
+              label="Chọn tháng"
               name="month"
             >
               <DatePicker
@@ -376,7 +382,7 @@ function EnterIndexPage() {
             </Form.Item>
           </Col>
           <Col span={4}>
-            <Form.Item size="small" label="Cán bộ đọc" name="1" >
+            <Form.Item size="small" label="Cán bộ đọc" name="1">
               <Select style={{ width: "100%" }} size="small" name="s1">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
@@ -409,15 +415,12 @@ function EnterIndexPage() {
               style={{
                 width: "100%",
               }}
-              label={
-                <>
-                  Mã KH
-                  <br />
-                </>
-              }
-              name="3"
             >
-              <Input size="small" />
+              <Input
+                size="small"
+                placeholder="Tên hoặc mã hoặc ID KH"
+                style={{ color: "black" }}
+              />
             </Form.Item>
           </Col>
           <Col span={4}>
@@ -427,21 +430,36 @@ function EnterIndexPage() {
               style={{
                 width: "100%",
               }}
-              label={
-                <>
-                  Số HĐ
-                  <br />
-                </>
-              }
               name="4"
             >
-              <Input size="small" />
+              <Input
+                size="small"
+                placeholder="Số hợp đồng"
+                style={{ color: "black" }}
+              />
             </Form.Item>
+          </Col>
+          <Col span={4}>
+            <div>
+              <Space size="small">
+                <Button
+                  style={{
+                    maxWidth: "100%",
+                  }}
+                  size="small"
+                  type="primary"
+                  htmlType="submit"
+                >
+                  <SearchOutlined />
+                  Tìm kiếm
+                </Button>
+              </Space>
+            </div>
           </Col>
         </Row>
 
-        <Row gutter={14}>
-          <Col span={4}>
+        <Row gutter={8}>
+          <Col span={5}>
             <Form.Item
               size="small"
               // className="custom-form-item"
@@ -473,7 +491,7 @@ function EnterIndexPage() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col span={3}>
             <Form.Item
               size="small"
               // className="custom-form-item"
@@ -481,14 +499,14 @@ function EnterIndexPage() {
               name="8"
             >
               <Select style={{ width: "100%" }} size="small" name="s1">
-                <Option value="1">Lựa chọn 1</Option>
-                <Option value="2">Lựa chọn 2</Option>
-                <Option value="3">Lựa chọn 3</Option>
-                <Option value="3">Lựa chọn 3</Option>
+                <Option value="1"> 1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+                <Option value="3">3</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col span={2}>
             <Form.Item className="custom-form-item" label="" name="quantity">
               <InputNumber
                 size="small"
@@ -498,7 +516,7 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col span={7}>
             <Form.Item
               size=" small"
               lassName="custom-form-item"
@@ -513,26 +531,9 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col span={4}>
-            <div
-              style={{
-                textAlign: "right",
-              }}
-            >
+          <Col span={3}>
+            <div>
               <Space size="small">
-                <Button
-                  style={{
-                    textAlign: "right",
-                    maxWidth: "100%",
-                  }}
-                  size="small"
-                  type="primary"
-                  htmlType="submit"
-                >
-                  <SearchOutlined />
-                  Tìm kiếm
-                </Button>
-
                 <Button
                   size="small"
                   style={{
@@ -548,7 +549,6 @@ function EnterIndexPage() {
             </div>
           </Col>
         </Row>
-
       </Form>
     );
   };
@@ -640,8 +640,14 @@ function EnterIndexPage() {
       >
         <div
           style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}
+          className="footer-buttons"
         >
-          <Button onClick={handleButtonClick3} icon={<SearchOutlined />} style={{ marginRight: '10px' }} type='primary'>
+          <Button
+            onClick={handleButtonClick3}
+            icon={<SearchOutlined />}
+            style={{ marginRight: "10px" }}
+            type="primary"
+          >
             Tìm kiếm
           </Button>
           <Modal
@@ -732,7 +738,13 @@ function EnterIndexPage() {
             </Form>
           </Modal>
           <div className="button-container1">
-            <Button size="small" onClick={handleButtonClick1} style={{ marginRight: '10px' }} type='primary'>
+            <Button
+              icon={<FileExcelOutlined />}
+              size="small"
+              onClick={handleButtonClick1}
+              style={{ marginRight: "10px" }}
+              type="primary"
+            >
               Nhập excel
             </Button>
           </div>
@@ -748,7 +760,13 @@ function EnterIndexPage() {
             </Row>
           </Modal>
           <div className="button-container2">
-            <Button size="small" onClick={handleButtonClick2} style={{ marginRight: '10px' }} type='primary'>
+            <Button
+              size="small"
+              onClick={handleButtonClick2}
+              style={{ marginRight: "10px" }}
+              type="primary"
+              icon={<UploadOutlined />}
+            >
               Nhập tệp
             </Button>
           </div>
@@ -793,10 +811,22 @@ function EnterIndexPage() {
             </Row>
           </Modal>
           <Dropdown overlay={menu}>
-            <Button style={{ marginRight: '10px' }} type='primary'>Tiện ích</Button>
+            <Button
+              style={{ marginRight: "10px" }}
+              type="primary"
+              icon={<ToolOutlined />}
+            >
+              Tiện ích
+            </Button>
           </Dropdown>
           <div className="button-container1">
-            <Button size="small" onClick={handleButtonClick4} style={{ marginRight: '10px' }} type='primary'>
+            <Button
+              size="small"
+              onClick={handleButtonClick4}
+              style={{ marginRight: "10px" }}
+              type="primary"
+              icon={<TableOutlined />}
+            >
               Bảng giá
             </Button>
           </div>
@@ -814,7 +844,13 @@ function EnterIndexPage() {
             </Row>
           </Modal>
           <div className="button-container">
-            <Button size="small" onClick={handleButtonClick} style={{ marginRight: '10px' }} type='primary'>
+            <Button
+              size="small"
+              onClick={handleButtonClick}
+              style={{ marginRight: "10px" }}
+              type="primary"
+              icon={<FundOutlined />}
+            >
               Xem TH SD
             </Button>
           </div>
@@ -933,7 +969,13 @@ function EnterIndexPage() {
             </Row>
           </Modal>
           <div className="button-container1">
-            <Button size="small" onClick={handleButtonClick5} style={{ marginRight: '10px' }} type='primary'>
+            <Button
+              size="small"
+              onClick={handleButtonClick5}
+              style={{ marginRight: "10px" }}
+              type="primary"
+              icon={<LineChartOutlined />}
+            >
               Xem biểu đồ
             </Button>
           </div>
@@ -987,16 +1029,18 @@ function EnterIndexPage() {
   return (
     <>
       <AdvancedSearchForm />
-      <div style={{
-        lineHeight: "200px",
-        textAlign: "center",
-        background: token.colorFillAlter,
-        borderRadius: token.borderRadiusLG,
-        marginTop: 16,
-        padding: "10px 10px",
-        height: "640px",
-        position: "relative",
-      }}>
+      <div
+        style={{
+          lineHeight: "200px",
+          textAlign: "center",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          marginTop: 16,
+          padding: "10px 10px",
+          height: "640px",
+          position: "relative",
+        }}
+      >
         <Table
           size="small"
           pagination={{

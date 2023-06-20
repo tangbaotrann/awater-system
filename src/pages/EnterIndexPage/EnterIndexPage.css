@@ -1,3 +1,29 @@
+.black-input {
+  color: black;
+  font-weight: bold;
+}
+.footer-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  transform: translateY(-50%);
+  color: #bfbfbf;
+  cursor: text;
+}
+
+.input-label.hidden {
+  display: none;
+}
 
 /* @media (max-width: 600px) {
     .custom-form-item {
