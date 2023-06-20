@@ -17,7 +17,7 @@ function SidebarMenu() {
       className="custom-sidebar-menu"
       items={[
         {
-          key: constants.REGISTRATION_FORM_PARENT.key, 
+          key: constants.REGISTRATION_FORM_PARENT.key,
           icon: <TableOutlined />,
           label: constants.REGISTRATION_FORM_PARENT.label,
           children: [
@@ -58,6 +58,33 @@ function SidebarMenu() {
                   key: constants.LIST_CUSTOMER.key,
                 },
               ],
+            },
+          ],
+        },
+        {
+          key: constants.RECORD_INDEX_PARENT.key,
+          icon: <TableOutlined />,
+          label: constants.RECORD_INDEX_PARENT.label,
+          children: [
+            {
+              label: constants.READINGS_INDEX.label,
+              key: constants.READINGS_INDEX.key,
+            },
+            {
+              label: constants.ENTER_INDEX.label,
+              key: constants.ENTER_INDEX.key,
+            },
+            {
+              label: constants.BILL_ORDER.label,
+              key: constants.BILL_ORDER.key,
+            },
+            {
+              label: constants.PRINT_BILL_ORDER.label,
+              key: constants.PRINT_BILL_ORDER.key,
+            },
+            {
+              label: constants.EXPORT_PRINT_BILL_ORDER.label,
+              key: constants.EXPORT_PRINT_BILL_ORDER.key,
             },
           ],
         },

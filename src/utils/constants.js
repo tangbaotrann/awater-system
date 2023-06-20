@@ -6,7 +6,7 @@ const constants = {
   },
   REGISTRATION_FORM: {
     label: "Đơn đăng ký",
-    key: "REGISTRATION_FORM", 
+    key: "REGISTRATION_FORM",
   },
   ESTIMATES: {
     label: "Dự toán",
@@ -65,6 +65,23 @@ const constants = {
   EXPORT_PRINT_BILL_ORDER: {
     label: "Phát hành hóa đơn điện tử",
     key: "EXPORT_PRINT_BILL_ORDER",
+  },
+  // menu 3
+  CATEGORY: {
+    label: "Danh mục",
+    key: "CATEGORY",
+  },
+  CATEGORY_MANAGEMENT_PRICE_SUBJECT: {
+    label: "Quản lý danh mục đối tượng giá",
+    key: "CATEGORY_MANAGEMENT_PRICE_SUBJECT",
+  },
+  CATEGORY_MANAGEMENT_READING: {
+    label: "Quản lý danh mục đối tuyến đọc",
+    key: "CATEGORY_MANAGEMENT_READING",
+  },
+  CATEGORY_MANAGEMENT_PRICE_LIST: {
+    label: "Quản lý danh mục đối bảng giá",
+    key: "CATEGORY_MANAGEMENT_PRICE_LIST",
   },
 };
 
