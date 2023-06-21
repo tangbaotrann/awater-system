@@ -13,7 +13,7 @@ import {
 
 function InfoDetailClock() {
   return (
-    <>
+    <div className="container-detail-clock">
       <Row>
         {/* Đơn vị HC */}
         <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
@@ -333,14 +333,196 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
-        {/* Vị trí lắt đặt */}
+        {/* Vị trí lắp đặt */}
         <Col xs={24} sm={24} md={12} lg={11}>
-          <Form.Item name="" label="Vị trí lắt đặt">
-            <Input name="" placeholder="Nhập vị trí lắt đặt" />
+          <Form.Item name="" label="Vị trí lắp đặt">
+            <Input name="" placeholder="Nhập vị trí lắp đặt" />
           </Form.Item>
         </Col>
       </Row>
-    </>
+
+      <Row>
+        {/* Ngày kiểm định */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Ngày kiểm định">
+            <DatePicker
+              name=""
+              placeholder="Chọn ngày kiểm định"
+              className="gutter-item-date-picker"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Hiệu lực kiểm định */}
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item name="" label="Hiệu lực KĐ">
+            <DatePicker
+              name=""
+              placeholder="Chọn Hiệu lực kiểm định"
+              className="gutter-item-date-picker"
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Lý do */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Lý do">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Lý do 1" }]}
+              placeholder="Chọn lý do"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Van một chiều */}
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item name="" label="Van một chiều">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Van một chiều 1" }]}
+              placeholder="Chọn van một chiều"
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Số tem */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Số tem">
+            <Input name="" placeholder="Nhập số tem" />
+          </Form.Item>
+        </Col>
+
+        {/* Số phiếu thay */}
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item name="" label="Số phiếu thay">
+            <Input name="" placeholder="Nhập số phiếu thay" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Hình thức XL */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Hình thức XL">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Hình thức XL 1" }]}
+              placeholder="Chọn hình thức XL"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Lý do thay */}
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item name="" label="Lý do thay">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Lý do thay 1" }]}
+              placeholder="Chọn lý do thay"
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Mã ĐH thay */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Mã ĐH thay">
+            <Input name="" placeholder="Nhập mã ĐH thay" />
+          </Form.Item>
+        </Col>
+
+        {/* Người thay */}
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item name="" label="Người thay">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Người thay 1" }]}
+              placeholder="Chọn người thay"
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Kinh độ */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Kinh độ">
+            <Input name="" placeholder="Nhập kinh độ" />
+          </Form.Item>
+        </Col>
+
+        {/* Vĩ độ */}
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item name="" label="Vĩ độ">
+            <Input name="" placeholder="Nhập vĩ độ" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Loại KM */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Loại KM">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Loại KM 1" }]}
+              placeholder="Chọn loại KM"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Khuyến mãi */}
+        <Col xs={24} sm={24} md={12} lg={9}>
+          <Form.Item name="" label="Khuyến mãi">
+            <InputNumber
+              name=""
+              placeholder="Chọn số"
+              style={{ width: "100%" }}
+            />
+          </Form.Item>
+        </Col>
+
+        {/* text */}
+        <Col xs={24} sm={24} md={12} lg={2} style={{ marginLeft: "2px" }}>
+          (m3)
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Trạng thái ĐH lấp */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Trạng thái ĐH lấp">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Trạng thái ĐH lấp 1" }]}
+              placeholder="Chọn trạng thái ĐH lấp"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Ống dẫn */}
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item name="" label="Ống dẫn">
+            <Input name="" placeholder="Nhập ống dẫn" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Đai khởi thủy */}
+        <Col xs={24} sm={24} md={12} lg={24}>
+          <Form.Item name="" label="Đai khởi thủy">
+            <Input name="" placeholder="Nhập đai khởi thủy" />
+          </Form.Item>
+        </Col>
+      </Row>
+    </div>
   );
 }
 

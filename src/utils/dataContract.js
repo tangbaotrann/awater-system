@@ -228,4 +228,64 @@ const dataContractClockOnModal = [
   },
 ];
 
-export { dataContract, dataContractOnModal, dataContractClockOnModal };
+// data history use water on modal
+const dataHistoryUseWater = [
+  {
+    id: 1,
+    sign: "7/2023",
+    lsd: "SH",
+    m3_min: "",
+    old_index: "132",
+    new_index: "135",
+    m3_k: "",
+    m3_t: "",
+    consume: 0,
+    total: 120000,
+    water_money: 120000,
+    vat: 0,
+    bvmt: 0,
+    cashier: "",
+    fall_day: "28/01/2023",
+  },
+  {
+    id: 2,
+    sign: "7/2023",
+    lsd: "SH",
+    m3_min: "",
+    old_index: "132",
+    new_index: "135",
+    m3_k: "",
+    m3_t: "",
+    consume: 0,
+    total: 120000,
+    water_money: 120000,
+    vat: 0,
+    bvmt: 0,
+    cashier: "",
+    fall_day: "28/01/2023",
+  },
+  {
+    id: 3,
+    sign: "7/2023",
+    lsd: "SH",
+    m3_min: "",
+    old_index: "132",
+    new_index: "135",
+    m3_k: "",
+    m3_t: "",
+    consume: 0,
+    total: 120000,
+    water_money: 120000,
+    vat: 0,
+    bvmt: 0,
+    cashier: "",
+    fall_day: "28/01/2023",
+  },
+];
+
+export {
+  dataContract,
+  dataContractOnModal,
+  dataContractClockOnModal,
+  dataHistoryUseWater,
+};
