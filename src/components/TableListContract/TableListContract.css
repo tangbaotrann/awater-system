@@ -96,3 +96,12 @@
     height: 71vh;
     overflow-y: scroll;
 }
+
+/* Border all card */
+.space-card-item {
+    margin-top: 12px;
+}
+
+.border-card-item {
+    font-size: 1.5rem;
+}

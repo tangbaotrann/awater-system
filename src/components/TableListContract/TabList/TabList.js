@@ -82,6 +82,7 @@ function TabList({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalUpdateContract, setModalUpdateContract] = useState(false);
   const [modalHistoryWater, setModalHistoryWater] = useState(false);
+  const [modalChangeClock, setModalChangeClock] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -107,7 +108,7 @@ function TabList({ isTabletOrMobile }) {
     } else if (key === "6") {
       setModalHistoryWater(true);
     } else if (key === "7") {
-      console.log("update clock.");
+      setModalChangeClock(true);
     }
   };
 
@@ -116,6 +117,7 @@ function TabList({ isTabletOrMobile }) {
     setOpenModal(false);
     setModalUpdateContract(false);
     setModalHistoryWater(false);
+    setModalChangeClock(false);
     dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
   };
 
@@ -136,6 +138,16 @@ function TabList({ isTabletOrMobile }) {
 
   // handle submit error (history use water)
   const handleSubmitHistoryWaterFailed = (error) => {
+    console.log({ error });
+  };
+
+  // handle submit form (change clock)
+  const handleSubmitChangeClock = (values) => {
+    console.log("values ->", values);
+  };
+
+  // handle submit error (history use water)
+  const handleSubmitChangeClockFailed = (error) => {
     console.log({ error });
   };
 
@@ -441,6 +453,128 @@ function TabList({ isTabletOrMobile }) {
 
         {/* Render table */}
         <TableHistoryUseWater />
+      </Modal>
+
+      {/* Modal (Thay đồng hồ) */}
+      <Modal
+        open={modalChangeClock}
+        onCancel={hideModal}
+        width={800}
+        // centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        {/* Card (Thông tin đầu máy) */}
+        <fieldset className="space-card-item">
+          <legend className="border-card-item">Thông tin đầu máy</legend>
+          <Form
+            onFinish={handleSubmitChangeClock}
+            onFinishFailed={handleSubmitChangeClockFailed}
+            style={{ padding: "10px" }}
+          >
+            <Row>
+              {/* Mã khách hàng */}
+              <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
+                <Form.Item name="code_customer" label="Mã khách hàng: ">
+                  <Input
+                    name="code_customer"
+                    placeholder="Nhập mã khách hàng"
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row>
+              {/* Tên khách hàng */}
+              <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
+                <Form.Item name="name_customer" label="Tên khách hàng: ">
+                  <Input
+                    name="name_customer"
+                    placeholder="Nhập tên khách hàng"
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row>
+              {/* Địa chỉ */}
+              <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
+                <Form.Item name="address" label="Địa chỉ: ">
+                  <Input name="address" placeholder="Nhập Địa chỉ" />
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row>
+              {/* Tuyến đọc */}
+              <Col xs={24} sm={24} md={24} lg={12}>
+                <Form.Item
+                  name="line_reading"
+                  label="Tuyến đọc: "
+                  className="gutter-item"
+                >
+                  <Input name="line_reading" placeholder="Nhập tuyến đọc" />
+                </Form.Item>
+              </Col>
+
+              {/* Thứ tự */}
+              <Col xs={24} sm={24} md={24} lg={12}>
+                <Form.Item name="address" label="Thứ tự: ">
+                  <Input name="address" placeholder="Nhập thứ tự" />
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
+        </fieldset>
+
+        {/* Card (Đông hồ hiện tại) */}
+        <fieldset className="space-card-item">
+          <legend className="border-card-item">Đông hồ hiện tại</legend>
+          <Form
+            onFinish={handleSubmitChangeClock}
+            onFinishFailed={handleSubmitChangeClockFailed}
+            style={{ padding: "10px" }}
+          >
+            <Row>
+              {/* Kiểu đồng hồ */}
+              <Col xs={24} sm={24} md={24} lg={12}>
+                <Form.Item
+                  name=""
+                  label="Kiểu đồng hồ: "
+                  className="gutter-item"
+                >
+                  <Input name="" placeholder="Nhập Kiểu đồng hồ" />
+                </Form.Item>
+              </Col>
+              {/* Đường kính */}
+              <Col xs={24} sm={24} md={24} lg={12}>
+                <Form.Item name="" label="Đường kính: ">
+                  <Input name="" placeholder="Nhập đường kính" />
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Row>
+              {/* Mã đồng hồ */}
+              <Col xs={24} sm={24} md={24} lg={12}>
+                <Form.Item
+                  name="line_reading"
+                  label="Mã đồng hồ: "
+                  className="gutter-item"
+                >
+                  <Input name="line_reading" placeholder="Nhập mã đồng hồ" />
+                </Form.Item>
+              </Col>
+
+              {/* Thứ tự */}
+              <Col xs={24} sm={24} md={24} lg={12}>
+                <Form.Item name="address" label="Thứ tự: ">
+                  <Input name="address" placeholder="Nhập thứ tự" />
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
+        </fieldset>
       </Modal>
     </>
   );
