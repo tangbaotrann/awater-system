@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { initialData } from "./data";
-import { otherData } from "./otherData.js";
-import WaterPriceTable from "./WaterPriceTable";
+import { initialData } from "./data/data";
+import { otherData } from "./data/otherData.js";
+import WaterPriceTable from "./data/WaterPriceTable";
 import ImageModal from "./ImageModel";
 import "./EnterIndexPage.css";
 import viVN from "antd/es/date-picker/locale/vi_VN";
@@ -1048,7 +1048,7 @@ function EnterIndexPage() {
             total: 10000,
             pageSize: 50,
           }}
-          scroll={{ x: 3000, y: 450 }}
+          scroll={{ x: 3000, y: 400 }}
           columns={columns}
           dataSource={data1}
           onChange={handleData1Change}
