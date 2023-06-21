@@ -1,12 +1,19 @@
 import { Button, Modal, Table } from "antd";
 import { UndoOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./TableListContract.css";
 import { dataContract, dataContractOnModal } from "../../utils/dataContract";
+import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
+import { btnClickTabListContractSelector } from "../../redux/selector";
 
 function TableListContract() {
   const [open, setOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const tabList = useSelector(btnClickTabListContractSelector);
 
   // cols table main
   const cols = [
@@ -126,9 +133,17 @@ function TableListContract() {
     },
   ];
 
+  // handle row select
+  const handleRowSelection = (selectedRowKeys, selectedRows) => {
+    dispatch(
+      tabListContractSlice.actions.btnClickTabListContract(selectedRows[0])
+    );
+  };
+
   return (
     <div className="container-tbl-contract">
       <Table
+        id="table-contract"
         columns={cols}
         dataSource={dataContract.map((_contract, index) => ({
           index: index + 1,
@@ -145,11 +160,17 @@ function TableListContract() {
         rowKey="index"
         onRow={(record, index) => {
           return {
-            onClick: () => {
+            onDoubleClick: () => {
               console.log(record);
               setOpen(true);
             },
           };
+        }}
+        rowSelection={{
+          type: "radio",
+          onChange: (selectedRowKeys, selectedRows) =>
+            handleRowSelection(selectedRowKeys, selectedRows),
+          selectedRowKeys: tabList ? [tabList.index] : [],
         }}
       ></Table>
 
@@ -157,11 +178,11 @@ function TableListContract() {
       <Modal
         open={open}
         onCancel={hideModal}
-        cancelButtonProps={{ style: { display: "none" } }}
-        okButtonProps={{ style: { display: "none" } }}
         className="container-modal-tbl-contract"
         width={1600}
         centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
       >
         <div className="inner-modal-tbl-contract">
           <Table
