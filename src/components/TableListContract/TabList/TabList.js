@@ -1,4 +1,16 @@
-import { Button, Col, Collapse, Form, Input, Modal, Row, Tabs } from "antd";
+import {
+  Button,
+  Checkbox,
+  Col,
+  Collapse,
+  Divider,
+  Form,
+  Input,
+  Modal,
+  Row,
+  Select,
+  Tabs,
+} from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -24,6 +36,8 @@ import InfoContract from "./InfoContract/InfoContract";
 import InfoClock from "./InfoClock/InfoClock";
 import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
 import { exportToExcel } from "../../../utils/exportFile";
+import Reporter from "../../Reporter/Reporter";
+import TableHistoryUseWater from "./TableHistoryUseWater/TableHistoryUseWater";
 
 // Tabs bottom
 const tabs = [
@@ -67,13 +81,14 @@ const tabs = [
 function TabList({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalUpdateContract, setModalUpdateContract] = useState(false);
+  const [modalHistoryWater, setModalHistoryWater] = useState(false);
 
   const dispatch = useDispatch();
 
   const tabList = useSelector(btnClickTabListContractSelector);
   const menuSidebar = useSelector(btnClickSidebarMenuSelector);
 
-  // console.log("tabList", tabList);
+  console.log("tabList", tabList);
   // console.log("menuSidebar", menuSidebar);
 
   // handle change tabs
@@ -87,11 +102,10 @@ function TabList({ isTabletOrMobile }) {
       dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
     } else if (key === "4") {
       exportToExcel("table-contract", menuSidebar);
-      console.log("export excel.");
     } else if (key === "5") {
       console.log("go to.");
     } else if (key === "6") {
-      console.log("history.");
+      setModalHistoryWater(true);
     } else if (key === "7") {
       console.log("update clock.");
     }
@@ -101,16 +115,27 @@ function TabList({ isTabletOrMobile }) {
   const hideModal = () => {
     setOpenModal(false);
     setModalUpdateContract(false);
+    setModalHistoryWater(false);
     dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
   };
 
-  // handle submit form
+  // handle submit form (main)
   const handleSubmit = (values) => {
     console.log("values", values);
   };
 
-  // handle submit error
+  // handle submit error (main)
   const handleFailed = (error) => {
+    console.log({ error });
+  };
+
+  // handle submit form (history use water)
+  const handleSubmitHistoryWater = (values) => {
+    console.log("values ->", values);
+  };
+
+  // handle submit error (history use water)
+  const handleSubmitHistoryWaterFailed = (error) => {
     console.log({ error });
   };
 
@@ -166,7 +191,9 @@ function TabList({ isTabletOrMobile }) {
             key: _tab.id,
             disabled:
               (tabList === null && _tab.id === "2") ||
-              (tabList === null && _tab.id === "3")
+              (tabList === null && _tab.id === "3") ||
+              (tabList === null && _tab.id === "6") ||
+              (tabList === null && _tab.id === "7")
                 ? true
                 : false,
           };
@@ -306,13 +333,114 @@ function TabList({ isTabletOrMobile }) {
                 Lưu
               </Button>
 
-              <Button htmlType="submit" type="primary">
+              <Button
+                htmlType="submit"
+                type="primary"
+                onClick={() => hideModal()}
+              >
                 <CloseCircleOutlined />
                 Đóng
               </Button>
             </Col>
           </Row>
         </Form>
+      </Modal>
+
+      {/* Modal (Lịch sử sử dụng nước) */}
+      <Modal
+        open={modalHistoryWater}
+        onCancel={hideModal}
+        width={2000}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <Form
+          onFinish={handleSubmitHistoryWater}
+          onFinishFailed={handleSubmitHistoryWaterFailed}
+          fields={[
+            { name: "date_from_chk", value: false },
+            { name: "date_to_chk", value: false },
+          ]}
+        >
+          <Row>
+            {/* Khách hàng */}
+            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+              <Form.Item name="code_customer" label="Khách hàng: ">
+                <Input name="code_customer" placeholder="Nhập mã khách hàng" />
+              </Form.Item>
+            </Col>
+
+            {/* Số hợp đồng */}
+            <Col xs={24} sm={24} md={12} lg={10}>
+              <Form.Item name="num_contract" label="Số hợp đồng: ">
+                <Input name="num_contract" placeholder="Nhập số hợp đồng" />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Row>
+            {/* Từ ngày */}
+            <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
+              <Form.Item name="date_from" label="Từ ngày: ">
+                <Select fieldNames="date_from" placeholder="Chọn ngày" />
+              </Form.Item>
+            </Col>
+
+            {/* Checkbox (Từ ngày) */}
+            <Col xs={24} sm={24} md={12} lg={3}>
+              <Form.Item
+                name="date_from_chk"
+                rules={[
+                  {
+                    required: false,
+                  },
+                ]}
+                valuePropName="checked"
+              >
+                <Checkbox>Không có giá trị</Checkbox>
+              </Form.Item>
+            </Col>
+
+            {/* Đến ngày */}
+            <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
+              <Form.Item name="date_to" label="Đến ngày: ">
+                <Select fieldNames="date_to" placeholder="Chọn ngày" />
+              </Form.Item>
+            </Col>
+
+            {/* Checkbox (Đến ngày) */}
+            <Col xs={24} sm={24} md={12} lg={3} className="gutter-item">
+              <Form.Item
+                name="date_to_chk"
+                rules={[
+                  {
+                    required: false,
+                  },
+                ]}
+                valuePropName="checked"
+              >
+                <Checkbox>Không có giá trị</Checkbox>
+              </Form.Item>
+            </Col>
+
+            {/* Button */}
+            <Col xs={24} sm={24} md={12} lg={3}>
+              <Button htmlType="submit" type="primary">
+                Xem báo cáo
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+
+        <Divider />
+
+        <Reporter />
+
+        <Divider />
+
+        {/* Render table */}
+        <TableHistoryUseWater />
       </Modal>
     </>
   );

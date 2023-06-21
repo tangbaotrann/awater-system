@@ -59,3 +59,40 @@
 .tablist-func-clock-btn {
     margin-bottom: 6px;
 }
+
+/* container table history use water */
+.container-tbl-history-water {
+    margin-top: 16px;
+    overflow-x: auto;
+}
+
+.title-tbl-his {
+    text-align: center;
+}
+
+.title-tbl-his p {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+/* Info history */
+.info-his-item {
+    display: flex;
+    align-items: center;
+}
+
+.info-his-item-lbl {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 24px;
+}
+
+.info-his-item-val {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.container-detail-clock {
+    height: 71vh;
+    overflow-y: scroll;
+}
