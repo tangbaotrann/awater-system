@@ -98,10 +98,17 @@
 }
 
 /* Border all card */
-.space-card-item {
-    margin-top: 12px;
+.card-item-title {
+    font-size: 1.6rem !important;
 }
 
-.border-card-item {
-    font-size: 1.5rem;
+/* Buttons change clock */
+.btn-func-change-clock {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn-close-change-clock {
+    margin-left: 12px;
 }

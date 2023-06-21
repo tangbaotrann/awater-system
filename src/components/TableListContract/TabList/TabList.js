@@ -1,16 +1,4 @@
-import {
-  Button,
-  Checkbox,
-  Col,
-  Collapse,
-  Divider,
-  Form,
-  Input,
-  Modal,
-  Row,
-  Select,
-  Tabs,
-} from "antd";
+import { Divider, Modal, Tabs } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -19,9 +7,6 @@ import {
   RetweetOutlined,
   BarsOutlined,
   DashboardOutlined,
-  FormOutlined,
-  PrinterOutlined,
-  SaveOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -31,13 +16,12 @@ import {
   btnClickTabListContractSelector,
 } from "../../../redux/selector";
 import tabListContractSlice from "../../../redux/slices/tabListContractSlice/tabListContractSlice";
-import InfoCustomer from "./InfoCustomer/InfoCustomer";
-import InfoContract from "./InfoContract/InfoContract";
-import InfoClock from "./InfoClock/InfoClock";
-import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
 import { exportToExcel } from "../../../utils/exportFile";
 import Reporter from "../../Reporter/Reporter";
 import TableHistoryUseWater from "./TableHistoryUseWater/TableHistoryUseWater";
+import FormCreateContract from "./FormCreateContract/FormCreateContract";
+import FormHistoryUseWater from "./FormHistoryUseWater/FormHistoryUseWater";
+import FormUpdateClock from "./FormUpdateClock/FormUpdateClock";
 
 // Tabs bottom
 const tabs = [
@@ -89,7 +73,7 @@ function TabList({ isTabletOrMobile }) {
   const tabList = useSelector(btnClickTabListContractSelector);
   const menuSidebar = useSelector(btnClickSidebarMenuSelector);
 
-  console.log("tabList", tabList);
+  // console.log("tabList", tabList);
   // console.log("menuSidebar", menuSidebar);
 
   // handle change tabs
@@ -120,72 +104,6 @@ function TabList({ isTabletOrMobile }) {
     setModalChangeClock(false);
     dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
   };
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    console.log("values", values);
-  };
-
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
-
-  // handle submit form (history use water)
-  const handleSubmitHistoryWater = (values) => {
-    console.log("values ->", values);
-  };
-
-  // handle submit error (history use water)
-  const handleSubmitHistoryWaterFailed = (error) => {
-    console.log({ error });
-  };
-
-  // handle submit form (change clock)
-  const handleSubmitChangeClock = (values) => {
-    console.log("values ->", values);
-  };
-
-  // handle submit error (history use water)
-  const handleSubmitChangeClockFailed = (error) => {
-    console.log({ error });
-  };
-
-  // collapse (Thông tin khách hàng)
-  const items = [
-    {
-      key: "1",
-      label: "Thông tin khách hàng",
-      children: <InfoCustomer />,
-    },
-  ];
-
-  // collapse (Thông tin hợp đồng)
-  const itemsInfoContract = [
-    {
-      key: "2",
-      label: "Thông tin hợp đồng",
-      children: <InfoContract />,
-    },
-  ];
-
-  // collapse (Đồng hồ)
-  const itemsClock = [
-    {
-      key: "3",
-      label: "Đồng hồ",
-      children: <InfoClock />,
-    },
-  ];
-
-  // collapse (Chi tiết đồng hồ)
-  const itemsDetailClock = [
-    {
-      key: "4",
-      label: "Chi tiết đồng hồ",
-      children: <InfoDetailClock />,
-    },
-  ];
 
   return (
     <>
@@ -226,136 +144,8 @@ function TabList({ isTabletOrMobile }) {
           Cập nhật thông tin hợp đồng
         </h2>
 
-        <Form
-          onFinish={handleSubmit}
-          onFinishFailed={handleFailed}
-          fields={[
-            {
-              name: "type_customer",
-              value: tabList ? tabList?.type_customer : "",
-            },
-            {
-              name: "code_cus",
-              value: tabList ? tabList?.code_customer : "",
-            },
-            {
-              name: "fullName",
-              value: tabList ? tabList?.fullName : "",
-            },
-            {
-              name: "address_cus",
-              value: tabList ? tabList?.address : "",
-            },
-            {
-              name: "phone",
-              value: tabList ? tabList?.phone : "",
-            },
-          ]}
-        >
-          {/* Mã khách hàng */}
-          <Row>
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Form.Item name="code_customer" label="Mã khách hàng: ">
-                <Input name="code_customer" placeholder="Nhập mã khách hàng" />
-              </Form.Item>
-            </Col>
-          </Row>
-
-          {/* Thông tin khách hàng */}
-          <Row>
-            <Col
-              xs={24}
-              sm={24}
-              md={12}
-              lg={12}
-              style={{ paddingRight: "10px" }}
-            >
-              <Collapse
-                key="1"
-                items={items}
-                accordion={false}
-                defaultActiveKey={["1"]}
-              />
-            </Col>
-
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Collapse
-                key="3"
-                items={itemsClock}
-                accordion={false}
-                defaultActiveKey={["3"]}
-              />
-            </Col>
-          </Row>
-
-          {/* Thông tin hợp đồng */}
-          <Row className="space-col">
-            <Col
-              xs={24}
-              sm={24}
-              md={12}
-              lg={12}
-              style={{ paddingRight: "10px" }}
-            >
-              <Collapse
-                key="2"
-                items={itemsInfoContract}
-                accordion={false}
-                defaultActiveKey={["2"]}
-              />
-            </Col>
-
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Collapse
-                key="4"
-                items={itemsDetailClock}
-                accordion={false}
-                defaultActiveKey={["4"]}
-              />
-            </Col>
-          </Row>
-
-          {/* Bottom */}
-          <Row>
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Button htmlType="submit" type="primary">
-                <FormOutlined />
-                Tệp đính kèm
-              </Button>
-            </Col>
-
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Button htmlType="submit" type="primary" className="gutter-item">
-                <FormOutlined />
-                Biên bản thỏa thuận
-              </Button>
-
-              <Button htmlType="submit" type="primary" className="gutter-item">
-                <PrinterOutlined />
-                In hợp đồng
-              </Button>
-
-              <Button htmlType="submit" type="primary" className="gutter-item">
-                <SaveOutlined />
-                Lưu và thêm tiếp
-              </Button>
-
-              <Button htmlType="submit" type="primary" className="gutter-item">
-                <SaveOutlined />
-                Lưu
-              </Button>
-
-              <Button
-                htmlType="submit"
-                type="primary"
-                onClick={() => hideModal()}
-              >
-                <CloseCircleOutlined />
-                Đóng
-              </Button>
-            </Col>
-          </Row>
-        </Form>
+        {/* Form create contract */}
+        <FormCreateContract tabList={tabList} hideModal={hideModal} />
       </Modal>
 
       {/* Modal (Lịch sử sử dụng nước) */}
@@ -367,83 +157,8 @@ function TabList({ isTabletOrMobile }) {
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <Form
-          onFinish={handleSubmitHistoryWater}
-          onFinishFailed={handleSubmitHistoryWaterFailed}
-          fields={[
-            { name: "date_from_chk", value: false },
-            { name: "date_to_chk", value: false },
-          ]}
-        >
-          <Row>
-            {/* Khách hàng */}
-            <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-              <Form.Item name="code_customer" label="Khách hàng: ">
-                <Input name="code_customer" placeholder="Nhập mã khách hàng" />
-              </Form.Item>
-            </Col>
-
-            {/* Số hợp đồng */}
-            <Col xs={24} sm={24} md={12} lg={10}>
-              <Form.Item name="num_contract" label="Số hợp đồng: ">
-                <Input name="num_contract" placeholder="Nhập số hợp đồng" />
-              </Form.Item>
-            </Col>
-          </Row>
-
-          <Row>
-            {/* Từ ngày */}
-            <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
-              <Form.Item name="date_from" label="Từ ngày: ">
-                <Select fieldNames="date_from" placeholder="Chọn ngày" />
-              </Form.Item>
-            </Col>
-
-            {/* Checkbox (Từ ngày) */}
-            <Col xs={24} sm={24} md={12} lg={3}>
-              <Form.Item
-                name="date_from_chk"
-                rules={[
-                  {
-                    required: false,
-                  },
-                ]}
-                valuePropName="checked"
-              >
-                <Checkbox>Không có giá trị</Checkbox>
-              </Form.Item>
-            </Col>
-
-            {/* Đến ngày */}
-            <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
-              <Form.Item name="date_to" label="Đến ngày: ">
-                <Select fieldNames="date_to" placeholder="Chọn ngày" />
-              </Form.Item>
-            </Col>
-
-            {/* Checkbox (Đến ngày) */}
-            <Col xs={24} sm={24} md={12} lg={3} className="gutter-item">
-              <Form.Item
-                name="date_to_chk"
-                rules={[
-                  {
-                    required: false,
-                  },
-                ]}
-                valuePropName="checked"
-              >
-                <Checkbox>Không có giá trị</Checkbox>
-              </Form.Item>
-            </Col>
-
-            {/* Button */}
-            <Col xs={24} sm={24} md={12} lg={3}>
-              <Button htmlType="submit" type="primary">
-                Xem báo cáo
-              </Button>
-            </Col>
-          </Row>
-        </Form>
+        {/* Form history use water */}
+        <FormHistoryUseWater tabList={tabList} />
 
         <Divider />
 
@@ -460,121 +175,12 @@ function TabList({ isTabletOrMobile }) {
         open={modalChangeClock}
         onCancel={hideModal}
         width={800}
-        // centered={true}
+        centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        {/* Card (Thông tin đầu máy) */}
-        <fieldset className="space-card-item">
-          <legend className="border-card-item">Thông tin đầu máy</legend>
-          <Form
-            onFinish={handleSubmitChangeClock}
-            onFinishFailed={handleSubmitChangeClockFailed}
-            style={{ padding: "10px" }}
-          >
-            <Row>
-              {/* Mã khách hàng */}
-              <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
-                <Form.Item name="code_customer" label="Mã khách hàng: ">
-                  <Input
-                    name="code_customer"
-                    placeholder="Nhập mã khách hàng"
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-
-            <Row>
-              {/* Tên khách hàng */}
-              <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
-                <Form.Item name="name_customer" label="Tên khách hàng: ">
-                  <Input
-                    name="name_customer"
-                    placeholder="Nhập tên khách hàng"
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
-
-            <Row>
-              {/* Địa chỉ */}
-              <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
-                <Form.Item name="address" label="Địa chỉ: ">
-                  <Input name="address" placeholder="Nhập Địa chỉ" />
-                </Form.Item>
-              </Col>
-            </Row>
-
-            <Row>
-              {/* Tuyến đọc */}
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item
-                  name="line_reading"
-                  label="Tuyến đọc: "
-                  className="gutter-item"
-                >
-                  <Input name="line_reading" placeholder="Nhập tuyến đọc" />
-                </Form.Item>
-              </Col>
-
-              {/* Thứ tự */}
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item name="address" label="Thứ tự: ">
-                  <Input name="address" placeholder="Nhập thứ tự" />
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </fieldset>
-
-        {/* Card (Đông hồ hiện tại) */}
-        <fieldset className="space-card-item">
-          <legend className="border-card-item">Đông hồ hiện tại</legend>
-          <Form
-            onFinish={handleSubmitChangeClock}
-            onFinishFailed={handleSubmitChangeClockFailed}
-            style={{ padding: "10px" }}
-          >
-            <Row>
-              {/* Kiểu đồng hồ */}
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item
-                  name=""
-                  label="Kiểu đồng hồ: "
-                  className="gutter-item"
-                >
-                  <Input name="" placeholder="Nhập Kiểu đồng hồ" />
-                </Form.Item>
-              </Col>
-              {/* Đường kính */}
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item name="" label="Đường kính: ">
-                  <Input name="" placeholder="Nhập đường kính" />
-                </Form.Item>
-              </Col>
-            </Row>
-
-            <Row>
-              {/* Mã đồng hồ */}
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item
-                  name="line_reading"
-                  label="Mã đồng hồ: "
-                  className="gutter-item"
-                >
-                  <Input name="line_reading" placeholder="Nhập mã đồng hồ" />
-                </Form.Item>
-              </Col>
-
-              {/* Thứ tự */}
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item name="address" label="Thứ tự: ">
-                  <Input name="address" placeholder="Nhập thứ tự" />
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
-        </fieldset>
+        {/* Form update clock */}
+        <FormUpdateClock tabList={tabList} hideModal={hideModal} />
       </Modal>
     </>
   );
