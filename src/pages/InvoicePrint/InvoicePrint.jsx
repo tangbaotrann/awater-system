@@ -1,9 +1,11 @@
 import { React, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { initialData, initialData2 } from "./data";
+import { initialData, initialData2 } from "./data/data";
 import "./InvoicePrint.css";
 import InvoicingDetailsModal from "./InvoicingDetailsModal";
+import TwoButtonPrint from "./TwoButtonPrint";
+import ReprintButton from "./ReprintButton";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
@@ -179,14 +181,6 @@ function InvoicePrint() {
       title: "",
       key: "actions",
       render: (text, record) => {
-        const handleButtonClick = () => {
-          setIsModalVisible(true);
-        };
-
-        const handleModalCancel = () => {
-          setIsModalVisible(false);
-        };
-
         return (
           <>
             <Button
@@ -407,14 +401,12 @@ function InvoicePrint() {
           >
             In hóa đơn
           </Button>
-          <Button
-            onClick={handleButtonClick3}
-            icon={<FileSearchOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            In lại hóa đơn theo số hóa đơn
-          </Button>
+          <div>
+            <TwoButtonPrint />
+          </div>
+          <div>
+            <ReprintButton />
+          </div>
           <Button
             onClick={handleButtonClick4}
             icon={<FileSearchOutlined />}
