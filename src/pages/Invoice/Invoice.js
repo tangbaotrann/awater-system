@@ -1,12 +1,15 @@
 import {
   CalculatorOutlined,
+  DeleteOutlined,
   DownOutlined,
   EditFilled,
+  EditOutlined,
   FileFilled,
   FileSearchOutlined,
   MailFilled,
   PlusCircleFilled,
   ProfileFilled,
+  RedoOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
 import {
@@ -16,6 +19,7 @@ import {
   Dropdown,
   Form,
   Input,
+  Menu,
   Progress,
   Row,
   Select,
@@ -27,11 +31,9 @@ import { useState } from "react";
 import { DetailInvoice } from "./Detail_Invoice/Detail_Invoice";
 import { Instalments } from "./Instalments/Instalments";
 import { CalculateMoney } from "./CalculateMoney/CalculateMoney";
-// import { CreateBook } from "./CreateBook/CreateBook";
-// import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
-// import locale from "antd/es/date-picker/locale/vi_VN";
 import "./Invoice.css";
 import { AddInvoice } from "./AddInvoice/AddInvoice";
+import { EditInvoice } from "./EditInvoice/EditInvoice";
 
 const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
@@ -68,7 +70,7 @@ const AdvancedSearchForm = () => {
         <Col span={6}>
           <Form.Item name="person" label="Cán bộ đọc">
             <Select
-              defaultValue="--Chọn cán bộ đọc--"
+              // defaultValue="--Chọn cán bộ đọc--"
               style={{
                 width: "100%",
               }}
@@ -88,7 +90,7 @@ const AdvancedSearchForm = () => {
         <Col span={6}>
           <Form.Item name="tuyendoc" label="Tuyến đọc">
             <Select
-              defaultValue="--Chọn tuyến đọc--"
+              // defaultValue="--Chọn tuyến đọc--"
               style={{
                 width: "100%",
               }}
@@ -117,7 +119,7 @@ const AdvancedSearchForm = () => {
         <Col span={6}>
           <Form.Item name="status" label="Phạm vi">
             <Select
-              defaultValue="--Chọn phạm vi--"
+              // defaultValue="--Chọn phạm vi--"
               style={{
                 width: "100%",
               }}
@@ -139,7 +141,7 @@ const AdvancedSearchForm = () => {
         <Col span={6}>
           <Form.Item name="status" label="Số hợp đồng">
             <Select
-              defaultValue="--Chọn số hợp đồng--"
+              // defaultValue="--Chọn số hợp đồng--"
               style={{
                 width: "100%",
               }}
@@ -164,7 +166,7 @@ const AdvancedSearchForm = () => {
         <Col span={6}>
           <Form.Item name="ky" label="Số hóa đơn">
             <Select
-              defaultValue="--Chọn số hóa đơn--"
+              // defaultValue="--Chọn số hóa đơn--"
               style={{
                 width: "100%",
               }}
@@ -184,7 +186,7 @@ const AdvancedSearchForm = () => {
         <Col span={6}>
           <Form.Item name="numberName" label="TT Hóa đơn">
             <Select
-              defaultValue="--Chọn in hóa đơn--"
+              // defaultValue="--Chọn in hóa đơn--"
               style={{
                 width: "100%",
               }}
@@ -224,6 +226,7 @@ const Invoice = () => {
   const [isOpenModalBill, setIsOpenModalBill] = useState(false);
   const [isModalInstalmentsOpen, setIsModalInstalmentsOpen] = useState(false);
   const [isOpenModalAddInvoice, setIsOpenModalAddInvoice] = useState(false);
+  const [isOpenModalEditInvoice, setIsOpenModalEditInvoice] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -259,11 +262,11 @@ const Invoice = () => {
     borderRadius: token.borderRadiusLG,
     marginTop: 16,
     padding: "10px 10px",
-    height: "640px",
+    height: "527px",
     position: "relative",
   };
 
-  const data = Array.from({ length: 1000 }, (_, key) => ({
+  const data = Array.from({ length: 10 }, (_, key) => ({
     key: key + 1,
     stt: key + 1,
     contractNumber: "abc",
@@ -338,6 +341,37 @@ const Invoice = () => {
   const items = [
     {
       label: (
+        <a target="_blank" rel="noopener noreferrer" href="#!">
+          Hủy hóa đơn
+        </a>
+      ),
+      key: "0",
+      icon: <DeleteOutlined style={{ color: "red" }} />,
+    },
+    {
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#!">
+          Điều chỉnh hóa đơn
+        </a>
+      ),
+      key: "1",
+      icon: <EditOutlined style={{ color: "blue" }} />,
+    },
+    {
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#!">
+          Thay thế hóa đơn
+        </a>
+      ),
+      key: "2",
+      icon: <RedoOutlined style={{ color: "blue" }} />,
+    },
+  ];
+
+
+  const extension = [
+    {
+      label: (
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -367,6 +401,27 @@ const Invoice = () => {
       label: "3rd menu item（disabled）",
       key: "3",
       disabled: true,
+    },
+  ];
+
+  const itemEmail = [
+    {
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#!">
+          Gửi Email
+        </a>
+      ),
+      key: "0",
+      icon: <MailFilled style={{ color: "blue" }} />,
+    },
+    {
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="#!">
+          Gửi SMS
+        </a>
+      ),
+      key: "1",
+      icon: <MailFilled style={{ color: "blue" }} />,
     },
   ];
 
@@ -431,7 +486,7 @@ const Invoice = () => {
             type="primary"
             icon={<EditFilled />}
             style={{ marginLeft: "10px" }}
-            // onClick={() => setIsModalOpenMCreate(true)}
+            onClick={() => setIsOpenModalEditInvoice(true)}
             size="small"
           >
             Sửa hóa đơn
@@ -440,10 +495,20 @@ const Invoice = () => {
             type="primary"
             icon={<FileFilled />}
             style={{ marginLeft: "10px" }}
-            // onClick={() => setIsModalOpenMCreate(true)}
             size="small"
           >
-            Hóa đơn điện tử
+            <Dropdown
+              menu={{
+                items: items,
+              }}
+            >
+              <a href="#!" onClick={(e) => e.preventDefault()}>
+                <Space>
+                  Hóa đơn điện tử
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
           </Button>
           <Button
             type="primary"
@@ -456,12 +521,18 @@ const Invoice = () => {
           </Button>
           <Button
             type="primary"
-            icon={<MailFilled />}
+            icon={<FileFilled />}
             style={{ marginLeft: "10px" }}
-            // onClick={() => setIsModalOpenMCreate(true)}
             size="small"
           >
-            gửi tin
+            <Dropdown menu={{items: itemEmail}}>
+              <a href="#!" onClick={(e) => e.preventDefault()}>
+                <Space>
+                  Gửi tin
+                  <DownOutlined />
+                </Space>
+              </a>
+            </Dropdown>
           </Button>
         </div>
         <div style={{ marginLeft: "auto" }}>
@@ -482,7 +553,7 @@ const Invoice = () => {
           >
             <Dropdown
               menu={{
-                items,
+                items: extension,
               }}
             >
               <a href="#!" onClick={(e) => e.preventDefault()}>
@@ -511,11 +582,10 @@ const Invoice = () => {
         handleOk={handleOk}
         isOpen={isOpenModalAddInvoice}
       />
-      {/* <CreateMultipleBook
-        handleCancel={handleCancel}
-        handleOk={handleOk}
-        isOpen={isModalOpenMCreate}
-      /> */}
+      <EditInvoice
+        isOpenEdit={isOpenModalEditInvoice}
+        setIsOpenModalEditInvoice={setIsOpenModalEditInvoice}
+      />
     </>
   );
 };

@@ -2,6 +2,7 @@ import {
   CloseCircleFilled,
   FolderFilled,
   ProjectOutlined,
+  QuestionCircleOutlined,
   SaveFilled,
   SyncOutlined,
 } from "@ant-design/icons";
@@ -17,20 +18,21 @@ import {
   theme,
 } from "antd";
 import { useState } from "react";
-import TableModifyPrice from "./TableModifyPrice";
+import TableModifyPrice from "../AddInvoice/TableModifyPrice";
 
-export const AddInvoice = (props) => {
+export const EditInvoice = (props) => {
   const { token } = theme.useToken();
-  const { isOpen, handleCancel, handleOk } = props;
+  const { isOpenEdit, setIsOpenModalEditInvoice } = props;
   const [isOpenTablePrice, setIsOpenTablePrice] = useState(false);
+  const [modalConfirm, setModalConfirm] = useState(false);
 
   return (
     <Modal
       title="Cập nhật hóa đơn"
-      open={isOpen}
-      onOk={() => handleOk("", "addInvoice")}
-      onCancel={() => handleCancel("", "addInvoice")}
-      width={1000}
+      open={isOpenEdit}
+      onOk={() => setIsOpenModalEditInvoice(false)}
+      onCancel={() => setIsOpenModalEditInvoice(false)}
+      width={1066}
       footer={null}
       style={{
         top: 20,
@@ -599,13 +601,17 @@ export const AddInvoice = (props) => {
         style={{ display: "flex", marginTop: "10px" }}
       >
         <div>
-          <Button type="primary" danger>
+          <Button size="small" type="primary" danger>
             Chỉ số tháng sau: 1155
+          </Button>
+          <Button type="primary" size="small" style={{ marginLeft: "3px" }}>
+            Không lấy chỉ số theo hóa đơn này
           </Button>
           <Button
             type="primary"
             icon={<FolderFilled />}
             style={{ marginLeft: "3px" }}
+            size="small"
           >
             Tệp đính kèm
           </Button>
@@ -616,13 +622,24 @@ export const AddInvoice = (props) => {
             icon={<ProjectOutlined />}
             style={{ marginLeft: "3px" }}
             onClick={() => setIsOpenTablePrice(true)}
+            size="small"
           >
             Chỉnh bảng giá
           </Button>
           <Button
             type="primary"
+            icon={<SyncOutlined />}
+            style={{ marginLeft: "3px" }}
+            onClick={() => setModalConfirm(true)}
+            size="small"
+          >
+            Đồng bộ từ hợp đồng
+          </Button>
+          <Button
+            type="primary"
             icon={<SaveFilled />}
             style={{ marginLeft: "3px" }}
+            size="small"
           >
             Lưu
           </Button>
@@ -630,7 +647,8 @@ export const AddInvoice = (props) => {
             type="primary"
             icon={<CloseCircleFilled />}
             style={{ marginLeft: "3px" }}
-            onClick={() => handleCancel("", "addInvoice")}
+            onClick={() => setIsOpenModalEditInvoice(false)}
+            size="small"
           >
             Đóng
           </Button>
@@ -640,6 +658,36 @@ export const AddInvoice = (props) => {
         isOpen={isOpenTablePrice}
         setIsOpen={setIsOpenTablePrice}
       />
+      <Modal
+        title="Thông báo"
+        open={modalConfirm}
+        onCancel={() => setModalConfirm(false)}
+        onOk={() => setModalConfirm(false)}
+        footer={null}
+      >
+        <div style={{ display: "flex", gap: "10px" }}>
+          <QuestionCircleOutlined style={{ fontSize: "40px" }} />
+          <p>
+            Đồng bộ thông tin từ hợp đồng sẽ làm thay đổi lại thông tin về khách
+            hàng, đồng hồ, số hợp đồng bạn có muốn thay đổi không
+          </p>
+        </div>
+        <div style={{ marginTop: "10px", textAlign: 'center' }}>
+          <Button
+            type="primary"
+            style={{ marginLeft: "10px" }}
+          >
+            Có
+          </Button>
+          <Button
+            type="primary"
+            style={{ marginLeft: "10px" }}
+            onClick={() => setModalConfirm(false)}
+          >
+            Không
+          </Button>
+        </div>
+      </Modal>
     </Modal>
   );
 };
