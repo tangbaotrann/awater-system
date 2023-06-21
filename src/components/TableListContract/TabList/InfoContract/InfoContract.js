@@ -1,5 +1,14 @@
 import { RedoOutlined } from "@ant-design/icons";
-import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
+import {
+  Button,
+  Checkbox,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  Row,
+  Select,
+} from "antd";
 
 function InfoContract() {
   return (
@@ -144,12 +153,108 @@ function InfoContract() {
 
         {/* Ngày NT */}
         <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Ngày NT: ">
+          <Form.Item name="" label="Ngày NT ">
             <DatePicker
               name=""
               placeholder="Chọn ngày NT"
               className="gutter-item-date-picker"
             />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Tiền lắp đặt */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Tiền lắp đặt">
+            <Input name="" placeholder="Nhập tiền lắp đặt" />
+          </Form.Item>
+        </Col>
+
+        {/* Người nộp */}
+        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+          <Form.Item name="" label="Người nộp">
+            <Input name="" placeholder="Nhập người nộp" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Tiền đặt cọc */}
+        <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
+          <Form.Item name="" label="Tiền đặt cọc">
+            <Input name="" placeholder="Nhập tiền đặt cọc" />
+          </Form.Item>
+        </Col>
+
+        {/* Giảm trừ theo */}
+        <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
+          <Form.Item name="" label="Giảm trừ theo">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "tiền / hóa đơn" }]}
+              placeholder="Lựa chọn"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Số tiền */}
+        <Col xs={24} sm={24} md={12} lg={6} className="gutter-item">
+          <Form.Item name="" label="Số tiền">
+            <Input name="" placeholder="Nhập số tiền" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Ngày đặt cọc */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item name="" label="Ngày đặt cọc: ">
+            <DatePicker
+              name=""
+              placeholder="Chọn ngày đặt cọc"
+              className="gutter-item-date-picker"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Chứng từ */}
+        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+          <Form.Item name="" label="Chứng từ">
+            <Input name="" placeholder="Nhập chứng từ" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Cam kết sử dụng nước */}
+        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+          <Form.Item
+            name=""
+            label="Cam kết sử dụng nước: "
+            valuePropName="checked"
+          >
+            <Checkbox />
+          </Form.Item>
+        </Col>
+
+        {/* Khối lượng cam kết */}
+        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
+          <Form.Item name="" label="Khối lượng cam kết">
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "CK 1" }]}
+              placeholder="Lựa chọn"
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Ghi chú */}
+        <Col xs={24} sm={24} md={12} lg={23}>
+          <Form.Item name="" label="Ghi chú: ">
+            <Input name="" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
       </Row>
