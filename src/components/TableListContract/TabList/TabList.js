@@ -1,4 +1,4 @@
-import { Button, Col, Collapse, Form, Input, Modal, Row, Tabs } from "antd";
+import { Divider, Modal, Tabs } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -7,9 +7,6 @@ import {
   RetweetOutlined,
   BarsOutlined,
   DashboardOutlined,
-  FormOutlined,
-  PrinterOutlined,
-  SaveOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -19,11 +16,12 @@ import {
   btnClickTabListContractSelector,
 } from "../../../redux/selector";
 import tabListContractSlice from "../../../redux/slices/tabListContractSlice/tabListContractSlice";
-import InfoCustomer from "./InfoCustomer/InfoCustomer";
-import InfoContract from "./InfoContract/InfoContract";
-import InfoClock from "./InfoClock/InfoClock";
-import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
 import { exportToExcel } from "../../../utils/exportFile";
+import Reporter from "../../Reporter/Reporter";
+import TableHistoryUseWater from "./TableHistoryUseWater/TableHistoryUseWater";
+import FormCreateContract from "./FormCreateContract/FormCreateContract";
+import FormHistoryUseWater from "./FormHistoryUseWater/FormHistoryUseWater";
+import FormUpdateClock from "./FormUpdateClock/FormUpdateClock";
 
 // Tabs bottom
 const tabs = [
@@ -67,6 +65,8 @@ const tabs = [
 function TabList({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalUpdateContract, setModalUpdateContract] = useState(false);
+  const [modalHistoryWater, setModalHistoryWater] = useState(false);
+  const [modalChangeClock, setModalChangeClock] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -87,13 +87,12 @@ function TabList({ isTabletOrMobile }) {
       dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
     } else if (key === "4") {
       exportToExcel("table-contract", menuSidebar);
-      console.log("export excel.");
     } else if (key === "5") {
       console.log("go to.");
     } else if (key === "6") {
-      console.log("history.");
+      setModalHistoryWater(true);
     } else if (key === "7") {
-      console.log("update clock.");
+      setModalChangeClock(true);
     }
   };
 
@@ -101,54 +100,10 @@ function TabList({ isTabletOrMobile }) {
   const hideModal = () => {
     setOpenModal(false);
     setModalUpdateContract(false);
+    setModalHistoryWater(false);
+    setModalChangeClock(false);
     dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
   };
-
-  // handle submit form
-  const handleSubmit = (values) => {
-    console.log("values", values);
-  };
-
-  // handle submit error
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
-
-  // collapse (Thông tin khách hàng)
-  const items = [
-    {
-      key: "1",
-      label: "Thông tin khách hàng",
-      children: <InfoCustomer />,
-    },
-  ];
-
-  // collapse (Thông tin hợp đồng)
-  const itemsInfoContract = [
-    {
-      key: "2",
-      label: "Thông tin hợp đồng",
-      children: <InfoContract />,
-    },
-  ];
-
-  // collapse (Đồng hồ)
-  const itemsClock = [
-    {
-      key: "3",
-      label: "Đồng hồ",
-      children: <InfoClock />,
-    },
-  ];
-
-  // collapse (Chi tiết đồng hồ)
-  const itemsDetailClock = [
-    {
-      key: "4",
-      label: "Chi tiết đồng hồ",
-      children: <InfoDetailClock />,
-    },
-  ];
 
   return (
     <>
@@ -166,7 +121,9 @@ function TabList({ isTabletOrMobile }) {
             key: _tab.id,
             disabled:
               (tabList === null && _tab.id === "2") ||
-              (tabList === null && _tab.id === "3")
+              (tabList === null && _tab.id === "3") ||
+              (tabList === null && _tab.id === "6") ||
+              (tabList === null && _tab.id === "7")
                 ? true
                 : false,
           };
@@ -187,132 +144,43 @@ function TabList({ isTabletOrMobile }) {
           Cập nhật thông tin hợp đồng
         </h2>
 
-        <Form
-          onFinish={handleSubmit}
-          onFinishFailed={handleFailed}
-          fields={[
-            {
-              name: "type_customer",
-              value: tabList ? tabList?.type_customer : "",
-            },
-            {
-              name: "code_cus",
-              value: tabList ? tabList?.code_customer : "",
-            },
-            {
-              name: "fullName",
-              value: tabList ? tabList?.fullName : "",
-            },
-            {
-              name: "address_cus",
-              value: tabList ? tabList?.address : "",
-            },
-            {
-              name: "phone",
-              value: tabList ? tabList?.phone : "",
-            },
-          ]}
-        >
-          {/* Mã khách hàng */}
-          <Row>
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Form.Item name="code_customer" label="Mã khách hàng: ">
-                <Input name="code_customer" placeholder="Nhập mã khách hàng" />
-              </Form.Item>
-            </Col>
-          </Row>
+        {/* Form create contract */}
+        <FormCreateContract tabList={tabList} hideModal={hideModal} />
+      </Modal>
 
-          {/* Thông tin khách hàng */}
-          <Row>
-            <Col
-              xs={24}
-              sm={24}
-              md={12}
-              lg={12}
-              style={{ paddingRight: "10px" }}
-            >
-              <Collapse
-                key="1"
-                items={items}
-                accordion={false}
-                defaultActiveKey={["1"]}
-              />
-            </Col>
+      {/* Modal (Lịch sử sử dụng nước) */}
+      <Modal
+        open={modalHistoryWater}
+        onCancel={hideModal}
+        width={2000}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        {/* Form history use water */}
+        <FormHistoryUseWater tabList={tabList} />
 
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Collapse
-                key="3"
-                items={itemsClock}
-                accordion={false}
-                defaultActiveKey={["3"]}
-              />
-            </Col>
-          </Row>
+        <Divider />
 
-          {/* Thông tin hợp đồng */}
-          <Row className="space-col">
-            <Col
-              xs={24}
-              sm={24}
-              md={12}
-              lg={12}
-              style={{ paddingRight: "10px" }}
-            >
-              <Collapse
-                key="2"
-                items={itemsInfoContract}
-                accordion={false}
-                defaultActiveKey={["2"]}
-              />
-            </Col>
+        <Reporter />
 
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Collapse
-                key="4"
-                items={itemsDetailClock}
-                accordion={false}
-                defaultActiveKey={["4"]}
-              />
-            </Col>
-          </Row>
+        <Divider />
 
-          {/* Bottom */}
-          <Row>
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Button htmlType="submit" type="primary">
-                <FormOutlined />
-                Tệp đính kèm
-              </Button>
-            </Col>
+        {/* Render table */}
+        <TableHistoryUseWater />
+      </Modal>
 
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <Button htmlType="submit" type="primary" className="gutter-item">
-                <FormOutlined />
-                Biên bản thỏa thuận
-              </Button>
-
-              <Button htmlType="submit" type="primary" className="gutter-item">
-                <PrinterOutlined />
-                In hợp đồng
-              </Button>
-
-              <Button htmlType="submit" type="primary" className="gutter-item">
-                <SaveOutlined />
-                Lưu và thêm tiếp
-              </Button>
-
-              <Button htmlType="submit" type="primary" className="gutter-item">
-                <SaveOutlined />
-                Lưu
-              </Button>
-
-              <Button htmlType="submit" type="primary">
-                <CloseCircleOutlined />
-                Đóng
-              </Button>
-            </Col>
-          </Row>
-        </Form>
+      {/* Modal (Thay đồng hồ) */}
+      <Modal
+        open={modalChangeClock}
+        onCancel={hideModal}
+        width={800}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        {/* Form update clock */}
+        <FormUpdateClock tabList={tabList} hideModal={hideModal} />
       </Modal>
     </>
   );
