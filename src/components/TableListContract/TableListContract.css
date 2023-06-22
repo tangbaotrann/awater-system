@@ -147,3 +147,14 @@
 .popover-debt {
     pointer-events: none;
 }
+
+/* Buttons update info debt */
+.func-update-info-debt-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.item-update-info-debt-btn {
+    margin: 0 12px;
+}

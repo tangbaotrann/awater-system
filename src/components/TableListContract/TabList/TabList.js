@@ -129,7 +129,6 @@ function TabList({ isTabletOrMobile }) {
                 {_tab.id === "8" ? (
                   <>
                     <Popover
-                      trigger="click"
                       className={tabList === null ? "popover-debt" : null}
                       content={<TableListDebt tabList={tabList} />}
                     >

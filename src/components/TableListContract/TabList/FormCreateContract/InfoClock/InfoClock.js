@@ -6,7 +6,7 @@ import {
 } from "@ant-design/icons";
 import { Button, Col, Row, Table } from "antd";
 
-import { dataContractClockOnModal } from "../../../../utils/dataContract";
+import { dataContractClockOnModal } from "../../../../../utils/dataContract";
 
 function InfoClock() {
   // cols (collapse Đồng hồ)
@@ -57,6 +57,7 @@ function InfoClock() {
                 pageSize: 5,
               }}
               rowKey="index"
+              size="small"
             ></Table>
           </div>
         </Col>
