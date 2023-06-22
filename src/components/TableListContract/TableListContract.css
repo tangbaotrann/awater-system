@@ -112,3 +112,38 @@
 .btn-close-change-clock {
     margin-left: 12px;
 }
+
+/* Debt (Tiện ích) */
+.debt-title-name {
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.debt-title-name:hover {
+    color: var(--blue-1677ff);
+    transition: 0.4s all;
+}
+
+.debt-icon-left {
+    margin-right: 6px;
+}
+
+.debt-func-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.space-btn-item {
+    margin-right: 10px;
+}
+
+/* container table debt */
+.container-tbl-debt {
+    overflow-x: auto;
+}
+
+/* Popover */
+.popover-debt {
+    pointer-events: none;
+}

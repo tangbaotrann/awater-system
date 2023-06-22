@@ -248,6 +248,7 @@ function TableHistoryUseWater() {
             fall_day: _history.fall_day,
           }))}
           rowKey="id"
+          size="small"
         ></Table>
       </div>
     </>

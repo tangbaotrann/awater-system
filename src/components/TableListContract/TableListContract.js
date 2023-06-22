@@ -144,6 +144,8 @@ function TableListContract() {
     <div className="container-tbl-contract">
       <Table
         id="table-contract"
+        rowKey="index"
+        size="small"
         columns={cols}
         dataSource={dataContract.map((_contract, index) => ({
           index: index + 1,
@@ -157,7 +159,6 @@ function TableListContract() {
         pagination={{
           pageSize: 10,
         }}
-        rowKey="index"
         onRow={(record, index) => {
           return {
             onDoubleClick: () => {
@@ -202,6 +203,7 @@ function TableListContract() {
               date_install: _contract.date_install,
             }))}
             rowKey="index"
+            size="small"
             pagination={{
               pageSize: 5,
             }}
