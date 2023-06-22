@@ -101,23 +101,28 @@ const TableModifyPrice = (props) => {
         </Checkbox>
       </Form>
       <div
-        style={{ marginTop: "10px", marginLeft: "auto", width: "fit-content" }}
+        style={{ marginTop: "10px", }}
       >
-        <Button
-          type="primary"
-          icon={<SaveFilled />}
-          style={{ marginLeft: "10px" }}
-        >
-          Thực hiện
-        </Button>
-        <Button
-          type="primary"
-          icon={<CloseCircleFilled />}
-          style={{ marginLeft: "10px" }}
-          onClick={() => setIsOpen(false)}
-        >
-          Đóng
-        </Button>
+        <p style={{color: 'red'}}>
+          Tổng khối lượng phân bổ phải bằng tiêu thụ, Nếu hạng mục nhập định định mức là -1 thì khối lượng còn lại sẽ đẩy hết vào đó
+        </p>
+        <div style={{marginLeft: 'auto', width: "fit-content" }}>
+          <Button
+            type="primary"
+            icon={<SaveFilled />}
+            style={{ marginLeft: "10px" }}
+          >
+            Thực hiện
+          </Button>
+          <Button
+            type="primary"
+            icon={<CloseCircleFilled />}
+            style={{ marginLeft: "10px" }}
+            onClick={() => setIsOpen(false)}
+          >
+            Đóng
+          </Button>
+        </div>
       </div>
     </Modal>
   );

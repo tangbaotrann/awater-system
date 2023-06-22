@@ -19,6 +19,8 @@ const exportToExcel = (tableId, savePath) => {
 
   if (savePath === "DEV_CUSTOMER") {
     saveAs(dataBlob, "BAO_CAO_PHAT_TRIEN_KHACH_HANG_MOI.xlsx");
+  } else if (savePath === "CONTRACT_MANAGER") {
+    saveAs(dataBlob, "QUAN_LY_HOP_DONG_KHACH_HANG.xlsx");
   } else {
     saveAs(dataBlob, "BANG_KE_DANH_SACH_KHACH_HANG.xlsx");
   }

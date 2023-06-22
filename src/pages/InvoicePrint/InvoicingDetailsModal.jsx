@@ -33,7 +33,7 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
           total: 10000,
           pageSize: 50,
         }}
-        scroll={{ x: 2000, y: 250 }}
+        scroll={{ x: 2000, y: 150 }}
         columns={[
           {
             title: "Số thứ tự",

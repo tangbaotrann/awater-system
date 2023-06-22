@@ -13,6 +13,7 @@ export const initialData = Array.from({ length: 100 }, (_, i) => {
     isPrinted: `Đã in xong ${i + 1}`,
   };
 });
+
 export const initialData2 = Array.from({ length: 100 }, (_, i) => {
   return {
     key: i + 1,
