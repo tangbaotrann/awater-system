@@ -19,7 +19,6 @@ import {
   Dropdown,
   Form,
   Input,
-  Menu,
   Progress,
   Row,
   Select,
@@ -34,6 +33,9 @@ import { CalculateMoney } from "./CalculateMoney/CalculateMoney";
 import "./Invoice.css";
 import { AddInvoice } from "./AddInvoice/AddInvoice";
 import { EditInvoice } from "./EditInvoice/EditInvoice";
+import { ModalMessage } from "./SendMessage/ModalMessage";
+import { data } from "../../utils/dataTableInvoice";
+import { WaterStatus } from "./WaterStatus/WaterStatus";
 
 const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
@@ -227,6 +229,9 @@ const Invoice = () => {
   const [isModalInstalmentsOpen, setIsModalInstalmentsOpen] = useState(false);
   const [isOpenModalAddInvoice, setIsOpenModalAddInvoice] = useState(false);
   const [isOpenModalEditInvoice, setIsOpenModalEditInvoice] = useState(false);
+  const [isModalEmail, setIsModalEmail] = useState(false);
+  const [isModalSMS, setIsModalSMS] = useState(false);
+  const [isOpenModalWaterStatus, setIsOpenModalWaterStatus] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -255,30 +260,14 @@ const Invoice = () => {
     }
   };
 
-  const listStyle = {
-    lineHeight: "200px",
-    textAlign: "center",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    marginTop: 16,
-    padding: "10px 10px",
-    height: "527px",
-    position: "relative",
+  const hanldeOpen = (isOpen, type) => {
+    if (type === "email") {
+      setIsModalEmail(isOpen);
+    }
+    if (type === "sms") {
+      setIsModalSMS(isOpen);
+    }
   };
-
-  const data = Array.from({ length: 10 }, (_, key) => ({
-    key: key + 1,
-    stt: key + 1,
-    contractNumber: "abc",
-    codeClock: "abc",
-    readingRoute: "abc",
-    username: "abc",
-    address: "abc",
-    oldIndex: "abc",
-    newIndex: "abc",
-    consumption: "abc",
-    codePrice: "abc",
-  }));
 
   const columns = [
     {
@@ -368,7 +357,6 @@ const Invoice = () => {
     },
   ];
 
-
   const extension = [
     {
       label: (
@@ -407,18 +395,26 @@ const Invoice = () => {
   const itemEmail = [
     {
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#!">
+        <span
+          onClick={() => {
+            hanldeOpen(true, "email");
+          }}
+        >
           Gửi Email
-        </a>
+        </span>
       ),
       key: "0",
       icon: <MailFilled style={{ color: "blue" }} />,
     },
     {
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#!">
+        <span
+          onClick={() => {
+            hanldeOpen(true, "sms");
+          }}
+        >
           Gửi SMS
-        </a>
+        </span>
       ),
       key: "1",
       icon: <MailFilled style={{ color: "blue" }} />,
@@ -428,7 +424,18 @@ const Invoice = () => {
   return (
     <>
       <AdvancedSearchForm />
-      <div style={listStyle}>
+      <div
+        style={{
+          lineHeight: "200px",
+          textAlign: "center",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          marginTop: 16,
+          padding: "10px 10px",
+          height: "527px",
+          position: "relative",
+        }}
+      >
         <Table
           dataSource={data}
           columns={columns}
@@ -521,11 +528,11 @@ const Invoice = () => {
           </Button>
           <Button
             type="primary"
-            icon={<FileFilled />}
+            icon={<MailFilled />}
             style={{ marginLeft: "10px" }}
             size="small"
           >
-            <Dropdown menu={{items: itemEmail}}>
+            <Dropdown menu={{ items: itemEmail }}>
               <a href="#!" onClick={(e) => e.preventDefault()}>
                 <Space>
                   Gửi tin
@@ -540,7 +547,7 @@ const Invoice = () => {
             type="primary"
             icon={<ProfileFilled />}
             style={{ marginLeft: "10px" }}
-            // onClick={() => setIsModalOpenMCreate(true)}
+            onClick={() => setIsOpenModalWaterStatus(true)}
             size="small"
           >
             Xem TH SD
@@ -585,6 +592,16 @@ const Invoice = () => {
       <EditInvoice
         isOpenEdit={isOpenModalEditInvoice}
         setIsOpenModalEditInvoice={setIsOpenModalEditInvoice}
+      />
+      <ModalMessage
+        isModalEmail={isModalEmail}
+        setIsModalEmail={setIsModalEmail}
+        isModalSMS={isModalSMS}
+        setIsModalSMS={setIsModalSMS}
+      />
+      <WaterStatus
+        isOpen={isOpenModalWaterStatus}
+        setIsOpen={setIsOpenModalWaterStatus}
       />
     </>
   );

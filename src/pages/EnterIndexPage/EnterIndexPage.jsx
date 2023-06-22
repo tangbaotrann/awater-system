@@ -48,7 +48,7 @@ import {
 import moment from "moment";
 import "./EnterIndexPage.css";
 import "moment/locale/vi";
-import { Column } from "@ant-design/charts";
+// import { Column } from "@ant-design/charts";
 moment.locale("vi");
 // import "./ViewWater.jsx";
 function EnterIndexPage() {
@@ -949,7 +949,7 @@ function EnterIndexPage() {
               // scroll={{ x: 300, y: 240 }}
               scroll={{ x: 1600, y: 450 }}
             />
-            {showChart && (
+            {/* {showChart && (
               <Column
                 data={chartData}
                 xField="date"
@@ -957,7 +957,7 @@ function EnterIndexPage() {
                 seriesField="type"
                 legend={{ position: "top" }}
               />
-            )}
+            )} */}
             <Row justify="end">
               <Button size="small" onClick={handleExportChartClick}>
                 Xuất biểu đồ nước
@@ -985,14 +985,14 @@ function EnterIndexPage() {
             onCancel={handleModalCancel5}
             footer={null}
           >
-            {showChart1 && (
+            {/* {showChart1 && (
               <Column
                 data={chartData1}
                 xField="date"
                 yField="value"
                 legend={{ position: "top" }}
               />
-            )}
+            )} */}
             <Row justify="end">
               <Button>Cập Nhật</Button>
               <Button onClick={handleModalCancel5}>Đóng</Button>

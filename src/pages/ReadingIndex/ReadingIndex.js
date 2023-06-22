@@ -524,7 +524,7 @@ const ReadingIndex = () => {
                 items,
               }}
             >
-              <a onClick={(e) => e.preventDefault()}>
+              <a href="#!" onClick={(e) => e.preventDefault()}>
                 <Space>
                   Tiện ích
                   <DownOutlined />
