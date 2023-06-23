@@ -9,8 +9,11 @@ import {
   Row,
   Select,
 } from "antd";
+import { useMediaQuery } from "react-responsive";
 
 function InfoCustomer() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
   return (
     <>
       <Row>
@@ -111,7 +114,9 @@ function InfoCustomer() {
 
         {/* button (email) */}
         <Col xs={24} sm={24} md={12} lg={1} className="gutter-item">
-          <Button type="primary"></Button>
+          <Form.Item name="">
+            <Checkbox name="" />
+          </Form.Item>
         </Col>
 
         {/* Điện thoại */}
@@ -133,7 +138,9 @@ function InfoCustomer() {
 
         {/* Button ... (số khẩu) */}
         <Col xs={24} sm={24} md={12} lg={1}>
-          <Button type="primary"></Button>
+          <Form.Item name="">
+            <Checkbox name="" />
+          </Form.Item>
         </Col>
       </Row>
 
@@ -153,9 +160,19 @@ function InfoCustomer() {
         </Col>
 
         {/* Ngày cấp */}
-        <Col xs={24} sm={24} md={12} lg={9} className="gutter-item">
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={9}
+          className={isTabletOrMobile ? "" : "gutter-item"}
+        >
           <Form.Item name="date_range" label="Ngày cấp: ">
-            <DatePicker name="date_range" placeholder="Chọn ngày cấp" />
+            <DatePicker
+              name="date_range"
+              placeholder="Chọn ngày cấp"
+              className="gutter-item-date-picker"
+            />
           </Form.Item>
         </Col>
       </Row>

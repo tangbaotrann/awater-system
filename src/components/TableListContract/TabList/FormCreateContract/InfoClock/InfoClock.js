@@ -5,10 +5,13 @@ import {
   PlusCircleOutlined,
 } from "@ant-design/icons";
 import { Button, Col, Row, Table } from "antd";
+import { useMediaQuery } from "react-responsive";
 
-import { dataContractClockOnModal } from "../../../../utils/dataContract";
+import { dataContractClockOnModal } from "../../../../../utils/dataContract";
 
 function InfoClock() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
   // cols (collapse Đồng hồ)
   const colsClock = [
     {
@@ -57,25 +60,60 @@ function InfoClock() {
                 pageSize: 5,
               }}
               rowKey="index"
+              size="small"
             ></Table>
           </div>
         </Col>
 
         {/* Func */}
-        <Col xs={24} sm={24} md={12} lg={2}>
-          <Button type="primary" className="tablist-func-clock-btn">
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={2}
+          className={isTabletOrMobile ? "func-info-clock-btn-mobile" : ""}
+        >
+          <Button
+            type="primary"
+            className={
+              isTabletOrMobile
+                ? "tablist-func-clock-btn-mobile"
+                : "tablist-func-clock-btn"
+            }
+          >
             <PlusCircleOutlined />
             Thêm
           </Button>
-          <Button type="primary" className="tablist-func-clock-btn">
+          <Button
+            type="primary"
+            className={
+              isTabletOrMobile
+                ? "tablist-func-clock-btn-mobile"
+                : "tablist-func-clock-btn"
+            }
+          >
             <DashboardOutlined />
             Thay
           </Button>
-          <Button type="primary" className="tablist-func-clock-btn">
+          <Button
+            type="primary"
+            className={
+              isTabletOrMobile
+                ? "tablist-func-clock-btn-mobile"
+                : "tablist-func-clock-btn"
+            }
+          >
             <DownloadOutlined />
             Xuất
           </Button>
-          <Button type="primary">
+          <Button
+            type="primary"
+            className={
+              isTabletOrMobile
+                ? "tablist-func-clock-btn-mobile"
+                : "tablist-func-clock-btn"
+            }
+          >
             <CloseCircleOutlined />
             Xóa
           </Button>

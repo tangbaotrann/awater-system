@@ -7,6 +7,7 @@ import "./TableListContract.css";
 import { dataContract, dataContractOnModal } from "../../utils/dataContract";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 import { btnClickTabListContractSelector } from "../../redux/selector";
+import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
 
 function TableListContract() {
   const [open, setOpen] = useState(false);
@@ -141,40 +142,48 @@ function TableListContract() {
   };
 
   return (
-    <div className="container-tbl-contract">
-      <Table
-        id="table-contract"
-        columns={cols}
-        dataSource={dataContract.map((_contract, index) => ({
-          index: index + 1,
-          type_customer: _contract.type_customer,
-          fullName: _contract.fullName,
-          code_customer: _contract.code_customer,
-          address: _contract.address,
-          phone: _contract.phone,
-          email: _contract.email,
-        }))}
-        pagination={{
-          pageSize: 10,
-        }}
-        rowKey="index"
-        onRow={(record, index) => {
-          return {
-            onDoubleClick: () => {
-              console.log(record);
-              setOpen(true);
+    <>
+      <div className="container-tbl-contract">
+        <Table
+          id="table-contract"
+          rowKey="index"
+          size="small"
+          columns={cols}
+          dataSource={dataContract.map((_contract, index) => ({
+            index: index + 1,
+            type_customer: _contract.type_customer,
+            fullName: _contract.fullName,
+            code_customer: _contract.code_customer,
+            address: _contract.address,
+            phone: _contract.phone,
+            email: _contract.email,
+          }))}
+          pagination={{
+            pageSize: 10,
+          }}
+          onRow={(record, index) => {
+            return {
+              onDoubleClick: () => {
+                console.log(record);
+                setOpen(true);
+              },
+            };
+          }}
+          rowSelection={{
+            type: "radio",
+            onChange: (selectedRowKeys, selectedRows) =>
+              handleRowSelection(selectedRowKeys, selectedRows),
+            selectedRowKeys: tabList ? [tabList.index] : [],
+          }}
+          components={{
+            body: {
+              row: CustomRowTooltip,
             },
-          };
-        }}
-        rowSelection={{
-          type: "radio",
-          onChange: (selectedRowKeys, selectedRows) =>
-            handleRowSelection(selectedRowKeys, selectedRows),
-          selectedRowKeys: tabList ? [tabList.index] : [],
-        }}
-      ></Table>
+          }}
+        ></Table>
+      </div>
 
-      {/* Show modal contract */}
+      {/* Show modal contract (double click row) */}
       <Modal
         open={open}
         onCancel={hideModal}
@@ -202,13 +211,14 @@ function TableListContract() {
               date_install: _contract.date_install,
             }))}
             rowKey="index"
+            size="small"
             pagination={{
               pageSize: 5,
             }}
           ></Table>
         </div>
       </Modal>
-    </div>
+    </>
   );
 }
 

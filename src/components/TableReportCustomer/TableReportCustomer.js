@@ -125,6 +125,7 @@ function TableReportCustomer() {
             pageSize: 10,
           }}
           rowKey="key"
+          size="small"
           rowClassName="record-title-name"
         ></Table>
       </div>
