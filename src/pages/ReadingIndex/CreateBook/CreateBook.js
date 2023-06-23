@@ -154,7 +154,7 @@ export const CreateBook = (props) => {
       width={1700}
       footer={null}
       style={{
-        top: 50,
+        top: 20,
       }}
     >
       <Form

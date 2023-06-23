@@ -125,14 +125,6 @@ export const CreateMultipleBook = (props) => {
     },
   ];
 
-  const listStyle = {
-    lineHeight: "200px",
-    textAlign: "center",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    marginTop: 16,
-    padding: "10px 10px",
-  };
   const onSelectChange = (newSelectedRowKeys) => {
     console.log("selectedRowKeys changed: ", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
@@ -150,6 +142,9 @@ export const CreateMultipleBook = (props) => {
       onCancel={() => handleCancel("", "multiple")}
       width={1000}
       footer={null}
+      style={{
+        top: 20,
+      }}
     >
       <Form
         form={form}
@@ -203,7 +198,16 @@ export const CreateMultipleBook = (props) => {
           </Space>
         </div>
       </Form>
-      <div style={listStyle}>
+      <div
+        style={{
+          lineHeight: "200px",
+          textAlign: "center",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          marginTop: 16,
+          padding: "10px 10px",
+        }}
+      >
         <Table
           rowSelection={rowSelection}
           dataSource={dataSource}

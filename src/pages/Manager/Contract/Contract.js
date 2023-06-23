@@ -24,7 +24,7 @@ function Contract() {
       <Form onFinish={handleSubmit} onFinishFailed={handleFailed}>
         <Row>
           {/* Số hợp đồng */}
-          <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
+          <Col xs={24} sm={24} md={12} lg={5} className="gutter-item"> 
             <Form.Item name="num_contract" label="Số hợp đồng: ">
               <Input name="num_contract" placeholder="Nhập số hợp đồng" />
             </Form.Item>
