@@ -6,10 +6,10 @@ import {
   SaveOutlined,
 } from "@ant-design/icons";
 
-import InfoContract from "../InfoContract/InfoContract";
-import InfoClock from "../InfoClock/InfoClock";
-import InfoDetailClock from "../InfoDetailClock/InfoDetailClock";
-import InfoCustomer from "../InfoCustomer/InfoCustomer";
+import InfoContract from "./InfoContract/InfoContract";
+import InfoClock from "./InfoClock/InfoClock";
+import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
+import InfoCustomer from "./InfoCustomer/InfoCustomer";
 
 function FormCreateContract({ tabList, hideModal }) {
   // collapse (Thông tin khách hàng)

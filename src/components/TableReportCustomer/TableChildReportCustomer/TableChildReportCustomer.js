@@ -84,6 +84,7 @@ function TableChildReportCustomer({ record }) {
         }))}
       pagination={false}
       rowKey="code"
+      size="small"
     />
   );
 }
