@@ -115,6 +115,7 @@
 
 /* Debt (Tiện ích) */
 .debt-title-name {
+    margin-top: 6px;
     font-weight: 500;
     cursor: pointer;
 }
@@ -148,6 +149,10 @@
     pointer-events: none;
 }
 
+.fix-popover-z-index {
+    z-index: 10 !important;
+}
+
 /* Buttons update info debt */
 .func-update-info-debt-btn {
     display: flex;
@@ -157,4 +162,31 @@
 
 .item-update-info-debt-btn {
     margin: 0 12px;
+}
+
+/* container debt utilities */
+.container-debt-utilities {
+    display: flex;
+    flex-direction: column;
+}
+
+/* container table sort number */
+.container-tbl-sort-number {
+    overflow-x: auto;
+}
+
+/* Buttons sort number */
+.func-sort-number-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.item-sort-number-btn {
+    margin-right: 12px;
+}
+
+/* Collapse space */
+.collapse-space-right-item {
+    padding-right: 10px;
 }

@@ -1,4 +1,4 @@
-import { Divider, Modal, Popover, Tabs } from "antd";
+import { Divider, Modal, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -97,7 +97,7 @@ function TabList({ isTabletOrMobile }) {
     } else if (key === "4") {
       exportToExcel("table-contract", menuSidebar);
     } else if (key === "5") {
-      console.log("go to.");
+      message.error("Tính năng chưa khả dụng!");
     } else if (key === "6") {
       setModalHistoryWater(true);
     } else if (key === "7") {
@@ -129,6 +129,8 @@ function TabList({ isTabletOrMobile }) {
                 {_tab.id === "8" ? (
                   <>
                     <Popover
+                      rootClassName="fix-popover-z-index"
+                      placement={isTabletOrMobile ? "right" : "topRight"}
                       className={tabList === null ? "popover-debt" : null}
                       content={<TableListDebt tabList={tabList} />}
                     >

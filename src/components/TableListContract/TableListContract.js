@@ -7,6 +7,7 @@ import "./TableListContract.css";
 import { dataContract, dataContractOnModal } from "../../utils/dataContract";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 import { btnClickTabListContractSelector } from "../../redux/selector";
+import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
 
 function TableListContract() {
   const [open, setOpen] = useState(false);
@@ -173,6 +174,11 @@ function TableListContract() {
             onChange: (selectedRowKeys, selectedRows) =>
               handleRowSelection(selectedRowKeys, selectedRows),
             selectedRowKeys: tabList ? [tabList.index] : [],
+          }}
+          components={{
+            body: {
+              row: CustomRowTooltip,
+            },
           }}
         ></Table>
       </div>

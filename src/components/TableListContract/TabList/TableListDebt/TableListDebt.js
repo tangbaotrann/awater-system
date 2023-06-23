@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Divider, Modal } from "antd";
-import { OrderedListOutlined } from "@ant-design/icons";
+import { OrderedListOutlined, SortAscendingOutlined } from "@ant-design/icons";
 
 import FormUpdateInfoDebt from "./FormUpdateInfoDebt/FormUpdateInfoDebt";
 import FormInfoContractDebt from "./FormInfoContractDebt/FormInfoContractDebt";
+import FormSortNumberClock from "./FormSortNumberClock/FormSortNumberClock";
 
 function TableListDebt({ tabList }) {
   const [openModal, setOpenModal] = useState(false);
   const [openModalUpdateInfoDebt, setOpenModalUpdateInfoDebt] = useState(false);
+  const [openModalSortNumber, setOpenModalSortNumber] = useState(false);
 
   //   console.log(tabList);
 
@@ -31,19 +33,35 @@ function TableListDebt({ tabList }) {
     setOpenModalUpdateInfoDebt(false);
   };
 
+  // handle open modal sort number
+  const handleOpenModalSortNumber = () => {
+    setOpenModalSortNumber(true);
+  };
+
+  // hide modal sort number
+  const hideModalSortNumber = () => {
+    setOpenModalSortNumber(false);
+  };
+
   return (
     <>
-      {/* Title debt (Tiện ích) */}
-      <span className="debt-title-name" onClick={handleOpenModal}>
-        <OrderedListOutlined className="debt-icon-left" /> Xem danh sách nợ
-      </span>
+      <div className="container-debt-utilities">
+        {/* Title tiện ích (Xem danh sách nợ) */}
+        <span className="debt-title-name" onClick={handleOpenModal}>
+          <OrderedListOutlined className="debt-icon-left" /> Xem danh sách nợ
+        </span>
 
-      {/* Modal debt */}
+        {/* Title tiện ích (Sắp xếp STT) */}
+        <span className="debt-title-name" onClick={handleOpenModalSortNumber}>
+          <SortAscendingOutlined className="debt-icon-left" /> Sắp xếp STT
+        </span>
+      </div>
+
+      {/* Show modal (Thông tin hợp đồng nợ) */}
       <Modal
         open={openModal}
         onCancel={hideModal}
         width={1000}
-        zIndex={9999}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
@@ -58,9 +76,8 @@ function TableListDebt({ tabList }) {
         />
       </Modal>
 
-      {/* Show modal update info debt */}
+      {/* Show modal (Cập nhật thông tin hợp đồng nợ) */}
       <Modal
-        zIndex={99999}
         width={1000}
         open={openModalUpdateInfoDebt}
         onCancel={hideModalUpdateInfoDebt}
@@ -73,6 +90,23 @@ function TableListDebt({ tabList }) {
 
         {/* Form update info debt */}
         <FormUpdateInfoDebt hideModalUpdateInfoDebt={hideModalUpdateInfoDebt} />
+      </Modal>
+
+      {/* Show modal (Danh sách sắp xếp đồng hồ) */}
+      <Modal
+        open={openModalSortNumber}
+        onCancel={hideModalSortNumber}
+        width={1000}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <Divider orientation="left" style={{ fontWeight: "bold" }}>
+          Danh sách sắp xếp đồng hồ
+        </Divider>
+
+        {/* Form list sort number (clock) */}
+        <FormSortNumberClock hideModalSortNumber={hideModalSortNumber} />
       </Modal>
     </>
   );

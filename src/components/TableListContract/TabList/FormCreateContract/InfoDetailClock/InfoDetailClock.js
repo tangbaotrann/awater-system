@@ -1,4 +1,3 @@
-import { RedoOutlined } from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -10,8 +9,12 @@ import {
   Row,
   Select,
 } from "antd";
+import { RedoOutlined } from "@ant-design/icons";
+import { useMediaQuery } from "react-responsive";
 
 function InfoDetailClock() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
   return (
     <div className="container-detail-clock">
       <Row>
@@ -159,7 +162,7 @@ function InfoDetailClock() {
         {/*  */}
         <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
           <Form.Item name="" label="Là đồng hồ phụ: ">
-            <Button type="primary"></Button>
+            <Checkbox name="" />
           </Form.Item>
         </Col>
 
@@ -196,14 +199,22 @@ function InfoDetailClock() {
         {/* Chỉ số bắt đầu */}
         <Col xs={24} sm={24} md={12} lg={7}>
           <Form.Item name="num_start" label="Chỉ số bắt đầu: ">
-            <InputNumber name="num_start" placeholder="Số đầu" />
+            <InputNumber
+              name="num_start"
+              placeholder="Số đầu"
+              className={isTabletOrMobile ? "fix-input-number-mobile" : ""}
+            />
           </Form.Item>
         </Col>
 
         {/* Chỉ số cuối */}
         <Col xs={24} sm={24} md={12} lg={4}>
           <Form.Item name="num_end" label="Cuối: ">
-            <InputNumber name="num_end" placeholder="Số cuối" />
+            <InputNumber
+              name="num_end"
+              placeholder="Số cuối"
+              className={isTabletOrMobile ? "fix-input-number-mobile" : ""}
+            />
           </Form.Item>
         </Col>
       </Row>
@@ -225,7 +236,11 @@ function InfoDetailClock() {
           className="gutter-item gutter-item-date-picker"
         >
           <Form.Item name="" label="Ngày lắp đặt: ">
-            <DatePicker name="" placeholder="Chọn ngày lắp đặt" />
+            <DatePicker
+              name=""
+              placeholder="Chọn ngày lắp đặt"
+              className={isTabletOrMobile ? "fix-date-picker-mobile" : ""}
+            />
           </Form.Item>
         </Col>
 

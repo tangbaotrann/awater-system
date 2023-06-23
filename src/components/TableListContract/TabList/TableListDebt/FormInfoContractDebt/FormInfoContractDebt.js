@@ -6,12 +6,15 @@ import {
   RedoOutlined,
 } from "@ant-design/icons";
 import { Button, Col, Divider, Form, Input, Row, Table } from "antd";
+import { useMediaQuery } from "react-responsive";
 
 function FormInfoContractDebt({
   handleOpenModalUpdateInfoDebt,
   hideModal,
   tabList,
 }) {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
   // Cols
   const cols = [
     {
@@ -86,7 +89,11 @@ function FormInfoContractDebt({
       {/* Tên KH + Mã KH */}
       <Row>
         <Col xs={24} sm={24} md={12} lg={12}>
-          <Form.Item name="fullName" label="Tên KH" className="gutter-item">
+          <Form.Item
+            name="fullName"
+            label="Tên KH"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="fullName" placeholder="Thông tin khách hàng" />
           </Form.Item>
         </Col>
@@ -101,7 +108,11 @@ function FormInfoContractDebt({
       {/* Địa chỉ + Sđt */}
       <Row>
         <Col xs={24} sm={24} md={12} lg={12}>
-          <Form.Item name="address" label="Địa chỉ" className="gutter-item">
+          <Form.Item
+            name="address"
+            label="Địa chỉ"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="address" placeholder="Địa chỉ" />
           </Form.Item>
         </Col>
@@ -121,7 +132,11 @@ function FormInfoContractDebt({
       {/* Số hợp đồng */}
       <Row>
         <Col xs={24} sm={24} md={12} lg={12}>
-          <Form.Item name="" label="Số hợp đồng" className="gutter-item">
+          <Form.Item
+            name=""
+            label="Số hợp đồng"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Số hợp đồng" />
           </Form.Item>
         </Col>
@@ -163,7 +178,11 @@ function FormInfoContractDebt({
           Xóa
         </Button>
 
-        <Button onClick={() => hideModal()} type="primary">
+        <Button
+          onClick={() => hideModal()}
+          type="primary"
+          className="space-btn-item-close"
+        >
           <CloseOutlined />
           Đóng
         </Button>

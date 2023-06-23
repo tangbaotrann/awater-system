@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input, Popover, Row, Select, Tabs } from "antd";
+import { Button, Col, Form, Input, Popover, Row, Select } from "antd";
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 
@@ -139,6 +139,7 @@ function Contract() {
           {/* check mobile */}
           {isTabletOrMobile ? (
             <Popover
+              rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
               content={<TabList isTabletOrMobile={isTabletOrMobile} />}
