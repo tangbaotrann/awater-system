@@ -18,8 +18,12 @@ function InfoCustomer() {
     <>
       <Row>
         {/* Loại khách hàng */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="type_customer" label="Loại khách hàng: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name="type_customer"
+            label="Loại khách hàng: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames="type_customer"
               options={[
@@ -32,7 +36,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Mã khách hàng */}
-        <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
+        <Col xs={24} sm={24} md={12} lg={9} className="gutter-item">
           <Form.Item name="code_cus" label="Mã KH: (*)">
             <Input name="code_cus" placeholder="Nhập mã khách hàng" />
           </Form.Item>
