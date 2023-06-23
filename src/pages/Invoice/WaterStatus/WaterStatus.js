@@ -1,14 +1,7 @@
 import {
   Button,
-  Col,
-  DatePicker,
-  Form,
-  Input,
   Modal,
-  Row,
-  Space,
   Table,
-  theme,
 } from "antd";
 import { SaveFilled } from "@ant-design/icons";
 import ChartJS from "chart.js/auto";
@@ -21,95 +14,10 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import './WaterStatus.css'
+import { AdvancedSearchForm as FormSearchWaterStatus } from "../../../components/FormSearchWaterStatus/FormSearchWaterStatus";
 
-const AdvancedSearchForm = () => {
-  const { token } = theme.useToken();
-  const [form] = Form.useForm();
-  const formStyle = {
-    maxWidth: "none",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    padding: 5,
-  };
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-  return (
-    <Form
-      form={form}
-      name="advanced_search"
-      style={formStyle}
-      onFinish={onFinish}
-      size="small"
-    >
-      <Row gutter={24}>
-        <Col span={6}>
-          <Form.Item name="date" label="Số hợp đồng">
-            <Input placeholder="Nhập số hợp đồng" />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="person" label="Mã KH">
-            <Input placeholder="Nhập số hợp đồng" />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="tuyendoc" label="Tìm ngày">
-            <DatePicker
-              allowClear
-              style={{ width: "100%" }}
-              format="DD-MM-YYYY"
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="tuyendoc" label="Đếm ngày">
-            <DatePicker
-              allowClear
-              style={{ width: "100%" }}
-              format="DD-MM-YYYY"
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row gutter={24}>
-        <Col span={12}>
-          <Form.Item name="status" label="Tên KH">
-            <Input />
-          </Form.Item>
-        </Col>
-        <Col span={12}>
-          <Form.Item name="place" label="Tuyến đọc">
-            <Input />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row gutter={24}>
-        <Col span={12}>
-          <Form.Item name="status" label="Địa chỉ">
-            <Input />
-          </Form.Item>
-        </Col>
-        <Col span={12}>
-          <Form.Item name="place" label="Nhân viên ghi">
-            <Input />
-          </Form.Item>
-        </Col>
-      </Row>
-      <div
-        style={{
-          textAlign: "right",
-        }}
-      >
-        <Space size="small">
-          <Button type="primary" htmlType="submit">
-            Tìm kiếm
-          </Button>
-        </Space>
-      </div>
-    </Form>
-  );
-};
+
 const dataSource = Array.from({ length: 5 }, (_, i) => ({
   key: i,
   stt: i + 1,
@@ -121,7 +29,10 @@ const dataSource = Array.from({ length: 5 }, (_, i) => ({
   dateRead: "01/01/2021",
   dateStart: "01/01/2021",
   dateEnd: "01/01/2021",
-  index: 1000 + i + 1,
+  firstIndex: 1000 + i,
+  lastIndex: 1000 + i + 1,
+  note: "Không có",
+  status: "Đã đọc",
 }));
 
 const columns = [
@@ -171,9 +82,24 @@ const columns = [
     key: "dateEnd",
   },
   {
-    title: "Chỉ số",
-    dataIndex: "index",
-    key: "index",
+    title: "Chỉ số đầu",
+    dataIndex: "firstIndex",
+    key: "firstIndex",
+  },
+  {
+    title: "Chỉ số cuối",
+    dataIndex: "lastIndex",
+    key: "lastIndex",
+  },
+  {
+    title: "Ghi chú",
+    dataIndex: "note",
+    key: "note",
+  },
+  {
+    title: "Trạng thái đọc",
+    dataIndex: "status",
+    key: "status",
   },
 ];
 
@@ -189,20 +115,7 @@ ChartJS.register(
 export const WaterStatus = (props) => {
   const { isOpen, setIsOpen } = props;
 
-  const labels = [
-    "Tháng 1",
-    "Tháng 2",
-    "Tháng 3",
-    "Tháng 4",
-    "Tháng 5",
-    "Tháng 6",
-    "Tháng 7",
-    "Tháng 8",
-    "Tháng 9",
-    "Tháng 10",
-    "Tháng 11",
-    "Tháng 12",
-  ];
+  const labels = ["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12"];
 
   const getRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -248,12 +161,12 @@ export const WaterStatus = (props) => {
         top: 10,
       }}
       footer={[
-        <Button key="cancel" onClick={() => setIsOpen(false)}>
+        <Button key="cancel" onClick={() => setIsOpen(false)} >
           Đóng
         </Button>,
       ]}
     >
-      <AdvancedSearchForm />
+      <FormSearchWaterStatus />
       <Table
         dataSource={dataSource}
         columns={columns}
@@ -262,7 +175,7 @@ export const WaterStatus = (props) => {
         bordered
         style={{ marginTop: 10 }}
         scroll={{
-          x: 1500,
+          x: 2000,
           y: 240,
         }}
       />
@@ -274,7 +187,7 @@ export const WaterStatus = (props) => {
       >
         Xuất tình hình sử dụng nước
       </Button>
-      <div style={{ height: "300px"}}>
+      <div style={{ height: "270px", display: 'grid', placeItems: 'center' }}>
         <Bar options={options} data={data} updateMode="resize" />
       </div>
       <Button

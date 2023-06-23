@@ -1,20 +1,9 @@
 import { SaveFilled } from "@ant-design/icons";
-import {
-  Button,
-  Checkbox,
-  DatePicker,
-  Form,
-  Input,
-  Modal,
-  Select,
-  theme,
-} from "antd";
-import { useState } from "react";
+import { Button, DatePicker, Form, Modal, theme } from "antd";
 
 export const Instalments = (props) => {
   const { isOpen, handleCancel, handleOk } = props;
   const { token } = theme.useToken();
-  const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
