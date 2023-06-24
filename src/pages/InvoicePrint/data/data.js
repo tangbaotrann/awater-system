@@ -14,7 +14,7 @@ export const initialData = Array.from({ length: 100 }, (_, i) => {
   };
 });
 
-export const initialData2 = Array.from({ length: 100 }, (_, i) => {
+export const initialData2 = Array.from({ length: 14 }, (_, i) => {
   return {
     key: i + 1,
     order: i + 1,

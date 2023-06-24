@@ -1,8 +1,20 @@
 // InvoicingDetailsModal.jsx
-import { useState } from "react";
-import { Modal, Form, Input, Table, Button } from "antd";
+
+import {
+  CloseOutlined,
+  PrinterOutlined,
+  SearchOutlined,
+  WarningOutlined,
+} from "@ant-design/icons";
+import { Modal, Form, Input, Table, Button, theme, Row, Col } from "antd";
 
 const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
+  const [form1] = Form.useForm();
+  const { token } = theme.useToken();
+  const onFinish = (values) => {
+    console.log("Received values of form: ", values);
+  };
+
   return (
     <Modal
       title="Chi tiết phiếu in"
@@ -10,20 +22,52 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
       onCancel={onCancel}
       footer={null}
     >
-      <Form layout="vertical">
-        <Form.Item label="Mã khách hàng">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Số hợp đồng">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Số hóa đơn">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Tên khách hàng">
-          <Input />
-        </Form.Item>
-        <Button>Tìm kiếm</Button>
+      <Form
+        form={form1}
+        onFinish={onFinish}
+        name="nest-messages"
+        style={{
+          maxWidth: "none",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          padding: 24,
+        }}
+      >
+        <Row>
+          <Col span={24}>
+            <Form.Item label="Mã khách hàng">
+              <Input />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <Form.Item label="Số hợp đồng">
+              <Input />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <Form.Item label="Số hóa đơn">
+              <Input />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <Form.Item label="Tên khách hàng">
+              <Input />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button icon={<SearchOutlined />} size="small" type="primary">
+              Tìm kiếm
+            </Button>
+          </Col>
+        </Row>
       </Form>
       <Table
         dataSource={data}
@@ -103,9 +147,18 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
         ]}
       />
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button type="primary">Cập nhật hóa đơn chưa in</Button>
-        <Button type="primary">Cập nhật hóa đơn hỏng</Button>
-        <Button type="primary" onClick={onCancel}>
+        <Button icon={<PrinterOutlined />} size="small" type="primary">
+          Cập nhật hóa đơn chưa in
+        </Button>
+        <Button icon={<WarningOutlined />} size="small" type="primary">
+          Cập nhật hóa đơn hỏng
+        </Button>
+        <Button
+          icon={<CloseOutlined />}
+          size="small"
+          type="primary"
+          onClick={onCancel}
+        >
           Đóng
         </Button>
       </div>

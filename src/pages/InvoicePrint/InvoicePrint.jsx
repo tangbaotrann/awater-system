@@ -1,11 +1,13 @@
 import { React, useState } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { initialData, initialData2 } from "./data/data";
 import "./InvoicePrint.css";
-import InvoicingDetailsModal from "./InvoicingDetailsModal";
-import TwoButtonPrint from "./TwoButtonPrint";
-import ReprintButton from "./ReprintButton";
+import InvoicingDetailsModal from "./InvoicingDetailsModal/InvoicingDetailsModal";
+import TwoButtonPrint from "./TwoButtonPrint/TwoButtonPrint";
+import ReprintButton from "./ReprintButton/ReprintButton";
+import PrintButton from "./PrintButton/PrintButton";
+import PrintCodeKH from "./PrintCodeKH/PrintCodeKH";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
@@ -28,8 +30,6 @@ import {
   CheckCircleOutlined,
   FormOutlined,
   SnippetsOutlined,
-  PrinterOutlined,
-  FileSearchOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "moment/locale/vi";
@@ -45,41 +45,11 @@ function InvoicePrint() {
   const handleButtonClick1 = () => {
     setIsModalVisible1(true);
   };
-  const handleButtonClick2 = () => {
-    setIsModalVisible2(true);
-  };
-  const handleButtonClick3 = () => {
-    setIsModalVisible3(true);
-  };
-  const handleButtonClick4 = () => {
-    setIsModalVisible4(true);
-  };
   const handleButtonClick5 = () => {
     setIsModalVisible5(true);
   };
-  const handleButtonClick6 = () => {
-    setIsModalVisible6(true);
-  };
   const handleModalCancel = () => {
     setIsModalVisible(false);
-  };
-  const handleModalCancel1 = () => {
-    setIsModalVisible1(false);
-  };
-  const handleModalCancel2 = () => {
-    setIsModalVisible2(false);
-  };
-  const handleModalCancel3 = () => {
-    setIsModalVisible3(false);
-  };
-  const handleModalCancel4 = () => {
-    setIsModalVisible4(false);
-  };
-  const handleModalCancel5 = () => {
-    setIsModalVisible5(false);
-  };
-  const handleModalCancel6 = () => {
-    setIsModalVisible6(false);
   };
   const onFinish = (values) => {
     dispatch(updateSearchCriteria(values));
@@ -91,21 +61,23 @@ function InvoicePrint() {
       form.setFieldsValue({ month: undefined });
     }
   };
-  const handleReset = () => {
-    form.resetFields();
-  };
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalVisible1, setIsModalVisible1] = useState(false);
-  const [isModalVisible2, setIsModalVisible2] = useState(false);
-  const [isModalVisible3, setIsModalVisible3] = useState(false);
-  const [isModalVisible4, setIsModalVisible4] = useState(false);
-  const [isModalVisible5, setIsModalVisible5] = useState(false);
-  const [isModalVisible6, setIsModalVisible6] = useState(false);
+  const [setIsModalVisible1] = useState(false);
+  const [setIsModalVisible5] = useState(false);
   const { Option } = Select;
   const [data1, setData1] = useState(initialData);
 
   // Hàm xử lý khi có thay đổi dữ liệu của bảng 1
-  const handleData1Change = (newData) => {
+  function fetchDataForPage(page) {
+    const pageSize = 5;
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return initialData.slice(startIndex, endIndex);
+  }
+
+  const handleData1Change = (pagination) => {
+    const currentPage = pagination.current;
+    const newData = fetchDataForPage(currentPage);
     setData1(newData);
   };
   const columns = [
@@ -184,17 +156,8 @@ function InvoicePrint() {
   const AdvancedSearchForm = () => {
     const { token } = theme.useToken();
     const [form] = Form.useForm();
-    const formStyle = {
-      maxWidth: "none",
-      background: token.colorFillAlter,
-      borderRadius: token.borderRadiusLG,
-      // padding: 24,
-    };
     const onFinish = (values) => {
       console.log("Received values of form: ", values);
-    };
-    const handleReset = () => {
-      form.resetFields();
     };
 
     return (
@@ -338,22 +301,7 @@ function InvoicePrint() {
     );
   };
   const AdvanceFooterForm = () => {
-    const { token } = theme.useToken();
     const [form] = Form.useForm();
-    const formStyle = {
-      maxWidth: "none",
-      background: token.colorFillAlter,
-      borderRadius: token.borderRadiusLG,
-      padding: 24,
-    };
-    const handleFinish = (values) => {
-      console.log(values);
-      // Xử lý dữ liệu tìm kiếm tại đây
-    };
-
-    const handleReset = () => {
-      form.resetFields();
-    };
 
     return (
       <Form
@@ -375,28 +323,18 @@ function InvoicePrint() {
           >
             Đã in xong
           </Button>
-          <Button
-            onClick={handleButtonClick2}
-            icon={<PrinterOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            In hóa đơn
-          </Button>
+          <div>
+            <PrintButton />
+          </div>
           <div>
             <TwoButtonPrint />
           </div>
           <div>
             <ReprintButton />
           </div>
-          <Button
-            onClick={handleButtonClick4}
-            icon={<FileSearchOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            In lại hóa đơn theo mã KH
-          </Button>
+          <div>
+            <PrintCodeKH />
+          </div>
           <Button
             onClick={handleButtonClick5}
             icon={<DeleteOutlined />}
@@ -426,10 +364,11 @@ function InvoicePrint() {
       >
         <Table
           size="small"
+          rowKey="index"
           pagination={{
             current: 1,
-            total: 10000,
-            pageSize: 50,
+            total: initialData.length,
+            pageSize: 5,
           }}
           scroll={{ x: 1500, y: 290 }}
           columns={columns}
