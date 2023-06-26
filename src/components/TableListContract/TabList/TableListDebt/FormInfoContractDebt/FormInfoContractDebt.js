@@ -171,7 +171,14 @@ function FormInfoContractDebt({
 
       {/* render table */}
       <div className="container-tbl-debt">
-        <Table columns={cols} rowKey="index" size="small"></Table>
+        <Table
+          columns={cols}
+          rowKey="index"
+          size="small"
+          scroll={{
+            x: 1400,
+          }}
+        ></Table>
       </div>
 
       <Divider />

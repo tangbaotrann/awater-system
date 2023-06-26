@@ -86,7 +86,14 @@ function FormSortNumberClock({ hideModalSortNumber }) {
 
       {/* render table */}
       <div className="container-tbl-sort-number">
-        <Table columns={cols} rowKey="index" size="small"></Table>
+        <Table
+          columns={cols}
+          rowKey="index"
+          size="small"
+          scroll={{
+            x: 900,
+          }}
+        ></Table>
       </div>
 
       <Divider />

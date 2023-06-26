@@ -249,6 +249,9 @@ function TableHistoryUseWater() {
           }))}
           rowKey="id"
           size="small"
+          scroll={{
+            x: 1200,
+          }}
         ></Table>
       </div>
     </>

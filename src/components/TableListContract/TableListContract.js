@@ -180,6 +180,9 @@ function TableListContract() {
               row: CustomRowTooltip,
             },
           }}
+          scroll={{
+            x: 1200,
+          }}
         ></Table>
       </div>
 

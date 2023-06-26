@@ -10,6 +10,7 @@ import CustomerList from "./CustomerList/CustomerList";
 import EnterIndexPage from "../EnterIndexPage/EnterIndexPage.jsx";
 import Invoice from "../Invoice/Invoice";
 import InvoicePrint from "../InvoicePrint/InvoicePrint";
+import Payment from "./Payment/Payment";
 function Manager() {
   // change layout
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
@@ -44,6 +45,8 @@ function Manager() {
         <InvoicePrint />
       ) : sidebarMenu === constants.EXPORT_PRINT_BILL_ORDER.key ? (
         <h1>EXPORT_PRINT_BILL_ORDER</h1>
+      ) : sidebarMenu === constants.PAYMENT.key ? ( // menu 3
+        <Payment />
       ) : null}
     </DefaultLayout>
   );
