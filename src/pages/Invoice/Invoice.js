@@ -1,16 +1,23 @@
 import {
   CalculatorOutlined,
+  CloseCircleOutlined,
   DeleteOutlined,
   DownOutlined,
   EditFilled,
   EditOutlined,
+  FileExcelOutlined,
   FileFilled,
   FileSearchOutlined,
+  FileSyncOutlined,
+  FileTextOutlined,
   MailFilled,
   PlusCircleFilled,
   ProfileFilled,
   RedoOutlined,
   SettingOutlined,
+  StopOutlined,
+  SyncOutlined,
+  UnorderedListOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -19,7 +26,7 @@ import {
   Dropdown,
   Form,
   Input,
-  Menu,
+  Modal,
   Progress,
   Row,
   Select,
@@ -34,191 +41,12 @@ import { CalculateMoney } from "./CalculateMoney/CalculateMoney";
 import "./Invoice.css";
 import { AddInvoice } from "./AddInvoice/AddInvoice";
 import { EditInvoice } from "./EditInvoice/EditInvoice";
+import { ModalMessage } from "./SendMessage/ModalMessage";
+import { data } from "../../utils/dataTableInvoice";
+import { WaterStatus } from "./WaterStatus/WaterStatus";
+import { AdvancedSearchForm as FormSearchInvoice } from "../../components/FormSearchInvoice/FormSearchInvoice";
 
-const AdvancedSearchForm = () => {
-  const { token } = theme.useToken();
-  const [form] = Form.useForm();
-  const formStyle = {
-    maxWidth: "none",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    padding: 24,
-  };
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-  return (
-    <Form
-      form={form}
-      name="advanced_search"
-      style={formStyle}
-      onFinish={onFinish}
-      size="small"
-    >
-      <Row gutter={24}>
-        <Col span={6}>
-          <Form.Item name="date" label="Chọn tháng">
-            <DatePicker
-              allowClear
-              placeholder="Chọn tháng"
-              style={{ width: "100%" }}
-              format="MM-YYYY"
-              picker="month"
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="person" label="Cán bộ đọc">
-            <Select
-              // defaultValue="--Chọn cán bộ đọc--"
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="tuyendoc" label="Tuyến đọc">
-            <Select
-              // defaultValue="--Chọn tuyến đọc--"
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-                {
-                  value: "Yiminghe",
-                  label: "yiminghe",
-                },
-                {
-                  value: "disabled",
-                  label: "Disabled",
-                  disabled: true,
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="status" label="Phạm vi">
-            <Select
-              // defaultValue="--Chọn phạm vi--"
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row gutter={24}>
-        <Col span={6}>
-          <Form.Item name="status" label="Số hợp đồng">
-            <Select
-              // defaultValue="--Chọn số hợp đồng--"
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="place" label="Khách hàng">
-            <Input placeholder="Tên khách hàng" />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="ky" label="Số hóa đơn">
-            <Select
-              // defaultValue="--Chọn số hóa đơn--"
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="numberName" label="TT Hóa đơn">
-            <Select
-              // defaultValue="--Chọn in hóa đơn--"
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-      <div
-        style={{
-          textAlign: "right",
-        }}
-      >
-        <Space size="small">
-          <Button type="primary" htmlType="submit">
-            Tìm kiếm
-          </Button>
-          <Button>Tìm kiếm nâng cao</Button>
-        </Space>
-      </div>
-    </Form>
-  );
-};
+
 
 const Invoice = () => {
   const { token } = theme.useToken();
@@ -227,6 +55,9 @@ const Invoice = () => {
   const [isModalInstalmentsOpen, setIsModalInstalmentsOpen] = useState(false);
   const [isOpenModalAddInvoice, setIsOpenModalAddInvoice] = useState(false);
   const [isOpenModalEditInvoice, setIsOpenModalEditInvoice] = useState(false);
+  const [isModalEmail, setIsModalEmail] = useState(false);
+  const [isModalSMS, setIsModalSMS] = useState(false);
+  const [isOpenModalWaterStatus, setIsOpenModalWaterStatus] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -255,30 +86,14 @@ const Invoice = () => {
     }
   };
 
-  const listStyle = {
-    lineHeight: "200px",
-    textAlign: "center",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    marginTop: 16,
-    padding: "10px 10px",
-    height: "527px",
-    position: "relative",
+  const hanldeOpen = (isOpen, type) => {
+    if (type === "email") {
+      setIsModalEmail(isOpen);
+    }
+    if (type === "sms") {
+      setIsModalSMS(isOpen);
+    }
   };
-
-  const data = Array.from({ length: 10 }, (_, key) => ({
-    key: key + 1,
-    stt: key + 1,
-    contractNumber: "abc",
-    codeClock: "abc",
-    readingRoute: "abc",
-    username: "abc",
-    address: "abc",
-    oldIndex: "abc",
-    newIndex: "abc",
-    consumption: "abc",
-    codePrice: "abc",
-  }));
 
   const columns = [
     {
@@ -368,7 +183,6 @@ const Invoice = () => {
     },
   ];
 
-
   const extension = [
     {
       label: (
@@ -377,10 +191,11 @@ const Invoice = () => {
           rel="noopener noreferrer"
           href="https://www.antgroup.com"
         >
-          1st menu item
+          Đồng bộ từ hồ sơ
         </a>
       ),
       key: "0",
+      icon: <SyncOutlined style={{ color: "#1677ff" }} />,
     },
     {
       label: (
@@ -389,46 +204,149 @@ const Invoice = () => {
           rel="noopener noreferrer"
           href="https://www.aliyun.com"
         >
-          2nd menu item
+          Xuất hóa đơn theo mẫu
         </a>
       ),
       key: "1",
+      icon: <FileExcelOutlined style={{ color: "#1677ff" }} />,
     },
     {
-      type: "divider",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Xuất hóa đơn theo nhà mạng
+        </a>
+      ),
+      key: "2",
+      icon: <FileExcelOutlined style={{ color: "#1677ff" }} />,
     },
     {
-      label: "3rd menu item（disabled）",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          In phiếu báo tiền nước
+        </a>
+      ),
       key: "3",
-      disabled: true,
+      icon: <FileTextOutlined style={{ color: "#1677ff" }} />,
+    },
+    {
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Cập nhật trạng thái thu hộ
+        </a>
+      ),
+      key: "4",
+      icon: <FileSyncOutlined style={{ color: "#1677ff" }} />,
+    },
+    {
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Cập nhật TT thu hộ theo tuyến
+        </a>
+      ),
+      key: "5",
+      icon: <UnorderedListOutlined style={{ color: "#1677ff" }} />,
+    },
+    {
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Cập nhật hóa đơn hủy
+        </a>
+      ),
+      key: "6",
+      icon: <StopOutlined style={{ color: "#ff4d4f" }} />,
+    },
+    {
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Bỏ hóa đơn hủy
+        </a>
+      ),
+      key: "7",
+      icon: <StopOutlined style={{ color: "#1677ff" }} />,
+    },
+    {
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Cập nhật hóa đơn chưa in
+        </a>
+      ),
+      key: "8",
+      icon: <CloseCircleOutlined style={{ color: "#1677ff" }} />,
     },
   ];
 
   const itemEmail = [
     {
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#!">
+        <span
+          onClick={() => {
+            hanldeOpen(true, "email");
+          }}
+        >
           Gửi Email
-        </a>
+        </span>
       ),
       key: "0",
-      icon: <MailFilled style={{ color: "blue" }} />,
+      icon: <MailFilled style={{ color: "#1677ff" }} />,
     },
     {
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="#!">
+        <span
+          onClick={() => {
+            hanldeOpen(true, "sms");
+          }}
+        >
           Gửi SMS
-        </a>
+        </span>
       ),
       key: "1",
-      icon: <MailFilled style={{ color: "blue" }} />,
+      icon: <MailFilled style={{ color: "#1677ff" }} />,
     },
   ];
 
   return (
     <>
-      <AdvancedSearchForm />
-      <div style={listStyle}>
+      <FormSearchInvoice />
+      <div
+        style={{
+          lineHeight: "200px",
+          textAlign: "center",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          marginTop: 7,
+          padding: "10px 10px",
+          height: "527px",
+          position: "relative",
+        }}
+      >
         <Table
           dataSource={data}
           columns={columns}
@@ -521,11 +439,11 @@ const Invoice = () => {
           </Button>
           <Button
             type="primary"
-            icon={<FileFilled />}
+            icon={<MailFilled />}
             style={{ marginLeft: "10px" }}
             size="small"
           >
-            <Dropdown menu={{items: itemEmail}}>
+            <Dropdown menu={{ items: itemEmail }}>
               <a href="#!" onClick={(e) => e.preventDefault()}>
                 <Space>
                   Gửi tin
@@ -540,7 +458,7 @@ const Invoice = () => {
             type="primary"
             icon={<ProfileFilled />}
             style={{ marginLeft: "10px" }}
-            // onClick={() => setIsModalOpenMCreate(true)}
+            onClick={() => setIsOpenModalWaterStatus(true)}
             size="small"
           >
             Xem TH SD
@@ -585,6 +503,16 @@ const Invoice = () => {
       <EditInvoice
         isOpenEdit={isOpenModalEditInvoice}
         setIsOpenModalEditInvoice={setIsOpenModalEditInvoice}
+      />
+      <ModalMessage
+        isModalEmail={isModalEmail}
+        setIsModalEmail={setIsModalEmail}
+        isModalSMS={isModalSMS}
+        setIsModalSMS={setIsModalSMS}
+      />
+      <WaterStatus
+        isOpen={isOpenModalWaterStatus}
+        setIsOpen={setIsOpenModalWaterStatus}
       />
     </>
   );

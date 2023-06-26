@@ -97,6 +97,88 @@ html *::-webkit-scrollbar-track {
         background-color: var(--white);
     }
 
+    /* Modal (Danh sách sắp xếp đồng hồ) */
+    .func-sort-number-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .item-sort-number-btn, .item-sort-number-btn-close {
+        margin-right: 0;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    /* Modal (Thông tin hợp đồng nợ) */
+    .debt-func-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .space-btn-item, .space-btn-item-close {
+        margin-right: 0;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    /* Modal (Form update clock) */
+    .btn-func-change-clock {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .btn-close-change-clock {
+        margin-left: 0;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .btn-update-change-clock {
+        width: 100%;
+    }
+
+    /* Modal (Cập nhật thông tin hợp đồng) */
+    .collapse-space-top-mobile-item {
+        margin-top: 10px;
+    }
+
+    /* info clock */
+    .func-info-clock-btn-mobile {
+        margin-top: 10px;
+    }
+
+    .tablist-func-clock-btn-mobile {
+        margin-top: 10px;
+        margin-right: 10px;
+        width: 100%;
+    }
+
+    /* info detail clock */
+    .fix-input-number-mobile {
+        width: 100%;
+    }
+
+    .fix-date-picker-mobile {
+        width: 100%;
+    }
+
+    .func-form-create-contract-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gutter-item-btn {
+        margin-top: 10px;
+    }
+
+    /* payment */
+    .btn-search-payment {
+        margin-left: 0;
+        margin-bottom: 22px;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
@@ -122,6 +204,12 @@ html *::-webkit-scrollbar-track {
         background-color: var(--white);
     }
 
+    /* payment */
+    .btn-search-payment {
+        margin-left: 0;
+        margin-bottom: 22px;
+    }
+
 }
   
 /* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
@@ -136,7 +224,6 @@ html *::-webkit-scrollbar-track {
         /* margin-left: 0; */
         margin-bottom: 12px;
     }
-
 }
 
 /* Thiết kế cho kích thước màn hình từ 769px đến 991px (desktop - large desktop) */
@@ -149,6 +236,11 @@ html *::-webkit-scrollbar-track {
         font-size: 2rem;
         font-weight: 800;
         background-color: var(--white);
+    }
+
+    /* payment */
+    .gutter-item-mobile {
+        margin-left: 12px;
     }
 }
   

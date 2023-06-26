@@ -7,188 +7,11 @@ import {
   PlusCircleFilled,
   SettingOutlined,
 } from "@ant-design/icons";
-import {
-  Button,
-  Col,
-  DatePicker,
-  Dropdown,
-  Form,
-  Input,
-  Progress,
-  Row,
-  Select,
-  Space,
-  Table,
-  theme,
-} from "antd";
+import { Button, Dropdown, Progress, Space, Table, theme } from "antd";
 import { useState } from "react";
 import { CreateBook } from "./CreateBook/CreateBook";
 import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
-const AdvancedSearchForm = () => {
-  const { token } = theme.useToken();
-  const [form] = Form.useForm();
-  const formStyle = {
-    maxWidth: "none",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    padding: 24,
-  };
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-  return (
-    <Form
-      form={form}
-      name="advanced_search"
-      style={formStyle}
-      onFinish={onFinish}
-      size="small"
-    >
-      <Row gutter={24}>
-        <Col span={8}>
-          <Form.Item name="date" label="Chọn tháng">
-            <DatePicker
-              allowClear
-              placeholder="Chọn tháng"
-              style={{ width: "100%" }}
-              format="MM-YYYY"
-              picker="month"
-            />
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <Form.Item name="person" label="Cán bộ đọc">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <Form.Item name="tuyendoc" label="Tuyến đọc">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-                {
-                  value: "Yiminghe",
-                  label: "yiminghe",
-                },
-                {
-                  value: "disabled",
-                  label: "Disabled",
-                  disabled: true,
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row gutter={24}>
-        <Col span={6}>
-          <Form.Item name="status" label="Trạng thái">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="place" label="Khu vực">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="ky" label="Kỳ GSC">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6}>
-          <Form.Item name="numberName" label="Tên sổ">
-            <Input placeholder="Nhập tên sổ cần tìm" />
-          </Form.Item>
-        </Col>
-      </Row>
-      <div
-        style={{
-          textAlign: "right",
-        }}
-      >
-        <Space size="small">
-          <Button type="primary" htmlType="submit">
-            Tìm kiếm
-          </Button>
-          <Button
-            onClick={() => {
-              form.resetFields();
-            }}
-          >
-            Tìm mới
-          </Button>
-        </Space>
-      </div>
-    </Form>
-  );
-};
+import { AdvancedSearchForm as FormSearchReadingIndex } from "../../components/FormSearchReadingIndex/FormSearchReadingIndex";
 
 const ReadingIndex = () => {
   const { token } = theme.useToken();
@@ -207,17 +30,6 @@ const ReadingIndex = () => {
     if (type === "multiple") {
       setIsModalOpenMCreate(false);
     }
-  };
-
-  const listStyle = {
-    lineHeight: "200px",
-    textAlign: "center",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    marginTop: 16,
-    padding: "10px 10px",
-    // height: "340px",  
-    position: "relative",
   };
 
   const dataSource = [
@@ -330,7 +142,7 @@ const ReadingIndex = () => {
       status: "abc",
       dateClose: "abc",
       invoice: "abc",
-    }
+    },
   ];
 
   const columns = [
@@ -413,8 +225,18 @@ const ReadingIndex = () => {
 
   return (
     <>
-      <AdvancedSearchForm />
-      <div style={listStyle}>
+      <FormSearchReadingIndex />
+      <div
+        style={{
+          lineHeight: "200px",
+          textAlign: "center",
+          background: token.colorFillAlter,
+          borderRadius: token.borderRadiusLG,
+          marginTop: 7,
+          padding: "10px 10px",
+          position: "relative",
+        }}
+      >
         <Table
           dataSource={dataSource}
           columns={columns}
@@ -524,7 +346,7 @@ const ReadingIndex = () => {
                 items,
               }}
             >
-              <a onClick={(e) => e.preventDefault()}>
+              <a href="#!" onClick={(e) => e.preventDefault()}>
                 <Space>
                   Tiện ích
                   <DownOutlined />

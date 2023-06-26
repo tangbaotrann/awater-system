@@ -9,8 +9,10 @@ import {
   Select,
   Space,
 } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+
+import "./ModalTransferEmployee.css";
 
 const ModalTransferEmployee = ({
   isOpen,
@@ -19,6 +21,7 @@ const ModalTransferEmployee = ({
   openTransferManagers,
 }) => {
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
+  const [valueNewEmployee, setValueNewEmployee] = useState();
   const employeeOptions = [];
   for (let i = 1; i < 36; i++) {
     employeeOptions.push({
@@ -27,6 +30,22 @@ const ModalTransferEmployee = ({
     });
   }
   const [form] = Form.useForm();
+  useEffect(() => {
+    form.setFieldValue("oldEmployee", tabList?.cashier || "");
+    form.setFieldValue("codeLine", tabList?.codeLine || "");
+    form.setFieldValue("nameLine", tabList?.nameLine || "");
+  }, [tabList, openTransferManagers]);
+  const handleChangeValue = (e) => {
+    form.setFieldValue(e.target.name, e.target.value);
+  };
+  useEffect(() => {
+    if (!isOpen) return;
+    return () => {
+      form.setFieldValue("oldEmployee", "");
+      form.setFieldValue("codeLine", "");
+      form.setFieldValue("nameLine", "");
+    };
+  }, [isOpen]);
 
   return (
     <Modal
@@ -52,13 +71,25 @@ const ModalTransferEmployee = ({
         autoComplete="off"
       >
         <Form.Item label="Nhân viên cũ:" name="oldEmployee">
-          <Input name="oldEmployee" />
+          <Input
+            name="oldEmployee"
+            placeholder="Nhân viên cũ"
+            onChange={handleChangeValue}
+          />
         </Form.Item>
         <Form.Item label="Mã tuyến:" name="codeLine">
-          <Input name="codeLine" />
+          <Input
+            name="codeLine"
+            placeholder="Mã tuyến"
+            onChange={handleChangeValue}
+          />
         </Form.Item>
         <Form.Item label="Tên tuyến:" name="nameLine">
-          <Input name="nameLine" />
+          <Input
+            name="nameLine"
+            placeholder="Tên tuyến"
+            onChange={handleChangeValue}
+          />
         </Form.Item>
         {openTransferManagers ? (
           <Form.Item
@@ -101,7 +132,7 @@ const ModalTransferEmployee = ({
           </Form.Item>
         )}
         {!openTransferManagers && (
-          <>
+          <div className="transfer-manager-select">
             <Form.Item name="status">
               <Radio.Group
                 style={{
@@ -113,11 +144,16 @@ const ModalTransferEmployee = ({
                 <Radio value={false}>Theo tuyến thu</Radio>
               </Radio.Group>
             </Form.Item>
-            <Form.Item>
+            <Form.Item
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               <Checkbox style={{ marginRight: "5px" }} />
               Chuyển hóa đơn chưa thanh toán
             </Form.Item>
-          </>
+          </div>
         )}
         <Form.Item className="form-item-button">
           <Space size={5} className="modal-button-actions">

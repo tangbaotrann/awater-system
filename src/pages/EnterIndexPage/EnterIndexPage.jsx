@@ -48,9 +48,7 @@ import {
 import moment from "moment";
 import "./EnterIndexPage.css";
 import "moment/locale/vi";
-import { Column } from "@ant-design/charts";
 moment.locale("vi");
-// import "./ViewWater.jsx";
 function EnterIndexPage() {
   const { token } = theme.useToken();
 
@@ -137,10 +135,6 @@ function EnterIndexPage() {
     setData2(newData);
   };
 
-  // // Hàm tính toán số lượng dữ liệu cho mỗi trạng thái
-  // const countByStatus = (status) => {
-  //   return data.filter((item) => item.status === status).length;
-  // };
   const [showChart, setShowChart] = useState(false);
   const [chartData, setChartData] = useState([]);
   const getTableData = () => {
@@ -341,7 +335,6 @@ function EnterIndexPage() {
       maxWidth: "none",
       background: token.colorFillAlter,
       borderRadius: token.borderRadiusLG,
-      // padding: 24,
     };
     const onFinish = (values) => {
       console.log("Received values of form: ", values);
@@ -945,19 +938,8 @@ function EnterIndexPage() {
               columns={otherColumns}
               dataSource={data2}
               onChange={handleData2Change}
-              // scroll={{ y: 240 }}
-              // scroll={{ x: 300, y: 240 }}
               scroll={{ x: 1600, y: 450 }}
             />
-            {showChart && (
-              <Column
-                data={chartData}
-                xField="date"
-                yField="value"
-                seriesField="type"
-                legend={{ position: "top" }}
-              />
-            )}
             <Row justify="end">
               <Button size="small" onClick={handleExportChartClick}>
                 Xuất biểu đồ nước
@@ -985,14 +967,6 @@ function EnterIndexPage() {
             onCancel={handleModalCancel5}
             footer={null}
           >
-            {showChart1 && (
-              <Column
-                data={chartData1}
-                xField="date"
-                yField="value"
-                legend={{ position: "top" }}
-              />
-            )}
             <Row justify="end">
               <Button>Cập Nhật</Button>
               <Button onClick={handleModalCancel5}>Đóng</Button>
@@ -1001,27 +975,6 @@ function EnterIndexPage() {
           <div>
             <ImageModal />
           </div>
-          {/* <div className="button-container1">
-            <Button size="small" onClick={handleButtonClick6}>
-              Xem hình ảnh
-            </Button>
-          </div>
-          <Modal
-            title="Thông tin tệp đính kèm"
-            visible={isModalVisible6}
-            onCancel={handleModalCancel6}
-            footer={null}
-          >
-            <Row justify="end">
-              <Button>Cập Nhật</Button>
-              <Button onClick={handleModalCancel6}>Đóng</Button>
-            </Row>
-          </Modal> */}
-          {/* <div className="button-container">
-        <Button onClick={handleButtonClick}>
-          Xem tình hình nước lệch về phí
-        </Button>
-      </div> */}
         </div>
       </Form>
     );
@@ -1037,7 +990,7 @@ function EnterIndexPage() {
           borderRadius: token.borderRadiusLG,
           marginTop: 16,
           padding: "10px 10px",
-          height: "640px",
+          height: "340px",
           position: "relative",
         }}
       >
@@ -1048,49 +1001,15 @@ function EnterIndexPage() {
             total: 10000,
             pageSize: 50,
           }}
-          scroll={{ x: 3000, y: 400 }}
+          scroll={{ x: 3000, y: 280 }}
           columns={columns}
           dataSource={data1}
           onChange={handleData1Change}
         />
-        <div style={{ display: "flex", position: "absolute", bottom: "300" }}>
-          <Progress
-            percent={10}
-            size={[300, 20]}
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={60}
-            size={[300, 20]}
-            strokeColor="yellow"
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={70}
-            size={[300, 20]}
-            strokeColor="red"
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={30}
-            size={[300, 20]}
-            strokeColor="#ff8033"
-            format={(percent) => `${percent * 10}`}
-          />
-        </div>
       </div>
-      <div style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}>
+      <div style={{ display: "flex", marginTop: "0px", paddingRight: "10px" }}>
         <AdvanceFooterForm />
       </div>
-
-      {/* <div>
-        Tổng số dữ liệu: {data.length}
-        <br />
-        Trạng thái 1: {countByStatus("Trạng thái 1")}
-        <br />
-        Trạng thái 2: {countByStatus("Trạng thái 2")}
-
-      </div> */}
     </>
   );
 }

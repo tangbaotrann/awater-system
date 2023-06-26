@@ -1,4 +1,4 @@
-import { Divider, Modal, Tabs } from "antd";
+import { Divider, Modal, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -7,6 +7,8 @@ import {
   RetweetOutlined,
   BarsOutlined,
   DashboardOutlined,
+  MoreOutlined,
+  CaretDownOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,6 +24,7 @@ import TableHistoryUseWater from "./TableHistoryUseWater/TableHistoryUseWater";
 import FormCreateContract from "./FormCreateContract/FormCreateContract";
 import FormHistoryUseWater from "./FormHistoryUseWater/FormHistoryUseWater";
 import FormUpdateClock from "./FormUpdateClock/FormUpdateClock";
+import TableListDebt from "./TableListDebt/TableListDebt";
 
 // Tabs bottom
 const tabs = [
@@ -60,6 +63,12 @@ const tabs = [
     label: "Thay đồng hồ",
     icon: <DashboardOutlined />,
   },
+  {
+    id: "8",
+    label: "Tiện ích",
+    icon: <MoreOutlined />,
+    iconRight: <CaretDownOutlined />,
+  },
 ];
 
 function TabList({ isTabletOrMobile }) {
@@ -88,11 +97,13 @@ function TabList({ isTabletOrMobile }) {
     } else if (key === "4") {
       exportToExcel("table-contract", menuSidebar);
     } else if (key === "5") {
-      console.log("go to.");
+      message.error("Tính năng chưa khả dụng!");
     } else if (key === "6") {
       setModalHistoryWater(true);
     } else if (key === "7") {
       setModalChangeClock(true);
+    } else if (key === "8") {
+      console.log("Tien ich.");
     }
   };
 
@@ -115,7 +126,22 @@ function TabList({ isTabletOrMobile }) {
           return {
             label: (
               <div>
-                {_tab.icon} {_tab.label}
+                {_tab.id === "8" ? (
+                  <>
+                    <Popover
+                      rootClassName="fix-popover-z-index"
+                      placement={isTabletOrMobile ? "right" : "topRight"}
+                      className={tabList === null ? "popover-debt" : null}
+                      content={<TableListDebt tabList={tabList} />}
+                    >
+                      {_tab.icon} {_tab.label} {_tab.iconRight}
+                    </Popover>
+                  </>
+                ) : (
+                  <>
+                    {_tab.icon} {_tab.label}
+                  </>
+                )}
               </div>
             ),
             key: _tab.id,
@@ -123,7 +149,8 @@ function TabList({ isTabletOrMobile }) {
               (tabList === null && _tab.id === "2") ||
               (tabList === null && _tab.id === "3") ||
               (tabList === null && _tab.id === "6") ||
-              (tabList === null && _tab.id === "7")
+              (tabList === null && _tab.id === "7") ||
+              (tabList === null && _tab.id === "8")
                 ? true
                 : false,
           };

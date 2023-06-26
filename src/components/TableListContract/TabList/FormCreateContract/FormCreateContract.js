@@ -5,13 +5,18 @@ import {
   PrinterOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
+import { useMediaQuery } from "react-responsive";
 
-import InfoContract from "../InfoContract/InfoContract";
-import InfoClock from "../InfoClock/InfoClock";
-import InfoDetailClock from "../InfoDetailClock/InfoDetailClock";
-import InfoCustomer from "../InfoCustomer/InfoCustomer";
+import InfoContract from "./InfoContract/InfoContract";
+import InfoClock from "./InfoClock/InfoClock";
+import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
+import InfoCustomer from "./InfoCustomer/InfoCustomer";
 
 function FormCreateContract({ tabList, hideModal }) {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
+  // console.log(isTabletOrMobile);
+
   // collapse (Thông tin khách hàng)
   const items = [
     {
@@ -96,7 +101,13 @@ function FormCreateContract({ tabList, hideModal }) {
 
       {/* Thông tin khách hàng */}
       <Row>
-        <Col xs={24} sm={24} md={12} lg={12} style={{ paddingRight: "10px" }}>
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          className={isTabletOrMobile ? "" : "collapse-space-right-item"}
+        >
           <Collapse
             key="1"
             items={items}
@@ -105,7 +116,13 @@ function FormCreateContract({ tabList, hideModal }) {
           />
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={12}>
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          className={!isTabletOrMobile ? "" : "collapse-space-top-mobile-item"}
+        >
           <Collapse
             key="3"
             items={itemsClock}
@@ -117,7 +134,13 @@ function FormCreateContract({ tabList, hideModal }) {
 
       {/* Thông tin hợp đồng */}
       <Row className="space-col">
-        <Col xs={24} sm={24} md={12} lg={12} style={{ paddingRight: "10px" }}>
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          className={isTabletOrMobile ? "" : "collapse-space-right-item"}
+        >
           <Collapse
             key="2"
             items={itemsInfoContract}
@@ -126,7 +149,13 @@ function FormCreateContract({ tabList, hideModal }) {
           />
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={12}>
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          className={!isTabletOrMobile ? "" : "collapse-space-top-mobile-item"}
+        >
           <Collapse
             key="4"
             items={itemsDetailClock}
@@ -138,35 +167,67 @@ function FormCreateContract({ tabList, hideModal }) {
 
       {/* Bottom */}
       <Row>
-        <Col xs={24} sm={24} md={12} lg={12}>
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          className={isTabletOrMobile ? "func-form-create-contract-mobile" : ""}
+        >
           <Button htmlType="submit" type="primary">
             <FormOutlined />
             Tệp đính kèm
           </Button>
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={12}>
-          <Button htmlType="submit" type="primary" className="gutter-item">
+        <Col
+          xs={24}
+          sm={24}
+          md={12}
+          lg={12}
+          className={isTabletOrMobile ? "func-form-create-contract-mobile" : ""}
+        >
+          <Button
+            htmlType="submit"
+            type="primary"
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          >
             <FormOutlined />
             Biên bản thỏa thuận
           </Button>
 
-          <Button htmlType="submit" type="primary" className="gutter-item">
+          <Button
+            htmlType="submit"
+            type="primary"
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          >
             <PrinterOutlined />
             In hợp đồng
           </Button>
 
-          <Button htmlType="submit" type="primary" className="gutter-item">
+          <Button
+            htmlType="submit"
+            type="primary"
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          >
             <SaveOutlined />
             Lưu và thêm tiếp
           </Button>
 
-          <Button htmlType="submit" type="primary" className="gutter-item">
+          <Button
+            htmlType="submit"
+            type="primary"
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          >
             <SaveOutlined />
             Lưu
           </Button>
 
-          <Button htmlType="submit" type="primary" onClick={() => hideModal()}>
+          <Button
+            type="primary"
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            onClick={() => hideModal()}
+          >
             <CloseCircleOutlined />
             Đóng
           </Button>

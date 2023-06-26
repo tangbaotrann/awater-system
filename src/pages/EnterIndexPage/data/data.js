@@ -2,7 +2,7 @@
 export const initialData = Array.from({ length: 100 }, (_, i) => {
   return {
     key: "1",
-    imageAndStatus: `Hình ảnh và trạng thái ${i + 1}`,
+    imageAndStatus: `H/ảnh và tt ${i + 1}`,
     order: i + 1,
     readingLine: `Tuyến đọc ${i + 1}`,
     contractNumber: `Số hợp đồng ${i + 1}`,

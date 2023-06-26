@@ -141,6 +141,8 @@ function TableListOfCustomer() {
         <div className="container-tbl-list-cus">
           <Table
             id="table"
+            rowKey="index"
+            size="small"
             columns={cols}
             dataSource={data.map((_customer, index) => ({
               index: index + 1,
@@ -158,9 +160,11 @@ function TableListOfCustomer() {
               line_reading: _customer.line_reading,
               cs_last: _customer.cs_last,
             }))}
-            rowKey="index"
             pagination={{
               pageSize: 10,
+            }}
+            scroll={{
+              x: 1600,
             }}
           ></Table>
         </div>

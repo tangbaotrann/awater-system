@@ -9,8 +9,6 @@ import ReprintButton from "./ReprintButton";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
-  Dropdown,
-  Menu,
   Form,
   Input,
   Button,
@@ -21,29 +19,13 @@ import {
   InputNumber,
   theme,
   Table,
-  Modal,
-  Upload,
   Progress,
   Space,
 } from "antd";
 import {
   SearchOutlined,
-  DownloadOutlined,
-  EditOutlined,
   DeleteOutlined,
-  PlusCircleOutlined,
-  CalculatorOutlined,
-  SyncOutlined,
-  RetweetOutlined,
   CheckCircleOutlined,
-  CalendarOutlined,
-  RedoOutlined,
-  FileExcelOutlined,
-  UploadOutlined,
-  ToolOutlined,
-  TableOutlined,
-  FundOutlined,
-  LineChartOutlined,
   FormOutlined,
   SnippetsOutlined,
   PrinterOutlined,
@@ -438,7 +420,7 @@ function InvoicePrint() {
           borderRadius: token.borderRadiusLG,
           marginTop: 16,
           padding: "10px 10px",
-          height: "640px",
+          height: "450px",
           position: "relative",
         }}
       >
@@ -449,32 +431,32 @@ function InvoicePrint() {
             total: 10000,
             pageSize: 50,
           }}
-          scroll={{ x: 800, y: 450 }}
+          scroll={{ x: 1500, y: 290 }}
           columns={columns}
           dataSource={data1}
           onChange={handleData1Change}
         />
-        <div style={{ display: "flex", position: "absolute", bottom: "300" }}>
+        <div style={{ display: "flex", position: "absolute", bottom: "200" }}>
           <Progress
             percent={10}
-            size={[300, 20]}
+            size={[200, 20]}
             format={(percent) => `${percent * 10}`}
           />
           <Progress
             percent={60}
-            size={[300, 20]}
+            size={[200, 20]}
             strokeColor="yellow"
             format={(percent) => `${percent * 10}`}
           />
           <Progress
             percent={70}
-            size={[300, 20]}
+            size={[200, 20]}
             strokeColor="red"
             format={(percent) => `${percent * 10}`}
           />
           <Progress
             percent={30}
-            size={[300, 20]}
+            size={[200, 20]}
             strokeColor="#ff8033"
             format={(percent) => `${percent * 10}`}
           />

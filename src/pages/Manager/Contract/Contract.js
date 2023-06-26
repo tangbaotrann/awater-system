@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input, Popover, Row, Select, Tabs } from "antd";
+import { Button, Col, Form, Input, Popover, Row, Select } from "antd";
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 
@@ -24,7 +24,7 @@ function Contract() {
       <Form onFinish={handleSubmit} onFinishFailed={handleFailed}>
         <Row>
           {/* Số hợp đồng */}
-          <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
+          <Col xs={24} sm={24} md={12} lg={5} className="gutter-item"> 
             <Form.Item name="num_contract" label="Số hợp đồng: ">
               <Input name="num_contract" placeholder="Nhập số hợp đồng" />
             </Form.Item>
@@ -139,6 +139,7 @@ function Contract() {
           {/* check mobile */}
           {isTabletOrMobile ? (
             <Popover
+              rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
               content={<TabList isTabletOrMobile={isTabletOrMobile} />}

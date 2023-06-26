@@ -248,6 +248,10 @@ function TableHistoryUseWater() {
             fall_day: _history.fall_day,
           }))}
           rowKey="id"
+          size="small"
+          scroll={{
+            x: 1200,
+          }}
         ></Table>
       </div>
     </>

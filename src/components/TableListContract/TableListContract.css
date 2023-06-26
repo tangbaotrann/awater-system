@@ -11,12 +11,6 @@
     overflow-x: auto;
 }
 
-/* custom page size -> to left */
-.container-tbl-contract .ant-table-pagination-right {
-    display: flex;
-    justify-content: flex-start !important;
-}
-
 /* Modal tbl contract */
 .title-update-info-contract {
     margin-bottom: 12px;
@@ -45,12 +39,6 @@
 }
 
 /* table clock on modal  */
-/* custom page size -> to left */
-.tablist-tbl-clock-on-modal .ant-table-pagination-right {
-    display: flex;
-    justify-content: flex-start !important;
-}
-
 .tablist-tbl-clock-on-modal {
     overflow-x: auto;
 }
@@ -111,4 +99,82 @@
 
 .btn-close-change-clock {
     margin-left: 12px;
+}
+
+/* Debt (Tiện ích) */
+.debt-title-name {
+    margin-top: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.debt-title-name:hover {
+    color: var(--blue-1677ff);
+    transition: 0.4s all;
+}
+
+.debt-icon-left {
+    margin-right: 6px;
+}
+
+.debt-func-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.space-btn-item {
+    margin-right: 10px;
+}
+
+/* container table debt */
+.container-tbl-debt {
+    overflow-x: auto;
+}
+
+/* Popover */
+.popover-debt {
+    pointer-events: none;
+}
+
+.fix-popover-z-index {
+    z-index: 10 !important;
+}
+
+/* Buttons update info debt */
+.func-update-info-debt-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.item-update-info-debt-btn {
+    margin: 0 12px;
+}
+
+/* container debt utilities */
+.container-debt-utilities {
+    display: flex;
+    flex-direction: column;
+}
+
+/* container table sort number */
+.container-tbl-sort-number {
+    overflow-x: auto;
+}
+
+/* Buttons sort number */
+.func-sort-number-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.item-sort-number-btn {
+    margin-right: 12px;
+}
+
+/* Collapse space */
+.collapse-space-right-item {
+    padding-right: 10px;
 }

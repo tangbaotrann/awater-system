@@ -9,8 +9,11 @@ import {
   Row,
   Select,
 } from "antd";
+import { useMediaQuery } from "react-responsive";
 
 function FormUpdateClock({ tabList, hideModal }) {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
   // handle submit form (change clock)
   const handleSubmitChangeClock = (values) => {
     console.log("values ->", values);
@@ -72,7 +75,7 @@ function FormUpdateClock({ tabList, hideModal }) {
           <Form.Item
             name="line_reading"
             label="Tuyến đọc: "
-            className="gutter-item"
+            className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Input name="line_reading" placeholder="Nhập tuyến đọc" />
           </Form.Item>
@@ -98,7 +101,7 @@ function FormUpdateClock({ tabList, hideModal }) {
           <Form.Item
             name="type_clock"
             label="Kiểu đồng hồ: "
-            className="gutter-item"
+            className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Input name="type_clock" placeholder="Nhập Kiểu đồng hồ" />
           </Form.Item>
@@ -114,7 +117,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Mã đồng hồ + Seri đồng hồ */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Mã đồng hồ: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Mã đồng hồ: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập mã đồng hồ" />
           </Form.Item>
         </Col>
@@ -129,13 +136,21 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Serial chỉ + Chỉ số đầu + Chỉ số cuối */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Serial chỉ: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Serial chỉ: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập serial chỉ" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={6}>
-          <Form.Item name="" label="Chỉ số đầu: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Chỉ số đầu: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập chỉ số đầu" />
           </Form.Item>
         </Col>
@@ -150,7 +165,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Ngày lắp đặt + Lý do hủy */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Ngày lắp đặt: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Ngày lắp đặt: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập ngày lắp đặt" />
           </Form.Item>
         </Col>
@@ -169,7 +188,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Ngày bắt đầu + Ngày kết thúc */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Ngày bắt đầu: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Ngày bắt đầu: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày bắt đầu"
@@ -179,7 +202,11 @@ function FormUpdateClock({ tabList, hideModal }) {
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Ngày kết thúc: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Ngày kết thúc: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày kết thúc"
@@ -199,7 +226,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Kiểu đồng hồ + Đường kính  */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Kiểu đồng hồ: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Kiểu đồng hồ: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập Kiểu đồng hồ" />
           </Form.Item>
         </Col>
@@ -214,7 +245,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Mã đồng hồ + Seri đồng hồ */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Mã đồng hồ: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Mã đồng hồ: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập mã đồng hồ" />
           </Form.Item>
         </Col>
@@ -229,7 +264,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Serial chỉ + Chỉ số đầu */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Serial chỉ: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Serial chỉ: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập serial chỉ" />
           </Form.Item>
         </Col>
@@ -244,7 +283,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Ngày sử dụng + Ngày kiểm định */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Ngày sử dụng: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Ngày sử dụng: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày sử dụng"
@@ -254,7 +297,11 @@ function FormUpdateClock({ tabList, hideModal }) {
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Ngày kiểm định: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Ngày kiểm định: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày kiểm định"
@@ -267,7 +314,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Hiệu lực KĐ + Người thay */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Hiệu lực KĐ: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Hiệu lực KĐ: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn hiệu lực KĐ"
@@ -290,7 +341,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Lý do thay + Hình thức xử lý */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Lý do thay: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Lý do thay: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[{ value: "1", label: "LD 1" }]}
@@ -313,7 +368,11 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Ghi chú + Trạng thái ĐH lắp */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Ghi chú: " className="gutter-item">
+          <Form.Item
+            name=""
+            label="Ghi chú: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
@@ -333,7 +392,11 @@ function FormUpdateClock({ tabList, hideModal }) {
 
       {/* Button */}
       <div className="btn-func-change-clock">
-        <Button htmlType="submit" type="primary">
+        <Button
+          htmlType="submit"
+          type="primary"
+          className="btn-update-change-clock"
+        >
           <EditOutlined />
           Cập nhật
         </Button>

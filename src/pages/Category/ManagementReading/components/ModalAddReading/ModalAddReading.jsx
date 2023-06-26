@@ -9,13 +9,12 @@ import {
   Select,
   Space,
 } from "antd";
-import React, { useId } from "react";
+import React, { useEffect, useId } from "react";
 
 import "./ModalAddReading.css";
 import { useSelector } from "react-redux";
 
 const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
-  const [form] = Form.useForm();
   const employeeOptions = [];
   for (let i = 1; i < 36; i++) {
     employeeOptions.push({
@@ -37,9 +36,14 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
       label: `Kỳ ghi ${i}`,
     });
   }
+  const [form] = Form.useForm();
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
-
+  useEffect(() => {
+    form.setFieldValue("symbol", tabList?.symbol || "");
+    form.setFieldValue("describe", tabList?.describe || "");
+    form.setFieldValue("unit", tabList?.unit || "");
+  }, [tabList]);
   return (
     <Modal
       title={!tabList ? "Thêm dữ liệu" : "Sửa dữ liệu"}
@@ -183,6 +187,16 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
             format={dateFormatList}
           />
         </Form.Item>
+        {tabList && (
+          <div style={{ marginBottom: "10px" }}>
+            <span style={{ fontWeight: "600" }}>
+              Nếu bạn muốn sửa nhân viên quản lý thì dùng chức năng:{" "}
+              <span style={{ fontWeight: "600", color: "red" }}>
+                Chuyển cán bộ quản lý
+              </span>
+            </span>
+          </div>
+        )}
 
         <Form.Item className="form-item-button">
           <Space size={5} className="modal-button-actions">
