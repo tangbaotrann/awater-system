@@ -99,6 +99,7 @@ const TwoButtonPrint = ({ hideModal }) => {
             key="reset"
             type="primary"
             icon={<RedoOutlined />}
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
           >
             Làm mới
@@ -109,6 +110,7 @@ const TwoButtonPrint = ({ hideModal }) => {
             type="primary"
             htmlType="submit"
             icon={<PrinterOutlined />}
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             In
           </Button>

@@ -60,17 +60,64 @@ const PrintButton = ({ hideModal }) => {
             </Form.Item>
           </Col>
         </Row>
+        <Row gutter={24}>
+          <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
+            <Form.Item name="canbodoc" label="Cán bộ đọc">
+              <Select style={{ width: "100%" }}>
+                <Option value="A">A</Option>
+                <Option value="B">B</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
+            <Form.Item name="tuyendoc" label="Tuyến đọc">
+              <Select style={{ width: "100%" }}>
+                <Option value="A">A</Option>
+                <Option value="B">B</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
+            <Form.Item name="phamvi" label="Phạm vi">
+              <Select style={{ width: "100%" }}>
+                <Option value="A">A</Option>
+                <Option value="B">B</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
+            <Form.Item name="Loại khách hàng" label="Loại khách hàng">
+              <Select style={{ width: "100%" }}>
+                <Option value="A">A</Option>
+                <Option value="B">B</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
         <Row>
           <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
-            <Form.Item name="tenphien" label="Tên phiên">
+            <Form.Item name="sohopdong" label="Số hợp đồng">
               <Input min={1} max={10} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
         <Row>
           <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
-            <Form.Item name="ghichu" label="Ghi chú">
-              <Input min={1} max={10} style={{ width: "100%" }} />
+            <Form.Item name="tieuthu" label="Tiêu thụ >=">
+              <InputNumber min={1} max={10} style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
+            <Form.Item name="tenphien" label="Tên phiên">
+              <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -84,21 +131,14 @@ const PrintButton = ({ hideModal }) => {
             </Form.Item>
           </Col>
         </Row>
-        <Row>
-          <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
-            <Form.Item name="sohoadon" label="Số hóa đơn">
-              <Input style={{ width: "100%" }} />
-            </Form.Item>
-          </Col>
-        </Row>
 
         <Row>
-          <Col span={12} className={isTabletOrMobile ? "" : "gutter-item"}>
+          <Col span={10} className={isTabletOrMobile ? "" : "gutter-item"}>
             <Form.Item name="sohoadonbd" label="Số hóa đơn BĐ">
               <InputNumber min={1} />
             </Form.Item>
           </Col>
-          <Col span={12} className={isTabletOrMobile ? "" : "gutter-item"}>
+          <Col span={10} className={isTabletOrMobile ? "" : "gutter-item"}>
             <Form.Item name="sohoadonkt" label="Số hóa đơn KT">
               <InputNumber min={1} />
             </Form.Item>
@@ -122,36 +162,45 @@ const PrintButton = ({ hideModal }) => {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={16}>
-          <Col xs={24} sm={8}>
-            <Button
-              key="reset"
-              type="primary"
-              icon={<RedoOutlined />}
-              onClick={onReset}
-            >
-              Làm mới
-            </Button>
+        <Row gutter={24}>
+          <Col span={24} className={isTabletOrMobile ? "" : "gutter-item"}>
+            <Form.Item name="Canbothutien" label="Cán bộ thu tiền">
+              <Select style={{ width: "100%" }}>
+                <Option value="A">A</Option>
+                <Option value="B">B</Option>
+              </Select>
+            </Form.Item>
           </Col>
-          <Col xs={24} sm={8}>
-            <Button
-              key="submit"
-              type="primary"
-              htmlType="submit"
-              icon={<PrinterOutlined />}
-            >
-              In
-            </Button>
-          </Col>
-          <Col xs={24} sm={8}>
-            <Button
-              htmlType="submit"
-              type="primary"
-              onClick={() => hideModal()}
-            >
-              Đóng
-            </Button>
-          </Col>
+        </Row>
+        <Row>
+          <Button
+            key="reset"
+            type="primary"
+            icon={<RedoOutlined />}
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            onClick={onReset}
+          >
+            Làm mới
+          </Button>
+          ,
+          <Button
+            key="submit"
+            type="primary"
+            htmlType="submit"
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            icon={<PrinterOutlined />}
+          >
+            In
+          </Button>
+          ,
+          <Button
+            htmlType="submit"
+            type="primary"
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            onClick={() => hideModal()}
+          >
+            Đóng
+          </Button>
         </Row>
       </Form>
     </>

@@ -86,7 +86,7 @@ const PrintCodeKH = ({ hideModal }) => {
         </Row>
         <Row>
           <Col span={24}>
-            <Form.Item name="sohoadon" label="Số hóa đơn">
+            <Form.Item name="makhachang" label="Mã khách hàng">
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -127,6 +127,7 @@ const PrintCodeKH = ({ hideModal }) => {
             key="reset"
             type="primary"
             icon={<RedoOutlined />}
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
           >
             Làm mới
@@ -137,6 +138,7 @@ const PrintCodeKH = ({ hideModal }) => {
             type="primary"
             htmlType="submit"
             icon={<PrinterOutlined />}
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             In
           </Button>

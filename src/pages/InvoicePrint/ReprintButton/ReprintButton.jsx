@@ -122,6 +122,7 @@ const ReprintButton = ({ hideModal }) => {
             key="reset"
             type="primary"
             icon={<RedoOutlined />}
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
           >
             Làm mới
@@ -132,6 +133,7 @@ const ReprintButton = ({ hideModal }) => {
             type="primary"
             htmlType="submit"
             icon={<PrinterOutlined />}
+            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             In
           </Button>
