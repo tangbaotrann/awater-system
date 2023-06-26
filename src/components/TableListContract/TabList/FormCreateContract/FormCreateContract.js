@@ -224,7 +224,6 @@ function FormCreateContract({ tabList, hideModal }) {
           </Button>
 
           <Button
-            htmlType="submit"
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}

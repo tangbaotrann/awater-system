@@ -61,6 +61,9 @@ function InfoClock() {
               }}
               rowKey="index"
               size="small"
+              scroll={{
+                x: 500,
+              }}
             ></Table>
           </div>
         </Col>

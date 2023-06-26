@@ -11,12 +11,6 @@
     overflow-x: auto;
 }
 
-/* custom page size -> to left */
-.container-tbl-contract .ant-table-pagination-right {
-    display: flex;
-    justify-content: flex-start !important;
-}
-
 /* Modal tbl contract */
 .title-update-info-contract {
     margin-bottom: 12px;
@@ -45,12 +39,6 @@
 }
 
 /* table clock on modal  */
-/* custom page size -> to left */
-.tablist-tbl-clock-on-modal .ant-table-pagination-right {
-    display: flex;
-    justify-content: flex-start !important;
-}
-
 .tablist-tbl-clock-on-modal {
     overflow-x: auto;
 }

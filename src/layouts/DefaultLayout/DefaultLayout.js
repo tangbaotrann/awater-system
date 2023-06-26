@@ -90,9 +90,6 @@ function DefaultLayout({ children }) {
               {
                 className: "trigger",
                 onClick: () => setCollapsed(!collapsed),
-                style: {
-                  marginLeft: "20px",
-                },
               }
             )}
         </Header>

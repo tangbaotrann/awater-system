@@ -124,6 +124,9 @@ function TableReportCustomer() {
           pagination={{
             pageSize: 10,
           }}
+          scroll={{
+            x: 2000,
+          }}
           rowKey="key"
           size="small"
           rowClassName="record-title-name"

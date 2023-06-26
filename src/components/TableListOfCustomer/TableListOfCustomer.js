@@ -163,6 +163,9 @@ function TableListOfCustomer() {
             pagination={{
               pageSize: 10,
             }}
+            scroll={{
+              x: 1600,
+            }}
           ></Table>
         </div>
       </div>

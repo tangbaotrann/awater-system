@@ -19,8 +19,12 @@ function InfoDetailClock() {
     <div className="container-detail-clock">
       <Row>
         {/* Đơn vị HC */}
-        <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
-          <Form.Item name="" label="Đơn vị HC: ">
+        <Col xs={24} sm={24} md={12} lg={8}>
+          <Form.Item
+            name=""
+            label="Đơn vị HC: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -33,8 +37,8 @@ function InfoDetailClock() {
         </Col>
 
         {/*  */}
-        <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
-          <Form.Item name="">
+        <Col xs={24} sm={24} md={12} lg={8}>
+          <Form.Item name="" className={isTabletOrMobile ? "" : "gutter-item"}>
             <Select
               fieldNames=""
               options={[
@@ -47,8 +51,8 @@ function InfoDetailClock() {
         </Col>
 
         {/*  */}
-        <Col xs={24} sm={24} md={12} lg={7}>
-          <Form.Item name="">
+        <Col xs={24} sm={24} md={12} lg={8}>
+          <Form.Item name="" className={isTabletOrMobile ? "" : "gutter-item"}>
             <Select
               fieldNames=""
               options={[
@@ -63,8 +67,12 @@ function InfoDetailClock() {
 
       <Row>
         {/* Vùng */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Vùng: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Vùng: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -77,8 +85,12 @@ function InfoDetailClock() {
         </Col>
 
         {/* Khu vực */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="" label="Khu vực: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Khu vực: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -93,8 +105,12 @@ function InfoDetailClock() {
 
       <Row>
         {/* Nhân viên */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Nhân viên: (*)">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Nhân viên: (*)"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -107,8 +123,12 @@ function InfoDetailClock() {
         </Col>
 
         {/* Tuyến đọc */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="" label="Tuyến đọc: (*)">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Tuyến đọc: (*)"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -123,8 +143,12 @@ function InfoDetailClock() {
 
       <Row>
         {/* Phạm vi */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Phạm vi: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Phạm vi: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -137,8 +161,12 @@ function InfoDetailClock() {
         </Col>
 
         {/* Mã */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="" label="Mã: (*)">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Mã: (*)"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập mã" />
           </Form.Item>
         </Col>
@@ -146,8 +174,12 @@ function InfoDetailClock() {
 
       <Row>
         {/* Đồng hồ block */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Đồng hồ block: ">
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item
+            name=""
+            label="Đồng hồ block: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -161,21 +193,32 @@ function InfoDetailClock() {
 
         {/*  */}
         <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
-          <Form.Item name="" label="Là đồng hồ phụ: ">
+          <Form.Item
+            name=""
+            label="Là đồng hồ phụ: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Checkbox name="" />
           </Form.Item>
         </Col>
 
         {/* Thứ tự */}
-        <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
-          <Form.Item name="" label="Thứ tự: ">
+        <Col xs={24} sm={24} md={12} lg={5}>
+          <Form.Item
+            name=""
+            label="Thứ tự: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input placeholder="Nhập thứ tự" />
           </Form.Item>
         </Col>
 
         {/* button (Thứ tự) */}
-        <Col xs={24} sm={24} md={12} lg={1} className="gutter-item">
-          <Button type="primary">
+        <Col xs={24} sm={24} md={12} lg={1}>
+          <Button
+            type="primary"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <RedoOutlined />
           </Button>
         </Col>
@@ -183,8 +226,12 @@ function InfoDetailClock() {
 
       <Row>
         {/* Seri */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Seri: ">
+        <Col xs={24} sm={24} md={12} lg={11}>
+          <Form.Item
+            name=""
+            label="Seri: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập seri" />
           </Form.Item>
         </Col>
@@ -221,32 +268,38 @@ function InfoDetailClock() {
 
       <Row>
         {/* Seri chì */}
-        <Col xs={24} sm={24} md={12} lg={6} className="gutter-item">
-          <Form.Item name="" label="Seri chì: ">
+        <Col xs={24} sm={24} md={12} lg={8}>
+          <Form.Item
+            name=""
+            label="Seri chì: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập seri chì" />
           </Form.Item>
         </Col>
 
         {/* Ngày lắp đặt */}
-        <Col
-          xs={24}
-          sm={24}
-          md={12}
-          lg={8}
-          className="gutter-item gutter-item-date-picker"
-        >
-          <Form.Item name="" label="Ngày lắp đặt: ">
+        <Col xs={24} sm={24} md={12} lg={8}>
+          <Form.Item
+            name=""
+            label="Ngày lắp đặt: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày lắp đặt"
-              className={isTabletOrMobile ? "fix-date-picker-mobile" : ""}
+              className="gutter-item-date-picker"
             />
           </Form.Item>
         </Col>
 
         {/* Ngày sử dụng */}
         <Col xs={24} sm={24} md={12} lg={8}>
-          <Form.Item name="" label="Ngày sử dụng: ">
+          <Form.Item
+            name=""
+            label="Ngày sử dụng: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày sử dụng"
@@ -258,15 +311,19 @@ function InfoDetailClock() {
 
       <Row>
         {/* Địa chỉ */}
-        <Col xs={24} sm={24} md={12} lg={22} className="gutter-item">
-          <Form.Item name="" label="Địa chỉ (*)">
+        <Col xs={24} sm={24} md={12} lg={23}>
+          <Form.Item
+            name=""
+            label="Địa chỉ (*)"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập địa chỉ" />
           </Form.Item>
         </Col>
 
         {/* Checkbox (Seri) */}
         <Col xs={24} sm={24} md={12} lg={1}>
-          <Form.Item name="">
+          <Form.Item name="" className={isTabletOrMobile ? "" : "gutter-item"}>
             <Checkbox />
           </Form.Item>
         </Col>
@@ -532,7 +589,11 @@ function InfoDetailClock() {
       <Row>
         {/* Đai khởi thủy */}
         <Col xs={24} sm={24} md={12} lg={24}>
-          <Form.Item name="" label="Đai khởi thủy">
+          <Form.Item
+            name=""
+            label="Đai khởi thủy"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập đai khởi thủy" />
           </Form.Item>
         </Col>
