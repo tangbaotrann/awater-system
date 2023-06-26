@@ -89,29 +89,21 @@ function SidebarMenu() {
           ],
         },
         {
-          key: constants.RECORD_INDEX_PARENT.key,
+          key: constants.CATEGORY.key,
           icon: <TableOutlined />,
-          label: constants.RECORD_INDEX_PARENT.label,
+          label: constants.CATEGORY.label,
           children: [
             {
-              label: constants.READINGS_INDEX.label,
-              key: constants.READINGS_INDEX.key,
+              label: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key,
             },
             {
-              label: constants.ENTER_INDEX.label,
-              key: constants.ENTER_INDEX.key,
+              label: constants.CATEGORY_MANAGEMENT_READING.label,
+              key: constants.CATEGORY_MANAGEMENT_READING.key,
             },
             {
-              label: constants.BILL_ORDER.label,
-              key: constants.BILL_ORDER.key,
-            },
-            {
-              label: constants.PRINT_BILL_ORDER.label,
-              key: constants.PRINT_BILL_ORDER.key,
-            },
-            {
-              label: constants.EXPORT_PRINT_BILL_ORDER.label,
-              key: constants.EXPORT_PRINT_BILL_ORDER.key,
+              label: constants.CATEGORY_MANAGEMENT_PRICE_LIST.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_LIST.key,
             },
           ],
         },
@@ -150,6 +142,18 @@ function SidebarMenu() {
         } else if (item.key === constants.PRINT_BILL_ORDER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.EXPORT_PRINT_BILL_ORDER.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        // menu 3
+        else if (item.key === constants.CATEGORY.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (
+          item.key === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key
+        ) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.CATEGORY_MANAGEMENT_READING.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
       }}

@@ -7,4 +7,4 @@ export const btnClickOptionFactorySelector = (state) =>
 
 // click tab list (Contract)
 export const btnClickTabListContractSelector = (state) =>
-  state.tabListContractSlice.tabList;
+  state?.tabListContractSlice?.tabList;

@@ -12,4 +12,5 @@ const tabListContractSlice = createSlice({
   },
 });
 
+export const { btnClickTabListContract } = tabListContractSlice.actions;
 export default tabListContractSlice;
