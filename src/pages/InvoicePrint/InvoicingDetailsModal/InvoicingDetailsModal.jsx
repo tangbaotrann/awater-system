@@ -72,11 +72,6 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
       <Table
         dataSource={data}
         size="small"
-        pagination={{
-          current: 1,
-          total: 10000,
-          pageSize: 50,
-        }}
         scroll={{ x: 2000, y: 150 }}
         columns={[
           {

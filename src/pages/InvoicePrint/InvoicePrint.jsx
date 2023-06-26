@@ -1,15 +1,9 @@
 import { React, useState } from "react";
-
-import { useDispatch } from "react-redux";
-import { initialData, initialData2 } from "./data/data";
+import { initialData, initialData2 } from "../../utils/dataInvoicePrint/data";
 import "./InvoicePrint.css";
 import InvoicingDetailsModal from "./InvoicingDetailsModal/InvoicingDetailsModal";
-import TwoButtonPrint from "./TwoButtonPrint/TwoButtonPrint";
-import ReprintButton from "./ReprintButton/ReprintButton";
-import PrintButton from "./PrintButton/PrintButton";
-import PrintCodeKH from "./PrintCodeKH/PrintCodeKH";
+import TabListIP from "./TableListIP";
 import viVN from "antd/es/date-picker/locale/vi_VN";
-import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
   Form,
   Input,
@@ -23,36 +17,28 @@ import {
   Table,
   Progress,
   Space,
+  Popover,
 } from "antd";
 import {
   SearchOutlined,
-  DeleteOutlined,
-  CheckCircleOutlined,
   FormOutlined,
   SnippetsOutlined,
+  PlusOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "moment/locale/vi";
+import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
 function InvoicePrint() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const { token } = theme.useToken();
 
-  const dispatch = useDispatch();
   const [form] = Form.useForm();
   const handleButtonClick = () => {
     setIsModalVisible(true);
   };
-  const handleButtonClick1 = () => {
-    setIsModalVisible1(true);
-  };
-  const handleButtonClick5 = () => {
-    setIsModalVisible5(true);
-  };
   const handleModalCancel = () => {
     setIsModalVisible(false);
-  };
-  const onFinish = (values) => {
-    dispatch(updateSearchCriteria(values));
   };
   const handleMonthChange = (date) => {
     if (date) {
@@ -61,15 +47,17 @@ function InvoicePrint() {
       form.setFieldsValue({ month: undefined });
     }
   };
+  const [visible, setVisible] = useState(false);
+  const handleClick = () => {
+    setVisible(!visible);
+  };
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [setIsModalVisible1] = useState(false);
-  const [setIsModalVisible5] = useState(false);
   const { Option } = Select;
   const [data1, setData1] = useState(initialData);
 
   // Hàm xử lý khi có thay đổi dữ liệu của bảng 1
   function fetchDataForPage(page) {
-    const pageSize = 5;
+    const pageSize = 18;
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     return initialData.slice(startIndex, endIndex);
@@ -174,7 +162,7 @@ function InvoicePrint() {
         }}
       >
         <Row gutter={9}>
-          <Col span={3}>
+          <Col span={3} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               className="custom-form-item"
@@ -191,7 +179,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={7}>
+          <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item size="small" label="Cán bộ đọc" name="1">
               <Select style={{ width: "100%" }} size="small" name="s1">
                 <Option value="1">1</Option>
@@ -199,7 +187,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={6}>
+          <Col span={6} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               className="custom-form-item"
@@ -218,7 +206,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={7}>
+          <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               label={
@@ -239,7 +227,7 @@ function InvoicePrint() {
         </Row>
 
         <Row gutter={5}>
-          <Col span={15}>
+          <Col span={15} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               // className="custom-form-item"
@@ -254,7 +242,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col span={4} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               // className="custom-form-item"
@@ -269,7 +257,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={2}>
+          <Col span={2} xs={24} sm={12} md={6}>
             <Form.Item className="custom-form-item" label="" name="quantity">
               <InputNumber
                 size="small"
@@ -279,7 +267,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={3}>
+          <Col span={3} xs={24} sm={12} md={6}>
             <div>
               <Space size="small">
                 <Button
@@ -297,53 +285,6 @@ function InvoicePrint() {
             </div>
           </Col>
         </Row>
-      </Form>
-    );
-  };
-  const AdvanceFooterForm = () => {
-    const [form] = Form.useForm();
-
-    return (
-      <Form
-        form={form}
-        name="advanced_search"
-        size="small"
-        layout="inline"
-        onFinish={onFinish}
-      >
-        <div
-          style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}
-          className="footer-buttons"
-        >
-          <Button
-            onClick={handleButtonClick1}
-            icon={<CheckCircleOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            Đã in xong
-          </Button>
-          <div>
-            <PrintButton />
-          </div>
-          <div>
-            <TwoButtonPrint />
-          </div>
-          <div>
-            <ReprintButton />
-          </div>
-          <div>
-            <PrintCodeKH />
-          </div>
-          <Button
-            onClick={handleButtonClick5}
-            icon={<DeleteOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            Xóa
-          </Button>
-        </div>
       </Form>
     );
   };
@@ -368,41 +309,69 @@ function InvoicePrint() {
           pagination={{
             current: 1,
             total: initialData.length,
-            pageSize: 5,
+            pageSize: 18,
           }}
-          scroll={{ x: 1500, y: 290 }}
+          scroll={{ x: 1500, y: 340 }}
           columns={columns}
           dataSource={data1}
           onChange={handleData1Change}
         />
-        <div style={{ display: "flex", position: "absolute", bottom: "200" }}>
-          <Progress
-            percent={10}
-            size={[200, 20]}
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={60}
-            size={[200, 20]}
-            strokeColor="yellow"
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={70}
-            size={[200, 20]}
-            strokeColor="red"
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={30}
-            size={[200, 20]}
-            strokeColor="#ff8033"
-            format={(percent) => `${percent * 10}`}
-          />
+        {/* <Row>
+          <Col span={4}>
+            <Button size="small" type="primary" onClick={handleClick}>
+              Chỉ số
+            </Button>
+          </Col>
+          <Col span={20}>
+            {visible && (
+              <Row>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                  <Progress
+                    percent={10}
+                    format={(percent) => `${percent * 10}`}
+                  />
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                  <Progress
+                    percent={60}
+                    strokeColor="yellow"
+                    format={(percent) => `${percent * 10}`}
+                  />
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                  <Progress
+                    percent={70}
+                    strokeColor="red"
+                    format={(percent) => `${percent * 10}`}
+                  />
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                  <Progress
+                    percent={30}
+                    strokeColor="#ff8033"
+                    format={(percent) => `${percent * 10}`}
+                  />
+                </Col>
+              </Row>
+            )}
+          </Col>
+        </Row> */}
+        <div className="contract-bottom">
+          <div className="contract-bottom-func">
+            {isTabletOrMobile ? (
+              <Popover
+                rootClassName="fix-popover-z-index"
+                placement="bottomRight"
+                trigger="click"
+                content={<TabListIP isTabletOrMobile={isTabletOrMobile} />}
+              >
+                <PlusOutlined />
+              </Popover>
+            ) : (
+              <TabListIP />
+            )}
+          </div>
         </div>
-      </div>
-      <div style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}>
-        <AdvanceFooterForm />
       </div>
     </>
   );

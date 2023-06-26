@@ -8,3 +8,6 @@ export const btnClickOptionFactorySelector = (state) =>
 // click tab list (Contract)
 export const btnClickTabListContractSelector = (state) =>
   state.tabListContractSlice.tabList;
+//click tab list  (Invoice Print)
+export const btnClickTabListInvoicePrintSelector = (state) =>
+  state.tabListInvoicePrintSlice.tabListIP;
