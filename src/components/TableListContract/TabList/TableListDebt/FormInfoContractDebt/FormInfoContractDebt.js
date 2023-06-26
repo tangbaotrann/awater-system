@@ -57,6 +57,31 @@ function FormInfoContractDebt({
       title: "Tiền đã trả",
       dataIndex: "money_paid",
     },
+    {
+      key: "money_owed",
+      title: "Tiền còn nợ",
+      dataIndex: "money_owed",
+    },
+    {
+      key: "date_start",
+      title: "Ngày BĐ trả",
+      dataIndex: "date_start",
+    },
+    {
+      key: "date_end",
+      title: "Ngày KT trả",
+      dataIndex: "date_end",
+    },
+    {
+      key: "form_payment",
+      title: "Hình thức trả",
+      dataIndex: "form_payment",
+    },
+    {
+      key: "code_clock",
+      title: "Mã đồng hồ",
+      dataIndex: "code_clock",
+    },
   ];
 
   // handle submit form (Thông tin hợp đồng nợ)

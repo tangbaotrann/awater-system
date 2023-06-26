@@ -9,14 +9,21 @@ import {
   Row,
   Select,
 } from "antd";
+import { useMediaQuery } from "react-responsive";
 
 function InfoContract() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
   return (
     <>
       <Row>
         {/* Mã đăng ký */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Mã đăng ký: ">
+        <Col xs={24} sm={24} md={12} lg={10}>
+          <Form.Item
+            name=""
+            label="Mã đăng ký: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập mã đăng ký" />
           </Form.Item>
         </Col>
@@ -27,14 +34,18 @@ function InfoContract() {
         </Col>
 
         {/* Số hợp đồng*/}
-        <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
-          <Form.Item name="" label="Số hợp đồng: (*)">
+        <Col xs={24} sm={24} md={12} lg={10}>
+          <Form.Item
+            name=""
+            label="Số hợp đồng: (*)"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập số hợp đồng" />
           </Form.Item>
         </Col>
 
         {/* Button reset (mã khách hàng) */}
-        <Col xs={24} sm={24} md={12} lg={1}>
+        <Col xs={24} sm={24} md={12} lg={2}>
           <Button type="primary">
             <RedoOutlined />
           </Button>
@@ -43,8 +54,12 @@ function InfoContract() {
 
       <Row>
         {/* ĐT giá */}
-        <Col xs={24} sm={24} md={12} lg={23} className="gutter-item">
-          <Form.Item name="" label="ĐT giá: (*)">
+        <Col xs={24} sm={24} md={12} lg={24}>
+          <Form.Item
+            name=""
+            label="ĐT giá: (*)"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -59,8 +74,12 @@ function InfoContract() {
 
       <Row>
         {/* Mục đích SD */}
-        <Col xs={24} sm={24} md={12} lg={23} className="gutter-item">
-          <Form.Item name="" label="Mục đích SD: ">
+        <Col xs={24} sm={24} md={12} lg={24}>
+          <Form.Item
+            name=""
+            label="Mục đích SD: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -75,8 +94,12 @@ function InfoContract() {
 
       <Row>
         {/* Khu vực TT */}
-        <Col xs={24} sm={24} md={12} lg={23} className="gutter-item">
-          <Form.Item name="" label="Khu vực TT: ">
+        <Col xs={24} sm={24} md={12} lg={24}>
+          <Form.Item
+            name=""
+            label="Khu vực TT: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -91,8 +114,12 @@ function InfoContract() {
 
       <Row>
         {/* Hình thức TT */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="" label="Hình thức TT: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Hình thức TT: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -105,8 +132,12 @@ function InfoContract() {
         </Col>
 
         {/* Mã vạch */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Mã vạch: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Mã vạch: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập mã vạch" />
           </Form.Item>
         </Col>
@@ -114,8 +145,12 @@ function InfoContract() {
 
       <Row>
         {/* Ngày ký hợp đồng */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="" label="Ngày ký HĐ: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Ngày ký HĐ: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày ký hợp đồng"
@@ -125,8 +160,12 @@ function InfoContract() {
         </Col>
 
         {/* Ngày lắp đặt */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Ngày lắp đặt: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Ngày lắp đặt: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày lắp đặt"
@@ -138,8 +177,12 @@ function InfoContract() {
 
       <Row>
         {/* Người lắp đặt */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="" label="Người lắp đặt: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Người lắp đặt: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[
@@ -152,8 +195,12 @@ function InfoContract() {
         </Col>
 
         {/* Ngày NT */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Ngày NT ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Ngày NT "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày NT"
@@ -165,15 +212,23 @@ function InfoContract() {
 
       <Row>
         {/* Tiền lắp đặt */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="" label="Tiền lắp đặt">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Tiền lắp đặt"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập tiền lắp đặt" />
           </Form.Item>
         </Col>
 
         {/* Người nộp */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Người nộp">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Người nộp"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập người nộp" />
           </Form.Item>
         </Col>
@@ -181,15 +236,23 @@ function InfoContract() {
 
       <Row>
         {/* Tiền đặt cọc */}
-        <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
-          <Form.Item name="" label="Tiền đặt cọc">
+        <Col xs={24} sm={24} md={12} lg={8}>
+          <Form.Item
+            name=""
+            label="Tiền đặt cọc"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập tiền đặt cọc" />
           </Form.Item>
         </Col>
 
         {/* Giảm trừ theo */}
-        <Col xs={24} sm={24} md={12} lg={8} className="gutter-item">
-          <Form.Item name="" label="Giảm trừ theo">
+        <Col xs={24} sm={24} md={12} lg={8}>
+          <Form.Item
+            name=""
+            label="Giảm trừ theo"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[{ value: "1", label: "tiền / hóa đơn" }]}
@@ -199,8 +262,12 @@ function InfoContract() {
         </Col>
 
         {/* Số tiền */}
-        <Col xs={24} sm={24} md={12} lg={6} className="gutter-item">
-          <Form.Item name="" label="Số tiền">
+        <Col xs={24} sm={24} md={12} lg={8}>
+          <Form.Item
+            name=""
+            label="Số tiền"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập số tiền" />
           </Form.Item>
         </Col>
@@ -208,8 +275,12 @@ function InfoContract() {
 
       <Row>
         {/* Ngày đặt cọc */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
-          <Form.Item name="" label="Ngày đặt cọc: ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Ngày đặt cọc: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <DatePicker
               name=""
               placeholder="Chọn ngày đặt cọc"
@@ -219,8 +290,12 @@ function InfoContract() {
         </Col>
 
         {/* Chứng từ */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Chứng từ">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Chứng từ"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập chứng từ" />
           </Form.Item>
         </Col>
@@ -228,19 +303,24 @@ function InfoContract() {
 
       <Row>
         {/* Cam kết sử dụng nước */}
-        <Col xs={24} sm={24} md={12} lg={12} className="gutter-item">
+        <Col xs={24} sm={24} md={12} lg={12}>
           <Form.Item
             name=""
             label="Cam kết sử dụng nước: "
             valuePropName="checked"
+            className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Checkbox />
           </Form.Item>
         </Col>
 
         {/* Khối lượng cam kết */}
-        <Col xs={24} sm={24} md={12} lg={10} className="gutter-item">
-          <Form.Item name="" label="Khối lượng cam kết">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Khối lượng cam kết"
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Select
               fieldNames=""
               options={[{ value: "1", label: "CK 1" }]}
@@ -252,8 +332,12 @@ function InfoContract() {
 
       <Row>
         {/* Ghi chú */}
-        <Col xs={24} sm={24} md={12} lg={23}>
-          <Form.Item name="" label="Ghi chú: ">
+        <Col xs={24} sm={24} md={12} lg={24}>
+          <Form.Item
+            name=""
+            label="Ghi chú: "
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Input name="" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
