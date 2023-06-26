@@ -95,8 +95,7 @@ const columnsDetailTable = [
   },
 ];
 
-const TablePriceList = () => {
-  console.log("Notification;", Notification);
+const TablePriceList = ({viewTableDetail}) => {
   const priceListData = [];
   for (let i = 0; i <= 10; i++) {
     priceListData.push({
@@ -176,7 +175,7 @@ const TablePriceList = () => {
           }}
         />
       </div>
-      {tabList ? (
+      {(tabList && viewTableDetail) ? (
         <div className="table-detail">
           <Table
             columns={columnsDetailTable}

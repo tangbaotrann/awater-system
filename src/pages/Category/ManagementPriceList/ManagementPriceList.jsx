@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
 import CategoryHeader from "../../../components/CategoryHeader/CategoryHeader";
 import ModalConfirmDelete from "../../../components/ModalConfirmDelete/ModalConfirmDelete";
 import TablePriceList from "./components/TablePriceList/TablePriceList";
+import { btnClickTabListContract } from "../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
 const ManagementPriceList = () => {
   const [isOpenModalAddSubject, setIsOpenModalAddSubject] = useState(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
-
+  const [viewTableDetail, setViewTableDetail] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(btnClickTabListContract(null));
+  }, []);
   const handleOk = (type) => {
     if (type === "addPriceSubject") {
       setIsOpenModalAddSubject(false);
@@ -28,10 +35,11 @@ const ManagementPriceList = () => {
         <CategoryHeader
           setIsOpenModalAddSubject={setIsOpenModalAddSubject}
           setIsOpenModalDelete={setIsOpenModalDelete}
+          setViewTableDetail={setViewTableDetail}
         />
       </div>
       <div className="management-price-subject-table">
-        <TablePriceList />
+        <TablePriceList viewTableDetail={viewTableDetail} />
       </div>
       {/* <ModalAddPriceSubject
         handleCancel={handleCancel}

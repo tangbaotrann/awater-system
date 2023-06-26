@@ -15,9 +15,9 @@ const readingColumns = (showHeader) => [
     align: "center",
   },
   {
-    key: "stt",
+    key: "index",
     title: showHeader ? "STT" : "",
-    dataIndex: "stt",
+    dataIndex: "index",
     width: "4vw",
     align: "center",
   },
@@ -68,7 +68,7 @@ const TableReading = () => {
       data: [
         {
           key: i,
-          stt: i,
+          index: i,
           codeLine: `Mã tuyến ${i}`,
           nameLine: `Tên tuyến ${i}`,
           cashier: `Nhân viên thu tiền ${i}`,
@@ -83,7 +83,7 @@ const TableReading = () => {
   for (let i = 0; i <= 10; i++) {
     readingDataChildren.push({
       key: i,
-      stt: i,
+      index: i,
       codeLine: `Mã tuyến ${i}`,
       nameLine: `Tên tuyến ${i}`,
       cashier: `Nhân viên thu tiền ${i}`,

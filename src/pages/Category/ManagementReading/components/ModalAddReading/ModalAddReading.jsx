@@ -39,11 +39,27 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
   const [form] = Form.useForm();
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
+
   useEffect(() => {
-    form.setFieldValue("symbol", tabList?.symbol || "");
-    form.setFieldValue("describe", tabList?.describe || "");
-    form.setFieldValue("unit", tabList?.unit || "");
+    form.setFieldValue("employee", tabList?.cashier || "");
+    form.setFieldValue("index", tabList?.index || "");
+    form.setFieldValue("codeLine", tabList?.codeLine || "");
+    form.setFieldValue("nameLine", tabList?.nameLine || "");
+    form.setFieldValue("cashier", tabList?.cashier || "");
+    form.setFieldValue("indexingPeriod", tabList?.indexingPeriod || "");
   }, [tabList]);
+  useEffect(() => {
+    if (!isOpen) return;
+    return () => {
+      form.setFieldValue("employee", "");
+      form.setFieldValue("index", "");
+      form.setFieldValue("codeLine", "");
+      form.setFieldValue("nameLine", "");
+      form.setFieldValue("cashier", "");
+      form.setFieldValue("indexingPeriod", "");
+    };
+  }, [isOpen]);
+
   return (
     <Modal
       title={!tabList ? "Thêm dữ liệu" : "Sửa dữ liệu"}

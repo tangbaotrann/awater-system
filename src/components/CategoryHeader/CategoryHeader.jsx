@@ -20,6 +20,7 @@ const CategoryHeader = ({
   setIsOpenModalDelete,
   setIsOpenModalTransfer,
   setOpenTransferManagers,
+  setViewTableDetail,
 }) => {
   const dispatch = useDispatch();
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
@@ -48,6 +49,10 @@ const CategoryHeader = ({
     } else if (typeTransfer === "billCollector") {
       setOpenTransferManagers(false);
     }
+  };
+  const handleViewTableDetail = (e) => {
+    e.preventDefault();
+    setViewTableDetail(true);
   };
 
   return (
@@ -81,7 +86,7 @@ const CategoryHeader = ({
               className="button"
               type="primary"
               icon={<FormOutlined />}
-              // onClick={() => setIsOpenModalBill(true)}
+              onClick={(e) => handleViewTableDetail(e)}
               disable
               size="small"
               disabled={!tabList}

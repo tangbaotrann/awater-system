@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import CategoryHeader from "../../../components/CategoryHeader/CategoryHeader";
 import ModalConfirmDelete from "../../../components/ModalConfirmDelete/ModalConfirmDelete";
 import TablePriceSubject from "./components/TablePriceSubject/TablePriceSubject";
 import ModalAddPriceSubject from "./components/ModalAddPriceSubject/ModalAddPriceSubject";
+import { btnClickTabListContract } from "../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
 import "./ManagementPriceSubject.css";
 
 const ManagementPriceSubject = () => {
   const [isOpenModalAddSubject, setIsOpenModalAddSubject] = useState(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(btnClickTabListContract(null));
+  }, []);
   const handleOk = (type) => {
     if (type === "addPriceSubject") {
       setIsOpenModalAddSubject(false);
