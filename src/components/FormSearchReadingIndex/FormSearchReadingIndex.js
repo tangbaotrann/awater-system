@@ -21,7 +21,7 @@ export const AdvancedSearchForm = () => {
       size="small"
     >
       <Row gutter={24}>
-        <Col span={8}>
+        <Col span={8} xs={24} sm={12} lg={8}>
           <Form.Item name="date" label="Chọn tháng">
             <DatePicker
               allowClear
@@ -32,7 +32,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col span={8} xs={24} sm={12} lg={8}>
           <Form.Item name="person" label="Cán bộ đọc">
             <Select
               style={{
@@ -51,7 +51,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={8}>
+        <Col span={8} xs={24} sm={12} lg={8}>
           <Form.Item name="tuyendoc" label="Tuyến đọc">
             <Select
               style={{
@@ -81,7 +81,7 @@ export const AdvancedSearchForm = () => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} >
           <Form.Item name="status" label="Trạng thái">
             <Select
               style={{
@@ -100,7 +100,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} >
           <Form.Item name="place" label="Khu vực">
             <Select
               style={{
@@ -119,7 +119,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} >
           <Form.Item name="ky" label="Kỳ GSC">
             <Select
               style={{
@@ -138,7 +138,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} >
           <Form.Item name="numberName" label="Tên sổ">
             <Input placeholder="Nhập tên sổ cần tìm" />
           </Form.Item>

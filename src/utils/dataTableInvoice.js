@@ -1,4 +1,4 @@
-export const data = Array.from({ length: 10 }, (_, key) => ({
+export const data = Array.from({ length: 7 }, (_, key) => ({
   key: key + 1,
   stt: key + 1,
   contractNumber: "abc",
