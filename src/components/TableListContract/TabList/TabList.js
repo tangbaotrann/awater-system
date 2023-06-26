@@ -25,7 +25,7 @@ import InfoClock from "./InfoClock/InfoClock";
 import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
 import { exportToExcel } from "../../../utils/exportFile";
 
-// Tabs bottom
+// Tabs bottom 
 const tabs = [
   {
     id: "1",

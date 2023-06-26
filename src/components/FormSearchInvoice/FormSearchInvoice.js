@@ -2,7 +2,7 @@ import { Button, Col, DatePicker, Form, Input, Row, Select, Space, theme } from 
 import { ModalAdvanceSearch } from "../../pages/Invoice/ModalAdvanceSearch";
 import { useState } from "react";
 
-export const AdvancedSearchForm = () => {
+export const AdvancedSearchForm = () => { 
   const { token } = theme.useToken();
   const [form] = Form.useForm();
   const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
@@ -22,8 +22,8 @@ export const AdvancedSearchForm = () => {
       onFinish={onFinish}
       size="small"
     >
-      <Row gutter={24}>
-        <Col span={6}>
+      <Row gutter={10}>
+        <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="date" label="Chọn tháng">
             <DatePicker
               allowClear
@@ -34,7 +34,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="person" label="Cán bộ đọc">
             <Select
               // defaultValue="--Chọn cán bộ đọc--"
@@ -54,7 +54,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="tuyendoc" label="Tuyến đọc">
             <Select
               // defaultValue="--Chọn tuyến đọc--"
@@ -83,7 +83,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="status" label="Phạm vi">
             <Select
               // defaultValue="--Chọn phạm vi--"
@@ -105,7 +105,7 @@ export const AdvancedSearchForm = () => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="status" label="Số hợp đồng">
             <Select
               // defaultValue="--Chọn số hợp đồng--"
@@ -125,12 +125,12 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="place" label="Khách hàng">
             <Input placeholder="Tên khách hàng" />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="ky" label="Số hóa đơn">
             <Select
               // defaultValue="--Chọn số hóa đơn--"
@@ -150,7 +150,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="numberName" label="TT Hóa đơn">
             <Select
               // defaultValue="--Chọn in hóa đơn--"
