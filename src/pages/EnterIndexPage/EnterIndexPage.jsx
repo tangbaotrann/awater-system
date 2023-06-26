@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { initialData } from "./data/data";
 import { otherData } from "./data/otherData.js";
@@ -55,10 +54,7 @@ function EnterIndexPage() {
   const dispatch = useDispatch();
   const searchCriteria = useSelector((state) => state.searchCriteria);
   const [form] = Form.useForm();
-  // const navigate = useNavigate();
-  // const handleButtonClick = () => {
-  //   navigate("./ViewWater.jsx");
-  // };
+
   const handleButtonClick = () => {
     setIsModalVisible(true);
   };
@@ -135,26 +131,8 @@ function EnterIndexPage() {
     setData2(newData);
   };
 
-  const [showChart, setShowChart] = useState(false);
-  const [chartData, setChartData] = useState([]);
   const getTableData = () => {
     return otherData;
-  };
-  const handleExportChartClick = () => {
-    // Lấy dữ liệu từ bảng
-    const tableData = getTableData();
-
-    // Chuyển đổi dữ liệu bảng thành dạng phù hợp để vẽ biểu đồ
-    const chartData = tableData
-      .map((row) => [
-        { date: row.readingDate, value: row.oldIndex, type: "Chỉ số đầu cũ" },
-        { date: row.readingDate, value: row.newIndex, type: "Chỉ số đầu mới" },
-      ])
-      .flat();
-
-    // Hiển thị biểu đồ
-    setChartData(chartData);
-    setShowChart(true);
   };
   const columns = [
     {
@@ -329,13 +307,6 @@ function EnterIndexPage() {
   const AdvancedSearchForm = () => {
     const { token } = theme.useToken();
     const [form] = Form.useForm();
-    const [isInputFocused, setIsInputFocused] = useState(false);
-
-    const formStyle = {
-      maxWidth: "none",
-      background: token.colorFillAlter,
-      borderRadius: token.borderRadiusLG,
-    };
     const onFinish = (values) => {
       console.log("Received values of form: ", values);
     };
@@ -546,14 +517,7 @@ function EnterIndexPage() {
     );
   };
   const AdvanceFooterForm = () => {
-    const { token } = theme.useToken();
     const [form] = Form.useForm();
-    const formStyle = {
-      maxWidth: "none",
-      background: token.colorFillAlter,
-      borderRadius: token.borderRadiusLG,
-      padding: 24,
-    };
     const handleFinish = (values) => {
       console.log(values);
       // Xử lý dữ liệu tìm kiếm tại đây
@@ -598,31 +562,7 @@ function EnterIndexPage() {
         </Menu.Item>
       </Menu>
     );
-    const getTableData1 = () => {
-      return initialData;
-    };
-    const [showChart1, setShowChart1] = useState(false);
-    const [chartData1, setChartData1] = useState([]);
-    const handleExportChartClick1 = () => {
-      // Lấy dữ liệu từ bảng
-      const tableData1 = getTableData1();
 
-      // Lọc dữ liệu chỉ lấy 4 tháng gần nhất
-      const filteredData = tableData1.filter((row) => {
-        const readingDate = moment(row.readingDate, "DD/MM/YYYY");
-        return readingDate.isAfter(moment().subtract(4, "months"));
-      });
-
-      // Chuyển đổi dữ liệu bảng thành dạng phù hợp để vẽ biểu đồ
-      const chartData1 = filteredData.map((row) => ({
-        date: row.readingDate,
-        value: row.consumption,
-      }));
-
-      // Hiển thị biểu đồ
-      setChartData(chartData);
-      setShowChart(true);
-    };
     return (
       <Form
         form={form}
@@ -941,9 +881,7 @@ function EnterIndexPage() {
               scroll={{ x: 1600, y: 450 }}
             />
             <Row justify="end">
-              <Button size="small" onClick={handleExportChartClick}>
-                Xuất biểu đồ nước
-              </Button>
+              <Button size="small">Xuất biểu đồ nước</Button>
               <Button size="small">Lưu biểu đồ</Button>
               <Button size="small" onClick={handleModalCancel}>
                 Đóng
