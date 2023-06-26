@@ -174,7 +174,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Đồng hồ block */}
-        <Col xs={24} sm={24} md={12} lg={11}>
+        <Col xs={24} sm={24} md={12} lg={12}>
           <Form.Item
             name=""
             label="Đồng hồ block: "
@@ -192,7 +192,7 @@ function InfoDetailClock() {
         </Col>
 
         {/*  */}
-        <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
+        <Col xs={24} sm={24} md={12} lg={5}>
           <Form.Item
             name=""
             label="Là đồng hồ phụ: "
@@ -249,7 +249,9 @@ function InfoDetailClock() {
             <InputNumber
               name="num_start"
               placeholder="Số đầu"
-              className={isTabletOrMobile ? "fix-input-number-mobile" : ""}
+              className={
+                isTabletOrMobile ? "fix-input-number-mobile" : "gutter-item"
+              }
             />
           </Form.Item>
         </Col>
@@ -260,7 +262,9 @@ function InfoDetailClock() {
             <InputNumber
               name="num_end"
               placeholder="Số cuối"
-              className={isTabletOrMobile ? "fix-input-number-mobile" : ""}
+              className={
+                isTabletOrMobile ? "fix-input-number-mobile" : "gutter-item"
+              }
             />
           </Form.Item>
         </Col>
@@ -588,7 +592,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Đai khởi thủy */}
-        <Col xs={24} sm={24} md={12} lg={24}>
+        <Col xs={24} sm={24} md={12} lg={23}>
           <Form.Item
             name=""
             label="Đai khởi thủy"
