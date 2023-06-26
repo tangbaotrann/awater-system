@@ -13,6 +13,7 @@ import InvoicePrint from "../InvoicePrint/InvoicePrint";
 import ManagementPriceSubject from "../Category/ManagementPriceSubject/ManagementPriceSubject";
 import ManagementReading from "../Category/ManagementReading/ManagementReading";
 import ManagementPriceList from "../Category/ManagementPriceList/ManagementPriceList";
+import Payment from "./Payment/Payment";
 function Manager() {
   // change layout
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
@@ -53,7 +54,9 @@ function Manager() {
         <ManagementReading />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ? (
         <ManagementPriceList />
-      ) : null}
+      ) :  sidebarMenu === constants.PAYMENT.key ? (
+        <Payment />
+      ) :null}
     </DefaultLayout>
   );
 }
