@@ -26,7 +26,7 @@ import FormHistoryUseWater from "./FormHistoryUseWater/FormHistoryUseWater";
 import FormUpdateClock from "./FormUpdateClock/FormUpdateClock";
 import TableListDebt from "./TableListDebt/TableListDebt";
 
-// Tabs bottom
+// Tabs bottom 
 const tabs = [
   {
     id: "1",
