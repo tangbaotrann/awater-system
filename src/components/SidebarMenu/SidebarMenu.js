@@ -89,6 +89,25 @@ function SidebarMenu() {
             },
           ],
         },
+        {
+          key: constants.CATEGORY.key,
+          icon: <TableOutlined />,
+          label: constants.CATEGORY.label,
+          children: [
+            {
+              label: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key,
+            },
+            {
+              label: constants.CATEGORY_MANAGEMENT_READING.label,
+              key: constants.CATEGORY_MANAGEMENT_READING.key,
+            },
+            {
+              label: constants.CATEGORY_MANAGEMENT_PRICE_LIST.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_LIST.key,
+            },
+          ],
+        },
       ]}
       // Change layout
       onSelect={(item) => {
@@ -125,6 +144,18 @@ function SidebarMenu() {
         } else if (item.key === constants.PRINT_BILL_ORDER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.EXPORT_PRINT_BILL_ORDER.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        // menu 3
+        else if (item.key === constants.CATEGORY.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (
+          item.key === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key
+        ) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.CATEGORY_MANAGEMENT_READING.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
       }}
