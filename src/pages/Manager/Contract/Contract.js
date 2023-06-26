@@ -9,7 +9,7 @@ import TabList from "../../../components/TableListContract/TabList/TabList";
 function Contract() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
-  // handle submit form
+  // handle submit form 
   const handleSubmit = (values) => {
     console.log("values", values);
   };

@@ -1,27 +1,27 @@
-import {
-  CheckCircleOutlined,
-  CloseCircleFilled,
-  DownOutlined,
-  EditOutlined,
-  KeyOutlined,
-  PlusCircleFilled,
-  SettingOutlined,
-} from "@ant-design/icons";
-import { Button, Dropdown, Progress, Space, Table, theme } from "antd";
+import { Col, Popover, Progress, Row, Table, theme } from "antd";
 import { useState } from "react";
 import { CreateBook } from "./CreateBook/CreateBook";
 import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
 import { AdvancedSearchForm as FormSearchReadingIndex } from "../../components/FormSearchReadingIndex/FormSearchReadingIndex";
+import { FooterReadingIndex } from "../../components/Footer/FooterReadingIndex";
+import { useMediaQuery } from "react-responsive";
+import { PlusOutlined } from "@ant-design/icons";
+import { ModalIndexBar } from "./ModalIndexBar/ModalIndexBar";
 
 const ReadingIndex = () => {
   const { token } = theme.useToken();
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
   const [isModalOpenMCreate, setIsModalOpenMCreate] = useState(false);
+  const [isModalOpenIndexBar, setIsModalOpenIndexBar] = useState(false);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const handleOk = (_, type) => {
     setIsOpenModalCreate(false);
     if (type === "multiple") {
       setIsModalOpenMCreate(false);
+    }
+    if (type === "indexBar") {
+      setIsModalOpenIndexBar(false);
     }
   };
 
@@ -29,6 +29,9 @@ const ReadingIndex = () => {
     setIsOpenModalCreate(false);
     if (type === "multiple") {
       setIsModalOpenMCreate(false);
+    }
+    if (type === "indexBar") {
+      setIsModalOpenIndexBar(false);
     }
   };
 
@@ -188,41 +191,6 @@ const ReadingIndex = () => {
     },
   ];
 
-  const items = [
-    {
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
-      ),
-      key: "0",
-    },
-    {
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item
-        </a>
-      ),
-      key: "1",
-    },
-    {
-      type: "divider",
-    },
-    {
-      label: "3rd menu item（disabled）",
-      key: "3",
-      disabled: true,
-    },
-  ];
-
   return (
     <>
       <FormSearchReadingIndex />
@@ -234,8 +202,8 @@ const ReadingIndex = () => {
           borderRadius: token.borderRadiusLG,
           marginTop: 7,
           padding: "10px 10px",
-          position: "relative",
         }}
+        className="responsive-table"
       >
         <Table
           dataSource={dataSource}
@@ -247,115 +215,40 @@ const ReadingIndex = () => {
             pageSize: 50,
           }}
           scroll={{
-            y: 540,
+            x: 1500,
+            y: 240,
           }}
         />
-        <div style={{ display: "flex", position: "absolute", bottom: "0" }}>
-          <Progress percent={10} size={[300, 20]} />
-          <Progress percent={10} size={[300, 20]} strokeColor="#ff8033" />
-        </div>
       </div>
-      <div style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}>
-        <div>
-          <Button
-            type="primary"
-            icon={<PlusCircleFilled />}
-            onClick={() => setIsOpenModalCreate(true)}
-            size="small"
+
+      <div className="contract-bottom-func">
+        {isTabletOrMobile ? (
+          <Popover
+            placement="bottomRight"
+            trigger="click"
+            // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
+            content={
+              <FooterReadingIndex
+                setIsOpenModalCreate={setIsOpenModalCreate}
+                setIsModalOpenMCreate={setIsModalOpenMCreate}
+                isTabletOrMobile={isTabletOrMobile}
+                setIsModalOpenIndexBar={setIsModalOpenIndexBar}
+              />
+            }
           >
-            Tạo sổ
-          </Button>
-          <Button
-            type="primary"
-            icon={<PlusCircleFilled />}
-            style={{ marginLeft: "10px" }}
-            onClick={() => setIsModalOpenMCreate(true)}
-            size="small"
-          >
-            Tạo sổ đồng loạt
-          </Button>
-          <Button
-            type="primary"
-            icon={<CloseCircleFilled />}
-            style={{ marginLeft: "10px" }}
-            onClick={() => setIsModalOpenMCreate(true)}
-            size="small"
-            disabled
-          >
-            Xóa sổ
-          </Button>
-          <Button
-            type="primary"
-            icon={<KeyOutlined />}
-            style={{ marginLeft: "10px" }}
-            onClick={() => setIsModalOpenMCreate(true)}
-            size="small"
-            disabled
-          >
-            Khóa sổ và tính tiền
-          </Button>
-        </div>
-        <div style={{ marginLeft: "auto" }}>
-          <Button
-            type="primary"
-            icon={<PlusCircleFilled />}
-            onClick={() => setIsOpenModalCreate(true)}
-            size="small"
-            disabled
-          >
-            Xóa biểu mẫu
-          </Button>
-          <Button
-            type="primary"
-            icon={<CheckCircleOutlined />}
-            style={{ marginLeft: "10px" }}
-            onClick={() => setIsModalOpenMCreate(true)}
-            size="small"
-            disabled
-          >
-            Chốt sổ
-          </Button>
-          <Button
-            type="primary"
-            icon={<SettingOutlined />}
-            style={{ marginLeft: "10px" }}
-            onClick={() => setIsModalOpenMCreate(true)}
-            size="small"
-            disabled
-          >
-            Ngừng ghi chỉ số
-          </Button>
-          <Button
-            type="primary"
-            icon={<EditOutlined />}
-            style={{ marginLeft: "10px" }}
-            onClick={() => setIsModalOpenMCreate(true)}
-            size="small"
-            disabled
-          >
-            Đồng bộ lại
-          </Button>
-          <Button
-            icon={<SettingOutlined />}
-            type="primary"
-            style={{ marginLeft: "10px" }}
-            size="small"
-          >
-            <Dropdown
-              menu={{
-                items,
-              }}
-            >
-              <a href="#!" onClick={(e) => e.preventDefault()}>
-                <Space>
-                  Tiện ích
-                  <DownOutlined />
-                </Space>
-              </a>
-            </Dropdown>
-          </Button>
-        </div>
+            <PlusOutlined />
+          </Popover>
+        ) : (
+          <div className="contract-bottom">
+            <FooterReadingIndex
+              setIsOpenModalCreate={setIsOpenModalCreate}
+              setIsModalOpenMCreate={setIsModalOpenMCreate}
+              setIsModalOpenIndexBar={setIsModalOpenIndexBar}
+            />
+          </div>
+        )}
       </div>
+
       <CreateBook
         handleCancel={handleCancel}
         handleOk={handleOk}
@@ -365,6 +258,11 @@ const ReadingIndex = () => {
         handleCancel={handleCancel}
         handleOk={handleOk}
         isOpen={isModalOpenMCreate}
+      />
+      <ModalIndexBar
+        isOpen={isModalOpenIndexBar}
+        handleCancel={handleCancel}
+        handleOk={handleOk}
       />
     </>
   );

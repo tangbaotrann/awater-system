@@ -1,13 +1,9 @@
 import { React, useState } from "react";
-
-import { useSelector, useDispatch } from "react-redux";
-import { initialData, initialData2 } from "./data/data";
+import { initialData, initialData2 } from "../../utils/dataInvoicePrint/data";
 import "./InvoicePrint.css";
-import InvoicingDetailsModal from "./InvoicingDetailsModal";
-import TwoButtonPrint from "./TwoButtonPrint";
-import ReprintButton from "./ReprintButton";
+import InvoicingDetailsModal from "./InvoicingDetailsModal/InvoicingDetailsModal";
+import TabListIP from "./TableListIP";
 import viVN from "antd/es/date-picker/locale/vi_VN";
-import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
   Form,
   Input,
@@ -21,68 +17,28 @@ import {
   Table,
   Progress,
   Space,
+  Popover,
 } from "antd";
 import {
   SearchOutlined,
-  DeleteOutlined,
-  CheckCircleOutlined,
   FormOutlined,
   SnippetsOutlined,
-  PrinterOutlined,
-  FileSearchOutlined,
+  PlusOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "moment/locale/vi";
+import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
 function InvoicePrint() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const { token } = theme.useToken();
 
-  const dispatch = useDispatch();
   const [form] = Form.useForm();
   const handleButtonClick = () => {
     setIsModalVisible(true);
   };
-  const handleButtonClick1 = () => {
-    setIsModalVisible1(true);
-  };
-  const handleButtonClick2 = () => {
-    setIsModalVisible2(true);
-  };
-  const handleButtonClick3 = () => {
-    setIsModalVisible3(true);
-  };
-  const handleButtonClick4 = () => {
-    setIsModalVisible4(true);
-  };
-  const handleButtonClick5 = () => {
-    setIsModalVisible5(true);
-  };
-  const handleButtonClick6 = () => {
-    setIsModalVisible6(true);
-  };
   const handleModalCancel = () => {
     setIsModalVisible(false);
-  };
-  const handleModalCancel1 = () => {
-    setIsModalVisible1(false);
-  };
-  const handleModalCancel2 = () => {
-    setIsModalVisible2(false);
-  };
-  const handleModalCancel3 = () => {
-    setIsModalVisible3(false);
-  };
-  const handleModalCancel4 = () => {
-    setIsModalVisible4(false);
-  };
-  const handleModalCancel5 = () => {
-    setIsModalVisible5(false);
-  };
-  const handleModalCancel6 = () => {
-    setIsModalVisible6(false);
-  };
-  const onFinish = (values) => {
-    dispatch(updateSearchCriteria(values));
   };
   const handleMonthChange = (date) => {
     if (date) {
@@ -91,21 +47,25 @@ function InvoicePrint() {
       form.setFieldsValue({ month: undefined });
     }
   };
-  const handleReset = () => {
-    form.resetFields();
+  const [visible, setVisible] = useState(false);
+  const handleClick = () => {
+    setVisible(!visible);
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalVisible1, setIsModalVisible1] = useState(false);
-  const [isModalVisible2, setIsModalVisible2] = useState(false);
-  const [isModalVisible3, setIsModalVisible3] = useState(false);
-  const [isModalVisible4, setIsModalVisible4] = useState(false);
-  const [isModalVisible5, setIsModalVisible5] = useState(false);
-  const [isModalVisible6, setIsModalVisible6] = useState(false);
   const { Option } = Select;
   const [data1, setData1] = useState(initialData);
 
   // Hàm xử lý khi có thay đổi dữ liệu của bảng 1
-  const handleData1Change = (newData) => {
+  function fetchDataForPage(page) {
+    const pageSize = 18;
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return initialData.slice(startIndex, endIndex);
+  }
+
+  const handleData1Change = (pagination) => {
+    const currentPage = pagination.current;
+    const newData = fetchDataForPage(currentPage);
     setData1(newData);
   };
   const columns = [
@@ -184,17 +144,8 @@ function InvoicePrint() {
   const AdvancedSearchForm = () => {
     const { token } = theme.useToken();
     const [form] = Form.useForm();
-    const formStyle = {
-      maxWidth: "none",
-      background: token.colorFillAlter,
-      borderRadius: token.borderRadiusLG,
-      // padding: 24,
-    };
     const onFinish = (values) => {
       console.log("Received values of form: ", values);
-    };
-    const handleReset = () => {
-      form.resetFields();
     };
 
     return (
@@ -211,7 +162,7 @@ function InvoicePrint() {
         }}
       >
         <Row gutter={9}>
-          <Col span={3}>
+          <Col span={3} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               className="custom-form-item"
@@ -228,7 +179,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={7}>
+          <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item size="small" label="Cán bộ đọc" name="1">
               <Select style={{ width: "100%" }} size="small" name="s1">
                 <Option value="1">1</Option>
@@ -236,7 +187,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={6}>
+          <Col span={6} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               className="custom-form-item"
@@ -255,7 +206,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={7}>
+          <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               label={
@@ -276,7 +227,7 @@ function InvoicePrint() {
         </Row>
 
         <Row gutter={5}>
-          <Col span={15}>
+          <Col span={15} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               // className="custom-form-item"
@@ -291,7 +242,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col span={4} xs={24} sm={12} md={6}>
             <Form.Item
               size="small"
               // className="custom-form-item"
@@ -306,7 +257,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={2}>
+          <Col span={2} xs={24} sm={12} md={6}>
             <Form.Item className="custom-form-item" label="" name="quantity">
               <InputNumber
                 size="small"
@@ -316,7 +267,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={3}>
+          <Col span={3} xs={24} sm={12} md={6}>
             <div>
               <Space size="small">
                 <Button
@@ -337,78 +288,6 @@ function InvoicePrint() {
       </Form>
     );
   };
-  const AdvanceFooterForm = () => {
-    const { token } = theme.useToken();
-    const [form] = Form.useForm();
-    const formStyle = {
-      maxWidth: "none",
-      background: token.colorFillAlter,
-      borderRadius: token.borderRadiusLG,
-      padding: 24,
-    };
-    const handleFinish = (values) => {
-      console.log(values);
-      // Xử lý dữ liệu tìm kiếm tại đây
-    };
-
-    const handleReset = () => {
-      form.resetFields();
-    };
-
-    return (
-      <Form
-        form={form}
-        name="advanced_search"
-        size="small"
-        layout="inline"
-        onFinish={onFinish}
-      >
-        <div
-          style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}
-          className="footer-buttons"
-        >
-          <Button
-            onClick={handleButtonClick1}
-            icon={<CheckCircleOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            Đã in xong
-          </Button>
-          <Button
-            onClick={handleButtonClick2}
-            icon={<PrinterOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            In hóa đơn
-          </Button>
-          <div>
-            <TwoButtonPrint />
-          </div>
-          <div>
-            <ReprintButton />
-          </div>
-          <Button
-            onClick={handleButtonClick4}
-            icon={<FileSearchOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            In lại hóa đơn theo mã KH
-          </Button>
-          <Button
-            onClick={handleButtonClick5}
-            icon={<DeleteOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            Xóa
-          </Button>
-        </div>
-      </Form>
-    );
-  };
   return (
     <>
       <AdvancedSearchForm />
@@ -426,44 +305,73 @@ function InvoicePrint() {
       >
         <Table
           size="small"
+          rowKey="index"
           pagination={{
             current: 1,
-            total: 10000,
-            pageSize: 50,
+            total: initialData.length,
+            pageSize: 18,
           }}
-          scroll={{ x: 1500, y: 290 }}
+          scroll={{ x: 1500, y: 340 }}
           columns={columns}
           dataSource={data1}
           onChange={handleData1Change}
         />
-        <div style={{ display: "flex", position: "absolute", bottom: "200" }}>
-          <Progress
-            percent={10}
-            size={[200, 20]}
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={60}
-            size={[200, 20]}
-            strokeColor="yellow"
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={70}
-            size={[200, 20]}
-            strokeColor="red"
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={30}
-            size={[200, 20]}
-            strokeColor="#ff8033"
-            format={(percent) => `${percent * 10}`}
-          />
+        {/* <Row>
+          <Col span={4}>
+            <Button size="small" type="primary" onClick={handleClick}>
+              Chỉ số
+            </Button>
+          </Col>
+          <Col span={20}>
+            {visible && (
+              <Row>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                  <Progress
+                    percent={10}
+                    format={(percent) => `${percent * 10}`}
+                  />
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                  <Progress
+                    percent={60}
+                    strokeColor="yellow"
+                    format={(percent) => `${percent * 10}`}
+                  />
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                  <Progress
+                    percent={70}
+                    strokeColor="red"
+                    format={(percent) => `${percent * 10}`}
+                  />
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                  <Progress
+                    percent={30}
+                    strokeColor="#ff8033"
+                    format={(percent) => `${percent * 10}`}
+                  />
+                </Col>
+              </Row>
+            )}
+          </Col>
+        </Row> */}
+        <div className="InvoicePrint-bottom">
+          <div className="InvoicePrint-bottom-func">
+            {isTabletOrMobile ? (
+              <Popover
+                rootClassName="fix-popover-z-index"
+                placement="bottomRight"
+                trigger="click"
+                content={<TabListIP isTabletOrMobile={isTabletOrMobile} />}
+              >
+                <PlusOutlined />
+              </Popover>
+            ) : (
+              <TabListIP />
+            )}
+          </div>
         </div>
-      </div>
-      <div style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}>
-        <AdvanceFooterForm />
       </div>
     </>
   );

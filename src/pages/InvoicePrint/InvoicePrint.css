@@ -1,13 +1,40 @@
-/* .footer-buttons {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    padding: 10px;
-    display: flex;
-  }
-   */
+
+
+/* tab list invoice print*/ 
+.wrapper-contract {
+  position: relative;
+}
+
+.gutter-item {
+  margin-right: 6px;
+}
+
+/* button search */
+.contract-search-btn {
+  margin-left: 12px;
+}
+
+/* func bottom */
+.ant-layout-content {
+  position: relative;
+}
+.InvoicePrint-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 280px;
+  border-radius: 6px;
+  padding: 6px 6px 0 6px;
+  background-color: var(--blue-e6f4ff);
+}
+
+/* tab list */ 
+.ant-tabs-nav {
+  margin-bottom: 4px !important;
+}
+.ant-tabs-nav {
+  margin-bottom: 4px !important;
+}
+/* ................................ */
    .footer-buttons {
     position: absolute;
     bottom: 0;
@@ -18,4 +45,14 @@
     display: flex;
     justify-content: center;
   }
-  
+  .ant-table-thead .ant-table-cell {
+    font-size: 13px;
+    font-weight: 800 !important;
+}
+.ant-table-cell {
+  font-size: 10px;
+  font-weight: 600;
+}
+.ant-table-small table {
+  font-size: 12px;
+}
