@@ -1006,31 +1006,6 @@ function EnterIndexPage() {
           dataSource={data1}
           onChange={handleData1Change}
         />
-        <div style={{ display: "flex", position: "absolute", bottom: "300" }}>
-          <Progress
-            percent={10}
-            size={[200, 20]}
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={60}
-            size={[200, 20]}
-            strokeColor="yellow"
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={70}
-            size={[200, 20]}
-            strokeColor="red"
-            format={(percent) => `${percent * 10}`}
-          />
-          <Progress
-            percent={30}
-            size={[200, 20]}
-            strokeColor="#ff8033"
-            format={(percent) => `${percent * 10}`}
-          />
-        </div>
       </div>
       <div style={{ display: "flex", marginTop: "0px", paddingRight: "10px" }}>
         <AdvanceFooterForm />

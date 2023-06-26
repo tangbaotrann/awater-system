@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import "./SidebarMenu.css";
 import constants from "../../utils/constants";
 import sidebarSlice from "../../redux/slices/sidebarSlice/sidebarSlice";
+import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 
 function SidebarMenu() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function SidebarMenu() {
       className="custom-sidebar-menu"
       items={[
         {
-          key: constants.REGISTRATION_FORM_PARENT.key, 
+          key: constants.REGISTRATION_FORM_PARENT.key,
           icon: <TableOutlined />,
           label: constants.REGISTRATION_FORM_PARENT.label,
           children: [
@@ -88,6 +89,17 @@ function SidebarMenu() {
             },
           ],
         },
+        {
+          key: constants.COLLECT_MONEY.key,
+          icon: <TableOutlined />,
+          label: constants.COLLECT_MONEY.label,
+          children: [
+            {
+              label: constants.PAYMENT.label,
+              key: constants.PAYMENT.key,
+            },
+          ],
+        },
       ]}
       // Change layout
       onSelect={(item) => {
@@ -98,6 +110,7 @@ function SidebarMenu() {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.CONTRACT_MANAGER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
         } else if (item.key === constants.COVERAGE_RATE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.NUMBER_MANAGEMENT.key) {
@@ -124,6 +137,11 @@ function SidebarMenu() {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.EXPORT_PRINT_BILL_ORDER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        // menu 3
+        else if (item.key === constants.PAYMENT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
         }
       }}
     />

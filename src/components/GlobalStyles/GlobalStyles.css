@@ -173,6 +173,12 @@ html *::-webkit-scrollbar-track {
     .gutter-item-btn {
         margin-top: 10px;
     }
+
+    /* payment */
+    .btn-search-payment {
+        margin-left: 0;
+        margin-bottom: 22px;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
@@ -198,6 +204,12 @@ html *::-webkit-scrollbar-track {
         background-color: var(--white);
     }
 
+    /* payment */
+    .btn-search-payment {
+        margin-left: 0;
+        margin-bottom: 22px;
+    }
+
 }
   
 /* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
@@ -212,7 +224,6 @@ html *::-webkit-scrollbar-track {
         /* margin-left: 0; */
         margin-bottom: 12px;
     }
-
 }
 
 /* Thiết kế cho kích thước màn hình từ 769px đến 991px (desktop - large desktop) */
@@ -225,6 +236,11 @@ html *::-webkit-scrollbar-track {
         font-size: 2rem;
         font-weight: 800;
         background-color: var(--white);
+    }
+
+    /* payment */
+    .gutter-item-mobile {
+        margin-left: 12px;
     }
 }
   

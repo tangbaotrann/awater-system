@@ -85,6 +85,9 @@ function TableChildReportCustomer({ record }) {
       pagination={false}
       rowKey="code"
       size="small"
+      scroll={{
+        x: 2000,
+      }}
     />
   );
 }

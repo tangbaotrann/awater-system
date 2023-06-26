@@ -6,7 +6,7 @@ const constants = {
   },
   REGISTRATION_FORM: {
     label: "Đơn đăng ký",
-    key: "REGISTRATION_FORM", 
+    key: "REGISTRATION_FORM",
   },
   ESTIMATES: {
     label: "Dự toán",
@@ -65,6 +65,15 @@ const constants = {
   EXPORT_PRINT_BILL_ORDER: {
     label: "Phát hành hóa đơn điện tử",
     key: "EXPORT_PRINT_BILL_ORDER",
+  },
+  // menu 3
+  COLLECT_MONEY: {
+    label: "Thu tiền",
+    key: "COLLECT_MONEY",
+  },
+  PAYMENT: {
+    label: "Thanh toán",
+    key: "PAYMENT",
   },
 };
 
