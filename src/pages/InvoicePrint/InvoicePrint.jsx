@@ -356,8 +356,8 @@ function InvoicePrint() {
             )}
           </Col>
         </Row> */}
-        <div className="contract-bottom">
-          <div className="contract-bottom-func">
+        <div className="InvoicePrint-bottom">
+          <div className="InvoicePrint-bottom-func">
             {isTabletOrMobile ? (
               <Popover
                 rootClassName="fix-popover-z-index"
