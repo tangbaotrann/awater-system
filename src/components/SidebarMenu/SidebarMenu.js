@@ -108,6 +108,17 @@ function SidebarMenu() {
             },
           ],
         },
+        {
+          key: constants.COLLECT_MONEY.key,
+          icon: <TableOutlined />,
+          label: constants.COLLECT_MONEY.label,
+          children: [
+            {
+              label: constants.PAYMENT.label,
+              key: constants.PAYMENT.key,
+            },
+          ],
+        },
       ]}
       // Change layout
       onSelect={(item) => {
@@ -157,6 +168,10 @@ function SidebarMenu() {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        else if (item.key === constants.PAYMENT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
         }
       }}
     />

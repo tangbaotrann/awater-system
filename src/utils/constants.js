@@ -66,14 +66,6 @@ const constants = {
     label: "Phát hành hóa đơn điện tử",
     key: "EXPORT_PRINT_BILL_ORDER",
   },
-  COLLECT_MONEY: {
-    label: "Thu tiền",
-    key: "COLLECT_MONEY",
-  },
-  PAYMENT: {
-    label: "Thanh toán",
-    key: "PAYMENT",
-  },
   // menu 3
   CATEGORY: {
     label: "Danh mục",
@@ -90,6 +82,14 @@ const constants = {
   CATEGORY_MANAGEMENT_PRICE_LIST: {
     label: "Quản lý danh mục đối bảng giá",
     key: "CATEGORY_MANAGEMENT_PRICE_LIST",
+  },
+  COLLECT_MONEY: {
+    label: "Thu tiền",
+    key: "COLLECT_MONEY",
+  },
+  PAYMENT: {
+    label: "Thanh toán",
+    key: "PAYMENT",
   },
 };
 
