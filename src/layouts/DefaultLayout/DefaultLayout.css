@@ -52,6 +52,11 @@
     position: relative;
 }
 
+.trigger {
+    position: fixed;
+    top: 10px;
+}
+
 /* Custom menu icon  */
 .custom-menu-icon {
     display: flex;
