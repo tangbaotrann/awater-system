@@ -1,0 +1,34 @@
+.popup-add-price-subject {
+  padding-bottom: 0px;
+  top: 35%;
+}
+.form-item-button {
+  display: flex;
+  justify-content: right;
+}
+
+/* phone: width < 740px */
+@media (max-width: 46.1875em) {
+  .popup-add-price-subject {
+    padding-bottom: 0px;
+    top: 25%;
+  }
+  .modal-button-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .modal-button-actions .ant-space-item {
+    width: 80%;
+  }
+  .form-item-button {
+    display: inline;
+    justify-content: center;
+  }
+  .form-item-button .ant-form-item-row {
+    display: inline;
+  }
+  .form-item-button .ant-form-item-row .ant-col-15 {
+    display: inline;
+    max-width: 100%;
+  }
+}

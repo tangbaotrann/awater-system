@@ -1,0 +1,31 @@
+.title {
+  font-weight: 600;
+}
+.ant-table {
+  margin-inline: 0px !important;
+}
+.body-price-list-top-table {
+  overflow: scroll;
+  max-height: 600px;
+}
+.body-price-list {
+  position: relative;
+}
+.table-detail {
+  position: fixed;
+  bottom: 0px;
+  min-height: 200px;
+  overflow: scroll;
+  max-height: 210px;
+  left: 275px;
+  right: 0;
+}
+/* phone: width < 740px */
+@media (max-width: 46.1875em) {
+  .ant-pagination {
+    flex-wrap: nowrap !important;
+  }
+  .ant-pagination-options {
+    display: flex !important;
+  }
+}
