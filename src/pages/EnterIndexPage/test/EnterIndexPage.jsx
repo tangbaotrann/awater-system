@@ -1,9 +1,20 @@
 import { React, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { initialData } from "../../utils/dataEnterIndexPage/data/data";
-import TabListEP from "./TableListEP";
+import ImageModal from "./ImageModel";
+import SearchForm from "./SearchForm";
+import ExcelForm from "./ExcelForm";
+import FileForm from "./FileForm";
+import UtilityButton from "./UtilityButton";
+import PriceTableButton from "./PriceTableButton";
+import UsageButton from "./UsageButton";
+import ChartButton from "./ChartButton";
 import "./EnterIndexPage.css";
 import viVN from "antd/es/date-picker/locale/vi_VN";
+import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
+  Dropdown,
+  Menu,
   Form,
   Input,
   Button,
@@ -14,20 +25,49 @@ import {
   InputNumber,
   theme,
   Table,
+  Modal,
+  Upload,
   Space,
-  Popover,
 } from "antd";
-import { SearchOutlined, RedoOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  DownloadOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  PlusCircleOutlined,
+  CalculatorOutlined,
+  SyncOutlined,
+  RetweetOutlined,
+  CheckCircleOutlined,
+  CalendarOutlined,
+  RedoOutlined,
+  FileExcelOutlined,
+  UploadOutlined,
+  ToolOutlined,
+  TableOutlined,
+  FundOutlined,
+  LineChartOutlined,
+} from "@ant-design/icons";
 import moment from "moment";
 import "./EnterIndexPage.css";
 import "moment/locale/vi";
-import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
 function EnterIndexPage() {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const { token } = theme.useToken();
+
+  const dispatch = useDispatch();
   const [form] = Form.useForm();
 
+  const handleButtonClick5 = () => {
+    setIsModalVisible5(true);
+  };
+
+  const handleModalCancel5 = () => {
+    setIsModalVisible5(false);
+  };
+  const onFinish = (values) => {
+    dispatch(updateSearchCriteria(values));
+  };
   const handleMonthChange = (date) => {
     if (date) {
       form.setFieldsValue({ month: date.format("M/YYYY") });
@@ -36,21 +76,16 @@ function EnterIndexPage() {
     }
   };
 
+  const [isModalVisible5, setIsModalVisible5] = useState(false);
   const { Option } = Select;
   const [data1, setData1] = useState(initialData);
 
-  function fetchDataForPage(page) {
-    const pageSize = 18;
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    return initialData.slice(startIndex, endIndex);
-  }
-
-  const handleData1Change = (pagination) => {
-    const currentPage = pagination.current;
-    const newData = fetchDataForPage(currentPage);
+  // Hàm xử lý khi có thay đổi dữ liệu của bảng 1
+  const handleData1Change = (newData) => {
     setData1(newData);
   };
+
+  // Hàm xử lý khi có thay đổi dữ liệu của bảng 2
 
   const columns = [
     {
@@ -178,7 +213,7 @@ function EnterIndexPage() {
         }}
       >
         <Row gutter={8}>
-          <Col xs={24} sm={12} md={8} lg={6} span={4}>
+          <Col span={4}>
             <Form.Item
               size="small"
               className="custom-form-item"
@@ -195,7 +230,7 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col xs={24} sm={12} md={8} lg={6} span={4}>
+          <Col span={4}>
             <Form.Item size="small" label="Cán bộ đọc" name="1">
               <Select style={{ width: "100%" }} size="small" name="s1">
                 <Option value="1">1</Option>
@@ -203,11 +238,16 @@ function EnterIndexPage() {
               </Select>
             </Form.Item>
           </Col>
-          <Col xs={24} sm={12} md={8} lg={6} span={4}>
+          <Col span={4}>
             <Form.Item
               size="small"
               className="custom-form-item"
-              label={<>Tuyến đọc</>}
+              label={
+                <>
+                  Tuyến đọc
+                  <br />
+                </>
+              }
               name="2"
             >
               <Select style={{ width: "100%" }} size="small" name="s1">
@@ -217,7 +257,7 @@ function EnterIndexPage() {
               </Select>
             </Form.Item>
           </Col>
-          <Col xs={24} sm={12} md={8} lg={6} span={4}>
+          <Col span={4}>
             <Form.Item
               size="small"
               className="custom-form-item"
@@ -232,10 +272,7 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-        </Row>
-
-        <Row gutter={8}>
-          <Col xs={24} sm={12} md={8} lg={6} span={4}>
+          <Col span={4}>
             <Form.Item
               size="small"
               className="custom-form-item"
@@ -251,100 +288,7 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col span={5} xs={24} sm={12} md={6}>
-            <Form.Item
-              size="small"
-              // className="custom-form-item"
-              label="Trạng thái đọc"
-              name="6"
-            >
-              <Select style={{ width: "100%" }} size="small">
-                <Option value="1"> 1</Option>
-                <Option value="2"> 2</Option>
-                <Option value="3"> 3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={4} xs={24} sm={12} md={6}>
-            <Form.Item
-              size="small"
-              // className="custom-form-item"
-              label={
-                <>
-                  Bất thường
-                  <br />
-                </>
-              }
-            >
-              <Select style={{ width: "100%" }} size="small" name="s1">
-                <Option value="1">Lựa chọn 1</Option>
-                <Option value="2">Lựa chọn 2</Option>
-                <Option value="3">Lựa chọn 3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={7} xs={24} sm={12} md={6}>
-            <Form.Item
-              size=" small"
-              lassName="custom-form-item"
-              label="Số ghi"
-              name="9"
-            >
-              <Input
-                size="small"
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={8}>
-          <Col span={3} xs={24} sm={12} md={6}>
-            <Form.Item
-              size="small"
-              // className="custom-form-item"
-              label="Tiêu thụ"
-              name="8"
-            >
-              <Select style={{ width: "100%" }} size="small" name="s1">
-                <Option value="1"> 1</Option>
-                <Option value="2">2</Option>
-                <Option value="3">3</Option>
-                <Option value="3">3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={2} xs={24} sm={12} md={6}>
-            <Form.Item className="custom-form-item" label="" name="quantity">
-              <InputNumber
-                size="small"
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-          </Col>
-
-          <Col>
-            <div>
-              <Space size="small">
-                <Button
-                  size="small"
-                  type="primary"
-                  style={{
-                    width: "100%",
-                  }}
-                  className="small-button"
-                  onClick={handleReset}
-                  icon={<RedoOutlined />}
-                >
-                  Làm mới
-                </Button>
-              </Space>
-            </div>
-          </Col>
-          <Col>
+          <Col span={4}>
             <div>
               <Space size="small">
                 <Button
@@ -362,10 +306,144 @@ function EnterIndexPage() {
             </div>
           </Col>
         </Row>
+
+        <Row gutter={8}>
+          <Col span={5}>
+            <Form.Item
+              size="small"
+              // className="custom-form-item"
+              label="Trạng thái đọc"
+              name="6"
+            >
+              <Select style={{ width: "100%" }} size="small">
+                <Option value="1"> 1</Option>
+                <Option value="2"> 2</Option>
+                <Option value="3"> 3</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={4}>
+            <Form.Item
+              size="small"
+              // className="custom-form-item"
+              label={
+                <>
+                  Bất thường
+                  <br />
+                </>
+              }
+            >
+              <Select style={{ width: "100%" }} size="small" name="s1">
+                <Option value="1">Lựa chọn 1</Option>
+                <Option value="2">Lựa chọn 2</Option>
+                <Option value="3">Lựa chọn 3</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={3}>
+            <Form.Item
+              size="small"
+              // className="custom-form-item"
+              label="Tiêu thụ"
+              name="8"
+            >
+              <Select style={{ width: "100%" }} size="small" name="s1">
+                <Option value="1"> 1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+                <Option value="3">3</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={2}>
+            <Form.Item className="custom-form-item" label="" name="quantity">
+              <InputNumber
+                size="small"
+                style={{
+                  width: "100%",
+                }}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={7}>
+            <Form.Item
+              size=" small"
+              lassName="custom-form-item"
+              label="Số ghi"
+              name="9"
+            >
+              <Input
+                size="small"
+                style={{
+                  width: "100%",
+                }}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={3}>
+            <div>
+              <Space size="small">
+                <Button
+                  size="small"
+                  style={{
+                    width: "100%",
+                  }}
+                  className="small-button"
+                  onClick={handleReset}
+                  icon={<RedoOutlined />}
+                >
+                  Làm mới
+                </Button>
+              </Space>
+            </div>
+          </Col>
+        </Row>
       </Form>
     );
   };
+  const AdvanceFooterForm = () => {
+    const [form] = Form.useForm();
 
+    return (
+      <Form
+        form={form}
+        name="advanced_search"
+        size="small"
+        layout="inline"
+        onFinish={onFinish}
+      >
+        <div
+          style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}
+          className="footer-buttons"
+        >
+          <div>
+            <SearchForm />
+          </div>
+          <div>
+            <ExcelForm />
+          </div>
+          <div>
+            <FileForm />
+          </div>
+          <div>
+            <UtilityButton />
+          </div>
+          <div>
+            <PriceTableButton />
+          </div>
+          <div>
+            <UsageButton />
+          </div>
+          <div>
+            <ChartButton />
+          </div>
+          <div>
+            <ImageModal />
+          </div>
+        </div>
+      </Form>
+    );
+  };
   return (
     <>
       <AdvancedSearchForm />
@@ -377,39 +455,25 @@ function EnterIndexPage() {
           borderRadius: token.borderRadiusLG,
           marginTop: 16,
           padding: "10px 10px",
-          height: "350px",
+          height: "340px",
           position: "relative",
         }}
       >
         <Table
           size="small"
-          rowKey="index"
           pagination={{
             current: 1,
-            total: initialData.length,
-            pageSize: 18,
+            total: 10000,
+            pageSize: 50,
           }}
-          scroll={{ x: 2800, y: 290 }}
+          scroll={{ x: 3000, y: 280 }}
           columns={columns}
           dataSource={data1}
           onChange={handleData1Change}
         />
-        <div className="EnterIndexPage-bottom">
-          <div className="EnterIndexPage-bottom-func">
-            {isTabletOrMobile ? (
-              <Popover
-                rootClassName="fix-popover-z-index"
-                placement="bottomRight"
-                trigger="click"
-                content={<TabListEP isTabletOrMobile={isTabletOrMobile} />}
-              >
-                <PlusOutlined />
-              </Popover>
-            ) : (
-              <TabListEP />
-            )}
-          </div>
-        </div>
+      </div>
+      <div style={{ display: "flex", marginTop: "0px", paddingRight: "10px" }}>
+        <AdvanceFooterForm />
       </div>
     </>
   );

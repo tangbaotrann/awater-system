@@ -62,7 +62,13 @@ const ImageModal = () => {
       title: "",
       key: "action",
       render: (text, record) => (
-        <Button onClick={() => handleDelete(record)}>Xóa</Button>
+        <Button
+          onClick={() => handleDelete(record)}
+          size="small"
+          type="primary"
+        >
+          Xóa
+        </Button>
       ),
     },
   ];
@@ -78,7 +84,7 @@ const ImageModal = () => {
         type="primary"
         icon={<PictureOutlined />}
       >
-        Xem hình ảnh
+        Nhấp
       </Button>
       <Modal
         title="Thông tin tệp đính kèm"
@@ -99,8 +105,9 @@ const ImageModal = () => {
       >
         <Table
           dataSource={fileList}
+          scroll={{ x: 1000, y: 290 }}
           columns={columns}
-          style={{ maxHeight: "300px", overflowY: "auto" }}
+          style={{ maxHeight: "400px", overflowY: "auto" }}
         />
       </Modal>
     </>

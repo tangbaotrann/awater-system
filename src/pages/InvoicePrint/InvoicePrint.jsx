@@ -15,7 +15,6 @@ import {
   InputNumber,
   theme,
   Table,
-  Progress,
   Space,
   Popover,
 } from "antd";
@@ -46,10 +45,6 @@ function InvoicePrint() {
     } else {
       form.setFieldsValue({ month: undefined });
     }
-  };
-  const [visible, setVisible] = useState(false);
-  const handleClick = () => {
-    setVisible(!visible);
   };
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { Option } = Select;
@@ -316,46 +311,6 @@ function InvoicePrint() {
           dataSource={data1}
           onChange={handleData1Change}
         />
-        {/* <Row>
-          <Col span={4}>
-            <Button size="small" type="primary" onClick={handleClick}>
-              Chỉ số
-            </Button>
-          </Col>
-          <Col span={20}>
-            {visible && (
-              <Row>
-                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                  <Progress
-                    percent={10}
-                    format={(percent) => `${percent * 10}`}
-                  />
-                </Col>
-                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                  <Progress
-                    percent={60}
-                    strokeColor="yellow"
-                    format={(percent) => `${percent * 10}`}
-                  />
-                </Col>
-                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                  <Progress
-                    percent={70}
-                    strokeColor="red"
-                    format={(percent) => `${percent * 10}`}
-                  />
-                </Col>
-                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                  <Progress
-                    percent={30}
-                    strokeColor="#ff8033"
-                    format={(percent) => `${percent * 10}`}
-                  />
-                </Col>
-              </Row>
-            )}
-          </Col>
-        </Row> */}
         <div className="InvoicePrint-bottom">
           <div className="InvoicePrint-bottom-func">
             {isTabletOrMobile ? (

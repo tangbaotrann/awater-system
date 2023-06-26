@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Col,
@@ -10,11 +10,7 @@ import {
   Select,
   theme,
 } from "antd";
-import {
-  PrinterOutlined,
-  RedoOutlined,
-  UnorderedListOutlined,
-} from "@ant-design/icons";
+import { PrinterOutlined, RedoOutlined } from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import "../InvoicePrint.css";
 import { useMediaQuery } from "react-responsive";
@@ -34,7 +30,6 @@ const PrintButton = ({ hideModal }) => {
   const onReset = () => {
     form1.resetFields();
   };
-  const [setTableVisible] = useState(false);
   return (
     <>
       <Form
