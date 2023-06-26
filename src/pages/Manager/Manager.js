@@ -10,6 +10,9 @@ import CustomerList from "./CustomerList/CustomerList";
 import EnterIndexPage from "../EnterIndexPage/EnterIndexPage.jsx";
 import Invoice from "../Invoice/Invoice";
 import InvoicePrint from "../InvoicePrint/InvoicePrint";
+import ManagementPriceSubject from "../Category/ManagementPriceSubject/ManagementPriceSubject";
+import ManagementReading from "../Category/ManagementReading/ManagementReading";
+import ManagementPriceList from "../Category/ManagementPriceList/ManagementPriceList";
 import Payment from "./Payment/Payment";
 function Manager() {
   // change layout
@@ -45,9 +48,15 @@ function Manager() {
         <InvoicePrint />
       ) : sidebarMenu === constants.EXPORT_PRINT_BILL_ORDER.key ? (
         <h1>EXPORT_PRINT_BILL_ORDER</h1>
-      ) : sidebarMenu === constants.PAYMENT.key ? ( // menu 3
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key ? ( //menu 3
+        <ManagementPriceSubject />
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_READING.key ? (
+        <ManagementReading />
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ? (
+        <ManagementPriceList />
+      ) :  sidebarMenu === constants.PAYMENT.key ? (
         <Payment />
-      ) : null}
+      ) :null}
     </DefaultLayout>
   );
 }

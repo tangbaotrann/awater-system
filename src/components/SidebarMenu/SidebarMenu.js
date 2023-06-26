@@ -90,6 +90,25 @@ function SidebarMenu() {
           ],
         },
         {
+          key: constants.CATEGORY.key,
+          icon: <TableOutlined />,
+          label: constants.CATEGORY.label,
+          children: [
+            {
+              label: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key,
+            },
+            {
+              label: constants.CATEGORY_MANAGEMENT_READING.label,
+              key: constants.CATEGORY_MANAGEMENT_READING.key,
+            },
+            {
+              label: constants.CATEGORY_MANAGEMENT_PRICE_LIST.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_LIST.key,
+            },
+          ],
+        },
+        {
           key: constants.COLLECT_MONEY.key,
           icon: <TableOutlined />,
           label: constants.COLLECT_MONEY.label,
@@ -139,6 +158,17 @@ function SidebarMenu() {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
         // menu 3
+        else if (item.key === constants.CATEGORY.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (
+          item.key === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key
+        ) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.CATEGORY_MANAGEMENT_READING.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
         else if (item.key === constants.PAYMENT.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
