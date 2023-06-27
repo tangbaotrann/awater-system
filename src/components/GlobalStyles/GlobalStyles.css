@@ -251,3 +251,12 @@ html *::-webkit-scrollbar-track {
 
 /* ----- END RESPONSIVE ----- */
   
+
+/* Common */
+.ant-form-item {
+    margin-bottom: 9px;
+}
+
+.ant-tabs-card >.ant-tabs-nav .ant-tabs-tab {
+    padding: 8px 8px;
+}
