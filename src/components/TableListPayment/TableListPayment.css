@@ -1,0 +1,53 @@
+.pay-debt-num-to-text {
+    display: flex;
+    align-items: center;
+    margin-top: -12px;
+    margin-bottom: 12px;
+}
+
+.pay-debt-num-to-text i {
+    margin-left: 12px;
+}
+
+.func-pay-debt-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pay-debt-btn-close {
+    margin-left: 12px;
+}
+
+/* custom color border select input */
+.custom-border-select-inp {
+    border: 1px solid red;
+    border-radius: 8px;
+}
+
+.custom-border-select-inp .ant-select-selector {
+    border: 1px solid red !important;
+}
+
+.custom-border-select-inp .ant-select-selector:hover {
+    opacity: 0.8;
+    transition: 0.3 all;
+    box-shadow: 0 1px  0 0.2px red !important;
+}
+
+.custom-border-select-inp .ant-select-selector:focus-within {
+    opacity: 0.8;
+    transition: 0.3 all;
+    box-shadow: 1px 1px  0 0.2px red !important;
+}
+
+/* buttons pay by bill */
+.func-pay-by-bill-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pay-by-bill-btn-close {
+    margin-left: 12px;
+}
