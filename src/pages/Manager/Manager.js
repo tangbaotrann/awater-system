@@ -20,14 +20,8 @@ function Manager() {
 
   return (
     <DefaultLayout>
-      {sidebarMenu === constants.REGISTRATION_FORM.key ? ( // menu 1
-        <h1>Đơn đăng ký</h1>
-      ) : sidebarMenu === constants.ESTIMATES.key ? (
-        <h1>Dự toán</h1>
-      ) : sidebarMenu === constants.CONTRACT_MANAGER.key ? (
+      {sidebarMenu === constants.CONTRACT_MANAGER.key ? ( // menu 1
         <Contract />
-      ) : sidebarMenu === constants.COVERAGE_RATE.key ? (
-        <h1>Tỷ lệ bao phủ</h1>
       ) : sidebarMenu === constants.NUMBER_MANAGEMENT.key ? (
         <h1>Số quản lý đồng hồ</h1>
       ) : sidebarMenu === constants.REGISTRATION_OF_INSTALL.key ? ( // sub menu 1.1
@@ -54,9 +48,9 @@ function Manager() {
         <ManagementReading />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ? (
         <ManagementPriceList />
-      ) :  sidebarMenu === constants.PAYMENT.key ? (
+      ) : sidebarMenu === constants.PAYMENT.key ? ( // menu 4
         <Payment />
-      ) :null}
+      ) : null}
     </DefaultLayout>
   );
 }

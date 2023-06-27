@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal, Table } from "antd";
 import { UnlockOutlined } from "@ant-design/icons";
 
+import "./TableListPayment.css";
 import { dataOnModalDoubleClick, dataPayment } from "../../utils/dataPayment";
 import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
@@ -45,7 +46,6 @@ function TableListPayment() {
       key: "collector",
       title: "Người thu",
       dataIndex: "collector",
-      width: "12%",
     },
     {
       key: "total",
@@ -71,13 +71,11 @@ function TableListPayment() {
       key: "fullName",
       title: "Tên khách hàng",
       dataIndex: "fullName",
-      width: "12%",
     },
     {
       key: "address",
       title: "Địa chỉ",
       dataIndex: "address",
-      width: "22%",
     },
     {
       key: "phone",
@@ -88,7 +86,6 @@ function TableListPayment() {
       key: "payments",
       title: "Hình thức TT",
       dataIndex: "payments",
-      width: "6%",
     },
     {
       key: "seri_bill",
@@ -180,6 +177,7 @@ function TableListPayment() {
   return (
     <>
       <div className="container-tbl-payment">
+        {/* Table payment main */}
         <Table
           columns={cols}
           dataSource={dataPayment.map((_pay, index) => ({
@@ -227,12 +225,12 @@ function TableListPayment() {
           }}
           size="small"
           scroll={{
-            x: 2000,
+            x: 2600,
           }}
         ></Table>
       </div>
 
-      {/* Show modal when double click on row  */}
+      {/* Show modal when double click on row (Thanh toán)  */}
       <Modal
         open={modalDoubleClick}
         onCancel={hideModalDoubleClick}
