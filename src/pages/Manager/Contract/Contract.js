@@ -46,7 +46,7 @@ function Contract() {
               <Input name="name_customer" placeholder="Nhập tên khách hàng" />
             </Form.Item>
           </Col>
-
+ 
           {/* Seri đồng hồ */}
           <Col xs={24} sm={24} md={10} lg={3} className="gutter-item">
             <Form.Item name="num_seri">

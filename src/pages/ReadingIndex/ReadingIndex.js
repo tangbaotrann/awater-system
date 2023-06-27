@@ -7,6 +7,7 @@ import { FooterReadingIndex } from "../../components/Footer/FooterReadingIndex";
 import { useMediaQuery } from "react-responsive";
 import { PlusOutlined } from "@ant-design/icons";
 import { ModalIndexBar } from "./ModalIndexBar/ModalIndexBar";
+import "./ReadingIndex.css";
 
 const ReadingIndex = () => {
   const { token } = theme.useToken();
@@ -216,37 +217,36 @@ const ReadingIndex = () => {
           }}
           scroll={{
             x: 1500,
-            y: 240,
+            y: 370,
           }}
         />
       </div>
-
-      <div className="contract-bottom-func">
-        {isTabletOrMobile ? (
-          <Popover
-            placement="bottomRight"
-            trigger="click"
-            // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
-            content={
-              <FooterReadingIndex
-                setIsOpenModalCreate={setIsOpenModalCreate}
-                setIsModalOpenMCreate={setIsModalOpenMCreate}
-                isTabletOrMobile={isTabletOrMobile}
-                setIsModalOpenIndexBar={setIsModalOpenIndexBar}
-              />
-            }
-          >
-            <PlusOutlined />
-          </Popover>
-        ) : (
-          <div className="contract-bottom">
+      <div className="contract-bottom">
+        <div className="contract-bottom-func">
+          {isTabletOrMobile ? (
+            <Popover
+              placement="bottomRight"
+              trigger="click"
+              // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
+              content={
+                <FooterReadingIndex
+                  setIsOpenModalCreate={setIsOpenModalCreate}
+                  setIsModalOpenMCreate={setIsModalOpenMCreate}
+                  isTabletOrMobile={isTabletOrMobile}
+                  setIsModalOpenIndexBar={setIsModalOpenIndexBar}
+                />
+              }
+            >
+              <PlusOutlined />
+            </Popover>
+          ) : (
             <FooterReadingIndex
               setIsOpenModalCreate={setIsOpenModalCreate}
               setIsModalOpenMCreate={setIsModalOpenMCreate}
               setIsModalOpenIndexBar={setIsModalOpenIndexBar}
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <CreateBook

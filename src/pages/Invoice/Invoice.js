@@ -1,41 +1,5 @@
-import {
-  CalculatorOutlined,
-  CloseCircleOutlined,
-  DeleteOutlined,
-  DownOutlined,
-  EditFilled,
-  EditOutlined,
-  FileExcelOutlined,
-  FileFilled,
-  FileSearchOutlined,
-  FileSyncOutlined,
-  FileTextOutlined,
-  MailFilled,
-  PlusCircleFilled,
-  PlusOutlined,
-  ProfileFilled,
-  RedoOutlined,
-  SettingOutlined,
-  StopOutlined,
-  SyncOutlined,
-  UnorderedListOutlined,
-} from "@ant-design/icons";
-import {
-  Button,
-  Col,
-  DatePicker,
-  Dropdown,
-  Form,
-  Input,
-  Modal,
-  Popover,
-  Progress,
-  Row,
-  Select,
-  Space,
-  Table,
-  theme,
-} from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { Popover, Table, theme } from "antd";
 import { useState } from "react";
 import { DetailInvoice } from "./Detail_Invoice/Detail_Invoice";
 import { Instalments } from "./Instalments/Instalments";
@@ -177,12 +141,11 @@ const Invoice = () => {
           }}
           scroll={{
             x: 1500,
-            y: 540,
+            y: 420,
           }}
         />
         <DetailInvoice open={open} onClose={onClose} />
       </div>
-      
 
       {/* Footer */}
       <div className="contract-bottom-func">
