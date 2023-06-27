@@ -12,7 +12,6 @@ import {
 } from "antd";
 import { PrinterOutlined, RedoOutlined } from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
-import "../InvoicePrint.css";
 import { useMediaQuery } from "react-responsive";
 const PrintButton = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });

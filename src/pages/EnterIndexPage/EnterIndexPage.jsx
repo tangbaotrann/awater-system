@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { initialData } from "../../utils/dataEnterIndexPage/data/data";
 import TabListEP from "./TableListEP";
 import "./EnterIndexPage.css";
+import "../../components/GlobalStyles/GlobalStyles.css";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import {
   Form,
@@ -395,7 +396,7 @@ function EnterIndexPage() {
           onChange={handleData1Change}
         />
         <div className="EnterIndexPage-bottom">
-          <div className="EnterIndexPage-bottom-func">
+          <div className="contract-bottom-func">
             {isTabletOrMobile ? (
               <Popover
                 rootClassName="fix-popover-z-index"
