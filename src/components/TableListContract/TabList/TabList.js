@@ -61,7 +61,7 @@ const tabs = [
   {
     id: "7",
     label: "Thay đồng hồ",
-    icon: <DashboardOutlined />,
+    icon: <DashboardOutlined />, 
   },
   {
     id: "8",
