@@ -217,7 +217,7 @@ const ReadingIndex = () => {
           }}
           scroll={{
             x: 1500,
-            y: 370,
+            y: 330,
           }}
         />
       </div>

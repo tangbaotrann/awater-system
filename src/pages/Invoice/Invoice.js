@@ -141,7 +141,7 @@ const Invoice = () => {
           }}
           scroll={{
             x: 1500,
-            y: 420,
+            y: 365,
           }}
         />
         <DetailInvoice open={open} onClose={onClose} />
