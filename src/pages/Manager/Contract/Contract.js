@@ -9,7 +9,7 @@ import TabList from "../../../components/TableListContract/TabList/TabList";
 function Contract() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
-  // handle submit form 
+  // handle submit form
   const handleSubmit = (values) => {
     console.log("values", values);
   };
@@ -24,7 +24,7 @@ function Contract() {
       <Form onFinish={handleSubmit} onFinishFailed={handleFailed}>
         <Row>
           {/* Số hợp đồng */}
-          <Col xs={24} sm={24} md={12} lg={5} className="gutter-item"> 
+          <Col xs={24} sm={24} md={12} lg={5} className="gutter-item">
             <Form.Item name="num_contract" label="Số hợp đồng: ">
               <Input name="num_contract" placeholder="Nhập số hợp đồng" />
             </Form.Item>
@@ -135,21 +135,23 @@ function Contract() {
 
       {/* func bottom */}
       <div className="contract-bottom">
-        <div className="contract-bottom-func">
-          {/* check mobile */}
-          {isTabletOrMobile ? (
-            <Popover
-              rootClassName="fix-popover-z-index"
-              placement="bottomRight"
-              trigger="click"
-              content={<TabList isTabletOrMobile={isTabletOrMobile} />}
-            >
+        {/* check mobile */}
+        {isTabletOrMobile ? (
+          <Popover
+            rootClassName="fix-popover-z-index"
+            placement="bottomRight"
+            trigger="click"
+            content={<TabList isTabletOrMobile={isTabletOrMobile} />}
+          >
+            <div className="contract-bottom-func">
               <PlusOutlined />
-            </Popover>
-          ) : (
+            </div>
+          </Popover>
+        ) : (
+          <div className="contract-bottom-func">
             <TabList />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
