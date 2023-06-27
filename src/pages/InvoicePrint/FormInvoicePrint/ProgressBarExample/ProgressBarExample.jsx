@@ -1,9 +1,6 @@
 import React from "react";
 import { Progress, Row, Col, Form, theme } from "antd";
-import { useMediaQuery } from "react-responsive";
 const ProgressBarExample = (hideModal) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
   // handle submit form (main)
   const handleSubmit = (values) => {
     console.log("values", values);

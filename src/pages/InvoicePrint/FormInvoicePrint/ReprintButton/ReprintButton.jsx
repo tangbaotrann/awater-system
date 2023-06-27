@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Col,
@@ -6,19 +6,14 @@ import {
   Form,
   Input,
   InputNumber,
-  Modal,
   Row,
   Select,
   theme,
 } from "antd";
-import {
-  PrinterOutlined,
-  RedoOutlined,
-  UnorderedListOutlined,
-} from "@ant-design/icons";
+import { PrinterOutlined, RedoOutlined } from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
-const PrintCodeKH = ({ hideModal }) => {
+const ReprintButton = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -86,7 +81,7 @@ const PrintCodeKH = ({ hideModal }) => {
         </Row>
         <Row>
           <Col span={24}>
-            <Form.Item name="makhachang" label="Mã khách hàng">
+            <Form.Item name="sohoadon" label="Số hóa đơn">
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -157,4 +152,4 @@ const PrintCodeKH = ({ hideModal }) => {
   );
 };
 
-export default PrintCodeKH;
+export default ReprintButton;

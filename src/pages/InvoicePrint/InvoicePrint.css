@@ -18,6 +18,7 @@
 .ant-layout-content {
   position: relative;
 }
+
 .InvoicePrint-bottom {
   position: fixed;
   bottom: 0;
@@ -28,31 +29,3 @@
 }
 
 /* tab list */ 
-.ant-tabs-nav {
-  margin-bottom: 4px !important;
-}
-.ant-tabs-nav {
-  margin-bottom: 4px !important;
-}
-/* ................................ */
-   .footer-buttons {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-  }
-  .ant-table-thead .ant-table-cell {
-    font-size: 13px;
-    font-weight: 800 !important;
-}
-.ant-table-cell {
-  font-size: 10px;
-  font-weight: 600;
-}
-.ant-table-small table {
-  font-size: 12px;
-}

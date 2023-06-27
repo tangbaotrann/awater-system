@@ -9,8 +9,8 @@ import {
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { btnClickTabListInvoicePrintSelector } from "../../redux/selector";
-import tabListInvoicePrintSlice from "../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
+import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import FromPrintButton from "./PrintButton/PrintButton";
 import FormTwoButtonPrint from "./TwoButtonPrint/TwoButtonPrint";
 import FormReprintButton from "./ReprintButton/ReprintButton";

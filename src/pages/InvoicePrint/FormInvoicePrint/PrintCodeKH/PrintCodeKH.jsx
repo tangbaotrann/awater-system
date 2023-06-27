@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Col,
   DatePicker,
   Form,
+  Input,
   InputNumber,
-  Modal,
   Row,
   Select,
   theme,
@@ -13,7 +13,7 @@ import {
 import { PrinterOutlined, RedoOutlined } from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
-const TwoButtonPrint = ({ hideModal }) => {
+const PrintCodeKH = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -43,6 +43,32 @@ const TwoButtonPrint = ({ hideModal }) => {
           padding: 24,
         }}
       >
+        <Row>
+          <Col span={24}>
+            <Form.Item name="chọn tháng" label="Chọn tháng">
+              <DatePicker
+                locale={viVN}
+                picker="month"
+                style={{ width: "100%" }}
+                format="M/YYYY"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <Form.Item name="tenphien" label="Tên phiên">
+              <Input min={1} max={10} style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <Form.Item name="ghichu" label="Ghi chú">
+              <Input min={1} max={10} style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+        </Row>
         <Row gutter={24}>
           <Col span={24}>
             <Form.Item name="kyhieu" label="Ký hiệu">
@@ -55,8 +81,8 @@ const TwoButtonPrint = ({ hideModal }) => {
         </Row>
         <Row>
           <Col span={24}>
-            <Form.Item name="tuso" label="Từ số">
-              <InputNumber min={1} max={10} style={{ width: "100%" }} />
+            <Form.Item name="makhachang" label="Mã khách hàng">
+              <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -75,11 +101,8 @@ const TwoButtonPrint = ({ hideModal }) => {
         </Row>
         <Row>
           <Col span={24}>
-            <Form.Item name="sohopdong" label="Số hợp đồng">
-              <Select>
-                <Option value="HD1">HD1</Option>
-                <Option value="HD2">HD2</Option>
-              </Select>
+            <Form.Item name="sohdgoiy" label="Số HĐ gợi ý">
+              <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -129,4 +152,4 @@ const TwoButtonPrint = ({ hideModal }) => {
   );
 };
 
-export default TwoButtonPrint;
+export default PrintCodeKH;

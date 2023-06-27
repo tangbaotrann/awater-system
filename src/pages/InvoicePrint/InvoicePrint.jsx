@@ -1,8 +1,9 @@
 import { React, useState } from "react";
 import { initialData, initialData2 } from "../../utils/dataInvoicePrint/data";
 import "./InvoicePrint.css";
-import InvoicingDetailsModal from "./InvoicingDetailsModal/InvoicingDetailsModal";
-import TabListIP from "./TableListIP";
+import "../../components/GlobalStyles/GlobalStyles.css";
+import InvoicingDetailsModal from "./FormInvoicePrint/InvoicingDetailsModal/InvoicingDetailsModal";
+import TabListIP from "./FormInvoicePrint/TableListIP.js";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import {
   Form,
@@ -283,6 +284,7 @@ function InvoicePrint() {
       </Form>
     );
   };
+
   return (
     <>
       <AdvancedSearchForm />
@@ -312,7 +314,7 @@ function InvoicePrint() {
           onChange={handleData1Change}
         />
         <div className="InvoicePrint-bottom">
-          <div className="InvoicePrint-bottom-func">
+          <div className="contract-bottom-func">
             {isTabletOrMobile ? (
               <Popover
                 rootClassName="fix-popover-z-index"
