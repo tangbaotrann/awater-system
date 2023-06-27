@@ -23,20 +23,8 @@ function SidebarMenu() {
           label: constants.REGISTRATION_FORM_PARENT.label,
           children: [
             {
-              label: constants.REGISTRATION_FORM.label,
-              key: constants.REGISTRATION_FORM.key,
-            },
-            {
-              label: constants.ESTIMATES.label,
-              key: constants.ESTIMATES.key,
-            },
-            {
               label: constants.CONTRACT_MANAGER.label,
               key: constants.CONTRACT_MANAGER.key,
-            },
-            {
-              label: constants.COVERAGE_RATE.label,
-              key: constants.COVERAGE_RATE.key,
             },
             {
               label: constants.NUMBER_MANAGEMENT.label,
@@ -123,15 +111,9 @@ function SidebarMenu() {
       // Change layout
       onSelect={(item) => {
         // menu 1
-        if (item.key === constants.REGISTRATION_FORM.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-        } else if (item.key === constants.ESTIMATES.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-        } else if (item.key === constants.CONTRACT_MANAGER.key) {
+        if (item.key === constants.CONTRACT_MANAGER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
-        } else if (item.key === constants.COVERAGE_RATE.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.NUMBER_MANAGEMENT.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
@@ -156,6 +138,9 @@ function SidebarMenu() {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.EXPORT_PRINT_BILL_ORDER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.PAYMENT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key)); // menu 4
+          dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
         }
         // menu 3
         else if (item.key === constants.CATEGORY.key) {
@@ -168,10 +153,6 @@ function SidebarMenu() {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-        }
-        else if (item.key === constants.PAYMENT.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
         }
       }}
     />

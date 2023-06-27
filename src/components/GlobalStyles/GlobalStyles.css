@@ -90,11 +90,15 @@ html *::-webkit-scrollbar-track {
     /* tabs bottom (page contract) */
     .contract-bottom-func {
         position: fixed;
-        left: 16px;
+        right: 16px;
         bottom: 12px;
         font-size: 2rem;
         font-weight: 800;
-        background-color: var(--white);
+        border-radius: 99px;
+        padding: 12px;
+        color: var(--white);
+        background-color: var(--blue-1677ff);
+        box-shadow: 0 0 12px 0 var(--blue-1677ff);
     }
 
     /* Modal (Danh sách sắp xếp đồng hồ) */
@@ -197,11 +201,15 @@ html *::-webkit-scrollbar-track {
     /* tabs bottom (page contract) */
     .contract-bottom-func {
         position: fixed;
-        left: 16px;
+        right: 16px;
         bottom: 12px;
         font-size: 2rem;
         font-weight: 800;
-        background-color: var(--white);
+        border-radius: 99px;
+        padding: 12px;
+        color: var(--white);
+        background-color: var(--blue-1677ff);
+        box-shadow: 0 0 12px 0 var(--blue-1677ff);
     }
 
     /* payment */
@@ -231,11 +239,15 @@ html *::-webkit-scrollbar-track {
     /* tabs bottom (page contract) */
     .contract-bottom-func {
         position: fixed;
-        left: 16px;
+        right: 16px;
         bottom: 12px;
         font-size: 2rem;
         font-weight: 800;
-        background-color: var(--white);
+        border-radius: 99px;
+        padding: 12px;
+        color: var(--white);
+        background-color: var(--blue-1677ff);
+        box-shadow: 0 0 12px 0 var(--blue-1677ff);
     }
 
     /* payment */
