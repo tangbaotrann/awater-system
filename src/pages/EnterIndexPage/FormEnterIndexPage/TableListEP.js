@@ -12,18 +12,18 @@ import {
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { btnClickTabListEnterIndexPageSelector } from "../../redux/selector";
-import tabListEnterIndexPageSlice from "../../redux/slices/tabListEnterIndexPageSlice/tabListEnterIndexPageSlice";
-import SearchForm from "./SearchForm";
-import ExcelForm from "./ExcelForm";
-import FileForm from "./FileForm";
-import UtilityButton from "./UtilityButton";
-import PriceTableButton from "./PriceTableButton";
-import UsageButton from "./UsageButton";
-import ChartButton from "./ChartButton";
-import ImageModal from "./ImageModel";
+import { btnClickTabListEnterIndexPageSelector } from "../../../redux/selector";
+import tabListEnterIndexPageSlice from "../../../redux/slices/tabListEnterIndexPageSlice/tabListEnterIndexPageSlice";
+import SearchForm from "./SearchForn/SearchForm";
+import ExcelForm from "./ExcelForm/ExcelForm";
+import FileForm from "./FileForm/FileForm";
+import UtilityButton from "./UtilityButton/UtilityButton";
+import UsageButton from "./UsageButton/UsageButton";
+import ChartButton from "./ChartButton/ChartButton.jsx";
+import ImageModal from "./ImageModel/ImageModel";
 import FormProgress from "./ProgressBarExample/ProgressBarExample.jsx";
-// Tabs bottom
+import PriceTableButton from "./PriceTableButton/PriceTableButton";
+// Tabs bottom 
 const tabs = [
   {
     id: "1",

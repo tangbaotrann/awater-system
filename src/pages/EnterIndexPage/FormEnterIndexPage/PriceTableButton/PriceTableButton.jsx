@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Form, Row, theme } from "antd";
 
-import WaterPriceTable from "../../utils/dataEnterIndexPage/data/WaterPriceTable"; // Đường dẫn đến component WaterPriceTable
 import { useMediaQuery } from "react-responsive";
+import WaterPriceTable from "../../../../utils/dataEnterIndexPage/data/WaterPriceTable";
 const PriceTableButton = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const handleSubmit = (values) => {

@@ -1,4 +1,11 @@
-import { TableOutlined } from "@ant-design/icons/lib/icons";
+import {
+  CommentOutlined,
+  DollarCircleOutlined,
+  FileDoneOutlined,
+  FileExcelOutlined,
+  ProfileOutlined,
+  WarningOutlined,
+} from "@ant-design/icons/lib/icons";
 import { Menu } from "antd";
 import { useDispatch } from "react-redux";
 
@@ -19,7 +26,7 @@ function SidebarMenu() {
       items={[
         {
           key: constants.REGISTRATION_FORM_PARENT.key,
-          icon: <TableOutlined />,
+          icon: <FileDoneOutlined />,
           label: constants.REGISTRATION_FORM_PARENT.label,
           children: [
             {
@@ -52,7 +59,7 @@ function SidebarMenu() {
         },
         {
           key: constants.RECORD_INDEX_PARENT.key,
-          icon: <TableOutlined />,
+          icon: <FileExcelOutlined />,
           label: constants.RECORD_INDEX_PARENT.label,
           children: [
             {
@@ -79,7 +86,7 @@ function SidebarMenu() {
         },
         {
           key: constants.CATEGORY.key,
-          icon: <TableOutlined />,
+          icon: <ProfileOutlined />,
           label: constants.CATEGORY.label,
           children: [
             {
@@ -98,12 +105,34 @@ function SidebarMenu() {
         },
         {
           key: constants.COLLECT_MONEY.key,
-          icon: <TableOutlined />,
+          icon: <DollarCircleOutlined />,
           label: constants.COLLECT_MONEY.label,
           children: [
             {
               label: constants.PAYMENT.label,
               key: constants.PAYMENT.key,
+            },
+          ],
+        },
+        {
+          key: constants.FAILURE.key,
+          icon: <WarningOutlined />,
+          label: constants.FAILURE.label,
+          children: [
+            {
+              label: constants.BLOCK_CLOCK_MANAGEMENT.label,
+              key: constants.BLOCK_CLOCK_MANAGEMENT.key,
+            },
+          ],
+        },
+        {
+          key: constants.NOTICE_OF_CUSTOMS.key,
+          icon: <CommentOutlined />,
+          label: constants.NOTICE_OF_CUSTOMS.label,
+          children: [
+            {
+              label: constants.LOG_NOTICE.label,
+              key: constants.LOG_NOTICE.key,
             },
           ],
         },
@@ -152,6 +181,18 @@ function SidebarMenu() {
         } else if (item.key === constants.CATEGORY_MANAGEMENT_READING.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        // menu 5
+        else if (item.key === constants.FAILURE.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.BLOCK_CLOCK_MANAGEMENT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        // menu 6
+        else if (item.key === constants.NOTICE_OF_CUSTOMS.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.LOG_NOTICE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
       }}

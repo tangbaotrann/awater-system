@@ -7,13 +7,6 @@
   padding: 6px 6px 0 6px;
   background-color: var(--blue-e6f4ff);
 }
-.EnterIndexPage-bottom-func{
-  position: fixed;
-  bottom: 0;
-  left: 10px;
-  border-radius: 6px;
-  padding: 6px 6px 0 6px;
-}
 
 /* tab list invoice print*/ 
 .wrapper-contract {

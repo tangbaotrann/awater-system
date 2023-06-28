@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { initialData } from "../../utils/dataEnterIndexPage/data/data";
-import TabListEP from "./FormEnterIndexPage/TableListEP";
-import "./EnterIndexPage.css";
+import TabListIP from "./FormInvoicePrint/TableListIP";
+
 import "../../components/GlobalStyles/GlobalStyles.css";
 import "../Manager/Contract/Contract.css";
 import viVN from "antd/es/date-picker/locale/vi_VN";
@@ -21,11 +21,10 @@ import {
 } from "antd";
 import { SearchOutlined, RedoOutlined, PlusOutlined } from "@ant-design/icons";
 import moment from "moment";
-import "./EnterIndexPage.css";
 import "moment/locale/vi";
 import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
-function EnterIndexPage() {
+function BlockClock() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const { token } = theme.useToken();
   const [form] = Form.useForm();
@@ -312,17 +311,11 @@ function EnterIndexPage() {
       </Form>
     );
   };
-  const item = [
-    {
-      key: "1",
-      label: "Tìm kiếm",
-      children: <AdvancedSearchForm />,
-    },
-  ];
+
   return (
     <>
       {/* <AdvancedSearchForm /> */}
-      <Collapse size="small" items={item} />
+      <AdvancedSearchForm />
       <div
         style={{
           textAlign: "center",
@@ -356,7 +349,7 @@ function EnterIndexPage() {
               rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
-              content={<TabListEP isTabletOrMobile={isTabletOrMobile} />}
+              content={<TabListIP isTabletOrMobile={isTabletOrMobile} />}
             >
               <div className="contract-bottom-func">
                 <PlusOutlined />
@@ -364,7 +357,7 @@ function EnterIndexPage() {
             </Popover>
           ) : (
             <div className="contract-bottom-func">
-              <TabListEP />
+              <TabListIP />
             </div>
           )}
         </div>
@@ -372,4 +365,4 @@ function EnterIndexPage() {
     </>
   );
 }
-export default EnterIndexPage;
+export default BlockClock;
