@@ -110,6 +110,7 @@ function FormCreateContract({ tabList, hideModal }) {
         >
           <Collapse
             key="1"
+            size="small"
             items={items}
             accordion={false}
             defaultActiveKey={["1"]}
@@ -125,6 +126,7 @@ function FormCreateContract({ tabList, hideModal }) {
         >
           <Collapse
             key="3"
+            size="small"
             items={itemsClock}
             accordion={false}
             defaultActiveKey={["3"]}
@@ -143,6 +145,7 @@ function FormCreateContract({ tabList, hideModal }) {
         >
           <Collapse
             key="2"
+            size="small"
             items={itemsInfoContract}
             accordion={false}
             defaultActiveKey={["2"]}
@@ -158,6 +161,7 @@ function FormCreateContract({ tabList, hideModal }) {
         >
           <Collapse
             key="4"
+            size="small"
             items={itemsDetailClock}
             accordion={false}
             defaultActiveKey={["4"]}

@@ -33,6 +33,11 @@ a {
     color: var(--black);
 }
 
+/* custom */
+.gutter-item-mobile {
+    margin-left: 10px;
+}
+
 /* Scrollbar Css */
 html *::-webkit-scrollbar {
     border-radius: 0;
@@ -177,12 +182,17 @@ html *::-webkit-scrollbar-track {
 
     .gutter-item-btn {
         margin-top: 10px;
+        margin-left: 0 !important;
     }
 
     /* payment */
     .btn-search-payment {
         margin-left: 0;
         margin-bottom: 22px;
+    }
+
+    .gutter-item-mobile {
+        margin: 0;
     }
 }
   
@@ -252,8 +262,8 @@ html *::-webkit-scrollbar-track {
     }
 
     /* payment */
-    .gutter-item-mobile {
-        margin-left: 12px;
+    .gutter-item-btn {
+        margin-left: 22px;
     }
 }
   
