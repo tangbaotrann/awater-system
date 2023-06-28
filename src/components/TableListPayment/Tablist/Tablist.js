@@ -14,6 +14,7 @@ import FormPayForOneBillSelect from "./FormPayForOneBillSelect/FormPayForOneBill
 import FormPayDebt from "./FormPayDebt/FormPayDebt";
 import FormPayByBill from "./FormPayByBill/FormPayByBill";
 import StatisticalPay from "./StatisticalPay/StatisticalPay";
+import FormPayCounter from "./FormPayCounter/FormPayCounter";
 
 // Tabs bottom
 const tabs = [
@@ -54,6 +55,7 @@ function TabList({ isTabletOrMobile }) {
   const [modalPayForOneBillSelected, setModalPayForOneBillSelected] =
     useState(false);
   const [modalDebt, setModalDebt] = useState(false);
+  const [modalPayCounter, setPayCounter] = useState(false);
   const [modalPayByBill, setModalPayByBill] = useState(false);
   const [modalWatchStatistical, setModalWatchStatistical] = useState(false);
 
@@ -72,7 +74,7 @@ function TabList({ isTabletOrMobile }) {
     } else if (key === "2") {
       setModalDebt(true);
     } else if (key === "3") {
-      message.error("Tính năng chưa khả dụng!");
+      setPayCounter(true);
     } else if (key === "4") {
       setModalPayByBill(true);
     } else if (key === "5") {
@@ -86,6 +88,7 @@ function TabList({ isTabletOrMobile }) {
   const hideModal = () => {
     setModalPayForOneBillSelected(false);
     setModalDebt(false);
+    setPayCounter(false);
     setModalPayByBill(false);
     setModalWatchStatistical(false);
     dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
@@ -163,6 +166,22 @@ function TabList({ isTabletOrMobile }) {
       </Modal>
 
       {/* Show modal payment (Thanh toán tại quầy in biên lai) */}
+      <Modal
+        open={modalPayCounter}
+        width={1600}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+        onCancel={hideModal}
+      >
+        <div className="pay-counter-header">
+          <h3>Thanh toán tại quầy</h3>
+          <p>Nguyễn Nam - 11/02/2023</p>
+        </div>
+
+        {/* render form  */}
+        <FormPayCounter hideModal={hideModal} />
+      </Modal>
 
       {/* Show modal payment (Thanh toán theo số hóa đơn) */}
       <Modal
