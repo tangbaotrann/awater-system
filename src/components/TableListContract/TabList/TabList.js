@@ -163,7 +163,7 @@ function TabList({ isTabletOrMobile }) {
         open={modalUpdateContract ? modalUpdateContract : openModal}
         onCancel={hideModal}
         width={2000}
-        centered={true}
+        centered={true} 
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >

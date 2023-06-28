@@ -18,6 +18,7 @@ import {
   Table,
   Space,
   Popover,
+  Collapse,
 } from "antd";
 import {
   SearchOutlined,
@@ -138,36 +139,25 @@ function InvoicePrint() {
   ];
 
   const AdvancedSearchForm = () => {
-    const { token } = theme.useToken();
-    const [form] = Form.useForm();
-    const onFinish = (values) => {
-      console.log("Received values of form: ", values);
-    };
+    // const { token } = theme.useToken();
+    // const [form] = Form.useForm();
+    // const onFinish = (values) => {
+    //   console.log("Received values of form: ", values);
+    // };
 
     return (
-      <Form
-        form={form}
-        name="advanced_search"
-        size="small"
-        onFinish={onFinish}
-        style={{
-          maxWidth: "none",
-          background: token.colorFillAlter,
-          borderRadius: token.borderRadiusLG,
-          padding: 24,
-        }}
-      >
+      <Form>
         <Row gutter={9}>
           <Col span={3} xs={24} sm={12} md={6}>
             <Form.Item
-              size="small"
+              // size="small"
               className="custom-form-item"
               label="Tháng: "
               name="month"
             >
               <DatePicker
                 locale={viVN}
-                size="small"
+                // size="small"
                 picker="month"
                 style={{ width: "100%" }}
                 onChange={handleMonthChange}
@@ -176,8 +166,8 @@ function InvoicePrint() {
             </Form.Item>
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
-            <Form.Item size="small" label="Cán bộ đọc" name="1">
-              <Select style={{ width: "100%" }} size="small" name="s1">
+            <Form.Item label="Cán bộ đọc" name="1">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
               </Select>
@@ -185,7 +175,6 @@ function InvoicePrint() {
           </Col>
           <Col span={6} xs={24} sm={12} md={6}>
             <Form.Item
-              size="small"
               className="custom-form-item"
               label={
                 <>
@@ -195,7 +184,7 @@ function InvoicePrint() {
               }
               name="2"
             >
-              <Select style={{ width: "100%" }} size="small" name="s1">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -204,7 +193,6 @@ function InvoicePrint() {
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item
-              size="small"
               label={
                 <>
                   In hóa đơn
@@ -212,7 +200,7 @@ function InvoicePrint() {
                 </>
               }
             >
-              <Select style={{ width: "100%" }} size="small">
+              <Select style={{ width: "100%" }}>
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -225,13 +213,11 @@ function InvoicePrint() {
         <Row gutter={5}>
           <Col span={15} xs={24} sm={12} md={6}>
             <Form.Item
-              size="small"
               // className="custom-form-item"
               label="Tên phiên"
               name="6"
             >
               <Input
-                size="small"
                 style={{
                   width: "100%",
                 }}
@@ -239,13 +225,8 @@ function InvoicePrint() {
             </Form.Item>
           </Col>
           <Col span={4} xs={24} sm={12} md={6}>
-            <Form.Item
-              size="small"
-              // className="custom-form-item"
-              label="Tiêu thụ"
-              name="8"
-            >
-              <Select style={{ width: "100%" }} size="small" name="s1">
+            <Form.Item label="Tiêu thụ" name="8">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">Lựa chọn 1</Option>
                 <Option value="2">Lựa chọn 2</Option>
                 <Option value="3">Lựa chọn 3</Option>
@@ -256,7 +237,6 @@ function InvoicePrint() {
           <Col span={2} xs={24} sm={12} md={6}>
             <Form.Item className="custom-form-item" label="" name="quantity">
               <InputNumber
-                size="small"
                 style={{
                   width: "100%",
                 }}
@@ -265,12 +245,11 @@ function InvoicePrint() {
           </Col>
           <Col span={3} xs={24} sm={12} md={6}>
             <div>
-              <Space size="small">
+              <Space>
                 <Button
                   style={{
                     maxWidth: "100%",
                   }}
-                  size="small"
                   type="primary"
                   htmlType="submit"
                 >
@@ -284,10 +263,17 @@ function InvoicePrint() {
       </Form>
     );
   };
-
+  const item = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <AdvancedSearchForm />,
+    },
+  ];
   return (
     <>
-      <AdvancedSearchForm />
+      <Collapse key="4" items={item} accordion={false} />
+      {/* <AdvancedSearchForm /> */}
       <div
         style={{
           textAlign: "center",

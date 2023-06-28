@@ -11,7 +11,7 @@ import {
   theme,
 } from "antd";
 import viVN from "antd/es/date-picker/locale/vi_VN";
-import { otherData } from "../../utils/dataEnterIndexPage/data/otherData.js";
+import { otherData } from "../../../../utils/dataEnterIndexPage/data/otherData.js";
 import { useMediaQuery } from "react-responsive";
 const UsageButton = ({ hideModal }) => {
   const [data2, setData2] = useState(otherData);
