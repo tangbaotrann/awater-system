@@ -1,5 +1,5 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { Popover, Table, theme } from "antd";
+import { Collapse, Popover, Table, theme } from "antd";
 import { useState } from "react";
 import { DetailInvoice } from "./Detail_Invoice/Detail_Invoice";
 import { Instalments } from "./Instalments/Instalments";
@@ -112,25 +112,32 @@ const Invoice = () => {
       key: "codePrice",
     },
   ];
-
+  const items = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <FormSearchInvoice />,
+    },
+  ];
   return (
     <>
-      {/* filter */}
-      <FormSearchInvoice />
+      {/* filter */} 
+      <Collapse items={items} size="small"/>
 
       {/* main contain */}
       <div
         style={{
           lineHeight: "200px",
           textAlign: "center",
-          background: token.colorFillAlter,
+          // background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
           marginTop: 7,
-          padding: "10px 10px",
+          // padding: "10px 10px",
           position: "relative",
         }}
       >
         <Table
+          bordered
           dataSource={data}
           columns={columns}
           size="small"

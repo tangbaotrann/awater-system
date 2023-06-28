@@ -1,4 +1,4 @@
-import { Col, Popover, Progress, Row, Table, theme } from "antd";
+import { Col, Collapse, Popover, Progress, Row, Table, theme } from "antd";
 import { useState } from "react";
 import { CreateBook } from "./CreateBook/CreateBook";
 import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
@@ -192,21 +192,27 @@ const ReadingIndex = () => {
     },
   ];
 
+  const items = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <FormSearchReadingIndex />,
+    },
+  ];
+ 
   return (
     <>
-      <FormSearchReadingIndex />
+      <Collapse items={items} size="small"/>
       <div
         style={{
           lineHeight: "200px",
           textAlign: "center",
-          background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
           marginTop: 7,
-          padding: "10px 10px",
         }}
-        className="responsive-table"
       >
         <Table
+          bordered
           dataSource={dataSource}
           columns={columns}
           size="small"
@@ -225,6 +231,7 @@ const ReadingIndex = () => {
         <div className="contract-bottom-func">
           {isTabletOrMobile ? (
             <Popover
+              rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
               // content={<TabList isTabletOrMobile={isTabletOrMobile} />}

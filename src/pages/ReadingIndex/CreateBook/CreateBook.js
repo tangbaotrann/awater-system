@@ -3,6 +3,7 @@ import {
   Button,
   Checkbox,
   Col,
+  Collapse,
   DatePicker,
   Form,
   Input,
@@ -14,20 +15,12 @@ import {
   theme,
 } from "antd";
 import { useState } from "react";
+import { SearchForm } from "./SearchForm";
 
 export const CreateBook = (props) => {
   const { isOpen } = props;
   const { token } = theme.useToken();
-  const [form] = Form.useForm();
-  const formStyle = {
-    maxWidth: "none",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    padding: 24,
-  };
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   console.log(isOpen);
 
@@ -145,6 +138,14 @@ export const CreateBook = (props) => {
     selectedRowKeys,
     onChange: onSelectChange,
   };
+  const items = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <SearchForm />,
+    },
+  ];
+
   return (
     <Modal
       title="Tạo sổ ghi chỉ số"
@@ -157,168 +158,7 @@ export const CreateBook = (props) => {
         top: 20,
       }}
     >
-      <Form
-        form={form}
-        name="advanced_search"
-        style={formStyle}
-        onFinish={onFinish}
-        size="small"
-      >
-        <Row gutter={24}>
-          <Col span={8}>
-            <Form.Item
-              name="date"
-              label="Tháng"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <DatePicker
-                allowClear
-                placeholder="Chọn tháng"
-                style={{ width: "100%" }}
-                format="MM-YYYY"
-                picker="month"
-              />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item
-              name="person"
-              label="Cán bộ"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Select
-                defaultValue="--Chọn cán bộ--"
-                style={{
-                  width: "100%",
-                }}
-                options={[
-                  {
-                    value: "jack",
-                    label: "Jack",
-                  },
-                  {
-                    value: "lucy",
-                    label: "Lucy",
-                  },
-                ]}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item name="tuyendoc" label="Tuyến đọc">
-              <Select
-                defaultValue="--Chọn tuyến đọc--"
-                style={{
-                  width: "100%",
-                }}
-                options={[
-                  {
-                    value: "jack",
-                    label: "Jack",
-                  },
-                  {
-                    value: "lucy",
-                    label: "Lucy",
-                  },
-                ]}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={24}>
-          <Col span={6}>
-            <Form.Item name="status" label="Phạm vi">
-              <Select
-                defaultValue="--Chọn phạm vi--"
-                style={{
-                  width: "100%",
-                }}
-                options={[
-                  {
-                    value: "jack",
-                    label: "Jack",
-                  },
-                  {
-                    value: "lucy",
-                    label: "Lucy",
-                  },
-                ]}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item name="place" label="Loại KH">
-              <Select
-                defaultValue="--Chọn loại KH--"
-                style={{
-                  width: "100%",
-                }}
-                options={[
-                  {
-                    value: "jack",
-                    label: "Jack",
-                  },
-                  {
-                    value: "lucy",
-                    label: "Lucy",
-                  },
-                ]}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item name="ky" label="Số hợp đồng">
-              <Input placeholder="Nhập số hợp đồng" />
-            </Form.Item>
-          </Col>
-          <Col span={6}>
-            <Form.Item name="numberName" label="Loại ĐH">
-              <Select
-                defaultValue="--Chọn loại ĐH--"
-                style={{
-                  width: "100%",
-                }}
-                options={[
-                  {
-                    value: "jack",
-                    label: "Jack",
-                  },
-                  {
-                    value: "lucy",
-                    label: "Lucy",
-                  },
-                ]}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <div
-          style={{
-            textAlign: "right",
-          }}
-        >
-          <Space size="small">
-            <Button type="primary" htmlType="submit">
-              Tìm kiếm
-            </Button>
-            <Button
-              onClick={() => {
-                form.resetFields();
-              }}
-            >
-              Tìm mới
-            </Button>
-          </Space>
-        </div>
-      </Form>
+      <Collapse items={items} />
       <div style={listStyle}>
         <Table
           rowSelection={rowSelection}

@@ -5,9 +5,8 @@ export const AdvancedSearchForm = () => {
     const [form] = Form.useForm();
     const formStyle = {
       maxWidth: "none",
-      background: token.colorFillAlter,
+      // background: token.colorFillAlter,
       borderRadius: token.borderRadiusLG,
-      padding: 5,
     };
     const onFinish = (values) => {
       console.log("Received values of form: ", values);

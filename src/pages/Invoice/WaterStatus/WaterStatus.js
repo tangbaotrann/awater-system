@@ -1,8 +1,4 @@
-import {
-  Button,
-  Modal,
-  Table,
-} from "antd";
+import { Button, Collapse, Modal, Table } from "antd";
 import { SaveFilled } from "@ant-design/icons";
 import ChartJS from "chart.js/auto";
 import {
@@ -14,9 +10,8 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import './WaterStatus.css'
+import "./WaterStatus.css";
 import { AdvancedSearchForm as FormSearchWaterStatus } from "../../../components/FormSearchWaterStatus/FormSearchWaterStatus";
-
 
 const dataSource = Array.from({ length: 5 }, (_, i) => ({
   key: i,
@@ -115,7 +110,20 @@ ChartJS.register(
 export const WaterStatus = (props) => {
   const { isOpen, setIsOpen } = props;
 
-  const labels = ["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10","T11","T12"];
+  const labels = [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7",
+    "T8",
+    "T9",
+    "T10",
+    "T11",
+    "T12",
+  ];
 
   const getRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -134,6 +142,14 @@ export const WaterStatus = (props) => {
     },
     barThickness: 10,
   };
+
+  const items = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <FormSearchWaterStatus />,
+    },
+  ];
 
   const data = {
     labels,
@@ -161,12 +177,12 @@ export const WaterStatus = (props) => {
         top: 10,
       }}
       footer={[
-        <Button key="cancel" onClick={() => setIsOpen(false)} >
+        <Button key="cancel" onClick={() => setIsOpen(false)}>
           Đóng
         </Button>,
       ]}
     >
-      <FormSearchWaterStatus />
+      <Collapse items={items} />
       <Table
         dataSource={dataSource}
         columns={columns}
@@ -187,7 +203,7 @@ export const WaterStatus = (props) => {
       >
         Xuất tình hình sử dụng nước
       </Button>
-      <div style={{ height: "270px", display: 'grid', placeItems: 'center' }}>
+      <div style={{ height: "270px", display: "grid", placeItems: "center" }}>
         <Bar options={options} data={data} updateMode="resize" />
       </div>
       <Button

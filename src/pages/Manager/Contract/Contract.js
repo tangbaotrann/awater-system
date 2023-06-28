@@ -113,7 +113,7 @@ function Contract() {
           </Col>
 
           {/* Tìm kiếm */}
-          <Col xs={24} sm={4} md={4} lg={3}>
+          <Col xs={24} sm={4} md={4} lg={3}> 
             <Button className="contract-search-btn" type="primary">
               <SearchOutlined />
               Tìm kiếm
