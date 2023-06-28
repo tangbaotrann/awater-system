@@ -80,6 +80,15 @@ const constants = {
     label: "Thanh toán",
     key: "PAYMENT",
   },
+  //menu 5
+  FAILURE: {
+    label: "Thất thoát",
+    key: "FAILURE",
+  },
+  BLOCK_CLOCK_MANAGEMENT: {
+    label: "Quản lý đồng hồ block",
+    key: "BLOCK_CLOCK_MANAGEMENT",
+  },
 };
 
 export default constants;

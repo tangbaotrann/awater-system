@@ -16,7 +16,6 @@ import {
   InputNumber,
   theme,
   Table,
-  Space,
   Popover,
   Collapse,
 } from "antd";
@@ -255,15 +254,6 @@ function EnterIndexPage() {
         </Row>
 
         <Row gutter={8}>
-          <Col span={5} xs={24} sm={12} md={12} lg={4}>
-            <Form.Item label="Trạng thái đọc" name="6">
-              <Select style={{ width: "100%" }}>
-                <Option value="1"> 1</Option>
-                <Option value="2"> 2</Option>
-                <Option value="3"> 3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
           <Col span={7} xs={24} sm={12} md={12} lg={4}>
             <Form.Item lassName="custom-form-item" label="Số ghi" name="9">
               <Input
@@ -271,6 +261,15 @@ function EnterIndexPage() {
                   width: "100%",
                 }}
               />
+            </Form.Item>
+          </Col>
+          <Col span={5} xs={24} sm={12} md={12} lg={4}>
+            <Form.Item label="Trạng thái đọc" name="6">
+              <Select style={{ width: "100%" }}>
+                <Option value="1"> 1</Option>
+                <Option value="2"> 2</Option>
+                <Option value="3"> 3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col span={3} xs={24} sm={12} md={12} lg={4}>
@@ -343,7 +342,7 @@ function EnterIndexPage() {
             total: initialData.length,
             pageSize: 18,
           }}
-          scroll={{ x: 2800, y: 290 }}
+          scroll={{ x: 3000, y: 290 }}
           columns={columns}
           dataSource={data1}
           onChange={handleData1Change}
@@ -353,6 +352,7 @@ function EnterIndexPage() {
           {/* check mobile */}
           {isTabletOrMobile ? (
             <Popover
+              size="small"
               rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"

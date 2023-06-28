@@ -144,11 +144,18 @@ function InvoicePrint() {
     // const onFinish = (values) => {
     //   console.log("Received values of form: ", values);
     // };
-
+    const layout = {
+      labelCol: {
+        span: 10,
+      },
+      wrapperCol: {
+        span: 30,
+      },
+    };
     return (
-      <Form>
-        <Row gutter={9}>
-          <Col span={3} xs={24} sm={12} md={6}>
+      <Form {...layout}>
+        <Row gutter={4}>
+          <Col span={3} xs={24} sm={12} md={4}>
             <Form.Item
               // size="small"
               className="custom-form-item"
@@ -210,8 +217,8 @@ function InvoicePrint() {
           </Col>
         </Row>
 
-        <Row gutter={5}>
-          <Col span={15} xs={24} sm={12} md={6}>
+        <Row gutter={4}>
+          <Col span={15} xs={24} sm={12} md={4}>
             <Form.Item
               // className="custom-form-item"
               label="Tên phiên"
@@ -234,7 +241,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={2} xs={24} sm={12} md={6}>
+          <Col span={2} xs={24} sm={12} md={3}>
             <Form.Item className="custom-form-item" label="" name="quantity">
               <InputNumber
                 style={{
@@ -243,6 +250,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
+
           <Col span={3} xs={24} sm={12} md={6}>
             <div>
               <Space>
@@ -293,7 +301,7 @@ function InvoicePrint() {
             total: initialData.length,
             pageSize: 18,
           }}
-          scroll={{ x: 1500, y: 340 }}
+          scroll={{ x: 1800, y: 340 }}
           columns={columns}
           dataSource={data1}
           onChange={handleData1Change}
@@ -302,6 +310,7 @@ function InvoicePrint() {
           <div className="contract-bottom-func">
             {isTabletOrMobile ? (
               <Popover
+                size="small"
                 rootClassName="fix-popover-z-index"
                 placement="bottomRight"
                 trigger="click"
