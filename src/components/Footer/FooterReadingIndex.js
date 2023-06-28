@@ -1,55 +1,17 @@
 import {
   CheckCircleOutlined,
-  CloseCircleFilled,
   CloseCircleOutlined,
-  DownOutlined,
   EditOutlined,
   KeyOutlined,
-  PlusCircleFilled,
   PlusCircleOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Button, Dropdown, Space, Tabs } from "antd";
+import { Tabs } from "antd";
 import React from "react";
 import "./FooterReadingIndex.css";
 
-const items = [
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-    key: "0",
-  },
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-    key: "1",
-  },
-  {
-    type: "divider",
-  },
-  {
-    label: "3rd menu item（disabled）",
-    key: "3",
-    disabled: true,
-  },
-];
-
 export const FooterReadingIndex = (props) => {
-  const { setIsOpenModalCreate, setIsModalOpenMCreate, isTabletOrMobile } =
+  const { setIsOpenModalCreate, setIsModalOpenMCreate, isTabletOrMobile, setIsModalOpenIndexBar } =
     props;
 
   const tabs = [
@@ -81,19 +43,20 @@ export const FooterReadingIndex = (props) => {
       id: "3",
       label: (
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
+          // onClick={() => setIsModalOpenMCreate(true)}
           style={{ marginLeft: "-9px" }}
         >
           Xóa sổ
         </span>
       ),
       icon: <CloseCircleOutlined />,
+      
     },
     {
       id: "4",
       label: (
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
+          // onClick={() => setIsModalOpenMCreate(true)}
           style={{ marginLeft: "-9px" }}
         >
           Khóa sổ và tính tiền
@@ -105,7 +68,7 @@ export const FooterReadingIndex = (props) => {
       id: "5",
       label: (
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
+          // onClick={() => setIsModalOpenMCreate(true)}
           style={{ marginLeft: "-9px" }}
         >
           Xóa biểu mẫu
@@ -117,7 +80,7 @@ export const FooterReadingIndex = (props) => {
       id: "6",
       label: (
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
+          // onClick={() => setIsModalOpenMCreate(true)}
           style={{ marginLeft: "-9px" }}
         >
           Chốt sổ
@@ -129,7 +92,7 @@ export const FooterReadingIndex = (props) => {
       id: "7",
       label: (
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
+          // onClick={() => setIsModalOpenMCreate(true)}
           style={{ marginLeft: "-9px" }}
         >
           Ngừng ghi chỉ số
@@ -141,7 +104,7 @@ export const FooterReadingIndex = (props) => {
       id: "8",
       label: (
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
+          // onClick={() => setIsModalOpenMCreate(true)}
           style={{ marginLeft: "-9px" }}
         >
           Ngừng ghi chỉ số
@@ -153,7 +116,7 @@ export const FooterReadingIndex = (props) => {
       id: "9",
       label: ( 
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
+          // onClick={() => setIsModalOpenMCreate(true)}
           style={{ marginLeft: "-9px" }}
         >
           Tiện ích
@@ -165,13 +128,11 @@ export const FooterReadingIndex = (props) => {
       id: "10",
       label: (
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
+          onClick={() => setIsModalOpenIndexBar(true)}
         >
           Chỉ số
         </span>
       ),
-      icon: <SettingOutlined />,
     },
   ];
 

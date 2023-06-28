@@ -57,7 +57,7 @@ const Invoice = () => {
 
   const columns = [
     {
-      title: "STT",
+      title: "#",
       dataIndex: "stt",
       key: "stt",
     },
@@ -122,7 +122,10 @@ const Invoice = () => {
   return (
     <>
       {/* filter */} 
-      <Collapse items={items} size="small"/>
+      <Collapse 
+        items={items} 
+        size="small"
+      />
 
       {/* main contain */}
       <div

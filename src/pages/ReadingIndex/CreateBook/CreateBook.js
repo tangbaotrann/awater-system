@@ -158,7 +158,7 @@ export const CreateBook = (props) => {
         top: 20,
       }}
     >
-      <Collapse items={items} />
+      <Collapse items={items} size="small"/>
       <div style={listStyle}>
         <Table
           rowSelection={rowSelection}

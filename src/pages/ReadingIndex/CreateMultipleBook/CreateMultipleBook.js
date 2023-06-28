@@ -25,17 +25,6 @@ export const CreateMultipleBook = (props) => {
   const { isOpen, handleOk, handleCancel } = props;
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const { token } = theme.useToken();
-  const [form] = Form.useForm();
-  const formStyle = {
-    maxWidth: "none",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    padding: 24,
-  };
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-
   console.log(isOpen);
 
   const dataSource = [
@@ -157,7 +146,7 @@ export const CreateMultipleBook = (props) => {
         top: 20,
       }}
     >
-      <Collapse items={items} />
+      <Collapse items={items} size="small"/>
       <div
         style={{
           lineHeight: "200px",

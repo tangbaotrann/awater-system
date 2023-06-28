@@ -16,7 +16,7 @@ const { Header, Sider, Content } = Layout;
 
 function DefaultLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); 
   const [placement, setPlacement] = useState("left");
 
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);

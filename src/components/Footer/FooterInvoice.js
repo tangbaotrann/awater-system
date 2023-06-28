@@ -272,42 +272,22 @@ export const FooterInvoice = (props) => {
     },
     {
       id: "5",
-      // label: (
-      //   <Button type="primary" icon={<FileFilled />} size="small">
-      //     <Dropdown
-      //       menu={{
-      //         items: items,
-      //       }}
-      //     >
-      //       <a href="#!" onClick={(e) => e.preventDefault()}>
-      //         <Space>
-      //           Hóa đơn điện tử
-      //           <DownOutlined />
-      //         </Space>
-      //       </a>
-      //     </Dropdown>
-      //   </Button>
-      // ),
       label: (
-        <span
-          onClick={() => setIsOpenModalEditInvoice(true)}
+        <Dropdown
+          menu={{
+            items: items,
+          }}
           style={{ marginLeft: "-9px" }}
         >
-          <Dropdown
-            menu={{
-              items: items,
-            }}
-          >
-            <a href="#!" onClick={(e) => e.preventDefault()}>
-              <Space>
-                Hóa đơn điện tử
-                <DownOutlined />
-              </Space>
-            </a>
-          </Dropdown>
-        </span>
+          <a href="#!" onClick={(e) => e.preventDefault()}>
+            <Space>
+              Hóa đơn điện tử
+              <DownOutlined />
+            </Space>
+          </a>
+        </Dropdown>
       ),
-      icon:<FileOutlined />,
+      icon: <FileOutlined />,
     },
     {
       id: "6",
@@ -377,13 +357,7 @@ export const FooterInvoice = (props) => {
     },
     {
       id: "10",
-      label: (
-        <span
-          onClick={() => setIsOpenModalInvoiceBar(true)}
-        >
-          Chỉ số
-        </span>
-      ),
+      label: <span onClick={() => setIsOpenModalInvoiceBar(true)}>Chỉ số</span>,
     },
   ];
 
@@ -395,9 +369,9 @@ export const FooterInvoice = (props) => {
       items={tabs.map((_tab) => {
         return {
           label: (
-            <div>
+            <span>
               {_tab.icon} {_tab.label}
-            </div>
+            </span>
           ),
           key: _tab.id,
         };
