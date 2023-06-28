@@ -3,6 +3,7 @@ import { initialData } from "../../utils/dataEnterIndexPage/data/data";
 import TabListEP from "./TableListEP";
 import "./EnterIndexPage.css";
 import "../../components/GlobalStyles/GlobalStyles.css";
+import "../Manager/Contract/Contract.css";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import {
   Form,
@@ -372,7 +373,6 @@ function EnterIndexPage() {
       <AdvancedSearchForm />
       <div
         style={{
-          lineHeight: "200px",
           textAlign: "center",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
@@ -395,21 +395,25 @@ function EnterIndexPage() {
           dataSource={data1}
           onChange={handleData1Change}
         />
-        <div className="EnterIndexPage-bottom">
-          <div className="contract-bottom-func">
-            {isTabletOrMobile ? (
-              <Popover
-                rootClassName="fix-popover-z-index"
-                placement="bottomRight"
-                trigger="click"
-                content={<TabListEP isTabletOrMobile={isTabletOrMobile} />}
-              >
+        {/* func bottom */}
+        <div className="contract-bottom">
+          {/* check mobile */}
+          {isTabletOrMobile ? (
+            <Popover
+              rootClassName="fix-popover-z-index"
+              placement="bottomRight"
+              trigger="click"
+              content={<TabListEP isTabletOrMobile={isTabletOrMobile} />}
+            >
+              <div className="contract-bottom-func">
                 <PlusOutlined />
-              </Popover>
-            ) : (
+              </div>
+            </Popover>
+          ) : (
+            <div className="contract-bottom-func">
               <TabListEP />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -290,7 +290,6 @@ function InvoicePrint() {
       <AdvancedSearchForm />
       <div
         style={{
-          lineHeight: "200px",
           textAlign: "center",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
