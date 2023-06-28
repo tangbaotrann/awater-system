@@ -89,6 +89,15 @@ const constants = {
     label: "Quản lý đồng hồ block",
     key: "BLOCK_CLOCK_MANAGEMENT",
   },
+  //MENU 6
+  LOG_NOTICE: {
+    label: "Nhật ký thông báo",
+    key: "LOG_NOTICE",
+  },
+  NOTICE_OF_CUSTOMS: {
+    label: "Thông báo CSKH",
+    key: "NOTICE_OF_CUSTOMS",
+  },
 };
 
 export default constants;

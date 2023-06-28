@@ -98,9 +98,23 @@ const ImageModal = () => {
             beforeUpload={() => false}
             showUploadList={false}
           >
-            <Button>Tải tệp lên</Button>
+            <Button
+              style={{
+                marginLeft: "10px",
+              }}
+            >
+              Tải tệp lên
+            </Button>
           </Upload>,
-          <Button onClick={handleCancel}>Đóng</Button>,
+          <Button
+            onClick={handleCancel}
+            type="primary"
+            style={{
+              marginLeft: "10px",
+            }}
+          >
+            Đóng
+          </Button>,
         ]}
       >
         <Table

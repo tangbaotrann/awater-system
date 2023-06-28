@@ -1,4 +1,5 @@
 import {
+  CommentOutlined,
   DollarCircleOutlined,
   FileDoneOutlined,
   FileExcelOutlined,
@@ -124,6 +125,17 @@ function SidebarMenu() {
             },
           ],
         },
+        {
+          key: constants.NOTICE_OF_CUSTOMS.key,
+          icon: <CommentOutlined />,
+          label: constants.NOTICE_OF_CUSTOMS.label,
+          children: [
+            {
+              label: constants.LOG_NOTICE.label,
+              key: constants.LOG_NOTICE.key,
+            },
+          ],
+        },
       ]}
       // Change layout
       onSelect={(item) => {
@@ -169,6 +181,18 @@ function SidebarMenu() {
         } else if (item.key === constants.CATEGORY_MANAGEMENT_READING.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        // menu 5
+        else if (item.key === constants.FAILURE.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.BLOCK_CLOCK_MANAGEMENT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        // menu 6
+        else if (item.key === constants.NOTICE_OF_CUSTOMS.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.LOG_NOTICE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
       }}

@@ -53,6 +53,8 @@ function Manager() {
         <Payment />
       ) : sidebarMenu === constants.BLOCK_CLOCK_MANAGEMENT.key ? ( // menu 5
         <BlockClock />
+      ) : sidebarMenu === constants.LOG_NOTICE.key ? ( // menu 6
+        <h1> LOG_NOTICE</h1>
       ) : null}
     </DefaultLayout>
   );

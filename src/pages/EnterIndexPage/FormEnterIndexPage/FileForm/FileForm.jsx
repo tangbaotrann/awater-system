@@ -73,10 +73,13 @@ const FileForm = ({ hideModal }) => {
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             size="small"
+            style={{
+              marginLeft: "10px",
+            }}  
           >
             Cập Nhật
           </Button>
-          ,
+
           <Button
             htmlType="submit"
             type="primary"

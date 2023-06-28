@@ -67,7 +67,7 @@ function InvoicePrint() {
   };
   const columns = [
     {
-      title: "",
+      title: "#",
       dataIndex: "order",
       key: "order",
     },
@@ -149,7 +149,7 @@ function InvoicePrint() {
         span: 10,
       },
       wrapperCol: {
-        span: 30,
+        span: 40,
       },
     };
     return (
@@ -178,6 +178,41 @@ function InvoicePrint() {
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
               </Select>
+            </Form.Item>
+          </Col>
+          <Col span={4} xs={24} sm={12} md={6}>
+            <Form.Item label="Tiêu thụ" name="8">
+              <Select style={{ width: "100%" }} name="s1">
+                <Option value="1">Lựa chọn 1</Option>
+                <Option value="2">Lựa chọn 2</Option>
+                <Option value="3">Lựa chọn 3</Option>
+                <Option value="3">Lựa chọn 3</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={2} xs={24} sm={12} md={3}>
+            <Form.Item className="custom-form-item" label="" name="quantity">
+              <InputNumber
+                style={{
+                  width: "100%",
+                }}
+              />
+            </Form.Item>
+          </Col>Q
+        </Row>
+
+        <Row gutter={4}>
+          <Col span={15} xs={24} sm={12} md={4}>
+            <Form.Item
+              // className="custom-form-item"
+              label="Tên phiên"
+              name="6"
+            >
+              <Input
+                style={{
+                  width: "100%",
+                }}
+              />
             </Form.Item>
           </Col>
           <Col span={6} xs={24} sm={12} md={6}>
@@ -215,41 +250,6 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-        </Row>
-
-        <Row gutter={4}>
-          <Col span={15} xs={24} sm={12} md={4}>
-            <Form.Item
-              // className="custom-form-item"
-              label="Tên phiên"
-              name="6"
-            >
-              <Input
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={4} xs={24} sm={12} md={6}>
-            <Form.Item label="Tiêu thụ" name="8">
-              <Select style={{ width: "100%" }} name="s1">
-                <Option value="1">Lựa chọn 1</Option>
-                <Option value="2">Lựa chọn 2</Option>
-                <Option value="3">Lựa chọn 3</Option>
-                <Option value="3">Lựa chọn 3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={2} xs={24} sm={12} md={3}>
-            <Form.Item className="custom-form-item" label="" name="quantity">
-              <InputNumber
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-          </Col>
 
           <Col span={3} xs={24} sm={12} md={6}>
             <div>
@@ -280,7 +280,7 @@ function InvoicePrint() {
   ];
   return (
     <>
-      <Collapse key="4" items={item} accordion={false} />
+      <Collapse size="small" items={item} />
       {/* <AdvancedSearchForm /> */}
       <div
         style={{
