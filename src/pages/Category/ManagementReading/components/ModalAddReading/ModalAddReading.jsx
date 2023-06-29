@@ -68,6 +68,7 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
       onCancel={() => handleCancel("addReading")}
       className="popup-add-reading"
       width={800}
+      bodyStyle={{ height: "600px", overflow: "auto" }}
       footer={null}
     >
       <Form

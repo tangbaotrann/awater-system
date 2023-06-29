@@ -1,0 +1,7 @@
+.form-item-wrap {
+  display: flex;
+  flex-direction: row;
+}
+.form-item-bottom {
+  display: flex;
+}

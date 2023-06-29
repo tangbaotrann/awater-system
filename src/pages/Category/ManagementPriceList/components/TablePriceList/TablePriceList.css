@@ -4,10 +4,10 @@
 .ant-table {
   margin-inline: 0px !important;
 }
-.body-price-list-top-table {
-  overflow: scroll;
-  max-height: 600px;
+.ant-table-selection-column {
+  padding: 0 16px !important;
 }
+
 .body-price-list {
   position: relative;
 }

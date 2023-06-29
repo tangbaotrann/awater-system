@@ -65,7 +65,6 @@ const TablePriceSubject = () => {
     <Table
       dataSource={priceSubjectData}
       columns={priceSubjectColumns}
-      size="small"
       pagination={paginationOptions}
       scroll={{
         y: 520,
