@@ -32,7 +32,10 @@ a {
     text-decoration: none;
     color: var(--black);
 }
-
+ /* dãn cột table */
+.cell-wrap {
+    word-wrap: break-word;
+  }
 /* custom */
 .gutter-item-mobile {
     margin-left: 10px;

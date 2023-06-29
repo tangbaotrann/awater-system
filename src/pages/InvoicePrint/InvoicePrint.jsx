@@ -70,6 +70,7 @@ function InvoicePrint() {
       title: "#",
       dataIndex: "order",
       key: "order",
+      width: 70,
     },
     {
       title: "Tuyến đọc",
@@ -119,6 +120,7 @@ function InvoicePrint() {
     {
       title: "",
       key: "actions",
+      width: 100,
       render: (text, record) => {
         return (
           <>
@@ -198,7 +200,7 @@ function InvoicePrint() {
                 }}
               />
             </Form.Item>
-          </Col>Q
+          </Col>
         </Row>
 
         <Row gutter={4}>
@@ -301,8 +303,11 @@ function InvoicePrint() {
             total: initialData.length,
             pageSize: 18,
           }}
-          scroll={{ x: 1800, y: 340 }}
-          columns={columns}
+          scroll={{ x: 1800, y: 440 }}
+          columns={columns.map((column) => ({
+            ...column,
+            className: "cell-wrap",
+          }))}
           dataSource={data1}
           onChange={handleData1Change}
         />

@@ -8,6 +8,7 @@ import {
   FundOutlined,
   LineChartOutlined,
   PictureOutlined,
+  BarChartOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -68,7 +69,7 @@ const tabs = [
   {
     id: "9",
     label: "Chỉ số",
-    icon: <PictureOutlined />,
+    icon: <BarChartOutlined />,
   },
 ];
 

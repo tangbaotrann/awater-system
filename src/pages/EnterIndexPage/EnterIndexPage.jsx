@@ -64,6 +64,7 @@ function EnterIndexPage() {
       title: "Thứ tự",
       dataIndex: "order",
       key: "order",
+      width: 70,
     },
     {
       title: "Tuyến đọc",
@@ -342,8 +343,11 @@ function EnterIndexPage() {
             total: initialData.length,
             pageSize: 18,
           }}
-          scroll={{ x: 3000, y: 290 }}
-          columns={columns}
+          scroll={{ x: 3000, y: 440 }}
+          columns={columns.map((column) => ({
+            ...column,
+            className: "cell-wrap",
+          }))}
           dataSource={data1}
           onChange={handleData1Change}
         />

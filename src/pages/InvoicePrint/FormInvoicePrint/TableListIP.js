@@ -1,10 +1,12 @@
 import { Modal, Popover, Tabs, message } from "antd";
 import {
-  PlusCircleOutlined,
-  EditOutlined,
-  CloseCircleOutlined,
-  FileExcelOutlined,
-  RetweetOutlined,
+  DeleteOutlined,
+  BarChartOutlined,
+  CheckCircleOutlined,
+  PrinterOutlined,
+  WarningOutlined,
+  RedoOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,37 +23,37 @@ const tabs = [
   {
     id: "1",
     label: "Đã in xong",
-    icon: <PlusCircleOutlined />,
+    icon: <CheckCircleOutlined />,
   },
   {
     id: "2",
     label: "In hóa đơn",
-    icon: <EditOutlined />,
+    icon: <PrinterOutlined />,
   },
   {
     id: "3",
     label: "In kẹt hóa đơn",
-    icon: <CloseCircleOutlined />,
+    icon: <WarningOutlined />,
   },
   {
     id: "4",
     label: "In lại hóa đơn theo số hóa đơn",
-    icon: <FileExcelOutlined />,
+    icon: <RedoOutlined />,
   },
   {
     id: "5",
     label: "In hóa đơn theo mã KH",
-    icon: <RetweetOutlined />,
+    icon: <UserOutlined />,
   },
   {
     id: "6",
     label: "Chỉ số",
-    icon: <CloseCircleOutlined />,
+    icon: <BarChartOutlined />,
   },
   {
     id: "7",
     label: "Xóa",
-    icon: <CloseCircleOutlined />,
+    icon: <DeleteOutlined />,
   },
 ];
 

@@ -2,9 +2,11 @@ import { Modal, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
-  CloseCircleOutlined,
-  FileExcelOutlined,
   RetweetOutlined,
+  CloseOutlined,
+  DeleteOutlined,
+  LineChartOutlined,
+  ToolOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -20,42 +22,43 @@ import FormProgress from "./ProgressBarExample/ProgressBarExample.jsx";
 const tabs = [
   {
     id: "1",
-    label: "Đã in xong",
-    icon: <PlusCircleOutlined />,
-  },
-  {
-    id: "2",
-    label: "In hóa đơn",
-    icon: <EditOutlined />,
-  },
-  {
-    id: "3",
-    label: "In kẹt hóa đơn",
-    icon: <CloseCircleOutlined />,
-  },
-  {
-    id: "4",
-    label: "In lại hóa đơn theo số hóa đơn",
-    icon: <FileExcelOutlined />,
-  },
-  {
-    id: "5",
-    label: "In hóa đơn theo mã KH",
+    label: "Làm mới",
     icon: <RetweetOutlined />,
   },
   {
+    id: "2",
+    label: "Thêm mới",
+    // icon: <EditOutlined />,
+    icon: <PlusCircleOutlined />,
+  },
+  {
+    id: "3",
+    label: "Sửa",
+    icon: <EditOutlined />,
+  },
+  {
+    id: "4",
+    label: "Xóa",
+    icon: <DeleteOutlined />,
+  },
+  {
+    id: "5",
+    label: "Thát thoát",
+    icon: <CloseOutlined />,
+  },
+  {
     id: "6",
-    label: "Chỉ số",
-    icon: <CloseCircleOutlined />,
+    label: "Biểu đồ, số liệu",
+    icon: <LineChartOutlined />,
   },
   {
     id: "7",
-    label: "Xóa",
-    icon: <CloseCircleOutlined />,
+    label: "Tiện ích",
+    icon: <ToolOutlined />,
   },
 ];
 
-function TableListIP({ isTabletOrMobile }) {
+function TableListBC({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalPrintButton, setPrintButton] = useState(false);
   const [modalTwoButtonPrint, setTwoButtonPrint] = useState(false);
@@ -203,4 +206,4 @@ function TableListIP({ isTabletOrMobile }) {
   );
 }
 
-export default TableListIP;
+export default TableListBC;
