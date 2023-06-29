@@ -9,7 +9,7 @@ export const ModalIndexBar = (props) => {
       open={isOpen}
       onOk={() => handleOk("", "indexBar")}
       onCancel={() => handleCancel("", "indexBar")}
-      width={280}
+      width={300}
       footer={null}
       style={{
         top: 20,

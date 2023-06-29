@@ -1,4 +1,11 @@
-import { TableOutlined } from "@ant-design/icons/lib/icons";
+import {
+  CommentOutlined,
+  DollarCircleOutlined,
+  FileDoneOutlined,
+  FileExcelOutlined,
+  ProfileOutlined,
+  WarningOutlined,
+} from "@ant-design/icons/lib/icons";
 import { Menu } from "antd";
 import { useDispatch } from "react-redux";
 
@@ -19,24 +26,12 @@ function SidebarMenu() {
       items={[
         {
           key: constants.REGISTRATION_FORM_PARENT.key,
-          icon: <TableOutlined />,
+          icon: <FileDoneOutlined />,
           label: constants.REGISTRATION_FORM_PARENT.label,
           children: [
             {
-              label: constants.REGISTRATION_FORM.label,
-              key: constants.REGISTRATION_FORM.key,
-            },
-            {
-              label: constants.ESTIMATES.label,
-              key: constants.ESTIMATES.key,
-            },
-            {
               label: constants.CONTRACT_MANAGER.label,
               key: constants.CONTRACT_MANAGER.key,
-            },
-            {
-              label: constants.COVERAGE_RATE.label,
-              key: constants.COVERAGE_RATE.key,
             },
             {
               label: constants.NUMBER_MANAGEMENT.label,
@@ -64,7 +59,7 @@ function SidebarMenu() {
         },
         {
           key: constants.RECORD_INDEX_PARENT.key,
-          icon: <TableOutlined />,
+          icon: <FileExcelOutlined />,
           label: constants.RECORD_INDEX_PARENT.label,
           children: [
             {
@@ -91,7 +86,7 @@ function SidebarMenu() {
         },
         {
           key: constants.CATEGORY.key,
-          icon: <TableOutlined />,
+          icon: <ProfileOutlined />,
           label: constants.CATEGORY.label,
           children: [
             {
@@ -110,7 +105,7 @@ function SidebarMenu() {
         },
         {
           key: constants.COLLECT_MONEY.key,
-          icon: <TableOutlined />,
+          icon: <DollarCircleOutlined />,
           label: constants.COLLECT_MONEY.label,
           children: [
             {
@@ -119,19 +114,35 @@ function SidebarMenu() {
             },
           ],
         },
+        {
+          key: constants.FAILURE.key,
+          icon: <WarningOutlined />,
+          label: constants.FAILURE.label,
+          children: [
+            {
+              label: constants.BLOCK_CLOCK_MANAGEMENT.label,
+              key: constants.BLOCK_CLOCK_MANAGEMENT.key,
+            },
+          ],
+        },
+        {
+          key: constants.NOTICE_OF_CUSTOMS.key,
+          icon: <CommentOutlined />,
+          label: constants.NOTICE_OF_CUSTOMS.label,
+          children: [
+            {
+              label: constants.LOG_NOTICE.label,
+              key: constants.LOG_NOTICE.key,
+            },
+          ],
+        },
       ]}
       // Change layout
       onSelect={(item) => {
         // menu 1
-        if (item.key === constants.REGISTRATION_FORM.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-        } else if (item.key === constants.ESTIMATES.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-        } else if (item.key === constants.CONTRACT_MANAGER.key) {
+        if (item.key === constants.CONTRACT_MANAGER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
-        } else if (item.key === constants.COVERAGE_RATE.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.NUMBER_MANAGEMENT.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
@@ -156,6 +167,9 @@ function SidebarMenu() {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         } else if (item.key === constants.EXPORT_PRINT_BILL_ORDER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.PAYMENT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key)); // menu 4
+          dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
         }
         // menu 3
         else if (item.key === constants.CATEGORY.key) {
@@ -169,9 +183,17 @@ function SidebarMenu() {
         } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
-        else if (item.key === constants.PAYMENT.key) {
+        // menu 5
+        else if (item.key === constants.FAILURE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
+        } else if (item.key === constants.BLOCK_CLOCK_MANAGEMENT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        }
+        // menu 6
+        else if (item.key === constants.NOTICE_OF_CUSTOMS.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+        } else if (item.key === constants.LOG_NOTICE.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
         }
       }}
     />

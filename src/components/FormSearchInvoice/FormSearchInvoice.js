@@ -1,8 +1,18 @@
-import { Button, Col, DatePicker, Form, Input, Row, Select, Space, theme } from "antd";
+import {
+  Button,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  Row,
+  Select,
+  Space,
+  theme,
+} from "antd";
 import { ModalAdvanceSearch } from "../../pages/Invoice/ModalAdvanceSearch";
 import { useState } from "react";
 
-export const AdvancedSearchForm = () => { 
+export const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
   const [form] = Form.useForm();
   const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
@@ -15,14 +25,15 @@ export const AdvancedSearchForm = () => {
       name="advanced_search"
       style={{
         maxWidth: "none",
-        background: token.colorFillAlter,
+        // background: token.colorFillAlter,
         borderRadius: token.borderRadiusLG,
-        padding: 5,
-      }}
+      }}  
       onFinish={onFinish}
-      size="small"
+      // size="small"
+      labelCol={{ span: 8 }}
+      // wrapperCol={{ span: 16 }}
     >
-      <Row gutter={10}>
+      <Row gutter={24}>
         <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="date" label="Chọn tháng">
             <DatePicker

@@ -1,223 +1,140 @@
 import {
   CheckCircleOutlined,
-  CloseCircleFilled,
-  DownOutlined,
+  CloseCircleOutlined,
   EditOutlined,
   KeyOutlined,
-  PlusCircleFilled,
+  PlusCircleOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Button, Dropdown, Space, Tabs } from "antd";
+import { Tabs } from "antd";
 import React from "react";
 import "./FooterReadingIndex.css";
 
-const items = [
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-    key: "0",
-  },
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-    key: "1",
-  },
-  {
-    type: "divider",
-  },
-  {
-    label: "3rd menu item（disabled）",
-    key: "3",
-    disabled: true,
-  },
-];
-
 export const FooterReadingIndex = (props) => {
-  const {
-    setIsOpenModalCreate,
-    setIsModalOpenMCreate,
-    isTabletOrMobile,
-    setIsModalOpenIndexBar,
-  } = props;
+  const { setIsOpenModalCreate, setIsModalOpenMCreate, isTabletOrMobile, setIsModalOpenIndexBar } =
+    props;
+
   const tabs = [
     {
       id: "1",
       label: (
-        <Button
-          type="primary"
-          icon={<PlusCircleFilled />}
+        <span
           onClick={() => setIsOpenModalCreate(true)}
-          size="small"
+          style={{ marginLeft: "-9px" }}
         >
           Tạo sổ
-        </Button>
+        </span>
       ),
+      icon: <PlusCircleOutlined />,
     },
     {
       id: "2",
       label: (
-        <Button
-          type="primary"
-          icon={<PlusCircleFilled />}
+        <span
           onClick={() => setIsModalOpenMCreate(true)}
-          size="small"
+          style={{ marginLeft: "-9px" }}
         >
           Tạo sổ đồng loạt
-        </Button>
+        </span>
       ),
+      icon: <PlusCircleOutlined />,
     },
     {
       id: "3",
       label: (
-        <Button
-          type="primary"
-          icon={<CloseCircleFilled />}
-          onClick={() => setIsModalOpenMCreate(true)}
-          size="small"
-          disabled
+        <span
+          // onClick={() => setIsModalOpenMCreate(true)}
+          style={{ marginLeft: "-9px" }}
         >
           Xóa sổ
-        </Button>
+        </span>
       ),
+      icon: <CloseCircleOutlined />,
+      
     },
     {
       id: "4",
       label: (
-        <Button
-          type="primary"
-          icon={<KeyOutlined />}
-          onClick={() => setIsModalOpenMCreate(true)}
-          size="small"
-          disabled
+        <span
+          // onClick={() => setIsModalOpenMCreate(true)}
+          style={{ marginLeft: "-9px" }}
         >
           Khóa sổ và tính tiền
-        </Button>
+        </span>
       ),
+      icon: <KeyOutlined />,
     },
     {
       id: "5",
       label: (
-        <Button
-          type="primary"
-          icon={<PlusCircleFilled />}
-          onClick={() => setIsOpenModalCreate(true)}
-          size="small"
-          disabled
+        <span
+          // onClick={() => setIsModalOpenMCreate(true)}
+          style={{ marginLeft: "-9px" }}
         >
           Xóa biểu mẫu
-        </Button>
+        </span>
       ),
+      icon: <PlusCircleOutlined />,
     },
     {
       id: "6",
       label: (
-        <Button
-          type="primary"
-          icon={<CheckCircleOutlined />}
-          onClick={() => setIsModalOpenMCreate(true)}
-          size="small"
-          disabled
+        <span
+          // onClick={() => setIsModalOpenMCreate(true)}
+          style={{ marginLeft: "-9px" }}
         >
           Chốt sổ
-        </Button>
+        </span>
       ),
+      icon: <CheckCircleOutlined />,
     },
     {
       id: "7",
       label: (
-        <Button
-          type="primary"
-          icon={<SettingOutlined />}
-          onClick={() => setIsModalOpenMCreate(true)}
-          size="small"
-          disabled
+        <span
+          // onClick={() => setIsModalOpenMCreate(true)}
+          style={{ marginLeft: "-9px" }}
         >
           Ngừng ghi chỉ số
-        </Button>
+        </span>
       ),
+      icon: <SettingOutlined />,
     },
     {
       id: "8",
       label: (
-        <Button
-          type="primary"
-          icon={<EditOutlined />}
-          style={{ marginLeft: "auto" }}
-          onClick={() => setIsModalOpenMCreate(true)}
-          size="small"
-          disabled
+        <span
+          // onClick={() => setIsModalOpenMCreate(true)}
+          style={{ marginLeft: "-9px" }}
         >
-          Đồng bộ lại
-        </Button>
+          Ngừng ghi chỉ số
+        </span>
       ),
+      icon: <EditOutlined />,
     },
     {
       id: "9",
-      label: (
-        <Button icon={<SettingOutlined />} type="primary" size="small">
-          <Dropdown
-            menu={{
-              items,
-            }}
-          >
-            <a href="#!" onClick={(e) => e.preventDefault()}>
-              <Space>
-                Tiện ích
-                <DownOutlined />
-              </Space>
-            </a>
-          </Dropdown>
-        </Button>
+      label: ( 
+        <span
+          // onClick={() => setIsModalOpenMCreate(true)}
+          style={{ marginLeft: "-9px" }}
+        >
+          Tiện ích
+        </span>
       ),
+      icon: <SettingOutlined />,
     },
     {
       id: "10",
       label: (
-        <Button
-          type="primary"
-          style={{ marginLeft: "auto" }}
+        <span
           onClick={() => setIsModalOpenIndexBar(true)}
-          size="small"
         >
           Chỉ số
-        </Button>
+        </span>
       ),
     },
   ];
-
-  // const handleChangeTabs = (key) => {
-  //   if (key === "1") {
-  //     setIsOpenModalCreate(true);
-  //   } else if (key === "2") {
-  //     setIsModalOpenMCreate(true);
-  //   } else if (key === "3") {
-  //     setIsModalOpenMCreate(true);
-  //   } else if (key === "4") {
-  //     setIsModalOpenMCreate(true);
-  //   } else if (key === "5") {
-  //     setIsOpenModalCreate(true);
-  //   } else if (key === "6") {
-  //     setIsModalOpenMCreate(true);
-  //   } else if (key === "7") {
-  //     setIsModalOpenMCreate(true);
-  //   } else if (key === "8") {
-  //     setIsModalOpenMCreate(true);
-  //   }
-  // };
 
   return (
     <>
@@ -227,11 +144,14 @@ export const FooterReadingIndex = (props) => {
         activeKey="0"
         items={tabs.map((_tab) => {
           return {
-            label: <div>{_tab.label}</div>,
+            label: (
+              <div className="test">
+                {_tab.icon} {_tab.label}
+              </div>
+            ),
             key: _tab.id,
           };
         })}
-        // onChange={handleChangeTabs}
       />
     </>
   );

@@ -1,4 +1,4 @@
-import { Col, Popover, Progress, Row, Table, theme } from "antd";
+import { Col, Collapse, Popover, Progress, Row, Table, theme } from "antd";
 import { useState } from "react";
 import { CreateBook } from "./CreateBook/CreateBook";
 import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
@@ -7,6 +7,7 @@ import { FooterReadingIndex } from "../../components/Footer/FooterReadingIndex";
 import { useMediaQuery } from "react-responsive";
 import { PlusOutlined } from "@ant-design/icons";
 import { ModalIndexBar } from "./ModalIndexBar/ModalIndexBar";
+import "./ReadingIndex.css";
 
 const ReadingIndex = () => {
   const { token } = theme.useToken();
@@ -35,120 +36,25 @@ const ReadingIndex = () => {
     }
   };
 
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      age: 32,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "2",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "3",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "4",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "5",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "6",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "7",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "8",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "9",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-    {
-      key: "10",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      notwrite: "abc",
-      close: "abc",
-      status: "abc",
-      dateClose: "abc",
-      invoice: "abc",
-    },
-  ];
+  const dataSource = Array.from({ length: 100 }, (_, index) => ({
+    key: index,
+    '#': index + 1,
+    name: `Tuyến ${index}`,
+    age: `Cán bộ ${index}`,
+    address: `Tên sổ ${index}`,
+    notwrite: `Chưa ghi ${index}`,
+    close: `Chốt sổ ${index}`,
+    status: `Trạng thái ${index}`,
+    dateClose: `Ngày chốt ${index}`,
+    invoice: `Hóa đơn ${index}`,
+  }));
 
   const columns = [
+    {
+      title: "#",
+      dataIndex: "#",
+      key: "#",
+    },
     {
       title: "Tuyến đọc",
       dataIndex: "name",
@@ -191,21 +97,27 @@ const ReadingIndex = () => {
     },
   ];
 
+  const items = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <FormSearchReadingIndex />,
+    },
+  ];
+ 
   return (
     <>
-      <FormSearchReadingIndex />
+      <Collapse items={items} size="small"/>
       <div
         style={{
           lineHeight: "200px",
           textAlign: "center",
-          background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
           marginTop: 7,
-          padding: "10px 10px",
         }}
-        className="responsive-table"
       >
         <Table
+          bordered
           dataSource={dataSource}
           columns={columns}
           size="small"
@@ -216,37 +128,37 @@ const ReadingIndex = () => {
           }}
           scroll={{
             x: 1500,
-            y: 240,
+            y: 330,
           }}
         />
       </div>
-
-      <div className="contract-bottom-func">
-        {isTabletOrMobile ? (
-          <Popover
-            placement="bottomRight"
-            trigger="click"
-            // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
-            content={
-              <FooterReadingIndex
-                setIsOpenModalCreate={setIsOpenModalCreate}
-                setIsModalOpenMCreate={setIsModalOpenMCreate}
-                isTabletOrMobile={isTabletOrMobile}
-                setIsModalOpenIndexBar={setIsModalOpenIndexBar}
-              />
-            }
-          >
-            <PlusOutlined />
-          </Popover>
-        ) : (
-          <div className="contract-bottom">
+      <div className="contract-bottom">
+        <div className="contract-bottom-func">
+          {isTabletOrMobile ? (
+            <Popover
+              rootClassName="fix-popover-z-index"
+              placement="bottomRight"
+              trigger="click"
+              // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
+              content={
+                <FooterReadingIndex
+                  setIsOpenModalCreate={setIsOpenModalCreate}
+                  setIsModalOpenMCreate={setIsModalOpenMCreate}
+                  isTabletOrMobile={isTabletOrMobile}
+                  setIsModalOpenIndexBar={setIsModalOpenIndexBar}
+                />
+              }
+            >
+              <PlusOutlined />
+            </Popover>
+          ) : (
             <FooterReadingIndex
               setIsOpenModalCreate={setIsOpenModalCreate}
               setIsModalOpenMCreate={setIsModalOpenMCreate}
               setIsModalOpenIndexBar={setIsModalOpenIndexBar}
             />
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <CreateBook
