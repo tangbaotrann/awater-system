@@ -15,6 +15,7 @@ import ManagementReading from "../Category/ManagementReading/ManagementReading";
 import ManagementPriceList from "../Category/ManagementPriceList/ManagementPriceList";
 import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
+import LogNotice from "../LogNotice/LogNotice";
 function Manager() {
   // change layout
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
@@ -54,7 +55,7 @@ function Manager() {
       ) : sidebarMenu === constants.BLOCK_CLOCK_MANAGEMENT.key ? ( // menu 5
         <BlockClock />
       ) : sidebarMenu === constants.LOG_NOTICE.key ? ( // menu 6
-        <h1> LOG_NOTICE</h1>
+        <LogNotice/>
       ) : null}
     </DefaultLayout>
   );
