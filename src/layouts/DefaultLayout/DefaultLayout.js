@@ -16,7 +16,7 @@ const { Header, Sider, Content } = Layout;
 
 function DefaultLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); 
   const [placement, setPlacement] = useState("left");
 
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
@@ -39,27 +39,7 @@ function DefaultLayout({ children }) {
   return (
     <Layout>
       {/* Screen tablet */}
-      {isTabletOrMobile ? (
-        <Sider
-          trigger={null}
-          collapsible
-          collapsed={collapsed}
-          width={50}
-          className="sidebar"
-        >
-          <MenuOutlined onClick={showDrawer} className="custom-menu-icon" />
-
-          {/* show option menu */}
-          <Drawer
-            placement={placement}
-            width={400}
-            onClose={onClose}
-            open={open}
-          >
-            <SidebarMenu />
-          </Drawer>
-        </Sider>
-      ) : (
+      {!isTabletOrMobile && (
         <Sider
           trigger={null}
           collapsible
@@ -75,7 +55,28 @@ function DefaultLayout({ children }) {
 
       <Layout className="site-layout">
         <Header className="header-top">
-          <div className="site-layout-info">
+          {/* Tablet or mobile */}
+          {isTabletOrMobile && (
+            <>
+              <MenuOutlined onClick={showDrawer} className="custom-menu-icon" />
+
+              {/* show option menu */}
+              <Drawer
+                placement={placement}
+                width={400}
+                onClose={onClose}
+                open={open}
+              >
+                <SidebarMenu />
+              </Drawer>
+            </>
+          )}
+
+          <div
+            className={
+              isTabletOrMobile ? "site-layout-info-mobile" : "site-layout-info"
+            }
+          >
             <Popover content="Đăng xuất">
               {/* Đổi thành img */}
               <UserOutlined />

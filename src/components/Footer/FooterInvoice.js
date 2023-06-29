@@ -1,26 +1,25 @@
-import { Button, Dropdown, Space, Tabs } from "antd";
+import { Dropdown, Space, Tabs } from "antd";
 import {
   CalculatorOutlined,
   CloseCircleOutlined,
   DeleteOutlined,
   DownOutlined,
-  EditFilled,
   EditOutlined,
   FileExcelOutlined,
-  FileFilled,
+  FileOutlined,
   FileSearchOutlined,
   FileSyncOutlined,
   FileTextOutlined,
   MailFilled,
-  PlusCircleFilled,
-  ProfileFilled,
+  MailOutlined,
+  PlusCircleOutlined,
   RedoOutlined,
   SettingOutlined,
   StopOutlined,
   SyncOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import './FooterReadingIndex.css'
+import "./FooterReadingIndex.css";
 
 export const FooterInvoice = (props) => {
   const {
@@ -226,98 +225,88 @@ export const FooterInvoice = (props) => {
     {
       id: "1",
       label: (
-        <Button
-          type="primary"
-          icon={<CalculatorOutlined />}
+        <span
           onClick={() => setIsOpenModalBill(true)}
-          size="small"
+          style={{ marginLeft: "-9px" }}
         >
           Tính tiền
-        </Button>
+        </span>
       ),
+      icon: <CalculatorOutlined />,
     },
     {
       id: "2",
       label: (
-        <Button
-          type="primary"
-          icon={<CalculatorOutlined />}
+        <span
           onClick={() => setIsModalInstalmentsOpen(true)}
-          size="small"
+          style={{ marginLeft: "-9px" }}
         >
           Tính tiền trả góp
-        </Button>
+        </span>
       ),
+      icon: <CalculatorOutlined />,
     },
     {
       id: "3",
       label: (
-        <Button
-          type="primary"
-          icon={<PlusCircleFilled />}
+        <span
           onClick={() => setIsOpenModalAddInvoice(true)}
-          size="small"
+          style={{ marginLeft: "-9px" }}
         >
           Thêm hóa đơn
-        </Button>
+        </span>
       ),
+      icon: <PlusCircleOutlined />,
     },
     {
       id: "4",
       label: (
-        <Button
-          type="primary"
-          icon={<EditFilled />}
+        <span
           onClick={() => setIsOpenModalEditInvoice(true)}
-          size="small"
+          style={{ marginLeft: "-9px" }}
         >
           Sửa hóa đơn
-        </Button>
+        </span>
       ),
+      icon: <PlusCircleOutlined />,
     },
     {
       id: "5",
       label: (
-        <Button
-          type="primary"
-          icon={<FileFilled />}
-          size="small"
+        <Dropdown
+          menu={{
+            items: items,
+          }}
+          style={{ marginLeft: "-9px" }}
         >
-          <Dropdown
-            menu={{
-              items: items,
-            }}
-          >
-            <a href="#!" onClick={(e) => e.preventDefault()}>
-              <Space>
-                Hóa đơn điện tử
-                <DownOutlined />
-              </Space>
-            </a>
-          </Dropdown>
-        </Button>
+          <a href="#!" onClick={(e) => e.preventDefault()}>
+            <Space>
+              Hóa đơn điện tử
+              <DownOutlined />
+            </Space>
+          </a>
+        </Dropdown>
       ),
+      icon: <FileOutlined />,
     },
     {
       id: "6",
       label: (
-        <Button
-          type="primary"
-          icon={<FileSearchOutlined />}
-          // onClick={() => setIsModalOpenMCreate(true)}
-          size="small"
+        <span
+          // onClick={() => setIsOpenModalEditInvoice(true)}
+          style={{ marginLeft: "-9px" }}
         >
           Xem hóa đơn
-        </Button>
+        </span>
       ),
+      icon: <FileSearchOutlined />,
     },
     {
       id: "7",
       label: (
-        <Button
-          type="primary"
-          icon={<MailFilled />}
-          size="small"
+        <span
+          // onClick={() => setIsOpenModalEditInvoice(true)}
+          style={{ marginLeft: "-9px" }}
         >
           <Dropdown menu={{ items: itemEmail }}>
             <a href="#!" onClick={(e) => e.preventDefault()}>
@@ -327,29 +316,28 @@ export const FooterInvoice = (props) => {
               </Space>
             </a>
           </Dropdown>
-        </Button>
+        </span>
       ),
+      icon: <MailOutlined />,
     },
     {
       id: "8",
       label: (
-        <Button
-          type="primary"
-          icon={<ProfileFilled />}
+        <span
           onClick={() => setIsOpenModalWaterStatus(true)}
-          size="small"
+          style={{ marginLeft: "-9px" }}
         >
           Xem TH SD
-        </Button>
+        </span>
       ),
+      icon: <UnorderedListOutlined />,
     },
     {
       id: "9",
       label: (
-        <Button
-          icon={<SettingOutlined />}
-          type="primary"
-          size="small"
+        <span
+          onClick={() => setIsOpenModalWaterStatus(true)}
+          style={{ marginLeft: "-9px" }}
         >
           <Dropdown
             menu={{
@@ -363,36 +351,32 @@ export const FooterInvoice = (props) => {
               </Space>
             </a>
           </Dropdown>
-        </Button>
+        </span>
       ),
+      icon: <SettingOutlined />,
     },
     {
       id: "10",
-      label: (
-        <Button
-          type="primary"
-          size="small"
-          onClick={() => setIsOpenModalInvoiceBar(true)}
-        >
-          Chỉ số
-        </Button>
-      ),
+      label: <span onClick={() => setIsOpenModalInvoiceBar(true)}>Chỉ số</span>,
     },
   ];
 
   return (
-
     <Tabs
-        type={isTabletOrMobile ? "line" : "card"}
-        tabPosition={isTabletOrMobile ? "left" : "top"}
-        activeKey="0"
-        items={tabs.map((_tab) => {
-          return {
-            label: <div>{_tab.label}</div>,
-            key: _tab.id,
-          };
-        })}
-        // onChange={handleChangeTabs}
-      />
+      type={isTabletOrMobile ? "line" : "card"}
+      tabPosition={isTabletOrMobile ? "left" : "top"}
+      activeKey="0"
+      items={tabs.map((_tab) => {
+        return {
+          label: (
+            <span>
+              {_tab.icon} {_tab.label}
+            </span>
+          ),
+          key: _tab.id,
+        };
+      })}
+      // onChange={handleChangeTabs}
+    />
   );
 };

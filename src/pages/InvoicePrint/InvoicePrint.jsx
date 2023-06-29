@@ -1,8 +1,9 @@
 import { React, useState } from "react";
 import { initialData, initialData2 } from "../../utils/dataInvoicePrint/data";
 import "./InvoicePrint.css";
-import InvoicingDetailsModal from "./InvoicingDetailsModal/InvoicingDetailsModal";
-import TabListIP from "./TableListIP";
+import "../../components/GlobalStyles/GlobalStyles.css";
+import InvoicingDetailsModal from "./FormInvoicePrint/InvoicingDetailsModal/InvoicingDetailsModal";
+import TabListIP from "./FormInvoicePrint/TableListIP.js";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import {
   Form,
@@ -15,9 +16,9 @@ import {
   InputNumber,
   theme,
   Table,
-  Progress,
   Space,
   Popover,
+  Collapse,
 } from "antd";
 import {
   SearchOutlined,
@@ -47,10 +48,6 @@ function InvoicePrint() {
       form.setFieldsValue({ month: undefined });
     }
   };
-  const [visible, setVisible] = useState(false);
-  const handleClick = () => {
-    setVisible(!visible);
-  };
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { Option } = Select;
   const [data1, setData1] = useState(initialData);
@@ -70,9 +67,10 @@ function InvoicePrint() {
   };
   const columns = [
     {
-      title: "",
+      title: "#",
       dataIndex: "order",
       key: "order",
+      width: 70,
     },
     {
       title: "Tuyến đọc",
@@ -122,6 +120,7 @@ function InvoicePrint() {
     {
       title: "",
       key: "actions",
+      width: 100,
       render: (text, record) => {
         return (
           <>
@@ -142,36 +141,32 @@ function InvoicePrint() {
   ];
 
   const AdvancedSearchForm = () => {
-    const { token } = theme.useToken();
-    const [form] = Form.useForm();
-    const onFinish = (values) => {
-      console.log("Received values of form: ", values);
+    // const { token } = theme.useToken();
+    // const [form] = Form.useForm();
+    // const onFinish = (values) => {
+    //   console.log("Received values of form: ", values);
+    // };
+    const layout = {
+      labelCol: {
+        span: 10,
+      },
+      wrapperCol: {
+        span: 40,
+      },
     };
-
     return (
-      <Form
-        form={form}
-        name="advanced_search"
-        size="small"
-        onFinish={onFinish}
-        style={{
-          maxWidth: "none",
-          background: token.colorFillAlter,
-          borderRadius: token.borderRadiusLG,
-          padding: 24,
-        }}
-      >
-        <Row gutter={9}>
-          <Col span={3} xs={24} sm={12} md={6}>
+      <Form {...layout}>
+        <Row gutter={4}>
+          <Col span={3} xs={24} sm={12} md={4}>
             <Form.Item
-              size="small"
+              // size="small"
               className="custom-form-item"
               label="Tháng: "
               name="month"
             >
               <DatePicker
                 locale={viVN}
-                size="small"
+                // size="small"
                 picker="month"
                 style={{ width: "100%" }}
                 onChange={handleMonthChange}
@@ -180,16 +175,50 @@ function InvoicePrint() {
             </Form.Item>
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
-            <Form.Item size="small" label="Cán bộ đọc" name="1">
-              <Select style={{ width: "100%" }} size="small" name="s1">
+            <Form.Item label="Cán bộ đọc" name="1">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
               </Select>
             </Form.Item>
           </Col>
+          <Col span={4} xs={24} sm={12} md={6}>
+            <Form.Item label="Tiêu thụ" name="8">
+              <Select style={{ width: "100%" }} name="s1">
+                <Option value="1">Lựa chọn 1</Option>
+                <Option value="2">Lựa chọn 2</Option>
+                <Option value="3">Lựa chọn 3</Option>
+                <Option value="3">Lựa chọn 3</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={2} xs={24} sm={12} md={3}>
+            <Form.Item className="custom-form-item" label="" name="quantity">
+              <InputNumber
+                style={{
+                  width: "100%",
+                }}
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row gutter={4}>
+          <Col span={15} xs={24} sm={12} md={4}>
+            <Form.Item
+              // className="custom-form-item"
+              label="Tên phiên"
+              name="6"
+            >
+              <Input
+                style={{
+                  width: "100%",
+                }}
+              />
+            </Form.Item>
+          </Col>
           <Col span={6} xs={24} sm={12} md={6}>
             <Form.Item
-              size="small"
               className="custom-form-item"
               label={
                 <>
@@ -199,7 +228,7 @@ function InvoicePrint() {
               }
               name="2"
             >
-              <Select style={{ width: "100%" }} size="small" name="s1">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -208,7 +237,6 @@ function InvoicePrint() {
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item
-              size="small"
               label={
                 <>
                   In hóa đơn
@@ -216,7 +244,7 @@ function InvoicePrint() {
                 </>
               }
             >
-              <Select style={{ width: "100%" }} size="small">
+              <Select style={{ width: "100%" }}>
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -224,57 +252,14 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-        </Row>
 
-        <Row gutter={5}>
-          <Col span={15} xs={24} sm={12} md={6}>
-            <Form.Item
-              size="small"
-              // className="custom-form-item"
-              label="Tên phiên"
-              name="6"
-            >
-              <Input
-                size="small"
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={4} xs={24} sm={12} md={6}>
-            <Form.Item
-              size="small"
-              // className="custom-form-item"
-              label="Tiêu thụ"
-              name="8"
-            >
-              <Select style={{ width: "100%" }} size="small" name="s1">
-                <Option value="1">Lựa chọn 1</Option>
-                <Option value="2">Lựa chọn 2</Option>
-                <Option value="3">Lựa chọn 3</Option>
-                <Option value="3">Lựa chọn 3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={2} xs={24} sm={12} md={6}>
-            <Form.Item className="custom-form-item" label="" name="quantity">
-              <InputNumber
-                size="small"
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-          </Col>
           <Col span={3} xs={24} sm={12} md={6}>
             <div>
-              <Space size="small">
+              <Space>
                 <Button
                   style={{
                     maxWidth: "100%",
                   }}
-                  size="small"
                   type="primary"
                   htmlType="submit"
                 >
@@ -288,12 +273,19 @@ function InvoicePrint() {
       </Form>
     );
   };
+  const item = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <AdvancedSearchForm />,
+    },
+  ];
   return (
     <>
-      <AdvancedSearchForm />
+      <Collapse size="small" items={item} />
+      {/* <AdvancedSearchForm /> */}
       <div
         style={{
-          lineHeight: "200px",
           textAlign: "center",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
@@ -311,55 +303,19 @@ function InvoicePrint() {
             total: initialData.length,
             pageSize: 18,
           }}
-          scroll={{ x: 1500, y: 340 }}
-          columns={columns}
+          scroll={{ x: 1800, y: 440 }}
+          columns={columns.map((column) => ({
+            ...column,
+            className: "cell-wrap",
+          }))}
           dataSource={data1}
           onChange={handleData1Change}
         />
-        {/* <Row>
-          <Col span={4}>
-            <Button size="small" type="primary" onClick={handleClick}>
-              Chỉ số
-            </Button>
-          </Col>
-          <Col span={20}>
-            {visible && (
-              <Row>
-                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                  <Progress
-                    percent={10}
-                    format={(percent) => `${percent * 10}`}
-                  />
-                </Col>
-                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                  <Progress
-                    percent={60}
-                    strokeColor="yellow"
-                    format={(percent) => `${percent * 10}`}
-                  />
-                </Col>
-                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                  <Progress
-                    percent={70}
-                    strokeColor="red"
-                    format={(percent) => `${percent * 10}`}
-                  />
-                </Col>
-                <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                  <Progress
-                    percent={30}
-                    strokeColor="#ff8033"
-                    format={(percent) => `${percent * 10}`}
-                  />
-                </Col>
-              </Row>
-            )}
-          </Col>
-        </Row> */}
         <div className="InvoicePrint-bottom">
-          <div className="InvoicePrint-bottom-func">
+          <div className="contract-bottom-func">
             {isTabletOrMobile ? (
               <Popover
+                size="small"
                 rootClassName="fix-popover-z-index"
                 placement="bottomRight"
                 trigger="click"

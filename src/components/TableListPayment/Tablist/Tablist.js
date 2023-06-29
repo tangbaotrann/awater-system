@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Divider, Modal, Popover, Tabs, message } from "antd";
+import { Modal, Popover, Tabs, message } from "antd";
 import {
   MoreOutlined,
   CaretDownOutlined,
   CreditCardOutlined,
+  BoxPlotOutlined,
 } from "@ant-design/icons";
 
 import { btnClickTabListContractSelector } from "../../../redux/selector";
 import tabListContractSlice from "../../../redux/slices/tabListContractSlice/tabListContractSlice";
 import FormPayForOneBillSelect from "./FormPayForOneBillSelect/FormPayForOneBillSelect";
+import FormPayDebt from "./FormPayDebt/FormPayDebt";
+import FormPayByBill from "./FormPayByBill/FormPayByBill";
+import StatisticalPay from "./StatisticalPay/StatisticalPay";
+import FormPayCounter from "./FormPayCounter/FormPayCounter";
 
 // Tabs bottom
 const tabs = [
@@ -35,6 +40,11 @@ const tabs = [
   },
   {
     id: "5",
+    label: "Chỉ số thống kê",
+    icon: <BoxPlotOutlined />,
+  },
+  {
+    id: "6",
     label: "Tiện ích",
     icon: <MoreOutlined />,
     iconRight: <CaretDownOutlined />,
@@ -44,13 +54,17 @@ const tabs = [
 function TabList({ isTabletOrMobile }) {
   const [modalPayForOneBillSelected, setModalPayForOneBillSelected] =
     useState(false);
+  const [modalDebt, setModalDebt] = useState(false);
+  const [modalPayCounter, setPayCounter] = useState(false);
+  const [modalPayByBill, setModalPayByBill] = useState(false);
+  const [modalWatchStatistical, setModalWatchStatistical] = useState(false);
 
   const dispatch = useDispatch();
 
   const tabList = useSelector(btnClickTabListContractSelector);
   //   const menuSidebar = useSelector(btnClickSidebarMenuSelector);
 
-  console.log("tabList", tabList);
+  // console.log("tabList", tabList);
   // console.log("menuSidebar", menuSidebar);
 
   // handle change tabs
@@ -58,13 +72,14 @@ function TabList({ isTabletOrMobile }) {
     if (key === "1") {
       setModalPayForOneBillSelected(true);
     } else if (key === "2") {
-      message.error("Tính năng chưa khả dụng!");
+      setModalDebt(true);
     } else if (key === "3") {
-      message.error("Tính năng chưa khả dụng!");
-      //   dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
+      setPayCounter(true);
     } else if (key === "4") {
-      message.error("Tính năng chưa khả dụng!");
+      setModalPayByBill(true);
     } else if (key === "5") {
+      setModalWatchStatistical(true);
+    } else if (key === "6") {
       message.error("Tính năng chưa khả dụng!");
     }
   };
@@ -72,6 +87,10 @@ function TabList({ isTabletOrMobile }) {
   // hide modal
   const hideModal = () => {
     setModalPayForOneBillSelected(false);
+    setModalDebt(false);
+    setPayCounter(false);
+    setModalPayByBill(false);
+    setModalWatchStatistical(false);
     dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
   };
 
@@ -110,7 +129,7 @@ function TabList({ isTabletOrMobile }) {
               (tabList === null && _tab.id === "2") ||
               (tabList === null && _tab.id === "3") ||
               (tabList === null && _tab.id === "4") ||
-              (tabList === null && _tab.id === "5")
+              (tabList === null && _tab.id === "6")
                 ? true
                 : false,
           };
@@ -125,12 +144,73 @@ function TabList({ isTabletOrMobile }) {
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <Divider orientation="left" style={{ fontWeight: "bold" }}>
-          Thanh toán cho 1 đơn được chọn
-        </Divider>
+        <h3>Thanh toán</h3>
 
         {/* render form */}
         <FormPayForOneBillSelect hideModal={hideModal} />
+      </Modal>
+
+      {/* show modal payment (Thanh toán công nợ) */}
+      <Modal
+        open={modalDebt}
+        onCancel={hideModal}
+        width={800}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h3>Thanh toán công nợ</h3>
+
+        {/* render form */}
+        <FormPayDebt hideModal={hideModal} />
+      </Modal>
+
+      {/* Show modal payment (Thanh toán tại quầy in biên lai) */}
+      <Modal
+        open={modalPayCounter}
+        width={1600}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+        onCancel={hideModal}
+      >
+        <div className="pay-counter-header">
+          <h3>Thanh toán tại quầy</h3>
+          <p>Nguyễn Nam - 11/02/2023</p>
+        </div>
+
+        {/* render form  */}
+        <FormPayCounter hideModal={hideModal} />
+      </Modal>
+
+      {/* Show modal payment (Thanh toán theo số hóa đơn) */}
+      <Modal
+        open={modalPayByBill}
+        onCancel={hideModal}
+        width={800}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h3>Thanh toán</h3>
+
+        {/* render form */}
+        <FormPayByBill hideModal={hideModal} />
+      </Modal>
+
+      {/* Show modal (Xem các chỉ số thống kê) */}
+      <Modal
+        open={modalWatchStatistical}
+        onCancel={hideModal}
+        // width={800}
+        // centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h3>Các chỉ số</h3>
+
+        {/* render statistical */}
+        <StatisticalPay />
       </Modal>
     </>
   );

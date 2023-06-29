@@ -5,6 +5,7 @@
 :root {
     /* color */
     --white: #fff;
+    --red: #ff0000;
     --blue-e6f4ff: #e6f4ff;
     --blue-1677ff: #1677ff;
 
@@ -30,6 +31,14 @@ body {
 a {
     text-decoration: none;
     color: var(--black);
+}
+ /* dãn cột table */
+.cell-wrap {
+    word-wrap: break-word;
+  }
+/* custom */
+.gutter-item-mobile {
+    margin-left: 10px;
 }
 
 /* Scrollbar Css */
@@ -90,11 +99,15 @@ html *::-webkit-scrollbar-track {
     /* tabs bottom (page contract) */
     .contract-bottom-func {
         position: fixed;
-        left: 16px;
+        right: 16px;
         bottom: 12px;
         font-size: 2rem;
         font-weight: 800;
-        background-color: var(--white);
+        border-radius: 99px;
+        padding: 12px;
+        color: var(--white);
+        background-color: var(--blue-1677ff);
+        box-shadow: 0 0 12px 0 var(--blue-1677ff);
     }
 
     /* Modal (Danh sách sắp xếp đồng hồ) */
@@ -172,12 +185,17 @@ html *::-webkit-scrollbar-track {
 
     .gutter-item-btn {
         margin-top: 10px;
+        margin-left: 0 !important;
     }
 
     /* payment */
     .btn-search-payment {
         margin-left: 0;
         margin-bottom: 22px;
+    }
+
+    .gutter-item-mobile {
+        margin: 0;
     }
 }
   
@@ -197,11 +215,15 @@ html *::-webkit-scrollbar-track {
     /* tabs bottom (page contract) */
     .contract-bottom-func {
         position: fixed;
-        left: 16px;
+        right: 16px;
         bottom: 12px;
         font-size: 2rem;
         font-weight: 800;
-        background-color: var(--white);
+        border-radius: 99px;
+        padding: 12px;
+        color: var(--white);
+        background-color: var(--blue-1677ff);
+        box-shadow: 0 0 12px 0 var(--blue-1677ff);
     }
 
     /* payment */
@@ -231,16 +253,20 @@ html *::-webkit-scrollbar-track {
     /* tabs bottom (page contract) */
     .contract-bottom-func {
         position: fixed;
-        left: 16px;
+        right: 16px;
         bottom: 12px;
         font-size: 2rem;
         font-weight: 800;
-        background-color: var(--white);
+        border-radius: 99px;
+        padding: 12px;
+        color: var(--white);
+        background-color: var(--blue-1677ff);
+        box-shadow: 0 0 12px 0 var(--blue-1677ff);
     }
 
     /* payment */
-    .gutter-item-mobile {
-        margin-left: 12px;
+    .gutter-item-btn {
+        margin-left: 22px;
     }
 }
   
@@ -251,3 +277,12 @@ html *::-webkit-scrollbar-track {
 
 /* ----- END RESPONSIVE ----- */
   
+
+/* Common */
+.ant-form-item {
+    margin-bottom: 9px;
+}
+
+.ant-tabs-card >.ant-tabs-nav .ant-tabs-tab {
+    padding: 8px 8px;
+}

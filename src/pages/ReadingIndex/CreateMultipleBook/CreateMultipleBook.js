@@ -7,6 +7,7 @@ import {
   Button,
   Checkbox,
   Col,
+  Collapse,
   DatePicker,
   Form,
   Input,
@@ -18,22 +19,12 @@ import {
   theme,
 } from "antd";
 import { useState } from "react";
+import { SearchForm } from "./SearchForm";
 
 export const CreateMultipleBook = (props) => {
   const { isOpen, handleOk, handleCancel } = props;
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const { token } = theme.useToken();
-  const [form] = Form.useForm();
-  const formStyle = {
-    maxWidth: "none",
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    padding: 24,
-  };
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-
   console.log(isOpen);
 
   const dataSource = [
@@ -134,6 +125,15 @@ export const CreateMultipleBook = (props) => {
     selectedRowKeys,
     onChange: onSelectChange,
   };
+
+  const items = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <SearchForm />,
+    },
+  ];
+
   return (
     <Modal
       title="Tạo sổ ghi chỉ số"
@@ -146,58 +146,7 @@ export const CreateMultipleBook = (props) => {
         top: 20,
       }}
     >
-      <Form
-        form={form}
-        name="advanced_search"
-        style={formStyle}
-        onFinish={onFinish}
-        size="small"
-      >
-        <Row gutter={24}>
-          <Col span={12}>
-            <Form.Item name="date" label="Tháng">
-              <DatePicker
-                allowClear
-                placeholder="Chọn tháng"
-                style={{ width: "100%" }}
-                format="MM-YYYY"
-                picker="month"
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item name="person" label="Kỳ ghi chỉ số">
-              <Select
-                defaultValue="--Chọn kỳ ghi chỉ số--"
-                style={{
-                  width: "100%",
-                }}
-                options={[
-                  {
-                    value: "jack",
-                    label: "Jack",
-                  },
-                  {
-                    value: "lucy",
-                    label: "Lucy",
-                  },
-                ]}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-        <div
-          style={{
-            textAlign: "right",
-          }}
-        >
-          <Space size="small">
-            <Button type="primary" htmlType="submit">
-              Tìm kiếm
-            </Button>
-          </Space>
-        </div>
-      </Form>
+      <Collapse items={items} size="small"/>
       <div
         style={{
           lineHeight: "200px",

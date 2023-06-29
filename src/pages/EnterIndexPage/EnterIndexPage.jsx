@@ -1,15 +1,11 @@
 import { React, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { initialData } from "./data/data";
-import { otherData } from "./data/otherData.js";
-import WaterPriceTable from "./data/WaterPriceTable";
-import ImageModal from "./ImageModel";
+import { initialData } from "../../utils/dataEnterIndexPage/data/data";
+import TabListEP from "./FormEnterIndexPage/TableListEP";
 import "./EnterIndexPage.css";
+import "../../components/GlobalStyles/GlobalStyles.css";
+import "../Manager/Contract/Contract.css";
 import viVN from "antd/es/date-picker/locale/vi_VN";
-import { updateSearchCriteria } from "../../redux/enterIndexPage/searchCriteriaSlice";
 import {
-  Dropdown,
-  Menu,
   Form,
   Input,
   Button,
@@ -20,86 +16,20 @@ import {
   InputNumber,
   theme,
   Table,
-  Modal,
-  Upload,
-  Progress,
-  Space,
+  Popover,
+  Collapse,
 } from "antd";
-import {
-  SearchOutlined,
-  DownloadOutlined,
-  EditOutlined,
-  DeleteOutlined,
-  PlusCircleOutlined,
-  CalculatorOutlined,
-  SyncOutlined,
-  RetweetOutlined,
-  CheckCircleOutlined,
-  CalendarOutlined,
-  RedoOutlined,
-  FileExcelOutlined,
-  UploadOutlined,
-  ToolOutlined,
-  TableOutlined,
-  FundOutlined,
-  LineChartOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined, RedoOutlined, PlusOutlined } from "@ant-design/icons";
 import moment from "moment";
 import "./EnterIndexPage.css";
 import "moment/locale/vi";
+import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
 function EnterIndexPage() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const { token } = theme.useToken();
-
-  const dispatch = useDispatch();
-  const searchCriteria = useSelector((state) => state.searchCriteria);
   const [form] = Form.useForm();
 
-  const handleButtonClick = () => {
-    setIsModalVisible(true);
-  };
-  const handleButtonClick1 = () => {
-    setIsModalVisible1(true);
-  };
-  const handleButtonClick2 = () => {
-    setIsModalVisible2(true);
-  };
-  const handleButtonClick3 = () => {
-    setIsModalVisible3(true);
-  };
-  const handleButtonClick4 = () => {
-    setIsModalVisible4(true);
-  };
-  const handleButtonClick5 = () => {
-    setIsModalVisible5(true);
-  };
-  const handleButtonClick6 = () => {
-    setIsModalVisible6(true);
-  };
-  const handleModalCancel = () => {
-    setIsModalVisible(false);
-  };
-  const handleModalCancel1 = () => {
-    setIsModalVisible1(false);
-  };
-  const handleModalCancel2 = () => {
-    setIsModalVisible2(false);
-  };
-  const handleModalCancel3 = () => {
-    setIsModalVisible3(false);
-  };
-  const handleModalCancel4 = () => {
-    setIsModalVisible4(false);
-  };
-  const handleModalCancel5 = () => {
-    setIsModalVisible5(false);
-  };
-  const handleModalCancel6 = () => {
-    setIsModalVisible6(false);
-  };
-  const onFinish = (values) => {
-    dispatch(updateSearchCriteria(values));
-  };
   const handleMonthChange = (date) => {
     if (date) {
       form.setFieldsValue({ month: date.format("M/YYYY") });
@@ -107,36 +37,26 @@ function EnterIndexPage() {
       form.setFieldsValue({ month: undefined });
     }
   };
-  const handleReset = () => {
-    form.resetFields();
-  };
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalVisible1, setIsModalVisible1] = useState(false);
-  const [isModalVisible2, setIsModalVisible2] = useState(false);
-  const [isModalVisible3, setIsModalVisible3] = useState(false);
-  const [isModalVisible4, setIsModalVisible4] = useState(false);
-  const [isModalVisible5, setIsModalVisible5] = useState(false);
-  const [isModalVisible6, setIsModalVisible6] = useState(false);
+
   const { Option } = Select;
   const [data1, setData1] = useState(initialData);
-  const [data2, setData2] = useState(otherData);
 
-  // Hàm xử lý khi có thay đổi dữ liệu của bảng 1
-  const handleData1Change = (newData) => {
+  function fetchDataForPage(page) {
+    const pageSize = 18;
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return initialData.slice(startIndex, endIndex);
+  }
+
+  const handleData1Change = (pagination) => {
+    const currentPage = pagination.current;
+    const newData = fetchDataForPage(currentPage);
     setData1(newData);
   };
 
-  // Hàm xử lý khi có thay đổi dữ liệu của bảng 2
-  const handleData2Change = (newData) => {
-    setData2(newData);
-  };
-
-  const getTableData = () => {
-    return otherData;
-  };
   const columns = [
     {
-      title: "HA và TT",
+      title: "#",
       dataIndex: "imageAndStatus",
       key: "imageAndStatus",
     },
@@ -144,6 +64,7 @@ function EnterIndexPage() {
       title: "Thứ tự",
       dataIndex: "order",
       key: "order",
+      width: 70,
     },
     {
       title: "Tuyến đọc",
@@ -236,108 +157,36 @@ function EnterIndexPage() {
       key: "recordedIndex",
     },
   ];
-  const otherColumns = [
-    {
-      title: "Số thứ tự",
-      dataIndex: "order",
-      key: "order",
-    },
-    {
-      title: "Mã Khách Hàng",
-      dataIndex: "customerCode",
-      key: "customerCode",
-    },
-    {
-      title: "Tiền Thu",
-      dataIndex: "moneyCollected",
-      key: "moneyCollected",
-    },
-    {
-      title: "Chỉ số cũ",
-      dataIndex: "oldIndex",
-      key: "oldIndex",
-    },
-    {
-      title: "Chỉ số mới",
-      dataIndex: "newIndex",
-      key: "newIndex",
-    },
-    {
-      title: "Tiêu thụ",
-      dataIndex: "consumption",
-      key: "consumption",
-    },
-    {
-      title: "Ngày đọc",
-      dataIndex: "readingDate",
-      key: "readingDate",
-    },
-    {
-      title: "Ngày đầu kì",
-      dataIndex: "startDate",
-      key: "startDate",
-    },
-    {
-      title: "Ngày cuối kì",
-      dataIndex: "endDate",
-      key: "endDate",
-    },
-    {
-      title: "Chỉ số đầu cũ",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
-    },
-    {
-      title: "Chỉ số cuối cũ",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
-    },
-    {
-      title: "Ghi chú",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
-    },
-    {
-      title: "Trạng thái đọc",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
-    },
-  ];
-
   const AdvancedSearchForm = () => {
-    const { token } = theme.useToken();
+    // const { token } = theme.useToken();
     const [form] = Form.useForm();
-    const onFinish = (values) => {
-      console.log("Received values of form: ", values);
-    };
+    // const onFinish = (values) => {
+    //   console.log("Received values of form: ", values);
+    // };
     const handleReset = () => {
       form.resetFields();
     };
 
+    const layout = {
+      labelCol: {
+        span: 13,
+      },
+      wrapperCol: {
+        span: 30,
+      },
+    };
+
     return (
-      <Form
-        form={form}
-        name="advanced_search"
-        size="small"
-        onFinish={onFinish}
-        style={{
-          maxWidth: "none",
-          background: token.colorFillAlter,
-          borderRadius: token.borderRadiusLG,
-          padding: 24,
-        }}
-      >
+      <Form {...layout}>
         <Row gutter={8}>
-          <Col span={4}>
+          <Col xs={24} sm={12} md={12} lg={4} span={4}>
             <Form.Item
-              size="small"
               className="custom-form-item"
               label="Chọn tháng"
               name="month"
             >
               <DatePicker
                 locale={viVN}
-                size="small"
                 picker="month"
                 style={{ width: "100%" }}
                 onChange={handleMonthChange}
@@ -345,101 +194,49 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col span={4}>
-            <Form.Item size="small" label="Cán bộ đọc" name="1">
-              <Select style={{ width: "100%" }} size="small" name="s1">
+          <Col xs={24} sm={12} md={12} lg={4} span={4}>
+            <Form.Item label="Cán bộ đọc" name="1">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
-            <Form.Item
-              size="small"
-              className="custom-form-item"
-              label={
-                <>
-                  Tuyến đọc
-                  <br />
-                </>
-              }
-              name="2"
-            >
-              <Select style={{ width: "100%" }} size="small" name="s1">
+          <Col xs={24} sm={12} md={12} lg={4} span={4}>
+            <Form.Item className="custom-form-item" label="Tuyến đọc" name="2">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col xs={24} sm={12} md={12} lg={4} span={4}>
             <Form.Item
-              size="small"
               className="custom-form-item"
               style={{
                 width: "100%",
               }}
             >
               <Input
-                size="small"
                 placeholder="Tên hoặc mã hoặc ID KH"
                 style={{ color: "black" }}
               />
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col xs={24} sm={12} md={12} lg={4} span={4}>
             <Form.Item
-              size="small"
               className="custom-form-item"
               style={{
                 width: "100%",
               }}
               name="4"
             >
-              <Input
-                size="small"
-                placeholder="Số hợp đồng"
-                style={{ color: "black" }}
-              />
+              <Input placeholder="Số hợp đồng" style={{ color: "black" }} />
             </Form.Item>
           </Col>
-          <Col span={4}>
-            <div>
-              <Space size="small">
-                <Button
-                  style={{
-                    maxWidth: "100%",
-                  }}
-                  size="small"
-                  type="primary"
-                  htmlType="submit"
-                >
-                  <SearchOutlined />
-                  Tìm kiếm
-                </Button>
-              </Space>
-            </div>
-          </Col>
-        </Row>
-
-        <Row gutter={8}>
-          <Col span={5}>
+          <Col span={4} xs={24} sm={12} lg={4}>
             <Form.Item
-              size="small"
-              // className="custom-form-item"
-              label="Trạng thái đọc"
-              name="6"
-            >
-              <Select style={{ width: "100%" }} size="small">
-                <Option value="1"> 1</Option>
-                <Option value="2"> 2</Option>
-                <Option value="3"> 3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={4}>
-            <Form.Item
-              size="small"
               // className="custom-form-item"
               label={
                 <>
@@ -448,21 +245,37 @@ function EnterIndexPage() {
                 </>
               }
             >
-              <Select style={{ width: "100%" }} size="small" name="s1">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">Lựa chọn 1</Option>
                 <Option value="2">Lựa chọn 2</Option>
                 <Option value="3">Lựa chọn 3</Option>
               </Select>
             </Form.Item>
           </Col>
-          <Col span={3}>
-            <Form.Item
-              size="small"
-              // className="custom-form-item"
-              label="Tiêu thụ"
-              name="8"
-            >
-              <Select style={{ width: "100%" }} size="small" name="s1">
+        </Row>
+
+        <Row gutter={8}>
+          <Col span={7} xs={24} sm={12} md={12} lg={4}>
+            <Form.Item lassName="custom-form-item" label="Số ghi" name="9">
+              <Input
+                style={{
+                  width: "100%",
+                }}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={5} xs={24} sm={12} md={12} lg={4}>
+            <Form.Item label="Trạng thái đọc" name="6">
+              <Select style={{ width: "100%" }}>
+                <Option value="1"> 1</Option>
+                <Option value="2"> 2</Option>
+                <Option value="3"> 3</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={3} xs={24} sm={12} md={12} lg={4}>
+            <Form.Item label="Tiêu thụ" name="8">
+              <Select style={{ width: "100%" }} name="s1">
                 <Option value="1"> 1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -470,483 +283,95 @@ function EnterIndexPage() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={2}>
+          <Col span={2} xs={24} sm={12} md={12} lg={4}>
             <Form.Item className="custom-form-item" label="" name="quantity">
               <InputNumber
-                size="small"
                 style={{
                   width: "100%",
                 }}
               />
             </Form.Item>
           </Col>
-          <Col span={7}>
-            <Form.Item
-              size=" small"
-              lassName="custom-form-item"
-              label="Số ghi"
-              name="9"
-            >
-              <Input
-                size="small"
+          <Col span={2} xs={24} sm={12} md={12} lg={4}>
+            <div style={{ display: "flex" }}>
+              <Button type="primary" htmlType="submit">
+                <SearchOutlined />
+                Tìm kiếm
+              </Button>
+              <Button
                 style={{
-                  width: "100%",
+                  marginLeft: "10px",
                 }}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={3}>
-            <div>
-              <Space size="small">
-                <Button
-                  size="small"
-                  style={{
-                    width: "100%",
-                  }}
-                  className="small-button"
-                  onClick={handleReset}
-                  icon={<RedoOutlined />}
-                >
-                  Làm mới
-                </Button>
-              </Space>
+                onClick={handleReset}
+                icon={<RedoOutlined />}
+              >
+                Làm mới
+              </Button>
             </div>
           </Col>
         </Row>
       </Form>
     );
   };
-  const AdvanceFooterForm = () => {
-    const [form] = Form.useForm();
-    const handleFinish = (values) => {
-      console.log(values);
-      // Xử lý dữ liệu tìm kiếm tại đây
-    };
-
-    const handleReset = () => {
-      form.resetFields();
-    };
-
-    const { Option } = Select;
-    const menu = (
-      <Menu>
-        <Menu.Item key="1" icon={<DownloadOutlined />}>
-          Xuất excel
-        </Menu.Item>
-        <Menu.Item key="2" icon={<EditOutlined />}>
-          Cập nhật sản lượng tạm tính
-        </Menu.Item>
-        <Menu.Item key="3" icon={<DeleteOutlined />}>
-          Cập nhật hủy hóa đơn
-        </Menu.Item>
-        <Menu.Item key="4" icon={<PlusCircleOutlined />}>
-          Nhập truy thu
-        </Menu.Item>
-        <Menu.Item key="5" icon={<CalculatorOutlined />}>
-          Nhập chỉ số
-        </Menu.Item>
-        <Menu.Item key="6" icon={<SyncOutlined />}>
-          Nhập tiêu thụ
-        </Menu.Item>
-        <Menu.Item key="7" icon={<RetweetOutlined />}>
-          Thay đồng hồ
-        </Menu.Item>
-        <Menu.Item key="8" icon={<CheckCircleOutlined />}>
-          Quay đồng hồ
-        </Menu.Item>
-        <Menu.Item key="9" icon={<CalendarOutlined />}>
-          Gán chỉ số cuối
-        </Menu.Item>
-        <Menu.Item key="10" icon={<CalendarOutlined />}>
-          Gán ngày cuối
-        </Menu.Item>
-      </Menu>
-    );
-
-    return (
-      <Form
-        form={form}
-        name="advanced_search"
-        size="small"
-        layout="inline"
-        onFinish={onFinish}
-      >
-        <div
-          style={{ display: "flex", marginTop: "10px", paddingRight: "10px" }}
-          className="footer-buttons"
-        >
-          <Button
-            onClick={handleButtonClick3}
-            icon={<SearchOutlined />}
-            style={{ marginRight: "10px" }}
-            type="primary"
-          >
-            Tìm kiếm
-          </Button>
-          <Modal
-            title="Tìm kiếm nhập chỉ số nâng cao"
-            visible={isModalVisible3}
-            onCancel={handleModalCancel3}
-            footer={null}
-          >
-            <Form form={form} onFinish={handleFinish}>
-              <Row>
-                <Col span={12}>
-                  <Form.Item label="Loại khách hàng" name="customerType">
-                    <Select>
-                      {/* Thêm các lựa chọn loại khách hàng tại đây */}
-                      <Option value="1">Loại 1</Option>
-                      <Option value="2">Loại 2</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col span={12}>
-                  <Form.Item label="Phạm vi" name="range">
-                    <Select>
-                      {/* Thêm các lựa chọn phạm vi tại đây */}
-                      <Option value="1">Phạm vi 1</Option>
-                      <Option value="2">Phạm vi 2</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-              </Row>
-              <Row>
-                <Col span={12}>
-                  <Form.Item label="Vùng" name="region">
-                    <Select>
-                      {/* Thêm các lựa chọn vùng tại đây */}
-                      <Option value="1">Vùng 1</Option>
-                      <Option value="2">Vùng 2</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-                <Col span={12}>
-                  <Form.Item label="Khu vực" name="area">
-                    <Select>
-                      {/* Thêm các lựa chọn khu vực tại đây */}
-                      <Option value="1">Khu vực 1</Option>
-                      <Option value="2">Khu vực 2</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-              </Row>
-              <Row>
-                <Col span={12}>
-                  <Form.Item label="Ngày đọc từ" name="fromDate">
-                    <DatePicker
-                      locale={viVN}
-                      size="small"
-                      style={{
-                        width: "100%",
-                      }}
-                      onChange={handleMonthChange}
-                      format="DD/MM/YYYY"
-                    />
-                  </Form.Item>
-                </Col>
-                <Col span={12}>
-                  <Form.Item label="Đến" name="toDate">
-                    <DatePicker
-                      locale={viVN}
-                      size="small"
-                      style={{
-                        width: "100%",
-                      }}
-                      onChange={handleMonthChange}
-                      format="DD/MM/YYYY"
-                    />
-                  </Form.Item>
-                </Col>
-              </Row>
-
-              {/* Nút Tìm kiếm, Xóa điều kiện TK và Đóng */}
-              <Row justify="end">
-                <Button type="primary" htmlType="submit">
-                  Tìm kiếm
-                </Button>{" "}
-                &nbsp;
-                <Button onClick={handleReset}>Xóa điều kiện TK</Button> &nbsp;
-                <Button onClick={handleModalCancel3}>Đóng</Button> &nbsp;
-              </Row>
-            </Form>
-          </Modal>
-          <div className="button-container1">
-            <Button
-              icon={<FileExcelOutlined />}
-              size="small"
-              onClick={handleButtonClick1}
-              style={{ marginRight: "10px" }}
-              type="primary"
-            >
-              Nhập excel
-            </Button>
-          </div>
-          <Modal
-            title="Nhập execel"
-            visible={isModalVisible1}
-            onCancel={handleModalCancel1}
-            footer={null}
-          >
-            <Row justify="end">
-              <Button>Cập Nhật</Button>
-              <Button onClick={handleModalCancel1}>Đóng</Button>
-            </Row>
-          </Modal>
-          <div className="button-container2">
-            <Button
-              size="small"
-              onClick={handleButtonClick2}
-              style={{ marginRight: "10px" }}
-              type="primary"
-              icon={<UploadOutlined />}
-            >
-              Nhập tệp
-            </Button>
-          </div>
-          <Modal
-            title="Nhập chỉ số từ tệp"
-            visible={isModalVisible2}
-            onCancel={handleModalCancel2}
-            footer={null}
-          >
-            <Row>
-              <Col span={12}>
-                Chọn tệp:
-                <Upload>
-                  <Button>Chọn tệp từ thư mục máy</Button>
-                </Upload>
-              </Col>
-              <Col span={12}>
-                Tháng:
-                <br />
-                <DatePicker
-                  locale={viVN}
-                  size="small"
-                  style={{
-                    width: "100%",
-                  }}
-                  picker="month"
-                  onChange={handleMonthChange}
-                  format="MM/YYYY"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col span={24}>
-                Dữ liệu chỉ số trong tệp:
-                <br />
-                <Input.TextArea rows={4} />
-              </Col>
-            </Row>
-            <Row justify="end">
-              <Button>Cập Nhật</Button>
-              <Button onClick={handleModalCancel2}>Đóng</Button>
-            </Row>
-          </Modal>
-          <Dropdown overlay={menu}>
-            <Button
-              style={{ marginRight: "10px" }}
-              type="primary"
-              icon={<ToolOutlined />}
-            >
-              Tiện ích
-            </Button>
-          </Dropdown>
-          <div className="button-container1">
-            <Button
-              size="small"
-              onClick={handleButtonClick4}
-              style={{ marginRight: "10px" }}
-              type="primary"
-              icon={<TableOutlined />}
-            >
-              Bảng giá
-            </Button>
-          </div>
-          <Modal
-            title="Bảng giá"
-            visible={isModalVisible4}
-            onCancel={handleModalCancel4}
-            footer={null}
-          >
-            {/* Sử dụng thành phần WaterPriceTable để hiển thị bảng giá nước */}
-            <WaterPriceTable />
-            <Row justify="end">
-              <Button>Cập Nhật</Button>
-              <Button onClick={handleModalCancel4}>Đóng</Button>
-            </Row>
-          </Modal>
-          <div className="button-container">
-            <Button
-              size="small"
-              onClick={handleButtonClick}
-              style={{ marginRight: "10px" }}
-              type="primary"
-              icon={<FundOutlined />}
-            >
-              Xem TH SD
-            </Button>
-          </div>
-          <Modal
-            title="Tình hình sử dụng nước"
-            visible={isModalVisible}
-            onCancel={handleModalCancel}
-            footer={null}
-          >
-            <Row gutter={24}>
-              <Col>
-                Số HĐ:
-                <br />
-                <Input />
-              </Col>
-              <Col>
-                Mã Kh:
-                <br />
-                <Input />
-              </Col>
-              <Col>
-                Từ ngày:
-                <br />
-                <DatePicker
-                  locale={viVN}
-                  size="small"
-                  style={{
-                    width: "100%",
-                  }}
-                  picker="month"
-                  onChange={handleMonthChange}
-                  format="DD/MM/YYYY"
-                />
-              </Col>
-
-              <Col>
-                Đến Ngày:
-                <br />
-                <DatePicker
-                  locale={viVN}
-                  size="small"
-                  style={{
-                    width: "100%",
-                  }}
-                  picker="month"
-                  onChange={handleMonthChange}
-                  format="DD/MM/YYYY"
-                />
-              </Col>
-              <Col>
-                <br />
-                <Form.Item className="custom-form-item">
-                  <Button
-                    style={{
-                      textAlign: "right",
-                      maxWidth: "100%",
-                    }}
-                    type="primary"
-                    htmlType="submit"
-                  >
-                    <SearchOutlined />
-                    Tìm kiếm
-                  </Button>
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={24}>
-              <Col span={12}>
-                Tên khách hàng:
-                <br />
-                <Input />
-              </Col>
-              <Col span={12}>
-                Tuyến đọc:
-                <Input />
-              </Col>
-            </Row>
-            <Row gutter={24}>
-              <Col span={12}>
-                Địa chỉ:
-                <br />
-                <Input />
-              </Col>
-              <Col span={12}>
-                Nhân Viên ghi:
-                <br />
-                <Input />
-              </Col>
-            </Row>
-            <Table
-              className="d1"
-              columns={otherColumns}
-              dataSource={data2}
-              onChange={handleData2Change}
-              scroll={{ x: 1600, y: 450 }}
-            />
-            <Row justify="end">
-              <Button size="small">Xuất biểu đồ nước</Button>
-              <Button size="small">Lưu biểu đồ</Button>
-              <Button size="small" onClick={handleModalCancel}>
-                Đóng
-              </Button>
-            </Row>
-          </Modal>
-          <div className="button-container1">
-            <Button
-              size="small"
-              onClick={handleButtonClick5}
-              style={{ marginRight: "10px" }}
-              type="primary"
-              icon={<LineChartOutlined />}
-            >
-              Xem biểu đồ
-            </Button>
-          </div>
-          <Modal
-            title="Xem biểu đồ"
-            visible={isModalVisible5}
-            onCancel={handleModalCancel5}
-            footer={null}
-          >
-            <Row justify="end">
-              <Button>Cập Nhật</Button>
-              <Button onClick={handleModalCancel5}>Đóng</Button>
-            </Row>
-          </Modal>
-          <div>
-            <ImageModal />
-          </div>
-        </div>
-      </Form>
-    );
-  };
+  const item = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <AdvancedSearchForm />,
+    },
+  ];
   return (
     <>
-      <AdvancedSearchForm />
+      {/* <AdvancedSearchForm /> */}
+      <Collapse size="small" items={item} />
       <div
         style={{
-          lineHeight: "200px",
           textAlign: "center",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
           marginTop: 16,
           padding: "10px 10px",
-          height: "340px",
+          height: "350px",
           position: "relative",
         }}
       >
         <Table
           size="small"
+          rowKey="index"
           pagination={{
             current: 1,
-            total: 10000,
-            pageSize: 50,
+            total: initialData.length,
+            pageSize: 18,
           }}
-          scroll={{ x: 3000, y: 280 }}
-          columns={columns}
+          scroll={{ x: 3000, y: 440 }}
+          columns={columns.map((column) => ({
+            ...column,
+            className: "cell-wrap",
+          }))}
           dataSource={data1}
           onChange={handleData1Change}
         />
-      </div>
-      <div style={{ display: "flex", marginTop: "0px", paddingRight: "10px" }}>
-        <AdvanceFooterForm />
+        {/* func bottom */}
+        <div className="contract-bottom">
+          {/* check mobile */}
+          {isTabletOrMobile ? (
+            <Popover
+              size="small"
+              rootClassName="fix-popover-z-index"
+              placement="bottomRight"
+              trigger="click"
+              content={<TabListEP isTabletOrMobile={isTabletOrMobile} />}
+            >
+              <div className="contract-bottom-func">
+                <PlusOutlined />
+              </div>
+            </Popover>
+          ) : (
+            <div className="contract-bottom-func">
+              <TabListEP />
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

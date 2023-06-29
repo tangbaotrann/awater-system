@@ -14,11 +14,20 @@ import { useMediaQuery } from "react-responsive";
 function InfoCustomer() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
+  // const layout = {
+  //   labelCol: {
+  //     span: `${isTabletOrMobile ? 6 : 8}`,
+  //   },
+  //   wrapperCol: {
+  //     span: 24,
+  //   },
+  // };
+
   return (
     <>
       <Row>
         {/* Loại khách hàng */}
-        <Col xs={24} sm={24} md={12} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={12} span={6}>
           <Form.Item
             name="type_customer"
             label="Loại khách hàng: "
@@ -56,7 +65,7 @@ function InfoCustomer() {
 
       <Row>
         {/* Tên khách hàng */}
-        <Col xs={24} sm={24} md={12} lg={22}>
+        <Col xs={24} sm={24} md={12} lg={22} span={16}>
           <Form.Item
             name="fullName"
             label="Tên KH: (*)"

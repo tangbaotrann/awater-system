@@ -29,3 +29,9 @@
 .ant-tabs-nav {
     margin-bottom: 4px !important;
 }
+
+.contract-bottom-func:hover {
+    opacity: 0.9;
+    transition: 0.3s all;
+    cursor: pointer;
+}

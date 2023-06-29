@@ -636,7 +636,7 @@ export const AddInvoice = (props) => {
           </Button>
         </div>
       </div>
-      <TableModifyPrice
+      <TableModifyPrice 
         isOpen={isOpenTablePrice}
         setIsOpen={setIsOpenTablePrice}
       />

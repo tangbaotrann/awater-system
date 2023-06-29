@@ -4,21 +4,9 @@ const constants = {
     label: "Hợp đồng và đăng ký",
     key: "REGISTRATION_FORM_PARENT",
   },
-  REGISTRATION_FORM: {
-    label: "Đơn đăng ký",
-    key: "REGISTRATION_FORM",
-  },
-  ESTIMATES: {
-    label: "Dự toán",
-    key: "ESTIMATES",
-  },
   CONTRACT_MANAGER: {
     label: "Quản lý hợp đồng",
     key: "CONTRACT_MANAGER",
-  },
-  COVERAGE_RATE: {
-    label: "Tỷ lệ bao phủ",
-    key: "COVERAGE_RATE",
   },
   NUMBER_MANAGEMENT: {
     label: "Số quản lý đồng hồ",
@@ -87,9 +75,28 @@ const constants = {
     label: "Thu tiền",
     key: "COLLECT_MONEY",
   },
+  // menu 4
   PAYMENT: {
     label: "Thanh toán",
     key: "PAYMENT",
+  },
+  //menu 5
+  FAILURE: {
+    label: "Thất thoát",
+    key: "FAILURE",
+  },
+  BLOCK_CLOCK_MANAGEMENT: {
+    label: "Quản lý đồng hồ block",
+    key: "BLOCK_CLOCK_MANAGEMENT",
+  },
+  //MENU 6
+  LOG_NOTICE: {
+    label: "Nhật ký thông báo",
+    key: "LOG_NOTICE",
+  },
+  NOTICE_OF_CUSTOMS: {
+    label: "Thông báo CSKH",
+    key: "NOTICE_OF_CUSTOMS",
   },
 };
 
