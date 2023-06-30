@@ -151,7 +151,10 @@ const LogNotice = () => {
         isOpen={isOpenModalNoticeDetail}
         setIsOpenModalNoticeDetail={setIsOpenModalNoticeDetail}
       />
-      <SMSMoneyWater isOpen={isOpenModalMoneyWater} setIsOpen={setIsOpenMoneyWater} />
+      <SMSMoneyWater
+        isOpen={isOpenModalMoneyWater}
+        setIsOpen={setIsOpenMoneyWater}
+      />
     </>
   );
 };
