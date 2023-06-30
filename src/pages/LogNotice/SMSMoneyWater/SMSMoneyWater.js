@@ -1,26 +1,19 @@
-import { EyeOutlined, PlusCircleFilled, SendOutlined, SyncOutlined } from "@ant-design/icons";
-import {
-  Button,
-  Checkbox,
-  Col,
-  Collapse,
-  DatePicker,
-  Form,
-  Modal,
-  Row,
-  Select,
-  Table,
-  theme,
-} from "antd"; 
-import { useState } from "react";
+import { SendOutlined, SyncOutlined } from "@ant-design/icons";
+import { Button, Collapse, Modal, Table, theme } from "antd";
+import React from "react";
 import { SearchForm } from "./SearchForm";
 
-export const NoticeDetail = (props) => {
-  const { isOpen, setIsOpenModalNoticeDetail } = props;
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+export const SMSMoneyWater = (props) => {
   const { token } = theme.useToken();
-  console.log('render modal Notice Detail');
+  const { isOpen, setIsOpen } = props;
 
+  const items = [
+    {
+      key: "1",
+      label: "Tìm kiếm",
+      children: <SearchForm />,
+    },
+  ];
   const dataSource = Array.from({ length: 50 }, (_, key) => ({
     key: key + 1,
     stt: key + 1,
@@ -33,23 +26,22 @@ export const NoticeDetail = (props) => {
     number: "abc",
     netHouse: "abc",
   }));
-
   const columns = [
     {
       title: "#",
       dataIndex: "stt",
       key: "stt",
-      width: 100
+      width: 100,
     },
     {
       title: "Loại",
-      dataIndex: 'type',
-      key: 'type'
+      dataIndex: "type",
+      key: "type",
     },
     {
       title: "Địa chỉ nhận",
-      dataIndex: 'address',
-      key: 'address'
+      dataIndex: "address",
+      key: "address",
     },
     {
       title: "Thông tin",
@@ -73,40 +65,22 @@ export const NoticeDetail = (props) => {
     },
     {
       title: "Số tin",
-      dataIndex: 'number',
-      key: 'number'
+      dataIndex: "number",
+      key: "number",
     },
     {
       title: "Nhà mạng",
-      dataIndex: 'netHouse',
-      key: 'netHouse'
-    }
-  ];
-
-  const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
-
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-  };
-
-  const items = [
-    {
-      key: "1",
-      label: "Tìm kiếm",
-        children: <SearchForm />,
+      dataIndex: "netHouse",
+      key: "netHouse",
     },
-  ]; 
+  ];
 
   return (
     <Modal
-      title="Chi tiết thông báo"
+      title="Gửi SMS tiền nước"
       open={isOpen}
-      onOk={() => setIsOpenModalNoticeDetail(false)}
-      onCancel={() => setIsOpenModalNoticeDetail(false)}
+      onOk={() => setIsOpen(false)}
+      onCancel={() => setIsOpen(false)}
       width={1000}
       footer={null}
       style={{
@@ -125,7 +99,7 @@ export const NoticeDetail = (props) => {
         }}
       >
         <Table
-          rowSelection={rowSelection}
+          //   rowSelection={rowSelection}
           dataSource={dataSource}
           columns={columns}
           size="small"
@@ -160,7 +134,7 @@ export const NoticeDetail = (props) => {
           </Button>
           <Button
             type="primary"
-            icon={<SendOutlined style={{transform: 'rotate(310deg)'}} />}
+            icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
             style={{ marginRight: 5 }}
             size="middle"
           >
@@ -168,7 +142,7 @@ export const NoticeDetail = (props) => {
           </Button>
           <Button
             key="submit"
-            onClick={() => setIsOpenModalNoticeDetail(false)}
+            onClick={() => setIsOpen(false)}
             size="middle"
           >
             Đóng

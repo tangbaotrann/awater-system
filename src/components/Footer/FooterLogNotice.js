@@ -1,8 +1,6 @@
 import {
-  CloseCircleOutlined,
   DownOutlined,
   FileExcelOutlined,
-  KeyOutlined,
   MailOutlined,
   SettingOutlined,
   SyncOutlined,
@@ -13,10 +11,8 @@ import "./FooterReadingIndex.css";
 
 export const FooterLogNotice = (props) => {
   const {
-    setIsOpenModalCreate,
-    setIsModalOpenMCreate,
     isTabletOrMobile,
-    setIsModalOpenIndexBar,
+    setIsOpenMoneyWater
   } = props;
 
   const extension = [
@@ -24,7 +20,7 @@ export const FooterLogNotice = (props) => {
       label: (
         <a
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer" 
           href="https://www.antgroup.com"
         >
           Đồng bộ từ hồ sơ
@@ -53,7 +49,7 @@ export const FooterLogNotice = (props) => {
       id: "1",
       label: (
         <span
-          onClick={() => setIsOpenModalCreate(true)}
+          onClick={() => setIsOpenMoneyWater(true)}
           style={{ marginLeft: "-9px" }}
         >
           Gửi SMS tiền nước
@@ -65,7 +61,7 @@ export const FooterLogNotice = (props) => {
       id: "2",
       label: (
         <span
-          onClick={() => setIsModalOpenMCreate(true)}
+          // onClick={() => setIsModalOpenMCreate(true)}
           style={{ marginLeft: "-9px" }}
         >
           Gửi SMS CSKH
@@ -117,7 +113,7 @@ export const FooterLogNotice = (props) => {
     },
     {
       id: "10",
-      label: <span onClick={() => setIsModalOpenIndexBar(true)}>Chỉ số</span>,
+      label: <span >Chỉ số</span>,
     },
   ];
 
