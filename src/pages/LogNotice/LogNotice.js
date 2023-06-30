@@ -5,16 +5,17 @@ import { PlusOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { FooterLogNotice } from "../../components/Footer/FooterLogNotice";
 import { AdvancedSearchForm as HeaderSearchLogNotice } from "../../components/HeaderSearchLogNotice/HeaderSearchLogNotice";
 import { NoticeDetail } from "./NoticeDetail/NoticeDetail";
+import { SMSMoneyWater } from "./SMSMoneyWater/SMSMoneyWater";
 
 const LogNotice = () => {
   const { token } = theme.useToken();
   const [isOpenModalNoticeDetail, setIsOpenModalNoticeDetail] = useState(false);
-  // const [isModalOpenMCreate, setIsModalOpenMCreate] = useState(false);
+  const [isOpenModalMoneyWater, setIsOpenMoneyWater] = useState(false);
   // const [isModalOpenIndexBar, setIsModalOpenIndexBar] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const hanldeShowDetailRecord = (item) => {
-    setIsOpenModalNoticeDetail(true)
+    setIsOpenModalNoticeDetail(true);
     console.log(item);
   };
 
@@ -28,7 +29,12 @@ const LogNotice = () => {
     process: "Tiến trình " + item,
     numberMessage: "Số tin nhắn " + item,
     numberTNTB: "Số TNTB " + item,
-    action: <UnorderedListOutlined style={{cursor: 'pointer'}} onClick={() => hanldeShowDetailRecord(item)}/>,
+    action: (
+      <UnorderedListOutlined
+        style={{ cursor: "pointer" }}
+        onClick={() => hanldeShowDetailRecord(item)}
+      />
+    ),
   }));
 
   const columns = [
@@ -45,7 +51,7 @@ const LogNotice = () => {
     },
     {
       title: "Người gửi",
-      dataIndex: "personSend",  
+      dataIndex: "personSend",
       key: "personSend",
     },
     {
@@ -76,11 +82,11 @@ const LogNotice = () => {
     {
       title: "",
       dataIndex: "action",
-      fixed: 'right',
+      fixed: "right",
       width: 40,
       key: "action",
     },
-  ]; 
+  ];
 
   const items = [
     {
@@ -125,13 +131,19 @@ const LogNotice = () => {
               placement="bottomRight"
               trigger="click"
               content={
-                <FooterLogNotice/>
+                <FooterLogNotice
+                  setIsOpenMoneyWater={setIsOpenMoneyWater}
+                  isTabletOrMobile={isTabletOrMobile}
+                />
               }
             >
               <PlusOutlined />
             </Popover>
           ) : (
-            <FooterLogNotice/>
+            <FooterLogNotice
+              setIsOpenMoneyWater={setIsOpenMoneyWater}
+              isTabletOrMobile={isTabletOrMobile}
+            />
           )}
         </div>
       </div>
@@ -139,6 +151,7 @@ const LogNotice = () => {
         isOpen={isOpenModalNoticeDetail}
         setIsOpenModalNoticeDetail={setIsOpenModalNoticeDetail}
       />
+      <SMSMoneyWater isOpen={isOpenModalMoneyWater} setIsOpen={setIsOpenMoneyWater} />
     </>
   );
 };
