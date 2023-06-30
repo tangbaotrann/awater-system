@@ -1,4 +1,4 @@
-import { Divider, Modal, Popover, Tabs, message } from "antd";
+import { Collapse, Divider, Modal, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -26,7 +26,7 @@ import FormHistoryUseWater from "./FormHistoryUseWater/FormHistoryUseWater";
 import FormUpdateClock from "./FormUpdateClock/FormUpdateClock";
 import TableListDebt from "./TableListDebt/TableListDebt";
 
-// Tabs bottom 
+// Tabs bottom
 const tabs = [
   {
     id: "1",
@@ -61,7 +61,7 @@ const tabs = [
   {
     id: "7",
     label: "Thay đồng hồ",
-    icon: <DashboardOutlined />, 
+    icon: <DashboardOutlined />,
   },
   {
     id: "8",
@@ -84,6 +84,15 @@ function TabList({ isTabletOrMobile }) {
 
   // console.log("tabList", tabList);
   // console.log("menuSidebar", menuSidebar);
+
+  // collapse (Thông tin khách hàng)
+  const items = [
+    {
+      key: "1",
+      label: "Thông tin tìm kiếm",
+      children: <FormHistoryUseWater tabList={tabList} />,
+    },
+  ];
 
   // handle change tabs
   const handleChangeTabs = (key) => {
@@ -163,7 +172,7 @@ function TabList({ isTabletOrMobile }) {
         open={modalUpdateContract ? modalUpdateContract : openModal}
         onCancel={hideModal}
         width={2000}
-        centered={true} 
+        centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
@@ -185,7 +194,13 @@ function TabList({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         {/* Form history use water */}
-        <FormHistoryUseWater tabList={tabList} />
+        <Collapse
+          key="1"
+          size="small"
+          items={items}
+          accordion={false}
+          defaultActiveKey={["1"]}
+        />
 
         <Divider />
 

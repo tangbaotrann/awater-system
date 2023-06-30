@@ -6,14 +6,26 @@ import {
   RedoOutlined,
 } from "@ant-design/icons";
 import { Button, Col, Divider, Form, Input, Row, Table } from "antd";
-import { useMediaQuery } from "react-responsive";
 
 function FormInfoContractDebt({
   handleOpenModalUpdateInfoDebt,
   hideModal,
   tabList,
 }) {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 5 },
+      md: { span: 5 },
+      lg: { span: 5 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
 
   // Cols
   const cols = [
@@ -114,17 +126,13 @@ function FormInfoContractDebt({
       {/* Tên KH + Mã KH */}
       <Row>
         <Col xs={24} sm={24} md={12} lg={12}>
-          <Form.Item
-            name="fullName"
-            label="Tên KH"
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="fullName" label="Tên KH" {...formItemLayout}>
             <Input name="fullName" placeholder="Thông tin khách hàng" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={12} lg={12}>
-          <Form.Item name="code_customer" label="Mã KH">
+          <Form.Item name="code_customer" label="Mã KH" {...formItemLayout}>
             <Input name="code_customer" placeholder="Mã khách hàng" />
           </Form.Item>
         </Col>
@@ -133,17 +141,13 @@ function FormInfoContractDebt({
       {/* Địa chỉ + Sđt */}
       <Row>
         <Col xs={24} sm={24} md={12} lg={12}>
-          <Form.Item
-            name="address"
-            label="Địa chỉ"
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="address" label="Địa chỉ" {...formItemLayout}>
             <Input name="address" placeholder="Địa chỉ" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={12} lg={12}>
-          <Form.Item name="phone" label="Điện thoại">
+          <Form.Item name="phone" label="Điện thoại" {...formItemLayout}>
             <Input name="phone" placeholder="Điện thoại" />
           </Form.Item>
         </Col>
@@ -157,11 +161,7 @@ function FormInfoContractDebt({
       {/* Số hợp đồng */}
       <Row>
         <Col xs={24} sm={24} md={12} lg={12}>
-          <Form.Item
-            name=""
-            label="Số hợp đồng"
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Số hợp đồng" {...formItemLayout}>
             <Input name="" placeholder="Số hợp đồng" />
           </Form.Item>
         </Col>
