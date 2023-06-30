@@ -32,10 +32,17 @@ const PriceTableButton = ({ hideModal }) => {
       >
         {/* Sử dụng thành phần WaterPriceTable để hiển thị bảng giá nước */}
         <WaterPriceTable />
-        <Row justify="end">
+        <Row
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            marginTop: "10px",
+          }}
+          justify="end"
+        >
           <Button
             type="primary"
-            size=" small"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Cập Nhật
@@ -43,7 +50,6 @@ const PriceTableButton = ({ hideModal }) => {
           <Button
             htmlType="submit"
             type="primary"
-            size=" small"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >

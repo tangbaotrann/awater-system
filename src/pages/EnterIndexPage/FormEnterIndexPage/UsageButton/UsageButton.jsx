@@ -120,19 +120,28 @@ const UsageButton = ({ hideModal }) => {
       }}
     >
       <Row gutter={24}>
-        <Col span={12}>
+        <Col
+          span={10}
+          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+        >
           Số HĐ:
           <br />
           <Input />
         </Col>
-        <Col span={12}>
+        <Col
+          span={10}
+          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+        >
           Mã Kh:
           <br />
           <Input />
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={12}>
+        <Col
+          span={10}
+          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+        >
           Từ ngày:
           <br />
           <DatePicker
@@ -146,7 +155,10 @@ const UsageButton = ({ hideModal }) => {
           />
         </Col>
 
-        <Col span={12}>
+        <Col
+          span={10}
+          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+        >
           Đến Ngày:
           <br />
           <DatePicker
@@ -161,23 +173,35 @@ const UsageButton = ({ hideModal }) => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={12}>
+        <Col
+          span={10}
+          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+        >
           Tên khách hàng:
           <br />
           <Input />
         </Col>
-        <Col span={12}>
+        <Col
+          span={10}
+          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+        >
           Tuyến đọc:
           <Input />
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={12}>
+        <Col
+          span={10}
+          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+        >
           Địa chỉ:
           <br />
           <Input />
         </Col>
-        <Col span={12}>
+        <Col
+          span={10}
+          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+        >
           Nhân Viên ghi:
           <br />
           <Input />
@@ -190,31 +214,37 @@ const UsageButton = ({ hideModal }) => {
         onChange={handleData2Change}
         scroll={{ x: 1600, y: 450 }}
       />
-      <Row justify="end">
+      <Row
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          marginTop: "10px",
+        }}
+        justify="end"
+      >
         <Button
-          size="small"
           type="primary"
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Tìm kiếm
         </Button>
         <Button
-          size="small"
           type="primary"
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Xuất biểu đồ nước
         </Button>
         <Button
-          size="small"
+          style={{ marginRight: "10px" }}
           type="primary"
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Lưu biểu đồ
         </Button>
         <Button
+          style={{ marginRight: "10px" }}
           htmlType="submit"
-          size="small"
           type="primary"
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           onClick={() => hideModal()}
