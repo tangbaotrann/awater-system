@@ -139,7 +139,7 @@ const Invoice = () => {
           position: "relative",
         }}
       >
-        <Table
+        <Table 
           bordered
           dataSource={data}
           columns={columns}
