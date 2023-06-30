@@ -226,6 +226,55 @@ const dataContractClockOnModal = [
     seri: "",
     date_use: "13/06/2023",
   },
+  {
+    id: "4",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+  {
+    id: "5",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+  {
+    id: "6",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+  {
+    id: "7",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+  {
+    id: "8",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+  {
+    id: "9",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
+  {
+    id: "10",
+    status: "",
+    code: "NM_HH_so2315",
+    seri: "",
+    date_use: "13/06/2023",
+  },
 ];
 
 // data history use water on modal
