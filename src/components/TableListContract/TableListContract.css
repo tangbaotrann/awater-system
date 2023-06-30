@@ -54,6 +54,11 @@
     overflow-x: auto;
 }
 
+.history-water-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .title-tbl-his {
     text-align: center;
 }
@@ -81,8 +86,20 @@
 }
 
 .container-detail-clock {
-    height: 69vh;
+    height: 64vh;
     overflow-y: scroll;
+}
+
+.container-info-contract {
+    height: 64vh;
+}
+
+.container-info-clock {
+    height: 65vh;
+}
+
+.container-info-customer {
+    height: 65vh;
 }
 
 /* Border all card */
@@ -175,6 +192,25 @@
 }
 
 /* Collapse space */
-.collapse-space-right-item {
-    padding-right: 10px;
+.collapse-space-left-item {
+    margin-left: 10px;
+}
+
+/* Custom buttons */
+.custom-btn-reset-form-contract {
+    padding: 0 10px;
+}
+
+.custom-btn-3-form-contract {
+    padding: 0 13px;
+}
+
+/* Custom label + input */
+.container-label-input {
+    display: flex;
+    align-items: center;
+}
+
+.space-right-10 {
+    margin-right: 10px;
 }
