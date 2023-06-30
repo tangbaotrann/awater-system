@@ -65,6 +65,7 @@ function FormCreateContract({ tabList, hideModal }) {
 
   return (
     <Form
+      colon={true}
       onFinish={handleSubmit}
       onFinishFailed={handleFailed}
       fields={[
@@ -99,15 +100,9 @@ function FormCreateContract({ tabList, hideModal }) {
         </Col>
       </Row>
 
-      {/* Thông tin khách hàng */}
+      {/* Thông tin khách hàng + Đồng hồ */}
       <Row>
-        <Col
-          xs={24}
-          sm={24}
-          md={12}
-          lg={12}
-          className={isTabletOrMobile ? "" : "collapse-space-right-item"}
-        >
+        <Col xs={24} sm={24} md={12} lg={12}>
           <Collapse
             key="1"
             size="small"
@@ -125,6 +120,7 @@ function FormCreateContract({ tabList, hideModal }) {
           className={!isTabletOrMobile ? "" : "collapse-space-top-mobile-item"}
         >
           <Collapse
+            className="collapse-space-left-item"
             key="3"
             size="small"
             items={itemsClock}
@@ -134,15 +130,9 @@ function FormCreateContract({ tabList, hideModal }) {
         </Col>
       </Row>
 
-      {/* Thông tin hợp đồng */}
+      {/* Thông tin hợp đồng + Chi tiết đồng hồ */}
       <Row className="space-col">
-        <Col
-          xs={24}
-          sm={24}
-          md={12}
-          lg={12}
-          className={isTabletOrMobile ? "" : "collapse-space-right-item"}
-        >
+        <Col xs={24} sm={24} md={12} lg={12}>
           <Collapse
             key="2"
             size="small"
@@ -160,6 +150,7 @@ function FormCreateContract({ tabList, hideModal }) {
           className={!isTabletOrMobile ? "" : "collapse-space-top-mobile-item"}
         >
           <Collapse
+            className="collapse-space-left-item"
             key="4"
             size="small"
             items={itemsDetailClock}
@@ -194,7 +185,9 @@ function FormCreateContract({ tabList, hideModal }) {
           <Button
             htmlType="submit"
             type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className={
+              isTabletOrMobile ? "footer-func-btn-item-report" : "gutter-item"
+            }
           >
             <FormOutlined />
             Biên bản thỏa thuận
@@ -203,7 +196,9 @@ function FormCreateContract({ tabList, hideModal }) {
           <Button
             htmlType="submit"
             type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className={
+              isTabletOrMobile ? "footer-func-btn-item-print" : "gutter-item"
+            }
           >
             <PrinterOutlined />
             In hợp đồng
@@ -212,7 +207,9 @@ function FormCreateContract({ tabList, hideModal }) {
           <Button
             htmlType="submit"
             type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className={
+              isTabletOrMobile ? "footer-func-btn-item-save-add" : "gutter-item"
+            }
           >
             <SaveOutlined />
             Lưu và thêm tiếp
@@ -221,7 +218,9 @@ function FormCreateContract({ tabList, hideModal }) {
           <Button
             htmlType="submit"
             type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className={
+              isTabletOrMobile ? "footer-func-btn-item-save" : "gutter-item"
+            }
           >
             <SaveOutlined />
             Lưu
@@ -229,7 +228,9 @@ function FormCreateContract({ tabList, hideModal }) {
 
           <Button
             type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className={
+              isTabletOrMobile ? "footer-func-btn-item-close" : "gutter-item"
+            }
             onClick={() => hideModal()}
           >
             <CloseCircleOutlined />

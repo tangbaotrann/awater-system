@@ -9,10 +9,39 @@ import {
   Row,
   Select,
 } from "antd";
-import { useMediaQuery } from "react-responsive";
 
 function FormUpdateClock({ tabList, hideModal }) {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  // form Thông tin đầu máy
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 5 },
+      md: { span: 4 },
+      lg: { span: 4 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
+
+  // form Đồng hồ hiện tại
+  const formItemLayoutClockNow = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 5 },
+      md: { span: 4 },
+      lg: { span: 8 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
 
   // handle submit form (change clock)
   const handleSubmitChangeClock = (values) => {
@@ -23,6 +52,7 @@ function FormUpdateClock({ tabList, hideModal }) {
   const handleSubmitChangeClockFailed = (error) => {
     console.log({ error });
   };
+
   return (
     <Form
       onFinish={handleSubmitChangeClock}
@@ -44,8 +74,12 @@ function FormUpdateClock({ tabList, hideModal }) {
 
       {/* Mã khách hàng */}
       <Row>
-        <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
-          <Form.Item name="code_customer" label="Mã khách hàng: ">
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Form.Item
+            name="code_customer"
+            label="Mã khách hàng"
+            {...formItemLayout}
+          >
             <Input name="code_customer" placeholder="Nhập mã khách hàng" />
           </Form.Item>
         </Col>
@@ -53,8 +87,8 @@ function FormUpdateClock({ tabList, hideModal }) {
 
       {/* Tên khách hàng */}
       <Row>
-        <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
-          <Form.Item name="fullName" label="Tên khách hàng: ">
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Form.Item name="fullName" label="Tên khách hàng" {...formItemLayout}>
             <Input name="fullName" placeholder="Nhập tên khách hàng" />
           </Form.Item>
         </Col>
@@ -62,8 +96,8 @@ function FormUpdateClock({ tabList, hideModal }) {
 
       {/* Địa chỉ */}
       <Row>
-        <Col xs={24} sm={24} md={24} lg={24} className="gutter-item">
-          <Form.Item name="address" label="Địa chỉ: ">
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Form.Item name="address" label="Địa chỉ" {...formItemLayout}>
             <Input name="address" placeholder="Nhập Địa chỉ" />
           </Form.Item>
         </Col>
@@ -71,18 +105,14 @@ function FormUpdateClock({ tabList, hideModal }) {
 
       {/* Tuyến đọc + Thứ tự */}
       <Row>
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name="line_reading"
-            label="Tuyến đọc: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Form.Item name="line_reading" label="Tuyến đọc" {...formItemLayout}>
             <Input name="line_reading" placeholder="Nhập tuyến đọc" />
           </Form.Item>
         </Col>
 
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Thứ tự: ">
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Form.Item name="" label="Thứ tự" {...formItemLayout}>
             <Input name="" placeholder="Nhập thứ tự" />
           </Form.Item>
         </Col>
@@ -100,15 +130,15 @@ function FormUpdateClock({ tabList, hideModal }) {
         <Col xs={24} sm={24} md={24} lg={12}>
           <Form.Item
             name="type_clock"
-            label="Kiểu đồng hồ: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
+            label="Kiểu đồng hồ"
+            {...formItemLayoutClockNow}
           >
             <Input name="type_clock" placeholder="Nhập Kiểu đồng hồ" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Đường kính: ">
+          <Form.Item name="" label="Đường kính" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập đường kính" />
           </Form.Item>
         </Col>
@@ -117,65 +147,52 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Mã đồng hồ + Seri đồng hồ */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Mã đồng hồ: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Mã đồng hồ" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập mã đồng hồ" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Serial đồng hồ: ">
+          <Form.Item name="" label="Serial đồng hồ" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập seri đồng hồ" />
           </Form.Item>
         </Col>
       </Row>
 
-      {/* Serial chỉ + Chỉ số đầu + Chỉ số cuối */}
+      {/* Serial chỉ + Chỉ số đầu */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Serial chỉ: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Serial chỉ" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập serial chỉ" />
           </Form.Item>
         </Col>
 
-        <Col xs={24} sm={24} md={24} lg={6}>
-          <Form.Item
-            name=""
-            label="Chỉ số đầu: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+        <Col xs={24} sm={24} md={24} lg={12}>
+          <Form.Item name="" label="Chỉ số đầu" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập chỉ số đầu" />
-          </Form.Item>
-        </Col>
-
-        <Col xs={24} sm={24} md={24} lg={6}>
-          <Form.Item name="" label="Chỉ số cuối: ">
-            <Input name="" placeholder="Nhập chỉ số cuối" />
           </Form.Item>
         </Col>
       </Row>
 
-      {/* Ngày lắp đặt + Lý do hủy */}
+      {/* Chỉ số cuối + Ngày lắp đặt */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Ngày lắp đặt: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Input name="" placeholder="Nhập ngày lắp đặt" />
+          <Form.Item name="" label="Chỉ số cuối" {...formItemLayoutClockNow}>
+            <Input name="" placeholder="Nhập chỉ số cuối" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Lý do hủy: ">
+          <Form.Item name="" label="Ngày lắp đặt" {...formItemLayoutClockNow}>
+            <Input name="" placeholder="Nhập ngày lắp đặt" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      {/* Lý do hủy + Ngày bắt đầu */}
+      <Row>
+        <Col xs={24} sm={24} md={24} lg={12}>
+          <Form.Item name="" label="Lý do hủy" {...formItemLayoutClockNow}>
             <Select
               fieldNames=""
               options={[{ value: "1", label: "LD 1" }]}
@@ -183,16 +200,9 @@ function FormUpdateClock({ tabList, hideModal }) {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      {/* Ngày bắt đầu + Ngày kết thúc */}
-      <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Ngày bắt đầu: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Ngày bắt đầu: " {...formItemLayoutClockNow}>
             <DatePicker
               name=""
               placeholder="Chọn ngày bắt đầu"
@@ -200,12 +210,15 @@ function FormUpdateClock({ tabList, hideModal }) {
             />
           </Form.Item>
         </Col>
+      </Row>
 
+      {/*  + Ngày kết thúc */}
+      <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
           <Form.Item
             name=""
             label="Ngày kết thúc: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
+            {...formItemLayoutClockNow}
           >
             <DatePicker
               name=""
@@ -226,17 +239,13 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Kiểu đồng hồ + Đường kính  */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Kiểu đồng hồ: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Kiểu đồng hồ" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập Kiểu đồng hồ" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Đường kính: ">
+          <Form.Item name="" label="Đường kính" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập đường kính" />
           </Form.Item>
         </Col>
@@ -245,17 +254,13 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Mã đồng hồ + Seri đồng hồ */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Mã đồng hồ: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Mã đồng hồ" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập mã đồng hồ" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Serial đồng hồ: ">
+          <Form.Item name="" label="Serial đồng hồ" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập seri đồng hồ" />
           </Form.Item>
         </Col>
@@ -264,17 +269,13 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Serial chỉ + Chỉ số đầu */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Serial chỉ: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Serial chỉ" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập serial chỉ" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Chỉ số đầu: ">
+          <Form.Item name="" label="Chỉ số đầu" {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập chỉ số đầu" />
           </Form.Item>
         </Col>
@@ -283,11 +284,7 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Ngày sử dụng + Ngày kiểm định */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Ngày sử dụng: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Ngày sử dụng" {...formItemLayoutClockNow}>
             <DatePicker
               name=""
               placeholder="Chọn ngày sử dụng"
@@ -297,11 +294,7 @@ function FormUpdateClock({ tabList, hideModal }) {
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Ngày kiểm định: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Ngày kiểm định" {...formItemLayoutClockNow}>
             <DatePicker
               name=""
               placeholder="Chọn ngày kiểm định"
@@ -314,11 +307,7 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Hiệu lực KĐ + Người thay */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Hiệu lực KĐ: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Hiệu lực KĐ" {...formItemLayoutClockNow}>
             <DatePicker
               name=""
               placeholder="Chọn hiệu lực KĐ"
@@ -328,7 +317,7 @@ function FormUpdateClock({ tabList, hideModal }) {
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Người thay: ">
+          <Form.Item name="" label="Người thay" {...formItemLayoutClockNow}>
             <Select
               fieldNames=""
               options={[{ value: "1", label: "NT 1" }]}
@@ -341,11 +330,7 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Lý do thay + Hình thức xử lý */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Lý do thay: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Lý do thay" {...formItemLayoutClockNow}>
             <Select
               fieldNames=""
               options={[{ value: "1", label: "LD 1" }]}
@@ -355,7 +340,11 @@ function FormUpdateClock({ tabList, hideModal }) {
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Hình thức xử lý: ">
+          <Form.Item
+            name=""
+            label="Hình thức xử lý"
+            {...formItemLayoutClockNow}
+          >
             <Select
               fieldNames=""
               options={[{ value: "1", label: "NT 1" }]}
@@ -368,17 +357,17 @@ function FormUpdateClock({ tabList, hideModal }) {
       {/* Ghi chú + Trạng thái ĐH lắp */}
       <Row>
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name=""
-            label="Ghi chú: "
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
+          <Form.Item name="" label="Ghi chú: " {...formItemLayoutClockNow}>
             <Input name="" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
 
         <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Trạng thái ĐH lắp: ">
+          <Form.Item
+            name=""
+            label="Trạng thái ĐH: "
+            {...formItemLayoutClockNow}
+          >
             <Select
               fieldNames=""
               options={[{ value: "1", label: "TT 1" }]}
