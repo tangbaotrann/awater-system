@@ -31,6 +31,11 @@ const CategoryHeaderAction = ({
           className="button"
           type="primary"
           icon={<SyncOutlined />}
+          style={{
+            backgroundColor: "#E6FFFA",
+            color: "#72E8C9",
+            fontWeight: "600",
+          }}
           // onClick={() => setIsOpenModalBill(true)}
           size="small"
         >
@@ -43,12 +48,16 @@ const CategoryHeaderAction = ({
           type="primary"
           icon={<PlusCircleOutlined />}
           onClick={(e) => handleOpenModalAdd(e, false)}
+          style={{
+            backgroundColor: "#13DEB9",
+            fontWeight: "600",
+          }}
           size="small"
         >
           Thêm mới
         </Button>
       </div>
-      {sidebarMenu === "CATEGORY_MANAGEMENT_PRICE_LIST" && (
+      {/* {sidebarMenu === "CATEGORY_MANAGEMENT_PRICE_LIST" && (
         <div className="button-watch">
           <Button
             className="button"
@@ -57,12 +66,17 @@ const CategoryHeaderAction = ({
             onClick={(e) => handleViewTableDetail(e)}
             disable
             size="small"
+             style={{
+                backgroundColor: "#5D87FF",
+                color: "#FFFFFF",
+                fontWeight: "600",
+              }}
             disabled={!tabList}
           >
             Xem
           </Button>
         </div>
-      )}
+      )} */}
       <div className="button-update">
         <Button
           className="button"
@@ -70,6 +84,11 @@ const CategoryHeaderAction = ({
           icon={<EditOutlined />}
           onClick={(e) => handleOpenModalAdd(e, true)}
           size="small"
+          style={{
+            backgroundColor: "#FEF5E5",
+            color: "#FFC882",
+            fontWeight: "600",
+          }}
           disabled={!tabList}
         >
           Sửa
@@ -82,6 +101,11 @@ const CategoryHeaderAction = ({
           icon={<DeleteOutlined />}
           onClick={() => setIsOpenModalDelete(true)}
           size="small"
+          style={{
+            backgroundColor: "#FBF2EF",
+            color: "#FA966E",
+            fontWeight: "600",
+          }}
           disabled={!tabList}
         >
           Xóa
@@ -96,6 +120,11 @@ const CategoryHeaderAction = ({
               icon={<SwapOutlined />}
               onClick={(e) => handleOpenModalTransfer(e, "manager")}
               size="small"
+              style={{
+                backgroundColor: "#5D87FF",
+                color: "#FFFFFF",
+                fontWeight: "600",
+              }}
               disabled={!tabList}
             >
               Chuyển cán bộ quản lý
@@ -108,6 +137,11 @@ const CategoryHeaderAction = ({
               icon={<RetweetOutlined />}
               onClick={(e) => handleOpenModalTransfer(e, "billCollector")}
               size="small"
+              style={{
+                backgroundColor: "#5D87FF",
+                color: "#FFFFFF",
+                fontWeight: "600",
+              }}
               disabled={!tabList}
             >
               Chuyển cán bộ thu

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Table } from "antd";
+import React, { useEffect, useState } from "react";
+import { Modal, Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { btnClickTabListContract } from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
@@ -9,23 +9,21 @@ const priceListColumns = (showHeader) => [
   {
     key: showHeader ? "priceObjectTitle" : "numericalOrder",
     dataIndex: showHeader ? "priceObjectTitle" : "numericalOrder",
-    width: "15vw",
+    width: 250,
     align: "center",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
   },
   {
     key: "priceObject",
     title: showHeader ? "Đối tượng giá" : "",
     dataIndex: "priceObject",
-    width: "25vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 150,
   },
   {
     key: "namePriceObject",
     title: showHeader ? "Tên đối tượng giá" : "",
     dataIndex: "namePriceObject",
-    width: "30vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 220,
+
     filters: showHeader
       ? [
           {
@@ -82,29 +80,24 @@ const priceListColumns = (showHeader) => [
     key: "fromDate",
     title: showHeader ? "Từ ngày" : "",
     dataIndex: "fromDate",
-    width: "20vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 110,
   },
   {
     key: "toDate",
     title: showHeader ? "Đến ngày" : "",
     dataIndex: "toDate",
-    width: "20vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 110,
   },
   {
     key: "tax",
     title: showHeader ? "Thuế VAT (%)" : "",
     dataIndex: "tax",
-    width: "15vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 130,
   },
   {
     key: "environmentFee",
     title: showHeader ? "Phí bảo vệ môi trường" : "",
     dataIndex: "environmentFee",
-    width: "20vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
   },
 ];
 
@@ -113,43 +106,44 @@ const columnsDetailTable = [
     key: "numericalOrder",
     title: "STT",
     dataIndex: "numericalOrder",
-    width: "2vw",
+    width: 50,
+    align: "center",
   },
   {
     key: "description",
     title: "Mô tả",
     dataIndex: "description",
-    width: "20vw",
+    width: 80,
   },
   {
     key: "descriptionDetail",
     title: "Mô tả chi tiết",
     dataIndex: "descriptionDetail",
-    width: "20vw",
+    width: 90,
   },
   {
     key: "fromNumber",
     title: "Từ số",
     dataIndex: "fromNumber",
-    width: "5vw",
+    width: 40,
   },
   {
     key: "toNumber",
     title: "Đến số",
     dataIndex: "toNumber",
-    width: "5vw",
+    width: 50,
   },
   {
     key: "priceVAT",
     title: "Giá có VAT",
     dataIndex: "priceVAT",
-    width: "15vw",
+    width: 60,
   },
   {
     key: "price",
     title: "Giá",
     dataIndex: "price",
-    width: "15vw",
+    width: 60,
   },
 ];
 
@@ -190,6 +184,8 @@ const TablePriceList = ({ viewTableDetail }) => {
 
   const dispatch = useDispatch();
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
+  const [openModalPriceDetail, setOpenModalPriceDetail] = useState(false);
+
   const handleRowSelection = (selectedRowKeys, selectedRow) => {
     dispatch(btnClickTabListContract(selectedRow));
   };
@@ -217,6 +213,13 @@ const TablePriceList = ({ viewTableDetail }) => {
     showSizeChanger: true,
   };
 
+  const handleOpenDetail = () => {
+    setOpenModalPriceDetail(true);
+  };
+  const handleCloseModalPriceDetail = () => {
+    setOpenModalPriceDetail(false);
+  };
+
   return (
     <div className="body-price-list">
       <div className="body-price-list-top-table">
@@ -225,8 +228,8 @@ const TablePriceList = ({ viewTableDetail }) => {
           columns={priceListColumns(true)}
           dataSource={priceListData}
           scroll={{
-            y: 520,
-            x: 1200,
+            y: 330,
+            x: 1300,
             scrollToFirstRowOnChange: true,
           }}
           pagination={paginationOptions}
@@ -234,21 +237,21 @@ const TablePriceList = ({ viewTableDetail }) => {
             expandedRowRender: (record) => {
               return (
                 <Table
+                  className="child-table"
                   columns={priceListColumns(false)}
                   dataSource={record.data}
                   pagination={false}
                   rowKey="key"
                   onRow={(record, rowIndex) => {
                     return {
-                      onClick: (event) => {
-                        handleRowSelection(rowIndex, record);
+                      onDoubleClick: (event) => {
+                        handleOpenDetail(event, record);
                       }, // click row
                     };
                   }}
                   rowSelection={{
                     type: "radio",
                     onChange: (selectedRowKeys, selectedRows) => {
-                      console.log(selectedRowKeys, selectedRows);
                       handleRowSelection(selectedRowKeys, selectedRows[0]);
                     },
                     selectedRowKeys: tabList ? [tabList.key] : [],
@@ -262,14 +265,26 @@ const TablePriceList = ({ viewTableDetail }) => {
           }}
         />
       </div>
-      {tabList && viewTableDetail ? (
-        <div className="table-detail">
-          <Table
-            columns={columnsDetailTable}
-            dataSource={priceListDataChildren}
-          />
-        </div>
-      ) : null}
+      <Modal
+        title="Chi tiết đối tượng giá"
+        open={openModalPriceDetail}
+        onCancel={handleCloseModalPriceDetail}
+        centered
+        width={800}
+        bodyStyle={{ height: "600px", overflow: "auto" }}
+        footer={null}
+      >
+        <Table
+          className="table-price-detail"
+          columns={columnsDetailTable}
+          dataSource={priceListDataChildren}
+          scroll={{
+            y: 450,
+            x: 1000,
+            scrollToFirstRowOnChange: true,
+          }}
+        />
+      </Modal>
     </div>
   );
 };

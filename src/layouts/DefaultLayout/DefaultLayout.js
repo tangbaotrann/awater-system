@@ -14,9 +14,9 @@ import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
 
 const { Header, Sider, Content } = Layout;
 
-function DefaultLayout({ children }) {
+function DefaultLayout({ children, currentPage }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [open, setOpen] = useState(false); 
+  const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState("left");
 
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
@@ -67,7 +67,10 @@ function DefaultLayout({ children }) {
                 onClose={onClose}
                 open={open}
               >
-                <SidebarMenu />
+                <SidebarMenu
+                  onCloseDrawer={onClose}
+                  isTabletOrMobile={isTabletOrMobile}
+                />
               </Drawer>
             </>
           )}
@@ -99,7 +102,9 @@ function DefaultLayout({ children }) {
             margin: "13px",
           }}
         >
-          {sidebarMenu === null ? (
+          {sidebarMenu === null &&
+          currentPage === null &&
+          currentPage !== "" ? (
             <h1 className="text-welcome">
               CHÀO MỪNG BẠN ĐẾN VỚI AWATER CỦA CHÚNG TÔI.
             </h1>
