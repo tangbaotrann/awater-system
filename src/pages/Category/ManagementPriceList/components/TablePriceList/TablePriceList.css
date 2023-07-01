@@ -4,10 +4,17 @@
 .ant-table {
   margin-inline: 0px !important;
 }
-.body-price-list-top-table {
-  overflow: scroll;
-  max-height: 600px;
+.ant-table-row
+  .ant-table-cell.ant-table-selection-column:not(.ant-table-expanded-row) {
+  padding-right: 16px !important;
+  padding-left: 16px !important;
 }
+
+.ant-table-expanded-row .ant-table-cell:first-child {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
 .body-price-list {
   position: relative;
 }
@@ -19,6 +26,19 @@
   max-height: 210px;
   left: 275px;
   right: 0;
+}
+.ant-dropdown-trigger.ant-table-filter-trigger {
+  margin-inline: 0px;
+}
+.table-list .ant-table-cell {
+  white-space: nowrap !important;
+}
+
+.child-table .ant-table-cell {
+  white-space: normal;
+}
+.table-price-detail {
+  white-space: normal;
 }
 /* phone: width < 740px */
 @media (max-width: 46.1875em) {

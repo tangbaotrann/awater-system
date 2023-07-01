@@ -1,0 +1,101 @@
+.popup-add-price-list {
+  padding-bottom: 0px;
+  top: 3%;
+}
+.form-item-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: space-between;
+}
+.form-item-bottom {
+  display: flex;
+}
+.price-list-info,
+.price-list-table {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.price-list-info-item {
+  padding: 2px 20px;
+}
+
+.form-price-list .form-item-wrap label {
+  width: 90px;
+}
+.form-item-bottom {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 5px;
+}
+.price-list-table {
+  display: grid;
+  grid-template-columns: 97% 3%;
+  width: 100%;
+}
+.table {
+  width: 100%;
+}
+.button-actions-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0;
+  align-items: center;
+}
+.button-actions-table svg {
+  height: 20px;
+  width: 20px;
+}
+.price-list-table .ant-form-item-control-input-content {
+  width: 100%;
+}
+/* Responsive */
+/* phone: width < 740px */
+@media (max-width: 46.1875em) {
+  .form-item-wrap,
+  .form-item-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Thiết kế cho kích thước màn hình từ 769px đến 991px (desktop - large desktop) */
+@media (min-width: 769px) and (max-width: 991px) {
+  .form-item-wrap,
+  .form-item-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+}
+@media (max-width: 575px) {
+  .form-item-wrap,
+  .form-item-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .price-list-info .ant-form-item-label {
+    padding: 0;
+  }
+}
+
+/* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .form-item-wrap,
+  .form-item-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
+@media (min-width: 768px) {
+}
+
+/* End Responsive */

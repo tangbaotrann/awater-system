@@ -161,7 +161,12 @@ const ModalTransferEmployee = ({
               className="button"
               type="primary"
               icon={<SaveOutlined />}
-              style={{ marginRight: 5, width: "100%" }}
+              style={{
+                marginRight: 5,
+                width: "100%",
+                backgroundColor: "#13DEB9",
+                color: "#FFFFFF",
+              }}
               size="middle"
               // disabled={!(valueSymbol && valueDescribe)}
             >
@@ -172,7 +177,12 @@ const ModalTransferEmployee = ({
               key="submit"
               icon={<CloseCircleOutlined />}
               onClick={() => handleCancel("transferEmployee")}
-              style={{ width: "100%" }}
+              style={{
+                width: "100%",
+                backgroundColor: "#FA896B",
+                color: "#FFFFFF",
+                border: "none",
+              }}
               size="middle"
             >
               Đóng

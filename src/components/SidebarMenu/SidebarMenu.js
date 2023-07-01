@@ -14,7 +14,7 @@ import constants from "../../utils/constants";
 import sidebarSlice from "../../redux/slices/sidebarSlice/sidebarSlice";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 
-function SidebarMenu() {
+function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
   const dispatch = useDispatch();
 
   return (
@@ -34,17 +34,9 @@ function SidebarMenu() {
               key: constants.CONTRACT_MANAGER.key,
             },
             {
-              label: constants.NUMBER_MANAGEMENT.label,
-              key: constants.NUMBER_MANAGEMENT.key,
-            },
-            {
               key: constants.REGISTRATION_FORM_CHILD.key,
               label: constants.REGISTRATION_FORM_CHILD.label,
               children: [
-                {
-                  label: constants.REGISTRATION_OF_INSTALL.label,
-                  key: constants.REGISTRATION_OF_INSTALL.key,
-                },
                 {
                   label: constants.DEV_CUSTOMER.label,
                   key: constants.DEV_CUSTOMER.key,
@@ -143,57 +135,112 @@ function SidebarMenu() {
         if (item.key === constants.CONTRACT_MANAGER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           dispatch(tabListContractSlice.actions.btnClickTabListContract(null)); // clear
-        } else if (item.key === constants.NUMBER_MANAGEMENT.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CONTRACT_MANAGER.key); // save to session
+          isTabletOrMobile && onCloseDrawer(); // when click item menu -> auto close
         }
         // sub menu 1.1
-        else if (item.key === constants.REGISTRATION_OF_INSTALL.key) {
+        else if (item.key === constants.DEV_CUSTOMER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-        } else if (item.key === constants.DEV_CUSTOMER.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.DEV_CUSTOMER.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.LIST_CUSTOMER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.LIST_CUSTOMER.key);
+          isTabletOrMobile && onCloseDrawer();
         }
         // menu 2
         else if (item.key === constants.RECORD_INDEX_PARENT.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.RECORD_INDEX_PARENT.key
+          );
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.READINGS_INDEX.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.READINGS_INDEX.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.ENTER_INDEX.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.ENTER_INDEX.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.BILL_ORDER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.BILL_ORDER.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.PRINT_BILL_ORDER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.PRINT_BILL_ORDER.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.EXPORT_PRINT_BILL_ORDER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-        } else if (item.key === constants.PAYMENT.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key)); // menu 4
+          sessionStorage.setItem(
+            "currentPage",
+            constants.EXPORT_PRINT_BILL_ORDER.key
+          );
+          isTabletOrMobile && onCloseDrawer();
+        }
+        // menu 4
+        else if (item.key === constants.PAYMENT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
+          sessionStorage.setItem("currentPage", constants.PAYMENT.key);
+          isTabletOrMobile && onCloseDrawer();
         }
         // menu 3
         else if (item.key === constants.CATEGORY.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (
           item.key === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key
         ) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key
+          );
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_MANAGEMENT_READING.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_MANAGEMENT_READING.key
+          );
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_MANAGEMENT_PRICE_LIST.key
+          );
+          isTabletOrMobile && onCloseDrawer();
         }
         // menu 5
         else if (item.key === constants.FAILURE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.FAILURE.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.BLOCK_CLOCK_MANAGEMENT.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.BLOCK_CLOCK_MANAGEMENT.key
+          );
+          isTabletOrMobile && onCloseDrawer();
         }
         // menu 6
         else if (item.key === constants.NOTICE_OF_CUSTOMS.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.NOTICE_OF_CUSTOMS.key
+          );
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.LOG_NOTICE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.LOG_NOTICE.key);
+          isTabletOrMobile && onCloseDrawer();
         }
       }}
     />

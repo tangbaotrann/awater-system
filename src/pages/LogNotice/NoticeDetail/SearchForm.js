@@ -71,7 +71,7 @@ export const SearchForm = () => {
           </Form.Item>
         </Col>
       </Row>
-      <div style={{textAlign: 'right'}}>
+      <div style={{ textAlign: "right" }}>
         <Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
           Tìm kiếm
         </Button>

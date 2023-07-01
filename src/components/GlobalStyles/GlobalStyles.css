@@ -8,6 +8,7 @@
     --red: #ff0000;
     --blue-e6f4ff: #e6f4ff;
     --blue-1677ff: #1677ff;
+    --text-table: #5a6a85;
 
     /* font-family */
     --font-family: 'Quicksand', 'sans-serif' !important;
@@ -41,6 +42,12 @@ a {
 /* custom */
 .gutter-item-mobile {
     margin-left: 10px;
+}
+
+/* color text of table */
+.ant-table-cell {
+    font-size: 1.4rem !important;
+    color: var(--text-table);
 }
 
 /* Scrollbar Css */
@@ -190,6 +197,45 @@ html *::-webkit-scrollbar-track {
         margin-left: 0 !important;
     }
 
+    .collapse-space-left-item {
+        margin-left: 0;
+    }
+
+    .container-info-contract {
+        height: 64vh;
+        overflow-y: scroll;
+    }
+
+    .container-info-clock {
+        height: 65vh;
+        overflow-y: scroll;
+    }
+    
+    .container-info-customer {
+        height: 65vh;
+        overflow-y: scroll;
+    }
+
+    .tablist-func-clock-btn-mobile {
+        margin-right: 10px;
+    }
+
+    .footer-func-btn-item-report {
+        margin: 10px 0;
+    }
+
+    .footer-func-btn-item-print {
+        margin-bottom: 10px;
+    }
+
+    .footer-func-btn-item-save-add {
+        margin-bottom: 10px;
+    }
+    
+    .footer-func-btn-item-save {
+        margin-bottom: 10px;
+    }
+
     /* payment */
     .btn-search-payment {
         margin-left: 0;
@@ -214,6 +260,11 @@ html *::-webkit-scrollbar-track {
         margin-bottom: 12px;
     }
 
+    .collapse-space-left-item {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
     /* tabs bottom (page contract) */
     .contract-bottom-func {
         position: fixed;
@@ -228,12 +279,48 @@ html *::-webkit-scrollbar-track {
         box-shadow: 0 0 12px 0 var(--blue-1677ff);
     }
 
+    .container-info-contract {
+        height: 64vh;
+        overflow-y: scroll;
+    }
+
+    .container-info-clock {
+        height: 65vh;
+        overflow-y: scroll;
+    }
+    
+    .container-info-customer {
+        height: 65vh;
+        overflow-y: scroll;
+    }
+
+    .tablist-func-clock-btn-mobile {
+        margin-right: 10px;
+    }
+
+    .footer-func-btn-item-report {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 8px;
+    }
+
+    .footer-func-btn-item-print {
+        margin-right: 8px;
+    }
+
+    .footer-func-btn-item-save-add {
+        margin-right: 8px;
+    }
+
+    .footer-func-btn-item-save {
+        margin-right: 8px;
+    }
+
     /* payment */
     .btn-search-payment {
         margin-left: 0;
         margin-bottom: 22px;
     }
-
 }
   
 /* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
@@ -269,6 +356,42 @@ html *::-webkit-scrollbar-track {
     /* payment */
     .gutter-item-btn {
         margin-left: 22px;
+    }
+
+    /* Collapse (Contract) */
+    .collapse-space-left-item {
+        margin-left: 10px;
+    }
+
+    .container-info-contract {
+        height: 64vh;
+        overflow-y: scroll;
+    }
+
+    .container-info-clock {
+        height: 65vh;
+        overflow-y: scroll;
+    }
+    
+    .container-info-customer {
+        height: 65vh;
+        overflow-y: scroll;
+    }
+
+    .tablist-func-clock-btn-mobile {
+        margin-right: 10px;
+    }
+
+    .footer-func-btn-item-report {
+        margin: 0 10px
+    }
+
+    .footer-func-btn-item-save-add {
+        margin: 10px 10px;
+    }
+
+    .footer-func-btn-item-save {
+        margin-right: 10px;
     }
 }
   

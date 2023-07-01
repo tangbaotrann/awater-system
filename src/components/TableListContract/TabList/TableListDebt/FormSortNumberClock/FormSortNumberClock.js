@@ -6,10 +6,22 @@ import {
   SaveOutlined,
   SortAscendingOutlined,
 } from "@ant-design/icons";
-import { useMediaQuery } from "react-responsive";
 
 function FormSortNumberClock({ hideModalSortNumber }) {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 5 },
+      md: { span: 5 },
+      lg: { span: 5 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
 
   // cols
   const cols = [
@@ -49,30 +61,31 @@ function FormSortNumberClock({ hideModalSortNumber }) {
     <Form onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
       {/* Tìm kiếm + Buttons + Tuyến đọc */}
       <Row>
-        <Col xs={24} sm={19} md={11} lg={10}>
-          <Form.Item
-            name=""
-            label="Tìm kiếm"
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Input name="" placeholder="Tìm kiếm" />
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item name="" label="Tìm kiếm" {...formItemLayout}>
+            <div className="container-label-input">
+              <Input
+                name=""
+                placeholder="Tìm kiếm"
+                className="space-right-10"
+              />
+              <Button type="primary" className="space-right-10">
+                <LeftOutlined />
+              </Button>
+              <Button type="primary" className="space-right-10">
+                <RightOutlined />
+              </Button>
+            </div>
           </Form.Item>
         </Col>
 
-        <Col xs={3} sm={2} md={1} lg={1} className="gutter-item">
-          <Button type="primary">
-            <LeftOutlined />
-          </Button>
-        </Col>
-
-        <Col xs={1} sm={1} md={1} lg={1} className="gutter-item">
-          <Button type="primary">
-            <RightOutlined />
-          </Button>
-        </Col>
-
-        <Col xs={24} sm={23} md={10} lg={11}>
-          <Form.Item name="" label="Tuyến đọc (*)">
+        <Col xs={24} sm={24} md={12} lg={12}>
+          <Form.Item
+            name=""
+            label="Tuyến đọc (*)"
+            {...formItemLayout}
+            className="gutter-item"
+          >
             <Select
               fieldNames=""
               options={[{ value: "1", label: "TD 1" }]}

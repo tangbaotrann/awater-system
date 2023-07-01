@@ -42,10 +42,10 @@ function InfoClock() {
   ];
 
   return (
-    <>
+    <div className="container-info-clock">
       <Row>
         {/* Table */}
-        <Col xs={24} sm={24} md={12} lg={20} className="gutter-item">
+        <Col xs={24} sm={24} md={24} lg={20} className="gutter-item">
           <div className="tablist-tbl-clock-on-modal">
             <Table
               columns={colsClock}
@@ -57,7 +57,7 @@ function InfoClock() {
                 date_use: _clock.date_use,
               }))}
               pagination={{
-                pageSize: 5,
+                pageSize: 9,
               }}
               rowKey="index"
               size="small"
@@ -72,7 +72,7 @@ function InfoClock() {
         <Col
           xs={24}
           sm={24}
-          md={12}
+          md={24}
           lg={2}
           className={isTabletOrMobile ? "func-info-clock-btn-mobile" : ""}
         >
@@ -122,7 +122,7 @@ function InfoClock() {
           </Button>
         </Col>
       </Row>
-    </>
+    </div>
   );
 }
 
