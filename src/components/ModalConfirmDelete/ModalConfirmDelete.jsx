@@ -24,6 +24,19 @@ const ModalConfirmDelete = ({
       okText="Confirm"
       onCancel={() => handleCancel("closeModalDeleteSubject")}
       confirmLoading={confirmLoading}
+      okButtonProps={{
+        style: {
+          backgroundColor: "#13DEB9",
+          color: "#FFFFFF",
+        },
+      }}
+      cancelButtonProps={{
+        style: {
+          backgroundColor: "#FBF2EF",
+          color: "#FA966E",
+          border: "none",
+        },
+      }}
     >
       Bạn chắc chắn muốn xóa không?
     </Modal>

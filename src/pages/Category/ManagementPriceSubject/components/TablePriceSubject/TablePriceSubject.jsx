@@ -3,33 +3,31 @@ import { Table } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { btnClickTabListContract } from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
+import "./TablePriceSubject";
 const priceSubjectColumns = [
   {
     key: "key",
     title: "",
     dataIndex: "key",
-    width: "4vw",
-    minWidth: "4vw",
-    maxWight: "8vw",
+    width: 40,
     align: "center",
   },
   {
     key: "symbol",
     title: "Ký hiệu",
     dataIndex: "symbol",
-    width: "15vw",
+    width: 100,
   },
   {
     key: "describe",
     title: "Mô tả",
     dataIndex: "describe",
-    width: "45vw",
+    width: 100,
   },
   {
     key: "unit",
     title: "Đơn vị tính",
     dataIndex: "unit",
-    width: "15vw",
   },
 ];
 const priceSubjectData = [];
@@ -63,14 +61,18 @@ const TablePriceSubject = () => {
 
   return (
     <Table
+      className="table-price-subject"
       dataSource={priceSubjectData}
-      columns={priceSubjectColumns}
       pagination={paginationOptions}
       scroll={{
-        y: 520,
-        x: 100,
+        y: 380,
+        x: 800,
         scrollToFirstRowOnChange: true,
       }}
+      columns={priceSubjectColumns.map((column) => ({
+        ...column,
+        className: "cell-wrap",
+      }))}
       rowKey="key"
       rowSelection={{
         type: "radio",

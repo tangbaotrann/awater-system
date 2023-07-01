@@ -95,7 +95,7 @@ const ModalAddPriceSubject = ({ isOpen, handleCancel, handleOk }) => {
               className="button"
               type="primary"
               icon={<SaveOutlined />}
-              style={{ marginRight: 5, width: "100%" }}
+              style={{ marginRight: 5, width: "100%",backgroundColor:"#fbf2ef",color:"#fa8a6d" }}
               size="middle"
               disabled={!(valueSymbol && valueDescribe)}
             >
@@ -106,7 +106,7 @@ const ModalAddPriceSubject = ({ isOpen, handleCancel, handleOk }) => {
               key="submit"
               icon={<CloseCircleOutlined />}
               onClick={() => handleCancel("addPriceSubject")}
-              style={{ width: "100%" }}
+              style={{ width: "100%", backgroundColor:"#fa896b", color:"#ffffff" }}
               size="middle"
             >
               Đóng
