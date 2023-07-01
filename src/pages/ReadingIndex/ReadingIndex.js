@@ -13,7 +13,7 @@ const ReadingIndex = () => {
   const { token } = theme.useToken();
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
   const [isModalOpenMCreate, setIsModalOpenMCreate] = useState(false);
-  const [isModalOpenIndexBar, setIsModalOpenIndexBar] = useState(false);
+  const [isModalOpenIndexBar, setIsModalOpenIndexBar] = useState(false); 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const handleOk = (_, type) => {

@@ -1,7 +1,8 @@
-import { SendOutlined, SyncOutlined } from "@ant-design/icons";
+
+import { SendOutlined } from "@ant-design/icons";
 import {
   Button,
-  Checkbox,
+  Checkbox, 
   Collapse,
   DatePicker,
   Form,
@@ -9,12 +10,12 @@ import {
   Modal,
   Table,
   theme,
-} from "antd";
+} from "antd"; 
 import React from "react";
 import { SearchForm } from "./SearchForm";
 
-export const SMSMoneyWater = (props) => {
-  const { token } = theme.useToken();
+const NoticeWaterMoney = (props) => {
+  const { token } = theme.useToken(); 
   const { isOpen, setIsOpen } = props;
 
   const items = [
@@ -44,9 +45,9 @@ export const SMSMoneyWater = (props) => {
       width: 100,
     },
     {
-      title: "Số điện thoại",
-      dataIndex: "phone",
-      key: "phone",
+      title: "Mã KH",
+      dataIndex: "code",
+      key: "code",
     },
     {
       title: "Tên KH",
@@ -54,9 +55,14 @@ export const SMSMoneyWater = (props) => {
       key: "name",
     },
     {
-      title: "Địa chỉ",
-      dataIndex: "address",
-      key: "address",
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: 'Địa chỉ',
+      dataIndex: 'address',
+      key: 'address',
     },
     {
       title: "Chỉ số cũ",
@@ -72,11 +78,6 @@ export const SMSMoneyWater = (props) => {
       title: "Tiêu thụ",
       dataIndex: "consumption",
       key: "consumption",
-    },
-    {
-      title: "Số tin",
-      dataIndex: "number",
-      key: "number",
     },
     {
       title: "Mã ĐT giá",
@@ -124,10 +125,10 @@ export const SMSMoneyWater = (props) => {
       key: "datesend",
     },
   ];
-  console.log('render modal sms money water');
+
   return (
     <Modal
-      title="Gửi SMS tiền nước"
+      title="Gửi thông báo tiền nước"
       open={isOpen}
       onOk={() => setIsOpen(false)}
       onCancel={() => setIsOpen(false)}
@@ -189,7 +190,7 @@ export const SMSMoneyWater = (props) => {
               placeholder="Chọn tháng"
               style={{ width: "100%" }}
               format="MM-YYYY"
-              picker="month"    
+              picker="month"
             />
           </Form.Item>
           <div style={{ marginLeft: "auto" }}>
@@ -214,3 +215,5 @@ export const SMSMoneyWater = (props) => {
     </Modal>
   );
 };
+
+export default NoticeWaterMoney;

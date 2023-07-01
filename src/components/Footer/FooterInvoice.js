@@ -355,10 +355,10 @@ export const FooterInvoice = (props) => {
       ),
       icon: <SettingOutlined />,
     },
-    {
-      id: "10",
-      label: <span onClick={() => setIsOpenModalInvoiceBar(true)}>Chỉ số</span>,
-    },
+    // {
+    //   id: "10",
+    //   label: <span onClick={() => setIsOpenModalInvoiceBar(true)}>Chỉ số</span>,
+    // },
   ];
 
   return (
