@@ -1,33 +1,28 @@
+import { SearchOutlined } from "@ant-design/icons";
 import {
   Button,
+  Checkbox,
   Col,
   DatePicker,
   Form,
   Input,
   Row,
   Select,
-  Space,
   theme,
 } from "antd";
+import React from "react";
 
-export const AdvancedSearchForm = () => {
-  const { token } = theme.useToken(); 
+export const SearchForm = () => {
   const [form] = Form.useForm();
-  const formStyle = {
-    maxWidth: "none",
-    borderRadius: token.borderRadiusLG,
-    padding: 5,
-  };
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
-
   const layout = {
     labelCol: {
-      span: 8,
+      span: 6,
     },
     wrapperCol: {
-      span: 22,
+      span: 29,
     },
   };
 
@@ -36,13 +31,12 @@ export const AdvancedSearchForm = () => {
       {...layout}
       form={form}
       name="advanced_search"
-      style={formStyle}
       onFinish={onFinish}
       // size="small"
     >
       <Row gutter={24}>
-        <Col span={8} xs={24} sm={12} lg={6}>
-          <Form.Item name="date" label="Chọn tháng">
+        <Col lg={6}>
+          <Form.Item name="date" label="Nhân viên">
             <DatePicker
               allowClear
               placeholder="Chọn tháng"
@@ -52,9 +46,10 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={8} xs={24} sm={12} lg={6}>
-          <Form.Item name="person" label="Cán bộ đọc">
+        <Col lg={6}>
+          <Form.Item name="person" label="Tuyến đọc">
             <Select
+              defaultValue="--Chọn kết quả chi tiết--"
               style={{
                 width: "100%",
               }}
@@ -71,9 +66,10 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={8} xs={24} sm={12} lg={6}>
-          <Form.Item name="tuyendoc" label="Tuyến đọc">
+        <Col lg={6}>
+          <Form.Item name="person" label="Phạm vi">
             <Select
+              defaultValue="--Chọn kết quả gửi--"
               style={{
                 width: "100%",
               }}
@@ -86,21 +82,12 @@ export const AdvancedSearchForm = () => {
                   value: "lucy",
                   label: "Lucy",
                 },
-                {
-                  value: "Yiminghe",
-                  label: "yiminghe",
-                },
-                {
-                  value: "disabled",
-                  label: "Disabled",
-                  disabled: true,
-                },
               ]}
             />
           </Form.Item>
         </Col>
-        <Col span={8} xs={24} sm={12} lg={6}>
-          <Form.Item name="status" label="Trạng thái">
+        <Col lg={6}>
+          <Form.Item name="person" label="Loại KH">
             <Select
               style={{
                 width: "100%",
@@ -120,9 +107,18 @@ export const AdvancedSearchForm = () => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={6} xs={24} sm={12} lg={6}>
-          <Form.Item name="place" label="Khu vực">
+        <Col lg={6}>
+          <Form.Item name="date" label="Số HĐ">
+            <Input
+              style={{ width: "100%" }}
+              placeholder="Nhập mã KH hoặc địa chỉ nhận"
+            />
+          </Form.Item>
+        </Col>
+        <Col lg={6}>
+          <Form.Item name="person" label="Tên KH">
             <Select
+              defaultValue="--Chọn kết quả gửi--"
               style={{
                 width: "100%",
               }}
@@ -139,48 +135,36 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6} xs={24} sm={12} lg={6}>
-          <Form.Item name="ky" label="Kỳ GSC">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col span={6} xs={24} sm={12} lg={6}>
-          <Form.Item name="numberName" label="Tên sổ">
-            <Input placeholder="Nhập tên sổ cần tìm" />
-          </Form.Item>
-        </Col>
-        <Col span={6} xs={24} sm={12} lg={6}>
-          <div
-            style={{
-              textAlign: "right",
-            }}
-          >
-            <Space size="small">
-              <Button type="primary" htmlType="submit">
-                Tìm kiếm
-              </Button>
-              <Button
-                onClick={() => {
-                  form.resetFields();
+        <Col lg={6}>
+          <Form.Item name="person" label="Từ ngày">
+            <div style={{ display: "flex", gap: "5px" }}>
+              <DatePicker
+                allowClear
+                style={{
+                  width: "120px",
                 }}
-              >
-                Tìm mới
-              </Button>
-            </Space>
+                placeholder="Từ"
+                format="MM-YYYY"
+                picker="month"
+              />
+              <DatePicker
+                allowClear
+                style={{
+                  width: "120px",
+                }}
+                placeholder="Đến"
+                format="MM-YYYY"
+                picker="month"
+              />
+            </div>
+          </Form.Item>
+        </Col>
+        <Col lg={6}>
+          <div style={{ textAlign: "center" }}>
+            <Checkbox style={{ marginRight: "13px" }}>Gửi thay ĐH</Checkbox>
+            <Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
+              Tìm kiếm
+            </Button>
           </div>
         </Col>
       </Row>

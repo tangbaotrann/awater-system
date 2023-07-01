@@ -2,7 +2,7 @@ import {
   DownOutlined,
   FileExcelOutlined,
   MailOutlined,
-  SettingOutlined,
+  MoreOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
 import { Dropdown, Space, Tabs } from "antd";
@@ -12,7 +12,10 @@ import "./FooterReadingIndex.css";
 export const FooterLogNotice = (props) => {
   const {
     isTabletOrMobile,
-    setIsOpenMoneyWater
+    setIsOpenMoneyWater,
+    setIsOpenModalCskh,
+    setIsOpenModalNoticeMoneyWater,
+    setIsOpenTakeCareCustomer,
   } = props;
 
   const extension = [
@@ -20,10 +23,10 @@ export const FooterLogNotice = (props) => {
       label: (
         <a
           target="_blank"
-          rel="noopener noreferrer" 
+          rel="noopener noreferrer"
           href="https://www.antgroup.com"
         >
-          Đồng bộ từ hồ sơ
+          Cập nhật nhà mạng
         </a>
       ),
       key: "0",
@@ -36,14 +39,27 @@ export const FooterLogNotice = (props) => {
           rel="noopener noreferrer"
           href="https://www.aliyun.com"
         >
-          Xuất hóa đơn theo mẫu
+          Gửi lại tất cả
         </a>
       ),
       key: "1",
       icon: <FileExcelOutlined style={{ color: "#1677ff" }} />,
     },
+    {
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          Gửi thông báo theo tuyến
+        </a>
+      ),
+      key: "2",
+      icon: <FileExcelOutlined style={{ color: "#1677ff" }} />,
+    },
   ];
-  
+
   const tabs = [
     {
       id: "1",
@@ -61,7 +77,7 @@ export const FooterLogNotice = (props) => {
       id: "2",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+          onClick={() => setIsOpenModalCskh(true)}
           style={{ marginLeft: "-9px" }}
         >
           Gửi SMS CSKH
@@ -73,7 +89,7 @@ export const FooterLogNotice = (props) => {
       id: "3",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+          onClick={() => setIsOpenModalNoticeMoneyWater(true)}
           style={{ marginLeft: "-9px" }}
         >
           Gửi thông báo tiền nước
@@ -85,7 +101,7 @@ export const FooterLogNotice = (props) => {
       id: "4",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+          onClick={() => setIsOpenTakeCareCustomer(true)}
           style={{ marginLeft: "-9px" }}
         >
           Gửi thông báo CSKH
@@ -94,7 +110,7 @@ export const FooterLogNotice = (props) => {
       icon: <MailOutlined />,
     },
     {
-      id: "9",
+      id: "5",
       label: (
         <Dropdown
           menu={{
@@ -109,11 +125,11 @@ export const FooterLogNotice = (props) => {
           </a>
         </Dropdown>
       ),
-      icon: <SettingOutlined />,
+      icon: <MoreOutlined />,
     },
     {
-      id: "10",
-      label: <span >Chỉ số</span>,
+      id: "6",
+      label: "Chỉ số",
     },
   ];
 
@@ -127,7 +143,8 @@ export const FooterLogNotice = (props) => {
           return {
             label: (
               <div className="test">
-                {_tab.icon} {_tab.label}
+                {_tab.icon}
+                {_tab.label}
               </div>
             ),
             key: _tab.id,
