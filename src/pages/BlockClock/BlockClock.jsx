@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { initialData } from "../../utils/dataBlock";
-import TabListIP from "./TableListBC";
+import TabListBC from "./TableListBC";
 
 import "../../components/GlobalStyles/GlobalStyles.css";
 import "../Manager/Contract/Contract.css";
@@ -171,7 +171,7 @@ function BlockClock() {
               rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
-              content={<TabListIP isTabletOrMobile={isTabletOrMobile} />}
+              content={<TabListBC isTabletOrMobile={isTabletOrMobile} />}
             >
               <div className="contract-bottom-func">
                 <PlusOutlined />
@@ -179,7 +179,7 @@ function BlockClock() {
             </Popover>
           ) : (
             <div className="contract-bottom-func">
-              <TabListIP />
+              <TabListBC />
             </div>
           )}
         </div>

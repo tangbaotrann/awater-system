@@ -15,6 +15,24 @@ import tabListInvoicePrintSlice from "../../redux/slices/tabListInvoicePrintSlic
 import AddBlockClock from "./AddBlockClock";
 import EditBlockClock from "./EditBlockClock";
 import ViewDetail from "./ViewDetail.jsx";
+import FromBarChart from "./FromBarChart";
+
+// ...
+const data = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
+const labels = [
+  "Tháng 1",
+  "Tháng 2",
+  "Tháng 3",
+  "Tháng 4",
+  "Tháng 5",
+  "Tháng 6",
+  "Tháng 7",
+  "Tháng 8",
+  "Tháng 9",
+  "Tháng 10",
+  "Tháng 11",
+  "Tháng 12",
+];
 // Tabs bottom
 const tabs = [
   {
@@ -60,6 +78,7 @@ function TableListBC({ isTabletOrMobile }) {
   const [modalAddBlock, setAddBlock] = useState(false);
   const [modalEditBlock, setEditBlock] = useState(false);
   const [modalViewDetail, setViewDetail] = useState(false);
+  const [modalChart, setChart] = useState(false);
   const dispatch = useDispatch();
 
   const tabList = useSelector(btnClickTabListInvoicePrintSelector);
@@ -76,7 +95,7 @@ function TableListBC({ isTabletOrMobile }) {
     } else if (key === "5") {
       setViewDetail(true);
     } else if (key === "6") {
-      message.error("Tính năng chưa khả dụng!");
+      setChart(true);
     } else if (key === "7") {
       message.error("Tính năng chưa khả dụng!");
       // console.log("deleted.");
@@ -90,6 +109,7 @@ function TableListBC({ isTabletOrMobile }) {
     setAddBlock(false);
     setEditBlock(false);
     setViewDetail(false);
+    setChart(false);
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
@@ -151,7 +171,7 @@ function TableListBC({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Cập nhật thông tin block</h2>
-        {/* Form Two Button */}
+
         <EditBlockClock tabList={tabList} hideModal={hideModal} />
       </Modal>
       {/* Modal ( Thông tin chi tiết) */}
@@ -164,8 +184,25 @@ function TableListBC({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Xem thông tin thất thoát</h2>
-        {/* Form Two Button */}
+
         <ViewDetail tabList={tabList} hideModal={hideModal} />
+      </Modal>
+      <Modal
+        open={modalChart ? modalChart : openModal}
+        onCancel={hideModal}
+        width={1000}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h2 className="title-update-info-contract"> Xem biểu đồ</h2>
+
+        <FromBarChart
+          data={data}
+          labels={labels}
+          tabList={tabList}
+          hideModal={hideModal}
+        />
       </Modal>
     </>
   );

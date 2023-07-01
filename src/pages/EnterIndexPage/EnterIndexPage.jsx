@@ -24,6 +24,7 @@ import {
   RedoOutlined,
   PlusOutlined,
   PictureOutlined,
+  LockOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "./EnterIndexPage.css";
@@ -71,6 +72,17 @@ function EnterIndexPage() {
           {text}
         </>
       ),
+    },
+    {
+      title: "",
+      width: 70,
+      render: () => {
+        return (
+          <Button>
+            <LockOutlined />
+          </Button>
+        );
+      },
     },
     {
       title: "Thứ tự",

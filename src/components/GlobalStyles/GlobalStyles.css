@@ -12,7 +12,9 @@
     /* font-family */
     --font-family: 'Quicksand', 'sans-serif' !important;
 }
-
+.td.ant-table-cell.cell-wrap {
+    color: gray;
+}
 * {
     box-sizing: border-box;
     margin: 0;

@@ -1,5 +1,3 @@
-// InvoicingDetailsModal.jsx
-
 import {
   CloseOutlined,
   PrinterOutlined,

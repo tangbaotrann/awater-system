@@ -62,15 +62,28 @@ const EditBlockClock = ({ hideModal }) => {
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={7}
+            span={isTabletOrMobile ? 24 : 11}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
+            <Form.Item name="lydothay" label="Lý do thay">
+              <Input style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
         </Row>
         <Row>
           <Col
             xs={24}
             sm={12}
             md={12}
-            lg={7}
-            span={isTabletOrMobile ? 24 : 22}
+            lg={{ span: 19, flex: "auto" }}
+            span={isTabletOrMobile ? 24 : 11}
             className={isTabletOrMobile ? "" : "gutter-item"}
+            style={!isTabletOrMobile ? { marginLeft: "-190px" } : {}}
           >
             <Form.Item name="diachi" label="Đia chỉ">
               <Input style={{ width: "100%" }} />
@@ -390,20 +403,6 @@ const EditBlockClock = ({ hideModal }) => {
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
-          <Col
-            xs={24}
-            sm={12}
-            md={12}
-            lg={7}
-            span={isTabletOrMobile ? 24 : 11}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Form.Item name="lydothay" label="Lý do thay">
-              <Input style={{ width: "100%" }} />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
           <Col
             xs={24}
             sm={12}

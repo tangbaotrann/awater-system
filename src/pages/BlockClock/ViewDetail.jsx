@@ -1,7 +1,8 @@
-import { Button, Col, Form, Input, Row, Table, theme } from "antd";
+import { Button, Col, DatePicker, Form, Input, Row, Table, theme } from "antd";
 import { useMediaQuery } from "react-responsive";
 import { PrinterOutlined } from "@ant-design/icons";
-
+import viVN from "antd/es/date-picker/locale/vi_VN";
+import moment from "moment";
 const ViewDetail = ({ hideModal }) => {
   const columns = [
     {
@@ -68,6 +69,14 @@ const ViewDetail = ({ hideModal }) => {
   const { token } = theme.useToken();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const [form1] = Form.useForm();
+  moment.locale("vi");
+  const handleMonthChange = (date) => {
+    if (date) {
+      form1.setFieldsValue({ month: date.format("M/YYYY") });
+    } else {
+      form1.setFieldsValue({ month: undefined });
+    }
+  };
   return (
     <>
       <Form
@@ -83,11 +92,21 @@ const ViewDetail = ({ hideModal }) => {
       >
         <Row>
           <Col
-            span={isTabletOrMobile ? 24 : 7}
+            span={isTabletOrMobile ? 24 : 5}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item name="sohopdong" label="Số hợp đồng">
-              <Input style={{ width: "100%" }} />
+            <Form.Item
+              className="custom-form-item"
+              label="Chọn tháng"
+              name="month"
+            >
+              <DatePicker
+                locale={viVN}
+                picker="month"
+                style={{ width: "100%" }}
+                onChange={handleMonthChange}
+                format="M/YYYY"
+              />
             </Form.Item>
           </Col>
           <Col
@@ -102,7 +121,7 @@ const ViewDetail = ({ hideModal }) => {
             span={isTabletOrMobile ? 24 : 7}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item name="tenkh" label="Tên KH">
+            <Form.Item name="nhapdongho" label="Nhập đồng hồ cần tìm">
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -130,7 +149,7 @@ const ViewDetail = ({ hideModal }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-end",
-            marginTop:"10px",
+            marginTop: "10px",
           }}
         >
           <Button
