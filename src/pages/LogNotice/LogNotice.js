@@ -6,18 +6,23 @@ import { FooterLogNotice } from "../../components/Footer/FooterLogNotice";
 import { AdvancedSearchForm as HeaderSearchLogNotice } from "../../components/HeaderSearchLogNotice/HeaderSearchLogNotice";
 import { NoticeDetail } from "./NoticeDetail/NoticeDetail";
 import { SMSMoneyWater } from "./SMSMoneyWater/SMSMoneyWater";
+import SmsCskh from "./SmsCSKH/SmsCskh";
+import NoticeWaterMoney from "./NoticeWaterMoney/NoticeWaterMoney";
+import TakeCareCustomer from "./TakeCareCustomer/TakeCareCustomer";
 
 const LogNotice = () => {
   const { token } = theme.useToken();
   const [isOpenModalNoticeDetail, setIsOpenModalNoticeDetail] = useState(false);
   const [isOpenModalMoneyWater, setIsOpenMoneyWater] = useState(false);
-  // const [isModalOpenIndexBar, setIsModalOpenIndexBar] = useState(false);
+  const [isOpenModalCskh, setIsOpenModalCskh] = useState(false);
+  const [isOpenModalNoticeMoneyWater, setIsOpenModalNoticeMoneyWater] = useState(false);
+  const [isOpenTakeCareCustomer, setIsOpenTakeCareCustomer] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const hanldeShowDetailRecord = (item) => {
     setIsOpenModalNoticeDetail(true);
     console.log(item);
-  };
+  };  
 
   const dataSource = Array.from(Array(10000).keys()).map((item) => ({
     key: item,
@@ -64,7 +69,7 @@ const LogNotice = () => {
       dataIndex: "nameSend",
       key: "nameSend",
     },
-    {
+    { 
       title: "Tiến trình",
       dataIndex: "process",
       key: "process",
@@ -134,6 +139,9 @@ const LogNotice = () => {
                 <FooterLogNotice
                   setIsOpenMoneyWater={setIsOpenMoneyWater}
                   isTabletOrMobile={isTabletOrMobile}
+                  setIsOpenModalCskh={setIsOpenModalCskh}
+                  setIsOpenModalNoticeMoneyWater={setIsOpenModalNoticeMoneyWater}
+                  setIsOpenTakeCareCustomer={setIsOpenTakeCareCustomer}
                 />
               }
             >
@@ -143,6 +151,9 @@ const LogNotice = () => {
             <FooterLogNotice
               setIsOpenMoneyWater={setIsOpenMoneyWater}
               isTabletOrMobile={isTabletOrMobile}
+              setIsOpenModalCskh={setIsOpenModalCskh}
+              setIsOpenModalNoticeMoneyWater={setIsOpenModalNoticeMoneyWater}
+              setIsOpenTakeCareCustomer={setIsOpenTakeCareCustomer}
             />
           )}
         </div>
@@ -154,6 +165,15 @@ const LogNotice = () => {
       <SMSMoneyWater
         isOpen={isOpenModalMoneyWater}
         setIsOpen={setIsOpenMoneyWater}
+      />
+      <SmsCskh isOpen={isOpenModalCskh} setIsOpen={setIsOpenModalCskh} />
+      <NoticeWaterMoney
+        isOpen={isOpenModalNoticeMoneyWater}
+        setIsOpen={setIsOpenModalNoticeMoneyWater}
+      />
+      <TakeCareCustomer
+        isOpen={isOpenTakeCareCustomer}
+        setIsOpen={setIsOpenTakeCareCustomer}
       />
     </>
   );

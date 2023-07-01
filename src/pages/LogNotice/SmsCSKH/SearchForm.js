@@ -10,10 +10,10 @@ export const SearchForm = () => {
   };
   const layout = {
     labelCol: {
-      span: 8,
+      span: 6,
     },
     wrapperCol: {
-      span: 24,
+      span: 29,
     },
   };
 
@@ -31,8 +31,8 @@ export const SearchForm = () => {
       size="small"
     >
       <Row gutter={24}>
-        <Col lg={8}>
-          <Form.Item name="date" label="Chọn tháng">
+        <Col lg={6}>
+          <Form.Item name="date" label="Nhân viên">
             <DatePicker
               allowClear
               placeholder="Chọn tháng"
@@ -42,27 +42,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
-          <Form.Item name="person" label="Cán bộ đọc">
-            <Select
-              defaultValue="--Chọn kết quả gửi--"
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col lg={8}>
+        <Col lg={6}>
           <Form.Item name="person" label="Tuyến đọc">
             <Select
               defaultValue="--Chọn kết quả chi tiết--"
@@ -82,18 +62,8 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-      </Row>
-      <Row gutter={24}>
-        <Col lg={8}>
-          <Form.Item name="date" label="phạm vi">
-            <Input
-              style={{ width: "100%" }}
-              placeholder="Nhập mã KH hoặc địa chỉ nhận"
-            />
-          </Form.Item>
-        </Col>
-        <Col lg={8}>
-          <Form.Item name="person" label="Số hợp đồng">
+        <Col lg={6}>
+          <Form.Item name="person" label="Phạm vi">
             <Select
               defaultValue="--Chọn kết quả gửi--"
               style={{
@@ -112,8 +82,99 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col lg={6}>
           <Form.Item name="person" label="Loại KH">
+            <div style={{ display: "flex", gap: "5px" }}>
+              <Select
+                style={{
+                  width: "120px",
+                }}
+                options={[
+                  {
+                    value: "jack",
+                    label: "Jack",
+                  },
+                  {
+                    value: "lucy",
+                    label: "Lucy",
+                  },
+                ]}
+              />
+              <Select
+                defaultValue="khu vực"
+                style={{
+                  width: "120px",
+                }}
+                options={[
+                  {
+                    value: "jack",
+                    label: "Jack",
+                  },
+                  {
+                    value: "lucy",
+                    label: "Lucy",
+                  },
+                ]}
+              />
+            </div>
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={24}>
+        <Col lg={6}>
+          <Form.Item name="date" label="Số HĐ">
+            <Input
+              style={{ width: "100%" }}
+              placeholder="Nhập mã KH hoặc địa chỉ nhận"
+            />
+          </Form.Item>
+        </Col>
+        <Col lg={6}>
+          <Form.Item name="person" label="Tên KH">
+            <Select
+              defaultValue="--Chọn kết quả gửi--"
+              style={{
+                width: "100%",
+              }}
+              options={[
+                {
+                  value: "jack",
+                  label: "Jack",
+                },
+                {
+                  value: "lucy",
+                  label: "Lucy",
+                },
+              ]}
+            />
+          </Form.Item>
+        </Col>
+        <Col lg={6}>
+          <Form.Item name="person" label="Từ ngày">
+            <div style={{ display: "flex", gap: "5px" }}>
+              <DatePicker
+                allowClear
+                style={{
+                  width: "120px",
+                }}
+                placeholder="Từ"
+                format="MM-YYYY"
+                picker="month"
+              />
+              <DatePicker
+                allowClear
+                style={{
+                  width: "120px",
+                }}
+                placeholder="Đến"
+                format="MM-YYYY"
+                picker="month"
+              />
+            </div>
+          </Form.Item>
+        </Col>
+        <Col lg={6}>
+          <Form.Item name="person" label="Tình trạng">
             <Select
               defaultValue="--Chọn kết quả chi tiết--"
               style={{
@@ -133,68 +194,9 @@ export const SearchForm = () => {
           </Form.Item>
         </Col>
       </Row>
-      <Row gutter={24}>
-        <Col lg={8}>
-          <Form.Item name="date" label="Kiểu gửi">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col lg={8}>
-          <Form.Item name="person" label="Trạng thái">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-        <Col lg={8}>
-          <Form.Item name="person" label="Tình trạng">
-            <Select
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
-          </Form.Item>
-        </Col>
-      </Row>
       <Row>
         <Col lg={12}>
-          <Form.Item name="person" label="Tên KH">
+          <Form.Item name="person" label="Zalo">
             <Input placeholder="Tên khách hàng" />
           </Form.Item>
         </Col>
