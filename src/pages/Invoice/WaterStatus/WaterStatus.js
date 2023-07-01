@@ -137,7 +137,7 @@ export const WaterStatus = (props) => {
       },
       title: {
         display: true,
-        text: "Biểu đồ sử dụng nước",
+        text: "Biểu đồ sử dụng nước", 
       },
     },
     barThickness: 10,
