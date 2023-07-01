@@ -6,6 +6,7 @@
 
 .category-header-actions {
   display: flex;
+  flex-direction: column;
   gap: 5px;
 }
 
@@ -18,15 +19,15 @@
   width: 300px;
 }
 
+.button {
+  width: 100%;
+}
 /* phone: width < 740px */
 @media (max-width: 46.1875em) {
   .category-header-wrapper {
     flex-direction: column;
     align-items: normal;
     row-gap: 5px;
-  }
-  .category-header-actions {
-    flex-direction: column;
   }
   .button {
     width: 100%;
@@ -37,5 +38,79 @@
   .category-header-filter .filter-input,
   .ant-picker {
     width: 100%;
+  }
+  .category-header-content {
+    position: fixed;
+    left: 16px;
+    bottom: 12px;
+    font-size: 2rem;
+    font-weight: 800;
+    background-color: var(--white);
+  }
+}
+
+/* Thiết kế cho kích thước màn hình từ 769px đến 991px (desktop - large desktop) */
+@media (min-width: 769px) and (max-width: 991px) {
+  .category-header-content {
+    position: fixed;
+    left: 16px;
+    bottom: 12px;
+    font-size: 2rem;
+    font-weight: 800;
+    background-color: var(--white);
+  }
+  .category-header-wrapper {
+    display: inline;
+  }
+  .category-header-filter {
+    flex-direction: column;
+  }
+  .category-header-filter .filter-input,
+  .ant-picker {
+    width: 100%;
+  }
+}
+@media (max-width: 575px) {
+  .category-header-content {
+    position: fixed;
+    left: 16px;
+    bottom: 12px;
+    font-size: 2rem;
+    font-weight: 800;
+    background-color: var(--white);
+  }
+  .category-header-filter {
+    flex-direction: column;
+  }
+}
+
+/* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .category-header-content {
+    position: fixed;
+    left: 16px;
+    bottom: 12px;
+    font-size: 2rem;
+    font-weight: 800;
+    background-color: var(--white);
+  }
+  .category-header-wrapper {
+    display: inline;
+  }
+  .category-header-filter {
+    flex-direction: column;
+  }
+  .category-header-filter .filter-input,
+  .ant-picker {
+    width: 100%;
+  }
+}
+
+/* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
+@media (min-width: 768px) {
+  .category-header-actions {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
   }
 }

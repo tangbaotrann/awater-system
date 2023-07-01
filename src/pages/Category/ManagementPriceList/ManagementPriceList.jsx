@@ -5,9 +5,10 @@ import CategoryHeader from "../../../components/CategoryHeader/CategoryHeader";
 import ModalConfirmDelete from "../../../components/ModalConfirmDelete/ModalConfirmDelete";
 import TablePriceList from "./components/TablePriceList/TablePriceList";
 import { btnClickTabListContract } from "../../../redux/slices/tabListContractSlice/tabListContractSlice";
+import ModalAddPriceList from "./components/ModalAddPriceList/ModalAddPriceList";
 
 const ManagementPriceList = () => {
-  const [isOpenModalAddSubject, setIsOpenModalAddSubject] = useState(false);
+  const [isOpenModalAddPriceList, setIsOpenModalAddPriceList] = useState(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
   const [viewTableDetail, setViewTableDetail] = useState(false);
   const dispatch = useDispatch();
@@ -15,14 +16,14 @@ const ManagementPriceList = () => {
     dispatch(btnClickTabListContract(null));
   }, []);
   const handleOk = (type) => {
-    if (type === "addPriceSubject") {
-      setIsOpenModalAddSubject(false);
+    if (type === "addPriceList") {
+      setIsOpenModalAddPriceList(false);
     }
   };
 
   const handleCancel = (type) => {
-    if (type === "addPriceSubject") {
-      setIsOpenModalAddSubject(false);
+    if (type === "addPriceList") {
+      setIsOpenModalAddPriceList(false);
     }
     if (type === "closeModalDeleteSubject") {
       setIsOpenModalDelete(false);
@@ -33,7 +34,7 @@ const ManagementPriceList = () => {
     <div className="management-price-subject-wrapper">
       <div className="management-price-subject-header">
         <CategoryHeader
-          setIsOpenModalAddSubject={setIsOpenModalAddSubject}
+          setIsOpenModalAddPriceList={setIsOpenModalAddPriceList}
           setIsOpenModalDelete={setIsOpenModalDelete}
           setViewTableDetail={setViewTableDetail}
         />
@@ -41,11 +42,11 @@ const ManagementPriceList = () => {
       <div className="management-price-subject-table">
         <TablePriceList viewTableDetail={viewTableDetail} />
       </div>
-      {/* <ModalAddPriceSubject
+      <ModalAddPriceList
         handleCancel={handleCancel}
         handleOk={handleOk}
-        isOpen={isOpenModalAddSubject}
-      /> */}
+        isOpen={isOpenModalAddPriceList}
+      />
       <ModalConfirmDelete
         title="Thông báo"
         isModalOpen={isOpenModalDelete}

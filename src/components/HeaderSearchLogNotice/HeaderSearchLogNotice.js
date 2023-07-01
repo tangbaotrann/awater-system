@@ -1,12 +1,7 @@
-import { Button, Col, DatePicker, Form, Input, Row, Select, Space, theme } from "antd";
+import { Button, Col, DatePicker, Form, Input, Row, Select} from "antd";
 
 export const AdvancedSearchForm = () => {
-  const { token } = theme.useToken();
   const [form] = Form.useForm();
-  const formStyle = {
-    maxWidth: "none",
-    borderRadius: token.borderRadiusLG,
-  };
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -15,9 +10,9 @@ export const AdvancedSearchForm = () => {
     labelCol: {
       span: 8,
     },
-    wrapperCol: {
-      span: 28,
-    },
+    // wrapperCol: {
+    //   span: 22,
+    // },
   };
 
   return (
@@ -25,12 +20,11 @@ export const AdvancedSearchForm = () => {
       {...layout}
       form={form}
       name="advanced_search"
-      style={formStyle}
       onFinish={onFinish}
     //   size="small"   
     >
       <Row gutter={24}>
-        <Col span={8} xs={24} sm={12} lg={8}>
+        <Col span={8} xs={24} sm={12} md={12} lg={8}>
           <Form.Item name="date" label="Ngày gửi">
             <div style={{ display: "flex", gap: "10px" }}>
               <DatePicker
@@ -46,7 +40,7 @@ export const AdvancedSearchForm = () => {
             </div>
           </Form.Item>
         </Col>
-        <Col span={8} xs={24} sm={12} lg={8}>
+        <Col span={8} xs={24} sm={12} md={12} lg={8}>
           <Form.Item name="tuyendoc" label="Hình thức gửi">
             <Select
               style={{
@@ -74,7 +68,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={8} xs={24} sm={12} lg={8}>
+        <Col span={8} xs={24} sm={12} md={12} lg={8}>
           <Form.Item name="status" label="Người gửi">
             <Select
               style={{
@@ -95,12 +89,12 @@ export const AdvancedSearchForm = () => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={6} xs={24} sm={12} lg={8}>
+        <Col span={6} xs={24} sm={12} md={12} lg={8}>
           <Form.Item name="place" label="Tên lần gửi">
               <Input/>
           </Form.Item>
         </Col>
-        <Col span={6} xs={24} sm={12} lg={8}>
+        <Col span={6} xs={24} sm={12} md={12} lg={8}>
           <Form.Item name="ky" label="Đã trả tiền">
             <Select
               style={{
@@ -119,7 +113,7 @@ export const AdvancedSearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col span={6} xs={24} sm={12} lg={8}>
+        <Col span={6} xs={24} sm={12} md={12} lg={8}>
           <div
             style={{
               textAlign: "center",
