@@ -10,59 +10,50 @@ const readingColumns = (showHeader) => [
   {
     key: showHeader ? "gmail" : "key",
     dataIndex: showHeader ? "gmail" : "key",
-    width: "15vw",
     align: "center",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 140,
   },
   {
     key: "index",
     title: showHeader ? "STT" : "",
     dataIndex: "index",
-    width: "4vw",
     align: "center",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 70,
   },
   {
     key: "codeLine",
     title: showHeader ? "Mã tuyến" : "",
     dataIndex: "codeLine",
-    width: "8vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 140,
   },
   {
     key: "nameLine",
     title: showHeader ? "Tên tuyến" : "",
     dataIndex: "nameLine",
-    width: "15vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 140,
   },
   {
     key: "cashier",
     title: showHeader ? "Nhân viên thu tiền" : "",
     dataIndex: "cashier",
-    width: "15vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 180,
   },
   {
     key: "indexingPeriod",
     title: showHeader ? "Kỳ ghi chỉ số" : "",
     dataIndex: "indexingPeriod",
-    width: "10vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 130,
   },
   {
     key: "area",
     title: showHeader ? "Khu vực" : "",
     dataIndex: "area",
-    width: "10vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
+    width: 130,
   },
   {
     key: "unit",
     title: showHeader ? "Đơn vị" : "",
     dataIndex: "unit",
-    width: "10vw",
-    render: (text) => <div style={{ padding: "0 16px" }}>{text}</div>,
   },
 ];
 
@@ -99,11 +90,12 @@ const TableReading = () => {
 
   return (
     <Table
+      className="parent-table"
       columns={readingColumns(true)}
       dataSource={readingData}
       scroll={{
-        y: 520,
-        x: 1200,
+        y: 380,
+        x: 1100,
         scrollToFirstRowOnChange: true,
       }}
       pagination={paginationOptions}
@@ -111,10 +103,14 @@ const TableReading = () => {
         expandedRowRender: (record) => {
           return (
             <Table
+              className="child-table"
               columns={readingColumns(false)}
               dataSource={record.data}
               pagination={false}
               rowKey="key"
+              scroll={{
+                x: 1100,
+              }}
               onRow={(record, rowIndex) => {
                 return {
                   onClick: (event) => {
