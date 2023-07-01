@@ -10,14 +10,11 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
-import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import FromPrintButton from "./PrintButton/PrintButton";
-import FormTwoButtonPrint from "./TwoButtonPrint/TwoButtonPrint";
-import FormReprintButton from "./ReprintButton/ReprintButton";
-import FormPrintCodeKH from "./PrintCodeKH/PrintCodeKH";
-import FormProgress from "./ProgressBarExample/ProgressBarExample.jsx";
+import { btnClickTabListInvoicePrintSelector } from "../../redux/selector";
+import tabListInvoicePrintSlice from "../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+import AddBlockClock from "./AddBlockClock";
+import EditBlockClock from "./EditBlockClock";
+import ViewDetail from "./ViewDetail.jsx";
 // Tabs bottom
 const tabs = [
   {
@@ -43,7 +40,7 @@ const tabs = [
   },
   {
     id: "5",
-    label: "Thát thoát",
+    label: "Thất thoát",
     icon: <CloseOutlined />,
   },
   {
@@ -60,11 +57,9 @@ const tabs = [
 
 function TableListBC({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalPrintButton, setPrintButton] = useState(false);
-  const [modalTwoButtonPrint, setTwoButtonPrint] = useState(false);
-  const [modalReprintButton, setReprintButton] = useState(false);
-  const [modalPrintCodeKH, setPrintCodeKH] = useState(false);
-  const [modalProgress, setProgess] = useState(false);
+  const [modalAddBlock, setAddBlock] = useState(false);
+  const [modalEditBlock, setEditBlock] = useState(false);
+  const [modalViewDetail, setViewDetail] = useState(false);
   const dispatch = useDispatch();
 
   const tabList = useSelector(btnClickTabListInvoicePrintSelector);
@@ -73,15 +68,15 @@ function TableListBC({ isTabletOrMobile }) {
     if (key === "1") {
       message.error("Tính năng chưa khả dụng!");
     } else if (key === "2") {
-      setPrintButton(true);
+      setAddBlock(true);
     } else if (key === "3") {
-      setTwoButtonPrint(true);
+      setEditBlock(true);
     } else if (key === "4") {
-      setReprintButton(true);
+      message.error("Tính năng chưa khả dụng!");
     } else if (key === "5") {
-      setPrintCodeKH(true);
+      setViewDetail(true);
     } else if (key === "6") {
-      setProgess(true);
+      message.error("Tính năng chưa khả dụng!");
     } else if (key === "7") {
       message.error("Tính năng chưa khả dụng!");
       // console.log("deleted.");
@@ -92,11 +87,9 @@ function TableListBC({ isTabletOrMobile }) {
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setPrintButton(false);
-    setTwoButtonPrint(false);
-    setReprintButton(false);
-    setPrintCodeKH(false);
-    setProgess(false);
+    setAddBlock(false);
+    setEditBlock(false);
+    setViewDetail(false);
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
@@ -135,72 +128,44 @@ function TableListBC({ isTabletOrMobile }) {
         onChange={handleChangeTabs}
       />
 
-      {/* Modal (In hóa đơn) */}
+      {/* Modal (Thêm đồng hồ vào block) */}
       <Modal
-        open={modalPrintButton ? modalPrintButton : openModal}
+        open={modalAddBlock ? modalAddBlock : openModal}
         onCancel={hideModal}
-        width={800}
+        width={1800}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">In hóa đơn</h2>
-        {/* Form Print Button */}
-        <FromPrintButton tabList={tabList} hideModal={hideModal} />
+        <h2 className="title-update-info-contract">Thêm đồng hồ vào block</h2>
+
+        <AddBlockClock tabList={tabList} hideModal={hideModal} />
       </Modal>
-      {/* Modal ( In kẹt hóa đơn) */}
+      {/* Modal ( In Sửa Block) */}
       <Modal
-        open={modalTwoButtonPrint ? modalTwoButtonPrint : openModal}
+        open={modalEditBlock ? modalEditBlock : openModal}
         onCancel={hideModal}
-        width={800}
+        width={1000}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">In kẹt hóa đơn</h2>
+        <h2 className="title-update-info-contract">Cập nhật thông tin block</h2>
         {/* Form Two Button */}
-        <FormTwoButtonPrint tabList={tabList} hideModal={hideModal} />
+        <EditBlockClock tabList={tabList} hideModal={hideModal} />
       </Modal>
-      {/* Modal (In lại hóa đơn theo số hóa đơn) */}
+      {/* Modal ( Thông tin chi tiết) */}
       <Modal
-        open={modalReprintButton ? modalReprintButton : openModal}
+        open={modalViewDetail ? modalViewDetail : openModal}
         onCancel={hideModal}
-        width={800}
+        width={1000}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">
-          In hóa đơn theo số hóa đơn
-        </h2>
-        {/* Form Reprint Button */}
-        <FormReprintButton tabList={tabList} hideModal={hideModal} />
-      </Modal>
-      {/* Modal (In lại hóa đơn theo số hóa đơn) */}
-      <Modal
-        open={modalPrintCodeKH ? modalPrintCodeKH : openModal}
-        onCancel={hideModal}
-        width={800}
-        centered={true}
-        cancelButtonProps={{ style: { display: "none" } }}
-        okButtonProps={{ style: { display: "none" } }}
-      >
-        <h2 className="title-update-info-contract">In hóa đơn theo mã KH</h2>
-        {/* Form Reprint Button */}
-        <FormPrintCodeKH tabList={tabList} hideModal={hideModal} />
-      </Modal>
-      {/* Modal (Progress) */}
-      <Modal
-        open={modalProgress ? modalProgress : openModal}
-        onCancel={hideModal}
-        width={800}
-        centered={true}
-        cancelButtonProps={{ style: { display: "none" } }}
-        okButtonProps={{ style: { display: "none" } }}
-      >
-        <h2 className="title-update-info-contract">Các chỉ số </h2>
-        {/* Form Reprint Button */}
-        <FormProgress tabList={tabList} hideModal={hideModal} />
+        <h2 className="title-update-info-contract">Xem thông tin thất thoát</h2>
+        {/* Form Two Button */}
+        <ViewDetail tabList={tabList} hideModal={hideModal} />
       </Modal>
     </>
   );

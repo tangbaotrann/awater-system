@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import endPoints from "./routers";
 import Login from "./pages/Login/Login";
 import Manager from "./pages/Manager/Manager";

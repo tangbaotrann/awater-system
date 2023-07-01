@@ -68,14 +68,21 @@ const FileForm = ({ hideModal }) => {
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={24}>
+        <Row
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            marginTop: "10px",
+          }}
+          gutter={24}
+        >
           <Button
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
-            size="small"
             style={{
               marginLeft: "10px",
-            }}  
+            }}
           >
             Cập Nhật
           </Button>
@@ -85,7 +92,6 @@ const FileForm = ({ hideModal }) => {
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
-            size="small"
           >
             Đóng
           </Button>

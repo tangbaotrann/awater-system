@@ -1,11 +1,11 @@
 import { React, useState } from "react";
 import { initialData } from "../../utils/dataBlock";
-import TabListIP from "./FormInvoicePrint/TableListBC";
+import TabListIP from "./TableListBC";
 
 import "../../components/GlobalStyles/GlobalStyles.css";
 import "../Manager/Contract/Contract.css";
 import { Form, Input, theme, Table, Popover } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, SnippetsOutlined } from "@ant-design/icons";
 import moment from "moment";
 import "moment/locale/vi";
 import { useMediaQuery } from "react-responsive";
@@ -37,9 +37,15 @@ function BlockClock() {
       width: 70,
     },
     {
-      title: "Mã block",
+      title: " Mã block",
       dataIndex: "mablock",
       key: "mablock",
+      render: (text, record) => (
+        <>
+          <SnippetsOutlined />
+          {text}
+        </>
+      ),
     },
     {
       title: "Tên block",

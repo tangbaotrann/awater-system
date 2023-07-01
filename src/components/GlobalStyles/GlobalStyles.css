@@ -8,6 +8,7 @@
     --red: #ff0000;
     --blue-e6f4ff: #e6f4ff;
     --blue-1677ff: #1677ff;
+    --text-table: #5a6a85;
 
     /* font-family */
     --font-family: 'Quicksand', 'sans-serif' !important;
@@ -39,6 +40,12 @@ a {
 /* custom */
 .gutter-item-mobile {
     margin-left: 10px;
+}
+
+/* color text of table */
+.ant-table-cell {
+    font-size: 1.4rem !important;
+    color: var(--text-table);
 }
 
 /* Scrollbar Css */

@@ -27,10 +27,19 @@ const SearchForm = ({ hideModal }) => {
   const onReset = () => {
     form1.resetFields();
   };
+  const layout = {
+    labelCol: {
+      span: 9,
+    },
+    wrapperCol: {
+      span: 100,
+    },
+  };
   // Đoạn mã của bạn ở đây
   return (
     <>
       <Form
+        {...layout}
         form={form1}
         onFinish={handleSubmit}
         onFinishFailed={handleFailed}
@@ -43,6 +52,10 @@ const SearchForm = ({ hideModal }) => {
       >
         <Row>
           <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={11}
             span={12}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
@@ -55,6 +68,10 @@ const SearchForm = ({ hideModal }) => {
             </Form.Item>
           </Col>
           <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={11}
             span={11}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
@@ -69,6 +86,10 @@ const SearchForm = ({ hideModal }) => {
         </Row>
         <Row>
           <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={11}
             span={11}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
@@ -81,6 +102,10 @@ const SearchForm = ({ hideModal }) => {
             </Form.Item>
           </Col>
           <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={11}
             span={12}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
@@ -95,6 +120,10 @@ const SearchForm = ({ hideModal }) => {
         </Row>
         <Row gutter={10}>
           <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={11}
             span={12}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
@@ -110,6 +139,10 @@ const SearchForm = ({ hideModal }) => {
             </Form.Item>
           </Col>
           <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={11}
             span={11}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
@@ -127,7 +160,15 @@ const SearchForm = ({ hideModal }) => {
         </Row>
 
         {/* Nút Tìm kiếm, Xóa điều kiện TK và Đóng */}
-        <Row justify="end">
+        <Row
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            marginTop: "10px",
+          }}
+          justify="end"
+        >
           <Button type="primary" htmlType="submit">
             Tìm kiếm
           </Button>

@@ -166,7 +166,14 @@ const PrintButton = ({ hideModal }) => {
             </Form.Item>
           </Col>
         </Row>
-        <Row>
+        <Row
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            marginTop: "10px",
+          }}
+        >
           <Button
             key="reset"
             type="primary"
@@ -176,7 +183,7 @@ const PrintButton = ({ hideModal }) => {
           >
             Làm mới
           </Button>
-          ,
+
           <Button
             key="submit"
             type="primary"
@@ -186,7 +193,7 @@ const PrintButton = ({ hideModal }) => {
           >
             In
           </Button>
-          ,
+
           <Button
             htmlType="submit"
             type="primary"

@@ -117,7 +117,14 @@ const PrintCodeKH = ({ hideModal }) => {
             </Form.Item>
           </Col>
         </Row>
-        <Row>
+        <Row
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            marginTop: "10px",
+          }}
+        >
           <Button
             key="reset"
             type="primary"

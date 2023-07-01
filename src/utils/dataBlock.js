@@ -3,7 +3,7 @@ export const initialData = Array.from({ length: 100 }, (_, i) => {
   return {
     key: "1",
     stt: i + 1,
-    mablock: `Mã block ${i + 1}`,
+    mablock: `  Mã block ${i + 1}`,
     tenblock: `Tên block ${i + 1}`,
     diachi: `Địa chỉ ${i + 1}`,
     makh: `Mã khách hàng ${i + 1}`,

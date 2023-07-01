@@ -19,7 +19,12 @@ import {
   Popover,
   Collapse,
 } from "antd";
-import { SearchOutlined, RedoOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  SearchOutlined,
+  RedoOutlined,
+  PlusOutlined,
+  PictureOutlined,
+} from "@ant-design/icons";
 import moment from "moment";
 import "./EnterIndexPage.css";
 import "moment/locale/vi";
@@ -59,6 +64,13 @@ function EnterIndexPage() {
       title: "#",
       dataIndex: "imageAndStatus",
       key: "imageAndStatus",
+      width: 70,
+      render: (text, record) => (
+        <>
+          <PictureOutlined />
+          {text}
+        </>
+      ),
     },
     {
       title: "Thứ tự",

@@ -8,18 +8,10 @@ const constants = {
     label: "Quản lý hợp đồng",
     key: "CONTRACT_MANAGER",
   },
-  NUMBER_MANAGEMENT: {
-    label: "Số quản lý đồng hồ",
-    key: "NUMBER_MANAGEMENT",
-  },
   // sub menu 1.1
   REGISTRATION_FORM_CHILD: {
     label: "Báo cáo hợp đồng",
     key: "REGISTRATION_FORM_CHILD",
-  },
-  REGISTRATION_OF_INSTALL: {
-    label: "Tổng hợp đăng ký lắp đặt",
-    key: "REGISTRATION_OF_INSTALL",
   },
   DEV_CUSTOMER: {
     label: "Phát triển khách hàng mới",
