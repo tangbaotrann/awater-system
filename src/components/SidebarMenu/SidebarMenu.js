@@ -23,6 +23,15 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
       mode="inline"
       style={{ fontSize: "1.5rem", fontWeight: "800" }}
       className="custom-sidebar-menu"
+      defaultOpenKeys={[
+        constants.REGISTRATION_FORM_PARENT.key,
+        constants.REGISTRATION_FORM_CHILD.key,
+        constants.RECORD_INDEX_PARENT.key,
+        constants.COLLECT_MONEY.key,
+        constants.FAILURE.key,
+        constants.NOTICE_OF_CUSTOMS.key,
+        constants.CATEGORY.key,
+      ]}
       items={[
         {
           key: constants.REGISTRATION_FORM_PARENT.key,
@@ -77,25 +86,6 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           ],
         },
         {
-          key: constants.CATEGORY.key,
-          icon: <ProfileOutlined />,
-          label: constants.CATEGORY.label,
-          children: [
-            {
-              label: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.label,
-              key: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key,
-            },
-            {
-              label: constants.CATEGORY_MANAGEMENT_READING.label,
-              key: constants.CATEGORY_MANAGEMENT_READING.key,
-            },
-            {
-              label: constants.CATEGORY_MANAGEMENT_PRICE_LIST.label,
-              key: constants.CATEGORY_MANAGEMENT_PRICE_LIST.key,
-            },
-          ],
-        },
-        {
           key: constants.COLLECT_MONEY.key,
           icon: <DollarCircleOutlined />,
           label: constants.COLLECT_MONEY.label,
@@ -125,6 +115,25 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
             {
               label: constants.LOG_NOTICE.label,
               key: constants.LOG_NOTICE.key,
+            },
+          ],
+        },
+        {
+          key: constants.CATEGORY.key,
+          icon: <ProfileOutlined />,
+          label: constants.CATEGORY.label,
+          children: [
+            {
+              label: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key,
+            },
+            {
+              label: constants.CATEGORY_MANAGEMENT_READING.label,
+              key: constants.CATEGORY_MANAGEMENT_READING.key,
+            },
+            {
+              label: constants.CATEGORY_MANAGEMENT_PRICE_LIST.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_LIST.key,
             },
           ],
         },

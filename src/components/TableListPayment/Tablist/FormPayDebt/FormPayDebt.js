@@ -9,12 +9,24 @@ import {
   Row,
   Select,
 } from "antd";
-import { useMediaQuery } from "react-responsive";
 
 const { TextArea } = Input;
 
 function FormPayDebt({ hideModal }) {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 4 },
+      md: { span: 7 },
+      lg: { span: 7 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
 
   // handle submit form
   const handleSubmit = (values) => {
@@ -31,90 +43,64 @@ function FormPayDebt({ hideModal }) {
       <Divider orientation="left">Thông tin tài khoản</Divider>
 
       <Form onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
-        {/* Tìm kiếm */}
+        {/* Tìm kiếm + Mã khách hàng */}
         <Row>
-          <Col xs={24} sm={24} md={24} lg={24}>
-            <Form.Item name="" label="Tìm kiếm">
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Tìm kiếm" {...formItemLayout}>
               <Input
                 name=""
                 placeholder="Tìm theo mã khách hàng, idKH, tên khách hàng, địa chỉ, số điện thoại"
               />
             </Form.Item>
           </Col>
-        </Row>
 
-        {/* Mã khách hàng + id khách hàng */}
-        <Row>
           <Col xs={24} sm={24} md={12} lg={12}>
-            <Form.Item
-              name=""
-              label="Mã khách hàng (*)"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+            <Form.Item name="" label="Mã KH (*)" {...formItemLayout}>
               <Input name="" placeholder="Nhập mã khách hàng" />
             </Form.Item>
           </Col>
+        </Row>
 
+        {/* id khách hàng + Tên khách hàng */}
+        <Row>
           <Col xs={24} sm={24} md={12} lg={12}>
-            <Form.Item
-              name=""
-              label="ID khách hàng"
-              className={isTabletOrMobile ? "gutter-item-mobile" : ""}
-            >
+            <Form.Item name="" label="ID KH" {...formItemLayout}>
               <Input name="" placeholder="Nhập id khách hàng" />
             </Form.Item>
           </Col>
-        </Row>
 
-        {/* Tên khách hàng + Địa chỉ */}
-        <Row>
           <Col xs={24} sm={24} md={12} lg={12}>
-            <Form.Item
-              name=""
-              label="Tên khách hàng"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+            <Form.Item name="" label="Tên KH" {...formItemLayout}>
               <Input name="" placeholder="Nhập tên khách hàng" />
             </Form.Item>
           </Col>
+        </Row>
+
+        {/* Địa chỉ + Tài khoản có */}
+        <Row>
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Địa chỉ" {...formItemLayout}>
+              <Input name="" placeholder="Nhập địa chỉ" />
+            </Form.Item>
+          </Col>
 
           <Col xs={24} sm={24} md={12} lg={12}>
-            <Form.Item
-              name=""
-              label="Địa chỉ"
-              className={isTabletOrMobile ? "gutter-item-mobile" : ""}
-            >
-              <Input name="" placeholder="Nhập địa chỉ" />
+            <Form.Item name="" label="Tài khoản có" {...formItemLayout}>
+              <Input name="" placeholder="Nhập tài khoản có" />
             </Form.Item>
           </Col>
         </Row>
 
-        {/* Tài khoản có + Tài khoản nợ + Dư nợ hiện tại */}
+        {/* Tài khoản nợ + Dư nợ hiện tại */}
         <Row>
-          <Col xs={24} sm={24} md={12} lg={8}>
-            <Form.Item
-              name=""
-              label="Tài khoản có"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
-              <Input name="" placeholder="Nhập tài khoản có" />
-            </Form.Item>
-          </Col>
-
-          <Col xs={24} sm={24} md={12} lg={8}>
-            <Form.Item
-              name=""
-              label="Tài khoản nợ"
-              className={
-                isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"
-              }
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Tài khoản nợ" {...formItemLayout}>
               <Input name="" placeholder="Nhập tài khoản nợ" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={8}>
-            <Form.Item name="" label="Dư nợ hiện tại">
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Dư nợ hiện tại" {...formItemLayout}>
               <Input name="" placeholder="Nhập dư nợ hiện tại" />
             </Form.Item>
           </Col>
@@ -138,26 +124,16 @@ function FormPayDebt({ hideModal }) {
           </Col>
         </Row>
 
-        {/* Số tiền + Hình thức + Người nộp */}
+        {/* Số tiền + Hình thức */}
         <Row>
-          <Col xs={24} sm={24} md={12} lg={8}>
-            <Form.Item
-              name=""
-              label="Số tiền (*)"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Số tiền (*)" {...formItemLayout}>
               <Input name="" placeholder="Nhập số tiền" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={12} lg={8}>
-            <Form.Item
-              name=""
-              label="Hình thức"
-              className={
-                isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"
-              }
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Hình thức" {...formItemLayout}>
               <Select
                 fieldNames=""
                 options={[{ value: "1", label: "HT 1" }]}
@@ -165,28 +141,30 @@ function FormPayDebt({ hideModal }) {
               />
             </Form.Item>
           </Col>
+        </Row>
 
-          <Col xs={24} sm={24} md={12} lg={8}>
-            <Form.Item name="" label="Người nộp">
+        {/* Người nộp + render bằng chữ */}
+        <Row>
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Người nộp" {...formItemLayout}>
               <Input name="" placeholder="Nhập người nộp" />
             </Form.Item>
           </Col>
-        </Row>
 
-        {/* render bằng chữ */}
-        <Row>
-          <Col xs={24} sm={24} md={24} lg={24}>
-            <div className="pay-debt-num-to-text">
-              <span>Bằng chữ: </span>
-              <i>render number to text.</i>
-            </div>
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item {...formItemLayout}>
+              <div className="pay-debt-num-to-text">
+                <span>Bằng chữ: </span>
+                <i>render number to text.</i>
+              </div>
+            </Form.Item>
           </Col>
         </Row>
 
         {/* Diễn giải*/}
         <Row>
           <Col xs={24} sm={24} md={24} lg={24}>
-            <Form.Item name="" label="Diễn giải">
+            <Form.Item name="" label="Nhập diễn giải">
               <TextArea name="" placeholder="Nhập diễn giải"></TextArea>
             </Form.Item>
           </Col>
@@ -194,12 +172,8 @@ function FormPayDebt({ hideModal }) {
 
         {/* Ngày lập + Người lập*/}
         <Row>
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Form.Item
-              name=""
-              label="Ngày lập"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Ngày lập" {...formItemLayout}>
               <DatePicker
                 name=""
                 placeholder="Chọn ngày lập"
@@ -208,8 +182,8 @@ function FormPayDebt({ hideModal }) {
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Form.Item name="" label="Người lập">
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Người lập" {...formItemLayout}>
               <Input name="" placeholder="Nhập người lập" />
             </Form.Item>
           </Col>
@@ -219,15 +193,14 @@ function FormPayDebt({ hideModal }) {
 
         {/* Buttons */}
         <div className="func-pay-debt-buttons">
-          <Button htmlType="submit" type="primary">
+          <Button htmlType="submit" className="custom-btn-add">
             <SaveOutlined />
             Lưu
           </Button>
 
           <Button
-            type="primary"
             onClick={() => hideModal()}
-            className="pay-debt-btn-close"
+            className="pay-debt-btn-close custom-btn-close"
           >
             <CloseOutlined />
             Đóng

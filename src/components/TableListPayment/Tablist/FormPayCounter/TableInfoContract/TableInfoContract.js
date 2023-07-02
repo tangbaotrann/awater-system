@@ -1,8 +1,20 @@
 import { Col, Form, Input, Row, Table } from "antd";
-import { useMediaQuery } from "react-responsive";
 
 function TableInfoContract() {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 4 },
+      md: { span: 4 },
+      lg: { span: 5 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
 
   const cols = [
     {
@@ -54,22 +66,14 @@ function TableInfoContract() {
       >
         {/* Số HĐ + Tiền TT */}
         <Row>
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Form.Item
-              name=""
-              label="Số HĐ"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Số HĐ" {...formItemLayout}>
               <Input name="" placeholder="Số hóa đơn" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Form.Item
-              name=""
-              label="Tiền TT"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Tiền TT" {...formItemLayout}>
               <Input name="" placeholder="Tiền TT" />
             </Form.Item>
           </Col>
@@ -77,22 +81,14 @@ function TableInfoContract() {
 
         {/* Tiền KH + Còn lại */}
         <Row>
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Form.Item
-              name=""
-              label="Tiền KH"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Tiền KH" {...formItemLayout}>
               <Input name="" placeholder="Tiền khách đưa" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Form.Item
-              name=""
-              label="Còn lại"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Còn lại" {...formItemLayout}>
               <Input name="" placeholder="Còn lại" />
             </Form.Item>
           </Col>
