@@ -1,4 +1,4 @@
-import { CloseCircleOutlined, EditOutlined } from "@ant-design/icons";
+import { CloseOutlined, EditOutlined } from "@ant-design/icons";
 import {
   Button,
   Col,
@@ -383,18 +383,16 @@ function FormUpdateClock({ tabList, hideModal }) {
       <div className="btn-func-change-clock">
         <Button
           htmlType="submit"
-          type="primary"
-          className="btn-update-change-clock"
+          className="btn-update-change-clock custom-btn-update"
         >
           <EditOutlined />
           Cập nhật
         </Button>
         <Button
           onClick={() => hideModal()}
-          className="btn-close-change-clock"
-          type="primary"
+          className="btn-close-change-clock custom-btn-close"
         >
-          <CloseCircleOutlined />
+          <CloseOutlined />
           Đóng
         </Button>
       </div>

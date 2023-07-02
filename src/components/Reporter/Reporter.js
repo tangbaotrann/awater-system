@@ -30,7 +30,7 @@ function Reporter() {
       </Col>
 
       <Col xs={24} sm={6} md={6} lg={6}>
-        <Button type="primary" className="reset-report-btn">
+        <Button className="reset-report-btn custom-btn-reset">
           Làm mới <UndoOutlined />
         </Button>
       </Col>

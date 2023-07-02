@@ -2,7 +2,7 @@ import { Button, Modal, Table } from "antd";
 import { UndoOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
- 
+
 import "./TableListContract.css";
 import { dataContract, dataContractOnModal } from "../../utils/dataContract";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
@@ -22,16 +22,6 @@ function TableListContract() {
       key: "index",
       title: "#",
       dataIndex: "index",
-    },
-    {
-      title: "",
-      render: () => {
-        return (
-          <Button className="contract-tbl-icon-btn">
-            <UndoOutlined />
-          </Button>
-        );
-      },
     },
     {
       key: "type_customer",

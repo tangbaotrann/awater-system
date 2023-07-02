@@ -115,24 +115,21 @@ function FormSortNumberClock({ hideModalSortNumber }) {
       <div className="func-sort-number-btn">
         <Button
           htmlType="submit"
-          type="primary"
-          className="item-sort-number-btn"
+          className="item-sort-number-btn custom-btn-sort"
         >
           <SortAscendingOutlined />
           Sắp xếp theo TT ghi
         </Button>
         <Button
           htmlType="submit"
-          type="primary"
-          className="item-sort-number-btn"
+          className="item-sort-number-btn custom-btn-add"
         >
           <SaveOutlined />
           Lưu
         </Button>
         <Button
-          className="item-sort-number-btn-close"
+          className="item-sort-number-btn-close custom-btn-close"
           onClick={() => hideModalSortNumber()}
-          type="primary"
         >
           <CloseOutlined />
           Đóng
