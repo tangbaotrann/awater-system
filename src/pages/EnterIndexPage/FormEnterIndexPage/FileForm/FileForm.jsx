@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Row, Col, Upload, DatePicker, Input, Form, theme } from "antd";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
+import { CloseOutlined, RedoOutlined } from "@ant-design/icons";
 const FileForm = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
@@ -78,6 +79,7 @@ const FileForm = ({ hideModal }) => {
           gutter={24}
         >
           <Button
+            icon={<RedoOutlined />}
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             style={{
@@ -88,6 +90,7 @@ const FileForm = ({ hideModal }) => {
           </Button>
 
           <Button
+            icon={<CloseOutlined />}
             htmlType="submit"
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}

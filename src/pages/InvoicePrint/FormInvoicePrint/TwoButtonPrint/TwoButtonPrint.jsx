@@ -9,7 +9,7 @@ import {
   Select,
   theme,
 } from "antd";
-import { PrinterOutlined, RedoOutlined } from "@ant-design/icons";
+import { CloseOutlined, PrinterOutlined, RedoOutlined } from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
 const TwoButtonPrint = ({ hideModal }) => {
@@ -122,6 +122,7 @@ const TwoButtonPrint = ({ hideModal }) => {
           </Button>
 
           <Button
+            icon={<CloseOutlined />}
             htmlType="submit"
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}

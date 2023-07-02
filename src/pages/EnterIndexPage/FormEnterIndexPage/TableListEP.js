@@ -24,7 +24,8 @@ import ChartButton from "./ChartButton/ChartButton.jsx";
 import ImageModal from "./ImageModel/ImageModel";
 import FormProgress from "./ProgressBarExample/ProgressBarExample.jsx";
 import PriceTableButton from "./PriceTableButton/PriceTableButton";
-// Tabs bottom 
+import FromBarChart from "./FromBarChart";
+// Tabs bottom
 const tabs = [
   {
     id: "1",
@@ -84,6 +85,7 @@ function TableListEP({ isTabletOrMobile }) {
   const [modalChartButton, setChartButton] = useState(false);
   const [modalImageModal, setImageModal] = useState(false);
   const [modalProgress, setProgess] = useState(false);
+  const [modalChart, setChart] = useState(false);
   const dispatch = useDispatch();
 
   const tabList = useSelector(btnClickTabListEnterIndexPageSelector);
@@ -103,7 +105,7 @@ function TableListEP({ isTabletOrMobile }) {
     } else if (key === "6") {
       setUsageButton(true);
     } else if (key === "7") {
-      message.error("Tính năng chưa khả dụng!");
+      setChart(true);
       // message.error("Tính năng chưa khả dụng!");
     } else if (key === "8") {
       setImageModal(true);
@@ -126,6 +128,7 @@ function TableListEP({ isTabletOrMobile }) {
     setChartButton(false);
     setImageModal(false);
     setProgess(false);
+    setChart(false);
     dispatch(
       tabListEnterIndexPageSlice.actions.btnClickTabListEnterIndexPage(null)
     );
@@ -280,6 +283,18 @@ function TableListEP({ isTabletOrMobile }) {
         <h2 className="title-update-info-contract">Các chỉ số </h2>
         {/* Form Reprint Button */}
         <FormProgress tabList={tabList} hideModal={hideModal} />
+      </Modal>
+      <Modal
+        open={modalChart ? modalChart : openModal}
+        onCancel={hideModal}
+        width={1000}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h2 className="title-update-info-contract"> Xem biểu đồ</h2>
+
+        <FromBarChart tabList={tabList} hideModal={hideModal} />
       </Modal>
     </>
   );

@@ -1,6 +1,10 @@
 import { Button, Col, Form, Input, Row, theme } from "antd";
 import { useMediaQuery } from "react-responsive";
-import { PrinterOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  PlusCircleOutlined,
+  SaveOutlined,
+} from "@ant-design/icons";
 
 const EditBlockClock = ({ hideModal }) => {
   // handle submit form (main)
@@ -439,7 +443,7 @@ const EditBlockClock = ({ hideModal }) => {
             key="submit"
             type="primary"
             htmlType="submit"
-            icon={<PrinterOutlined />}
+            icon={<PlusCircleOutlined />}
             style={{ marginRight: "10px" }}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
@@ -449,13 +453,14 @@ const EditBlockClock = ({ hideModal }) => {
             key="submit"
             type="primary"
             htmlType="submit"
-            icon={<PrinterOutlined />}
+            icon={<SaveOutlined />}
             style={{ marginRight: "10px" }}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu và đóng
           </Button>
           <Button
+            icon={<CloseOutlined />}
             htmlType="submit"
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}

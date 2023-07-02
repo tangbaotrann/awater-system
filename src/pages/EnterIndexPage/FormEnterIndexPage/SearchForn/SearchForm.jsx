@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, Row, Col, Select, DatePicker, theme } from "antd";
-import { RedoOutlined } from "@ant-design/icons";
+import { CloseOutlined, RedoOutlined, SearchOutlined } from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
 
@@ -169,7 +169,7 @@ const SearchForm = ({ hideModal }) => {
           }}
           justify="end"
         >
-          <Button type="primary" htmlType="submit">
+          <Button icon={<SearchOutlined />} type="primary" htmlType="submit">
             Tìm kiếm
           </Button>
           &nbsp;
@@ -184,6 +184,7 @@ const SearchForm = ({ hideModal }) => {
           </Button>
           &nbsp;
           <Button
+            icon={<CloseOutlined />}
             htmlType="submit"
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}

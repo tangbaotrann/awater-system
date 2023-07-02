@@ -1,9 +1,18 @@
 import { Button, Col, DatePicker, Form, Input, Row, Table, theme } from "antd";
 import { useMediaQuery } from "react-responsive";
-import { PrinterOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  SearchOutlined,
+  WarningOutlined,
+} from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import moment from "moment";
+import data from "./data";
 const ViewDetail = ({ hideModal }) => {
+  const dataSource = data.map((item, index) => ({
+    ...item,
+    index: index + 1,
+  }));
   const columns = [
     {
       title: "#",
@@ -52,6 +61,11 @@ const ViewDetail = ({ hideModal }) => {
           title: "TT(%)",
           dataIndex: "tt",
           key: "tt",
+          render: (value) => (
+            <div style={{ backgroundColor: "green", color: "white" }}>
+              {value}
+            </div>
+          ),
         },
       ],
     },
@@ -110,15 +124,16 @@ const ViewDetail = ({ hideModal }) => {
             </Form.Item>
           </Col>
           <Col
-            span={isTabletOrMobile ? 24 : 7}
+            span={isTabletOrMobile ? 24 : 5}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item name="makh" label="Mã KH">
-              <Input style={{ width: "100%" }} />
-            </Form.Item>
+            <Button type="primary">
+              <SearchOutlined />
+              Xem
+            </Button>
           </Col>
           <Col
-            span={isTabletOrMobile ? 24 : 7}
+            span={isTabletOrMobile ? 24 : 13}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="nhapdongho" label="Nhập đồng hồ cần tìm">
@@ -136,11 +151,11 @@ const ViewDetail = ({ hideModal }) => {
               rowKey="index"
               pagination={{
                 current: 1,
-                // total: initialData.length,
                 pageSize: 18,
               }}
               scroll={{ x: 1200, y: 440 }}
               columns={columns}
+              dataSource={dataSource}
             />
           </Col>
         </Row>
@@ -156,7 +171,7 @@ const ViewDetail = ({ hideModal }) => {
             key="submit"
             type="primary"
             htmlType="submit"
-            icon={<PrinterOutlined />}
+            icon={<WarningOutlined />}
             style={{ marginRight: "10px" }}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
@@ -164,6 +179,7 @@ const ViewDetail = ({ hideModal }) => {
           </Button>
 
           <Button
+            icon={<CloseOutlined />}
             htmlType="submit"
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}

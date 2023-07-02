@@ -3,6 +3,7 @@ import { Button, Form, Row, theme } from "antd";
 
 import { useMediaQuery } from "react-responsive";
 import WaterPriceTable from "../../../../utils/dataEnterIndexPage/data/WaterPriceTable";
+import { CloseOutlined, ReloadOutlined } from "@ant-design/icons";
 const PriceTableButton = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const handleSubmit = (values) => {
@@ -42,12 +43,14 @@ const PriceTableButton = ({ hideModal }) => {
           justify="end"
         >
           <Button
+            icon={<ReloadOutlined />}
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Cập Nhật
           </Button>
           <Button
+            icon={<CloseOutlined />}
             htmlType="submit"
             type="primary"
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}

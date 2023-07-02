@@ -17,22 +17,6 @@ import EditBlockClock from "./EditBlockClock";
 import ViewDetail from "./ViewDetail.jsx";
 import FromBarChart from "./FromBarChart";
 
-// ...
-const data = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
-const labels = [
-  "Tháng 1",
-  "Tháng 2",
-  "Tháng 3",
-  "Tháng 4",
-  "Tháng 5",
-  "Tháng 6",
-  "Tháng 7",
-  "Tháng 8",
-  "Tháng 9",
-  "Tháng 10",
-  "Tháng 11",
-  "Tháng 12",
-];
 // Tabs bottom
 const tabs = [
   {
@@ -197,12 +181,7 @@ function TableListBC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract"> Xem biểu đồ</h2>
 
-        <FromBarChart
-          data={data}
-          labels={labels}
-          tabList={tabList}
-          hideModal={hideModal}
-        />
+        <FromBarChart tabList={tabList} hideModal={hideModal} />
       </Modal>
     </>
   );

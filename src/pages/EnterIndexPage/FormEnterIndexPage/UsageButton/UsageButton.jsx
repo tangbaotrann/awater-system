@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Row,
-  Col,
-  Input,
-  DatePicker,
-  Form,
-  Table,
-  Select,
-  theme,
-} from "antd";
+import { Button, Row, Col, Input, DatePicker, Form, Table, theme } from "antd";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { otherData } from "../../../../utils/dataEnterIndexPage/data/otherData.js";
 import { useMediaQuery } from "react-responsive";
+import FromBarChart from "./FromBarChart";
+import {
+  CloseOutlined,
+  LineChartOutlined,
+  SaveOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 const UsageButton = ({ hideModal }) => {
+  const [showFormChart, setShowFormChart] = useState(false);
   const [data2, setData2] = useState(otherData);
   const handleData2Change = (newData) => {
     setData2(newData);
@@ -101,12 +99,10 @@ const UsageButton = ({ hideModal }) => {
   const handleFailed = (error) => {
     console.log({ error });
   };
-  const { Option } = Select;
+
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
-  const onReset = () => {
-    form1.resetFields();
-  };
+
   return (
     <Form
       form={form1}
@@ -214,6 +210,7 @@ const UsageButton = ({ hideModal }) => {
         onChange={handleData2Change}
         scroll={{ x: 1600, y: 450 }}
       />
+      {showFormChart && <FromBarChart />}
       <Row
         style={{
           display: "flex",
@@ -224,18 +221,25 @@ const UsageButton = ({ hideModal }) => {
         justify="end"
       >
         <Button
+          icon={<SearchOutlined />}
           type="primary"
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Tìm kiếm
         </Button>
         <Button
+          icon={<LineChartOutlined />}
           type="primary"
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          onClick={() =>
+            setShowFormChart((prevshowFormChart) => !prevshowFormChart)
+          }
         >
           Xuất biểu đồ nước
         </Button>
+
         <Button
+          icon={<SaveOutlined />}
           style={{ marginRight: "10px" }}
           type="primary"
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
@@ -243,6 +247,7 @@ const UsageButton = ({ hideModal }) => {
           Lưu biểu đồ
         </Button>
         <Button
+          icon={<CloseOutlined />}
           style={{ marginRight: "10px" }}
           htmlType="submit"
           type="primary"

@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Bar } from "react-chartjs-2";
-import { Select, Button } from "antd";
 import { useMediaQuery } from "react-responsive";
-import { BarChartOutlined } from "@ant-design/icons";
-
-const { Option } = Select;
 
 const FromBarChart = () => {
-  const [month, setMonth] = useState("1");
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const options = {
@@ -79,29 +74,8 @@ const FromBarChart = () => {
     ],
   };
 
-  const handleViewClick = () => {
-    // Xử lý khi nhấn nút Xem
-  };
-
   return (
     <>
-      <Select
-        defaultValue={month}
-        style={{ width: isTabletOrMobile ? 80 : 120 }}
-        onChange={(value) => setMonth(value)}
-      >
-        {labels.map((label) => (
-          <Option value={label.slice(0, label.indexOf("/"))}>{label}</Option>
-        ))}
-      </Select>
-      <Button
-        type="primary"
-        style={{ marginLeft: "10px" }}
-        icon={<BarChartOutlined />}
-        onClick={handleViewClick}
-      >
-        Xem
-      </Button>
       <div style={{ overflowX: "scroll", maxWidth: "100%" }}>
         <Bar
           options={options}
