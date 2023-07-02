@@ -20,7 +20,12 @@
 }
 
 .button {
+  display: flex;
   width: 100%;
+  padding: 8px !important;
+  height: 33px;
+  text-align: center;
+  align-items: center;
 }
 /* phone: width < 740px */
 @media (max-width: 46.1875em) {

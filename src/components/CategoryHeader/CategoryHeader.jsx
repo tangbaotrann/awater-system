@@ -34,7 +34,6 @@ const CategoryHeaderAction = ({
           style={{
             backgroundColor: "#E6FFFA",
             color: "#72E8C9",
-            fontWeight: "600",
           }}
           // onClick={() => setIsOpenModalBill(true)}
           size="small"
@@ -50,7 +49,6 @@ const CategoryHeaderAction = ({
           onClick={(e) => handleOpenModalAdd(e, false)}
           style={{
             backgroundColor: "#13DEB9",
-            fontWeight: "600",
           }}
           size="small"
         >
@@ -69,7 +67,6 @@ const CategoryHeaderAction = ({
              style={{
                 backgroundColor: "#5D87FF",
                 color: "#FFFFFF",
-                fontWeight: "600",
               }}
             disabled={!tabList}
           >
@@ -87,7 +84,6 @@ const CategoryHeaderAction = ({
           style={{
             backgroundColor: "#FEF5E5",
             color: "#FFC882",
-            fontWeight: "600",
           }}
           disabled={!tabList}
         >
@@ -104,7 +100,6 @@ const CategoryHeaderAction = ({
           style={{
             backgroundColor: "#FBF2EF",
             color: "#FA966E",
-            fontWeight: "600",
           }}
           disabled={!tabList}
         >
@@ -123,7 +118,6 @@ const CategoryHeaderAction = ({
               style={{
                 backgroundColor: "#5D87FF",
                 color: "#FFFFFF",
-                fontWeight: "600",
               }}
               disabled={!tabList}
             >
@@ -140,7 +134,6 @@ const CategoryHeaderAction = ({
               style={{
                 backgroundColor: "#5D87FF",
                 color: "#FFFFFF",
-                fontWeight: "600",
               }}
               disabled={!tabList}
             >

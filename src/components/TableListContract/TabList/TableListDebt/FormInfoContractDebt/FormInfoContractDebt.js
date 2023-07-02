@@ -185,7 +185,7 @@ function FormInfoContractDebt({
 
       {/* Func buttons */}
       <div className="debt-func-btn">
-        <Button htmlType="submit" type="primary" className="space-btn-item">
+        <Button htmlType="submit" className="space-btn-item custom-btn-reset">
           <RedoOutlined />
           Làm mới
         </Button>
@@ -193,27 +193,25 @@ function FormInfoContractDebt({
         <Button
           htmlType="submit"
           onClick={handleOpenModalUpdateInfoDebt}
-          type="primary"
-          className="space-btn-item"
+          className="space-btn-item custom-btn-add"
         >
           <PlusCircleOutlined />
           Thêm mới
         </Button>
 
-        <Button htmlType="submit" type="primary" className="space-btn-item">
+        <Button htmlType="submit" className="space-btn-item custom-btn-update">
           <EditOutlined />
           Sửa
         </Button>
 
-        <Button htmlType="submit" type="primary" className="space-btn-item">
+        <Button htmlType="submit" className="space-btn-item custom-btn-del">
           <CloseCircleOutlined />
           Xóa
         </Button>
 
         <Button
           onClick={() => hideModal()}
-          type="primary"
-          className="space-btn-item-close"
+          className="space-btn-item-close custom-btn-close"
         >
           <CloseOutlined />
           Đóng

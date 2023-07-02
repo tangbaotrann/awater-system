@@ -140,7 +140,7 @@ function FormFilterContract() {
 
         {/* Tìm kiếm */}
         <Col xs={24} sm={4} md={4} lg={2}>
-          <Button type="primary" className="gutter-item-btn">
+          <Button className="custom-btn-search gutter-item-btn">
             <SearchOutlined />
             Tìm kiếm
           </Button>
@@ -149,9 +149,8 @@ function FormFilterContract() {
         {/* Tìm kiếm nâng cao */}
         <Col xs={24} sm={4} md={4} lg={2}>
           <Button
-            type="primary"
             style={{ marginLeft: "18px" }}
-            className="gutter-item-btn"
+            className="custom-btn-search gutter-item-btn"
           >
             <SearchOutlined />
             Tìm kiếm nâng cao

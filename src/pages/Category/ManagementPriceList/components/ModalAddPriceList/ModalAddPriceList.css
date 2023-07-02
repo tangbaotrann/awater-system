@@ -32,8 +32,9 @@
 }
 .price-list-table {
   display: grid;
-  grid-template-columns: 97% 3%;
+  grid-template-columns: 95% 5%;
   width: 100%;
+  gap: 2px;
 }
 .table {
   width: 100%;
@@ -51,6 +52,9 @@
 }
 .price-list-table .ant-form-item-control-input-content {
   width: 100%;
+}
+.table-price-detail {
+  white-space: normal;
 }
 /* Responsive */
 /* phone: width < 740px */
@@ -70,6 +74,9 @@
     display: flex;
     flex-direction: column;
     gap: 0;
+  }
+  .price-list-table {
+    grid-template-columns: 97% 3%;
   }
 }
 @media (max-width: 575px) {
@@ -96,6 +103,9 @@
 
 /* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
 @media (min-width: 768px) {
+  .price-list-table {
+    grid-template-columns: 97% 3%;
+  }
 }
 
 /* End Responsive */

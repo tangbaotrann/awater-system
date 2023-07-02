@@ -184,7 +184,7 @@ function InfoDetailClock() {
           <Form.Item name="" label="Thứ tự: " {...formItemLayout}>
             <div className="container-label-input">
               <Input placeholder="Nhập thứ tự" className="space-right-10" />
-              <Button type="primary" className="custom-btn-reset-form-contract">
+              <Button className="custom-btn-reset-form-contract custom-btn-reset">
                 <RedoOutlined />
               </Button>
             </div>

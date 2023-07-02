@@ -93,8 +93,7 @@ function FormHistoryUseWater({ tabList }) {
           <div className="history-water-btn">
             <Button
               htmlType="submit"
-              type="primary"
-              className="history-water-item-btn"
+              className="history-water-item-btn custom-btn-watch-report"
             >
               Xem báo cáo
             </Button>

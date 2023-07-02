@@ -56,7 +56,7 @@ function InfoCustomer() {
                 placeholder="Nhập mã khách hàng"
                 className="space-right-10"
               />
-              <Button type="primary" className="custom-btn-reset-form-contract">
+              <Button className="custom-btn-reset-form-contract custom-btn-reset">
                 <RedoOutlined />
               </Button>
             </div>
