@@ -1,19 +1,57 @@
 import { React, useState } from "react";
-import { initialData } from "../../utils/dataBlock";
+// import { initialData } from "../../utils/dataBlock";
 import TabListBC from "./TableListBC";
+import { BlockClockDetail } from "./BlockClockDetail";
 
 import "../../components/GlobalStyles/GlobalStyles.css";
 import "../Manager/Contract/Contract.css";
-import { Form, Input, theme, Table, Popover } from "antd";
-import { PlusOutlined, SnippetsOutlined } from "@ant-design/icons";
+import { Form, Input, theme, Table, Popover, Button } from "antd";
+import {
+  PlusOutlined,
+  SnippetsOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
 import moment from "moment";
 import "moment/locale/vi";
 import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
 function BlockClock() {
+  const handleButtonClick = () => {
+    setIsOpenModalNoticeDetail(true);
+  };
+  const handleModalCancel = () => {
+    setIsOpenModalNoticeDetail(false);
+  };
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const { token } = theme.useToken();
-
+  const [isOpenModalNoticeDetail, setIsOpenModalNoticeDetail] = useState(false);
+  const hanldeShowDetailRecord = (item) => {
+    setIsOpenModalNoticeDetail(true);
+    console.log(item);
+  };
+  const initialData = Array.from({ length: 100 }, (_, i) => {
+    return {
+      key: "1",
+      stt: i + 1,
+      mablock: `  Mã block ${i + 1}`,
+      tenblock: `Tên block ${i + 1}`,
+      diachi: `Địa chỉ ${i + 1}`,
+      makh: `Mã khách hàng ${i + 1}`,
+      tenkhach: `Tên khách hàng ${i + 1}`,
+      tuyendoc: `Tuyến đọc ${i + 1}`,
+      tienthu: `Tiêu thụ ${i + 1}`,
+      canbodoc: `Cán bộ đọc ${i + 1}`,
+      seri: `Seri ${i + 1}`,
+      sohieu: `Số hiệu ${i + 1}`,
+      kieudongho: `Kiểu đồng hồ ${i + 1}`,
+      trong: (
+        <UnorderedListOutlined
+          style={{ cursor: "pointer" }}
+          onClick={() => hanldeShowDetailRecord(i)}
+        />
+      ),
+    };
+  });
   const [data1, setData1] = useState(initialData);
 
   function fetchDataForPage(page) {
@@ -101,7 +139,25 @@ function BlockClock() {
       title: " # ",
       dataIndex: "trong",
       key: "trong",
-      width: 100,
+      fixed: "right",
+      width: 40,
+      render: (text, record) => {
+        return (
+          <>
+            <Button
+              onClick={handleButtonClick}
+              icon={<UnorderedListOutlined />}
+            >
+              chi tiết
+            </Button>
+            <BlockClockDetail
+              isOpen={isOpenModalNoticeDetail}
+              setIsOpenModalNoticeDetail={handleModalCancel}
+              data={initialData}
+            />
+          </>
+        );
+      },
     },
   ];
   const AdvancedSearchForm = () => {

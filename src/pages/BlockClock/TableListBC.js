@@ -16,7 +16,6 @@ import AddBlockClock from "./AddBlockClock";
 import EditBlockClock from "./EditBlockClock";
 import ViewDetail from "./ViewDetail.jsx";
 import FromBarChart from "./FromBarChart";
-
 // Tabs bottom
 const tabs = [
   {

@@ -96,6 +96,7 @@ function InvoicePrint() {
       title: "Sê ri",
       dataIndex: "serialNumber",
       key: "serialNumber",
+      width: 120,
     },
     {
       title: "Số hóa đơn BĐ",
@@ -111,16 +112,19 @@ function InvoicePrint() {
       title: "Số lượng HĐ",
       dataIndex: "contractCount",
       key: "contractCount",
+      width: 120,
     },
     {
       title: "Đã in xong",
       dataIndex: "isPrinted",
       key: "isPrinted",
+      width: 120,
     },
     {
       title: "",
       key: "actions",
       width: 100,
+      fixed: "right",
       render: (text, record) => {
         return (
           <>
