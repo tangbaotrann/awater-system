@@ -34,13 +34,14 @@
   display: grid;
   grid-template-columns: 95% 5%;
   width: 100%;
-  gap: 2px;
+  gap: 10px;
 }
 .table {
   width: 100%;
 }
 .button-actions-table {
   display: flex;
+  margin-right: 10px;
   flex-direction: column;
   gap: 10px;
   padding: 20px 0;
@@ -64,6 +65,9 @@
     display: flex;
     flex-direction: column;
     gap: 0;
+  }
+  .price-list-table {
+    grid-template-columns: 90% 10%;
   }
 }
 

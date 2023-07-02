@@ -31,7 +31,7 @@ const priceSubjectColumns = [
   },
 ];
 const priceSubjectData = [];
-for (let i = 0; i <= 500; i++) {
+for (let i = 0; i <= 30; i++) {
   priceSubjectData.push({
     key: i,
     symbol: `Ký hiệu ${i}`,

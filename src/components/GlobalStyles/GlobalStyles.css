@@ -432,6 +432,38 @@ html *::-webkit-scrollbar-track {
     .gutter-item-mobile {
         margin: 0;
     }
+
+    /* form pay counter */
+    .pay-counter-footer-quantity {
+        margin: 10px 0;
+        margin-right: 0 !important;
+    }
+
+    .pay-counter-footer-total {
+        margin: 10px 0;
+        margin-right: 0 !important;
+    }
+
+    .custom-btn-export {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .pay-counter-pay-and-close {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom-btn-close {
+        margin-top: 10px;
+        margin-left: 0 !important;
+    }
+
+    /* modal (các chỉ số) */
+    .custom-progress-mobile {
+        overflow-x: auto;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
@@ -508,6 +540,17 @@ html *::-webkit-scrollbar-track {
         margin-left: 0;
         margin-bottom: 22px;
     }
+
+    /* form pay counter */
+    .pay-counter-footer-quantity {
+        margin: 10px 0;
+        margin-right: 0 !important;
+    }
+
+    .pay-counter-footer-total {
+        margin: 10px 0;
+        margin-right: 0 !important;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
@@ -579,6 +622,16 @@ html *::-webkit-scrollbar-track {
 
     .footer-func-btn-item-save {
         margin-right: 10px;
+    }
+
+    /* form pay counter */
+    .pay-counter-footer-quantity {
+        margin: 10px 0;
+    }
+
+    .pay-counter-footer-total {
+        margin: 10px 0;
+        margin-right: 0 !important;
     }
 }
   

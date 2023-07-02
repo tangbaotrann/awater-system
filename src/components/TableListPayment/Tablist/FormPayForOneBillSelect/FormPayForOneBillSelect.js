@@ -14,6 +14,21 @@ import { CloseOutlined, FormOutlined } from "@ant-design/icons";
 const { TextArea } = Input;
 
 function FormPayForOneBillSelect({ hideModal }) {
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 7 },
+      md: { span: 7 },
+      lg: { span: 7 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
+
   // handle submit form
   const handleSubmit = (values) => {
     console.log("values", values);
@@ -28,10 +43,14 @@ function FormPayForOneBillSelect({ hideModal }) {
     <>
       <Divider orientation="left">Thanh toán cho 1 đơn được chọn</Divider>
 
-      <Form onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
+      <Form
+        onFinish={handleSubmit}
+        onFinishFailed={handleSubmitFailed}
+        {...formItemLayout}
+      >
         {/* Đã thanh toán */}
         <Row>
-          <Col xs={24} sm={24} md={12} lg={24}>
+          <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item name="" valuePropName="checked" label="Đã thanh toán">
               <Checkbox name="" />
             </Form.Item>
@@ -40,7 +59,7 @@ function FormPayForOneBillSelect({ hideModal }) {
 
         {/* Người thu tiền */}
         <Row>
-          <Col xs={24} sm={24} md={12} lg={24}>
+          <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item name="" label="Người thu tiền">
               <Select
                 fieldNames=""
@@ -53,7 +72,7 @@ function FormPayForOneBillSelect({ hideModal }) {
 
         {/* Ngày thu tiền */}
         <Row>
-          <Col xs={24} sm={24} md={12} lg={24}>
+          <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item name="" label="Ngày thu tiền">
               <DatePicker
                 name=""
@@ -66,7 +85,7 @@ function FormPayForOneBillSelect({ hideModal }) {
 
         {/* Hình thức thu tiền */}
         <Row>
-          <Col xs={24} sm={24} md={12} lg={24}>
+          <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item name="" label="Hình thức thu tiền">
               <Select
                 fieldNames=""
@@ -79,7 +98,7 @@ function FormPayForOneBillSelect({ hideModal }) {
 
         {/* Ghi chú */}
         <Row>
-          <Col xs={24} sm={24} md={12} lg={24}>
+          <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item name="" label="Ghi chú">
               <TextArea name="" placeholder="Nhập ghi chú"></TextArea>
             </Form.Item>
@@ -92,13 +111,12 @@ function FormPayForOneBillSelect({ hideModal }) {
         <div className="func-payment-for-one-bill">
           <Button
             htmlType="submit"
-            type="primary"
-            className="payment-for-one-bill-notion-btn"
+            className="payment-for-one-bill-notion-btn custom-btn-add"
           >
             <FormOutlined />
             Ghi lại
           </Button>
-          <Button onClick={() => hideModal()} type="primary">
+          <Button onClick={() => hideModal()} className="custom-btn-close">
             <CloseOutlined /> Đóng
           </Button>
         </div>

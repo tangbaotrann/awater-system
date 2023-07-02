@@ -1,8 +1,7 @@
 .pay-debt-num-to-text {
     display: flex;
     align-items: center;
-    margin-top: -12px;
-    margin-bottom: 12px;
+    margin-left: 10px;
 }
 
 .pay-debt-num-to-text i {

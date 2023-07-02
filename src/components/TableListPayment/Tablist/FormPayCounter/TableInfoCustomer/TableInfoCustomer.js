@@ -40,6 +40,7 @@ function TableInfoCustomer() {
       size="small"
       rowKey="code_cus"
       scroll={{ x: 700 }}
+      className="tbl-info-customer"
     ></Table>
   );
 }

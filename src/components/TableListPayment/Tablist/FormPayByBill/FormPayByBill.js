@@ -11,10 +11,22 @@ import {
   Row,
   Select,
 } from "antd";
-import { useMediaQuery } from "react-responsive";
 
 function FormPayByBill({ hideModal }) {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 4 },
+      md: { span: 6 },
+      lg: { span: 6 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
 
   // handle submit form
   const handleSubmit = (values) => {
@@ -32,92 +44,62 @@ function FormPayByBill({ hideModal }) {
 
       <Form onFinish={handleSubmit} onFinishFailed={handleSubmitFailed}>
         {/* Seri + Số hóa đơn + button search */}
-        <Row>
-          <Col xs={24} sm={24} md={24} lg={11}>
-            <Form.Item
-              name=""
-              label="Seri"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+        <Row justify="start">
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Số seri" {...formItemLayout}>
               <Input name="" placeholder="Nhập số seri" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={11}>
-            <Form.Item
-              name=""
-              label="Số hóa đơn"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Số HĐ" {...formItemLayout}>
               <Input name="" placeholder="Nhập số hóa đơn" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={24} lg={2}>
-            <Button type="primary">Tìm</Button>
+          <Col xs={24} sm={24} md={24} lg={24}>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <Button className="custom-btn-search">Tìm</Button>
+            </div>
           </Col>
         </Row>
 
         <Divider orientation="left">Thông tin khách hàng</Divider>
 
-        {/* Số hóa đơn */}
+        {/* Số hóa đơn + Khách hàng */}
         <Row>
-          <Col xs={24} sm={24} md={24} lg={24}>
-            <Form.Item
-              name=""
-              label="Số hóa đơn"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Số HĐ" {...formItemLayout}>
               <Input name="" placeholder="Nhập số hóa đơn" />
             </Form.Item>
           </Col>
-        </Row>
 
-        {/* Khách hàng + Địa chỉ */}
-        <Row>
           <Col xs={24} sm={24} md={12} lg={12}>
-            <Form.Item
-              name=""
-              label="Khách hàng"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+            <Form.Item name="" label="Tên KH" {...formItemLayout}>
               <Input name="" placeholder="Nhập tên khách hàng" />
             </Form.Item>
           </Col>
+        </Row>
+
+        {/*  Địa chỉ + Hợp đồng */}
+        <Row>
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Địa chỉ" {...formItemLayout}>
+              <Input name="" placeholder="Nhập địa chỉ" />
+            </Form.Item>
+          </Col>
 
           <Col xs={24} sm={24} md={12} lg={12}>
-            <Form.Item
-              name=""
-              label="Địa chỉ"
-              className={
-                isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"
-              }
-            >
-              <Input name="" placeholder="Nhập địa chỉ" />
+            <Form.Item name="" label="Hợp đồng" {...formItemLayout}>
+              <Input name="" placeholder="Nhập số hợp đồng" />
             </Form.Item>
           </Col>
         </Row>
 
-        {/* Hợp đồng + tổng tiền */}
+        {/* tổng tiền + Tiền bằng chữ */}
         <Row>
           <Col xs={24} sm={24} md={12} lg={12}>
-            <Form.Item
-              name=""
-              label="Hợp đồng"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
-              <Input name="" placeholder="Nhập số hợp đồng" />
-            </Form.Item>
-          </Col>
-
-          <Col xs={24} sm={24} md={12} lg={12}>
-            <Form.Item
-              name=""
-              label="Tổng tiền"
-              className={
-                isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"
-              }
-            >
+            <Form.Item name="" label="Tổng tiền" {...formItemLayout}>
               <InputNumber
                 name=""
                 placeholder="Tổng tiền"
@@ -125,40 +107,29 @@ function FormPayByBill({ hideModal }) {
               />
             </Form.Item>
           </Col>
-        </Row>
 
-        {/* Tiền bằng chữ */}
-        <Row>
-          <Col xs={24} sm={24} md={24} lg={24}>
-            <Form.Item
-              name=""
-              label="Tiền bằng chữ"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
-              <Input name="" placeholder="Nhập tiền bằng chữ" />
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Bằng chữ" {...formItemLayout}>
+              <Input name="" placeholder="Tiền bằng chữ" />
             </Form.Item>
           </Col>
         </Row>
 
         {/* Đã thanh toán + Ngày thu + Người thu tiền */}
         <Row>
-          <Col xs={24} sm={24} md={5} lg={5}>
+          <Col xs={24} sm={24} md={12} lg={12}>
             <Form.Item
               name=""
-              label="Đã thanh toán"
+              label="Đã TT"
               valuePropName="checked"
-              className={isTabletOrMobile ? "" : "gutter-item"}
+              {...formItemLayout}
             >
               <Checkbox name="" />
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={9} lg={9}>
-            <Form.Item
-              name=""
-              label="Ngày thu"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Ngày thu" {...formItemLayout}>
               <DatePicker
                 name=""
                 placeholder="Chọn ngày thu"
@@ -167,14 +138,8 @@ function FormPayByBill({ hideModal }) {
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={24} md={10} lg={10}>
-            <Form.Item
-              name=""
-              label="Người thu"
-              className={
-                isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"
-              }
-            >
+          <Col xs={24} sm={24} md={12} lg={12}>
+            <Form.Item name="" label="Người thu" {...formItemLayout}>
               <Select
                 fieldNames=""
                 options={[{ value: "1", label: "NT 1" }]}
@@ -187,13 +152,12 @@ function FormPayByBill({ hideModal }) {
         <Divider />
 
         <div className="func-pay-by-bill-buttons">
-          <Button type="primary" htmlType="submit">
+          <Button className="custom-btn-add" htmlType="submit">
             <FormOutlined /> Ghi lại
           </Button>
           <Button
-            type="primary"
             onClick={() => hideModal()}
-            className="pay-by-bill-btn-close"
+            className="pay-by-bill-btn-close custom-btn-close"
           >
             <CloseOutlined /> Đóng
           </Button>

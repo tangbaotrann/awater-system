@@ -13,11 +13,8 @@ import React, { useEffect, useId } from "react";
 
 import "./ModalAddReading.css";
 import { useSelector } from "react-redux";
-import { useMediaQuery } from "react-responsive";
 
 const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
   const employeeOptions = [];
   for (let i = 1; i < 36; i++) {
     employeeOptions.push({
