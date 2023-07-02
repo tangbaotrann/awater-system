@@ -10,3 +10,8 @@
   padding: 10px;
   margin-top: 10px;
 }
+
+.management-price-subject-header {
+  position: relative;
+  z-index: 2;
+}
