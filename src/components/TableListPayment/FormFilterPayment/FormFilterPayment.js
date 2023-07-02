@@ -212,9 +212,10 @@ function FormFilterPayment() {
         <Col xs={24} sm={24} md={1} lg={1}>
           <Button
             htmlType="submit"
-            type="primary"
             className={
-              isTabletOrMobile ? "gutter-item-btn" : "btn-search-payment"
+              isTabletOrMobile
+                ? "gutter-item-btn custom-btn-search"
+                : "btn-search-payment custom-btn-search"
             }
           >
             <SearchOutlined />

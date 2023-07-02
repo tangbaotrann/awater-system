@@ -18,11 +18,10 @@
 
 .contract-bottom { 
     position: fixed;
-    bottom: 0;
+    bottom: -3px;
     left: 280px;
     border-radius: 6px;
     padding: 6px 6px 0 6px;
-    background-color: var(--blue-e6f4ff);
 }
 
 /* tab list */ 
@@ -30,8 +29,15 @@
     margin-bottom: 4px !important;
 }
 
+.contract-bottom-func {
+    padding: 0;
+    margin: 0;
+    border-radius: 6px;
+    /* background-color: var(--white); */
+    /* box-shadow: 0 0 16px 0 #333; */
+}
+
 .contract-bottom-func:hover {
-    opacity: 0.9;
     transition: 0.3s all;
     cursor: pointer;
 }

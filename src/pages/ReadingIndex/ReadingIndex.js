@@ -135,12 +135,12 @@ const ReadingIndex = () => {
       <div className="contract-bottom">
         <div className="contract-bottom-func">
           {isTabletOrMobile ? (
-            <Popover
+            <Popover 
               rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
               // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
-              content={
+              content={ 
                 <FooterReadingIndex
                   setIsOpenModalCreate={setIsOpenModalCreate}
                   setIsModalOpenMCreate={setIsModalOpenMCreate}
@@ -158,7 +158,7 @@ const ReadingIndex = () => {
               setIsModalOpenIndexBar={setIsModalOpenIndexBar}
             />
           )}
-        </div>
+        </div> 
       </div>
 
       <CreateBook

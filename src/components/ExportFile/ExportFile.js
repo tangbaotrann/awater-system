@@ -7,7 +7,7 @@ import File from "./File/File";
 function ExportFile() {
   return (
     <Popover content={<File />} trigger="click" placement="rightTop">
-      <Button type="primary">
+      <Button className="custom-btn-export">
         Xuất file <CaretDownOutlined />
       </Button>
     </Popover>

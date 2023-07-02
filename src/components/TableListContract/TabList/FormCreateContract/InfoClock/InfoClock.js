@@ -77,44 +77,40 @@ function InfoClock() {
           className={isTabletOrMobile ? "func-info-clock-btn-mobile" : ""}
         >
           <Button
-            type="primary"
             className={
               isTabletOrMobile
-                ? "tablist-func-clock-btn-mobile"
-                : "tablist-func-clock-btn"
+                ? "tablist-func-clock-btn-mobile custom-btn-add"
+                : "tablist-func-clock-btn custom-btn-add"
             }
           >
             <PlusCircleOutlined />
             Thêm
           </Button>
           <Button
-            type="primary"
             className={
               isTabletOrMobile
-                ? "tablist-func-clock-btn-mobile"
-                : "tablist-func-clock-btn"
+                ? "tablist-func-clock-btn-mobile custom-btn-update"
+                : "tablist-func-clock-btn custom-btn-update"
             }
           >
             <DashboardOutlined />
             Thay
           </Button>
           <Button
-            type="primary"
             className={
               isTabletOrMobile
-                ? "tablist-func-clock-btn-mobile"
-                : "tablist-func-clock-btn"
+                ? "tablist-func-clock-btn-mobile custom-btn-export"
+                : "tablist-func-clock-btn custom-btn-export"
             }
           >
             <DownloadOutlined />
             Xuất
           </Button>
           <Button
-            type="primary"
             className={
               isTabletOrMobile
-                ? "tablist-func-clock-btn-mobile"
-                : "tablist-func-clock-btn"
+                ? "tablist-func-clock-btn-mobile custom-btn-del"
+                : "tablist-func-clock-btn custom-btn-del"
             }
           >
             <CloseCircleOutlined />

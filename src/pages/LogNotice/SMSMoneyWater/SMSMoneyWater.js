@@ -1,4 +1,4 @@
-import { SendOutlined, SyncOutlined } from "@ant-design/icons";
+import { CloseOutlined, SendOutlined, SyncOutlined } from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -124,7 +124,7 @@ export const SMSMoneyWater = (props) => {
       key: "datesend",
     },
   ];
-  console.log('render modal sms money water');
+  console.log("render modal sms money water");
   return (
     <Modal
       title="Gửi SMS tiền nước"
@@ -189,7 +189,7 @@ export const SMSMoneyWater = (props) => {
               placeholder="Chọn tháng"
               style={{ width: "100%" }}
               format="MM-YYYY"
-              picker="month"    
+              picker="month"
             />
           </Form.Item>
           <div style={{ marginLeft: "auto" }}>
@@ -205,7 +205,12 @@ export const SMSMoneyWater = (props) => {
             >
               Gửi
             </Button>
-            <Button key="submit" onClick={() => setIsOpen(false)} size="middle">
+            <Button
+              className="custom-btn-close"
+              onClick={() => setIsOpen(false)}
+              size="middle"
+            >
+              <CloseOutlined />
               Đóng
             </Button>
           </div>

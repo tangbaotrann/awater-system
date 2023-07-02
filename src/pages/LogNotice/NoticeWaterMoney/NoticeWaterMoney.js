@@ -1,8 +1,7 @@
-
-import { SendOutlined } from "@ant-design/icons";
+import { CloseOutlined, SendOutlined } from "@ant-design/icons";
 import {
   Button,
-  Checkbox, 
+  Checkbox,
   Collapse,
   DatePicker,
   Form,
@@ -10,12 +9,12 @@ import {
   Modal,
   Table,
   theme,
-} from "antd"; 
+} from "antd";
 import React from "react";
 import { SearchForm } from "./SearchForm";
 
 const NoticeWaterMoney = (props) => {
-  const { token } = theme.useToken(); 
+  const { token } = theme.useToken();
   const { isOpen, setIsOpen } = props;
 
   const items = [
@@ -60,9 +59,9 @@ const NoticeWaterMoney = (props) => {
       key: "email",
     },
     {
-      title: 'Địa chỉ',
-      dataIndex: 'address',
-      key: 'address',
+      title: "Địa chỉ",
+      dataIndex: "address",
+      key: "address",
     },
     {
       title: "Chỉ số cũ",
@@ -206,7 +205,12 @@ const NoticeWaterMoney = (props) => {
             >
               Gửi
             </Button>
-            <Button key="submit" onClick={() => setIsOpen(false)} size="middle">
+            <Button
+              className="custom-btn-close"
+              onClick={() => setIsOpen(false)}
+              size="middle"
+            >
+              <CloseOutlined />
               Đóng
             </Button>
           </div>

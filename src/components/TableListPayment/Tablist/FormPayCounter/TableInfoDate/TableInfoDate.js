@@ -1,8 +1,20 @@
 import { Col, Form, Input, Row, Table } from "antd";
-import { useMediaQuery } from "react-responsive";
 
 function TableInfoDate() {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  const formItemLayout = {
+    labelCol: {
+      xs: { span: 24 },
+      sm: { span: 5 },
+      md: { span: 12 },
+      lg: { span: 12 },
+    },
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 24 },
+      md: { span: 24 },
+      lg: { span: 24 },
+    },
+  };
 
   const cols = [
     {
@@ -69,31 +81,19 @@ function TableInfoDate() {
         {/* Tiền thanh toán + Tiền khách đưa + Còn lại */}
         <Row>
           <Col xs={24} sm={24} md={8} lg={8}>
-            <Form.Item
-              name=""
-              label="Tiền thanh toán"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+            <Form.Item name="" label="Tiền thanh toán" {...formItemLayout}>
               <Input name="" placeholder="Tiền thanh toán" />
             </Form.Item>
           </Col>
 
           <Col xs={24} sm={24} md={8} lg={8}>
-            <Form.Item
-              name=""
-              label="Tiền khách đưa"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+            <Form.Item name="" label="Tiền khách đưa" {...formItemLayout}>
               <Input name="" placeholder="Tiền khách đưa" />
             </Form.Item>
           </Col>
 
           <Col xs={24} sm={24} md={8} lg={8}>
-            <Form.Item
-              name=""
-              label="Còn lại"
-              className={isTabletOrMobile ? "" : "gutter-item"}
-            >
+            <Form.Item name="" label="Còn lại" {...formItemLayout}>
               <Input name="" placeholder="Còn lại" />
             </Form.Item>
           </Col>

@@ -11,6 +11,7 @@ import {
 } from "antd";
 import { ModalAdvanceSearch } from "../../pages/Invoice/ModalAdvanceSearch";
 import { useState } from "react";
+import { SearchOutlined } from "@ant-design/icons";
 
 export const AdvancedSearchForm = () => {
   const { token } = theme.useToken();
@@ -27,7 +28,7 @@ export const AdvancedSearchForm = () => {
         maxWidth: "none",
         // background: token.colorFillAlter,
         borderRadius: token.borderRadiusLG,
-      }}  
+      }}
       onFinish={onFinish}
       // size="small"
       labelCol={{ span: 8 }}
@@ -188,10 +189,18 @@ export const AdvancedSearchForm = () => {
         }}
       >
         <Space size="small">
-          <Button type="primary" htmlType="submit">
+          <Button
+            className="custom-btn-search gutter-item-btn"
+            htmlType="submit"
+          >
+            <SearchOutlined />
             Tìm kiếm
           </Button>
-          <Button onClick={() => setIsOpenModalSearch(true)}>
+          <Button
+            onClick={() => setIsOpenModalSearch(true)}
+            className="custom-btn-search gutter-item-btn"
+          >
+            <SearchOutlined />
             Tìm kiếm nâng cao
           </Button>
         </Space>

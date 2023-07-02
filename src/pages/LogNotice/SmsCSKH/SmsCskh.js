@@ -1,4 +1,4 @@
-import { SendOutlined } from "@ant-design/icons";
+import { CloseOutlined, SendOutlined } from "@ant-design/icons";
 import { Button, Collapse, Form, Input, Modal, Tag, theme } from "antd";
 import React, { useState } from "react";
 import { SearchForm } from "./SearchForm";
@@ -140,7 +140,7 @@ const SmsCskh = (props) => {
         onChange={onChange}
       />
 
-      <div style={{ display: "flex", width: "100%",  }}>
+      <div style={{ display: "flex", width: "100%" }}>
         <div style={{ marginLeft: "auto", paddingTop: 20 }}>
           <Button
             type="primary"
@@ -150,7 +150,12 @@ const SmsCskh = (props) => {
           >
             Gửi tin nhắn
           </Button>
-          <Button key="submit" onClick={() => setIsOpen(false)} size="middle">
+          <Button
+            className="custom-btn-close"
+            onClick={() => setIsOpen(false)}
+            size="middle"
+          >
+            <CloseOutlined />
             Đóng
           </Button>
         </div>

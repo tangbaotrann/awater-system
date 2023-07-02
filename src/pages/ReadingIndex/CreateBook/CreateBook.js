@@ -1,4 +1,4 @@
-import { FilePdfOutlined, PlusCircleFilled } from "@ant-design/icons";
+import { FilePdfOutlined, PlusCircleOutlined, CloseOutlined } from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -158,7 +158,7 @@ export const CreateBook = (props) => {
         top: 20,
       }}
     >
-      <Collapse items={items} size="small"/>
+      <Collapse items={items} size="small" />
       <div style={listStyle}>
         <Table
           rowSelection={rowSelection}
@@ -294,7 +294,6 @@ export const CreateBook = (props) => {
         style={{
           display: "flex",
           justifyContent: "justify-between",
-          marginBottom: 16,
           marginTop: 16,
           width: "100%",
         }}
@@ -304,37 +303,33 @@ export const CreateBook = (props) => {
           <Checkbox style={{ marginRight: "13px" }}>Không SD kỳ</Checkbox>
           <Checkbox style={{ marginRight: "13px" }}>Ghi chỉ số online</Checkbox>
           <Button
-            key="submit"
             onClick={props.handleCancel}
             style={{ marginRight: 5 }}
-            type="primary"
             icon={<FilePdfOutlined />}
-            size="middle"
-            disabled
+            className="custom-btn-export"
           >
             Xuất bảng kê
-          </Button>
+          </Button> 
         </div>
         <div style={{ marginLeft: "auto" }}>
-          <Button
+          <Button 
             type="primary"
-            icon={<PlusCircleFilled />}
+            icon={<PlusCircleOutlined />}
             style={{ marginRight: 5 }}
-            size="middle"
-            disabled
+            className="create-modal tab-item-readingIndex-1"
           >
-            Tạo sổ và tạo tiếp
+            Tạo sổ và tạo tiếp 
           </Button>
           <Button
             type="primary"
-            icon={<PlusCircleFilled />}
+            icon={<PlusCircleOutlined />}
             style={{ marginRight: 5 }}
-            size="middle"
-            disabled
+            className="create-modal tab-item-readingIndex-1"
           >
             Tạo sổ và đóng
           </Button>
-          <Button key="submit" onClick={props.handleCancel} size="middle">
+          <Button className="custom-btn-close" onClick={props.handleCancel}>
+            <CloseOutlined />
             Đóng
           </Button>
         </div>

@@ -1,4 +1,4 @@
-import { EyeOutlined, PlusCircleFilled, SendOutlined, SyncOutlined } from "@ant-design/icons";
+import { CloseOutlined, EyeOutlined, PlusCircleFilled, SendOutlined, SyncOutlined } from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -167,10 +167,11 @@ export const NoticeDetail = (props) => {
             Gửi lại
           </Button>
           <Button
-            key="submit"
+            className="custom-btn-close"
             onClick={() => setIsOpenModalNoticeDetail(false)}
             size="middle"
           >
+            <CloseOutlined />
             Đóng
           </Button>
         </div>

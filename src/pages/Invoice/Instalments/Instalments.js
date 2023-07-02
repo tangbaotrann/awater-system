@@ -1,4 +1,4 @@
-import { SaveFilled } from "@ant-design/icons";
+import { CloseOutlined, SaveFilled } from "@ant-design/icons";
 import { Button, DatePicker, Form, Modal, theme } from "antd";
 
 export const Instalments = (props) => {
@@ -110,10 +110,11 @@ export const Instalments = (props) => {
             Bắt đầu thực hiện
           </Button>
           <Button
-            key="submit"
+            className="custom-btn-close"
             onClick={() => handleCancel("", "instalments")}
             size="middle"
           >
+            <CloseOutlined />
             Đóng
           </Button>
         </div>

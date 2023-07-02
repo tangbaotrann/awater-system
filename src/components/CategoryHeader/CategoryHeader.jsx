@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import React from "react";
+import React, { useState } from "react";
 import { Input, Button, DatePicker, Popover } from "antd";
 import {
   SyncOutlined,
@@ -8,7 +8,6 @@ import {
   DeleteOutlined,
   SwapOutlined,
   RetweetOutlined,
-  FormOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
 
@@ -19,7 +18,6 @@ import { useMediaQuery } from "react-responsive";
 const CategoryHeaderAction = ({
   sidebarMenu,
   handleOpenModalAdd,
-  handleViewTableDetail,
   setIsOpenModalDelete,
   handleOpenModalTransfer,
   tabList,
@@ -34,7 +32,6 @@ const CategoryHeaderAction = ({
           style={{
             backgroundColor: "#E6FFFA",
             color: "#72E8C9",
-            fontWeight: "600",
           }}
           // onClick={() => setIsOpenModalBill(true)}
           size="small"
@@ -50,7 +47,6 @@ const CategoryHeaderAction = ({
           onClick={(e) => handleOpenModalAdd(e, false)}
           style={{
             backgroundColor: "#13DEB9",
-            fontWeight: "600",
           }}
           size="small"
         >
@@ -69,7 +65,6 @@ const CategoryHeaderAction = ({
              style={{
                 backgroundColor: "#5D87FF",
                 color: "#FFFFFF",
-                fontWeight: "600",
               }}
             disabled={!tabList}
           >
@@ -87,7 +82,6 @@ const CategoryHeaderAction = ({
           style={{
             backgroundColor: "#FEF5E5",
             color: "#FFC882",
-            fontWeight: "600",
           }}
           disabled={!tabList}
         >
@@ -104,7 +98,6 @@ const CategoryHeaderAction = ({
           style={{
             backgroundColor: "#FBF2EF",
             color: "#FA966E",
-            fontWeight: "600",
           }}
           disabled={!tabList}
         >
@@ -123,7 +116,6 @@ const CategoryHeaderAction = ({
               style={{
                 backgroundColor: "#5D87FF",
                 color: "#FFFFFF",
-                fontWeight: "600",
               }}
               disabled={!tabList}
             >
@@ -140,7 +132,6 @@ const CategoryHeaderAction = ({
               style={{
                 backgroundColor: "#5D87FF",
                 color: "#FFFFFF",
-                fontWeight: "600",
               }}
               disabled={!tabList}
             >
@@ -167,6 +158,7 @@ const CategoryHeader = ({
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
   const sidebarMenu = useSelector((state) => state.sidebarSlice.data);
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
+  const [openPopover, setOpenPopover] = useState(false);
 
   const handleOpenModalAdd = (e, isEdit) => {
     e.preventDefault();
@@ -182,6 +174,7 @@ const CategoryHeader = ({
     if (!isEdit) {
       dispatch(btnClickTabListContract(null));
     }
+    setOpenPopover(false);
   };
   const handleOpenModalTransfer = (e, typeTransfer) => {
     e.preventDefault();
@@ -193,12 +186,15 @@ const CategoryHeader = ({
     } else if (typeTransfer === "billCollector") {
       setOpenTransferManagers(false);
     }
+    setOpenPopover(false);
   };
   const handleViewTableDetail = (e) => {
     e.preventDefault();
     setViewTableDetail(true);
   };
-
+  const handleOpenChange = (newOpen) => {
+    setOpenPopover(newOpen);
+  };
   return (
     <div className="category-header-wrapper">
       <div className="category-header-content">
@@ -207,6 +203,8 @@ const CategoryHeader = ({
             rootClassName="fix-popover-z-index"
             placement="bottomRight"
             trigger="click"
+            open={openPopover}
+            onOpenChange={handleOpenChange}
             content={
               <CategoryHeaderAction
                 sidebarMenu={sidebarMenu}

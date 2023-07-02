@@ -30,3 +30,12 @@
     text-align: center;
     margin-right: 12px;
 }
+
+.tbl-info-customer {
+    margin: 10px 0;
+}
+
+.pay-counter-pay-and-close {
+    display: flex;
+    justify-content: flex-end;
+}

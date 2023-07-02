@@ -134,7 +134,21 @@ function TabList({ isTabletOrMobile }) {
         items={tabs.map((_tab) => {
           return {
             label: (
-              <div>
+              <div
+                className={`tab-item tab-item-${_tab.id} ${
+                  tabList === null && _tab.id === "2"
+                    ? "tab-item-disabled"
+                    : tabList === null && _tab.id === "3"
+                    ? "tab-item-disabled"
+                    : tabList === null && _tab.id === "6"
+                    ? "tab-item-disabled"
+                    : tabList === null && _tab.id === "7"
+                    ? "tab-item-disabled"
+                    : tabList === null && _tab.id === "8"
+                    ? "tab-item-disabled"
+                    : ""
+                }`}
+              >
                 {_tab.id === "8" ? (
                   <>
                     <Popover

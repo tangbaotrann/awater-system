@@ -1,6 +1,6 @@
 import { Button, Col, Collapse, Form, Input, Row } from "antd";
 import {
-  CloseCircleOutlined,
+  CloseOutlined,
   FormOutlined,
   PrinterOutlined,
   SaveOutlined,
@@ -8,7 +8,7 @@ import {
 import { useMediaQuery } from "react-responsive";
 
 import InfoContract from "./InfoContract/InfoContract";
-import InfoClock from "./InfoClock/InfoClock";
+import InfoClock from "./InfoClock/InfoClock"; 
 import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
 import InfoCustomer from "./InfoCustomer/InfoCustomer";
 
@@ -169,7 +169,7 @@ function FormCreateContract({ tabList, hideModal }) {
           lg={12}
           className={isTabletOrMobile ? "func-form-create-contract-mobile" : ""}
         >
-          <Button htmlType="submit" type="primary">
+          <Button htmlType="submit" className="custom-btn-attachment">
             <FormOutlined />
             Tệp đính kèm
           </Button>
@@ -184,9 +184,10 @@ function FormCreateContract({ tabList, hideModal }) {
         >
           <Button
             htmlType="submit"
-            type="primary"
             className={
-              isTabletOrMobile ? "footer-func-btn-item-report" : "gutter-item"
+              isTabletOrMobile
+                ? "footer-func-btn-item-report custom-btn-agreement"
+                : "gutter-item custom-btn-agreement"
             }
           >
             <FormOutlined />
@@ -195,9 +196,10 @@ function FormCreateContract({ tabList, hideModal }) {
 
           <Button
             htmlType="submit"
-            type="primary"
             className={
-              isTabletOrMobile ? "footer-func-btn-item-print" : "gutter-item"
+              isTabletOrMobile
+                ? "footer-func-btn-item-print custom-btn-export"
+                : "gutter-item custom-btn-export"
             }
           >
             <PrinterOutlined />
@@ -206,9 +208,10 @@ function FormCreateContract({ tabList, hideModal }) {
 
           <Button
             htmlType="submit"
-            type="primary"
             className={
-              isTabletOrMobile ? "footer-func-btn-item-save-add" : "gutter-item"
+              isTabletOrMobile
+                ? "footer-func-btn-item-save-add custom-btn-save-and-add"
+                : "gutter-item custom-btn-save-and-add"
             }
           >
             <SaveOutlined />
@@ -217,9 +220,10 @@ function FormCreateContract({ tabList, hideModal }) {
 
           <Button
             htmlType="submit"
-            type="primary"
             className={
-              isTabletOrMobile ? "footer-func-btn-item-save" : "gutter-item"
+              isTabletOrMobile
+                ? "footer-func-btn-item-save custom-btn-add"
+                : "gutter-item custom-btn-add"
             }
           >
             <SaveOutlined />
@@ -227,13 +231,14 @@ function FormCreateContract({ tabList, hideModal }) {
           </Button>
 
           <Button
-            type="primary"
             className={
-              isTabletOrMobile ? "footer-func-btn-item-close" : "gutter-item"
+              isTabletOrMobile
+                ? "footer-func-btn-item-close custom-btn-close"
+                : "gutter-item custom-btn-close"
             }
             onClick={() => hideModal()}
           >
-            <CloseCircleOutlined />
+            <CloseOutlined />
             Đóng
           </Button>
         </Col>
