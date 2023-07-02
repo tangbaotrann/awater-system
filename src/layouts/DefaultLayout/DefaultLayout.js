@@ -11,6 +11,9 @@ import { useMediaQuery } from "react-responsive";
 import "./DefaultLayout.css";
 import { btnClickSidebarMenuSelector } from "../../redux/selector";
 import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
+import { primaryLogo } from "../../asset/images";
+import { Link } from "react-router-dom";
+import endPoints from "../../routers";
 
 const { Header, Sider, Content } = Layout;
 
@@ -47,7 +50,15 @@ function DefaultLayout({ children, currentPage }) {
           width={270}
           className="sidebar"
         >
-          {!collapsed && <h1 className="logo-primary">AWATER</h1>}
+          {!collapsed && (
+            <Link to={endPoints.PUBLIC}>
+              <img
+                src={primaryLogo.logo}
+                className="primary-logo"
+                alt="logo-awater"
+              />
+            </Link>
+          )}
 
           <SidebarMenu />
         </Sider>
