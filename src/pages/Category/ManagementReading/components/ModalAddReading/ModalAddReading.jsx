@@ -13,8 +13,11 @@ import React, { useEffect, useId } from "react";
 
 import "./ModalAddReading.css";
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 
 const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
   const employeeOptions = [];
   for (let i = 1; i < 36; i++) {
     employeeOptions.push({
@@ -231,7 +234,12 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
               className="button"
               type="primary"
               icon={<SaveOutlined />}
-              style={{ marginRight: 5, width: "100%" }}
+              style={{
+                marginRight: 5,
+                width: "100%",
+                backgroundColor: "#fbf2ef",
+                color: "#fa8a6d",
+              }}
               size="middle"
               //   disabled={!(valueSymbol && valueDescribe)}
             >
@@ -242,7 +250,12 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
               key="submit"
               icon={<CloseCircleOutlined />}
               onClick={() => handleCancel("addReading")}
-              style={{ width: "100%" }}
+              style={{
+                width: "100%",
+                backgroundColor: "#fa896b",
+                color: "#ffffff",
+                border: "none",
+              }}
               size="middle"
             >
               Đóng
