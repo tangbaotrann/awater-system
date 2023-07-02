@@ -123,7 +123,7 @@ const Invoice = () => {
     <>
       {/* filter */} 
       <Collapse 
-        items={items} 
+        items={items}  
         size="small"
       />
 

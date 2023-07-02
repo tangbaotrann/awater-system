@@ -17,7 +17,7 @@ function TableListContract() {
   const tabList = useSelector(btnClickTabListContractSelector);
 
   // cols table main
-  const cols = [
+  const cols = [ 
     {
       key: "index",
       title: "#",

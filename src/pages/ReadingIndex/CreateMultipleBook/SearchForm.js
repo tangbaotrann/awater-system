@@ -1,5 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Col, DatePicker, Form, Row, Select, Space, theme } from "antd";
+import { Col, DatePicker, Form, Row, Select, theme } from "antd";
 import { Button } from "antd/es/radio";
 import React from "react";
 
@@ -11,7 +11,6 @@ export const SearchForm = () => {
   };
   const formStyle = {
     maxWidth: "none",
-    // background: token.colorFillAlter,
     borderRadius: token.borderRadiusLG,
   };
   return (
@@ -60,11 +59,12 @@ export const SearchForm = () => {
           textAlign: "right",
         }}
       >
-        {/* <Space size="small"> */}
-          <Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
-            Tìm kiếm
-          </Button>
-        {/* </Space> */}
+        <Button
+          className="custom-btn-search gutter-item-btn"
+        >
+          <SearchOutlined />
+          Tìm kiếm
+        </Button>
       </div>
     </Form>
   );

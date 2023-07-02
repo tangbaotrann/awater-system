@@ -1,6 +1,4 @@
-import {
-  SaveFilled,
-} from "@ant-design/icons";
+import { CloseOutlined, SaveFilled } from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -61,7 +59,7 @@ export const CalculateMoney = (props) => {
           padding: 24,
         }}
       >
-        <Form.Item name="date" label="Tháng" style={{marginRight: '70px'}}>
+        <Form.Item name="date" label="Tháng" style={{ marginRight: "70px" }}>
           <DatePicker
             allowClear
             placeholder="Chọn tháng"
@@ -70,7 +68,11 @@ export const CalculateMoney = (props) => {
             picker="month"
           />
         </Form.Item>
-        <Form.Item name="person" label="Cán bộ đọc" style={{marginRight: '70px'}}>
+        <Form.Item
+          name="person"
+          label="Cán bộ đọc"
+          style={{ marginRight: "70px" }}
+        >
           <Select
             defaultValue="--Chọn cán bộ--"
             style={{
@@ -88,7 +90,11 @@ export const CalculateMoney = (props) => {
             ]}
           />
         </Form.Item>
-        <Form.Item name="tuyendoc" label="Tuyến đọc" style={{marginRight: '70px'}}>
+        <Form.Item
+          name="tuyendoc"
+          label="Tuyến đọc"
+          style={{ marginRight: "70px" }}
+        >
           <Select
             defaultValue="--Chọn tuyến đọc--"
             style={{
@@ -106,7 +112,11 @@ export const CalculateMoney = (props) => {
             ]}
           />
         </Form.Item>
-        <Form.Item name="status" label="Phạm vi" style={{marginRight: '70px'}}>
+        <Form.Item
+          name="status"
+          label="Phạm vi"
+          style={{ marginRight: "70px" }}
+        >
           <Select
             defaultValue="--Chọn phạm vi--"
             style={{
@@ -124,10 +134,18 @@ export const CalculateMoney = (props) => {
             ]}
           />
         </Form.Item>
-        <Form.Item name="place" label="Khách hàng" style={{marginRight: '70px'}}>
-            <Input placeholder="Tên khách hàng" />
+        <Form.Item
+          name="place"
+          label="Khách hàng"
+          style={{ marginRight: "70px" }}
+        >
+          <Input placeholder="Tên khách hàng" />
         </Form.Item>
-        <Form.Item name="ky" label="Số hợp đồng" style={{marginRight: '70px'}}>
+        <Form.Item
+          name="ky"
+          label="Số hợp đồng"
+          style={{ marginRight: "70px" }}
+        >
           <Input placeholder="Số hợp đồng, mã KH, IDKH" />
         </Form.Item>
         <Checkbox style={{ marginRight: "13px" }}>Tính lại tất cả</Checkbox>
@@ -150,7 +168,12 @@ export const CalculateMoney = (props) => {
           >
             Bắt đầu thực hiện
           </Button>
-          <Button key="submit" onClick={props.handleCancel} size="middle">
+          <Button
+            className="custom-btn-close"
+            onClick={props.handleCancel}
+            size="middle"
+          >
+            <CloseOutlined />
             Đóng
           </Button>
         </div>

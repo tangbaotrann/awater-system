@@ -9,9 +9,10 @@ import {
   Space,
   theme,
 } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 export const AdvancedSearchForm = () => {
-  const { token } = theme.useToken(); 
+  const { token } = theme.useToken();
   const [form] = Form.useForm();
   const formStyle = {
     maxWidth: "none",
@@ -170,14 +171,20 @@ export const AdvancedSearchForm = () => {
             }}
           >
             <Space size="small">
-              <Button type="primary" htmlType="submit">
+              <Button
+                htmlType="submit"
+                className="custom-btn-search gutter-item-btn"
+              >
+                <SearchOutlined />
                 Tìm kiếm
               </Button>
               <Button
                 onClick={() => {
                   form.resetFields();
                 }}
+                className="custom-btn-search gutter-item-btn"
               >
+                <SearchOutlined />
                 Tìm mới
               </Button>
             </Space>

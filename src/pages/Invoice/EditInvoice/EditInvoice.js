@@ -1,5 +1,6 @@
 import {
   CloseCircleFilled,
+  CloseOutlined,
   FolderFilled,
   ProjectOutlined,
   QuestionCircleOutlined,
@@ -604,34 +605,38 @@ export const EditInvoice = (props) => {
           <Button size="small" type="primary" danger>
             Chỉ số tháng sau: 1155
           </Button>
-          <Button type="primary" size="small" style={{ marginLeft: "3px" }}>
+          <Button
+            className="tab-item-readingIndex-3"
+            size="small"
+            style={{ marginLeft: "3px" }}
+          >
             Không lấy chỉ số theo hóa đơn này
           </Button>
           <Button
-            type="primary"
             icon={<FolderFilled />}
             style={{ marginLeft: "3px" }}
             size="small"
+            className="custom-btn-export"
           >
             Tệp đính kèm
           </Button>
         </div>
         <div style={{ marginLeft: "auto" }}>
           <Button
-            type="primary"
             icon={<ProjectOutlined />}
             style={{ marginLeft: "3px" }}
             onClick={() => setIsOpenTablePrice(true)}
             size="small"
+            className="tab-item-Invoice-3"
           >
             Chỉnh bảng giá
           </Button>
           <Button
-            type="primary"
             icon={<SyncOutlined />}
             style={{ marginLeft: "3px" }}
             onClick={() => setModalConfirm(true)}
             size="small"
+            className="tab-item-Invoice-8"
           >
             Đồng bộ từ hợp đồng
           </Button>
@@ -644,12 +649,12 @@ export const EditInvoice = (props) => {
             Lưu
           </Button>
           <Button
-            type="primary"
-            icon={<CloseCircleFilled />}
+            className="custom-btn-close"
             style={{ marginLeft: "3px" }}
             onClick={() => setIsOpenModalEditInvoice(false)}
             size="small"
           >
+            <CloseOutlined />
             Đóng
           </Button>
         </div>
@@ -672,11 +677,8 @@ export const EditInvoice = (props) => {
             hàng, đồng hồ, số hợp đồng bạn có muốn thay đổi không
           </p>
         </div>
-        <div style={{ marginTop: "10px", textAlign: 'center' }}>
-          <Button
-            type="primary"
-            style={{ marginLeft: "10px" }}
-          >
+        <div style={{ marginTop: "10px", textAlign: "center" }}>
+          <Button type="primary" style={{ marginLeft: "10px" }}>
             Có
           </Button>
           <Button

@@ -33,6 +33,7 @@
     --purple-btn-hover: #3b59e7;
     --sky-blue: #71d1f8;
     --sky-blue-hover: #31b7ec;
+    
 
     /* font-family */
     --font-family: 'Quicksand', 'sans-serif' !important;
@@ -43,7 +44,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0; 
 }
 
 html {
@@ -268,7 +269,7 @@ html *::-webkit-scrollbar-track {
 /* Thiết kế cho kích thước màn hình dưới 576px (mobile) */
 @media (max-width: 575px) {
     /* customer dev */
-    .container-form-cus-dev {
+    .container-form-cus-dev { 
         padding-right: 18px;
     }
 

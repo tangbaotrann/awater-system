@@ -1,5 +1,5 @@
 import { Button, Collapse, Modal, Table } from "antd";
-import { SaveFilled } from "@ant-design/icons";
+import { CloseCircleFilled, CloseOutlined, SaveFilled } from "@ant-design/icons";
 import ChartJS from "chart.js/auto";
 import {
   CategoryScale,
@@ -137,7 +137,7 @@ export const WaterStatus = (props) => {
       },
       title: {
         display: true,
-        text: "Biểu đồ sử dụng nước", 
+        text: "Biểu đồ sử dụng nước",
       },
     },
     barThickness: 10,
@@ -150,7 +150,7 @@ export const WaterStatus = (props) => {
       children: <FormSearchWaterStatus />,
     },
   ];
- 
+
   const data = {
     labels,
     datasets: [
@@ -177,7 +177,11 @@ export const WaterStatus = (props) => {
         top: 10,
       }}
       footer={[
-        <Button key="cancel" onClick={() => setIsOpen(false)}>
+        <Button
+          className="custom-btn-close"
+          onClick={() => setIsOpen(false)}
+          icon={<CloseOutlined />}
+        >
           Đóng
         </Button>,
       ]}

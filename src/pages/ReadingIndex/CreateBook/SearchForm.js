@@ -29,7 +29,7 @@ export const SearchForm = () => {
         name="advanced_search"
         style={formStyle}
         onFinish={onFinish}
-        size="small"
+        // size="small"
       >
         <Row gutter={24}>
           <Col span={8}>
@@ -173,13 +173,19 @@ export const SearchForm = () => {
           }}
         >
           <Space size="small">
-            <Button type="primary" htmlType="submit"  icon={<SearchOutlined />}>
+            <Button
+              htmlType="submit"
+              className="custom-btn-search gutter-item-btn"
+              icon={<SearchOutlined />}
+            >
               Tìm kiếm
             </Button>
             <Button
               onClick={() => {
                 form.resetFields();
               }}
+              className="custom-btn-search gutter-item-btn"
+              icon={<SearchOutlined />}
             >
               Tìm mới
             </Button>

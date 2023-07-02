@@ -5,14 +5,22 @@ import {
   KeyOutlined,
   PlusCircleOutlined,
   SettingOutlined,
+  MoreOutlined,
+  CaretDownOutlined,
+  BarChartOutlined,
+  DeleteOutlined
 } from "@ant-design/icons";
 import { Tabs } from "antd";
 import React from "react";
 import "./FooterReadingIndex.css";
 
 export const FooterReadingIndex = (props) => {
-  const { setIsOpenModalCreate, setIsModalOpenMCreate, isTabletOrMobile, setIsModalOpenIndexBar } =
-    props;
+  const {
+    setIsOpenModalCreate,
+    setIsModalOpenMCreate,
+    isTabletOrMobile,
+    setIsModalOpenIndexBar,
+  } = props;
 
   const tabs = [
     {
@@ -20,7 +28,6 @@ export const FooterReadingIndex = (props) => {
       label: (
         <span
           onClick={() => setIsOpenModalCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Tạo sổ
         </span>
@@ -32,7 +39,6 @@ export const FooterReadingIndex = (props) => {
       label: (
         <span
           onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Tạo sổ đồng loạt
         </span>
@@ -44,20 +50,17 @@ export const FooterReadingIndex = (props) => {
       label: (
         <span
           // onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Xóa sổ
         </span>
       ),
-      icon: <CloseCircleOutlined />,
-      
+      icon: <DeleteOutlined />,
     },
     {
       id: "4",
       label: (
         <span
           // onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Khóa sổ và tính tiền
         </span>
@@ -69,19 +72,17 @@ export const FooterReadingIndex = (props) => {
       label: (
         <span
           // onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Xóa biểu mẫu
         </span>
       ),
-      icon: <PlusCircleOutlined />,
+      icon: <CloseCircleOutlined />,
     },
     {
       id: "6",
       label: (
         <span
           // onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Chốt sổ
         </span>
@@ -93,7 +94,6 @@ export const FooterReadingIndex = (props) => {
       label: (
         <span
           // onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Ngừng ghi chỉ số
         </span>
@@ -105,34 +105,28 @@ export const FooterReadingIndex = (props) => {
       label: (
         <span
           // onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
-          Ngừng ghi chỉ số
+          Đồng bộ lại
         </span>
       ),
       icon: <EditOutlined />,
     },
     {
       id: "9",
-      label: ( 
+      label: (
         <span
           // onClick={() => setIsModalOpenMCreate(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Tiện ích
         </span>
       ),
-      icon: <SettingOutlined />,
+      icon:  <MoreOutlined />,
+      iconRight: <CaretDownOutlined />
     },
     {
       id: "10",
-      label: (
-        <span
-          onClick={() => setIsModalOpenIndexBar(true)}
-        >
-          Chỉ số
-        </span>
-      ),
+      label: <span onClick={() => setIsModalOpenIndexBar(true)}>Chỉ số</span>,
+      icon: <BarChartOutlined />
     },
   ];
 
@@ -142,10 +136,12 @@ export const FooterReadingIndex = (props) => {
         type={isTabletOrMobile ? "line" : "card"}
         tabPosition={isTabletOrMobile ? "left" : "top"}
         activeKey="0"
-        items={tabs.map((_tab) => {
+        items={tabs.map((_tab, index) => {
           return {
             label: (
-              <div className="test">
+              <div
+                className={`tab-item-readingIndex tab-item-readingIndex-${_tab.id}`}
+              >
                 {_tab.icon} {_tab.label}
               </div>
             ),

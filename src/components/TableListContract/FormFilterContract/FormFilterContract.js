@@ -14,7 +14,7 @@ function FormFilterContract() {
   const handleFailed = (error) => {
     console.log({ error });
   };
-
+ 
   return (
     <Form onFinish={handleSubmit} onFinishFailed={handleFailed}>
       <Row>

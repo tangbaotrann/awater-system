@@ -1,5 +1,6 @@
 import { Dropdown, Space, Tabs } from "antd";
 import {
+  BarChartOutlined,
   CalculatorOutlined,
   CloseCircleOutlined,
   DeleteOutlined,
@@ -19,7 +20,7 @@ import {
   SyncOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import "./FooterReadingIndex.css";
+import "./FooterInvoice.css";
 
 export const FooterInvoice = (props) => {
   const {
@@ -31,7 +32,7 @@ export const FooterInvoice = (props) => {
     setIsModalEmail,
     setIsModalSMS,
     isTabletOrMobile,
-    setIsOpenModalInvoiceBar,
+    setIsOpenModalInvoiceBar
   } = props;
 
   const hanldeOpen = (isOpen, type) => {
@@ -221,26 +222,17 @@ export const FooterInvoice = (props) => {
       icon: <MailFilled style={{ color: "#1677ff" }} />,
     },
   ];
+
   const tabs = [
     {
       id: "1",
-      label: (
-        <span
-          onClick={() => setIsOpenModalBill(true)}
-          style={{ marginLeft: "-9px" }}
-        >
-          Tính tiền
-        </span>
-      ),
+      label: <span onClick={() => setIsOpenModalBill(true)}>Tính tiền</span>,
       icon: <CalculatorOutlined />,
     },
     {
       id: "2",
       label: (
-        <span
-          onClick={() => setIsModalInstalmentsOpen(true)}
-          style={{ marginLeft: "-9px" }}
-        >
+        <span onClick={() => setIsModalInstalmentsOpen(true)}>
           Tính tiền trả góp
         </span>
       ),
@@ -249,24 +241,14 @@ export const FooterInvoice = (props) => {
     {
       id: "3",
       label: (
-        <span
-          onClick={() => setIsOpenModalAddInvoice(true)}
-          style={{ marginLeft: "-9px" }}
-        >
-          Thêm hóa đơn
-        </span>
+        <span onClick={() => setIsOpenModalAddInvoice(true)}>Thêm hóa đơn</span>
       ),
       icon: <PlusCircleOutlined />,
     },
     {
       id: "4",
       label: (
-        <span
-          onClick={() => setIsOpenModalEditInvoice(true)}
-          style={{ marginLeft: "-9px" }}
-        >
-          Sửa hóa đơn
-        </span>
+        <span onClick={() => setIsOpenModalEditInvoice(true)}>Sửa hóa đơn</span>
       ),
       icon: <PlusCircleOutlined />,
     },
@@ -277,7 +259,6 @@ export const FooterInvoice = (props) => {
           menu={{
             items: items,
           }}
-          style={{ marginLeft: "-9px" }}
         >
           <a href="#!" onClick={(e) => e.preventDefault()}>
             <Space>
@@ -293,8 +274,7 @@ export const FooterInvoice = (props) => {
       id: "6",
       label: (
         <span
-          // onClick={() => setIsOpenModalEditInvoice(true)}
-          style={{ marginLeft: "-9px" }}
+        // onClick={() => setIsOpenModalEditInvoice(true)}
         >
           Xem hóa đơn
         </span>
@@ -305,8 +285,7 @@ export const FooterInvoice = (props) => {
       id: "7",
       label: (
         <span
-          // onClick={() => setIsOpenModalEditInvoice(true)}
-          style={{ marginLeft: "-9px" }}
+        // onClick={() => setIsOpenModalEditInvoice(true)}
         >
           <Dropdown menu={{ items: itemEmail }}>
             <a href="#!" onClick={(e) => e.preventDefault()}>
@@ -323,22 +302,14 @@ export const FooterInvoice = (props) => {
     {
       id: "8",
       label: (
-        <span
-          onClick={() => setIsOpenModalWaterStatus(true)}
-          style={{ marginLeft: "-9px" }}
-        >
-          Xem TH SD
-        </span>
+        <span onClick={() => setIsOpenModalWaterStatus(true)}>Xem TH SD</span>
       ),
       icon: <UnorderedListOutlined />,
     },
     {
       id: "9",
       label: (
-        <span
-          onClick={() => setIsOpenModalWaterStatus(true)}
-          style={{ marginLeft: "-9px" }}
-        >
+        <span>
           <Dropdown
             menu={{
               items: extension,
@@ -355,10 +326,11 @@ export const FooterInvoice = (props) => {
       ),
       icon: <SettingOutlined />,
     },
-    // {
-    //   id: "10",
-    //   label: <span onClick={() => setIsOpenModalInvoiceBar(true)}>Chỉ số</span>,
-    // },
+    {
+      id: "10",
+      label: <span onClick={() => setIsOpenModalInvoiceBar(true)}>Chỉ số</span>,
+      icon: <BarChartOutlined />
+    },
   ];
 
   return (
@@ -369,14 +341,13 @@ export const FooterInvoice = (props) => {
       items={tabs.map((_tab) => {
         return {
           label: (
-            <span>
+            <div className={`tab-item-Invoice tab-item-Invoice-${_tab.id}`}>
               {_tab.icon} {_tab.label}
-            </span>
+            </div>
           ),
           key: _tab.id,
         };
       })}
-      // onChange={handleChangeTabs}
     />
   );
 };

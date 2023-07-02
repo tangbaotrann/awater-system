@@ -1,4 +1,5 @@
-import { Button, Col, DatePicker, Form, Input, Row, Select} from "antd";
+import { SearchOutlined } from "@ant-design/icons";
+import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
 
 export const AdvancedSearchForm = () => {
   const [form] = Form.useForm();
@@ -21,22 +22,14 @@ export const AdvancedSearchForm = () => {
       form={form}
       name="advanced_search"
       onFinish={onFinish}
-    //   size="small"   
+      //   size="small"
     >
       <Row gutter={24}>
         <Col span={8} xs={24} sm={12} md={12} lg={8}>
           <Form.Item name="date" label="Ngày gửi">
             <div style={{ display: "flex", gap: "10px" }}>
-              <DatePicker
-                allowClear
-                placeholder="Từ"
-                format="DD-MM-YYYY"
-              />
-              <DatePicker
-                allowClear
-                placeholder="Đến"
-                format="DD-MM-YYYY"
-              />
+              <DatePicker allowClear placeholder="Từ" format="DD-MM-YYYY" />
+              <DatePicker allowClear placeholder="Đến" format="DD-MM-YYYY" />
             </div>
           </Form.Item>
         </Col>
@@ -91,7 +84,7 @@ export const AdvancedSearchForm = () => {
       <Row gutter={24}>
         <Col span={6} xs={24} sm={12} md={12} lg={8}>
           <Form.Item name="place" label="Tên lần gửi">
-              <Input/>
+            <Input />
           </Form.Item>
         </Col>
         <Col span={6} xs={24} sm={12} md={12} lg={8}>
@@ -119,7 +112,11 @@ export const AdvancedSearchForm = () => {
               textAlign: "center",
             }}
           >
-            <Button type="primary" htmlType="submit">
+            <Button
+              className="custom-btn-search gutter-item-btn"
+              htmlType="submit"
+            >
+              <SearchOutlined />
               Tìm kiếm
             </Button>
           </div>

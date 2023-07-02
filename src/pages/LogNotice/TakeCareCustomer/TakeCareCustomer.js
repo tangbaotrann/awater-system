@@ -1,4 +1,4 @@
-import { SendOutlined } from "@ant-design/icons";
+import { CloseOutlined, SendOutlined } from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -275,7 +275,12 @@ const TakeCareCustomer = (props) => {
           >
             Gửi tin nhắn
           </Button>
-          <Button key="submit" onClick={() => setIsOpen(false)} size="middle">
+          <Button
+            className="custom-btn-close"
+            onClick={() => setIsOpen(false)}
+            size="middle"
+          >
+            <CloseOutlined />
             Đóng
           </Button>
         </div>

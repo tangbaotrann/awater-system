@@ -3,7 +3,7 @@
     outline: none;
     font-size: 1.6rem;
     color: var(--blue-1677ff);
-}
+} 
 
 /* container table list contract  */
 .container-tbl-contract {
@@ -47,7 +47,7 @@
 .tablist-func-clock-btn {
     margin-bottom: 6px;
 }
-
+ 
 /* Tabs */
 .tab-item {
     font-size: 1.4rem;

@@ -1,4 +1,5 @@
 import {
+  BarChartOutlined,
   DownOutlined,
   FileExcelOutlined,
   MailOutlined,
@@ -7,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Dropdown, Space, Tabs } from "antd";
 import React from "react";
-import "./FooterReadingIndex.css";
+import './FooterLogNotice.css'
 
 export const FooterLogNotice = (props) => {
   const {
@@ -46,7 +47,7 @@ export const FooterLogNotice = (props) => {
       icon: <FileExcelOutlined style={{ color: "#1677ff" }} />,
     },
     {
-      label: (
+      label: ( 
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -66,7 +67,6 @@ export const FooterLogNotice = (props) => {
       label: (
         <span
           onClick={() => setIsOpenMoneyWater(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Gửi SMS tiền nước
         </span>
@@ -78,7 +78,6 @@ export const FooterLogNotice = (props) => {
       label: (
         <span
           onClick={() => setIsOpenModalCskh(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Gửi SMS CSKH
         </span>
@@ -90,7 +89,6 @@ export const FooterLogNotice = (props) => {
       label: (
         <span
           onClick={() => setIsOpenModalNoticeMoneyWater(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Gửi thông báo tiền nước
         </span>
@@ -102,7 +100,6 @@ export const FooterLogNotice = (props) => {
       label: (
         <span
           onClick={() => setIsOpenTakeCareCustomer(true)}
-          style={{ marginLeft: "-9px" }}
         >
           Gửi thông báo CSKH
         </span>
@@ -130,6 +127,7 @@ export const FooterLogNotice = (props) => {
     {
       id: "6",
       label: "Chỉ số",
+      icon: <BarChartOutlined />
     },
   ];
 
@@ -142,7 +140,7 @@ export const FooterLogNotice = (props) => {
         items={tabs.map((_tab) => {
           return {
             label: (
-              <div className="test">
+              <div className={`tab-item-LogNotice tab-item-LogNotice-${_tab.id}`}>
                 {_tab.icon}
                 {_tab.label}
               </div>

@@ -1,7 +1,7 @@
 import {
   EyeOutlined,
-  FilePdfOutlined,
-  PlusCircleFilled,
+  CloseOutlined,
+  PlusCircleOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -10,11 +10,9 @@ import {
   Collapse,
   DatePicker,
   Form,
-  Input,
   Modal,
   Row,
   Select,
-  Space,
   Table,
   theme,
 } from "antd";
@@ -146,7 +144,7 @@ export const CreateMultipleBook = (props) => {
         top: 20,
       }}
     >
-      <Collapse items={items} size="small"/>
+      <Collapse items={items} size="small" />
       <div
         style={{
           lineHeight: "200px",
@@ -268,19 +266,18 @@ export const CreateMultipleBook = (props) => {
         </div>
         <div style={{ marginLeft: "auto" }}>
           <Button
-            type="primary"
-            icon={<PlusCircleFilled />}
+            icon={<PlusCircleOutlined />}
+            className="tab-item-readingIndex-2 "
             style={{ marginRight: 5 }}
-            size="middle"
-            disabled
           >
             Tạo sổ đồng loạt
           </Button>
           <Button
-            key="submit"
             onClick={() => handleCancel("", "multiple")}
             size="middle"
+            className="custom-btn-close"
           >
+            <CloseOutlined />
             Đóng
           </Button>
         </div>

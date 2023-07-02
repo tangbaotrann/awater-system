@@ -8,7 +8,7 @@ import {
 import { useMediaQuery } from "react-responsive";
 
 import InfoContract from "./InfoContract/InfoContract";
-import InfoClock from "./InfoClock/InfoClock";
+import InfoClock from "./InfoClock/InfoClock"; 
 import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
 import InfoCustomer from "./InfoCustomer/InfoCustomer";
 
