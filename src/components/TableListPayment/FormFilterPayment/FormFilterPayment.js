@@ -75,7 +75,7 @@ function FormFilterPayment() {
         </Col>
 
         {/* Phạm vi */}
-        <Col xs={24} sm={8} md={12} lg={3}>
+        <Col xs={24} sm={12} md={12} lg={3}>
           <Form.Item name="" className={isTabletOrMobile ? "" : "gutter-item"}>
             <Select
               fieldNames=""
@@ -86,7 +86,7 @@ function FormFilterPayment() {
         </Col>
 
         {/* Chọn vùng */}
-        <Col xs={24} sm={8} md={12} lg={3}>
+        <Col xs={24} sm={12} md={12} lg={3}>
           <Form.Item
             name=""
             className={isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"}
@@ -100,11 +100,8 @@ function FormFilterPayment() {
         </Col>
 
         {/* Chọn khu vực */}
-        <Col xs={24} sm={8} md={24} lg={3}>
-          <Form.Item
-            name=""
-            className={isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"}
-          >
+        <Col xs={24} sm={24} md={24} lg={3}>
+          <Form.Item name="" className={isTabletOrMobile ? "" : "gutter-item"}>
             <Select
               fieldNames=""
               options={[{ value: "1", label: "KV 1" }]}
@@ -116,7 +113,7 @@ function FormFilterPayment() {
 
       <Row>
         {/* Số hợp đồng */}
-        <Col xs={24} sm={24} md={8} lg={5}>
+        <Col xs={24} sm={8} md={8} lg={5}>
           <Form.Item
             name=""
             className={isTabletOrMobile ? "" : "gutter-item"}
@@ -152,11 +149,8 @@ function FormFilterPayment() {
         </Col>
 
         {/* Hình thức thanh toán */}
-        <Col xs={24} sm={8} md={12} lg={3}>
-          <Form.Item
-            name=""
-            className={isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"}
-          >
+        <Col xs={24} sm={12} md={12} lg={3}>
+          <Form.Item name="" className={isTabletOrMobile ? "" : "gutter-item"}>
             <Select
               fieldNames=""
               options={[{ value: "1", label: "HT 1" }]}
@@ -166,7 +160,7 @@ function FormFilterPayment() {
         </Col>
 
         {/* Hình thức thanh toán */}
-        <Col xs={24} sm={24} md={12} lg={6}>
+        <Col xs={24} sm={12} md={12} lg={6}>
           <Form.Item
             name=""
             className={isTabletOrMobile ? "gutter-item-mobile" : "gutter-item"}
