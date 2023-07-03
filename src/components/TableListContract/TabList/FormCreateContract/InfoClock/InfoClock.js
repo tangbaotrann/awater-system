@@ -45,7 +45,7 @@ function InfoClock() {
     <div className="container-info-clock">
       <Row>
         {/* Table */}
-        <Col xs={24} sm={24} md={24} lg={20} className="gutter-item">
+        <Col xs={24} sm={24} md={24} lg={20}>
           <div className="tablist-tbl-clock-on-modal">
             <Table
               columns={colsClock}
@@ -64,6 +64,7 @@ function InfoClock() {
               scroll={{
                 x: 500,
               }}
+              style={{ marginRight: "10px" }}
             ></Table>
           </div>
         </Col>
@@ -99,7 +100,7 @@ function InfoClock() {
           <Button
             className={
               isTabletOrMobile
-                ? "tablist-func-clock-btn-mobile custom-btn-export"
+                ? "tablist-func-clock-btn-mobile space-top-10 custom-btn-export"
                 : "tablist-func-clock-btn custom-btn-export"
             }
           >

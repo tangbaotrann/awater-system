@@ -264,6 +264,15 @@ html *::-webkit-scrollbar-track {
     font-weight: 600;
 }
 
+/* Tablist nav */
+.ant-tabs-nav-list {
+    margin-right: 10px;
+}
+
+.ant-tabs-tab-btn {
+    width: 100%;
+}
+
 /* ----- RESPONSIVE HERE ----- */
 
 /* Thiết kế cho kích thước màn hình dưới 576px (mobile) */
@@ -279,7 +288,6 @@ html *::-webkit-scrollbar-track {
 
     .reporter-auto-search-input {
         width: 100%;
-        padding-right: 18px;
     }
 
     /* contract */
@@ -361,8 +369,12 @@ html *::-webkit-scrollbar-track {
 
     .tablist-func-clock-btn-mobile {
         margin-top: 10px;
-        margin-right: 10px;
+        margin-right: 0 !important;
         width: 100%;
+    }
+
+    .space-top-10 {
+        margin-top: 10px;
     }
 
     /* info detail clock */
@@ -433,6 +445,10 @@ html *::-webkit-scrollbar-track {
         margin: 0;
     }
 
+    .space-top-10 {
+        margin-top: 10px;
+    }
+
     /* form pay counter */
     .pay-counter-footer-quantity {
         margin: 10px 0;
@@ -444,10 +460,8 @@ html *::-webkit-scrollbar-track {
         margin-right: 0 !important;
     }
 
-    .custom-btn-export {
+    .custom-btn-export, .custom-btn-watch-report, .custom-btn-reset {
         width: 100%;
-        margin-top: 20px;
-        margin-bottom: 10px;
     }
 
     .pay-counter-pay-and-close {
@@ -456,7 +470,6 @@ html *::-webkit-scrollbar-track {
     }
 
     .custom-btn-close {
-        margin-top: 10px;
         margin-left: 0 !important;
     }
 
