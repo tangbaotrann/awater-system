@@ -152,7 +152,7 @@ function FormPayByBill({ hideModal }) {
         <Divider />
 
         <div className="func-pay-by-bill-buttons">
-          <Button className="custom-btn-add" htmlType="submit">
+          <Button className="custom-btn-add space-right-10" htmlType="submit">
             <FormOutlined /> Ghi lại
           </Button>
           <Button

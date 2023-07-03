@@ -193,7 +193,7 @@ function FormPayDebt({ hideModal }) {
 
         {/* Buttons */}
         <div className="func-pay-debt-buttons">
-          <Button htmlType="submit" className="custom-btn-add">
+          <Button htmlType="submit" className="custom-btn-add space-right-10">
             <SaveOutlined />
             Lưu
           </Button>

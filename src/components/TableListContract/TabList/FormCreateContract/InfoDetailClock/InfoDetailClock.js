@@ -281,6 +281,13 @@ function InfoDetailClock() {
             </div>
           </Form.Item>
         </Col>
+
+        {/* Đai khởi thủy */}
+        <Col xs={24} sm={24} md={24} lg={12}>
+          <Form.Item name="" label="Đai khởi thủy" {...formItemLayout}>
+            <Input name="" placeholder="Nhập đai khởi thủy" />
+          </Form.Item>
+        </Col>
       </Row>
 
       <Row>
@@ -534,15 +541,6 @@ function InfoDetailClock() {
         <Col xs={24} sm={24} md={24} lg={12}>
           <Form.Item name="" label="Ống dẫn" {...formItemLayout}>
             <Input name="" placeholder="Nhập ống dẫn" />
-          </Form.Item>
-        </Col>
-      </Row>
-
-      <Row>
-        {/* Đai khởi thủy */}
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Đai khởi thủy" {...formItemLayout}>
-            <Input name="" placeholder="Nhập đai khởi thủy" />
           </Form.Item>
         </Col>
       </Row>
