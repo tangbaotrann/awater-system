@@ -42,7 +42,9 @@ const FileForm = ({ hideModal }) => {
           <Col span={12} xs={24} sm={12}>
             <Form.Item label="Chọn tệp">
               <Upload>
-                <Button>Chọn tệp từ thư mục máy</Button>
+                <Button className="custom-btn-watch-report">
+                  Chọn tệp từ thư mục máy
+                </Button>
               </Upload>
             </Form.Item>
           </Col>
@@ -81,7 +83,8 @@ const FileForm = ({ hideModal }) => {
           <Button
             icon={<RedoOutlined />}
             type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-update"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             style={{
               marginLeft: "10px",
             }}
@@ -93,8 +96,12 @@ const FileForm = ({ hideModal }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-close"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             Đóng
           </Button>

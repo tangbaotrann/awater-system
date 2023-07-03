@@ -17,7 +17,7 @@ import {
   theme,
   Table,
   Space,
-  Popover, 
+  Popover,
   Collapse,
 } from "antd";
 import {
@@ -124,7 +124,7 @@ function InvoicePrint() {
       title: "",
       key: "actions",
       width: 100,
-      fixed: "right",
+
       render: (text, record) => {
         return (
           <>
@@ -240,14 +240,7 @@ function InvoicePrint() {
             </Form.Item>
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
-            <Form.Item
-              label={
-                <>
-                  In hóa đơn
-                  <br />
-                </>
-              }
-            >
+            <Form.Item label={<>In hóa đơn</>}>
               <Select style={{ width: "100%" }}>
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
@@ -264,7 +257,7 @@ function InvoicePrint() {
                   style={{
                     maxWidth: "100%",
                   }}
-                  type="primary"
+                  className="custom-btn-search"
                   htmlType="submit"
                 >
                   <SearchOutlined />

@@ -10,7 +10,11 @@ import {
   Select,
   theme,
 } from "antd";
-import { CloseOutlined, PrinterOutlined, RedoOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  PrinterOutlined,
+  RedoOutlined,
+} from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
 const ReprintButton = ({ hideModal }) => {
@@ -127,20 +131,26 @@ const ReprintButton = ({ hideModal }) => {
         >
           <Button
             key="reset"
-            type="primary"
             icon={<RedoOutlined />}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-reset"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             Làm mới
           </Button>
 
           <Button
             key="submit"
-            type="primary"
+            className="custom-btn-attachment"
             htmlType="submit"
             icon={<PrinterOutlined />}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            style={{
+              marginLeft: "10px",
+            }}
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             In
           </Button>
@@ -148,9 +158,13 @@ const ReprintButton = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-close"
+            // type="primary"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             Đóng
           </Button>

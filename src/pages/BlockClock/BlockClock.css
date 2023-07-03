@@ -1,0 +1,94 @@
+@media (max-width: 600px) {
+    .custom-btn-left,
+    .custom-btn-right,
+    .custom-btn-update,
+    .custom-btn-save-and-add,
+    .custom-btn-watch-report,
+    .custom-btn-close
+     {
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 0 !important;
+    }
+  }
+  
+/* Tabs */
+.tab-item {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--white);
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.tab-item:hover {
+    transition: 0.3s all;
+}
+
+.tab-item-1 {
+    background-color: var(--blue-btn);
+}
+
+.tab-item-1:hover {
+    background-color: var(--blue-btn-hover);
+}
+
+.tab-item-2 {
+    background-color: var(--orange-btn);
+}
+
+.tab-item-2:hover {
+    background-color: var(--orange-btn-hover);
+}
+
+.tab-item-4 {
+    background-color: var(--red-btn);
+}
+
+.tab-item-4:hover {
+    background-color: var(--red);
+}
+
+.tab-item-3 {
+    background-color: var(--green-btn);
+}
+
+.tab-item-3:hover {
+    background-color: var(--green-btn-hover);
+}
+
+.tab-item-5 {
+    background-color: var(--purple-btn);
+}
+
+.tab-item-5:hover {
+    background-color: var(--purple-btn-hover);
+}
+
+.tab-item-6 {
+    background-color: var(--orange-light-btn);
+}
+
+.tab-item-6:hover {
+    background-color: var(--orange-light-btn-hover);
+}
+
+.tab-item-7 {
+    background-color: var(--sky-blue);
+}
+
+.tab-item-7:hover {
+    background-color: var(--sky-blue-hover);
+}
+
+.tab-item-8 {
+    background-color: var(--orange-medium-btn);
+}
+
+.tab-item-8:hover {
+    background-color: var(--orange-medium-btn-hover);
+}
+
+.tab-item span {
+    margin-right: 2px !important;
+}

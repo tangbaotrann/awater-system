@@ -441,30 +441,36 @@ const EditBlockClock = ({ hideModal }) => {
         >
           <Button
             key="submit"
-            type="primary"
             htmlType="submit"
+            className="custom-btn-save-and-add"
             icon={<PlusCircleOutlined />}
-            style={{ marginRight: "10px" }}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            style={{
+              marginLeft: "10px",
+            }}
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu và thêm tiếp
           </Button>
           <Button
             key="submit"
-            type="primary"
             htmlType="submit"
             icon={<SaveOutlined />}
-            style={{ marginRight: "10px" }}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            style={{
+              marginLeft: "10px",
+            }}
+            className="custom-btn-watch-report"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu và đóng
           </Button>
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
-            style={{ marginRight: "10px" }}
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            style={{
+              marginLeft: "10px",
+            }}
+            className="custom-btn-close"
             onClick={() => hideModal()}
           >
             Đóng

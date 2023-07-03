@@ -221,7 +221,7 @@ const AddBlockClock = ({ hideModal }) => {
             span={isTabletOrMobile ? 24 : 3}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Button icon={<SearchOutlined />} type="primary">
+            <Button icon={<SearchOutlined />} className="custom-btn-search">
               Tìm kiếm
             </Button>
           </Col>
@@ -238,10 +238,22 @@ const AddBlockClock = ({ hideModal }) => {
           </Col>
           <Col>
             <Space>
-              <Button onClick={moveToRight} icon={<StepForwardOutlined />}>
+              <Button
+                className="custom-btn-left"
+                onClick={moveToRight}
+                icon={<StepForwardOutlined />}
+              >
                 Chuyển qua xuống
               </Button>
-              <Button onClick={moveToLeft} icon={<StepBackwardOutlined />}>
+            </Space>
+          </Col>
+          <Col>
+            <Space>
+              <Button
+                className="custom-btn-right"
+                onClick={moveToLeft}
+                icon={<StepBackwardOutlined />}
+              >
                 Chuyển qua lên
               </Button>
             </Space>
@@ -255,55 +267,6 @@ const AddBlockClock = ({ hideModal }) => {
               scroll={{ x: 1200, y: 440 }}
             />
           </Col>
-
-          {/* <Col
-            span={isTabletOrMobile ? 24 : 10}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Table
-              size="small"
-              rowKey="index"
-              pagination={{
-                current: 1,
-                // total: initialData.length,
-                pageSize: 18,
-              }}
-              scroll={{ x: 1200, y: 440 }}
-              rowSelection={rowSelection}
-              columns={columns1}
-              dataSource={leftDataSource}
-            />
-          </Col>
-          <Col
-            span={isTabletOrMobile ? 24 : 2}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Space
-              direction={isTabletOrMobile ? "horizontal" : "vertical"}
-              style={{ marginTop: "60px", marginLeft: "40px" }}
-            >
-              <Button onClick={moveToRight} icon={<StepForwardOutlined />} />
-              <Button onClick={moveToLeft} icon={<StepBackwardOutlined />} />
-            </Space>
-          </Col>
-          <Col
-            span={isTabletOrMobile ? 24 : 10}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Table
-              size="small"
-              rowKey="index"
-              pagination={{
-                current: 1,
-                // total: initialData.length,
-                pageSize: 18,
-              }}
-              scroll={{ x: 1200, y: 440 }}
-              rowSelection={rowSelection}
-              columns={columns1}
-              dataSource={rightDataSource}
-            />
-          </Col> */}
         </Row>
         <Row
           style={{
@@ -315,11 +278,13 @@ const AddBlockClock = ({ hideModal }) => {
         >
           <Button
             key="submit"
-            type="primary"
+            className="custom-btn-update"
             htmlType="submit"
             icon={<RedoOutlined />}
-            style={{ marginRight: "10px" }}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            style={{
+              marginLeft: "10px",
+            }}
+            onClick={""}
           >
             Cập nhật
           </Button>
@@ -327,9 +292,10 @@ const AddBlockClock = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
-            style={{ marginRight: "110px" }}
+            className="custom-btn-close"
+            style={{
+              marginLeft: "10px",
+            }}
             onClick={() => hideModal()}
           >
             Đóng

@@ -222,15 +222,18 @@ const UsageButton = ({ hideModal }) => {
       >
         <Button
           icon={<SearchOutlined />}
-          type="primary"
-          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          className="custom-btn-search"
+          // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Tìm kiếm
         </Button>
         <Button
           icon={<LineChartOutlined />}
-          type="primary"
-          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          style={{
+            marginLeft: "10px",
+          }}
+          className="custom-btn-export"
+          // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           onClick={() =>
             setShowFormChart((prevshowFormChart) => !prevshowFormChart)
           }
@@ -240,18 +243,22 @@ const UsageButton = ({ hideModal }) => {
 
         <Button
           icon={<SaveOutlined />}
-          style={{ marginRight: "10px" }}
-          type="primary"
-          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          style={{
+            marginLeft: "10px",
+          }}
+          className="custom-btn-save-and-add"
+          // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Lưu biểu đồ
         </Button>
         <Button
           icon={<CloseOutlined />}
-          style={{ marginRight: "10px" }}
+          style={{
+            marginLeft: "10px",
+          }}
           htmlType="submit"
-          type="primary"
-          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          className="custom-btn-close"
+          // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           onClick={() => hideModal()}
         >
           Đóng

@@ -131,30 +131,39 @@ const PrintCodeKH = ({ hideModal }) => {
         >
           <Button
             key="reset"
-            type="primary"
             icon={<RedoOutlined />}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-reset"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             Làm mới
           </Button>
-          ,
+
           <Button
             key="submit"
-            type="primary"
+            className="custom-btn-attachment"
             htmlType="submit"
             icon={<PrinterOutlined />}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             In
           </Button>
-          ,
+
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-close"
+            // type="primary"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             Đóng
           </Button>

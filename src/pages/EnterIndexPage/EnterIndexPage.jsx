@@ -318,11 +318,12 @@ function EnterIndexPage() {
           </Col>
           <Col span={2} xs={24} sm={12} md={12} lg={4}>
             <div style={{ display: "flex" }}>
-              <Button type="primary" htmlType="submit">
+              <Button className="custom-btn-search" htmlType="submit">
                 <SearchOutlined />
                 Tìm kiếm
               </Button>
               <Button
+                className="custom-btn-reset"
                 style={{
                   marginLeft: "10px",
                 }}

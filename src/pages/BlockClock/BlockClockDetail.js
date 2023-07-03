@@ -132,7 +132,6 @@ export const BlockClockDetail = (props) => {
             type="primary"
             icon={<SyncOutlined />}
             style={{ marginRight: 5 }}
-            size="middle"
           >
             Cập nhật nhà mạng từ phiên gửi - TT khách hàng
           </Button>
@@ -140,14 +139,12 @@ export const BlockClockDetail = (props) => {
             type="primary"
             icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
             style={{ marginRight: 5 }}
-            size="middle"
           >
             Gửi lại
           </Button>
           <Button
             key="submit"
             onClick={() => setIsOpenModalNoticeDetail(false)}
-            size="middle"
           >
             Đóng
           </Button>

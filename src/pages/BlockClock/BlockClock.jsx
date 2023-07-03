@@ -2,7 +2,7 @@ import { React, useState } from "react";
 // import { initialData } from "../../utils/dataBlock";
 import TabListBC from "./TableListBC";
 import { BlockClockDetail } from "./BlockClockDetail";
-
+import "./BlockClock.css";
 import "../../components/GlobalStyles/GlobalStyles.css";
 import "../Manager/Contract/Contract.css";
 import { Form, Input, theme, Table, Popover, Button } from "antd";
@@ -139,7 +139,7 @@ function BlockClock() {
       title: " # ",
       dataIndex: "trong",
       key: "trong",
-      fixed: "right",
+
       width: 40,
       render: (text, record) => {
         return (
@@ -210,7 +210,7 @@ function BlockClock() {
             total: initialData.length,
             pageSize: 18,
           }}
-          scroll={{ x: 2000, y: 450 }}
+          scroll={{ x: 2000, y: 480 }}
           columns={columns.map((column) => ({
             ...column,
             className: "cell-wrap",

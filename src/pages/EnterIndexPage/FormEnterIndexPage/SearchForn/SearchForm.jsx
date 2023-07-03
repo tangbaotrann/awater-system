@@ -3,7 +3,7 @@ import { Button, Form, Row, Col, Select, DatePicker, theme } from "antd";
 import { CloseOutlined, RedoOutlined, SearchOutlined } from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
-
+import "../../../../components/GlobalStyles/GlobalStyles.css";
 const SearchForm = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
@@ -169,15 +169,21 @@ const SearchForm = ({ hideModal }) => {
           }}
           justify="end"
         >
-          <Button icon={<SearchOutlined />} type="primary" htmlType="submit">
+          <Button
+            icon={<SearchOutlined />}
+            className="custom-btn-search"
+            htmlType="submit"
+          >
             Tìm kiếm
           </Button>
           &nbsp;
           <Button
             key="reset"
-            type="primary"
             icon={<RedoOutlined />}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            // className={
+            //   isTabletOrMobile ? "gutter-item-btn" : "custom-btn-reset"
+            // }
+            className="custom-btn-reset"
             onClick={onReset}
           >
             Xóa điều kiện TK
@@ -186,8 +192,10 @@ const SearchForm = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            // className={
+            //   isTabletOrMobile ? "gutter-item-btn" : "custom-btn-close"
+            // }
+            className="custom-btn-close"
             onClick={() => hideModal()}
           >
             Đóng
