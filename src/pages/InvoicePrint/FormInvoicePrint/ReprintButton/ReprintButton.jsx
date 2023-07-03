@@ -34,9 +34,18 @@ const ReprintButton = ({ hideModal }) => {
   const onReset = () => {
     form1.resetFields();
   };
+  const layout = {
+    labelCol: {
+      span: 5,
+    },
+    wrapperCol: {
+      span: 40,
+    },
+  };
   return (
     <>
       <Form
+        {...layout}
         form={form1}
         onFinish={handleSubmit}
         onFinishFailed={handleFailed}
@@ -48,7 +57,14 @@ const ReprintButton = ({ hideModal }) => {
         }}
       >
         <Row>
-          <Col span={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="chọn tháng" label="Chọn tháng">
               <DatePicker
                 locale={viVN}
@@ -60,21 +76,42 @@ const ReprintButton = ({ hideModal }) => {
           </Col>
         </Row>
         <Row>
-          <Col span={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="tenphien" label="Tên phiên">
               <Input min={1} max={10} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
         <Row>
-          <Col span={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="ghichu" label="Ghi chú">
               <Input min={1} max={10} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
         <Row gutter={24}>
-          <Col span={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="kyhieu" label="Ký hiệu">
               <Select style={{ width: "100%" }}>
                 <Option value="A">A</Option>
@@ -84,7 +121,14 @@ const ReprintButton = ({ hideModal }) => {
           </Col>
         </Row>
         <Row>
-          <Col span={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="sohoadon" label="Số hóa đơn">
               <Input style={{ width: "100%" }} />
             </Form.Item>
@@ -92,26 +136,54 @@ const ReprintButton = ({ hideModal }) => {
         </Row>
 
         <Row>
-          <Col span={12}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="sohoadonbd" label="Số hóa đơn BĐ">
               <InputNumber min={1} />
             </Form.Item>
           </Col>
-          <Col span={12}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="sohoadonkt" label="Số hóa đơn KT">
               <InputNumber min={1} />
             </Form.Item>
           </Col>
         </Row>
         <Row>
-          <Col span={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="sohdgoiy" label="Số HĐ gợi ý">
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
         <Row>
-          <Col span={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
             <Form.Item name="ngaylap" label="Ngày lập">
               <DatePicker
                 locale={viVN}

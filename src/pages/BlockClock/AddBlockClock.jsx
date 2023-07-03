@@ -239,8 +239,9 @@ const AddBlockClock = ({ hideModal }) => {
           <Col>
             <Space>
               <Button
-                className="custom-btn-left"
+                className="custom-btn-right"
                 onClick={moveToRight}
+                htmlType="submit"
                 icon={<StepForwardOutlined />}
               >
                 Chuyển qua xuống
@@ -250,8 +251,12 @@ const AddBlockClock = ({ hideModal }) => {
           <Col>
             <Space>
               <Button
-                className="custom-btn-right"
+                className="custom-btn-left"
                 onClick={moveToLeft}
+                htmlType="submit"
+                style={{
+                  marginLeft: "10px",
+                }}
                 icon={<StepBackwardOutlined />}
               >
                 Chuyển qua lên

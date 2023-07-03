@@ -38,9 +38,10 @@ const PrintButton = ({ hideModal }) => {
       span: 5,
     },
     wrapperCol: {
-      span: 100,
+      span: 40,
     },
   };
+
   return (
     <>
       <Form
@@ -228,6 +229,7 @@ const PrintButton = ({ hideModal }) => {
             </Form.Item>
           </Col>
         </Row>
+
         <Row>
           <Col
             xs={24}

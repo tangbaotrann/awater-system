@@ -82,7 +82,6 @@ const FileForm = ({ hideModal }) => {
         >
           <Button
             icon={<RedoOutlined />}
-            type="primary"
             className="custom-btn-update"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             style={{
@@ -95,7 +94,6 @@ const FileForm = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
             className="custom-btn-close"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}

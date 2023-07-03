@@ -44,7 +44,6 @@ const PriceTableButton = ({ hideModal }) => {
         >
           <Button
             icon={<ReloadOutlined />}
-            type="primary"
             className="custom-btn-update"
             style={{
               marginLeft: "10px",
@@ -56,7 +55,6 @@ const PriceTableButton = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
             className="custom-btn-close"
             style={{
               marginLeft: "10px",
