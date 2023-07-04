@@ -179,7 +179,11 @@ function InvoicePrint() {
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item label="Cán bộ đọc" name="1">
-              <Select style={{ width: "100%" }} name="s1">
+              <Select
+                style={{ width: "100%" }}
+                name="s1"
+                placeholder="Chọn cán bộ"
+              >
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
               </Select>
@@ -187,7 +191,11 @@ function InvoicePrint() {
           </Col>
           <Col span={4} xs={24} sm={12} md={6}>
             <Form.Item label="Tiêu thụ" name="8">
-              <Select style={{ width: "100%" }} name="s1">
+              <Select
+                style={{ width: "100%" }}
+                name="s1"
+                placeholder="Chon tiệu thụ"
+              >
                 <Option value="1">Lựa chọn 1</Option>
                 <Option value="2">Lựa chọn 2</Option>
                 <Option value="3">Lựa chọn 3</Option>
@@ -214,6 +222,7 @@ function InvoicePrint() {
               name="6"
             >
               <Input
+                placeholder="Chọn tên"
                 style={{
                   width: "100%",
                 }}
@@ -231,7 +240,11 @@ function InvoicePrint() {
               }
               name="2"
             >
-              <Select style={{ width: "100%" }} name="s1">
+              <Select
+                style={{ width: "100%" }}
+                name="s1"
+                placeholder="Chọn tuyến"
+              >
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -240,7 +253,7 @@ function InvoicePrint() {
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item label={<>In hóa đơn</>}>
-              <Select style={{ width: "100%" }}>
+              <Select style={{ width: "100%" }} placeholder="Chọn hóa đơn in">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>

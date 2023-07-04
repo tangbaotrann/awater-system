@@ -135,26 +135,26 @@ export const BlockClockDetail = (props) => {
       >
         <div style={{ marginLeft: "auto" }}>
           <Button
-            className="custom-btn-save-and-add"
+            className="custom-btn-save-and-add-d"
             style={{ marginRight: 5 }}
           >
             Xuất Excel
           </Button>
           <Button
-            className="custom-btn-watch-report"
+            className="custom-btn-watch-report-d"
             style={{ marginRight: 5 }}
           >
             Chuyển đồng hồ
           </Button>
-          <Button className="    custom-btn-update" style={{ marginRight: 5 }}>
+          <Button className="    custom-btn-update-d" style={{ marginRight: 5 }}>
             Thêm đồng hồ
           </Button>
-          <Button className="custom-btn-right" style={{ marginRight: 5 }}>
+          <Button className="custom-btn-right-d" style={{ marginRight: 5 }}>
             Xóa
           </Button>
           <Button
             key="submit"
-            className="custom-btn-close"
+            className="custom-btn-close-d"
             onClick={() => setIsOpenModalNoticeDetail(false)}
           >
             Đóng

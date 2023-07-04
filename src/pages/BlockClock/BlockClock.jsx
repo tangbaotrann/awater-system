@@ -146,9 +146,7 @@ function BlockClock() {
             <Button
               onClick={handleButtonClick}
               icon={<UnorderedListOutlined />}
-            >
-              chi tiết
-            </Button>
+            ></Button>
             <BlockClockDetail
               isOpen={isOpenModalNoticeDetail}
               setIsOpenModalNoticeDetail={handleModalCancel}

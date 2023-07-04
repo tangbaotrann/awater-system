@@ -53,11 +53,11 @@
   background-color: var(--purple-btn-hover);
 }
 
-.tab-item-ep-6 {
+.tab-item-ep-9 {
   background-color: var(--orange-light-btn);
 }
 
-.tab-item-ep-6:hover {
+.tab-item-ep-9:hover {
   background-color: var(--orange-light-btn-hover);
 }
 
@@ -76,11 +76,11 @@
 .tab-item-ep-8:hover {
   background-color: var(--orange-medium-btn-hover);
 }
-.tab-item-ep-9 {
+.tab-item-ep-6 {
   background-color: var(--sky-blue);
 }
 
-.tab-item-ep-9:hover {
+.tab-item-ep-6:hover {
   background-color: var(--sky-blue-hover);
 }
 .tab-item-ep span {

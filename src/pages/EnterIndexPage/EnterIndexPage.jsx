@@ -228,7 +228,7 @@ function EnterIndexPage() {
           </Col>
           <Col xs={24} sm={12} md={12} lg={4} span={4}>
             <Form.Item className="custom-form-item" label="Tuyến đọc" name="2">
-              <Select style={{ width: "100%" }} name="s1">
+              <Select style={{ width: "100%" }}>
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>

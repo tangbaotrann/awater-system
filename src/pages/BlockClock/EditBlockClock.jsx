@@ -1,12 +1,25 @@
-import { Button, Col, Form, Input, Row, theme } from "antd";
+import {
+  Button,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
+  Row,
+  Select,
+  theme,
+} from "antd";
 import { useMediaQuery } from "react-responsive";
 import {
   CloseOutlined,
   PlusCircleOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
-
+import moment from "moment";
+import viVN from "antd/es/date-picker/locale/vi_VN";
+moment.locale("vi");
 const EditBlockClock = ({ hideModal }) => {
+  const Option = Select;
   // handle submit form (main)
   const handleSubmit = (values) => {
     console.log("values", values);
@@ -75,7 +88,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="lydothay" label="Lý do thay">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -142,7 +159,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="ngaylap" label="Ngày lắp">
-              <Input style={{ width: "100%" }} />
+              <DatePicker
+                locale={viVN}
+                style={{ width: "100%" }}
+                format="DD/MM/YYYY"
+              />
             </Form.Item>
           </Col>
           <Col
@@ -154,7 +175,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="nguoilap" label="Người lắp">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -166,7 +191,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="mavung" label="Mã Vùng">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -180,7 +209,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="khuvuc" label="Khu vực">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -192,7 +225,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="nhanvien" label="Nhân viên">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -204,7 +241,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="matuyendoc" label="Mã tuyến đọc">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -218,7 +259,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="mablockcha" label="Mã block cha">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -230,7 +275,7 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="chisodau" label="Chỉ số đầu">
-              <Input style={{ width: "100%" }} />
+              <InputNumber style={{ width: "100%" }} min={1} />
             </Form.Item>
           </Col>
           <Col
@@ -242,7 +287,7 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="chisocuoi" label="Chỉ số cuối">
-              <Input style={{ width: "100%" }} />
+              <InputNumber style={{ width: "100%" }} min={1} />
             </Form.Item>
           </Col>
         </Row>
@@ -256,7 +301,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="trangthai" label="Trạng thái">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -268,7 +317,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="ngaybd" label="Ngày BĐ">
-              <Input style={{ width: "100%" }} />
+              <DatePicker
+                locale={viVN}
+                style={{ width: "100%" }}
+                format="DD/MM/YYYY"
+              />
             </Form.Item>
           </Col>
           <Col
@@ -280,7 +333,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="ngayketthuc" label="Ngày kết thúc">
-              <Input style={{ width: "100%" }} />
+              <DatePicker
+                locale={viVN}
+                style={{ width: "100%" }}
+                format="DD/MM/YYYY"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -294,7 +351,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="nuocsx" label="Nước SX">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -306,7 +367,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="hangsx" label="Hãng SX">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -318,7 +383,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="kieudongho" label="Kiểu đồng hồ">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -344,7 +413,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="hopbaove" label="Hộp bảo vệ">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -366,7 +439,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="ngaykiemdinh" label="Ngày kiểm định">
-              <Input style={{ width: "100%" }} />
+              <DatePicker
+                locale={viVN}
+                style={{ width: "100%" }}
+                format="DD/MM/YYYY"
+              />
             </Form.Item>
           </Col>
           <Col
@@ -378,7 +455,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="hieuluckd" label="Hiệu lực KĐ">
-              <Input style={{ width: "100%" }} />
+              <DatePicker
+                locale={viVN}
+                style={{ width: "100%" }}
+                format="DD/MM/YYYY"
+              />
             </Form.Item>
           </Col>
           <Col
@@ -404,7 +485,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="hinhthucxl" label="Hình thức XL">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -416,7 +501,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="kinhdo" label="Kinh độ">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col
@@ -428,7 +517,11 @@ const EditBlockClock = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="vido" label="Vĩ độ">
-              <Input style={{ width: "100%" }} />
+              <Select style={{ width: "100%" }}>
+                <Option value="1">1</Option>
+                <Option value="2">2</Option>
+                <Option value="3">3</Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
