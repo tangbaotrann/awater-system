@@ -1,7 +1,7 @@
 import { SendOutlined, SyncOutlined } from "@ant-design/icons";
 import { Button, Modal, Table, theme } from "antd";
 import { useState } from "react";
-
+import "./BlockClock.css";
 export const BlockClockDetail = (props) => {
   const { isOpen, setIsOpenModalNoticeDetail } = props;
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -11,14 +11,15 @@ export const BlockClockDetail = (props) => {
   const dataSource = Array.from({ length: 50 }, (_, key) => ({
     key: key + 1,
     stt: key + 1,
-    type: "abc",
-    address: "abc",
-    info: "abc",
-    content: "abc",
-    timeSent: "abc",
-    result: "abc",
-    number: "abc",
-    netHouse: "abc",
+    shd: "abc",
+    mkh: "abc",
+    tkh: "abc",
+    dc: "abc",
+    dt: "abc",
+    t: "abc",
+    sh: "abc",
+    kdh: "abc",
+    vtld: "abc",
   }));
 
   const columns = [
@@ -29,44 +30,49 @@ export const BlockClockDetail = (props) => {
       width: 100,
     },
     {
-      title: "Loại",
-      dataIndex: "type",
-      key: "type",
+      title: "Số hợp đồng",
+      dataIndex: "shd",
+      key: "shd",
     },
     {
-      title: "Địa chỉ nhận",
-      dataIndex: "address",
-      key: "address",
+      title: "Mã khách hàng",
+      dataIndex: "mkh",
+      key: "mkh",
     },
     {
-      title: "Thông tin",
-      dataIndex: "info",
-      key: "info",
+      title: "Tên khách hàng",
+      dataIndex: "tkh",
+      key: "tkh",
     },
     {
-      title: "Nội dung",
-      dataIndex: "content",
-      key: "content",
+      title: "Địa chỉ",
+      dataIndex: "dc",
+      key: "dc",
     },
     {
-      title: "Thời gian gửi",
-      dataIndex: "timeSent",
-      key: "timeSent",
+      title: "Điện thoại",
+      dataIndex: "dt",
+      key: "dt",
     },
     {
-      title: "Kết quả",
-      dataIndex: "result",
-      key: "result",
+      title: "Tuyến",
+      dataIndex: "t",
+      key: "t",
     },
     {
-      title: "Số tin",
-      dataIndex: "number",
-      key: "number",
+      title: "Số hiẽu",
+      dataIndex: "sh",
+      key: "sh",
     },
     {
-      title: "Nhà mạng",
-      dataIndex: "netHouse",
-      key: "netHouse",
+      title: "Kiểu đồng hò",
+      dataIndex: "kdh",
+      key: "kdh",
+    },
+    {
+      title: "Vị trí lắp đặt",
+      dataIndex: "vtld",
+      key: "vtld",
     },
   ];
 
@@ -129,21 +135,26 @@ export const BlockClockDetail = (props) => {
       >
         <div style={{ marginLeft: "auto" }}>
           <Button
-            type="primary"
-            icon={<SyncOutlined />}
+            className="custom-btn-save-and-add"
             style={{ marginRight: 5 }}
           >
-            Cập nhật nhà mạng từ phiên gửi - TT khách hàng
+            Xuất Excel
           </Button>
           <Button
-            type="primary"
-            icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
+            className="custom-btn-watch-report"
             style={{ marginRight: 5 }}
           >
-            Gửi lại
+            Chuyển đồng hồ
+          </Button>
+          <Button className="    custom-btn-update" style={{ marginRight: 5 }}>
+            Thêm đồng hồ
+          </Button>
+          <Button className="custom-btn-right" style={{ marginRight: 5 }}>
+            Xóa
           </Button>
           <Button
             key="submit"
+            className="custom-btn-close"
             onClick={() => setIsOpenModalNoticeDetail(false)}
           >
             Đóng

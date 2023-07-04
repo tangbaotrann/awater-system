@@ -1,18 +1,8 @@
-@media (max-width: 600px) {
-  .custom-btn-left,
-  .custom-btn-right,
-  .custom-btn-update,
-  .custom-btn-save-and-add,
-  .custom-btn-watch-report,
-  .custom-btn-attachment,
-  .custom-btn-close
-   {
-    width: 100%;
-    margin-top: 10px;
-    margin-left: 0 !important;
-  }
-}
 
+
+.fix-popover-z-index_ip {
+  z-index: 10 !important;
+}
 
 /* tab list invoice print*/ 
 .wrapper-contract {
@@ -44,7 +34,7 @@
 
 /* tab list */ 
 /* Tabs */
-.tab-item {
+.tab-item-ip {
   font-size: 1.4rem;
   font-weight: 500;
   color: var(--white);
@@ -52,66 +42,66 @@
   border-radius: 6px;
 }
 
-.tab-item:hover {
+.tab-item-ip:hover {
   transition: 0.3s all;
 }
 
-.tab-item-1 {
+.tab-item-ip-1 {
   background-color: var(--blue-btn);
 }
 
-.tab-item-1:hover {
+.tab-item-ip-1:hover {
   background-color: var(--blue-btn-hover);
 }
 
-.tab-item-2 {
+.tab-item-ip-2 {
   background-color: var(--orange-btn);
 }
 
-.tab-item-2:hover {
+.tab-item-ip-2:hover {
   background-color: var(--orange-btn-hover);
 }
 
-.tab-item-3 {
+.tab-item-ip-3 {
   background-color: var(--red-btn);
 }
 
-.tab-item-3:hover {
+.tab-item-ip-3:hover {
   background-color: var(--red);
 }
 
-.tab-item-4 {
+.tab-item-ip-4 {
   background-color: var(--green-btn);
 }
 
-.tab-item-4:hover {
+.tab-item-ip-4:hover {
   background-color: var(--green-btn-hover);
 }
 
-.tab-item-5 {
+.tab-item-ip-5 {
   background-color: var(--purple-btn);
 }
 
-.tab-item-5:hover {
+.tab-item-ip-5:hover {
   background-color: var(--purple-btn-hover);
 }
 
-.tab-item-6 {
+.tab-item-ip-6 {
   background-color: var(--orange-light-btn);
 }
 
-.tab-item-6:hover {
+.tab-item-ip-6:hover {
   background-color: var(--orange-light-btn-hover);
 }
 
-.tab-item-7 {
+.tab-item-ip-7 {
   background-color: var(--red-btn);
 }
 
-.tab-item-7:hover {
+.tab-item-ip-7:hover {
   background-color: var(--red);
 }
 
-.tab-item span {
+.tab-item-ip span {
   margin-right: 2px !important;
 }

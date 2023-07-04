@@ -6,19 +6,19 @@ import {
   CloseOutlined,
   DeleteOutlined,
   LineChartOutlined,
-  ToolOutlined,
   MoreOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../redux/selector";
 import tabListInvoicePrintSlice from "../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+import "./BlockClock.css";
 import AddBlockClock from "./AddBlockClock";
 import EditBlockClock from "./EditBlockClock";
 import ViewDetail from "./ViewDetail.jsx";
 import FromBarChart from "./FromBarChart";
 // Tabs bottom
-const tabs = [
+const tabs_bc = [
   {
     id: "1",
     label: "Làm mới",
@@ -65,7 +65,7 @@ function TableListBC({ isTabletOrMobile }) {
   const [modalChart, setChart] = useState(false);
   const dispatch = useDispatch();
 
-  const tabList = useSelector(btnClickTabListInvoicePrintSelector);
+  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
@@ -105,20 +105,12 @@ function TableListBC({ isTabletOrMobile }) {
         type={isTabletOrMobile ? "line" : "card"}
         tabPosition={isTabletOrMobile ? "left" : "top"}
         activeKey="0"
-        items={tabs.map((_tab) => {
+        items={tabs_bc.map((_tab) => {
           return {
             label: (
               <div
-                className={`tab-item tab-item-${_tab.id} ${
-                  tabList === null && _tab.id === "2"
-                    ? "tab-item-disabled"
-                    : tabList === null && _tab.id === "3"
-                    ? "tab-item-disabled"
-                    : tabList === null && _tab.id === "6"
-                    ? "tab-item-disabled"
-                    : tabList === null && _tab.id === "7"
-                    ? "tab-item-disabled"
-                    : ""
+                className={`tab-item-bc tab-item-bc-${_tab.id} ${
+                  tabListbc === null && _tab.id === "2"
                 }`}
               >
                 {_tab.id === "7" ? (
@@ -126,7 +118,7 @@ function TableListBC({ isTabletOrMobile }) {
                     <Popover
                       rootClassName="fix-popover-z-index"
                       placement={isTabletOrMobile ? "right" : "topRight"}
-                      className={tabList === null ? "popover-debt" : null}
+                      className={tabListbc === null ? "popover-debt" : null}
                     >
                       {_tab.icon} {_tab.label} {_tab.iconRight}
                     </Popover>
@@ -155,7 +147,7 @@ function TableListBC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm đồng hồ vào block</h2>
 
-        <AddBlockClock tabList={tabList} hideModal={hideModal} />
+        <AddBlockClock tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
       {/* Modal ( In Sửa Block) */}
       <Modal
@@ -168,7 +160,7 @@ function TableListBC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Cập nhật thông tin block</h2>
 
-        <EditBlockClock tabList={tabList} hideModal={hideModal} />
+        <EditBlockClock tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
       {/* Modal ( Thông tin chi tiết) */}
       <Modal
@@ -181,7 +173,7 @@ function TableListBC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Xem thông tin thất thoát</h2>
 
-        <ViewDetail tabList={tabList} hideModal={hideModal} />
+        <ViewDetail tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
       <Modal
         open={modalChart ? modalChart : openModal}
@@ -193,7 +185,7 @@ function TableListBC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract"> Xem biểu đồ</h2>
 
-        <FromBarChart tabList={tabList} hideModal={hideModal} />
+        <FromBarChart tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
     </>
   );

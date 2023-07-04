@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import { initialData, initialData2 } from "../../utils/dataInvoicePrint/data";
-import "./InvoicePrint.css";
 import "../../components/GlobalStyles/GlobalStyles.css";
 import InvoicingDetailsModal from "./FormInvoicePrint/InvoicingDetailsModal/InvoicingDetailsModal";
 import TabListIP from "./FormInvoicePrint/TableListIP.js";

@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import { initialData } from "../../utils/dataEnterIndexPage/data/data";
 import TabListEP from "./FormEnterIndexPage/TableListEP";
-import "./EnterIndexPage.css";
+
 import "../../components/GlobalStyles/GlobalStyles.css";
-import "../Manager/Contract/Contract.css";
+
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import {
   Form,
@@ -147,18 +147,18 @@ function EnterIndexPage() {
     },
     {
       title: "Trạng thái đọc",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
+      dataIndex: "ttd",
+      key: "ttd",
     },
     {
       title: "Ngày đầu kì",
-      dataIndex: "startDate",
-      key: "startDate",
+      dataIndex: "ndk",
+      key: "ndk",
     },
     {
       title: "Ngày cuối kì",
-      dataIndex: "endDate",
-      key: "endDate",
+      dataIndex: "nck",
+      key: "nck",
     },
     {
       title: "Chỉ số cũ",
@@ -172,13 +172,13 @@ function EnterIndexPage() {
     },
     {
       title: "Trạng thái ĐH",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
+      dataIndex: "ttdh",
+      key: "ttdh",
     },
     {
       title: "Ghi chú",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
+      dataIndex: "gc",
+      key: "gc",
     },
   ];
   const AdvancedSearchForm = () => {

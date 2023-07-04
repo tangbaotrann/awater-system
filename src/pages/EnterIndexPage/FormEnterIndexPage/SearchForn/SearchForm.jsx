@@ -72,7 +72,7 @@ const SearchForm = ({ hideModal }) => {
             sm={12}
             md={12}
             lg={11}
-            span={11}
+            span={12}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             <Form.Item label="Phạm vi" name="range">
@@ -90,7 +90,7 @@ const SearchForm = ({ hideModal }) => {
             sm={12}
             md={12}
             lg={11}
-            span={11}
+            span={12}
             className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             <Form.Item label="Vùng" name="region">

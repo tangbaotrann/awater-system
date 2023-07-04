@@ -10,7 +10,7 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import "../InvoicePrint.css";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import FromPrintButton from "./PrintButton/PrintButton";
@@ -111,22 +111,22 @@ function TableListIP({ isTabletOrMobile }) {
           return {
             label: (
               <div
-                className={`tab-item tab-item-${_tab.id} ${
+                className={`tab-item-ip tab-item-ip-${_tab.id} ${
                   tabList === null && _tab.id === "2"
-                    ? "tab-item-disabled"
+                    ? "tab-item-ip-disabled"
                     : tabList === null && _tab.id === "3"
-                    ? "tab-item-disabled"
+                    ? "tab-item-ip-disabled"
                     : tabList === null && _tab.id === "6"
-                    ? "tab-item-disabled"
+                    ? "tab-item-ip-disabled"
                     : tabList === null && _tab.id === "5"
-                    ? "tab-item-disabled"
+                    ? "tab-item-ip-disabled"
                     : ""
                 }`}
               >
                 {_tab.id === "7" ? (
                   <>
                     <Popover
-                      rootClassName="fix-popover-z-index"
+                      rootClassName=".fix-popover-z-index_ip"
                       placement={isTabletOrMobile ? "right" : "topRight"}
                       className={tabList === null ? "popover-debt" : null}
                     >

@@ -2,7 +2,6 @@ import { React, useState } from "react";
 // import { initialData } from "../../utils/dataBlock";
 import TabListBC from "./TableListBC";
 import { BlockClockDetail } from "./BlockClockDetail";
-import "./BlockClock.css";
 import "../../components/GlobalStyles/GlobalStyles.css";
 import "../Manager/Contract/Contract.css";
 import { Form, Input, theme, Table, Popover, Button } from "antd";

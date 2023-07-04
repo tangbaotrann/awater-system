@@ -60,6 +60,10 @@ a {
     text-decoration: none;
     color: var(--black);
 }
+.fix-popover-z-index {
+    z-index: 10 !important;
+}
+
  /* dãn cột table */
 .cell-wrap {
     word-wrap: break-word;
@@ -477,6 +481,21 @@ html *::-webkit-scrollbar-track {
     .custom-progress-mobile {
         overflow-x: auto;
     }
+    .custom-btn-search,
+    .custom-btn-reset,
+    .custom-btn-export,
+    .custom-btn-left,
+    .custom-btn-right,
+    .custom-btn-update,
+    .custom-btn-save-and-add,
+    .custom-btn-watch-report,
+    .custom-btn-watch-report,
+    .custom-btn-close
+     {
+      width: 100%;
+      /* margin-top: 10px; */
+      margin-left: 0 !important;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
@@ -563,6 +582,22 @@ html *::-webkit-scrollbar-track {
     .pay-counter-footer-total {
         margin: 10px 0;
         margin-right: 0 !important;
+
+    }
+    .custom-btn-search,
+    .custom-btn-reset,
+    .custom-btn-export,
+    .custom-btn-left,
+    .custom-btn-right,
+    .custom-btn-update,
+    .custom-btn-save-and-add,
+    .custom-btn-watch-report,
+    .custom-btn-watch-report,
+    .custom-btn-close
+     {
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 0 !important;
     }
 }
   
