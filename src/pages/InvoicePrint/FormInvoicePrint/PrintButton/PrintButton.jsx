@@ -290,7 +290,7 @@ const PrintButton = ({ hideModal }) => {
           <Button
             key="reset"
             icon={<RedoOutlined />}
-            className="custom-btn-reset"
+            className="custom-btn-reset-d"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
             style={{
@@ -301,7 +301,7 @@ const PrintButton = ({ hideModal }) => {
           </Button>
           <Button
             key="submit"
-            className="custom-btn-attachment"
+            className="custom-btn-attachment-d"
             // htmlType="submit"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             icon={<PrinterOutlined />}
@@ -314,7 +314,7 @@ const PrintButton = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            className="custom-btn-close"
+            className="custom-btn-close-d"
             // type="primary"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}

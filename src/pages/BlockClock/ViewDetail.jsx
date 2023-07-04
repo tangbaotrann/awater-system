@@ -174,7 +174,7 @@ const ViewDetail = ({ hideModal }) => {
             style={{
               marginLeft: "10px",
             }}
-            className="custom-btn-save-and-add "
+            className="custom-btn-save-and-add-d"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Tính thất thoát
@@ -183,7 +183,7 @@ const ViewDetail = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            className="custom-btn-close"
+            className="custom-btn-close-d"
             // type="primary"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             style={{

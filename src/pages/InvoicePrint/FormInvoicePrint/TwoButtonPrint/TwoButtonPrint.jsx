@@ -162,7 +162,7 @@ const TwoButtonPrint = ({ hideModal }) => {
               marginLeft: "10px",
             }}
             icon={<RedoOutlined />}
-            className="custom-btn-reset"
+            className="custom-btn-reset-d"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
           >
@@ -176,7 +176,7 @@ const TwoButtonPrint = ({ hideModal }) => {
             }}
             htmlType="submit"
             icon={<PrinterOutlined />}
-            className="custom-btn-attachment"
+            className="custom-btn-attachment-d"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             In
@@ -188,7 +188,7 @@ const TwoButtonPrint = ({ hideModal }) => {
             }}
             icon={<CloseOutlined />}
             htmlType="submit"
-            className="custom-btn-close"
+            className="custom-btn-close-d"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >

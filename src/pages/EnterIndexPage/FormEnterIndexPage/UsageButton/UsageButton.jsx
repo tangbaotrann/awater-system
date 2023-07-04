@@ -267,7 +267,7 @@ const UsageButton = ({ hideModal }) => {
       >
         <Button
           icon={<SearchOutlined />}
-          className="custom-btn-search"
+          className="custom-btn-search-d"
           // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Tìm kiếm
@@ -277,7 +277,7 @@ const UsageButton = ({ hideModal }) => {
           style={{
             marginLeft: "10px",
           }}
-          className="custom-btn-export"
+          className="custom-btn-export-d"
           // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           onClick={() =>
             setShowFormChart((prevshowFormChart) => !prevshowFormChart)
@@ -291,7 +291,7 @@ const UsageButton = ({ hideModal }) => {
           style={{
             marginLeft: "10px",
           }}
-          className="custom-btn-save-and-add"
+          className="custom-btn-save-and-add-d"
           // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Lưu biểu đồ
@@ -302,7 +302,7 @@ const UsageButton = ({ hideModal }) => {
             marginLeft: "10px",
           }}
           htmlType="submit"
-          className="custom-btn-close"
+          className="custom-btn-close-d"
           // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           onClick={() => hideModal()}
         >

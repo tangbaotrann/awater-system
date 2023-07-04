@@ -171,7 +171,7 @@ const SearchForm = ({ hideModal }) => {
         >
           <Button
             icon={<SearchOutlined />}
-            className="custom-btn-search"
+            className="custom-btn-search-d1"
             htmlType="submit"
           >
             Tìm kiếm
@@ -183,7 +183,7 @@ const SearchForm = ({ hideModal }) => {
             // className={
             //   isTabletOrMobile ? "gutter-item-btn" : "custom-btn-reset"
             // }
-            className="custom-btn-reset"
+            className="custom-btn-reset-d1"
             onClick={onReset}
           >
             Xóa điều kiện TK
@@ -195,7 +195,7 @@ const SearchForm = ({ hideModal }) => {
             // className={
             //   isTabletOrMobile ? "gutter-item-btn" : "custom-btn-close"
             // }
-            className="custom-btn-close"
+            className="custom-btn-close-d1"
             onClick={() => hideModal()}
           >
             Đóng

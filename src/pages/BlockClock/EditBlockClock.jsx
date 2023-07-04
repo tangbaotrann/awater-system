@@ -442,7 +442,7 @@ const EditBlockClock = ({ hideModal }) => {
           <Button
             key="submit"
             htmlType="submit"
-            className="custom-btn-save-and-add"
+            className="custom-btn-save-and-add-d"
             icon={<PlusCircleOutlined />}
             style={{
               marginLeft: "10px",
@@ -458,7 +458,7 @@ const EditBlockClock = ({ hideModal }) => {
             style={{
               marginLeft: "10px",
             }}
-            className="custom-btn-watch-report"
+            className="custom-btn-watch-report-d"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu và đóng
@@ -470,7 +470,7 @@ const EditBlockClock = ({ hideModal }) => {
             style={{
               marginLeft: "10px",
             }}
-            className="custom-btn-close"
+            className="custom-btn-close-d"
             onClick={() => hideModal()}
           >
             Đóng
