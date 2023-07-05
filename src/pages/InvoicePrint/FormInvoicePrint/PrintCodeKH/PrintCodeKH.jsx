@@ -145,7 +145,7 @@ const PrintCodeKH = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="sohoadonbd" label="Số hóa đơn BĐ">
-              <InputNumber min={1} />
+              <InputNumber min={1} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
           <Col
@@ -157,7 +157,7 @@ const PrintCodeKH = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="sohoadonkt" label="Số hóa đơn KT">
-              <InputNumber min={1} />
+              <InputNumber min={1} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -204,7 +204,7 @@ const PrintCodeKH = ({ hideModal }) => {
           <Button
             key="reset"
             icon={<RedoOutlined />}
-            className="custom-btn-reset"
+            className="custom-btn-reset-d"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
             style={{
@@ -216,7 +216,7 @@ const PrintCodeKH = ({ hideModal }) => {
 
           <Button
             key="submit"
-            className="custom-btn-attachment"
+            className="custom-btn-attachment-d"
             htmlType="submit"
             icon={<PrinterOutlined />}
             style={{
@@ -229,7 +229,7 @@ const PrintCodeKH = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            className="custom-btn-close"
+            className="custom-btn-close-d"
             // type="primary"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}

@@ -37,9 +37,9 @@ const TwoButtonPrint = ({ hideModal }) => {
     labelCol: {
       span: 5,
     },
-    wrapperCol: {
-      span: 40,
-    },
+    // wrapperCol: {
+    //   span: 40,
+    // },
   };
   return (
     <>
@@ -97,7 +97,10 @@ const TwoButtonPrint = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="sohoadonbd" label="Số hóa đơn BĐ">
-              <InputNumber min={1} />
+              <InputNumber min={1} style={{ width: "100%" }} />
+            </Form.Item>
+            <Form.Item name="sohoadonkt" label="Số hóa đơn KT">
+              <InputNumber min={1} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
           <Col
@@ -107,11 +110,7 @@ const TwoButtonPrint = ({ hideModal }) => {
             lg={24}
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Form.Item name="sohoadonkt" label="Số hóa đơn KT">
-              <InputNumber min={1} />
-            </Form.Item>
-          </Col>
+          ></Col>
         </Row>
         <Row>
           <Col

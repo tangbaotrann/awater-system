@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Col,
@@ -14,12 +14,19 @@ import {
   CloseOutlined,
   PrinterOutlined,
   RedoOutlined,
+  OrderedListOutlined,
 } from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
+import ListInvoicePrint from "./ListInvoicePrint";
 const ReprintButton = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
+  const [visible, setVisible] = useState(false);
+
+  const onCancel = () => {
+    setVisible(false);
+  };
   // handle submit form (main)
   const handleSubmit = (values) => {
     console.log("values", values);
@@ -33,6 +40,7 @@ const ReprintButton = ({ hideModal }) => {
   const { token } = theme.useToken();
   const onReset = () => {
     form1.resetFields();
+    setVisible(true);
   };
   const layout = {
     labelCol: {
@@ -145,7 +153,7 @@ const ReprintButton = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="sohoadonbd" label="Số hóa đơn BĐ">
-              <InputNumber min={1} />
+              <InputNumber min={1} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
           <Col
@@ -157,7 +165,7 @@ const ReprintButton = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="sohoadonkt" label="Số hóa đơn KT">
-              <InputNumber min={1} />
+              <InputNumber min={1} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -204,7 +212,7 @@ const ReprintButton = ({ hideModal }) => {
           <Button
             key="reset"
             icon={<RedoOutlined />}
-            className="custom-btn-reset"
+            className="custom-btn-reset-d"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
             style={{
@@ -213,10 +221,21 @@ const ReprintButton = ({ hideModal }) => {
           >
             Làm mới
           </Button>
-
+          <Button
+            key="list"
+            icon={<OrderedListOutlined />}
+            className="custom-btn-watch-report-d"
+            onClick={onReset}
+            style={{
+              marginLeft: "10px",
+            }}
+          >
+            Danh sách
+          </Button>
+          <ListInvoicePrint visible={visible} onCancel={onCancel} />
           <Button
             key="submit"
-            className="custom-btn-attachment"
+            className="custom-btn-attachment-d"
             htmlType="submit"
             icon={<PrinterOutlined />}
             style={{
@@ -230,7 +249,7 @@ const ReprintButton = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            className="custom-btn-close"
+            className="custom-btn-close-d"
             // type="primary"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}

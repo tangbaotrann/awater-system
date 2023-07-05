@@ -1,8 +1,10 @@
 import { React, useState } from "react";
-import { initialData, initialData2 } from "../../utils/dataInvoicePrint/data";
+import ReactToPrint from "react-to-print";
+import { initialData } from "../../utils/dataInvoicePrint/data";
 import "../../components/GlobalStyles/GlobalStyles.css";
 import InvoicingDetailsModal from "./FormInvoicePrint/InvoicingDetailsModal/InvoicingDetailsModal";
 import TabListIP from "./FormInvoicePrint/TableListIP.js";
+import PrintButton from "./PrintButton.js";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import {
   Form,
@@ -22,15 +24,17 @@ import {
 import {
   SearchOutlined,
   FormOutlined,
-  SnippetsOutlined,
+  PrinterOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "moment/locale/vi";
 import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
+
 function InvoicePrint() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
   const { token } = theme.useToken();
 
   const [form] = Form.useForm();
@@ -64,7 +68,7 @@ function InvoicePrint() {
     const newData = fetchDataForPage(currentPage);
     setData1(newData);
   };
-  const [isModalDetail, setIsModalDetail] = useState(false);
+
   const [initialData2, setInitialData2] = useState(null);
 
   const columns = [
@@ -125,7 +129,7 @@ function InvoicePrint() {
     {
       title: "",
       key: "actions",
-      width: 100,
+      width: 120,
 
       render: (text, record) => {
         return (
@@ -133,8 +137,9 @@ function InvoicePrint() {
             <Button
               icon={<FormOutlined />}
               onClick={() => handleButtonClick(record)}
-            ></Button>
-            <Button icon={<SnippetsOutlined />}></Button>
+            ></Button>{" "}
+            <PrintButton record={record} />
+            {/* <Button icon={<PrinterOutlined />}> In </Button> */}
           </>
         );
       },

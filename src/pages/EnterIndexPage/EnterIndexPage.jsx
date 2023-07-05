@@ -62,20 +62,21 @@ function EnterIndexPage() {
 
   const columns = [
     {
-      title: "#",
+      title: "  ",
       dataIndex: "imageAndStatus",
       key: "imageAndStatus",
-      width: 70,
+      width: 40,
       render: (text, record) => (
         <>
           <PictureOutlined />
+
           {text}
         </>
       ),
     },
     {
       title: "",
-      width: 70,
+      width: 55,
       render: () => {
         return (
           <Button>
@@ -85,7 +86,7 @@ function EnterIndexPage() {
       },
     },
     {
-      title: "Thứ tự",
+      title: "#",
       dataIndex: "order",
       key: "order",
       width: 70,

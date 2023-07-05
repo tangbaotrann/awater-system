@@ -213,7 +213,7 @@ const PrintButton = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="sohoadonbd" label="Số hóa đơn BĐ">
-              <InputNumber min={1} />
+              <InputNumber min={1} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
           <Col
@@ -225,7 +225,7 @@ const PrintButton = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item name="sohoadonkt" label="Số hóa đơn KT">
-              <InputNumber min={1} />
+              <InputNumber min={1} style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>

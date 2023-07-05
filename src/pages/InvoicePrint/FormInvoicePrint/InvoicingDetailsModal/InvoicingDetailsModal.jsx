@@ -12,7 +12,24 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
-
+  const detailData = Array.from({ length: 14 }, (_, i) => {
+    return {
+      key: i + 1,
+      order: i + 1,
+      serialNumber: `Sê ri ${i + 1}`,
+      invoiceNumber: `Số hóa đơn ${i + 1}`,
+      customerName: `Tên khách hàng ${i + 1}`,
+      contractNumber: `Số hợp đồng ${i + 1}`,
+      consumption: `Tiêu thụ ${i + 1}`,
+      amountDue: `Thành tiền ${i + 1}`,
+      vatFee: `Phí VAT ${i + 1}`,
+      environmentalFee: `Phí BVMT ${i + 1}`,
+      totalAmountDue: `Tổng tiền ${i + 1}`,
+      printDate: `Ngày in ${i + 1}`,
+      status: `Tình trạng ${i + 1}`,
+      notes: `Ghi chú ${i + 1}`,
+    };
+  });
   const layout = {
     labelCol: {
       span: 7,
@@ -81,7 +98,7 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
         </Row>
       </Form>
       <Table
-        dataSource={data}
+        dataSource={detailData}
         size="small"
         scroll={{ x: 2000, y: 150 }}
         columns={[
@@ -161,7 +178,6 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
           marginTop: "10px",
         }}
       >
-        {" "}
         <Button
           icon={<PrinterOutlined />}
           size="small"

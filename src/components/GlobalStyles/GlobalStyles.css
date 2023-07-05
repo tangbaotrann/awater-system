@@ -720,19 +720,27 @@ html *::-webkit-scrollbar-track {
         margin-right: 0 !important;
 
     }
-    .custom-btn-search,
-    .custom-btn-reset,
-    .custom-btn-export,
-    .custom-btn-left,
-    .custom-btn-right,
-    .custom-btn-update,
-    .custom-btn-save-and-add,
-    .custom-btn-watch-report,
-    .custom-btn-watch-report,
-    .custom-btn-close
+    .custom-btn-attachment-d,
+    .custom-btn-search-d,
+    .custom-btn-reset-d,
+    .custom-btn-export-d,
+    .custom-btn-left-d,
+    .custom-btn-right-d,
+    .custom-btn-update-d,
+    .custom-btn-save-and-add-d,
+    .custom-btn-watch-report-d,
+    .custom-btn-close-d
      {
       width: 100%;
       margin-top: 10px;
+      margin-left: 0 !important;
+    }
+      
+    .custom-btn-search-d1,
+    .custom-btn-close-d1,
+    .custom-btn-reset-d1
+     {
+      width: 100%;
       margin-left: 0 !important;
     }
 }
