@@ -95,8 +95,8 @@ const FromBarChart = () => {
         ))}
       </Select>
       <Button
-        type="primary"
         style={{ marginLeft: "10px" }}
+        className="custom-btn-watch-report"
         icon={<BarChartOutlined />}
         onClick={handleViewClick}
       >

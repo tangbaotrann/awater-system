@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import { initialData, initialData2 } from "../../utils/dataInvoicePrint/data";
-import "./InvoicePrint.css";
 import "../../components/GlobalStyles/GlobalStyles.css";
 import InvoicingDetailsModal from "./FormInvoicePrint/InvoicingDetailsModal/InvoicingDetailsModal";
 import TabListIP from "./FormInvoicePrint/TableListIP.js";
@@ -17,7 +16,7 @@ import {
   theme,
   Table,
   Space,
-  Popover, 
+  Popover,
   Collapse,
 } from "antd";
 import {
@@ -65,6 +64,9 @@ function InvoicePrint() {
     const newData = fetchDataForPage(currentPage);
     setData1(newData);
   };
+  const [isModalDetail, setIsModalDetail] = useState(false);
+  const [initialData2, setInitialData2] = useState(null);
+
   const columns = [
     {
       title: "#",
@@ -96,6 +98,7 @@ function InvoicePrint() {
       title: "Sê ri",
       dataIndex: "serialNumber",
       key: "serialNumber",
+      width: 120,
     },
     {
       title: "Số hóa đơn BĐ",
@@ -111,29 +114,27 @@ function InvoicePrint() {
       title: "Số lượng HĐ",
       dataIndex: "contractCount",
       key: "contractCount",
+      width: 120,
     },
     {
       title: "Đã in xong",
       dataIndex: "isPrinted",
       key: "isPrinted",
+      width: 120,
     },
     {
       title: "",
       key: "actions",
       width: 100,
+
       render: (text, record) => {
         return (
           <>
             <Button
               icon={<FormOutlined />}
-              onClick={handleButtonClick}
+              onClick={() => handleButtonClick(record)}
             ></Button>
             <Button icon={<SnippetsOutlined />}></Button>
-            <InvoicingDetailsModal
-              visible={isModalVisible}
-              onCancel={handleModalCancel}
-              data={initialData2}
-            />
           </>
         );
       },
@@ -141,11 +142,6 @@ function InvoicePrint() {
   ];
 
   const AdvancedSearchForm = () => {
-    // const { token } = theme.useToken();
-    // const [form] = Form.useForm();
-    // const onFinish = (values) => {
-    //   console.log("Received values of form: ", values);
-    // };
     const layout = {
       labelCol: {
         span: 10,
@@ -176,7 +172,11 @@ function InvoicePrint() {
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
             <Form.Item label="Cán bộ đọc" name="1">
-              <Select style={{ width: "100%" }} name="s1">
+              <Select
+                style={{ width: "100%" }}
+                name="s1"
+                placeholder="Chọn cán bộ"
+              >
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
               </Select>
@@ -184,7 +184,11 @@ function InvoicePrint() {
           </Col>
           <Col span={4} xs={24} sm={12} md={6}>
             <Form.Item label="Tiêu thụ" name="8">
-              <Select style={{ width: "100%" }} name="s1">
+              <Select
+                style={{ width: "100%" }}
+                name="s1"
+                placeholder="Chon tiệu thụ"
+              >
                 <Option value="1">Lựa chọn 1</Option>
                 <Option value="2">Lựa chọn 2</Option>
                 <Option value="3">Lựa chọn 3</Option>
@@ -211,6 +215,7 @@ function InvoicePrint() {
               name="6"
             >
               <Input
+                placeholder="Chọn tên"
                 style={{
                   width: "100%",
                 }}
@@ -228,7 +233,11 @@ function InvoicePrint() {
               }
               name="2"
             >
-              <Select style={{ width: "100%" }} name="s1">
+              <Select
+                style={{ width: "100%" }}
+                name="s1"
+                placeholder="Chọn tuyến"
+              >
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -236,15 +245,8 @@ function InvoicePrint() {
             </Form.Item>
           </Col>
           <Col span={7} xs={24} sm={12} md={6}>
-            <Form.Item
-              label={
-                <>
-                  In hóa đơn
-                  <br />
-                </>
-              }
-            >
-              <Select style={{ width: "100%" }}>
+            <Form.Item label={<>In hóa đơn</>}>
+              <Select style={{ width: "100%" }} placeholder="Chọn hóa đơn in">
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -260,7 +262,7 @@ function InvoicePrint() {
                   style={{
                     maxWidth: "100%",
                   }}
-                  type="primary"
+                  className="custom-btn-search"
                   htmlType="submit"
                 >
                   <SearchOutlined />
@@ -310,6 +312,11 @@ function InvoicePrint() {
           }))}
           dataSource={data1}
           onChange={handleData1Change}
+        />
+        <InvoicingDetailsModal
+          visible={isModalVisible}
+          onCancel={handleModalCancel}
+          data={initialData2}
         />
         <div className="InvoicePrint-bottom">
           <div className="contract-bottom-func">

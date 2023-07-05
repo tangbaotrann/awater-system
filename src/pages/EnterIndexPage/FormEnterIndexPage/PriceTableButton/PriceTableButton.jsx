@@ -44,16 +44,22 @@ const PriceTableButton = ({ hideModal }) => {
         >
           <Button
             icon={<ReloadOutlined />}
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-update-d"
+            style={{
+              marginLeft: "10px",
+            }}
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Cập Nhật
           </Button>
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-close-d"
+            style={{
+              marginLeft: "10px",
+            }}
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng

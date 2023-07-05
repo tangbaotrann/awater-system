@@ -3,16 +3,16 @@ import {
   FileExcelOutlined,
   SearchOutlined,
   UploadOutlined,
-  ToolOutlined,
   TableOutlined,
   FundOutlined,
   LineChartOutlined,
   PictureOutlined,
   BarChartOutlined,
+  MoreOutlined,
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import "../EnterIndexPage.css";
 import { btnClickTabListEnterIndexPageSelector } from "../../../redux/selector";
 import tabListEnterIndexPageSlice from "../../../redux/slices/tabListEnterIndexPageSlice/tabListEnterIndexPageSlice";
 import SearchForm from "./SearchForn/SearchForm";
@@ -26,7 +26,7 @@ import FormProgress from "./ProgressBarExample/ProgressBarExample.jsx";
 import PriceTableButton from "./PriceTableButton/PriceTableButton";
 import FromBarChart from "./FromBarChart";
 // Tabs bottom
-const tabs = [
+const tabs_ep = [
   {
     id: "1",
     label: "Tìm kiếm",
@@ -45,7 +45,7 @@ const tabs = [
   {
     id: "4",
     label: "Tiện ích",
-    icon: <ToolOutlined />,
+    icon: <MoreOutlined />,
   },
   {
     id: "5",
@@ -140,10 +140,22 @@ function TableListEP({ isTabletOrMobile }) {
         type={isTabletOrMobile ? "line" : "card"}
         tabPosition={isTabletOrMobile ? "left" : "top"}
         activeKey="0"
-        items={tabs.map((_tab) => {
+        items={tabs_ep.map((_tab) => {
           return {
             label: (
-              <div>
+              <div
+                className={`tab-item-ep tab-item-ep-${_tab.id} ${
+                  tabList === null && _tab.id === "2"
+                    ? "tab-item-ep-disabled"
+                    : tabList === null && _tab.id === "3"
+                    ? "tab-item-ep-disabled"
+                    : tabList === null && _tab.id === "6"
+                    ? "tab-item-ep-disabled"
+                    : tabList === null && _tab.id === "5"
+                    ? "tab-item-ep-disabled"
+                    : ""
+                }`}
+              >
                 {_tab.id === "5" ? (
                   <>
                     <Popover

@@ -13,6 +13,14 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
     console.log("Received values of form: ", values);
   };
 
+  const layout = {
+    labelCol: {
+      span: 7,
+    },
+    wrapperCol: {
+      span: 30,
+    },
+  };
   return (
     <Modal
       title="Chi tiết phiếu in"
@@ -21,6 +29,7 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
       footer={null}
     >
       <Form
+        {...layout}
         form={form1}
         onFinish={onFinish}
         name="nest-messages"
@@ -61,7 +70,11 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
         </Row>
         <Row>
           <Col>
-            <Button icon={<SearchOutlined />} size="small" type="primary">
+            <Button
+              icon={<SearchOutlined />}
+              size="small"
+              className="custom-btn-search-d"
+            >
               Tìm kiếm
             </Button>
           </Col>
@@ -139,22 +152,42 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
           },
         ]}
       />
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button icon={<PrinterOutlined />} size="small" type="primary">
-          Cập nhật hóa đơn chưa in
+
+      <Row
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          marginTop: "10px",
+        }}
+      >
+        {" "}
+        <Button
+          icon={<PrinterOutlined />}
+          size="small"
+          className="custom-btn-close-d"
+          style={{ marginLeft: "10px" }}
+        >
+          Cập nhật HĐ chưa in
         </Button>
-        <Button icon={<WarningOutlined />} size="small" type="primary">
-          Cập nhật hóa đơn hỏng
+        <Button
+          icon={<WarningOutlined />}
+          size="small"
+          className="custom-btn-close-d"
+          style={{ marginLeft: "10px" }}
+        >
+          Cập nhật HĐ hỏng
         </Button>
         <Button
           icon={<CloseOutlined />}
           size="small"
-          type="primary"
+          className="custom-btn-close-d"
           onClick={onCancel}
+          style={{ marginLeft: "10px" }}
         >
           Đóng
         </Button>
-      </div>
+      </Row>
     </Modal>
   );
 };

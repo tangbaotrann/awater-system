@@ -158,14 +158,18 @@ function FormPayCounter({ hideModal }) {
         </Col>
 
         <Col xs={24} sm={12} md={12} lg={2}>
-          <Button className="custom-btn-export">Ghi lại và in</Button>
+          <Button className="custom-btn-export space-top-10">
+            Ghi lại và in
+          </Button>
         </Col>
 
         <Col xs={24} sm={12} md={12} lg={12}>
           <div className="pay-counter-pay-and-close">
-            <Button className="custom-btn-del">Thanh toán giỏ hàng</Button>
+            <Button className="custom-btn-del space-top-10">
+              Thanh toán giỏ hàng
+            </Button>
             <Button
-              className="custom-btn-close"
+              className="custom-btn-close space-top-10"
               style={{ marginLeft: "12px" }}
               onClick={() => hideModal()}
             >

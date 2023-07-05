@@ -187,8 +187,7 @@ function FormFilterReportCustomer() {
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <Button
               htmlType="submit"
-              type="primary"
-              className="gutter-item-btn"
+              className="gutter-item-btn custom-btn-watch-report"
             >
               Xem báo cáo
             </Button>

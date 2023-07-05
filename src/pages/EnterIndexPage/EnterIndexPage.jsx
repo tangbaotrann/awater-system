@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import { initialData } from "../../utils/dataEnterIndexPage/data/data";
 import TabListEP from "./FormEnterIndexPage/TableListEP";
-import "./EnterIndexPage.css";
+
 import "../../components/GlobalStyles/GlobalStyles.css";
-import "../Manager/Contract/Contract.css";
+
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import {
   Form,
@@ -147,18 +147,18 @@ function EnterIndexPage() {
     },
     {
       title: "Trạng thái đọc",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
+      dataIndex: "ttd",
+      key: "ttd",
     },
     {
       title: "Ngày đầu kì",
-      dataIndex: "startDate",
-      key: "startDate",
+      dataIndex: "ndk",
+      key: "ndk",
     },
     {
       title: "Ngày cuối kì",
-      dataIndex: "endDate",
-      key: "endDate",
+      dataIndex: "nck",
+      key: "nck",
     },
     {
       title: "Chỉ số cũ",
@@ -172,13 +172,13 @@ function EnterIndexPage() {
     },
     {
       title: "Trạng thái ĐH",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
+      dataIndex: "ttdh",
+      key: "ttdh",
     },
     {
       title: "Ghi chú",
-      dataIndex: "recordedIndex",
-      key: "recordedIndex",
+      dataIndex: "gc",
+      key: "gc",
     },
   ];
   const AdvancedSearchForm = () => {
@@ -228,7 +228,7 @@ function EnterIndexPage() {
           </Col>
           <Col xs={24} sm={12} md={12} lg={4} span={4}>
             <Form.Item className="custom-form-item" label="Tuyến đọc" name="2">
-              <Select style={{ width: "100%" }} name="s1">
+              <Select style={{ width: "100%" }}>
                 <Option value="1">1</Option>
                 <Option value="2">2</Option>
                 <Option value="3">3</Option>
@@ -318,11 +318,12 @@ function EnterIndexPage() {
           </Col>
           <Col span={2} xs={24} sm={12} md={12} lg={4}>
             <div style={{ display: "flex" }}>
-              <Button type="primary" htmlType="submit">
+              <Button className="custom-btn-search" htmlType="submit">
                 <SearchOutlined />
                 Tìm kiếm
               </Button>
               <Button
+                className="custom-btn-reset"
                 style={{
                   marginLeft: "10px",
                 }}

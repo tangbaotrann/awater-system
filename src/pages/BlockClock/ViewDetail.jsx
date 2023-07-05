@@ -127,7 +127,7 @@ const ViewDetail = ({ hideModal }) => {
             span={isTabletOrMobile ? 24 : 5}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Button type="primary">
+            <Button className="custom-btn-watch-report">
               <SearchOutlined />
               Xem
             </Button>
@@ -169,11 +169,13 @@ const ViewDetail = ({ hideModal }) => {
         >
           <Button
             key="submit"
-            type="primary"
             htmlType="submit"
             icon={<WarningOutlined />}
-            style={{ marginRight: "10px" }}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            style={{
+              marginLeft: "10px",
+            }}
+            className="custom-btn-save-and-add-d"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Tính thất thoát
           </Button>
@@ -181,9 +183,12 @@ const ViewDetail = ({ hideModal }) => {
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
-            style={{ marginRight: "1px" }}
+            className="custom-btn-close-d"
+            // type="primary"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            style={{
+              marginLeft: "10px",
+            }}
             onClick={() => hideModal()}
           >
             Đóng

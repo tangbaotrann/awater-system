@@ -1,4 +1,93 @@
 
+
+/* Tabs */
+.tab-item-ep {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--white);
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.tab-item-ep:hover {
+  transition: 0.3s all;
+}
+
+.tab-item-ep-1 {
+  background-color: blue;
+}
+
+.tab-item-ep-1:hover {
+  background-color: var(--blue-btn-hover);
+}
+
+.tab-item-ep-2 {
+  background-color: var(--orange-btn);
+}
+
+.tab-item-ep-2:hover {
+  background-color: var(--orange-btn-hover);
+}
+
+.tab-item-ep-4 {
+  background-color: var(--red-btn);
+}
+
+.tab-item-ep-4:hover {
+  background-color: var(--red);
+}
+
+.tab-item-ep-3 {
+  background-color: var(--green-btn);
+}
+
+.tab-item-ep-3:hover {
+  background-color: var(--green-btn-hover);
+}
+
+.tab-item-ep-5 {
+  background-color: var(--purple-btn);
+}
+
+.tab-item-ep-5:hover {
+  background-color: var(--purple-btn-hover);
+}
+
+.tab-item-ep-9 {
+  background-color: var(--orange-light-btn);
+}
+
+.tab-item-ep-9:hover {
+  background-color: var(--orange-light-btn-hover);
+}
+
+.tab-item-ep-7 {
+  background-color: var(--sky-blue);
+}
+
+.tab-item-ep-7:hover {
+  background-color: var(--sky-blue-hover);
+}
+
+.tab-item-ep-8 {
+  background-color: var(--orange-medium-btn);
+}
+
+.tab-item-ep-8:hover {
+  background-color: var(--orange-medium-btn-hover);
+}
+.tab-item-ep-6 {
+  background-color: var(--sky-blue);
+}
+
+.tab-item-ep-6:hover {
+  background-color: var(--sky-blue-hover);
+}
+.tab-item-ep span {
+  margin-right: 2px !important;
+}
+
+
 .EnterIndexPage-bottom{
   position: fixed;
   bottom: 0;

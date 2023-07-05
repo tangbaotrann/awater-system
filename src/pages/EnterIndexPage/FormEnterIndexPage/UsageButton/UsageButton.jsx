@@ -102,9 +102,17 @@ const UsageButton = ({ hideModal }) => {
 
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
-
+  const layout = {
+    labelCol: {
+      span: 9,
+    },
+    wrapperCol: {
+      span: 100,
+    },
+  };
   return (
     <Form
+      {...layout}
       form={form1}
       onFinish={handleSubmit}
       onFinishFailed={handleFailed}
@@ -117,7 +125,11 @@ const UsageButton = ({ hideModal }) => {
     >
       <Row gutter={24}>
         <Col
-          span={10}
+          xs={24}
+          sm={12}
+          md={12}
+          lg={11}
+          span={12}
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Số HĐ:
@@ -125,7 +137,11 @@ const UsageButton = ({ hideModal }) => {
           <Input />
         </Col>
         <Col
-          span={10}
+          xs={24}
+          sm={12}
+          md={12}
+          lg={11}
+          span={12}
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Mã Kh:
@@ -135,7 +151,11 @@ const UsageButton = ({ hideModal }) => {
       </Row>
       <Row gutter={24}>
         <Col
-          span={10}
+          xs={24}
+          sm={12}
+          md={12}
+          lg={11}
+          span={12}
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Từ ngày:
@@ -152,7 +172,11 @@ const UsageButton = ({ hideModal }) => {
         </Col>
 
         <Col
-          span={10}
+          xs={24}
+          sm={12}
+          md={12}
+          lg={11}
+          span={12}
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Đến Ngày:
@@ -170,7 +194,11 @@ const UsageButton = ({ hideModal }) => {
       </Row>
       <Row gutter={24}>
         <Col
-          span={10}
+          xs={24}
+          sm={12}
+          md={12}
+          lg={11}
+          span={12}
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Tên khách hàng:
@@ -178,16 +206,28 @@ const UsageButton = ({ hideModal }) => {
           <Input />
         </Col>
         <Col
-          span={10}
+          xs={24}
+          sm={12}
+          md={12}
+          lg={11}
+          span={12}
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Tuyến đọc:
-          <Input />
+          <Input
+            style={{
+              width: "100%",
+            }}
+          />
         </Col>
       </Row>
       <Row gutter={24}>
         <Col
-          span={10}
+          xs={24}
+          sm={12}
+          md={12}
+          lg={11}
+          span={12}
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Địa chỉ:
@@ -195,7 +235,11 @@ const UsageButton = ({ hideModal }) => {
           <Input />
         </Col>
         <Col
-          span={10}
+          xs={24}
+          sm={12}
+          md={12}
+          lg={11}
+          span={12}
           className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Nhân Viên ghi:
@@ -209,6 +253,7 @@ const UsageButton = ({ hideModal }) => {
         dataSource={data2}
         onChange={handleData2Change}
         scroll={{ x: 1600, y: 450 }}
+        style={{ marginTop: "10px" }}
       />
       {showFormChart && <FromBarChart />}
       <Row
@@ -222,15 +267,18 @@ const UsageButton = ({ hideModal }) => {
       >
         <Button
           icon={<SearchOutlined />}
-          type="primary"
-          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          className="custom-btn-search-d"
+          // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Tìm kiếm
         </Button>
         <Button
           icon={<LineChartOutlined />}
-          type="primary"
-          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          style={{
+            marginLeft: "10px",
+          }}
+          className="custom-btn-export-d"
+          // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           onClick={() =>
             setShowFormChart((prevshowFormChart) => !prevshowFormChart)
           }
@@ -240,18 +288,22 @@ const UsageButton = ({ hideModal }) => {
 
         <Button
           icon={<SaveOutlined />}
-          style={{ marginRight: "10px" }}
-          type="primary"
-          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          style={{
+            marginLeft: "10px",
+          }}
+          className="custom-btn-save-and-add-d"
+          // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
         >
           Lưu biểu đồ
         </Button>
         <Button
           icon={<CloseOutlined />}
-          style={{ marginRight: "10px" }}
+          style={{
+            marginLeft: "10px",
+          }}
           htmlType="submit"
-          type="primary"
-          className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+          className="custom-btn-close-d"
+          // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           onClick={() => hideModal()}
         >
           Đóng

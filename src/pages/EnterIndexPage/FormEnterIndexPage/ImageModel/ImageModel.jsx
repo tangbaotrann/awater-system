@@ -99,6 +99,7 @@ const ImageModal = () => {
             showUploadList={false}
           >
             <Button
+              className="custom-btn-watch-report-d"
               style={{
                 marginLeft: "10px",
               }}
@@ -108,7 +109,7 @@ const ImageModal = () => {
           </Upload>,
           <Button
             onClick={handleCancel}
-            type="primary"
+            className="custom-btn-close-d"
             style={{
               marginLeft: "10px",
             }}

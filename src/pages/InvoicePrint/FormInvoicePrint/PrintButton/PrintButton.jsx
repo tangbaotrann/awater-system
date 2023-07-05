@@ -10,7 +10,11 @@ import {
   Select,
   theme,
 } from "antd";
-import { CloseOutlined, PrinterOutlined, RedoOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  PrinterOutlined,
+  RedoOutlined,
+} from "@ant-design/icons";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
 const PrintButton = ({ hideModal }) => {
@@ -34,9 +38,10 @@ const PrintButton = ({ hideModal }) => {
       span: 5,
     },
     wrapperCol: {
-      span: 100,
+      span: 40,
     },
   };
+
   return (
     <>
       <Form
@@ -224,6 +229,7 @@ const PrintButton = ({ hideModal }) => {
             </Form.Item>
           </Col>
         </Row>
+
         <Row>
           <Col
             xs={24}
@@ -283,28 +289,38 @@ const PrintButton = ({ hideModal }) => {
         >
           <Button
             key="reset"
-            type="primary"
             icon={<RedoOutlined />}
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-reset-d"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={onReset}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             Làm mới
           </Button>
           <Button
             key="submit"
-            type="primary"
-            htmlType="submit"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-attachment-d"
+            // htmlType="submit"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             icon={<PrinterOutlined />}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             In
           </Button>
           <Button
             icon={<CloseOutlined />}
             htmlType="submit"
-            type="primary"
-            className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            className="custom-btn-close-d"
+            // type="primary"
+            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
+            style={{
+              marginLeft: "10px",
+            }}
           >
             Đóng
           </Button>

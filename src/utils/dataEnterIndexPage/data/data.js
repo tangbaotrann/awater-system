@@ -14,5 +14,10 @@ export const initialData = Array.from({ length: 100 }, (_, i) => {
     newIndex: `Chỉ số mới ${i + 1}`,
     consumption: `Tiêu thụ ${i + 1}`,
     readingDate: `Ngày đọc ${i + 1}`,
+    ttd: `Trạng thái đọc ${i + 1}`,
+    ndk: `Ngày đầu kì ${i + 1}`,
+    nck: `Ngày cuối kì ${i + 1}`,
+    ttdh: `Trạng thái ĐH ${i + 1}`,
+    gc: `Ghi chú ${i + 1}`,
   };
 });

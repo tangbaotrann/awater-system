@@ -235,9 +235,6 @@
     pointer-events: none;
 }
 
-.fix-popover-z-index {
-    z-index: 10 !important;
-}
 
 /* Buttons update info debt */
 .func-update-info-debt-btn {

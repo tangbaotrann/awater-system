@@ -104,7 +104,7 @@ function TabList({ isTabletOrMobile }) {
           return {
             label: (
               <div
-                className={`tab-item tab-item-${_tab.id} ${
+                className={`tab-item tab-item-${_tab.id} tab-pay-${_tab.id} ${
                   tabList === null && _tab.id === "1"
                     ? "tab-item-disabled"
                     : tabList === null && _tab.id === "2"

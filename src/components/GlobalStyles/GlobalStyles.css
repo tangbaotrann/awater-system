@@ -60,6 +60,10 @@ a {
     text-decoration: none;
     color: var(--black);
 }
+.fix-popover-z-index {
+    z-index: 10 !important;
+}
+
  /* dãn cột table */
 .cell-wrap {
     word-wrap: break-word;
@@ -234,6 +238,131 @@ a {
     color: var(--white) !important;
     background-color: var(--blue-normal-btn-hover);
 }
+/* Custom bc ep ip*/
+.custom-btn-search-d {
+    border: 1px solid var(--blue-1677ff);
+    color: var(--blue-1677ff);
+}
+
+.custom-btn-search-d:hover {
+    border: 1px solid var(--blue-1677ff);
+    background-color: var(--blue-1677ff);
+    color: var(--white) !important;
+}
+
+.custom-btn-search-d1 {
+    border: 1px solid var(--blue-1677ff);
+    color: var(--blue-1677ff);
+}
+
+.custom-btn-search-d1:hover {
+    border: 1px solid var(--blue-1677ff);
+    background-color: var(--blue-1677ff);
+    color: var(--white) !important;
+}
+.custom-btn-export-d {
+    border: 1px solid var(--green-btn);
+    color: var(--white);
+    background-color: var(--green-btn);
+}
+
+.custom-btn-export-d:hover {
+    border: 1px solid var(--green-btn-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--green-btn-hover);
+}
+
+.custom-btn-update-d {
+    border: 1px solid var(--sky-blue);
+    color: var(--white);
+    background-color: var(--sky-blue);
+}
+
+.custom-btn-update-d:hover {
+    border: 1px solid var(--sky-blue-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--sky-blue-hover);
+}
+
+.custom-btn-add-d {
+    border: 1px solid var(--blue-btn);
+    color: var(--white);
+    background-color: var(--blue-btn);
+}
+
+.custom-btn-add-d:hover {
+    border: 1px solid var(--blue-btn-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--blue-btn-hover);
+}
+
+.custom-btn-save-and-add-d {
+    border: 1px solid var(--purple-btn);
+    color: var(--white);
+    background-color: var(--purple-btn);
+}
+
+.custom-btn-save-and-add-d:hover {
+    border: 1px solid var(--purple-btn-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--purple-btn-hover);
+}
+
+.custom-btn-close-d {
+    border: 1px solid var(--orange-btn);
+    color: var(--white);
+    background-color: var(--orange-btn);
+}
+
+.custom-btn-close-d:hover {
+    border: 1px solid var(--orange-btn-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--orange-btn-hover);
+}
+.custom-btn-close-d1 {
+    border: 1px solid var(--orange-btn);
+    color: var(--white);
+    background-color: var(--orange-btn);
+}
+
+.custom-btn-close-d1:hover {
+    border: 1px solid var(--orange-btn-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--orange-btn-hover);
+}
+.custom-btn-reset-d {
+    border: 1px solid var(--blue-light-btn);
+    color: var(--white);
+    background-color: var(--blue-light-btn);
+}
+
+.custom-btn-reset-d:hover {
+    border: 1px solid var(--blue-light-btn-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--blue-light-btn-hover);
+}
+.custom-btn-reset-d1 {
+    border: 1px solid var(--blue-light-btn);
+    color: var(--white);
+    background-color: var(--blue-light-btn);
+}
+
+.custom-btn-reset-d1:hover {
+    border: 1px solid var(--blue-light-btn-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--blue-light-btn-hover);
+}
+.custom-btn-watch-report-d {
+    border: 1px solid var(--orange-normal-btn);
+    color: var(--white);
+    background-color: var(--orange-normal-btn);
+}
+
+.custom-btn-watch-report-d:hover {
+    border: 1px solid var(--orange-normal-btn-hover) !important;
+    color: var(--white) !important;
+    background-color: var(--orange-normal-btn-hover);
+}
 
 /* end custom buttons */
 
@@ -264,6 +393,15 @@ html *::-webkit-scrollbar-track {
     font-weight: 600;
 }
 
+/* Tablist nav */
+.ant-tabs-nav-list {
+    margin-right: 10px;
+}
+
+.ant-tabs-tab-btn {
+    width: 100%;
+}
+
 /* ----- RESPONSIVE HERE ----- */
 
 /* Thiết kế cho kích thước màn hình dưới 576px (mobile) */
@@ -279,7 +417,6 @@ html *::-webkit-scrollbar-track {
 
     .reporter-auto-search-input {
         width: 100%;
-        padding-right: 18px;
     }
 
     /* contract */
@@ -361,8 +498,12 @@ html *::-webkit-scrollbar-track {
 
     .tablist-func-clock-btn-mobile {
         margin-top: 10px;
-        margin-right: 10px;
+        margin-right: 0 !important;
         width: 100%;
+    }
+
+    .space-top-10 {
+        margin-top: 10px;
     }
 
     /* info detail clock */
@@ -433,6 +574,10 @@ html *::-webkit-scrollbar-track {
         margin: 0;
     }
 
+    .space-top-10 {
+        margin-top: 10px;
+    }
+
     /* form pay counter */
     .pay-counter-footer-quantity {
         margin: 10px 0;
@@ -444,10 +589,8 @@ html *::-webkit-scrollbar-track {
         margin-right: 0 !important;
     }
 
-    .custom-btn-export {
+    .custom-btn-export, .custom-btn-watch-report, .custom-btn-reset {
         width: 100%;
-        margin-top: 20px;
-        margin-bottom: 10px;
     }
 
     .pay-counter-pay-and-close {
@@ -456,14 +599,39 @@ html *::-webkit-scrollbar-track {
     }
 
     .custom-btn-close {
-        margin-top: 10px;
         margin-left: 0 !important;
     }
 
     /* modal (các chỉ số) */
+    
     .custom-progress-mobile {
         overflow-x: auto;
     }
+
+    .custom-btn-attachment-d,
+    .custom-btn-search-d,
+    .custom-btn-reset-d,
+    .custom-btn-export-d,
+    .custom-btn-left-d,
+    .custom-btn-right-d,
+    .custom-btn-update-d,
+    .custom-btn-save-and-add-d,
+    .custom-btn-watch-report-d,
+    .custom-btn-close-d
+     {
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 0 !important;
+    }
+      
+    .custom-btn-search-d1,
+    .custom-btn-close-d1,
+    .custom-btn-reset-d1
+     {
+      width: 100%;
+      margin-left: 0 !important;
+    }
+
 }
   
 /* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
@@ -550,6 +718,22 @@ html *::-webkit-scrollbar-track {
     .pay-counter-footer-total {
         margin: 10px 0;
         margin-right: 0 !important;
+
+    }
+    .custom-btn-search,
+    .custom-btn-reset,
+    .custom-btn-export,
+    .custom-btn-left,
+    .custom-btn-right,
+    .custom-btn-update,
+    .custom-btn-save-and-add,
+    .custom-btn-watch-report,
+    .custom-btn-watch-report,
+    .custom-btn-close
+     {
+      width: 100%;
+      margin-top: 10px;
+      margin-left: 0 !important;
     }
 }
   
