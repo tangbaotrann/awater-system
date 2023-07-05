@@ -30,7 +30,7 @@ export const CreateMultipleBook = (props) => {
       key: "1",
       stt: "1",
       employee: "Mike",
-      readCode: 32,
+      readCode: 32, 
       namecode: "abc",
       semesterIndex: "abc",
     },
@@ -162,10 +162,11 @@ export const CreateMultipleBook = (props) => {
           size="small"
           pagination={{
             current: 1,
-            total: 10000,
-            pageSize: 50,
+            // total: 10000,
+            // pageSize: 50,
           }}
           scroll={{
+            x: 1000,
             y: 240,
           }}
         />
@@ -250,12 +251,12 @@ export const CreateMultipleBook = (props) => {
           </Col>
         </Row>
       </div>
-      <div
+      <Row
         style={{
           display: "flex",
           justifyContent: "justify-between",
           marginBottom: 16,
-          marginTop: 16,
+          marginTop: 16, 
           width: "100%",
         }}
       >
@@ -281,7 +282,7 @@ export const CreateMultipleBook = (props) => {
             Đóng
           </Button>
         </div>
-      </div>
+      </Row>
     </Modal>
   );
 };

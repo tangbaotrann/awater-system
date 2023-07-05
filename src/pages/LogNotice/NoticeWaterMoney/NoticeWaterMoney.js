@@ -2,11 +2,13 @@ import { CloseOutlined, SendOutlined } from "@ant-design/icons";
 import {
   Button,
   Checkbox,
+  Col,
   Collapse,
   DatePicker,
   Form,
   Input,
   Modal,
+  Row,
   Table,
   theme,
 } from "antd";
@@ -155,8 +157,8 @@ const NoticeWaterMoney = (props) => {
           size="small"
           pagination={{
             current: 1,
-            total: 10000,
-            pageSize: 50,
+            // total: 10000,
+            // pageSize: 50,
           }}
           scroll={{
             x: 2000,
@@ -164,16 +166,8 @@ const NoticeWaterMoney = (props) => {
           }}
         />
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "justify-between",
-          marginBottom: 16,
-          marginTop: 16,
-          width: "100%",
-        }}
-      >
-        <div style={{ display: "flex", width: "100%" }}>
+      <Row style={{ display: "flex", width: "100%", marginTop: "10px" }}>
+        <Col lg={12}>
           <Form.Item
             name="date"
             label="Tiêu đề"
@@ -184,38 +178,33 @@ const NoticeWaterMoney = (props) => {
               },
             ]}
           >
-            <DatePicker
-              allowClear
-              placeholder="Chọn tháng"
-              style={{ width: "100%" }}
-              format="MM-YYYY"
-              picker="month"
-            />
+            <Input style={{ marginLeft: "10px" }} />
           </Form.Item>
-          <div style={{ marginLeft: "auto" }}>
-            <Checkbox style={{ marginRight: "13px" }}>Email</Checkbox>
-            <Checkbox style={{ marginRight: "13px" }}>
-              Ứng dụng Nước Sạch
-            </Checkbox>
-            <Button
-              type="primary"
-              icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
-              style={{ marginRight: 5 }}
-              size="middle"
-            >
-              Gửi
-            </Button>
-            <Button
-              className="custom-btn-close"
-              onClick={() => setIsOpen(false)}
-              size="middle"
-            >
-              <CloseOutlined />
-              Đóng
-            </Button>
-          </div>
-        </div>
-      </div>
+        </Col>
+
+        <Col lg={12} style={{ textAlign: "end" }}>
+          <Checkbox style={{ marginRight: "13px" }}>Email</Checkbox>
+          <Checkbox style={{ marginRight: "13px" }}>
+            Ứng dụng Nước Sạch
+          </Checkbox>
+          <Button
+            type="primary"
+            icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
+            style={{ marginRight: 5 }}
+            size="middle"
+          >
+            Gửi
+          </Button>
+          <Button
+            className="custom-btn-close"
+            onClick={() => setIsOpen(false)}
+            size="middle"
+          >
+            <CloseOutlined />
+            Đóng
+          </Button>
+        </Col>
+      </Row>
     </Modal>
   );
 };

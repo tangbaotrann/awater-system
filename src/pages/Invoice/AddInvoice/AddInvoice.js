@@ -3,30 +3,50 @@ import {
   FolderFilled,
   ProjectOutlined,
   SaveFilled,
-  SyncOutlined,
 } from "@ant-design/icons";
-import {
-  Button,
-  Col,
-  DatePicker,
-  Form,
-  Input,
-  Modal,
-  Row,
-  Select,
-  theme,
-} from "antd";
+import { Button, Col, Collapse, Modal, Row } from "antd";
 import { useState } from "react";
 import TableModifyPrice from "./TableModifyPrice";
+import { FormClock } from "../EditInvoice/FormClock";
+import { FormUserInfo } from "../EditInvoice/FormUserInfo";
+import { GeneralInfo } from "../EditInvoice/GeneralInfo";
+import { useMediaQuery } from "react-responsive";
 
 export const AddInvoice = (props) => {
-  const { token } = theme.useToken();
   const { isOpen, handleCancel, handleOk } = props;
   const [isOpenTablePrice, setIsOpenTablePrice] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
+
+  const clockInfo = [
+    {
+      key: "1",
+      label: "Thông tin đồng hồ",
+      children: <FormClock />,
+    },
+  ];
+
+  const userInfo = [
+    {
+      key: "1",
+      label: "Thông tin khách hàng",
+      children: <FormUserInfo />,
+    },
+  ];
+
+  const generalInfo = [
+    {
+      key: "1",
+      label: "Thông tin chung",
+      children: <GeneralInfo />,
+    },
+  ];
 
   return (
     <Modal
-      title="Cập nhật hóa đơn"
+      title="Thêm hóa đơn"
       open={isOpen}
       onOk={() => handleOk("", "addInvoice")}
       onCancel={() => handleCancel("", "addInvoice")}
@@ -36,7 +56,7 @@ export const AddInvoice = (props) => {
         top: 20,
       }}
     >
-      <div className="clock-info">
+      {/* <div className="clock-info"> 
         <fieldset>
           <legend
             style={{ padding: "0 11px", marginLeft: "10px", fontSize: "18px" }}
@@ -593,28 +613,55 @@ export const AddInvoice = (props) => {
             </Row>
           </Form>
         </fieldset>
-      </div>
-      <div
+      </div> */}
+      <Collapse items={clockInfo} size="small" />
+      <Collapse items={userInfo} size="small" style={{ marginTop: "10px" }} />
+      <Collapse
+        items={generalInfo}
+        size="small"
+        style={{ marginTop: "10px" }}
+      />
+      <Row
         className="invoice_footer"
         style={{ display: "flex", marginTop: "10px" }}
+        gutter={24}
       >
-        <div>
-          <Button type="primary" danger>
+        <Col sm={24} md={24} lg={12}>
+          <Button
+            type="primary"
+            danger
+            style={{
+              width: `${isMobile ? "100%" : ""}`,
+              // marginLeft: `${isDesktopOrLaptop ? "3px" : 0}`,
+              marginTop: `${isMobile ? "10px" : ""}`,
+              marginLeft: "3px",
+            }}
+          >
             Chỉ số tháng sau: 1155
           </Button>
           <Button
             type="primary"
             icon={<FolderFilled />}
-            style={{ marginLeft: "3px" }}
+            style={{
+              // marginLeft: `${isDesktopOrLaptop ? "3px" : 0}`,
+              width: `${isMobile ? "100%" : ""}`,
+              marginTop: `${isMobile ? "10px" : ""}`,
+              marginLeft: "3px",
+            }}
           >
             Tệp đính kèm
           </Button>
-        </div>
-        <div style={{ marginLeft: "auto" }}>
+        </Col>
+        <Col sm={24} md={24} lg={12} style={{ textAlign: "end" }}>
           <Button
             type="primary"
             icon={<ProjectOutlined />}
-            style={{ marginLeft: "3px" }}
+            style={{
+              width: `${isMobile ? "100%" : ""}`,
+              // marginLeft: `${isDesktopOrLaptop ? "3px" : 0}`,
+              marginTop: `${isMobile ? "10px" : ""}`,
+              marginLeft: "3px",
+            }}
             onClick={() => setIsOpenTablePrice(true)}
           >
             Chỉnh bảng giá
@@ -622,21 +669,31 @@ export const AddInvoice = (props) => {
           <Button
             type="primary"
             icon={<SaveFilled />}
-            style={{ marginLeft: "3px" }}
+            style={{
+              // marginLeft: `${isDesktopOrLaptop ? "3px" : 0}`,
+              width: `${isMobile ? "100%" : ""}`,
+              marginTop: `${isMobile ? "10px" : ""}`,
+              marginLeft: "3px",
+            }}
           >
             Lưu
           </Button>
           <Button
             type="primary"
             icon={<CloseCircleFilled />}
-            style={{ marginLeft: "3px" }}
+            style={{
+              // marginLeft: `${isDesktopOrLaptop ? "3px" : 0}`,
+              width: `${isMobile ? "100%" : ""}`,
+              marginTop: `${isMobile ? "10px" : ""}`,
+              marginLeft: "3px",
+            }}
             onClick={() => handleCancel("", "addInvoice")}
           >
             Đóng
           </Button>
-        </div>
-      </div>
-      <TableModifyPrice 
+        </Col>
+      </Row>
+      <TableModifyPrice
         isOpen={isOpenTablePrice}
         setIsOpen={setIsOpenTablePrice}
       />

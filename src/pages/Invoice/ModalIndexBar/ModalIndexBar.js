@@ -14,6 +14,7 @@ export const ModalIndexBarInvoice = (props) => {
       style={{
         top: 20,
       }}
+      centered
     >
       <div style={{ display: "flex", marginTop: "10px" }}>
         <Row

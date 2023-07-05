@@ -9,7 +9,7 @@
 
 .tab-item-Invoice:hover {
     transition: 0.3s all;
-}
+} 
 
 .tab-item-Invoice-6,
 .tab-item-Invoice-1 {
@@ -35,7 +35,6 @@
 .tab-item-Invoice-8,
 .tab-item-Invoice-3 {
     background-color: var(--blue-light-btn);
-    
 }
 
 .tab-item-Invoice-8:hover,

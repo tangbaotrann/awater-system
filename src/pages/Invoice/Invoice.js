@@ -119,6 +119,7 @@ const Invoice = () => {
       children: <FormSearchInvoice />,
     },
   ];
+
   return (
     <>
       {/* filter */} 
@@ -162,6 +163,7 @@ const Invoice = () => {
         {isTabletOrMobile ? (
           <Popover
             placement="bottomRight"
+            rootClassName="fix-popover-z-index"
             trigger="click"
             // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
             content={
@@ -175,7 +177,7 @@ const Invoice = () => {
                 setIsModalSMS={setIsModalSMS}
                 setIsOpenModalInvoiceBar={setIsOpenModalInvoiceBar}
                 isTabletOrMobile={isTabletOrMobile}
-              />
+              /> 
             }
           >
             <PlusOutlined />

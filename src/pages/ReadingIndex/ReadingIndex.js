@@ -1,4 +1,4 @@
-import { Col, Collapse, Popover, Progress, Row, Table, theme } from "antd";
+import { Collapse, Popover, Table, theme } from "antd";
 import { useState } from "react";
 import { CreateBook } from "./CreateBook/CreateBook";
 import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
@@ -13,7 +13,7 @@ const ReadingIndex = () => {
   const { token } = theme.useToken();
   const [isOpenModalCreate, setIsOpenModalCreate] = useState(false);
   const [isModalOpenMCreate, setIsModalOpenMCreate] = useState(false);
-  const [isModalOpenIndexBar, setIsModalOpenIndexBar] = useState(false); 
+  const [isModalOpenIndexBar, setIsModalOpenIndexBar] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const handleOk = (_, type) => {
@@ -38,7 +38,7 @@ const ReadingIndex = () => {
 
   const dataSource = Array.from({ length: 100 }, (_, index) => ({
     key: index,
-    '#': index + 1,
+    "#": index + 1,
     name: `Tuyến ${index}`,
     age: `Cán bộ ${index}`,
     address: `Tên sổ ${index}`,
@@ -104,10 +104,19 @@ const ReadingIndex = () => {
       children: <FormSearchReadingIndex />,
     },
   ];
- 
+
+  const renderFooter = () => (
+    <FooterReadingIndex
+      setIsOpenModalCreate={setIsOpenModalCreate}
+      setIsModalOpenMCreate={setIsModalOpenMCreate}
+      isTabletOrMobile={isTabletOrMobile}
+      setIsModalOpenIndexBar={setIsModalOpenIndexBar}
+    />
+  );
+
   return (
     <>
-      <Collapse items={items} size="small"/>
+      <Collapse items={items} size="small" />
       <div
         style={{
           lineHeight: "200px",
@@ -126,7 +135,7 @@ const ReadingIndex = () => {
             total: 10000,
             pageSize: 50,
           }}
-          scroll={{
+          scroll={{ 
             x: 1500,
             y: 330,
           }}
@@ -135,34 +144,24 @@ const ReadingIndex = () => {
       <div className="contract-bottom">
         <div className="contract-bottom-func">
           {isTabletOrMobile ? (
-            <Popover 
+            <Popover
               rootClassName="fix-popover-z-index"
-              placement="bottomRight"
+              placement="bottomRight" 
               trigger="click"
-              // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
-              content={ 
-                <FooterReadingIndex
-                  setIsOpenModalCreate={setIsOpenModalCreate}
-                  setIsModalOpenMCreate={setIsModalOpenMCreate}
-                  isTabletOrMobile={isTabletOrMobile}
-                  setIsModalOpenIndexBar={setIsModalOpenIndexBar}
-                />
+              content={
+                renderFooter()
               }
             >
               <PlusOutlined />
             </Popover>
           ) : (
-            <FooterReadingIndex
-              setIsOpenModalCreate={setIsOpenModalCreate}
-              setIsModalOpenMCreate={setIsModalOpenMCreate}
-              setIsModalOpenIndexBar={setIsModalOpenIndexBar}
-            />
+            renderFooter()
           )}
-        </div> 
+        </div>
       </div>
 
       <CreateBook
-        handleCancel={handleCancel}
+        handleCancel={handleCancel} 
         handleOk={handleOk}
         isOpen={isOpenModalCreate}
       />

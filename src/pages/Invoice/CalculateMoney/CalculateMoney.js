@@ -56,10 +56,10 @@ export const CalculateMoney = (props) => {
           maxWidth: "none",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
-          padding: 24,
+          padding: 10,
         }}
       >
-        <Form.Item name="date" label="Tháng" style={{ marginRight: "70px" }}>
+        <Form.Item name="date" label="Tháng" style={{ marginRight: "70px", width: "100%" }}>
           <DatePicker
             allowClear
             placeholder="Chọn tháng"
@@ -71,7 +71,7 @@ export const CalculateMoney = (props) => {
         <Form.Item
           name="person"
           label="Cán bộ đọc"
-          style={{ marginRight: "70px" }}
+          style={{ marginRight: "70px", width: "100%" }}         
         >
           <Select
             defaultValue="--Chọn cán bộ--"
@@ -93,7 +93,7 @@ export const CalculateMoney = (props) => {
         <Form.Item
           name="tuyendoc"
           label="Tuyến đọc"
-          style={{ marginRight: "70px" }}
+          style={{ marginRight: "70px", width: "100%" }}
         >
           <Select
             defaultValue="--Chọn tuyến đọc--"
@@ -115,7 +115,7 @@ export const CalculateMoney = (props) => {
         <Form.Item
           name="status"
           label="Phạm vi"
-          style={{ marginRight: "70px" }}
+          style={{ marginRight: "70px", width: "100%" }}
         >
           <Select
             defaultValue="--Chọn phạm vi--"
@@ -137,14 +137,14 @@ export const CalculateMoney = (props) => {
         <Form.Item
           name="place"
           label="Khách hàng"
-          style={{ marginRight: "70px" }}
+          style={{ marginRight: "70px", width: "100%" }}
         >
           <Input placeholder="Tên khách hàng" />
         </Form.Item>
         <Form.Item
           name="ky"
           label="Số hợp đồng"
-          style={{ marginRight: "70px" }}
+          style={{ marginRight: "70px", width: "100%" }}
         >
           <Input placeholder="Số hợp đồng, mã KH, IDKH" />
         </Form.Item>
@@ -162,7 +162,7 @@ export const CalculateMoney = (props) => {
         <div style={{ marginLeft: "auto" }}>
           <Button
             type="primary"
-            icon={<SaveFilled />}
+            icon={<SaveFilled />} 
             style={{ marginRight: 5 }}
             size="middle"
           >

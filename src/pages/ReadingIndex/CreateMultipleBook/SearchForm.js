@@ -1,45 +1,37 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Col, DatePicker, Form, Row, Select, theme } from "antd";
+import { Col, DatePicker, Form, Row, Select } from "antd";
 import { Button } from "antd/es/radio";
 import React from "react";
 
 export const SearchForm = () => {
   const [form] = Form.useForm();
-  const { token } = theme.useToken();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-  };
-  const formStyle = {
-    maxWidth: "none",
-    borderRadius: token.borderRadiusLG,
   };
   return (
     <Form
       form={form}
       name="advanced_search"
-      style={formStyle}
       onFinish={onFinish}
-      size="small"
+      // size="small"
     >
       <Row gutter={24}>
-        <Col span={12}>
+        <Col lg={12} style={{ width: "100%" }}>
           <Form.Item name="date" label="Tháng">
             <DatePicker
               allowClear
               placeholder="Chọn tháng"
-              style={{ width: "100%" }}
               format="MM-YYYY"
+              style={{ width: "100%" }}
               picker="month"
             />
           </Form.Item>
         </Col>
-        <Col span={12}>
+        <Col lg={12} style={{ width: "100%" }}>
           <Form.Item name="person" label="Kỳ ghi chỉ số">
             <Select
               defaultValue="--Chọn kỳ ghi chỉ số--"
-              style={{
-                width: "100%",
-              }}
+              style={{ width: "100%" }}
               options={[
                 {
                   value: "jack",
@@ -59,9 +51,7 @@ export const SearchForm = () => {
           textAlign: "right",
         }}
       >
-        <Button
-          className="custom-btn-search gutter-item-btn"
-        >
+        <Button className="custom-btn-search gutter-item-btn">
           <SearchOutlined />
           Tìm kiếm
         </Button>

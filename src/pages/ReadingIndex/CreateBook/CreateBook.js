@@ -1,4 +1,8 @@
-import { FilePdfOutlined, PlusCircleOutlined, CloseOutlined } from "@ant-design/icons";
+import {
+  FilePdfOutlined,
+  PlusCircleOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -16,11 +20,13 @@ import {
 } from "antd";
 import { useState } from "react";
 import { SearchForm } from "./SearchForm";
+import { useMediaQuery } from "react-responsive";
 
 export const CreateBook = (props) => {
   const { isOpen } = props;
   const { token } = theme.useToken();
-
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   console.log(isOpen);
 
@@ -167,10 +173,11 @@ export const CreateBook = (props) => {
           size="small"
           pagination={{
             current: 1,
-            total: 10000,
-            pageSize: 50,
+            // total: 10000,
+            // pageSize: 50,
           }}
           scroll={{
+            x: 1500,
             y: 300,
           }}
         />
@@ -290,50 +297,75 @@ export const CreateBook = (props) => {
           </Col>
         </Row>
       </div>
-      <div
+      <Row
         style={{
           display: "flex",
-          justifyContent: "justify-between",
+          // justifyContent: "justify-between",
           marginTop: 16,
           width: "100%",
         }}
-      >
-        <div>
+      > 
+        <Col sm={24} md={24} lg={12}>
           <Checkbox style={{ marginRight: "13px" }}>Tạo biểu mẫu</Checkbox>
           <Checkbox style={{ marginRight: "13px" }}>Không SD kỳ</Checkbox>
           <Checkbox style={{ marginRight: "13px" }}>Ghi chỉ số online</Checkbox>
+        </Col>
+        <Col
+          style={{
+            // marginTop: `${isMobile ? "10px" : ""}`,
+            textAlign: "end",
+          }}
+          sm={24}
+          md={24}
+          lg={12}
+        >
           <Button
             onClick={props.handleCancel}
-            style={{ marginRight: 5 }}
+            style={{
+              marginRight: 5,
+              width: `${isMobile ? "100%" : ""}`,
+            }}
             icon={<FilePdfOutlined />}
-            className="custom-btn-export"
+            className="custom-btn-export" 
           >
             Xuất bảng kê
-          </Button> 
-        </div>
-        <div style={{ marginLeft: "auto" }}>
-          <Button 
-            type="primary"
-            icon={<PlusCircleOutlined />}
-            style={{ marginRight: 5 }}
-            className="create-modal tab-item-readingIndex-1"
-          >
-            Tạo sổ và tạo tiếp 
           </Button>
           <Button
             type="primary"
             icon={<PlusCircleOutlined />}
-            style={{ marginRight: 5 }}
+            style={{
+              marginRight: 5,
+              width: `${isMobile ? "100%" : ""}`,
+            }}
+            className="create-modal tab-item-readingIndex-1"
+          > 
+            Tạo sổ và tạo tiếp
+          </Button>
+          <Button
+            type="primary"
+            icon={<PlusCircleOutlined />}
+            style={{
+              marginRight: 5,
+              width: `${isMobile ? "100%" : ""}`,
+              marginTop: `${isTabletOrMobile ? "10px" : ""}`,
+            }}
             className="create-modal tab-item-readingIndex-1"
           >
             Tạo sổ và đóng
           </Button>
-          <Button className="custom-btn-close" onClick={props.handleCancel}>
+          <Button
+            className="custom-btn-close"
+            onClick={props.handleCancel}
+            style={{
+              marginRight: 5,
+              width: `${isMobile ? "100%" : ""}`,
+            }}
+          >
             <CloseOutlined />
             Đóng
           </Button>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </Modal>
   );
 };

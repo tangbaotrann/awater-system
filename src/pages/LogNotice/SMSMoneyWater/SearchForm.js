@@ -4,7 +4,7 @@ import React from "react";
 
 export const SearchForm = () => {
   const [form] = Form.useForm();
-  const { token } = theme.useToken();
+  const { token } = theme.useToken(); 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };

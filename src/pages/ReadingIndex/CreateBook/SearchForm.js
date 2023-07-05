@@ -1,38 +1,32 @@
 import { SearchOutlined } from "@ant-design/icons";
-import {
-  Button,
-  Col,
-  DatePicker,
-  Form,
-  Input,
-  Row,
-  Select,
-  Space,
-  theme,
-} from "antd";
+import { Button, Col, DatePicker, Form, Input, Row, Select, Space } from "antd";
 
 export const SearchForm = () => {
   const [form] = Form.useForm();
-  const { token } = theme.useToken();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
-  const formStyle = {
-    maxWidth: "none",
-    // background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
+
+  const layout = {
+    labelCol: {
+      span: 7,
+    },
+    wrapperCol: {
+      span: 24,
+    },
   };
   return (
     <div>
       <Form
+        {...layout}
         form={form}
-        name="advanced_search"
-        style={formStyle}
+        // name="advanced_search"
+        // style={formStyle}
         onFinish={onFinish}
         // size="small"
       >
         <Row gutter={24}>
-          <Col span={8}>
+          <Col sx={24} sm={24} md={12} lg={6} style={{ width: "100%" }}>
             <Form.Item
               name="date"
               label="Tháng"
@@ -51,7 +45,7 @@ export const SearchForm = () => {
               />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col sx={24} sm={24} md={12} lg={6} style={{ width: "100%" }}>
             <Form.Item
               name="person"
               label="Cán bộ"
@@ -79,7 +73,7 @@ export const SearchForm = () => {
               />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col sx={24} sm={24} md={12} lg={6} style={{ width: "100%" }}>
             <Form.Item name="tuyendoc" label="Tuyến đọc">
               <Select
                 defaultValue="--Chọn tuyến đọc--"
@@ -99,9 +93,7 @@ export const SearchForm = () => {
               />
             </Form.Item>
           </Col>
-        </Row>
-        <Row gutter={24}>
-          <Col span={6}>
+          <Col sx={24} sm={24} md={12} lg={6} style={{ width: "100%" }}>
             <Form.Item name="status" label="Phạm vi">
               <Select
                 defaultValue="--Chọn phạm vi--"
@@ -121,7 +113,9 @@ export const SearchForm = () => {
               />
             </Form.Item>
           </Col>
-          <Col span={6}>
+        </Row>
+        <Row gutter={24}>
+          <Col sx={24} sm={24} md={12} lg={6} style={{ width: "100%" }}>
             <Form.Item name="place" label="Loại KH">
               <Select
                 defaultValue="--Chọn loại KH--"
@@ -141,12 +135,12 @@ export const SearchForm = () => {
               />
             </Form.Item>
           </Col>
-          <Col span={6}>
+          <Col sx={24} sm={24} md={12} lg={6} style={{ width: "100%" }}>
             <Form.Item name="ky" label="Số hợp đồng">
               <Input placeholder="Nhập số hợp đồng" />
             </Form.Item>
           </Col>
-          <Col span={6}>
+          <Col sx={24} sm={24} md={12} lg={6} style={{ width: "100%" }}>
             <Form.Item name="numberName" label="Loại ĐH">
               <Select
                 defaultValue="--Chọn loại ĐH--"
@@ -166,31 +160,33 @@ export const SearchForm = () => {
               />
             </Form.Item>
           </Col>
-        </Row>
-        <div
-          style={{
-            textAlign: "right",
-          }}
-        >
-          <Space size="small">
-            <Button
-              htmlType="submit"
-              className="custom-btn-search gutter-item-btn"
-              icon={<SearchOutlined />}
-            >
-              Tìm kiếm
-            </Button>
-            <Button
-              onClick={() => {
-                form.resetFields();
+          <Col sx={24} sm={24} md={12} lg={6} style={{ width: "100%" }}>
+            <div
+              style={{
+                textAlign: "right",
               }}
-              className="custom-btn-search gutter-item-btn"
-              icon={<SearchOutlined />}
             >
-              Tìm mới
-            </Button>
-          </Space>
-        </div>
+              <Space size="small">
+                <Button
+                  htmlType="submit"
+                  className="custom-btn-search gutter-item-btn"
+                  icon={<SearchOutlined />}
+                >
+                  Tìm kiếm
+                </Button>
+                <Button
+                  onClick={() => {
+                    form.resetFields();
+                  }}
+                  className="custom-btn-search gutter-item-btn"
+                  icon={<SearchOutlined />}
+                >
+                  Tìm mới
+                </Button>
+              </Space>
+            </div>
+          </Col>
+        </Row>
       </Form>
     </div>
   );

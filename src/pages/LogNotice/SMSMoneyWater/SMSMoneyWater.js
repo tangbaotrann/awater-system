@@ -2,11 +2,13 @@ import { CloseOutlined, SendOutlined, SyncOutlined } from "@ant-design/icons";
 import {
   Button,
   Checkbox,
+  Col,
   Collapse,
   DatePicker,
   Form,
   Input,
   Modal,
+  Row,
   Table,
   theme,
 } from "antd";
@@ -155,8 +157,8 @@ export const SMSMoneyWater = (props) => {
           size="small"
           pagination={{
             current: 1,
-            total: 10000,
-            pageSize: 50,
+            // total: 10000,
+            // pageSize: 50,
           }}
           scroll={{
             x: 2000,
@@ -164,34 +166,21 @@ export const SMSMoneyWater = (props) => {
           }}
         />
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "justify-between",
-          marginBottom: 16,
-          marginTop: 16,
-          width: "100%",
-        }}
-      >
-        <div style={{ display: "flex", width: "100%" }}>
+      <Row style={{ display: "flex", width: "100%", marginTop: "10px" }}>
+        <Col sm={24} md={24} lg={12}>
           <Form.Item
             name="date"
             label="Tiêu đề"
             rules={[
               {
                 required: true,
-                message: "Hãy thêm tên nhân viên",
               },
             ]}
           >
-            <DatePicker
-              allowClear
-              placeholder="Chọn tháng"
-              style={{ width: "100%" }}
-              format="MM-YYYY"
-              picker="month"
-            />
+            <Input style={{marginLeft: '10px'}}/>
           </Form.Item>
+        </Col>
+        <Col sm={24} md={24} lg={12} style={{textAlign: 'end'}}>
           <div style={{ marginLeft: "auto" }}>
             <Checkbox style={{ marginRight: "13px" }}>Email</Checkbox>
             <Checkbox style={{ marginRight: "13px" }}>
@@ -214,8 +203,8 @@ export const SMSMoneyWater = (props) => {
               Đóng
             </Button>
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </Modal>
   );
 };

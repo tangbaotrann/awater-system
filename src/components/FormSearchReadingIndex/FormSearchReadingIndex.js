@@ -12,7 +12,7 @@ import {
 import { SearchOutlined } from "@ant-design/icons";
 
 export const AdvancedSearchForm = () => {
-  const { token } = theme.useToken();
+  const { token } = theme.useToken(); 
   const [form] = Form.useForm();
   const formStyle = {
     maxWidth: "none",

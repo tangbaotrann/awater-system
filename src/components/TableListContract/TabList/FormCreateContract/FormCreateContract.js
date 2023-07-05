@@ -17,7 +17,7 @@ function FormCreateContract({ tabList, hideModal }) {
 
   // console.log(isTabletOrMobile);
 
-  // collapse (Thông tin khách hàng)
+  // collapse (Thông tin khách hàng) 
   const items = [
     {
       key: "1",

@@ -44,10 +44,10 @@ export const Instalments = (props) => {
           maxWidth: "none",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
-          padding: 24,
+          padding: 10,
         }}
       >
-        <Form.Item name="date" label="Tháng" style={{ marginRight: "70px" }}>
+        <Form.Item name="date" label="Tháng" style={{ marginRight: "70px", width: "100%" }}>
           <DatePicker
             allowClear
             placeholder="Chọn tháng"
@@ -59,7 +59,7 @@ export const Instalments = (props) => {
         <Form.Item
           name="person"
           label="Ngày đầu kỳ"
-          style={{ marginRight: "70px" }}
+          style={{ marginRight: "70px", width: "100%" }}
           rules={[
             {
               required: true,
@@ -76,7 +76,7 @@ export const Instalments = (props) => {
         <Form.Item
           name="tuyendoc"
           label="Ngày cuối kỳ"
-          style={{ marginRight: "70px" }}
+          style={{ marginRight: "70px", width: "100%" }}
           rules={[
             {
               required: true,
@@ -105,7 +105,7 @@ export const Instalments = (props) => {
             type="primary"
             icon={<SaveFilled />}
             style={{ marginRight: 5 }}
-            size="middle"
+            size="middle" 
           >
             Bắt đầu thực hiện
           </Button>
