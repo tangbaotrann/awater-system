@@ -48,7 +48,7 @@ export const EditInvoice = (props) => {
       children: <GeneralInfo />,
     },
   ];
- 
+
   return (
     <Modal
       title="Cập nhật hóa đơn"
@@ -57,9 +57,7 @@ export const EditInvoice = (props) => {
       onCancel={() => setIsOpenModalEditInvoice(false)}
       width={1066}
       footer={null}
-      style={{
-        top: 20,
-      }} 
+      centered
     >
       <Collapse items={clockInfo} size="small" />
       <Collapse items={userInfo} size="small" style={{ marginTop: "10px" }} />

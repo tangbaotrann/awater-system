@@ -44,17 +44,16 @@ export const AddInvoice = (props) => {
     },
   ];
 
+
   return (
     <Modal
       title="Thêm hóa đơn"
       open={isOpen}
-      onOk={() => handleOk("", "addInvoice")}
+      onOk={() => handleOk("", "addInvoice")} 
       onCancel={() => handleCancel("", "addInvoice")}
-      width={1000}
-      footer={null}
-      style={{
-        top: 20,
-      }}
+      width={1200}
+      footer={null} 
+      centered
     >
       {/* <div className="clock-info"> 
         <fieldset>

@@ -1,5 +1,9 @@
 import { Button, Collapse, Modal, Table } from "antd";
-import { CloseCircleFilled, CloseOutlined, SaveFilled } from "@ant-design/icons";
+import {
+  CloseCircleFilled,
+  CloseOutlined,
+  SaveFilled,
+} from "@ant-design/icons";
 import ChartJS from "chart.js/auto";
 import {
   CategoryScale,
@@ -166,16 +170,14 @@ export const WaterStatus = (props) => {
       },
     ],
   };
-  return (
+  return ( 
     <Modal
       title="Tình hình sử dụng nước"
       open={isOpen}
       onOk={() => setIsOpen(false)}
       onCancel={() => setIsOpen(false)}
       width={1100}
-      style={{
-        top: 10,
-      }}
+      centered
       footer={[
         <Button
           className="custom-btn-close"
