@@ -8,6 +8,7 @@ import { dataOnModalDoubleClick, dataPayment } from "../../utils/dataPayment";
 import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 import { btnClickTabListContractSelector } from "../../redux/selector";
+import { formatPrice } from "../../utils/formatPrice";
 
 function TableListPayment() {
   const [modalDoubleClick, setModalDoubleClick] = useState(false);
@@ -185,8 +186,8 @@ function TableListPayment() {
             status_payment: _pay.status_payment,
             fall_day: _pay.fall_day,
             collector: _pay.collector,
-            total: _pay.total,
-            amount_spent: _pay.amount_spent,
+            total: formatPrice(_pay.total),
+            amount_spent: formatPrice(_pay.amount_spent),
             code_contract: _pay.code_contract,
             line_reading: _pay.line_reading,
             fullName: _pay.fullName,
@@ -196,7 +197,7 @@ function TableListPayment() {
             seri_bill: _pay.seri_bill,
             num_bill: _pay.num_bill,
             consume: _pay.consume,
-            into_money: _pay.into_money,
+            into_money: formatPrice(_pay.into_money),
             dtdn: _pay.dtdn,
             bvmt: _pay.bvmt,
             vat: _pay.vat,
@@ -246,8 +247,8 @@ function TableListPayment() {
             index: index + 1,
             category: _payChild.category,
             quantity: _payChild.quantity,
-            price: _payChild.price,
-            into_money: _payChild.into_money,
+            price: formatPrice(_payChild.price),
+            into_money: formatPrice(_payChild.into_money),
           }))}
           rowKey="index"
           size="small"

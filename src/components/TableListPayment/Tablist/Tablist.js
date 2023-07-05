@@ -155,6 +155,7 @@ function TabList({ isTabletOrMobile }) {
       <Modal
         open={modalPayForOneBillSelected}
         onCancel={hideModal}
+        centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
@@ -217,7 +218,7 @@ function TabList({ isTabletOrMobile }) {
         open={modalWatchStatistical}
         onCancel={hideModal}
         // width={800}
-        // centered={true}
+        centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >

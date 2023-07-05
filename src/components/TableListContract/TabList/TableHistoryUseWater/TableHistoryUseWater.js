@@ -1,5 +1,6 @@
 import { Col, Row, Table } from "antd";
 import { dataHistoryUseWater } from "../../../../utils/dataContract";
+import { formatPrice } from "../../../../utils/formatPrice";
 
 function TableHistoryUseWater() {
   const cols = [
@@ -240,8 +241,8 @@ function TableHistoryUseWater() {
             m3_k: _history.m3_k,
             m3_t: _history.m3_t,
             consume: _history.consume,
-            total: _history.total,
-            water_money: _history.water_money,
+            total: formatPrice(_history.total),
+            water_money: formatPrice(_history.water_money),
             vat: _history.vat,
             bvmt: _history.bvmt,
             cashier: _history.cashier,
