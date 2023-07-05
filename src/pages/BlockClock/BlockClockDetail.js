@@ -11,15 +11,15 @@ export const BlockClockDetail = (props) => {
   const dataSource = Array.from({ length: 50 }, (_, key) => ({
     key: key + 1,
     stt: key + 1,
-    shd: "abc",
-    mkh: "abc",
-    tkh: "abc",
-    dc: "abc",
-    dt: "abc",
-    t: "abc",
-    sh: "abc",
-    kdh: "abc",
-    vtld: "abc",
+    shd: "duong",
+    mkh: "duong",
+    tkh: "duong",
+    dc: "duong",
+    dt: "duong",
+    t: "duong",
+    sh: "duong",
+    kdh: "duong",
+    vtld: "duong",
   }));
 
   const columns = [
@@ -27,7 +27,7 @@ export const BlockClockDetail = (props) => {
       title: "#",
       dataIndex: "stt",
       key: "stt",
-      width: 100,
+      width: 60,
     },
     {
       title: "Số hợp đồng",
@@ -35,7 +35,7 @@ export const BlockClockDetail = (props) => {
       key: "shd",
     },
     {
-      title: "Mã khách hàng",
+      title: "Mã KH",
       dataIndex: "mkh",
       key: "mkh",
     },
@@ -43,11 +43,13 @@ export const BlockClockDetail = (props) => {
       title: "Tên khách hàng",
       dataIndex: "tkh",
       key: "tkh",
+      width: 190,
     },
     {
       title: "Địa chỉ",
       dataIndex: "dc",
       key: "dc",
+      width: 190,
     },
     {
       title: "Điện thoại",
@@ -68,11 +70,13 @@ export const BlockClockDetail = (props) => {
       title: "Kiểu đồng hò",
       dataIndex: "kdh",
       key: "kdh",
+      width: 190,
     },
     {
       title: "Vị trí lắp đặt",
       dataIndex: "vtld",
       key: "vtld",
+      width: 190,
     },
   ];
 
@@ -146,7 +150,10 @@ export const BlockClockDetail = (props) => {
           >
             Chuyển đồng hồ
           </Button>
-          <Button className="    custom-btn-update-d" style={{ marginRight: 5 }}>
+          <Button
+            className="    custom-btn-update-d"
+            style={{ marginRight: 5 }}
+          >
             Thêm đồng hồ
           </Button>
           <Button className="custom-btn-right-d" style={{ marginRight: 5 }}>

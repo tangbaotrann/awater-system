@@ -15,7 +15,7 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
 
   const layout = {
     labelCol: {
-      span: 6,
+      span: 7,
     },
     wrapperCol: {
       span: 30,
@@ -152,30 +152,42 @@ const InvoicingDetailsModal = ({ visible, onCancel, data }) => {
           },
         ]}
       />
-      <div>
+
+      <Row
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          marginTop: "10px",
+        }}
+      >
+        {" "}
         <Button
           icon={<PrinterOutlined />}
           size="small"
           className="custom-btn-close-d"
+          style={{ marginLeft: "10px" }}
         >
-          Cập nhật hóa đơn chưa in
+          Cập nhật HĐ chưa in
         </Button>
         <Button
           icon={<WarningOutlined />}
           size="small"
           className="custom-btn-close-d"
+          style={{ marginLeft: "10px" }}
         >
-          Cập nhật hóa đơn hỏng
+          Cập nhật HĐ hỏng
         </Button>
         <Button
           icon={<CloseOutlined />}
           size="small"
           className="custom-btn-close-d"
           onClick={onCancel}
+          style={{ marginLeft: "10px" }}
         >
           Đóng
         </Button>
-      </div>
+      </Row>
     </Modal>
   );
 };

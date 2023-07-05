@@ -64,6 +64,9 @@ function InvoicePrint() {
     const newData = fetchDataForPage(currentPage);
     setData1(newData);
   };
+  const [isModalDetail, setIsModalDetail] = useState(false);
+  const [initialData2, setInitialData2] = useState(null);
+
   const columns = [
     {
       title: "#",
@@ -129,14 +132,9 @@ function InvoicePrint() {
           <>
             <Button
               icon={<FormOutlined />}
-              onClick={handleButtonClick}
+              onClick={() => handleButtonClick(record)}
             ></Button>
             <Button icon={<SnippetsOutlined />}></Button>
-            <InvoicingDetailsModal
-              visible={isModalVisible}
-              onCancel={handleModalCancel}
-              data={initialData2}
-            />
           </>
         );
       },
@@ -144,11 +142,6 @@ function InvoicePrint() {
   ];
 
   const AdvancedSearchForm = () => {
-    // const { token } = theme.useToken();
-    // const [form] = Form.useForm();
-    // const onFinish = (values) => {
-    //   console.log("Received values of form: ", values);
-    // };
     const layout = {
       labelCol: {
         span: 10,
@@ -319,6 +312,11 @@ function InvoicePrint() {
           }))}
           dataSource={data1}
           onChange={handleData1Change}
+        />
+        <InvoicingDetailsModal
+          visible={isModalVisible}
+          onCancel={handleModalCancel}
+          data={initialData2}
         />
         <div className="InvoicePrint-bottom">
           <div className="contract-bottom-func">

@@ -144,14 +144,9 @@ function BlockClock() {
         return (
           <>
             <Button
-              onClick={handleButtonClick}
+              onClick={() => handleButtonClick(record)}
               icon={<UnorderedListOutlined />}
             ></Button>
-            <BlockClockDetail
-              isOpen={isOpenModalNoticeDetail}
-              setIsOpenModalNoticeDetail={handleModalCancel}
-              data={initialData}
-            />
           </>
         );
       },
@@ -214,6 +209,11 @@ function BlockClock() {
           }))}
           dataSource={data1}
           onChange={handleData1Change}
+        />
+        <BlockClockDetail
+          isOpen={isOpenModalNoticeDetail}
+          setIsOpenModalNoticeDetail={handleModalCancel}
+          data={initialData}
         />
         {/* func bottom */}
         <div className="contract-bottom">
