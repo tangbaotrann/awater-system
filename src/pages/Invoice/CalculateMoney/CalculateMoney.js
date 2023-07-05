@@ -38,9 +38,7 @@ export const CalculateMoney = (props) => {
       onCancel={props.handleCancel}
       width={600}
       footer={null}
-      style={{
-        top: 50,
-      }}
+      centered
       labelCol={{
         span: 4,
       }}

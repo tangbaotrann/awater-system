@@ -160,9 +160,7 @@ export const CreateBook = (props) => {
       onCancel={props.handleCancel}
       width={1700}
       footer={null}
-      style={{
-        top: 20,
-      }}
+      centered
     >
       <Collapse items={items} size="small" />
       <div style={listStyle}>

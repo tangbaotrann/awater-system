@@ -11,9 +11,6 @@ export const ModalIndexBar = (props) => {
       onCancel={() => handleCancel("", "indexBar")}
       width={300}
       footer={null}
-      style={{
-        top: 20,
-      }}
       centered
     >
       <div style={{ display: "flex", marginTop: "10px" }}>

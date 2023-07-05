@@ -30,7 +30,7 @@ export const CreateMultipleBook = (props) => {
       key: "1",
       stt: "1",
       employee: "Mike",
-      readCode: 32, 
+      readCode: 32,
       namecode: "abc",
       semesterIndex: "abc",
     },
@@ -140,9 +140,7 @@ export const CreateMultipleBook = (props) => {
       onCancel={() => handleCancel("", "multiple")}
       width={1000}
       footer={null}
-      style={{
-        top: 20,
-      }}
+      centered
     >
       <Collapse items={items} size="small" />
       <div
@@ -256,7 +254,7 @@ export const CreateMultipleBook = (props) => {
           display: "flex",
           justifyContent: "justify-between",
           marginBottom: 16,
-          marginTop: 16, 
+          marginTop: 16,
           width: "100%",
         }}
       >
