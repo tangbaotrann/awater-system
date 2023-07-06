@@ -34,7 +34,7 @@ const ReadingIndex = () => {
     if (type === "indexBar") {
       setIsModalOpenIndexBar(false);
     }
-  };
+  }; 
 
   const dataSource = Array.from({ length: 100 }, (_, index) => ({
     key: index,

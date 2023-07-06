@@ -22,7 +22,12 @@ export const SearchForm = () => {
       size="small"
     >
       <Row gutter={24}>
-        <Col lg={8}>
+        <Col
+          lg={8}
+          style={{
+            width: "100%",
+          }}
+        >
           <Form.Item name="date" label="Toàn văn">
             <Input
               style={{ width: "100%" }}
@@ -30,7 +35,12 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col
+          lg={8}
+          style={{
+            width: "100%",
+          }}
+        >
           <Form.Item name="person" label="Kết quả">
             <Select
               defaultValue="--Chọn kết quả gửi--"
@@ -50,7 +60,12 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col
+          lg={8}
+          style={{
+            width: "100%",
+          }}
+        >
           <Form.Item name="person" label="Kết quả chi tiết">
             <Select
               defaultValue="--Chọn kết quả chi tiết--"

@@ -1,5 +1,5 @@
 import { CloseOutlined, SendOutlined } from "@ant-design/icons";
-import { Button, Collapse, Form, Input, Modal, Tag, theme } from "antd";
+import { Button, Collapse, Form, Input, Modal, theme } from "antd";
 import React, { useState } from "react";
 import { SearchForm } from "./SearchForm";
 import { TableTransfer } from "./TableTranfer";
@@ -20,46 +20,6 @@ const mockData = Array.from({
 const originTargetKeys = mockData
   .filter((item) => Number(item.key) % 3 > 1)
   .map((item) => item.key);
-
-const leftTableColumns = [
-  {
-    dataIndex: "title",
-    title: "Mã KH",
-  },
-  {
-    dataIndex: "tag",
-    title: "Tên KH",
-    render: (tag) => <Tag>{tag}</Tag>,
-  },
-  {
-    dataIndex: "description",
-    title: "Số điện thoại",
-  },
-  {
-    dataIndex: "description",
-    title: "Địa chỉ",
-  },
-];
-
-const rightTableColumns = [
-  {
-    dataIndex: "title",
-    title: "Mã KH",
-  },
-  {
-    dataIndex: "tag",
-    title: "Tên KH",
-    render: (tag) => <Tag>{tag}</Tag>,
-  },
-  {
-    dataIndex: "description",
-    title: "Số điện thoại",
-  },
-  {
-    dataIndex: "description",
-    title: "Địa chỉ",
-  },
-];
 
 const SmsCskh = (props) => {
   const { token } = theme.useToken();
@@ -94,33 +54,17 @@ const SmsCskh = (props) => {
       onCancel={() => setIsOpen(false)}
       width={1400}
       footer={null}
-      style={{
-        top: 20,
-      }}
+      centered
     >
       <Collapse items={items} size="small" />
       <div
         style={{
-          lineHeight: "200px",
           textAlign: "center",
           borderRadius: token.borderRadiusLG,
           marginTop: 10,
         }}
       >
-        <TableTransfer
-          // size="small"
-          dataSource={mockData}
-          targetKeys={targetKeys}
-          disabled={disabled}
-          showSearch={showSearch}
-          onChange={onChange}
-          filterOption={(inputValue, item) =>
-            item.title.indexOf(inputValue) !== -1 ||
-            item.tag.indexOf(inputValue) !== -1
-          }
-          leftColumns={leftTableColumns}
-          rightColumns={rightTableColumns}
-        />
+        <TableTransfer />
       </div>
       <Form.Item
         label="Tiêu đề"
@@ -141,7 +85,7 @@ const SmsCskh = (props) => {
       />
 
       <div style={{ display: "flex", width: "100%" }}>
-        <div style={{ marginLeft: "auto", paddingTop: 20 }}>
+        <div style={{ marginLeft: "auto", marginTop: '20px' }}>
           <Button
             type="primary"
             icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}

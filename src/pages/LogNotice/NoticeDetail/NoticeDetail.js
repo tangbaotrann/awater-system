@@ -1,4 +1,10 @@
-import { CloseOutlined, EyeOutlined, PlusCircleFilled, SendOutlined, SyncOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  EyeOutlined,
+  PlusCircleFilled,
+  SendOutlined,
+  SyncOutlined,
+} from "@ant-design/icons";
 import {
   Button,
   Checkbox,
@@ -11,15 +17,17 @@ import {
   Select,
   Table,
   theme,
-} from "antd"; 
+} from "antd";
 import { useState } from "react";
 import { SearchForm } from "./SearchForm";
+import { useMediaQuery } from "react-responsive";
 
 export const NoticeDetail = (props) => {
   const { isOpen, setIsOpenModalNoticeDetail } = props;
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const { token } = theme.useToken();
-  console.log('render modal Notice Detail');
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  console.log("render modal Notice Detail");
 
   const dataSource = Array.from({ length: 50 }, (_, key) => ({
     key: key + 1,
@@ -39,17 +47,17 @@ export const NoticeDetail = (props) => {
       title: "#",
       dataIndex: "stt",
       key: "stt",
-      width: 100
+      width: 100,
     },
     {
       title: "Loại",
-      dataIndex: 'type',
-      key: 'type'
+      dataIndex: "type",
+      key: "type",
     },
     {
       title: "Địa chỉ nhận",
-      dataIndex: 'address',
-      key: 'address'
+      dataIndex: "address",
+      key: "address",
     },
     {
       title: "Thông tin",
@@ -73,14 +81,14 @@ export const NoticeDetail = (props) => {
     },
     {
       title: "Số tin",
-      dataIndex: 'number',
-      key: 'number'
+      dataIndex: "number",
+      key: "number",
     },
     {
       title: "Nhà mạng",
-      dataIndex: 'netHouse',
-      key: 'netHouse'
-    }
+      dataIndex: "netHouse",
+      key: "netHouse",
+    },
   ];
 
   const onSelectChange = (newSelectedRowKeys) => {
@@ -97,9 +105,9 @@ export const NoticeDetail = (props) => {
     {
       key: "1",
       label: "Tìm kiếm",
-        children: <SearchForm />,
+      children: <SearchForm />,
     },
-  ]; 
+  ];
 
   return (
     <Modal
@@ -109,9 +117,7 @@ export const NoticeDetail = (props) => {
       onCancel={() => setIsOpenModalNoticeDetail(false)}
       width={1000}
       footer={null}
-      style={{
-        top: 20,
-      }}
+      centered
     >
       <Collapse items={items} size="small" />
       <div
@@ -131,8 +137,8 @@ export const NoticeDetail = (props) => {
           size="small"
           pagination={{
             current: 1,
-            total: 10000,
-            pageSize: 50,
+            // total: 10000,
+            // pageSize: 50,
           }}
           scroll={{
             x: 1200,
@@ -140,41 +146,29 @@ export const NoticeDetail = (props) => {
           }}
         />
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "justify-between",
-          marginBottom: 16,
-          marginTop: 16,
-          width: "100%",
-        }}
-      >
-        <div style={{ marginLeft: "auto" }}>
-          <Button
-            type="primary"
-            icon={<SyncOutlined />}
-            style={{ marginRight: 5 }}
-            size="middle"
-          >
-            Cập nhật nhà mạng từ phiên gửi - TT khách hàng
-          </Button>
-          <Button
-            type="primary"
-            icon={<SendOutlined style={{transform: 'rotate(310deg)'}} />}
-            style={{ marginRight: 5 }}
-            size="middle"
-          >
-            Gửi lại
-          </Button>
-          <Button
-            className="custom-btn-close"
-            onClick={() => setIsOpenModalNoticeDetail(false)}
-            size="middle"
-          >
-            <CloseOutlined />
-            Đóng
-          </Button>
-        </div>
+
+      <div style={{ marginLeft: "auto" }}>
+        <Button
+          type="primary"
+          icon={<SyncOutlined />}
+          style={{ margin: "10px 5px 0px 0px" }}
+        >
+          Cập nhật nhà mạng từ phiên gửi - TT khách hàng
+        </Button>
+        <Button
+          type="primary"
+          icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
+          style={{ margin: "10px 5px 0px 0px" }}
+        >
+          Gửi lại
+        </Button>
+        <Button
+          className="custom-btn-close"
+          onClick={() => setIsOpenModalNoticeDetail(false)}
+        >
+          <CloseOutlined />
+          Đóng
+        </Button>
       </div>
     </Modal>
   );

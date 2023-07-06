@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Dropdown, Space, Tabs } from "antd";
 import React from "react";
-import './FooterLogNotice.css'
+import "./FooterLogNotice.css";
 
 export const FooterLogNotice = (props) => {
   const {
@@ -17,6 +17,7 @@ export const FooterLogNotice = (props) => {
     setIsOpenModalCskh,
     setIsOpenModalNoticeMoneyWater,
     setIsOpenTakeCareCustomer,
+    setIsOpenModalIndexBar,
   } = props;
 
   const extension = [
@@ -47,7 +48,7 @@ export const FooterLogNotice = (props) => {
       icon: <FileExcelOutlined style={{ color: "#1677ff" }} />,
     },
     {
-      label: ( 
+      label: (
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -65,31 +66,19 @@ export const FooterLogNotice = (props) => {
     {
       id: "1",
       label: (
-        <span
-          onClick={() => setIsOpenMoneyWater(true)}
-        >
-          Gửi SMS tiền nước
-        </span>
+        <span onClick={() => setIsOpenMoneyWater(true)}>Gửi SMS tiền nước</span>
       ),
       icon: <MailOutlined />,
     },
     {
       id: "2",
-      label: (
-        <span
-          onClick={() => setIsOpenModalCskh(true)}
-        >
-          Gửi SMS CSKH
-        </span>
-      ),
+      label: <span onClick={() => setIsOpenModalCskh(true)}>Gửi SMS CSKH</span>,
       icon: <MailOutlined />,
     },
     {
       id: "3",
       label: (
-        <span
-          onClick={() => setIsOpenModalNoticeMoneyWater(true)}
-        >
+        <span onClick={() => setIsOpenModalNoticeMoneyWater(true)}>
           Gửi thông báo tiền nước
         </span>
       ),
@@ -98,9 +87,7 @@ export const FooterLogNotice = (props) => {
     {
       id: "4",
       label: (
-        <span
-          onClick={() => setIsOpenTakeCareCustomer(true)}
-        >
+        <span onClick={() => setIsOpenTakeCareCustomer(true)}>
           Gửi thông báo CSKH
         </span>
       ),
@@ -126,8 +113,15 @@ export const FooterLogNotice = (props) => {
     },
     {
       id: "6",
-      label: "Chỉ số",
-      icon: <BarChartOutlined />
+      label: (
+        <div
+          style={{ display: "inline-block" }}
+          onClick={() => setIsOpenModalIndexBar(true)}
+        >
+          Chỉ số
+        </div>
+      ),
+      icon: <BarChartOutlined />,
     },
   ];
 
@@ -140,7 +134,9 @@ export const FooterLogNotice = (props) => {
         items={tabs.map((_tab) => {
           return {
             label: (
-              <div className={`tab-item-LogNotice tab-item-LogNotice-${_tab.id}`}>
+              <div
+                className={`tab-item-LogNotice tab-item-LogNotice-${_tab.id}`}
+              >
                 {_tab.icon}
                 {_tab.label}
               </div>

@@ -4,7 +4,6 @@ import {
   Checkbox,
   Col,
   Collapse,
-  DatePicker,
   Form,
   Input,
   Modal,
@@ -14,10 +13,12 @@ import {
 } from "antd";
 import React from "react";
 import { SearchForm } from "./SearchForm";
+import { useMediaQuery } from "react-responsive";
 
 const NoticeWaterMoney = (props) => {
   const { token } = theme.useToken();
   const { isOpen, setIsOpen } = props;
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const items = [
     {
@@ -135,9 +136,7 @@ const NoticeWaterMoney = (props) => {
       onCancel={() => setIsOpen(false)}
       width={1000}
       footer={null}
-      style={{
-        top: 20,
-      }}
+      centered
     >
       <Collapse items={items} size="small" />
       <div
@@ -166,8 +165,8 @@ const NoticeWaterMoney = (props) => {
           }}
         />
       </div>
-      <Row style={{ display: "flex", width: "100%", marginTop: "10px" }}>
-        <Col lg={12}>
+      <Row style={{ display: "flex", marginTop: "10px" }}>
+        <Col lg={12} style={{ width: "100%" }}>
           <Form.Item
             name="date"
             label="Tiêu đề"
@@ -190,7 +189,7 @@ const NoticeWaterMoney = (props) => {
           <Button
             type="primary"
             icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
-            style={{ marginRight: 5 }}
+            style={{ marginRight: 5, marginTop: `${isMobile ? "10px" : ""}` }}
             size="middle"
           >
             Gửi
@@ -199,6 +198,7 @@ const NoticeWaterMoney = (props) => {
             className="custom-btn-close"
             onClick={() => setIsOpen(false)}
             size="middle"
+            style={{ marginTop: `${isMobile ? "10px" : ""}` }}
           >
             <CloseOutlined />
             Đóng

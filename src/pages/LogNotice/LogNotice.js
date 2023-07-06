@@ -9,6 +9,7 @@ import { SMSMoneyWater } from "./SMSMoneyWater/SMSMoneyWater";
 import SmsCskh from "./SmsCSKH/SmsCskh";
 import NoticeWaterMoney from "./NoticeWaterMoney/NoticeWaterMoney";
 import TakeCareCustomer from "./TakeCareCustomer/TakeCareCustomer";
+import { ModalIndexBarLogNotice } from "./ModalIndexBar/ModalIndexBar";
 
 const LogNotice = () => {
   const { token } = theme.useToken();
@@ -17,6 +18,7 @@ const LogNotice = () => {
   const [isOpenModalCskh, setIsOpenModalCskh] = useState(false);
   const [isOpenModalNoticeMoneyWater, setIsOpenModalNoticeMoneyWater] = useState(false);
   const [isOpenTakeCareCustomer, setIsOpenTakeCareCustomer] = useState(false);
+  const [isOpenModalIndexBar, setIsOpenModalIndexBar] = useState(false); 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const hanldeShowDetailRecord = (item) => {
@@ -126,7 +128,7 @@ const LogNotice = () => {
             x: 1000,
             y: 330,
           }}
-        />
+        /> 
       </div>
       <div className="contract-bottom">
         <div className="contract-bottom-func">
@@ -142,6 +144,7 @@ const LogNotice = () => {
                   setIsOpenModalCskh={setIsOpenModalCskh}
                   setIsOpenModalNoticeMoneyWater={setIsOpenModalNoticeMoneyWater}
                   setIsOpenTakeCareCustomer={setIsOpenTakeCareCustomer}
+                  setIsOpenModalIndexBar={setIsOpenModalIndexBar} 
                 />
               }
             >
@@ -154,6 +157,7 @@ const LogNotice = () => {
               setIsOpenModalCskh={setIsOpenModalCskh}
               setIsOpenModalNoticeMoneyWater={setIsOpenModalNoticeMoneyWater}
               setIsOpenTakeCareCustomer={setIsOpenTakeCareCustomer}
+              setIsOpenModalIndexBar={setIsOpenModalIndexBar}
             />
           )}
         </div>
@@ -174,6 +178,10 @@ const LogNotice = () => {
       <TakeCareCustomer
         isOpen={isOpenTakeCareCustomer}
         setIsOpen={setIsOpenTakeCareCustomer}
+      /> 
+      <ModalIndexBarLogNotice
+        isOpen={isOpenModalIndexBar}
+        setIsOpen={setIsOpenModalIndexBar}
       />
     </>
   );

@@ -14,6 +14,7 @@ import { SearchForm } from "./SearchForm";
 import { TableTransfer } from "./TableTranfer";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useMediaQuery } from "react-responsive";
 const mockTags = ["cat", "dog", "bird"];
 
 const mockData = Array.from({
@@ -30,41 +31,10 @@ const originTargetKeys = mockData
   .filter((item) => Number(item.key) % 3 > 1)
   .map((item) => item.key);
 
-const leftTableColumns = [
-  {
-    dataIndex: "title",
-    title: "Tên KH",
-  },
-  {
-    dataIndex: "tag",
-    title: "Email",
-    render: (tag) => <Tag>{tag}</Tag>,
-  },
-  {
-    dataIndex: "description",
-    title: "Địa chỉ",
-  },
-];
-
-const rightTableColumns = [
-  {
-    dataIndex: "title",
-    title: "Tên KH",
-  },
-  {
-    dataIndex: "tag",
-    title: "Email",
-    render: (tag) => <Tag>{tag}</Tag>,
-  },
-  {
-    dataIndex: "description",
-    title: "Địa chỉ",
-  },
-];
-
 const TakeCareCustomer = (props) => {
   const { token } = theme.useToken();
   const { isOpen, setIsOpen } = props;
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const [targetKeys, setTargetKeys] = useState(originTargetKeys);
   const [disabled, setDisabled] = useState(false);
@@ -191,22 +161,7 @@ const TakeCareCustomer = (props) => {
     {
       key: "1",
       label: "Chọn khách hàng để gửi tin",
-      children: (
-        <TableTransfer
-          // size="small"
-          dataSource={mockData}
-          targetKeys={targetKeys}
-          disabled={disabled}
-          showSearch={showSearch}
-          onChange={onChange}
-          filterOption={(inputValue, item) =>
-            item.title.indexOf(inputValue) !== -1 ||
-            item.tag.indexOf(inputValue) !== -1
-          }
-          leftColumns={leftTableColumns}
-          rightColumns={rightTableColumns}
-        />
-      ),
+      children: <TableTransfer />,
     },
   ];
 
@@ -218,9 +173,7 @@ const TakeCareCustomer = (props) => {
       onCancel={() => setIsOpen(false)}
       width={1400}
       footer={null}
-      style={{
-        top: 20,
-      }}
+      centered
     >
       <Collapse items={items} size="small" />
       <Collapse items={itemTranfer} size="small" style={{ marginTop: 10 }} />
@@ -231,6 +184,7 @@ const TakeCareCustomer = (props) => {
               required: true,
             },
           ]}
+          style={{ marginLeft: '5px' }}
         />
       </Form.Item>
       <div style={{ marginTop: 10 }}>
@@ -270,7 +224,7 @@ const TakeCareCustomer = (props) => {
           <Button
             type="primary"
             icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
-            style={{ marginRight: 5 }}
+            style={{ marginRight: 5, marginTop: `${isMobile ? "10px" : 0}` }}
             size="middle"
           >
             Gửi tin nhắn
@@ -279,6 +233,7 @@ const TakeCareCustomer = (props) => {
             className="custom-btn-close"
             onClick={() => setIsOpen(false)}
             size="middle"
+            style={{ marginTop: `${isMobile ? "10px" : 0}` }}
           >
             <CloseOutlined />
             Đóng

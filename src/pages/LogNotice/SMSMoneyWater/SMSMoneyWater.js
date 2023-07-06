@@ -4,7 +4,6 @@ import {
   Checkbox,
   Col,
   Collapse,
-  DatePicker,
   Form,
   Input,
   Modal,
@@ -14,10 +13,12 @@ import {
 } from "antd";
 import React from "react";
 import { SearchForm } from "./SearchForm";
+import { useMediaQuery } from "react-responsive";
 
 export const SMSMoneyWater = (props) => {
   const { token } = theme.useToken();
   const { isOpen, setIsOpen } = props;
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   const items = [
     {
@@ -135,9 +136,7 @@ export const SMSMoneyWater = (props) => {
       onCancel={() => setIsOpen(false)}
       width={1000}
       footer={null}
-      style={{
-        top: 20,
-      }}
+      centered
     >
       <Collapse items={items} size="small" />
       <div
@@ -166,8 +165,8 @@ export const SMSMoneyWater = (props) => {
           }}
         />
       </div>
-      <Row style={{ display: "flex", width: "100%", marginTop: "10px" }}>
-        <Col sm={24} md={24} lg={12}>
+      <Row style={{ display: "flex", marginTop: "10px" }}>
+        <Col sm={24} md={24} lg={12} style={{ width: "100%" }}>
           <Form.Item
             name="date"
             label="Tiêu đề"
@@ -177,10 +176,10 @@ export const SMSMoneyWater = (props) => {
               },
             ]}
           >
-            <Input style={{marginLeft: '10px'}}/>
+            <Input style={{ marginLeft: "10px" }} />
           </Form.Item>
         </Col>
-        <Col sm={24} md={24} lg={12} style={{textAlign: 'end'}}>
+        <Col sm={24} md={24} lg={12} style={{ textAlign: "end" }}>
           <div style={{ marginLeft: "auto" }}>
             <Checkbox style={{ marginRight: "13px" }}>Email</Checkbox>
             <Checkbox style={{ marginRight: "13px" }}>
@@ -189,7 +188,7 @@ export const SMSMoneyWater = (props) => {
             <Button
               type="primary"
               icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
-              style={{ marginRight: 5 }}
+              style={{ marginRight: 5, marginTop: `${isMobile ? '10px' : 0}` }}
               size="middle"
             >
               Gửi
@@ -198,6 +197,7 @@ export const SMSMoneyWater = (props) => {
               className="custom-btn-close"
               onClick={() => setIsOpen(false)}
               size="middle"
+              style={{marginTop: `${isMobile ? '10px' : 0}` }}
             >
               <CloseOutlined />
               Đóng

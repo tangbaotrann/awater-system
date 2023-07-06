@@ -31,7 +31,7 @@ export const SearchForm = () => {
       size="small"
     >
       <Row gutter={24}>
-        <Col lg={6}>
+        <Col sm={24} md={12} lg={6} style={{width: '100%'}}>
           <Form.Item name="date" label="Nhân viên">
             <DatePicker
               allowClear
@@ -42,7 +42,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={6}>
+        <Col sm={24} md={12} lg={6} style={{width: '100%'}}>
           <Form.Item name="person" label="Tuyến đọc">
             <Select
               defaultValue="--Chọn kết quả chi tiết--"
@@ -62,7 +62,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={6}>
+        <Col sm={24} md={12} lg={6} style={{width: '100%'}}>
           <Form.Item name="person" label="Phạm vi">
             <Select
               defaultValue="--Chọn kết quả gửi--"
@@ -82,7 +82,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={6}>
+        <Col sm={24} md={12} lg={6} style={{width: '100%'}}>
           <Form.Item name="person" label="Loại KH">
             <div style={{ display: "flex", gap: "5px" }}>
               <Select
@@ -121,7 +121,7 @@ export const SearchForm = () => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col lg={6}>
+        <Col sm={24} md={12} lg={6} style={{width: '100%'}}>
           <Form.Item name="date" label="Số HĐ">
             <Input
               style={{ width: "100%" }}
@@ -129,7 +129,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={6}>
+        <Col sm={24} md={12} lg={6} style={{width: '100%'}}>
           <Form.Item name="person" label="Tên KH">
             <Select
               defaultValue="--Chọn kết quả gửi--"
@@ -149,7 +149,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={6}>
+        <Col sm={24} md={12} lg={6} style={{width: '100%'}}>
           <Form.Item name="person" label="Từ ngày">
             <div style={{ display: "flex", gap: "5px" }}>
               <DatePicker
@@ -173,7 +173,7 @@ export const SearchForm = () => {
             </div>
           </Form.Item>
         </Col>
-        <Col lg={6}>
+        <Col sm={24} md={12} lg={6} style={{width: '100%'}}>
           <Form.Item name="person" label="Tình trạng">
             <Select
               defaultValue="--Chọn kết quả chi tiết--"
@@ -195,12 +195,12 @@ export const SearchForm = () => {
         </Col>
       </Row>
       <Row>
-        <Col lg={12}>
+        <Col sm={24} md={12} lg={12} style={{width: '100%'}}>
           <Form.Item name="person" label="Zalo">
             <Input placeholder="Tên khách hàng" />
           </Form.Item>
         </Col>
-        <Col lg={12}>
+        <Col sm={24} md={12} lg={12} style={{width: '100%'}}>
           <div style={{ textAlign: "center" }}>
             <Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
               Tìm kiếm

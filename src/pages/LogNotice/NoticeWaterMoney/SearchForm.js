@@ -31,7 +31,7 @@ export const SearchForm = () => {
       size="small"
     >
       <Row gutter={24}>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="date" label="Chọn tháng">
             <DatePicker
               allowClear
@@ -42,7 +42,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="person" label="Cán bộ đọc">
             <Select
               defaultValue="--Chọn kết quả gửi--"
@@ -62,7 +62,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="person" label="Tuyến đọc">
             <Select
               defaultValue="--Chọn kết quả chi tiết--"
@@ -84,7 +84,7 @@ export const SearchForm = () => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="date" label="phạm vi">
             <Input
               style={{ width: "100%" }}
@@ -92,7 +92,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="person" label="Số hợp đồng">
             <Select
               defaultValue="--Chọn kết quả gửi--"
@@ -112,7 +112,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="person" label="Loại KH">
             <Select
               defaultValue="--Chọn kết quả chi tiết--"
@@ -134,7 +134,7 @@ export const SearchForm = () => {
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="date" label="Kiểu gửi">
             <Select
               style={{
@@ -153,7 +153,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="person" label="Trạng thái">
             <Select
               style={{
@@ -172,7 +172,7 @@ export const SearchForm = () => {
             />
           </Form.Item>
         </Col>
-        <Col lg={8}>
+        <Col sm={24} md={12} lg={8} style={{width: '100%'}}>
           <Form.Item name="person" label="Tình trạng">
             <Select
               style={{
@@ -193,12 +193,12 @@ export const SearchForm = () => {
         </Col>
       </Row>
       <Row>
-        <Col lg={12}>
+        <Col sm={24} md={12} lg={12} style={{width: '100%'}}>
           <Form.Item name="person" label="Tên KH">
             <Input placeholder="Tên khách hàng" />
           </Form.Item>
         </Col>
-        <Col lg={12}>
+        <Col sm={24} md={12} lg={12} style={{width: '100%'}}>
           <div style={{ textAlign: "center" }}>
             <Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
               Tìm kiếm

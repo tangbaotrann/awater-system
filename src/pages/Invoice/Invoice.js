@@ -133,10 +133,8 @@ const Invoice = () => {
         style={{
           lineHeight: "200px",
           textAlign: "center",
-          // background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
           marginTop: 7,
-          // padding: "10px 10px",
           position: "relative",
         }}
       >
