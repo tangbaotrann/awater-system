@@ -69,7 +69,7 @@ const tabs_ep = [
   },
   {
     id: "9",
-    label: "Chỉ số",
+    label: "Trạng thái",
     icon: <BarChartOutlined />,
   },
 ];
@@ -108,8 +108,8 @@ function TableListEP({ isTabletOrMobile }) {
       setChart(true);
       // message.error("Tính năng chưa khả dụng!");
     } else if (key === "8") {
-      setImageModal(true);
-      // message.error("Tính năng chưa khả dụng!");
+      // setImageModal(true);
+      message.error("Tính năng chưa khả dụng!");
     } else if (key === "9") {
       setProgess(true);
       // message.error("Tính năng chưa khả dụng!");
@@ -280,7 +280,7 @@ function TableListEP({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Xem hình ảnh</h2>
-        {/* Form Reprint Button */}
+
         <ImageModal tabList={tabList} hideModal={hideModal} />
       </Modal>
       {/* Modal (Progress) */}
@@ -292,7 +292,7 @@ function TableListEP({ isTabletOrMobile }) {
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">Các chỉ số </h2>
+        <h2 className="title-update-info-contract">Tình hình trạng thái </h2>
         {/* Form Reprint Button */}
         <FormProgress tabList={tabList} hideModal={hideModal} />
       </Modal>

@@ -1,26 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button, Table, Upload } from "antd";
-import { PictureOutlined } from "@ant-design/icons";
-
-const ImageModal = () => {
-  const [visible, setVisible] = useState(false);
+import { DeleteOutlined } from "@ant-design/icons";
+import ModalImage from "react-modal-image";
+const ImageModal = ({ visible, onClose, imagePath ,imageData  }) => {
   const [fileList, setFileList] = useState([]);
-
+  useEffect(() => {
+    if (imagePath) {
+      setFileList([
+        {
+          uid: "-1",
+          name: "Hình ảnh",
+          status: "done",
+          url: imagePath,
+          thumbUrl: imagePath,
+        },
+      ]);
+    }
+  }, [imagePath]);
   const handleCancel = () => {
-    setVisible(false);
+    onClose();
   };
 
   const handleOk = () => {
-    setVisible(false);
+    onClose();
   };
 
   const handleUploadChange = ({ fileList }) => {
     setFileList(
-      fileList.map((file) => ({
-        ...file,
-        thumbUrl: URL.createObjectURL(file.originFileObj),
-        lastModifiedDate: file.originFileObj.lastModifiedDate,
-      }))
+      fileList.map((file) => {
+        if (file.originFileObj instanceof Blob) {
+          return {
+            ...file,
+            thumbUrl: URL.createObjectURL(file.originFileObj),
+            lastModifiedDate: file.originFileObj.lastModifiedDate,
+          };
+        } else {
+          return file;
+        }
+      })
     );
   };
 
@@ -61,14 +78,13 @@ const ImageModal = () => {
     {
       title: "",
       key: "action",
+      width: 40,
       render: (text, record) => (
         <Button
           onClick={() => handleDelete(record)}
-          size="small"
-          type="primary"
-        >
-          Xóa
-        </Button>
+          style={{ color: "red" }}
+          icon={<DeleteOutlined />}
+        ></Button>
       ),
     },
   ];
@@ -76,16 +92,8 @@ const ImageModal = () => {
   const handleDelete = (record) => {
     setFileList(fileList.filter((item) => item.uid !== record.uid));
   };
-
   return (
     <>
-      <Button
-        onClick={() => setVisible(true)}
-        type="primary"
-        icon={<PictureOutlined />}
-      >
-        Nhấp
-      </Button>
       <Modal
         title="Thông tin tệp đính kèm"
         visible={visible}
@@ -118,6 +126,15 @@ const ImageModal = () => {
           </Button>,
         ]}
       >
+        {imagePath && (
+          <ModalImage
+            small={imagePath}
+            large={imagePath}
+            alt="Hình ảnh"
+            hideDownload={false}
+            hideZoom={false}
+          />
+        )}
         <Table
           dataSource={fileList}
           scroll={{ x: 1000, y: 290 }}

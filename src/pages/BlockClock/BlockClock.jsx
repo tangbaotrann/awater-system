@@ -62,8 +62,8 @@ function BlockClock() {
 
   const handleData1Change = (pagination) => {
     const currentPage = pagination.current;
-    const newData = fetchDataForPage(currentPage);
-    setData1(newData);
+    // const newData = fetchDataForPage(currentPage);
+    // setData1(newData);
   };
 
   const columns = [
@@ -197,11 +197,11 @@ function BlockClock() {
         <Table
           size="small"
           rowKey="index"
-          pagination={{
-            current: 1,
-            total: initialData.length,
-            pageSize: 18,
-          }}
+          // pagination={{
+          //   current: 1,
+          //   total: initialData.length,
+          //   pageSize: 18,
+          // }}
           scroll={{ x: 2000, y: 480 }}
           columns={columns.map((column) => ({
             ...column,
