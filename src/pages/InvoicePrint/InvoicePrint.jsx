@@ -161,10 +161,7 @@ function InvoicePrint() {
   const AdvancedSearchForm = () => {
     const layout = {
       labelCol: {
-        span: 10,
-      },
-      wrapperCol: {
-        span: 40,
+        span: 8,
       },
     };
     return (
@@ -187,7 +184,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={7} xs={24} sm={12} md={6}>
+          <Col span={7} xs={24} sm={12} md={9}>
             <Form.Item label="Cán bộ đọc" name="1">
               <Select
                 style={{ width: "100%" }}
@@ -199,7 +196,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4} xs={24} sm={12} md={6}>
+          <Col span={4} xs={24} sm={12} md={8}>
             <Form.Item label="Tiêu thụ" name="8">
               <Select
                 style={{ width: "100%" }}
@@ -239,7 +236,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={6} xs={24} sm={12} md={6}>
+          <Col span={6} xs={24} sm={12} md={9}>
             <Form.Item
               className="custom-form-item"
               label={
@@ -261,7 +258,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={7} xs={24} sm={12} md={6}>
+          <Col span={7} xs={24} sm={12} md={8}>
             <Form.Item label={<>In hóa đơn</>}>
               <Select style={{ width: "100%" }} placeholder="Chọn hóa đơn in">
                 <Option value="1">1</Option>
@@ -272,7 +269,7 @@ function InvoicePrint() {
             </Form.Item>
           </Col>
 
-          <Col span={3} xs={24} sm={12} md={6}>
+          <Col span={3} xs={24} sm={12} md={3}>
             <div>
               <Space>
                 <Button
