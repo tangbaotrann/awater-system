@@ -6,7 +6,7 @@ function FormHistoryUseWater({ tabList }) {
       xs: { span: 24 },
       sm: { span: 5 },
       md: { span: 7 },
-      lg: { span: 5 },
+      lg: { span: 8 },
     },
     wrapperCol: {
       xs: { span: 24 },
@@ -63,13 +63,15 @@ function FormHistoryUseWater({ tabList }) {
         {/* Từ ngày + Checkbox (Từ ngày) */}
         <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="date_from" label="Từ ngày" {...formItemLayout}>
-            <div className="container-label-input">
+            <div className="container-label-input container-label-input-mobile">
               <Select
                 fieldNames="date_from"
                 placeholder="Chọn ngày"
-                className="space-right-10"
+                className="space-right-10 inp-select-item"
               />
-              <Checkbox>Không có giá trị</Checkbox>
+              <Checkbox className="inp-checkbox-item">
+                Không có giá trị
+              </Checkbox>
             </div>
           </Form.Item>
         </Col>
@@ -77,13 +79,15 @@ function FormHistoryUseWater({ tabList }) {
         {/* Đến ngày + Checkbox (Đến ngày) */}
         <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="date_to" label="Đến ngày" {...formItemLayout}>
-            <div className="container-label-input">
+            <div className="container-label-input container-label-input-mobile">
               <Select
                 fieldNames="date_to"
                 placeholder="Chọn ngày"
-                className="space-right-10"
+                className="space-right-10 inp-select-item"
               />
-              <Checkbox>Không có giá trị</Checkbox>
+              <Checkbox className="inp-checkbox-to-date-item">
+                Không có giá trị
+              </Checkbox>
             </div>
           </Form.Item>
         </Col>

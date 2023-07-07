@@ -1,4 +1,4 @@
-import { Col, Row, Table } from "antd";
+import { Col, Row, Space, Table } from "antd";
 import { dataHistoryUseWater } from "../../../../utils/dataContract";
 import { formatPrice } from "../../../../utils/formatPrice";
 
@@ -83,7 +83,7 @@ function TableHistoryUseWater() {
 
   return (
     <>
-      <h1>CÔNG TY TNHH & CN AMZT VIỆT NAM</h1>
+      <h1>CÔNG TY TNHH & CN AMAZINGTECH VIỆT NAM</h1>
 
       <div className="title-tbl-his">
         <h1>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h1>
@@ -98,23 +98,25 @@ function TableHistoryUseWater() {
       {/* Info */}
       <Row>
         {/* Số thứ tự */}
-        <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
+        <Col xs={24} sm={16} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Số thứ tự: </p>
-            <p className="info-his-item-val">145</p>
+            <p className="info-his-item-val-stt">145</p>
           </div>
         </Col>
 
         {/* Mã khách hàng cũ */}
-        <Col xs={24} sm={24} md={12} lg={7}>
-          <div className="info-his-item">
-            <p className="info-his-item-lbl">Mã khách hàng cũ: </p>
-            <p className="info-his-item-val">LCI00151</p>
-          </div>
+        <Col xs={24} sm={8} md={12} lg={8}>
+          <Space>
+            <div className="info-his-item">
+              <p className="info-his-item-lbl">Mã khách hàng cũ: </p>
+              <p className="info-his-item-val-mkhc">LCI00151</p>
+            </div>
+          </Space>
         </Col>
 
         {/* Mã khách hàng mới */}
-        <Col xs={24} sm={24} md={12} lg={9}>
+        <Col xs={24} sm={12} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Mã khách hàng mới: </p>
             <p className="info-his-item-val">LCI00153</p>
@@ -124,106 +126,106 @@ function TableHistoryUseWater() {
 
       <Row>
         {/* Tên khách hàng */}
-        <Col xs={24} sm={24} md={12} lg={14} className="gutter-item">
+        <Col xs={24} sm={16} md={12} lg={16}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Tên khách hàng: </p>
-            <p className="info-his-item-val">Nguyễn Thị Bích</p>
+            <p className="info-his-item-val-tkh">Nguyễn Thị Bích</p>
           </div>
         </Col>
 
         {/* Mã số thuế */}
-        <Col xs={24} sm={24} md={12} lg={9}>
+        <Col xs={24} sm={8} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Mã số thuế: </p>
-            <p className="info-his-item-val">LCI00151</p>
+            <p className="info-his-item-val-mst">LCI00151</p>
           </div>
         </Col>
       </Row>
 
       <Row>
         {/* Địa chỉ */}
-        <Col xs={24} sm={24} md={12} lg={14} className="gutter-item">
+        <Col xs={24} sm={16} md={12} lg={16}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Địa chỉ: </p>
-            <p className="info-his-item-val">Bảo Yên - Lào Cai</p>
+            <p className="info-his-item-val-address">Bảo Yên - Lào Cai</p>
           </div>
         </Col>
 
         {/* Đối tượng sử dụng */}
-        <Col xs={24} sm={24} md={12} lg={9} className="gutter-item">
+        <Col xs={24} sm={8} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Đối tượng sử dụng: </p>
-            <p className="info-his-item-val">SH</p>
+            <p className="info-his-item-val-obj-use">SH</p>
           </div>
         </Col>
       </Row>
 
       <Row>
-        {/* Địa chỉ sử dung */}
-        <Col xs={24} sm={24} md={12} lg={14} className="gutter-item">
+        {/* Địa chỉ sử dụng */}
+        <Col xs={24} sm={16} md={12} lg={16}>
           <div className="info-his-item">
-            <p className="info-his-item-lbl">Địa chỉ sử dung: </p>
-            <p className="info-his-item-val">Bảo Yên - Lào Cai</p>
+            <p className="info-his-item-lbl">Địa chỉ sử dụng: </p>
+            <p className="info-his-item-val-address-use">Bảo Yên - Lào Cai</p>
           </div>
         </Col>
 
         {/* Mã tiêu thụ */}
-        <Col xs={24} sm={24} md={12} lg={9} className="gutter-item">
+        <Col xs={24} sm={8} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Mã tiêu thụ: </p>
-            <p className="info-his-item-val">LCI00151</p>
+            <p className="info-his-item-val-mtt">LCI00151</p>
           </div>
         </Col>
       </Row>
 
       <Row>
         {/* Số điện thoại */}
-        <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
+        <Col xs={24} sm={16} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Số điện thoại: </p>
-            <p className="info-his-item-val">0314798771</p>
+            <p className="info-his-item-val-phone">0314798771</p>
           </div>
         </Col>
 
         {/* Ngày ký HĐ */}
-        <Col xs={24} sm={24} md={12} lg={7}>
+        <Col xs={24} sm={8} md={12} lg={8}>
           <div className="info-his-item">
-            <p className="info-his-item-lbl">Ngày ký HĐ: </p>
-            <p className="info-his-item-val">14/5/2023</p>
+            <p className="info-his-item-lbl">Ngày ký hợp đồng: </p>
+            <p className="info-his-item-val-nkhd">14/5/2023</p>
           </div>
         </Col>
 
         {/* Ngày lắp đặt */}
-        <Col xs={24} sm={24} md={12} lg={9} className="gutter-item">
+        <Col xs={24} sm={12} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Ngày lắp đặt: </p>
-            <p className="info-his-item-val">14/5/2023</p>
+            <p className="info-his-item-val-nld">14/5/2023</p>
           </div>
         </Col>
       </Row>
 
       <Row>
         {/* Ngày thay cuối */}
-        <Col xs={24} sm={24} md={12} lg={7} className="gutter-item">
+        <Col xs={24} sm={16} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Ngày thay cuối: </p>
-            <p className="info-his-item-val">14/7/2023</p>
+            <p className="info-his-item-val-ntc">14/7/2023</p>
           </div>
         </Col>
 
         {/* Loại ĐH */}
-        <Col xs={24} sm={24} md={12} lg={7}>
+        <Col xs={24} sm={8} md={12} lg={8}>
           <div className="info-his-item">
-            <p className="info-his-item-lbl">Loại ĐH: </p>
-            <p className="info-his-item-val">145</p>
+            <p className="info-his-item-lbl">Loại đồng hồ: </p>
+            <p className="info-his-item-val-type-contract">145</p>
           </div>
         </Col>
 
         {/* Số đồng hồ */}
-        <Col xs={24} sm={24} md={12} lg={9} className="gutter-item">
+        <Col xs={24} sm={12} md={12} lg={8}>
           <div className="info-his-item">
             <p className="info-his-item-lbl">Số đồng hồ: </p>
-            <p className="info-his-item-val">152461261</p>
+            <p className="info-his-item-val-sdt">152461261</p>
           </div>
         </Col>
       </Row>

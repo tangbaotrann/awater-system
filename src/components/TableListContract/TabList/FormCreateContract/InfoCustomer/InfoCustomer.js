@@ -16,7 +16,7 @@ function InfoCustomer() {
       xs: { span: 24 },
       sm: { span: 5 },
       md: { span: 7 },
-      lg: { span: 8 },
+      lg: { span: 10 },
     },
     wrapperCol: {
       xs: { span: 24 },
@@ -30,7 +30,7 @@ function InfoCustomer() {
     <div className="container-info-customer">
       <Row>
         {/* Loại khách hàng */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
             name="type_customer"
             label="Loại khách hàng"
@@ -48,7 +48,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Mã khách hàng + Button reset */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="code_cus" label="Mã KH (*)" {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -66,7 +66,7 @@ function InfoCustomer() {
 
       <Row>
         {/* Tên khách hàng + + Button ... (tên khách hàng) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="fullName" label="Tên KH (*)" {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -82,7 +82,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Địa chỉ + Checkbox */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="address_cus" label="Địa chỉ: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -98,14 +98,14 @@ function InfoCustomer() {
 
       <Row>
         {/* Tên thường gọi */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="name_cus" label="Tên thường gọi" {...formItemLayout}>
             <Input name="name_cus" placeholder="Nhập tên thường gọi" />
           </Form.Item>
         </Col>
 
         {/* Số hộ */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="num_house" label="Số hộ: " {...formItemLayout}>
             <Input name="num_house" placeholder="Nhập số hộ" />
           </Form.Item>
@@ -114,7 +114,7 @@ function InfoCustomer() {
 
       <Row>
         {/* Số khẩu + Button ... (số khẩu) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="num_guns" label="Số khẩu: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -130,7 +130,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Email + button (email) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="email" label="Email: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -146,17 +146,17 @@ function InfoCustomer() {
 
       <Row>
         {/* Điện thoại */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="phone" label="Điện thoại: " {...formItemLayout}>
             <Select
               fieldNames="phone"
-              options={[{ value: "023124921", label: "023124921" }]}
+              options={[{ value: "023104921", label: "023104921" }]}
             />
           </Form.Item>
         </Col>
 
         {/* Xác nhận + Button ... (số khẩu) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="no1" label="Xác nhận" {...formItemLayout}>
             <div className="container-label-input">
               <Input name="no1" className="space-right-10" />
@@ -168,7 +168,7 @@ function InfoCustomer() {
 
       <Row>
         {/* Số CMND + Checkbox (số CMND) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="num_identity" label="Số CMND: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -182,7 +182,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Ngày cấp */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="date_range" label="Ngày cấp: " {...formItemLayout}>
             <DatePicker
               name="date_range"
@@ -195,14 +195,14 @@ function InfoCustomer() {
 
       <Row>
         {/* Nơi cấp */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="place_range" label="Nơi cấp: " {...formItemLayout}>
             <Input name="place_range" placeholder="Nhập nơi cấp" />
           </Form.Item>
         </Col>
 
         {/* Mã số thuế */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="tax_code" label="Mã số thuế: " {...formItemLayout}>
             <Input name="tax_code" placeholder="Nhập mã số thuế" />
           </Form.Item>
@@ -211,7 +211,7 @@ function InfoCustomer() {
 
       <Row>
         {/* Tên ngân hàng */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
             name="name_bank"
             label="Tên ngân hàng: "
@@ -226,7 +226,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Số GCN + Checkbox (số GCN) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="num_gcn" label="Số GCN: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -242,7 +242,7 @@ function InfoCustomer() {
 
       <Row>
         {/* Tên TKNH */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
             name="name_acc_bank"
             label="Tên TKNH: "
@@ -253,7 +253,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Số TKNH */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="num_acc_bank" label="Số TKNH: " {...formItemLayout}>
             <Input name="num_acc_bank" placeholder="Nhập số TKNH" />
           </Form.Item>
@@ -262,7 +262,7 @@ function InfoCustomer() {
 
       <Row>
         {/* Nguồn nước */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
             name="water_source"
             label="Nguồn nước: "
@@ -280,7 +280,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Người ĐD */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="representative_name"
             label="Người ĐD: "
@@ -296,14 +296,14 @@ function InfoCustomer() {
 
       <Row>
         {/* Ghi chú */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="note" label="Ghi chú: " {...formItemLayout}>
             <Input name="note" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
 
         {/* Đối tượng */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="obj_name" label="Đối tượng: " {...formItemLayout}>
             <Select
               fieldNames="obj_name"
