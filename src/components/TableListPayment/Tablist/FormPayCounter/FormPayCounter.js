@@ -1,20 +1,9 @@
 import {
   CloseOutlined,
   FormOutlined,
-  SearchOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
-import {
-  Button,
-  Checkbox,
-  Col,
-  Collapse,
-  Divider,
-  Form,
-  Input,
-  Row,
-  Select,
-} from "antd";
+import { Button, Col, Collapse, Divider, Row } from "antd";
 
 import "./FormPayCounter.css";
 import TableInfoCustomer from "./TableInfoCustomer/TableInfoCustomer";

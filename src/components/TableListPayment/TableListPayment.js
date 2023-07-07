@@ -216,6 +216,11 @@ function TableListPayment() {
                 console.log(record);
                 setModalDoubleClick(true);
               },
+              onClick: () => {
+                dispatch(
+                  tabListContractSlice.actions.btnClickTabListContract(null)
+                );
+              },
             };
           }}
           rowSelection={{
