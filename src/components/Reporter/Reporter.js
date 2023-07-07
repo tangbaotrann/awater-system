@@ -1,6 +1,7 @@
-import { AutoComplete, Button, Col, Input, Row } from "antd";
+import { AutoComplete, Button, Input } from "antd";
 import { UndoOutlined } from "@ant-design/icons";
 
+import "./Reporter.css";
 import ExportFile from "../ExportFile/ExportFile";
 
 function Reporter() {
@@ -15,31 +16,25 @@ function Reporter() {
   };
 
   return (
-    <Row>
-      <Col xs={24} sm={12} md={11} lg={8}>
-        <AutoComplete
-          // dropdownMatchSelectWidth={250}
-          // options={options}
-          className="reporter-auto-search-input"
-          filterOption={true}
-          onSearch={handleSearch}
-          onSelect={handleSelect}
-        >
-          <Input.Search size="middle" placeholder="Tìm kiếm..." enterButton />
-        </AutoComplete>
-      </Col>
+    <div className="wrapper-reporter">
+      <AutoComplete
+        // dropdownMatchSelectWidth={250}
+        // options={options}
+        className="reporter-auto-search-input"
+        filterOption={true}
+        onSearch={handleSearch}
+        onSelect={handleSelect}
+      >
+        <Input.Search size="middle" placeholder="Tìm kiếm..." enterButton />
+      </AutoComplete>
 
-      <Col xs={24} sm={6} md={6} lg={6}>
-        <Button className="reset-report-btn custom-btn-reset">
-          Làm mới <UndoOutlined />
-        </Button>
-      </Col>
+      <Button className="reset-report-btn custom-btn-reset">
+        Làm mới <UndoOutlined />
+      </Button>
 
-      <Col xs={24} sm={6} md={6} lg={6}>
-        {/* Export file */}
-        <ExportFile />
-      </Col>
-    </Row>
+      {/* Export file */}
+      <ExportFile />
+    </div>
   );
 }
 

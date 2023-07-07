@@ -131,7 +131,7 @@ function TableListOfCustomer() {
   return (
     <>
       <div className="title-report-cus">
-        <h1>CÔNG TY TNHH & CN AMZT VIỆT NAM</h1>
+        <h1>CÔNG TY TNHH & CN AMAZINGTECH VIỆT NAM</h1>
 
         <div className="title-tbl-report-cus">
           <h1>BẢNG KÊ DANH SÁCH KHÁCH HÀNG</h1>
