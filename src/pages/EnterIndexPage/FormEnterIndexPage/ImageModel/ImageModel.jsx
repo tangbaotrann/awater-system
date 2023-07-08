@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Modal, Button, Table, Upload } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import ModalImage from "react-modal-image";
-const ImageModal = ({ visible, onClose, imagePath ,imageData  }) => {
+const ImageModal = ({ visible, onClose, imagePath, imageData }) => {
   const [fileList, setFileList] = useState([]);
   useEffect(() => {
     if (imagePath) {
@@ -46,16 +46,19 @@ const ImageModal = ({ visible, onClose, imagePath ,imageData  }) => {
       title: "Tên tệp tin",
       dataIndex: "name",
       key: "name",
+      width: 120,
     },
     {
       title: "Định dạng",
       dataIndex: "type",
       key: "type",
+      width: 120,
     },
     {
       title: "Kích thước",
       dataIndex: "size",
       key: "size",
+      width: 120,
     },
     {
       title: "Ngày tạo",
@@ -127,13 +130,16 @@ const ImageModal = ({ visible, onClose, imagePath ,imageData  }) => {
         ]}
       >
         {imagePath && (
-          <ModalImage
-            small={imagePath}
-            large={imagePath}
-            alt="Hình ảnh"
-            hideDownload={false}
-            hideZoom={false}
-          />
+          <div style={{ textAlign: "center", marginBottom: "10px" }}>
+            <ModalImage
+              small={imagePath}
+              large={imagePath}
+              alt="Hình ảnh"
+              hideDownload={false}
+              hideZoom={false}
+              style={{ maxWidth: "100px", maxHeight: "100px" }}
+            />
+          </div>
         )}
         <Table
           dataSource={fileList}
