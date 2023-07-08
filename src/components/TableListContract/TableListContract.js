@@ -1,5 +1,4 @@
-import { Button, Modal, Table } from "antd";
-import { UndoOutlined } from "@ant-design/icons";
+import { Modal, Table } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -17,7 +16,7 @@ function TableListContract() {
   const tabList = useSelector(btnClickTabListContractSelector);
 
   // cols table main
-  const cols = [ 
+  const cols = [
     {
       key: "index",
       title: "#",
@@ -157,6 +156,11 @@ function TableListContract() {
                 console.log(record);
                 setOpen(true);
               },
+              onClick: () => {
+                dispatch(
+                  tabListContractSlice.actions.btnClickTabListContract(null) // clear checked radio
+                );
+              },
             };
           }}
           rowSelection={{
@@ -206,7 +210,7 @@ function TableListContract() {
             rowKey="index"
             size="small"
             pagination={{
-              pageSize: 5,
+              pageSize: 10,
             }}
           ></Table>
         </div>

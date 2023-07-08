@@ -15,9 +15,9 @@ function InfoDetailClock() {
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 5 },
-      md: { span: 7 },
-      lg: { span: 8 },
+      sm: { span: 4 },
+      md: { span: 10 },
+      lg: { span: 6 },
     },
     wrapperCol: {
       xs: { span: 24 },
@@ -31,7 +31,7 @@ function InfoDetailClock() {
     <div className="container-detail-clock">
       <Row>
         {/* Đơn vị HC */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Đơn vị HC" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -44,7 +44,7 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="ĐV" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -56,11 +56,9 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/*  */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Đơn vị" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -72,9 +70,11 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
+      </Row>
 
+      <Row>
         {/* Vùng */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Vùng: " {...formItemLayout}>
             <Select
               fieldNames=""
@@ -86,11 +86,9 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Khu vực */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Khu vực: " {...formItemLayout}>
             <Select
               fieldNames=""
@@ -104,7 +102,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Nhân viên */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Nhân viên (*)" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -120,7 +118,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Tuyến đọc */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Tuyến đọc (*)" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -134,7 +132,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Phạm vi */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Phạm vi" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -146,18 +144,18 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Mã */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Mã (*)" {...formItemLayout}>
             <Input name="" placeholder="Nhập mã" />
           </Form.Item>
         </Col>
+      </Row>
 
+      <Row>
         {/* Đồng hồ block */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Đồng hồ block" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -169,18 +167,16 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Là đồng hồ phụ */}
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Là đồng hồ phụ" {...formItemLayout}>
-            <Checkbox name="" />
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="" label="Chọn" {...formItemLayout}>
+            <Checkbox name="" /> Là đồng hồ phụ
           </Form.Item>
         </Col>
 
         {/* Thứ tự + button (Thứ tự) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Thứ tự: " {...formItemLayout}>
             <div className="container-label-input">
               <Input placeholder="Nhập thứ tự" className="space-right-10" />
@@ -194,7 +190,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Seri + Checkbox (Seri) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Seri" {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -208,15 +204,22 @@ function InfoDetailClock() {
         </Col>
 
         {/* Chỉ số bắt đầu */}
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item
-            name="num_start"
-            label="Chỉ số bắt đầu"
-            {...formItemLayout}
-          >
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="num_start" label="CS bắt đầu" {...formItemLayout}>
             <InputNumber
               name="num_start"
-              placeholder="Số đầu"
+              placeholder="Chỉ số đầu"
+              style={{ width: "100%" }}
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Chỉ số cuối */}
+        <Col xs={24} sm={24} md={7} lg={7}>
+          <Form.Item name="num_end" label="Cuối" {...formItemLayout}>
+            <InputNumber
+              name="num_end"
+              placeholder="Chỉ số cuối"
               style={{ width: "100%" }}
             />
           </Form.Item>
@@ -224,28 +227,15 @@ function InfoDetailClock() {
       </Row>
 
       <Row>
-        {/* Chỉ số cuối */}
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="num_end" label="Cuối" {...formItemLayout}>
-            <InputNumber
-              name="num_end"
-              placeholder="Số cuối"
-              style={{ width: "100%" }}
-            />
-          </Form.Item>
-        </Col>
-
         {/* Seri chì */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Seri chì" {...formItemLayout}>
             <Input name="" placeholder="Nhập seri chì" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Ngày lắp đặt */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Ngày lắp đặt" {...formItemLayout}>
             <DatePicker
               name=""
@@ -256,8 +246,8 @@ function InfoDetailClock() {
         </Col>
 
         {/* Ngày sử dụng */}
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Ngày sử dụng" {...formItemLayout}>
+        <Col xs={24} sm={24} md={7} lg={7}>
+          <Form.Item name="" label="Ngày SD" {...formItemLayout}>
             <DatePicker
               name=""
               placeholder="Chọn ngày sử dụng"
@@ -269,7 +259,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Địa chỉ */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Địa chỉ (*)" {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -283,16 +273,14 @@ function InfoDetailClock() {
         </Col>
 
         {/* Đai khởi thủy */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Đai khởi thủy" {...formItemLayout}>
             <Input name="" placeholder="Nhập đai khởi thủy" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Trạng thái */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Trạng thái" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -301,18 +289,18 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
+      </Row>
 
+      <Row>
         {/* Lý do hủy */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Lý do hủy" {...formItemLayout}>
             <Input name="" placeholder="Nhập lý do hủy" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Nước sản xuất */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Nước SX" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -323,7 +311,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Hãng sản xuất */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Hãng SX" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -336,7 +324,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Kiểu đồng hồ */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Kiểu đồng hồ" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -347,16 +335,14 @@ function InfoDetailClock() {
         </Col>
 
         {/* Đường kính */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Đường kính" {...formItemLayout}>
             <Input name="" placeholder="Nhập đường kính" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Hộp bảo vệ */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Hộp bảo vệ" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -365,19 +351,19 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
+      </Row>
 
+      <Row>
         {/* Vị trí lắp đặt */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Vị trí lắp đặt" {...formItemLayout}>
             <Input name="" placeholder="Nhập vị trí lắp đặt" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Ngày kiểm định */}
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item name="" label="Ngày kiểm định" {...formItemLayout}>
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="" label="Ngày KĐ" {...formItemLayout}>
             <DatePicker
               name=""
               placeholder="Chọn ngày kiểm định"
@@ -387,7 +373,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Hiệu lực kiểm định */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Hiệu lực KĐ" {...formItemLayout}>
             <DatePicker
               name=""
@@ -400,7 +386,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Lý do */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Lý do" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -411,7 +397,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Van một chiều */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Van một chiều" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -420,27 +406,25 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Số tem */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Số tem" {...formItemLayout}>
             <Input name="" placeholder="Nhập số tem" />
           </Form.Item>
         </Col>
+      </Row>
 
+      <Row>
         {/* Số phiếu thay */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Số phiếu thay" {...formItemLayout}>
             <Input name="" placeholder="Nhập số phiếu thay" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Hình thức XL */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Hình thức XL" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -451,7 +435,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Lý do thay */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Lý do thay" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -464,14 +448,14 @@ function InfoDetailClock() {
 
       <Row>
         {/* Mã ĐH thay */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Mã ĐH thay" {...formItemLayout}>
             <Input name="" placeholder="Nhập mã ĐH thay" />
           </Form.Item>
         </Col>
 
         {/* Người thay */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Người thay" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -480,27 +464,25 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Kinh độ */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Kinh độ" {...formItemLayout}>
             <Input name="" placeholder="Nhập kinh độ" />
           </Form.Item>
         </Col>
+      </Row>
 
+      <Row>
         {/* Vĩ độ */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Vĩ độ" {...formItemLayout}>
             <Input name="" placeholder="Nhập vĩ độ" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Loại KM */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Loại KM" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -511,7 +493,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Khuyến mãi + text */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Khuyến mãi" {...formItemLayout}>
             <div className="container-label-input">
               <InputNumber
@@ -527,7 +509,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Trạng thái ĐH lấp */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Trạng thái ĐH" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -538,7 +520,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Ống dẫn */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Ống dẫn" {...formItemLayout}>
             <Input name="" placeholder="Nhập ống dẫn" />
           </Form.Item>

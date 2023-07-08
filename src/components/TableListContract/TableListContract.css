@@ -158,29 +158,99 @@
 .info-his-item-lbl {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-right: 24px;
+    margin-right: 12px;
 }
 
-.info-his-item-val {
+.info-his-item-val, .info-his-item-val-stt, 
+.info-his-item-val-address, .info-his-item-val-address-use, 
+.info-his-item-val-phone, .info-his-item-val-ntc, .info-his-item-val-type-contract, 
+.info-his-item-val-mst, .info-his-item-val-obj-use, .info-his-item-val-mtt, .info-his-item-val-nld, .info-his-item-val-sdt {
     font-size: 1.4rem;
     font-weight: 500;
 }
 
+/* Số thứ tự: */
+.info-his-item-val-stt {
+    margin-left: 48px;
+}
+
+/* Địa chỉ: */
+.info-his-item-val-address {
+    margin-left: 66px;
+}
+
+/* Địa chỉ sử dụng: */
+.info-his-item-val-address-use {
+    margin-left: 5px;
+}
+
+/* Số điện thoại */
+.info-his-item-val-phone {
+    margin-left: 20px;
+}
+
+/* Ngày thay cuối */
+.info-his-item-val-ntc {
+    margin-left: 5px;
+}
+
+/* Loại đồng hồ: */
+.info-his-item-val-type-contract {
+    margin-left: 40px;
+}
+
+/* Mã số thuế: */
+.info-his-item-val-mst {
+    margin-left: 62px;
+}
+
+/* Đối tượng sử dụng */
+.info-his-item-val-obj-use {
+    margin-left: 8px;
+}
+
+/* Mã tiêu thụ */
+.info-his-item-val-mtt {
+    margin-left: 60px;
+}
+
+/* Ngày lắp đặt */
+.info-his-item-val-nld {
+    margin-left: 46px;
+}
+
+/* Số đồng hồ */
+.info-his-item-val-sdt {
+    margin-left: 60px;
+}
+
 .container-detail-clock {
-    height: 64vh;
+    height: 65vh;
     overflow-y: scroll;
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px #ccc;
 }
 
 .container-info-contract {
-    height: 64vh;
+    height: 65vh;
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px #ccc;
 }
 
 .container-info-clock {
     height: 65vh;
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px #ccc;
 }
 
 .container-info-customer {
     height: 65vh;
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px #ccc;
 }
 
 /* Border all card */
@@ -291,4 +361,41 @@
 
 .space-right-10 {
     margin-right: 10px;
+}
+
+.space-right-10.inp-select-item {
+    width: 50%;
+}
+
+.info-clock-edit-file {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.modal-func-files {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.files-btn-close {
+    margin-left: 10px;
+}
+
+/* Modal (Đồng hồ hiện tại) */
+.modal-clock-curr-info {
+    height: 42vh;
+    overflow-y: scroll;
+}
+
+/* Modal (Đồng hồ mới) */
+.modal-clock-new-info {
+    height: 42vh;
+    overflow-y: scroll;
+}
+
+/* Modal (Thay đồng hồ mới) */
+.modal-locomotive-info {
+    height: 42vh;
+    overflow-y: scroll;
 }

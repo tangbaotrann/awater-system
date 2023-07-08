@@ -84,6 +84,14 @@ a {
     padding: 0 !important; 
 }
 
+.wrapper-tab-modal-create-contract .ant-tabs-tab {
+    padding: 6px !important;
+}
+
+.wrapper-form-update-clock .ant-tabs-tab {
+    padding: 6px !important;
+}
+
 .tab-item-disabled {
     background-color: var(--btn-disabled);
 }
@@ -530,18 +538,35 @@ html *::-webkit-scrollbar-track {
     }
 
     .container-info-contract {
-        height: 64vh;
+        height: 42vh;
         overflow-y: scroll;
+        padding: 4px;
+        border-radius: 6px;
+        box-shadow: 2px 2px 5px #ccc;
     }
 
     .container-info-clock {
-        height: 65vh;
+        height: 41vh;
         overflow-y: scroll;
+        padding: 4px;
+        border-radius: 6px;
+        box-shadow: 2px 2px 5px #ccc;
     }
     
     .container-info-customer {
-        height: 65vh;
+        height: 42vh;
         overflow-y: scroll;
+        padding: 4px;
+        border-radius: 6px;
+        box-shadow: 2px 2px 5px #ccc;
+    }
+
+    .container-detail-clock {
+        height: 41vh;
+        overflow-y: scroll;
+        padding: 4px;
+        border-radius: 6px;
+        box-shadow: 2px 2px 5px #ccc;
     }
 
     .tablist-func-clock-btn-mobile {
@@ -589,7 +614,8 @@ html *::-webkit-scrollbar-track {
         margin-right: 0 !important;
     }
 
-    .custom-btn-export, .custom-btn-watch-report, .custom-btn-reset {
+    /* .custom-btn-reset */
+    .custom-btn-export, .custom-btn-watch-report {
         width: 100%;
     }
 
@@ -632,6 +658,115 @@ html *::-webkit-scrollbar-track {
       margin-left: 0 !important;
     }
 
+    .container-label-input.container-label-input-mobile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .space-right-10.inp-select-item {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .inp-checkbox-item {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .inp-checkbox-to-date-item {
+        display: flex;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .btn-export-item {
+        margin-left: 0;
+    }
+
+    /* Số thứ tự: */
+    .info-his-item-val-stt {
+        margin-left: 74px;
+    }
+
+    /* Mã khách hàng cũ */
+    .info-his-item-val-mkhc {
+        margin-left: 10px;
+    }
+
+    /* Tên khách hàng */
+    .info-his-item-val-tkh {
+        margin-left: 28px;
+    }
+
+    /* Địa chỉ: */
+    .info-his-item-val-address {
+        margin-left: 94px;
+    }
+
+    /* Địa chỉ sử dụng: */
+    .info-his-item-val-address-use {
+        margin-left: 32px;
+    }
+
+    /* Số điện thoại */
+    .info-his-item-val-phone {
+        margin-left: 47px;
+    }
+
+    /* Ngày ký hợp đồng */
+    .info-his-item-val-nkhd {
+        margin-left: 9px;
+    }
+
+    /* Ngày thay cuối */
+    .info-his-item-val-ntc {
+        margin-left: 34px;
+    }
+
+    /* Loại đồng hồ: */
+    .info-his-item-val-type-contract {
+        margin-left: 50px;
+    }
+
+    /* Mã số thuế: */
+    .info-his-item-val-mst {
+        margin-left: 63px;
+    }
+
+    /* Đối tượng sử dụng */
+    .info-his-item-val-obj-use {
+        margin-left: 10px;
+    }
+
+    /* Mã tiêu thụ */
+    .info-his-item-val-mtt {
+        margin-left: 62px;
+    }
+
+    /* Ngày lắp đặt */
+    .info-his-item-val-nld {
+        margin-left: 48px;
+    }
+
+    /* Số đồng hồ */
+    .info-his-item-val-sdt {
+        margin-left: 63px;
+    }
+
+    /* Reporter */
+    .wrapper-reporter {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .reset-report-btn.custom-btn-reset {
+        margin-left: 0 !important;
+    }
+
+    .files-btn-close {
+        margin-left: 10px !important;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */
@@ -743,6 +878,66 @@ html *::-webkit-scrollbar-track {
       width: 100%;
       margin-left: 0 !important;
     }
+
+    /* Số thứ tự: */
+     .info-his-item-val-stt {
+        margin-left: 76px;
+    }
+
+    /* Tên khách hàng */
+    .info-his-item-val-tkh {
+        margin-left: 28px;
+    }
+
+    /* Địa chỉ: */
+    .info-his-item-val-address {
+        margin-left: 93px;
+    }
+
+    /* Địa chỉ sử dụng: */
+    .info-his-item-val-address-use {
+        margin-left: 32px;
+    }
+
+    /* Số điện thoại */
+    .info-his-item-val-phone {
+        margin-left: 47px;
+    }
+
+    /* Ngày thay cuối */
+    .info-his-item-val-ntc {
+        margin-left: 32px;
+    }
+
+    /* Loại đồng hồ: */
+    .info-his-item-val-type-contract {
+        margin-left: 40px;
+    }
+
+    /* Mã số thuế: */
+    .info-his-item-val-mst {
+        margin-left: 52px;
+    }
+
+    /* Đối tượng sử dụng */
+    .info-his-item-val-obj-use {
+        margin-left: 0;
+    }
+
+    /* Mã tiêu thụ */
+    .info-his-item-val-mtt {
+        margin-left: 52px;
+    }
+
+    /* Ngày lắp đặt */
+    .info-his-item-val-nld {
+        margin-left: 46px;
+    }
+
+    /* Số đồng hồ */
+    .info-his-item-val-sdt {
+        margin-left: 60px;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
@@ -824,6 +1019,66 @@ html *::-webkit-scrollbar-track {
     .pay-counter-footer-total {
         margin: 10px 0;
         margin-right: 0 !important;
+    }
+
+    /* Số thứ tự: */
+    .info-his-item-val-stt {
+        margin-left: 76px;
+    }
+
+    /* Tên khách hàng */
+    .info-his-item-val-tkh {
+        margin-left: 28px;
+    }
+
+    /* Địa chỉ: */
+    .info-his-item-val-address {
+        margin-left: 93px;
+    }
+
+    /* Địa chỉ sử dụng: */
+    .info-his-item-val-address-use {
+        margin-left: 32px;
+    }
+
+    /* Số điện thoại */
+    .info-his-item-val-phone {
+        margin-left: 47px;
+    }
+
+    /* Ngày thay cuối */
+    .info-his-item-val-ntc {
+        margin-left: 32px;
+    }
+
+    /* Loại đồng hồ: */
+    .info-his-item-val-type-contract {
+        margin-left: 40px;
+    }
+
+    /* Mã số thuế: */
+    .info-his-item-val-mst {
+        margin-left: 52px;
+    }
+
+    /* Đối tượng sử dụng */
+    .info-his-item-val-obj-use {
+        margin-left: 0;
+    }
+
+    /* Mã tiêu thụ */
+    .info-his-item-val-mtt {
+        margin-left: 52px;
+    }
+
+    /* Ngày lắp đặt */
+    .info-his-item-val-nld {
+        margin-left: 46px;
+    }
+
+    /* Số đồng hồ */
+    .info-his-item-val-sdt {
+        margin-left: 60px;
     }
 }
   

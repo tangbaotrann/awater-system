@@ -16,7 +16,7 @@ function InfoContract() {
       xs: { span: 24 },
       sm: { span: 5 },
       md: { span: 7 },
-      lg: { span: 8 },
+      lg: { span: 10 },
     },
     wrapperCol: {
       xs: { span: 24 },
@@ -30,7 +30,7 @@ function InfoContract() {
     <div className="container-info-contract">
       <Row>
         {/* Mã đăng ký + Button ... (Mã đăng ký) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Mã đăng ký" {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -46,7 +46,7 @@ function InfoContract() {
         </Col>
 
         {/* Số hợp đồng + Button reset (mã khách hàng) */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Số HĐ (*)" {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -64,7 +64,7 @@ function InfoContract() {
 
       <Row>
         {/* ĐT giá */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="ĐT giá (*)" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -78,7 +78,7 @@ function InfoContract() {
         </Col>
 
         {/* Mục đích SD */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Mục đích SD" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -94,7 +94,7 @@ function InfoContract() {
 
       <Row>
         {/* Khu vực TT */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Khu vực TT: " {...formItemLayout}>
             <Select
               fieldNames=""
@@ -108,7 +108,7 @@ function InfoContract() {
         </Col>
 
         {/* Hình thức TT */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Hình thức TT: " {...formItemLayout}>
             <Select
               fieldNames=""
@@ -124,14 +124,14 @@ function InfoContract() {
 
       <Row>
         {/* Mã vạch */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Mã vạch: " {...formItemLayout}>
             <Input name="" placeholder="Nhập mã vạch" />
           </Form.Item>
         </Col>
 
         {/* Ngày ký hợp đồng */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Ngày ký HĐ: " {...formItemLayout}>
             <DatePicker
               name=""
@@ -144,7 +144,7 @@ function InfoContract() {
 
       <Row>
         {/* Ngày lắp đặt */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Ngày lắp đặt: " {...formItemLayout}>
             <DatePicker
               name=""
@@ -155,7 +155,7 @@ function InfoContract() {
         </Col>
 
         {/* Người lắp đặt */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Người lắp đặt: " {...formItemLayout}>
             <Select
               fieldNames=""
@@ -171,7 +171,7 @@ function InfoContract() {
 
       <Row>
         {/* Ngày NT */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Ngày NT " {...formItemLayout}>
             <DatePicker
               name=""
@@ -182,7 +182,7 @@ function InfoContract() {
         </Col>
 
         {/* Tiền lắp đặt */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Tiền lắp đặt" {...formItemLayout}>
             <Input name="" placeholder="Nhập tiền lắp đặt" />
           </Form.Item>
@@ -191,14 +191,14 @@ function InfoContract() {
 
       <Row>
         {/* Người nộp */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Người nộp" {...formItemLayout}>
             <Input name="" placeholder="Nhập người nộp" />
           </Form.Item>
         </Col>
 
         {/* Tiền đặt cọc */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Tiền đặt cọc" {...formItemLayout}>
             <Input name="" placeholder="Nhập tiền đặt cọc" />
           </Form.Item>
@@ -207,7 +207,7 @@ function InfoContract() {
 
       <Row>
         {/* Giảm trừ theo */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Giảm trừ theo" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -218,7 +218,7 @@ function InfoContract() {
         </Col>
 
         {/* Số tiền */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Số tiền" {...formItemLayout}>
             <Input name="" placeholder="Nhập số tiền" />
           </Form.Item>
@@ -227,7 +227,7 @@ function InfoContract() {
 
       <Row>
         {/* Ngày đặt cọc */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Ngày đặt cọc: " {...formItemLayout}>
             <DatePicker
               name=""
@@ -238,7 +238,7 @@ function InfoContract() {
         </Col>
 
         {/* Chứng từ */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Chứng từ" {...formItemLayout}>
             <Input name="" placeholder="Nhập chứng từ" />
           </Form.Item>
@@ -247,7 +247,7 @@ function InfoContract() {
 
       <Row>
         {/* Cam kết sử dụng nước */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
             name="test-chk"
             label="Cam kết SD nước"
@@ -259,7 +259,7 @@ function InfoContract() {
         </Col>
 
         {/* Khối lượng cam kết */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="KL cam kết" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -272,7 +272,7 @@ function InfoContract() {
 
       <Row>
         {/* Ghi chú */}
-        <Col xs={24} sm={24} md={24} lg={12}>
+        <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Ghi chú: " {...formItemLayout}>
             <Input name="" placeholder="Nhập ghi chú" />
           </Form.Item>

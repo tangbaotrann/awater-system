@@ -1,7 +1,7 @@
 import { React, useState } from "react";
-import { initialData } from "../../utils/dataEnterIndexPage/data/data";
+// import { initialData } from "../../utils/dataEnterIndexPage/data/data";
 import TabListEP from "./FormEnterIndexPage/TableListEP";
-
+import ImageModal from "./FormEnterIndexPage/ImageModel/ImageModel";
 import "../../components/GlobalStyles/GlobalStyles.css";
 
 import viVN from "antd/es/date-picker/locale/vi_VN";
@@ -18,6 +18,7 @@ import {
   Table,
   Popover,
   Collapse,
+  Tooltip,
 } from "antd";
 import {
   SearchOutlined,
@@ -25,6 +26,8 @@ import {
   PlusOutlined,
   PictureOutlined,
   LockOutlined,
+  ArrowUpOutlined,
+  ArrowDownOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "./EnterIndexPage.css";
@@ -35,7 +38,13 @@ function EnterIndexPage() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const { token } = theme.useToken();
   const [form] = Form.useForm();
-
+  // xu ly hinh anh
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [selectedImagePath, setSelectedImagePath] = useState(null);
+  const handleShowImage = (imagePath) => {
+    setSelectedImagePath(imagePath);
+    setShowImageModal(true);
+  };
   const handleMonthChange = (date) => {
     if (date) {
       form.setFieldsValue({ month: date.format("M/YYYY") });
@@ -45,7 +54,7 @@ function EnterIndexPage() {
   };
 
   const { Option } = Select;
-  const [data1, setData1] = useState(initialData);
+  // const [data1, setData1] = useState(initialData);
 
   function fetchDataForPage(page) {
     const pageSize = 18;
@@ -56,41 +65,110 @@ function EnterIndexPage() {
 
   const handleData1Change = (pagination) => {
     const currentPage = pagination.current;
-    const newData = fetchDataForPage(currentPage);
-    setData1(newData);
+    // const newData = fetchDataForPage(currentPage);
+    // setData1(newData);
   };
-
+  const initialData = Array.from({ length: 100 }, (_, i) => {
+    return {
+      key: "1",
+      imageAndStatus: ``,
+      imagePath: "/dhn.jpg",
+      order: i + 1,
+      readingLine: `Tuyến đọc ${i + 1}`,
+      contractNumber: `Số hợp đồng ${i + 1}`,
+      clockSen: `Sen đồng hồ ${i + 1}`,
+      customerName: `Tên khách hàng ${i + 1}`,
+      address: `Địa chỉ ${i + 1}`,
+      moneyCollected: `Tiền thu ${i + 1}`,
+      oldIndex: `Chỉ số cũ ${i + 1}`,
+      newIndex: `Chỉ số mới ${i + 1}`,
+      consumption: `Tiêu thụ ${i + 1}`,
+      readingDate: `Ngày đọc ${i + 1}`,
+      ttd: `Trạng thái đọc ${i + 1}`,
+      ndk: `Ngày đầu kì ${i + 1}`,
+      nck: `Ngày cuối kì ${i + 1}`,
+      ttdh: `Trạng thái ĐH ${i + 1}`,
+      gc: `Ghi chú ${i + 1}`,
+    };
+  });
   const columns = [
-    {
-      title: "  ",
-      dataIndex: "imageAndStatus",
-      key: "imageAndStatus",
-      width: 40,
-      render: (text, record) => (
-        <>
-          <PictureOutlined />
-
-          {text}
-        </>
-      ),
-    },
-    {
-      title: "",
-      width: 55,
-      render: () => {
-        return (
-          <Button>
-            <LockOutlined />
-          </Button>
-        );
-      },
-    },
     {
       title: "#",
       dataIndex: "order",
       key: "order",
-      width: 70,
+      width: 40,
     },
+    {
+      title: "",
+      dataIndex: "icons",
+      key: "icons",
+      width: 90,
+      render: (text, record) => {
+        const iconType = Math.random() > 0.5 ? "up" : "down";
+        const percent = Math.floor(Math.random() * 100);
+        const info = `Sản lượng theo tháng ${
+          iconType === "up" ? "tăng" : "giảm"
+        } ${percent}%`;
+        return (
+          <>
+            <PictureOutlined
+              style={{ fontSize: "21px", marginRight: "5px" }}
+              onClick={() => handleShowImage(record.imagePath)}
+            />
+            <LockOutlined style={{ fontSize: "21px", marginRight: "5px" }} />
+            <Tooltip title={info}>
+              {iconType === "up" ? (
+                <ArrowUpOutlined style={{ fontSize: "21px" }} />
+              ) : (
+                <ArrowDownOutlined style={{ fontSize: "21px" }} />
+              )}
+            </Tooltip>
+          </>
+        );
+      },
+    },
+
+    // {
+    //   title: "  ",
+    //   dataIndex: "imageAndStatus",
+    //   key: "imageAndStatus",
+    //   width: 30,
+    //   render: (text, record) => (
+    //     <>
+    //       <PictureOutlined
+    //         style={{ fontSize: "19px" }}
+    //         onClick={() => handleShowImage(record.imagePath)}
+    //       />
+
+    //       {text}
+    //     </>
+    //   ),
+    // },
+    // {
+    //   title: "",
+    //   width: 30,
+    //   render: (text, record) => {
+    //     return <LockOutlined style={{ fontSize: "19px" }} />;
+    //   },
+    // },
+    // {
+    //   title: "",
+    //   dataIndex: "icon",
+    //   key: "icon",
+    //   width: 30,
+    //   render: (text, record) => {
+    //     const iconType = Math.random() > 0.5 ? "up" : "down";
+    //     const percent = Math.floor(Math.random() * 100);
+    //     const info = `Sản lượng theo tháng ${
+    //       iconType === "up" ? "tăng" : "giảm"
+    //     } ${percent}%`;
+    //     return (
+    //       <Tooltip title={info}>
+    //         {iconType === "up" ?<ArrowUpOutlined /> :<ArrowDownOutlined />}
+    //       </Tooltip>
+    //     );
+    //   },
+    // },
     {
       title: "Tuyến đọc",
       dataIndex: "readingLine",
@@ -194,16 +272,12 @@ function EnterIndexPage() {
 
     const layout = {
       labelCol: {
-        span: 13,
-      },
-      wrapperCol: {
-        span: 30,
+        span: 10,
       },
     };
-
     return (
       <Form {...layout}>
-        <Row gutter={8}>
+        <Row gutter={5}>
           <Col xs={24} sm={12} md={12} lg={4} span={4}>
             <Form.Item
               className="custom-form-item"
@@ -219,7 +293,7 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col xs={24} sm={12} md={12} lg={4} span={4}>
+          <Col xs={24} sm={12} md={12} lg={6} span={6}>
             <Form.Item label="Cán bộ đọc" name="1">
               <Select style={{ width: "100%" }} name="s1">
                 <Option value="1">1</Option>
@@ -227,7 +301,7 @@ function EnterIndexPage() {
               </Select>
             </Form.Item>
           </Col>
-          <Col xs={24} sm={12} md={12} lg={4} span={4}>
+          <Col xs={24} sm={12} md={12} lg={6} span={6}>
             <Form.Item className="custom-form-item" label="Tuyến đọc" name="2">
               <Select style={{ width: "100%" }}>
                 <Option value="1">1</Option>
@@ -260,26 +334,8 @@ function EnterIndexPage() {
               <Input placeholder="Số hợp đồng" style={{ color: "black" }} />
             </Form.Item>
           </Col>
-          <Col span={4} xs={24} sm={12} lg={4}>
-            <Form.Item
-              // className="custom-form-item"
-              label={
-                <>
-                  Bất thường
-                  <br />
-                </>
-              }
-            >
-              <Select style={{ width: "100%" }} name="s1">
-                <Option value="1">Lựa chọn 1</Option>
-                <Option value="2">Lựa chọn 2</Option>
-                <Option value="3">Lựa chọn 3</Option>
-              </Select>
-            </Form.Item>
-          </Col>
         </Row>
-
-        <Row gutter={8}>
+        <Row gutter={5}>
           <Col span={7} xs={24} sm={12} md={12} lg={4}>
             <Form.Item lassName="custom-form-item" label="Số ghi" name="9">
               <Input
@@ -289,12 +345,21 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col span={5} xs={24} sm={12} md={12} lg={4}>
+          <Col span={5} xs={24} sm={12} md={12} lg={6}>
             <Form.Item label="Trạng thái đọc" name="6">
               <Select style={{ width: "100%" }}>
                 <Option value="1"> 1</Option>
                 <Option value="2"> 2</Option>
                 <Option value="3"> 3</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col span={4} xs={24} sm={12} lg={6}>
+            <Form.Item label={<>Bất thường</>}>
+              <Select style={{ width: "100%" }} name="s1">
+                <Option value="1">Lựa chọn 1</Option>
+                <Option value="2">Lựa chọn 2</Option>
+                <Option value="3">Lựa chọn 3</Option>
               </Select>
             </Form.Item>
           </Col>
@@ -317,8 +382,10 @@ function EnterIndexPage() {
               />
             </Form.Item>
           </Col>
-          <Col span={2} xs={24} sm={12} md={12} lg={4}>
-            <div style={{ display: "flex" }}>
+        </Row>
+        <Row>
+          <Col xs={24} sm={24} md={24} lg={24}>
+            <div style={{ textAlign: "right" }}>
               <Button className="custom-btn-search" htmlType="submit">
                 <SearchOutlined />
                 Tìm kiếm
@@ -364,18 +431,18 @@ function EnterIndexPage() {
         <Table
           size="small"
           rowKey="index"
-          pagination={{
-            current: 1,
-            total: initialData.length,
-            pageSize: 18,
-          }}
           scroll={{ x: 3000, y: 440 }}
           columns={columns.map((column) => ({
             ...column,
             className: "cell-wrap",
           }))}
-          dataSource={data1}
+          dataSource={initialData}
           onChange={handleData1Change}
+        />
+        <ImageModal
+          visible={showImageModal}
+          onClose={() => setShowImageModal(false)}
+          imagePath={selectedImagePath}
         />
         {/* func bottom */}
         <div className="contract-bottom">

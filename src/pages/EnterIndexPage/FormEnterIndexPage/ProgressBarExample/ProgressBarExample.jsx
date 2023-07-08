@@ -9,6 +9,18 @@ const ProgressBarExample = (hideModal) => {
   const handleFailed = (error) => {
     console.log({ error });
   };
+  const colors = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet",
+    "pink",
+    "purple",
+  ];
+  const percents = [10, 20, 30, 40, 50, 60, 70, 80, 90];
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
   return (
@@ -26,6 +38,17 @@ const ProgressBarExample = (hideModal) => {
       <Row>
         <Col span={24}>
           <Row>
+            {colors.map((color, index) => (
+              <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+                <Progress
+                  percent={percents[index]}
+                  strokeColor={color}
+                  format={(percent) => `${percent * 10}`}
+                />
+              </Col>
+            ))}
+          </Row>
+          {/* <Row>
             <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
               <Progress percent={10} format={(percent) => `${percent * 10}`} />
             </Col>
@@ -50,7 +73,7 @@ const ProgressBarExample = (hideModal) => {
                 format={(percent) => `${percent * 10}`}
               />
             </Col>
-          </Row>
+          </Row> */}
         </Col>
       </Row>
     </Form>

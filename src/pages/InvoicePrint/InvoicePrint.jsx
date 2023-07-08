@@ -36,7 +36,21 @@ function InvoicePrint() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const { token } = theme.useToken();
-
+  const initialData = Array.from({ length: 100 }, (_, i) => {
+    return {
+      key: i + 1,
+      order: i + 1,
+      readingLine: `Tuyến đọc ${i + 1}`,
+      reader: `Cán bộ ${i + 1}`,
+      sessionName: `Tên phiên ${i + 1}`,
+      createdDate: `Ngày tạo ${i + 1}`,
+      serialNumber: `Sê ri ${i + 1}`,
+      startInvoiceNumber: `Số HĐ BĐ ${i + 1}`,
+      endInvoiceNumber: `Số HĐ KT ${i + 1}`,
+      contractCount: `${i + 1}`,
+      isPrinted: `Đã in xong ${i + 1}`,
+    };
+  });
   const [form] = Form.useForm();
   const handleButtonClick = () => {
     setIsModalVisible(true);
@@ -51,6 +65,7 @@ function InvoicePrint() {
       form.setFieldsValue({ month: undefined });
     }
   };
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { Option } = Select;
   const [data1, setData1] = useState(initialData);
@@ -65,12 +80,9 @@ function InvoicePrint() {
 
   const handleData1Change = (pagination) => {
     const currentPage = pagination.current;
-    const newData = fetchDataForPage(currentPage);
-    setData1(newData);
+    // const newData = fetchDataForPage(currentPage);
+    // setData1(newData);
   };
-
-  const [initialData2, setInitialData2] = useState(null);
-
   const columns = [
     {
       title: "#",
@@ -137,7 +149,7 @@ function InvoicePrint() {
             <Button
               icon={<FormOutlined />}
               onClick={() => handleButtonClick(record)}
-            ></Button>{" "}
+            ></Button>
             <PrintButton record={record} />
             {/* <Button icon={<PrinterOutlined />}> In </Button> */}
           </>
@@ -149,10 +161,7 @@ function InvoicePrint() {
   const AdvancedSearchForm = () => {
     const layout = {
       labelCol: {
-        span: 10,
-      },
-      wrapperCol: {
-        span: 40,
+        span: 8,
       },
     };
     return (
@@ -175,7 +184,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={7} xs={24} sm={12} md={6}>
+          <Col span={7} xs={24} sm={12} md={9}>
             <Form.Item label="Cán bộ đọc" name="1">
               <Select
                 style={{ width: "100%" }}
@@ -187,7 +196,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4} xs={24} sm={12} md={6}>
+          <Col span={4} xs={24} sm={12} md={8}>
             <Form.Item label="Tiêu thụ" name="8">
               <Select
                 style={{ width: "100%" }}
@@ -227,7 +236,7 @@ function InvoicePrint() {
               />
             </Form.Item>
           </Col>
-          <Col span={6} xs={24} sm={12} md={6}>
+          <Col span={6} xs={24} sm={12} md={9}>
             <Form.Item
               className="custom-form-item"
               label={
@@ -249,7 +258,7 @@ function InvoicePrint() {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={7} xs={24} sm={12} md={6}>
+          <Col span={7} xs={24} sm={12} md={8}>
             <Form.Item label={<>In hóa đơn</>}>
               <Select style={{ width: "100%" }} placeholder="Chọn hóa đơn in">
                 <Option value="1">1</Option>
@@ -260,7 +269,7 @@ function InvoicePrint() {
             </Form.Item>
           </Col>
 
-          <Col span={3} xs={24} sm={12} md={6}>
+          <Col span={3} xs={24} sm={12} md={3}>
             <div>
               <Space>
                 <Button
@@ -305,11 +314,11 @@ function InvoicePrint() {
         <Table
           size="small"
           rowKey="index"
-          pagination={{
-            current: 1,
-            total: initialData.length,
-            pageSize: 18,
-          }}
+          // pagination={{
+          //   current: 1,
+          //   total: initialData.length,
+          //   pageSize: 18,
+          // }}
           scroll={{ x: 1800, y: 440 }}
           columns={columns.map((column) => ({
             ...column,
@@ -321,7 +330,7 @@ function InvoicePrint() {
         <InvoicingDetailsModal
           visible={isModalVisible}
           onCancel={handleModalCancel}
-          data={initialData2}
+          data={initialData}
         />
         <div className="InvoicePrint-bottom">
           <div className="contract-bottom-func">
