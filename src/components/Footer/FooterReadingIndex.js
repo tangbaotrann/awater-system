@@ -8,7 +8,7 @@ import {
   MoreOutlined,
   CaretDownOutlined,
   BarChartOutlined,
-  DeleteOutlined
+  DeleteOutlined,
 } from "@ant-design/icons";
 import { Tabs } from "antd";
 import React from "react";
@@ -25,23 +25,13 @@ export const FooterReadingIndex = (props) => {
   const tabs = [
     {
       id: "1",
-      label: (
-        <span
-          onClick={() => setIsOpenModalCreate(true)}
-        >
-          Tạo sổ
-        </span>
-      ),
+      label: <span onClick={() => setIsModalOpenMCreate(true)}>Tạo sổ</span>,
       icon: <PlusCircleOutlined />,
     },
     {
       id: "2",
       label: (
-        <span
-          onClick={() => setIsModalOpenMCreate(true)}
-        >
-          Tạo sổ đồng loạt
-        </span>
+        <span onClick={() => setIsOpenModalCreate(true)}>Tạo sổ đồng loạt</span>
       ),
       icon: <PlusCircleOutlined />,
     },
@@ -49,7 +39,7 @@ export const FooterReadingIndex = (props) => {
       id: "3",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+        // onClick={() => setIsModalOpenMCreate(true)}
         >
           Xóa sổ
         </span>
@@ -60,18 +50,29 @@ export const FooterReadingIndex = (props) => {
       id: "4",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+        // onClick={() => setIsModalOpenMCreate(true)}
         >
-          Khóa sổ và tính tiền
+          Bỏ khóa
         </span>
       ),
       icon: <KeyOutlined />,
     },
+    // {
+    //   id: "4",
+    //   label: (
+    //     <span
+    //       // onClick={() => setIsModalOpenMCreate(true)}
+    //     >
+    //       Khóa sổ và tính tiền
+    //     </span>
+    //   ),
+    //   icon: <KeyOutlined />,
+    // },
     {
       id: "5",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+        // onClick={() => setIsModalOpenMCreate(true)}
         >
           Xóa biểu mẫu
         </span>
@@ -82,7 +83,7 @@ export const FooterReadingIndex = (props) => {
       id: "6",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+        // onClick={() => setIsModalOpenMCreate(true)}
         >
           Chốt sổ
         </span>
@@ -93,7 +94,7 @@ export const FooterReadingIndex = (props) => {
       id: "7",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+        // onClick={() => setIsModalOpenMCreate(true)}
         >
           Ngừng ghi chỉ số
         </span>
@@ -104,7 +105,7 @@ export const FooterReadingIndex = (props) => {
       id: "8",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+        // onClick={() => setIsModalOpenMCreate(true)}
         >
           Đồng bộ lại
         </span>
@@ -115,18 +116,18 @@ export const FooterReadingIndex = (props) => {
       id: "9",
       label: (
         <span
-          // onClick={() => setIsModalOpenMCreate(true)}
+        // onClick={() => setIsModalOpenMCreate(true)}
         >
           Tiện ích
         </span>
       ),
-      icon:  <MoreOutlined />,
-      iconRight: <CaretDownOutlined />
+      icon: <MoreOutlined />,
+      iconRight: <CaretDownOutlined />,
     },
     {
       id: "10",
       label: <span onClick={() => setIsModalOpenIndexBar(true)}>Chỉ số</span>,
-      icon: <BarChartOutlined />
+      icon: <BarChartOutlined />,
     },
   ];
 

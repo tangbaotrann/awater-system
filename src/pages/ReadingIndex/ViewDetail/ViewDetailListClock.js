@@ -1,5 +1,4 @@
 import {
-  FilePdfOutlined,
   PlusCircleOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
@@ -7,7 +6,6 @@ import {
   Button,
   Checkbox,
   Col,
-  Collapse,
   DatePicker,
   Form,
   Input,
@@ -15,26 +13,24 @@ import {
   Row,
   Select,
   Table,
-  theme,
 } from "antd";
 import { useState } from "react";
-import { SearchForm } from "./SearchForm";
 import { useMediaQuery } from "react-responsive";
 
-export const CreateBook = (props) => {
-  const { isOpen } = props;
-  const [form] = Form.useForm();
+export const ViewDetailListClock = (props) => {
+  const { isOpen, setIsOpenModalViewDetail } = props;
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   console.log(isOpen);
-
+  const [form] = Form.useForm();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
 
   const dataSource = Array.from({ length: 100 }, (_, index) => ({
     key: index,
+    stt: index + 1,
     name: `Số HĐ ${index}`,
     age: `Mã ĐH ${index}`,
     address: `Tên khách hàng ${index}`,
@@ -43,6 +39,12 @@ export const CreateBook = (props) => {
   }));
 
   const columns = [
+    {
+      title: "#",
+      dataIndex: "stt",
+      key: "stt",
+      width: 100,
+    },
     {
       title: "Số HĐ",
       dataIndex: "name",
@@ -72,7 +74,7 @@ export const CreateBook = (props) => {
 
   const layout = {
     labelCol: {
-      span: 6,
+      span: 9,
     },
     wrapperCol: {
       span: 24,
@@ -88,25 +90,26 @@ export const CreateBook = (props) => {
     selectedRowKeys,
     onChange: onSelectChange,
   };
-  const items = [
-    {
-      key: "1",
-      label: "Tìm kiếm",
-      children: <SearchForm />,
-    },
-  ];
- 
+
   return (
     <Modal
       title="Tạo sổ ghi chỉ số"
       open={isOpen}
-      onOk={props.handleOk}
-      onCancel={props.handleCancel}
-      width={1700}
+      onOk={() => setIsOpenModalViewDetail(false)}
+      onCancel={() => setIsOpenModalViewDetail(false)}
+      width={1000}
       footer={null}
       centered
     >
-      <Collapse items={items} size="small" />
+      <Form.Item label="Chọn tháng">
+        <DatePicker
+          allowClear
+          placeholder="Chọn ngày"
+          style={{ width: "100%" }}
+          format="MM-YYYY"
+          picker="month"
+        />
+      </Form.Item>
       <Table
         rowSelection={rowSelection}
         dataSource={dataSource}
@@ -124,6 +127,7 @@ export const CreateBook = (props) => {
         style={{ marginTop: "10px" }}
         bordered
       />
+
       <Form {...layout} form={form} onFinish={onFinish}>
         <Row gutter={24}>
           <Col
@@ -308,30 +312,6 @@ export const CreateBook = (props) => {
           lg={12}
         >
           <Button
-            onClick={props.handleCancel}
-            style={{
-              marginRight: 5,
-              width: `${isMobile ? "100%" : ""}`,
-              marginTop: `${isMobile ? "10px" : ""}`,
-            }}
-            icon={<FilePdfOutlined />}
-            className="custom-btn-export"
-          >
-            Xuất bảng kê
-          </Button>
-          <Button
-            type="primary"
-            icon={<PlusCircleOutlined />}
-            style={{
-              marginRight: 5,
-              width: `${isMobile ? "100%" : ""}`,
-              marginTop: `${isMobile ? "10px" : ""}`,
-            }}
-            className="create-modal tab-item-readingIndex-1"
-          >
-            Tạo sổ và tạo tiếp
-          </Button>
-          <Button
             type="primary"
             icon={<PlusCircleOutlined />}
             style={{
@@ -345,7 +325,7 @@ export const CreateBook = (props) => {
           </Button>
           <Button
             className="custom-btn-close"
-            onClick={props.handleCancel}
+            onClick={() => setIsOpenModalViewDetail(false)}
             style={{
               marginRight: 5,
               width: `${isMobile ? "100%" : ""}`,

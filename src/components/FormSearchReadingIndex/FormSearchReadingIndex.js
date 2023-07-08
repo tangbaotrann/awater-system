@@ -14,7 +14,7 @@ import { SearchOutlined } from "@ant-design/icons";
 export const AdvancedSearchForm = () => {
   const { token } = theme.useToken(); 
   const [form] = Form.useForm();
-  const formStyle = {
+  const formStyle = { 
     maxWidth: "none",
     borderRadius: token.borderRadiusLG,
     padding: 5,

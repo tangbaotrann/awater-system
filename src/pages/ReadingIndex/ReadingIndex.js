@@ -5,7 +5,7 @@ import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
 import { AdvancedSearchForm as FormSearchReadingIndex } from "../../components/FormSearchReadingIndex/FormSearchReadingIndex";
 import { FooterReadingIndex } from "../../components/Footer/FooterReadingIndex";
 import { useMediaQuery } from "react-responsive";
-import { PlusOutlined } from "@ant-design/icons";
+import { CloseCircleOutlined, EditOutlined, EnvironmentOutlined, EyeOutlined, PlusOutlined, SettingOutlined } from "@ant-design/icons";
 import { ModalIndexBar } from "./ModalIndexBar/ModalIndexBar";
 import "./ReadingIndex.css";
 
@@ -21,7 +21,7 @@ const ReadingIndex = () => {
     if (type === "multiple") {
       setIsModalOpenMCreate(false);
     }
-    if (type === "indexBar") {
+    if (type === "indexBar") { 
       setIsModalOpenIndexBar(false);
     }
   };
@@ -47,6 +47,13 @@ const ReadingIndex = () => {
     status: `Trạng thái ${index}`,
     dateClose: `Ngày chốt ${index}`,
     invoice: `Hóa đơn ${index}`,
+    action: <div>
+      <EditOutlined className="iconReadingIndex editIcon"/>
+      <EyeOutlined  className="iconReadingIndex"/>
+      <CloseCircleOutlined className="iconReadingIndex"/>
+      <SettingOutlined className="iconReadingIndex"/>
+      <EnvironmentOutlined className="iconReadingIndex"/>
+    </div>
   }));
 
   const columns = [
@@ -54,6 +61,7 @@ const ReadingIndex = () => {
       title: "#",
       dataIndex: "#",
       key: "#",
+      width: 100
     },
     {
       title: "Tuyến đọc",
@@ -94,6 +102,11 @@ const ReadingIndex = () => {
       title: "Hóa đơn",
       dataIndex: "invoice",
       key: "invoice",
+    },
+    {
+      title: "",
+      dataIndex: "action",
+      key: "action",
     },
   ];
 

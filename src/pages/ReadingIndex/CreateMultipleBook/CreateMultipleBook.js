@@ -14,73 +14,42 @@ import {
   Row,
   Select,
   Table,
-  theme,
 } from "antd";
 import { useState } from "react";
 import { SearchForm } from "./SearchForm";
+import { ViewDetailListClock } from "../ViewDetail/ViewDetailListClock";
 
 export const CreateMultipleBook = (props) => {
   const { isOpen, handleOk, handleCancel } = props;
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const { token } = theme.useToken();
+  const [isOpenModalViewDetail, setIsOpenModalViewDetail] = useState(false);
   console.log(isOpen);
 
-  const dataSource = [
-    {
-      key: "1",
-      stt: "1",
-      employee: "Mike",
-      readCode: 32,
-      namecode: "abc",
-      semesterIndex: "abc",
-    },
-    {
-      key: "2",
-      stt: "2",
-      employee: "John",
-      readCode: 42,
-      namecode: "abc",
-      semesterIndex: "abc",
-    },
-    {
-      key: "3",
-      stt: "3",
-      employee: "John",
-      readCode: 42,
-      namecode: "abc",
-      semesterIndex: "abc",
-    },
-    {
-      key: "4",
-      stt: "4",
-      employee: "John",
-      readCode: 42,
-      namecode: "abc",
-      semesterIndex: "abc",
-    },
-    {
-      key: "5",
-      stt: "5",
-      employee: "John",
-      readCode: 42,
-      namecode: "abc",
-      semesterIndex: "abc",
-    },
-    {
-      key: "6",
-      stt: "6",
-      employee: "John",
-      readCode: 42,
-      namecode: "abc",
-      semesterIndex: "abc",
-    },
-  ];
+  const hanldeShowDetail = () => {
+    setIsOpenModalViewDetail(true)
+  };
+
+  const dataSource = Array.from({ length: 100 }, (_, index) => ({
+    key: index,
+    stt: index + 1,
+    employee: `Cán bộ ${index}`,
+    readCode: `Mã tuyến ${index}`,
+    namecode: `Tên tuyến ${index}`,
+    semesterIndex: `Kỳ ghi chỉ số ${index}`,
+    created: `Đã tạo ${index}`,
+    eye: (
+      <span onClick={hanldeShowDetail}>
+        <EyeOutlined style={{ color: "#258ae3", cursor: 'pointer' }} />
+      </span>
+    ),
+  }));
 
   const columns = [
     {
-      title: "STT",
+      title: "#",
       dataIndex: "stt",
       key: "stt",
+      width: 100,
     },
     {
       title: "Nhân viên",
@@ -104,13 +73,14 @@ export const CreateMultipleBook = (props) => {
     },
     {
       title: "Đã tạo",
-      dataIndex: "close",
-      key: "close",
-      render: (_, record) => (
-        <a href="#!">
-          <EyeOutlined style={{ color: "#258ae3" }} />
-        </a>
-      ),
+      dataIndex: "created",
+      key: "created",
+    },
+    {
+      title: "",
+      dataIndex: "eye",
+      key: "eye",
+      width: 40,
     },
   ];
 
@@ -132,6 +102,15 @@ export const CreateMultipleBook = (props) => {
     },
   ];
 
+  const layout = {
+    labelCol: {
+      span: 6,
+    },
+    wrapperCol: {
+      span: 24,
+    },
+  };
+
   return (
     <Modal
       title="Tạo sổ ghi chỉ số"
@@ -145,12 +124,7 @@ export const CreateMultipleBook = (props) => {
       <Collapse items={items} size="small" />
       <div
         style={{
-          lineHeight: "200px",
-          textAlign: "center",
-          background: token.colorFillAlter,
-          borderRadius: token.borderRadiusLG,
           marginTop: 16,
-          padding: "10px 10px",
         }}
       >
         <Table
@@ -167,87 +141,90 @@ export const CreateMultipleBook = (props) => {
             x: 1000,
             y: 240,
           }}
+          bordered
         />
-        <Row gutter={24}>
-          <Col span={12}>
-            <Form.Item
-              defaultValue="--Chọn kỳ ghi chỉ số--"
-              name="status"
-              label="Kỳ ghi chỉ số"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Select
-                style={{
-                  width: "100%",
-                }}
-                options={[
+        <Form {...layout}>
+          <Row gutter={24}>
+            <Col span={12}>
+              <Form.Item
+                defaultValue="--Chọn kỳ ghi chỉ số--"
+                name="status"
+                label="Kỳ ghi chỉ số"
+                rules={[
                   {
-                    value: "jack",
-                    label: "Jack",
-                  },
-                  {
-                    value: "lucy",
-                    label: "Lucy",
+                    required: true,
                   },
                 ]}
-              />
-            </Form.Item>
-            <Form.Item
-              name="status"
-              label="Ngày đầu kỳ"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <DatePicker
-                allowClear
-                placeholder="Chọn ngày"
-                style={{ width: "100%" }}
-                format="DD-MM-YYYY"
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              name="place"
-              label="Ngày hóa đơn"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <DatePicker
-                allowClear
-                placeholder="Chọn ngày"
-                style={{ width: "100%" }}
-                format="DD-MM-YYYY"
-              />
-            </Form.Item>
-            <Form.Item
-              name="place"
-              label="Ngày cuối kỳ"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <DatePicker
-                allowClear
-                placeholder="Chọn ngày"
-                style={{ width: "100%" }}
-                format="DD-MM-YYYY"
-              />
-            </Form.Item>
-          </Col>
-        </Row>
+              >
+                <Select
+                  style={{
+                    width: "100%",
+                  }}
+                  options={[
+                    {
+                      value: "jack",
+                      label: "Jack",
+                    },
+                    {
+                      value: "lucy",
+                      label: "Lucy",
+                    },
+                  ]}
+                />
+              </Form.Item>
+              <Form.Item
+                name="status"
+                label="Ngày đầu kỳ"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <DatePicker
+                  allowClear
+                  placeholder="Chọn ngày"
+                  style={{ width: "100%" }}
+                  format="DD-MM-YYYY"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                name="place"
+                label="Ngày hóa đơn"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <DatePicker
+                  allowClear
+                  placeholder="Chọn ngày"
+                  style={{ width: "100%" }}
+                  format="DD-MM-YYYY"
+                />
+              </Form.Item>
+              <Form.Item
+                name="place"
+                label="Ngày cuối kỳ"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <DatePicker
+                  allowClear
+                  placeholder="Chọn ngày"
+                  style={{ width: "100%" }}
+                  format="DD-MM-YYYY"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
       </div>
       <Row
         style={{
@@ -281,6 +258,11 @@ export const CreateMultipleBook = (props) => {
           </Button>
         </div>
       </Row>
+      <ViewDetailListClock
+        isOpen={isOpenModalViewDetail}
+        handleOk={() => setIsOpenModalViewDetail(false)}
+        setIsOpen={setIsOpenModalViewDetail}
+      />
     </Modal>
   );
 };
