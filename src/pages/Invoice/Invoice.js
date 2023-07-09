@@ -213,7 +213,7 @@ const Invoice = () => {
         isOpen={isOpenModalAddInvoice}
       />
       <EditInvoice
-        isOpenEdit={isOpenModalEditInvoice}
+        isOpenEdit={isOpenModalEditInvoice} 
         setIsOpenModalEditInvoice={setIsOpenModalEditInvoice}
       />
       <ModalMessage
