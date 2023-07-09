@@ -144,22 +144,26 @@ export const AdvancedSearchForm = () => {
         </Col>
         <Col span={6} xs={24} sm={12} lg={6}>
           <Form.Item name="ky" label="Số hóa đơn">
-            <Select
-              // defaultValue="--Chọn số hóa đơn--"
-              style={{
-                width: "100%",
-              }}
-              options={[
-                {
-                  value: "jack",
-                  label: "Jack",
-                },
-                {
-                  value: "lucy",
-                  label: "Lucy",
-                },
-              ]}
-            />
+            <div style={{ display: "flex", gap: "10px" }}>
+              <Select
+                // defaultValue="--Chọn số hóa đơn--"
+                style={{
+                  width: "100%",
+                }}
+                options={[
+                  {
+                    value: "jack",
+                    label: "Jack",
+                  },
+                  {
+                    value: "lucy",
+                    label: "Lucy",
+                  },
+                ]}
+              />
+              <DatePicker allowClear placeholder="Từ" format="DD-MM-YYYY" />
+              <DatePicker allowClear placeholder="Đến" format="DD-MM-YYYY" />
+            </div>
           </Form.Item>
         </Col>
         <Col span={6} xs={24} sm={12} lg={6}>

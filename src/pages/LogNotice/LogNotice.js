@@ -152,7 +152,7 @@ const LogNotice = () => {
             </Popover>
           ) : (
             <FooterLogNotice
-              setIsOpenMoneyWater={setIsOpenMoneyWater}
+              setIsOpenMoneyWater={setIsOpenMoneyWater} 
               isTabletOrMobile={isTabletOrMobile}
               setIsOpenModalCskh={setIsOpenModalCskh}
               setIsOpenModalNoticeMoneyWater={setIsOpenModalNoticeMoneyWater}
