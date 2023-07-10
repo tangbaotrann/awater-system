@@ -99,6 +99,12 @@ const ImageModal = ({ visible, onClose, imagePath, imageData }) => {
     <>
       <Modal
         title="Thông tin tệp đính kèm"
+        width={1300}
+        centered={true}
+        style={{
+          top: 20,
+          height: "800px",
+        }}
         visible={visible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -137,7 +143,6 @@ const ImageModal = ({ visible, onClose, imagePath, imageData }) => {
               alt="Hình ảnh"
               hideDownload={false}
               hideZoom={false}
-              style={{ maxWidth: "100px", maxHeight: "100px" }}
             />
           </div>
         )}
