@@ -28,6 +28,8 @@ import {
   LockOutlined,
   ArrowUpOutlined,
   ArrowDownOutlined,
+  CaretUpOutlined,
+  CaretDownOutlined,
 } from "@ant-design/icons";
 import moment from "moment";
 import "./EnterIndexPage.css";
@@ -104,10 +106,10 @@ function EnterIndexPage() {
       key: "icons",
       width: 90,
       render: (text, record) => {
-        const iconType = Math.random() > 0.5 ? "up" : "down";
+        const iconType = Math.random();
         const percent = Math.floor(Math.random() * 100);
         const info = `Sản lượng theo tháng ${
-          iconType === "up" ? "tăng" : "giảm"
+          iconType > 0.6 ? "tăng" : "giảm"
         } ${percent}%`;
         return (
           <>
@@ -117,11 +119,15 @@ function EnterIndexPage() {
             />
             <LockOutlined style={{ fontSize: "21px", marginRight: "5px" }} />
             <Tooltip title={info}>
-              {iconType === "up" ? (
-                <ArrowUpOutlined style={{ fontSize: "21px" }} />
-              ) : (
-                <ArrowDownOutlined style={{ fontSize: "21px" }} />
-              )}
+              {iconType > 0.8 ? (
+                <CaretUpOutlined style={{ fontSize: "21px", color: "green" }} />
+              ) : iconType > 0.6 ? (
+                <CaretDownOutlined style={{ fontSize: "21px", color: "red" }} />
+              ) : iconType > 0.4 ? (
+                <ArrowUpOutlined style={{ fontSize: "21px", color: "green" }} />
+              ) : iconType > 0.6 ? (
+                <ArrowDownOutlined style={{ fontSize: "21px", color: "red" }} />
+              ) : null}
             </Tooltip>
           </>
         );

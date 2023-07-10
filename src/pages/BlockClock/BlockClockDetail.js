@@ -7,7 +7,16 @@ export const BlockClockDetail = (props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const { token } = theme.useToken();
   console.log("render modal Detail");
+  function fetchDataForPage(page) {
+    const pageSize = 18;
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    return dataSource.slice(startIndex, endIndex);
+  }
 
+  const handleData1Change = (pagination) => {
+    const currentPage = pagination.current;
+  };
   const dataSource = Array.from({ length: 50 }, (_, key) => ({
     key: key + 1,
     stt: key + 1,
@@ -62,12 +71,12 @@ export const BlockClockDetail = (props) => {
       key: "t",
     },
     {
-      title: "Số hiẽu",
+      title: "Số hiệu",
       dataIndex: "sh",
       key: "sh",
     },
     {
-      title: "Kiểu đồng hò",
+      title: "Kiểu đồng hồ",
       dataIndex: "kdh",
       key: "kdh",
       width: 190,
@@ -96,8 +105,9 @@ export const BlockClockDetail = (props) => {
       open={isOpen}
       onOk={() => setIsOpenModalNoticeDetail(false)}
       onCancel={() => setIsOpenModalNoticeDetail(false)}
-      width={1000}
+      width={1500}
       footer={null}
+      centered={true}
       style={{
         top: 20,
       }}
@@ -112,15 +122,12 @@ export const BlockClockDetail = (props) => {
         }}
       >
         <Table
+          rowKey="index"
+          onChange={handleData1Change}
           rowSelection={rowSelection}
           dataSource={dataSource}
           columns={columns}
           size="small"
-          pagination={{
-            current: 1,
-            total: 10000,
-            pageSize: 50,
-          }}
           scroll={{
             x: 1200,
             y: 240,
