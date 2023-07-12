@@ -767,6 +767,13 @@ html *::-webkit-scrollbar-track {
     .files-btn-close {
         margin-left: 10px !important;
     }
+
+    /* Tab modal create contract */
+    .wrapper-tab-modal-create-contract {
+        width: 100%;
+        resize: horizontal;
+        overflow: hidden;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 576px đến 767px (tablet) */

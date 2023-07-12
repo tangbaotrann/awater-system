@@ -9,20 +9,20 @@ const priceSubjectColumns = [
     key: "key",
     title: "",
     dataIndex: "key",
-    width: 40,
+    width: 80,
     align: "center",
   },
   {
     key: "symbol",
     title: "Ký hiệu",
     dataIndex: "symbol",
-    width: 100,
+    width: 140,
   },
   {
     key: "describe",
     title: "Mô tả",
     dataIndex: "describe",
-    width: 100,
+    width: 140,
   },
   {
     key: "unit",

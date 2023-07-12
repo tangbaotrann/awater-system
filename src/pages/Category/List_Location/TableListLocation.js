@@ -10,6 +10,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./List_Location.css";
+import AddList_Location from "./AddList_Location";
+import Edit_List_Location from "./Edit_List_Location";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -37,7 +39,8 @@ const tabs_bc = [
 
 function TableListLocation({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalAddBlock, setAddBlock] = useState(false);
+  const [modalAddList_Location, setAddList_Location] = useState(false);
+  const [modalEdit_List_Location, setEdit_List_Location] = useState(false);
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
@@ -46,9 +49,9 @@ function TableListLocation({ isTabletOrMobile }) {
     if (key === "1") {
       message.error("Tính năng chưa khả dụng!");
     } else if (key === "2") {
-      message.error("Tính năng chưa khả dụng!");
+      setAddList_Location(true);
     } else if (key === "3") {
-      message.error("Tính năng chưa khả dụng!");
+      setEdit_List_Location(true);
     } else if (key === "4") {
       message.error("Tính năng chưa khả dụng!");
     }
@@ -57,8 +60,8 @@ function TableListLocation({ isTabletOrMobile }) {
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setAddBlock(false);
-
+    setAddList_Location(false);
+    setEdit_List_Location(false);
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
@@ -101,20 +104,30 @@ function TableListLocation({ isTabletOrMobile }) {
         onChange={handleChangeTabs}
       />
 
-      {/* Modal (Thêm đồng hồ vào block) */}
       <Modal
-        open={modalAddBlock ? modalAddBlock : openModal}
+        open={modalAddList_Location ? modalAddList_Location : openModal}
         onCancel={hideModal}
-        width={1800}
+        width={700}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">Thêm đồng hồ vào block</h2>
+        <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        {/* <AddBlockClock tabListbc={tabListbc} hideModal={hideModal} /> */}
+        <AddList_Location tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
-      {/* Modal ( In Sửa Block) */}
+      <Modal
+        open={modalEdit_List_Location ? modalEdit_List_Location : openModal}
+        onCancel={hideModal}
+        width={700}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
+
+        <Edit_List_Location tabListbc={tabListbc} hideModal={hideModal} />
+      </Modal>
     </>
   );
 }

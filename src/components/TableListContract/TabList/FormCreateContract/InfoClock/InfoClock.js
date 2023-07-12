@@ -12,10 +12,12 @@ import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
 
 import { dataContractClockOnModal } from "../../../../../utils/dataContract";
+import CustomRowTooltip from "../../../../CustomRowTooltip/CustomRowTooltip";
+import InfoDetailClock from "../InfoDetailClock/InfoDetailClock";
 
 const { DirectoryTree } = Tree;
 
-function InfoClock() {
+function InfoClock({ _tab, tabKey }) {
   const [openModal, setOpenModal] = useState(false);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
@@ -141,6 +143,19 @@ function InfoClock() {
               scroll={{
                 x: 500,
                 y: 350,
+              }}
+              onRow={(record, index) => {
+                return {
+                  onDoubleClick: () => {
+                    console.log(_tab, tabKey);
+                    return _tab === tabKey && <InfoDetailClock />;
+                  },
+                };
+              }}
+              components={{
+                body: {
+                  row: CustomRowTooltip,
+                },
               }}
               style={{ marginRight: "10px" }}
             ></Table>

@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import TabListBC from "./TableListLRL";
+import TableListLRL from "./TableListLRL";
 import "../../../components/GlobalStyles/GlobalStyles.css";
 import "../../Manager/Contract/Contract.css";
 import { Form, Input, Table, Popover, Col, Row } from "antd";
@@ -60,7 +60,7 @@ function List_Regions_Location() {
           {!isTabletOrMobile && (
             <Col span={8}>
               <Form.Item>
-                <TabListBC />
+                <TableListLRL />
               </Form.Item>
             </Col>
           )}
@@ -119,7 +119,7 @@ function List_Regions_Location() {
               rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
-              content={<TabListBC isTabletOrMobile={isTabletOrMobile} />}
+              content={<TableListLRL isTabletOrMobile={isTabletOrMobile} />}
             >
               <div className="contract-bottom-func">
                 <PlusOutlined />
@@ -127,7 +127,7 @@ function List_Regions_Location() {
             </Popover>
           ) : (
             <div className="contract-bottom-func">
-              <TabListBC />
+              <TableListLRL />
             </div>
           )}
         </div>

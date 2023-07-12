@@ -124,14 +124,14 @@ function InfoContract() {
 
       <Row>
         {/* Mã vạch */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Mã vạch: " {...formItemLayout}>
             <Input name="" placeholder="Nhập mã vạch" />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Ngày ký hợp đồng */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Ngày ký HĐ: " {...formItemLayout}>
             <DatePicker
               name=""
@@ -139,12 +139,12 @@ function InfoContract() {
               className="gutter-item-date-picker"
             />
           </Form.Item>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>
         {/* Ngày lắp đặt */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Ngày lắp đặt: " {...formItemLayout}>
             <DatePicker
               name=""
@@ -152,10 +152,10 @@ function InfoContract() {
               className="gutter-item-date-picker"
             />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Người lắp đặt */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Người lắp đặt: " {...formItemLayout}>
             <Select
               fieldNames=""
@@ -166,12 +166,12 @@ function InfoContract() {
               placeholder="Chọn người lắp đặt"
             />
           </Form.Item>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>
         {/* Ngày NT */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Ngày NT " {...formItemLayout}>
             <DatePicker
               name=""
@@ -179,35 +179,35 @@ function InfoContract() {
               className="gutter-item-date-picker"
             />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Tiền lắp đặt */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Tiền lắp đặt" {...formItemLayout}>
             <Input name="" placeholder="Nhập tiền lắp đặt" />
           </Form.Item>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>
         {/* Người nộp */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Người nộp" {...formItemLayout}>
             <Input name="" placeholder="Nhập người nộp" />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Tiền đặt cọc */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Tiền đặt cọc" {...formItemLayout}>
             <Input name="" placeholder="Nhập tiền đặt cọc" />
           </Form.Item>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>
         {/* Giảm trừ theo */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Giảm trừ theo" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -215,19 +215,19 @@ function InfoContract() {
               placeholder="Lựa chọn"
             />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Số tiền */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Số tiền" {...formItemLayout}>
             <Input name="" placeholder="Nhập số tiền" />
           </Form.Item>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>
         {/* Ngày đặt cọc */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Ngày đặt cọc: " {...formItemLayout}>
             <DatePicker
               name=""
@@ -235,19 +235,19 @@ function InfoContract() {
               className="gutter-item-date-picker"
             />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Chứng từ */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Chứng từ" {...formItemLayout}>
             <Input name="" placeholder="Nhập chứng từ" />
           </Form.Item>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>
         {/* Cam kết sử dụng nước */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
             name="test-chk"
             label="Cam kết SD nước"
@@ -256,16 +256,57 @@ function InfoContract() {
           >
             <Checkbox name="test-chk" />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Khối lượng cam kết */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="KL cam kết" {...formItemLayout}>
             <Select
               fieldNames=""
               options={[{ value: "1", label: "CK 1" }]}
               placeholder="Lựa chọn"
             />
+          </Form.Item>
+        </Col> */}
+
+        {/* Đơn vị HC */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item name="" label="Đơn vị HC" {...formItemLayout}>
+            <Select
+              fieldNames=""
+              options={[
+                { value: "1", label: "Đơn vị 1" },
+                { value: "2", label: "Đơn vị 2" },
+              ]}
+              placeholder="Chọn đơn vị"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Địa chỉ */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item name="" label="Địa chỉ (*)" {...formItemLayout}>
+            <Input
+              name=""
+              placeholder="Nhập địa chỉ"
+              className="space-right-10"
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Kinh độ */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item name="" label="Kinh độ" {...formItemLayout}>
+            <Input name="" placeholder="Nhập kinh độ" />
+          </Form.Item>
+        </Col>
+
+        {/* Vĩ độ */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item name="" label="Vĩ độ" {...formItemLayout}>
+            <Input name="" placeholder="Nhập vĩ độ" />
           </Form.Item>
         </Col>
       </Row>

@@ -1,4 +1,4 @@
-import { Modal, Table } from "antd";
+import { Button, Modal, Table, Tooltip } from "antd";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -7,6 +7,7 @@ import { dataContract, dataContractOnModal } from "../../utils/dataContract";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 import { btnClickTabListContractSelector } from "../../redux/selector";
 import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
+import { RedoOutlined } from "@ant-design/icons";
 
 function TableListContract() {
   const [open, setOpen] = useState(false);
@@ -130,6 +131,11 @@ function TableListContract() {
     );
   };
 
+  // handle un-check radio
+  const handleUncheckRadio = () => {
+    dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
+  };
+
   return (
     <>
       <div className="container-tbl-contract">
@@ -153,18 +159,29 @@ function TableListContract() {
           onRow={(record, index) => {
             return {
               onDoubleClick: () => {
-                console.log(record);
+                console.log("Double clicked ->", record);
                 setOpen(true);
               },
               onClick: () => {
+                console.log("Clicked ->", record);
                 dispatch(
-                  tabListContractSlice.actions.btnClickTabListContract(null) // clear checked radio
+                  tabListContractSlice.actions.btnClickTabListContract(record) // clicked row to check radio
                 );
               },
             };
           }}
           rowSelection={{
             type: "radio",
+            columnTitle: () => {
+              return (
+                <Tooltip title="Bỏ chọn hàng hiện tại.">
+                  <RedoOutlined
+                    className="icon-reset-rad-btn"
+                    onClick={handleUncheckRadio}
+                  />
+                </Tooltip>
+              );
+            },
             onChange: (selectedRowKeys, selectedRows) =>
               handleRowSelection(selectedRowKeys, selectedRows),
             selectedRowKeys: tabList ? [tabList.index] : [],
