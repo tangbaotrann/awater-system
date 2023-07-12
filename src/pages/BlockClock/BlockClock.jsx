@@ -4,7 +4,7 @@ import TabListBC from "./FormBlockClock/TableListBC";
 import { BlockClockDetail } from "./BlockClockDetail";
 import "../../components/GlobalStyles/GlobalStyles.css";
 import "../Manager/Contract/Contract.css";
-import { Form, Input, theme, Table, Popover, Button } from "antd";
+import { Form, Input, Table, Popover, Button } from "antd";
 import {
   PlusOutlined,
   SnippetsOutlined,
@@ -22,7 +22,7 @@ function BlockClock() {
     setIsOpenModalNoticeDetail(false);
   };
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-  const { token } = theme.useToken();
+  // const { token } = theme.useToken();
   const [isOpenModalNoticeDetail, setIsOpenModalNoticeDetail] = useState(false);
   const hanldeShowDetailRecord = (item) => {
     setIsOpenModalNoticeDetail(true);
@@ -51,20 +51,7 @@ function BlockClock() {
       ),
     };
   });
-  const [data1, setData1] = useState(initialData);
-
-  function fetchDataForPage(page) {
-    const pageSize = 18;
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    return initialData.slice(startIndex, endIndex);
-  }
-
-  const handleData1Change = (pagination) => {
-    const currentPage = pagination.current;
-    // const newData = fetchDataForPage(currentPage);
-    // setData1(newData);
-  };
+  const [data1] = useState(initialData);
 
   const columns = [
     {
@@ -183,7 +170,7 @@ function BlockClock() {
     <>
       {/* <AdvancedSearchForm /> */}
       <AdvancedSearchForm />
-      <div
+      {/* <div
         style={{
           textAlign: "center",
           background: token.colorFillAlter,
@@ -193,50 +180,51 @@ function BlockClock() {
           height: "350px",
           position: "relative",
         }}
-      >
-        <Table
-          size="small"
-          rowKey="index"
-          // pagination={{
-          //   current: 1,
-          //   total: initialData.length,
-          //   pageSize: 18,
-          // }}
-          scroll={{ x: 2000, y: 480 }}
-          columns={columns.map((column) => ({
-            ...column,
-            className: "cell-wrap",
-          }))}
-          dataSource={data1}
-          onChange={handleData1Change}
-        />
-        <BlockClockDetail
-          isOpen={isOpenModalNoticeDetail}
-          setIsOpenModalNoticeDetail={handleModalCancel}
-          data={initialData}
-        />
-        {/* func bottom */}
-        <div className="contract-bottom">
-          {/* check mobile */}
-          {isTabletOrMobile ? (
-            <Popover
-              size="small"
-              rootClassName="fix-popover-z-index"
-              placement="bottomRight"
-              trigger="click"
-              content={<TabListBC isTabletOrMobile={isTabletOrMobile} />}
-            >
-              <div className="contract-bottom-func">
-                <PlusOutlined />
-              </div>
-            </Popover>
-          ) : (
+      > */}
+      <Table
+        style={{ marginTop: "10px" }}
+        size="small"
+        bordered
+        rowKey="index"
+        // pagination={{
+        //   current: 1,
+        //   total: initialData.length,
+        //   pageSize: 18,
+        // }}
+        scroll={{ x: 2000, y: 480 }}
+        columns={columns.map((column) => ({
+          ...column,
+          className: "cell-wrap",
+        }))}
+        dataSource={data1}
+      />
+      <BlockClockDetail
+        isOpen={isOpenModalNoticeDetail}
+        setIsOpenModalNoticeDetail={handleModalCancel}
+        data={initialData}
+      />
+      {/* func bottom */}
+      <div className="contract-bottom">
+        {/* check mobile */}
+        {isTabletOrMobile ? (
+          <Popover
+            size="small"
+            rootClassName="fix-popover-z-index"
+            placement="bottomRight"
+            trigger="click"
+            content={<TabListBC isTabletOrMobile={isTabletOrMobile} />}
+          >
             <div className="contract-bottom-func">
-              <TabListBC />
+              <PlusOutlined />
             </div>
-          )}
-        </div>
+          </Popover>
+        ) : (
+          <div className="contract-bottom-func">
+            <TabListBC />
+          </div>
+        )}
       </div>
+      {/* </div> */}
     </>
   );
 }

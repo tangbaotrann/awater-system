@@ -1,6 +1,6 @@
 import { React, useState } from "react";
-import ReactToPrint from "react-to-print";
-import { initialData } from "../../utils/dataInvoicePrint/data";
+// import ReactToPrint from "react-to-print";
+// import { initialData } from "../../utils/dataInvoicePrint/data";
 import "../../components/GlobalStyles/GlobalStyles.css";
 import InvoicingDetailsModal from "./FormInvoicePrint/InvoicingDetailsModal/InvoicingDetailsModal";
 import TabListIP from "./FormInvoicePrint/TableListIP.js";
@@ -15,7 +15,6 @@ import {
   Col,
   Select,
   InputNumber,
-  theme,
   Table,
   Space,
   Popover,
@@ -30,7 +29,7 @@ moment.locale("vi");
 function InvoicePrint() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
-  const { token } = theme.useToken();
+  // const { token } = theme.useToken();
   const initialData = Array.from({ length: 100 }, (_, i) => {
     return {
       key: i + 1,
@@ -63,21 +62,21 @@ function InvoicePrint() {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { Option } = Select;
-  const [data1, setData1] = useState(initialData);
+  const [data1] = useState(initialData);
 
   // Hàm xử lý khi có thay đổi dữ liệu của bảng 1
-  function fetchDataForPage(page) {
-    const pageSize = 18;
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    return initialData.slice(startIndex, endIndex);
-  }
+  // function fetchDataForPage(page) {
+  //   const pageSize = 18;
+  //   const startIndex = (page - 1) * pageSize;
+  //   const endIndex = startIndex + pageSize;
+  //   return initialData.slice(startIndex, endIndex);
+  // }
 
-  const handleData1Change = (pagination) => {
-    const currentPage = pagination.current;
-    // const newData = fetchDataForPage(currentPage);
-    // setData1(newData);
-  };
+  // const handleData1Change = (pagination) => {
+  //   const currentPage = pagination.current;
+  //   // const newData = fetchDataForPage(currentPage);
+  //   // setData1(newData);
+  // };
   const columns = [
     {
       title: "#",
@@ -295,56 +294,54 @@ function InvoicePrint() {
     <>
       <Collapse size="small" items={item} />
       {/* <AdvancedSearchForm /> */}
-      <div
-        style={{
-          textAlign: "center",
-          background: token.colorFillAlter,
-          borderRadius: token.borderRadiusLG,
-          marginTop: 16,
-          padding: "10px 10px",
-          height: "450px",
-          position: "relative",
-        }}
-      >
-        <Table
-          size="small"
-          rowKey="index"
-          // pagination={{
-          //   current: 1,
-          //   total: initialData.length,
-          //   pageSize: 18,
-          // }}
-          scroll={{ x: 1800, y: 440 }}
-          columns={columns.map((column) => ({
-            ...column,
-            className: "cell-wrap",
-          }))}
-          dataSource={data1}
-          onChange={handleData1Change}
-        />
-        <InvoicingDetailsModal
-          visible={isModalVisible}
-          onCancel={handleModalCancel}
-          data={initialData}
-        />
-        <div className="InvoicePrint-bottom">
-          <div className="contract-bottom-func">
-            {isTabletOrMobile ? (
-              <Popover
-                size="small"
-                rootClassName="fix-popover-z-index"
-                placement="bottomRight"
-                trigger="click"
-                content={<TabListIP isTabletOrMobile={isTabletOrMobile} />}
-              >
-                <PlusOutlined />
-              </Popover>
-            ) : (
-              <TabListIP />
-            )}
-          </div>
+      {/* <div
+        style={
+          {
+            // textAlign: "center",
+            // background: token.colorFillAlter,
+            // borderRadius: token.borderRadiusLG,
+            // marginTop: 16,
+            // padding: "10px 10px",
+            // height: "450px",
+            // position: "relative",
+          }
+        }
+      > */}
+      <Table
+        style={{ marginTop: "10px" }}
+        size="small"
+        bordered
+        rowKey="index"
+        scroll={{ x: 1800, y: 440 }}
+        columns={columns.map((column) => ({
+          ...column,
+          className: "cell-wrap",
+        }))}
+        dataSource={data1}
+      />
+      <InvoicingDetailsModal
+        visible={isModalVisible}
+        onCancel={handleModalCancel}
+        data={initialData}
+      />
+      <div className="InvoicePrint-bottom">
+        <div className="contract-bottom-func">
+          {isTabletOrMobile ? (
+            <Popover
+              size="small"
+              rootClassName="fix-popover-z-index"
+              placement="bottomRight"
+              trigger="click"
+              content={<TabListIP isTabletOrMobile={isTabletOrMobile} />}
+            >
+              <PlusOutlined />
+            </Popover>
+          ) : (
+            <TabListIP />
+          )}
         </div>
       </div>
+      {/* </div> */}
     </>
   );
 }

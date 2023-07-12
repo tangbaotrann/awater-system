@@ -9,7 +9,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import "./List_Regions_Location.css";
+import "./List_Location.css";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -35,7 +35,7 @@ const tabs_bc = [
   },
 ];
 
-function TableListLRL({ isTabletOrMobile }) {
+function TableListLocation({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalAddBlock, setAddBlock] = useState(false);
   const dispatch = useDispatch();
@@ -51,14 +51,6 @@ function TableListLRL({ isTabletOrMobile }) {
       message.error("Tính năng chưa khả dụng!");
     } else if (key === "4") {
       message.error("Tính năng chưa khả dụng!");
-    } else if (key === "5") {
-      message.error("Tính năng chưa khả dụng!");
-    } else if (key === "6") {
-      message.error("Tính năng chưa khả dụng!");
-    } else if (key === "7") {
-      message.error("Tính năng chưa khả dụng!");
-      // console.log("deleted.");
-      // dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
     }
   };
 
@@ -127,4 +119,4 @@ function TableListLRL({ isTabletOrMobile }) {
   );
 }
 
-export default TableListLRL;
+export default TableListLocation;

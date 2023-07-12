@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import TabListBC from "./TableListLRL";
+import TabListBC from "./TableListLocation.js";
 import "../../../components/GlobalStyles/GlobalStyles.css";
 import "../../Manager/Contract/Contract.css";
 import { Form, Input, Table, Popover, Col, Row } from "antd";
@@ -8,7 +8,7 @@ import moment from "moment";
 import "moment/locale/vi";
 import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
-function List_Regions_Location() {
+function List_Location() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   // const { token } = theme.useToken();
 
@@ -16,8 +16,9 @@ function List_Regions_Location() {
     return {
       key: "1",
       stt: i + 1,
-      maVung: `  Mã Vùng ${i + 1}`,
-      tenVung: `Tên Vùng ${i + 1}`,
+      maKV: `  Mã Khu Vực ${i + 1}`,
+      tenKV: `Tên Khu Vực ${i + 1}`,
+      Vung: `Vùng ${i + 1}`,
     };
   });
   const [data1] = useState(initialData);
@@ -30,9 +31,9 @@ function List_Regions_Location() {
       width: 70,
     },
     {
-      title: " Mã Vùng",
-      dataIndex: "maVung",
-      key: "maVung",
+      title: " Mã Khu Vực",
+      dataIndex: "maKV",
+      key: "maKV",
       width: 170,
       render: (text, record) => (
         <>
@@ -42,9 +43,15 @@ function List_Regions_Location() {
       ),
     },
     {
-      title: "Tên Vùng",
-      dataIndex: "tenVung",
+      title: "Tên Khu Vực",
+      dataIndex: "tenKV",
       key: "tenVung",
+      width: 170,
+    },
+    {
+      title: "Vùng",
+      dataIndex: "Vung",
+      key: "Vung",
     },
   ];
   const AdvancedSearchForm = () => {
@@ -109,6 +116,7 @@ function List_Regions_Location() {
           className: "cell-wrap",
         }))}
         dataSource={data1}
+        // onChange={handleData1Change}
       />
       {isTabletOrMobile && (
         <div className="contract-bottom">
@@ -136,4 +144,4 @@ function List_Regions_Location() {
     </>
   );
 }
-export default List_Regions_Location;
+export default List_Location;

@@ -87,7 +87,7 @@ const FromBarChart = () => {
     <>
       <Select
         defaultValue={month}
-        style={{ width: isTabletOrMobile ? 80 : 120 }}
+        style={{ width: isTabletOrMobile ? 80 : 120, marginLeft: "10px" }}
         onChange={(value) => setMonth(value)}
       >
         {labels.map((label) => (
@@ -96,7 +96,7 @@ const FromBarChart = () => {
       </Select>
       <Button
         className="custom-btn-watch-report "
-        style={{ marginLeft: "10px" }}
+        style={{ marginLeft: "10px", marginTop: "10px" }}
         icon={<BarChartOutlined />}
         onClick={handleViewClick}
       >

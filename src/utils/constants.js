@@ -67,6 +67,10 @@ const constants = {
     label: "DM Vùng, Địa bàn",
     key: "CATEGORY_MANAGEMENT_LRL",
   },
+  CATEGORY_MANAGEMENT_LOCATION: {
+    label: "DM Khu vực",
+    key: "CATEGORY_MANAGEMENT_LOCATION",
+  },
   COLLECT_MONEY: {
     label: "Thu tiền",
     key: "COLLECT_MONEY",

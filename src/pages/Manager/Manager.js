@@ -17,6 +17,7 @@ import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
 import List_Regions_Location from "../Category/List_Regions_Location/List_Regions_Location.jsx";
+import List_Location from "../Category/List_Location/List_Location.jsx";
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -65,6 +66,10 @@ function Manager() {
         currentPage === constants.CATEGORY_MANAGEMENT_LRL.key ? (
         // <h1>Danh muc vung</h1>
         <List_Regions_Location />
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
+        currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
+        // <h1>Danh muc vung</h1>
+        <List_Location/>
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />

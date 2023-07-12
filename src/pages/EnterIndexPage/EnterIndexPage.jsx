@@ -14,7 +14,6 @@ import {
   Col,
   Select,
   InputNumber,
-  theme,
   Table,
   Popover,
   Collapse,
@@ -38,7 +37,7 @@ import { useMediaQuery } from "react-responsive";
 moment.locale("vi");
 function EnterIndexPage() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-  const { token } = theme.useToken();
+  // const { token } = theme.useToken();
   const [form] = Form.useForm();
   // xu ly hinh anh
   const [showImageModal, setShowImageModal] = useState(false);
@@ -58,18 +57,18 @@ function EnterIndexPage() {
   const { Option } = Select;
   // const [data1, setData1] = useState(initialData);
 
-  function fetchDataForPage(page) {
-    const pageSize = 18;
-    const startIndex = (page - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-    return initialData.slice(startIndex, endIndex);
-  }
+  // function fetchDataForPage(page) {
+  //   const pageSize = 18;
+  //   const startIndex = (page - 1) * pageSize;
+  //   const endIndex = startIndex + pageSize;
+  //   return initialData.slice(startIndex, endIndex);
+  // }
 
-  const handleData1Change = (pagination) => {
-    const currentPage = pagination.current;
-    // const newData = fetchDataForPage(currentPage);
-    // setData1(newData);
-  };
+  // const handleData1Change = (pagination) => {
+  //   const currentPage = pagination.current;
+  //   // const newData = fetchDataForPage(currentPage);
+  //   // setData1(newData);
+  // };
   const initialData = Array.from({ length: 100 }, (_, i) => {
     return {
       key: "1",
@@ -133,48 +132,6 @@ function EnterIndexPage() {
         );
       },
     },
-
-    // {
-    //   title: "  ",
-    //   dataIndex: "imageAndStatus",
-    //   key: "imageAndStatus",
-    //   width: 30,
-    //   render: (text, record) => (
-    //     <>
-    //       <PictureOutlined
-    //         style={{ fontSize: "19px" }}
-    //         onClick={() => handleShowImage(record.imagePath)}
-    //       />
-
-    //       {text}
-    //     </>
-    //   ),
-    // },
-    // {
-    //   title: "",
-    //   width: 30,
-    //   render: (text, record) => {
-    //     return <LockOutlined style={{ fontSize: "19px" }} />;
-    //   },
-    // },
-    // {
-    //   title: "",
-    //   dataIndex: "icon",
-    //   key: "icon",
-    //   width: 30,
-    //   render: (text, record) => {
-    //     const iconType = Math.random() > 0.5 ? "up" : "down";
-    //     const percent = Math.floor(Math.random() * 100);
-    //     const info = `Sản lượng theo tháng ${
-    //       iconType === "up" ? "tăng" : "giảm"
-    //     } ${percent}%`;
-    //     return (
-    //       <Tooltip title={info}>
-    //         {iconType === "up" ?<ArrowUpOutlined /> :<ArrowDownOutlined />}
-    //       </Tooltip>
-    //     );
-    //   },
-    // },
     {
       title: "Tuyến đọc",
       dataIndex: "readingLine",
@@ -423,55 +380,54 @@ function EnterIndexPage() {
     <>
       {/* <AdvancedSearchForm /> */}
       <Collapse size="small" items={item} />
-      <div
+      {/* <div
         style={{
           textAlign: "center",
-          background: token.colorFillAlter,
-          borderRadius: token.borderRadiusLG,
-          marginTop: 16,
           padding: "10px 10px",
-          height: "350px",
+          height: "450px",
           position: "relative",
         }}
-      >
-        <Table
-          size="small"
-          rowKey="index"
-          scroll={{ x: 3000, y: 440 }}
-          columns={columns.map((column) => ({
-            ...column,
-            className: "cell-wrap",
-          }))}
-          dataSource={initialData}
-          onChange={handleData1Change}
-        />
-        <ImageModal
-          visible={showImageModal}
-          onClose={() => setShowImageModal(false)}
-          imagePath={selectedImagePath}
-        />
-        {/* func bottom */}
-        <div className="contract-bottom">
-          {/* check mobile */}
-          {isTabletOrMobile ? (
-            <Popover
-              size="small"
-              rootClassName="fix-popover-z-index"
-              placement="bottomRight"
-              trigger="click"
-              content={<TabListEP isTabletOrMobile={isTabletOrMobile} />}
-            >
-              <div className="contract-bottom-func">
-                <PlusOutlined />
-              </div>
-            </Popover>
-          ) : (
+      > */}
+      <Table
+        style={{ marginTop: "10px" }}
+        size="small"
+        bordered
+        rowKey="index"
+        scroll={{ x: 3000, y: 440 }}
+        columns={columns.map((column) => ({
+          ...column,
+          className: "cell-wrap",
+        }))}
+        dataSource={initialData}
+        // onChange={handleData1Change}
+      />
+      <ImageModal
+        visible={showImageModal}
+        onClose={() => setShowImageModal(false)}
+        imagePath={selectedImagePath}
+      />
+      {/* func bottom */}
+      <div className="contract-bottom">
+        {/* check mobile */}
+        {isTabletOrMobile ? (
+          <Popover
+            size="small"
+            rootClassName="fix-popover-z-index"
+            placement="bottomRight"
+            trigger="click"
+            content={<TabListEP isTabletOrMobile={isTabletOrMobile} />}
+          >
             <div className="contract-bottom-func">
-              <TabListEP />
+              <PlusOutlined />
             </div>
-          )}
-        </div>
+          </Popover>
+        ) : (
+          <div className="contract-bottom-func">
+            <TabListEP />
+          </div>
+        )}
       </div>
+      {/* </div> */}
     </>
   );
 }
