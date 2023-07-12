@@ -120,11 +120,11 @@ function EnterIndexPage() {
             <Tooltip title={info}>
               {iconType > 0.8 ? (
                 <CaretUpOutlined style={{ fontSize: "21px", color: "green" }} />
-              ) : iconType > 0.6 ? (
-                <CaretDownOutlined style={{ fontSize: "21px", color: "red" }} />
               ) : iconType > 0.4 ? (
-                <ArrowUpOutlined style={{ fontSize: "21px", color: "green" }} />
+                <CaretDownOutlined style={{ fontSize: "21px", color: "red" }} />
               ) : iconType > 0.6 ? (
+                <ArrowUpOutlined style={{ fontSize: "21px", color: "green" }} />
+              ) : iconType > 0.4 ? (
                 <ArrowDownOutlined style={{ fontSize: "21px", color: "red" }} />
               ) : null}
             </Tooltip>

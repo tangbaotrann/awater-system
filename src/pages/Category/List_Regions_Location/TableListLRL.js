@@ -10,6 +10,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./List_Regions_Location.css";
+import Add_List_Region_Location from "./Add_List_Region_Location";
+import Edit_List_Region_Location from "./Edit_List_Region_Location";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -37,7 +39,8 @@ const tabs_bc = [
 
 function TableListLRL({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalAddBlock, setAddBlock] = useState(false);
+  const [modalAddLRL, setAddLRL] = useState(false);
+  const [modalEditLRL, setEditLRL] = useState(false);
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
@@ -46,27 +49,19 @@ function TableListLRL({ isTabletOrMobile }) {
     if (key === "1") {
       message.error("Tính năng chưa khả dụng!");
     } else if (key === "2") {
-      message.error("Tính năng chưa khả dụng!");
+      setAddLRL(true);
     } else if (key === "3") {
-      message.error("Tính năng chưa khả dụng!");
+      setEditLRL(true);
     } else if (key === "4") {
       message.error("Tính năng chưa khả dụng!");
-    } else if (key === "5") {
-      message.error("Tính năng chưa khả dụng!");
-    } else if (key === "6") {
-      message.error("Tính năng chưa khả dụng!");
-    } else if (key === "7") {
-      message.error("Tính năng chưa khả dụng!");
-      // console.log("deleted.");
-      // dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
     }
   };
 
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setAddBlock(false);
-
+    setAddLRL(false);
+    setEditLRL(false);
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
@@ -109,20 +104,33 @@ function TableListLRL({ isTabletOrMobile }) {
         onChange={handleChangeTabs}
       />
 
-      {/* Modal (Thêm đồng hồ vào block) */}
       <Modal
-        open={modalAddBlock ? modalAddBlock : openModal}
+        open={modalAddLRL ? modalAddLRL : openModal}
         onCancel={hideModal}
-        width={1800}
+        width={700}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">Thêm đồng hồ vào block</h2>
+        <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        {/* <AddBlockClock tabListbc={tabListbc} hideModal={hideModal} /> */}
+        <Add_List_Region_Location tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
-      {/* Modal ( In Sửa Block) */}
+      <Modal
+        open={modalEditLRL ? modalEditLRL : openModal}
+        onCancel={hideModal}
+        width={700}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
+
+        <Edit_List_Region_Location
+          tabListbc={tabListbc}
+          hideModal={hideModal}
+        />
+      </Modal>
     </>
   );
 }

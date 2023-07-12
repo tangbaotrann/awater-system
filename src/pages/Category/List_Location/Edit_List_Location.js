@@ -8,7 +8,7 @@ import {
 
 import { useMediaQuery } from "react-responsive";
 
-const AddList_Location = ({ hideModal }) => {
+const Edit_List_Location = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -148,4 +148,4 @@ const AddList_Location = ({ hideModal }) => {
   );
 };
 
-export default AddList_Location;
+export default Edit_List_Location;

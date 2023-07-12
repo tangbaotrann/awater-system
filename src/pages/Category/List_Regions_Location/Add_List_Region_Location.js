@@ -8,7 +8,7 @@ import {
 
 import { useMediaQuery } from "react-responsive";
 
-const AddList_Location = ({ hideModal }) => {
+const Add_List_Region_Location = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -54,7 +54,7 @@ const AddList_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Khu Vực">
+            <Form.Item label="Mã Vùng">
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -68,32 +68,8 @@ const AddList_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên Khu Vực">
+            <Form.Item label="Tên Vùng">
               <Input style={{ width: "100%" }} />
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col
-            xs={24}
-            sm={12}
-            md={12}
-            lg={24}
-            span={24}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Form.Item label="Vùng">
-              <Select style={{ width: "100%" }}>
-                <Option value="A">A</Option>
-                <Option value="B">B</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Khu Vực Cha">
-              <Select style={{ width: "100%" }}>
-                <Option value="A">A</Option>
-                <Option value="B">B</Option>
-              </Select>
             </Form.Item>
           </Col>
         </Row>
@@ -148,4 +124,4 @@ const AddList_Location = ({ hideModal }) => {
   );
 };
 
-export default AddList_Location;
+export default Add_List_Region_Location;
