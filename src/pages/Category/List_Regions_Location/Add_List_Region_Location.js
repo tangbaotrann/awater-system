@@ -25,7 +25,7 @@ const Add_List_Region_Location = ({ hideModal }) => {
 
   const layout = {
     labelCol: {
-      span: 5,
+      span: 4,
     },
     // wrapperCol: {
     //   span: 40,

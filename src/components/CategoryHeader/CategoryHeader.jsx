@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useState } from "react";
 import { Input, Button, DatePicker, Popover } from "antd";
 import {
-  SyncOutlined,
   PlusCircleOutlined,
   EditOutlined,
   DeleteOutlined,
@@ -11,6 +10,7 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 
+import viVN from "antd/es/date-picker/locale/vi_VN";
 import "./CategoryHeader.css";
 import { btnClickTabListContract } from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 import { useMediaQuery } from "react-responsive";
@@ -28,10 +28,16 @@ const CategoryHeaderAction = ({
         <Button
           className="button"
           type="primary"
-          icon={<SyncOutlined />}
+          icon={<RetweetOutlined />}
+          // style={{
+          //   backgroundColor: "#E6FFFA",
+          //   color: "#72E8C9",
+          // }}
           style={{
-            backgroundColor: "#E6FFFA",
-            color: "#72E8C9",
+            // backgroundColor: "#E6FFFA",
+            // color: "#72E8C9",
+            height: "34px",
+            borderRadius: "6px",
           }}
           // onClick={() => setIsOpenModalBill(true)}
           size="small"
@@ -46,7 +52,9 @@ const CategoryHeaderAction = ({
           icon={<PlusCircleOutlined />}
           onClick={(e) => handleOpenModalAdd(e, false)}
           style={{
-            backgroundColor: "#13DEB9",
+            backgroundColor: "#FA896B",
+            height: "34px",
+            borderRadius: "6px",
           }}
           size="small"
         >
@@ -79,9 +87,15 @@ const CategoryHeaderAction = ({
           icon={<EditOutlined />}
           onClick={(e) => handleOpenModalAdd(e, true)}
           size="small"
+          // style={{
+          //   backgroundColor: "#FEF5E5",
+          //   color: "#FFC882",
+          // }}
           style={{
-            backgroundColor: "#FEF5E5",
-            color: "#FFC882",
+            backgroundColor: "#0ce3bc",
+            color: "#FFFFFF",
+            height: "34px",
+            borderRadius: "6px",
           }}
           disabled={!tabList}
         >
@@ -96,8 +110,12 @@ const CategoryHeaderAction = ({
           onClick={() => setIsOpenModalDelete(true)}
           size="small"
           style={{
-            backgroundColor: "#FBF2EF",
-            color: "#FA966E",
+            backgroundColor: "#f64848",
+            color: "white",
+            height: "34px",
+            borderRadius: "6px",
+            // font-size: 1.4rem,
+            // font-weight: 500,
           }}
           disabled={!tabList}
         >
@@ -116,6 +134,8 @@ const CategoryHeaderAction = ({
               style={{
                 backgroundColor: "#5D87FF",
                 color: "#FFFFFF",
+                height: "34px",
+                borderRadius: "6px",
               }}
               disabled={!tabList}
             >
@@ -132,6 +152,8 @@ const CategoryHeaderAction = ({
               style={{
                 backgroundColor: "#5D87FF",
                 color: "#FFFFFF",
+                height: "34px",
+                borderRadius: "6px",
               }}
               disabled={!tabList}
             >
@@ -235,7 +257,7 @@ const CategoryHeader = ({
         </div>
         {sidebarMenu === "CATEGORY_MANAGEMENT_PRICE_LIST" && (
           <div className="filter-datetime">
-            <DatePicker format={dateFormatList} />
+            <DatePicker locale={viVN} format={dateFormatList} />
           </div>
         )}
       </div>

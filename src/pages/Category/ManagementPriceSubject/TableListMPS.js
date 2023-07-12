@@ -9,9 +9,9 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import "./List_Regions_Location.css";
-import Add_List_Region_Location from "./Add_List_Region_Location";
-import Edit_List_Region_Location from "./Edit_List_Region_Location";
+import "./List_Location.css";
+// import AddList_Location from "./AddList_Location";
+// import Edit_List_Location from "./Edit_List_Location";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -37,10 +37,10 @@ const tabs_bc = [
   },
 ];
 
-function TableListLRL({ isTabletOrMobile }) {
+function TableListMPS({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalAddLRL, setAddLRL] = useState(false);
-  const [modalEditLRL, setEditLRL] = useState(false);
+  const [modalAddList_Location, setAddList_Location] = useState(false);
+  const [modalEdit_List_Location, setEdit_List_Location] = useState(false);
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
@@ -49,9 +49,9 @@ function TableListLRL({ isTabletOrMobile }) {
     if (key === "1") {
       message.error("Tính năng chưa khả dụng!");
     } else if (key === "2") {
-      setAddLRL(true);
+      setAddList_Location(true);
     } else if (key === "3") {
-      setEditLRL(true);
+      setEdit_List_Location(true);
     } else if (key === "4") {
       message.error("Tính năng chưa khả dụng!");
     }
@@ -60,8 +60,8 @@ function TableListLRL({ isTabletOrMobile }) {
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setAddLRL(false);
-    setEditLRL(false);
+    setAddList_Location(false);
+    setEdit_List_Location(false);
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
@@ -103,36 +103,33 @@ function TableListLRL({ isTabletOrMobile }) {
         })}
         onChange={handleChangeTabs}
       />
-
+      {/* 
       <Modal
-        open={modalAddLRL ? modalAddLRL : openModal}
+        open={modalAddList_Location ? modalAddList_Location : openModal}
         onCancel={hideModal}
-        width={600}
+        width={700}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <Add_List_Region_Location tabListbc={tabListbc} hideModal={hideModal} />
+        <AddList_Location tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
       <Modal
-        open={modalEditLRL ? modalEditLRL : openModal}
+        open={modalEdit_List_Location ? modalEdit_List_Location : openModal}
         onCancel={hideModal}
-        width={600}
+        width={700}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-        <Edit_List_Region_Location
-          tabListbc={tabListbc}
-          hideModal={hideModal}
-        />
-      </Modal>
+        <Edit_List_Location tabListbc={tabListbc} hideModal={hideModal} />
+      </Modal> */}
     </>
   );
 }
 
-export default TableListLRL;
+export default TableListMPS;

@@ -21,7 +21,7 @@ const ModalConfirmDelete = ({
       }}
       open={isModalOpen}
       onOk={handleOk}
-      okText="Confirm"
+      okText="Xác Nhận"
       onCancel={() => handleCancel("closeModalDeleteSubject")}
       confirmLoading={confirmLoading}
       okButtonProps={{
