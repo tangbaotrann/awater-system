@@ -101,7 +101,7 @@ function TableListLocation({ isTabletOrMobile }) {
             key: _tab.id,
           };
         })}
-        onChange={handleChangeTabs}
+        onChange={handleChangeTabs} 
       />
 
       <Modal
