@@ -54,12 +54,13 @@ const Invoice = () => {
       setIsOpenModalAddInvoice(false);
     }
   };
- 
+
   const columns = [
     {
       title: "#",
       dataIndex: "stt",
       key: "stt",
+      width: 100,
     },
     {
       title: "Số hợp đồng",
@@ -112,19 +113,32 @@ const Invoice = () => {
       key: "codePrice",
     },
   ];
-  const items = [
-    {
-      key: "1",
-      label: "Tìm kiếm",
-      children: <FormSearchInvoice />,
-    },
-  ];
+
+  const renderFooter = () => (
+    <FooterInvoice
+      setIsOpenModalBill={setIsOpenModalBill}
+      setIsModalInstalmentsOpen={setIsModalInstalmentsOpen}
+      setIsOpenModalAddInvoice={setIsOpenModalAddInvoice}
+      setIsOpenModalEditInvoice={setIsOpenModalEditInvoice}
+      setIsOpenModalWaterStatus={setIsOpenModalWaterStatus}
+      setIsModalEmail={setIsModalEmail}
+      setIsModalSMS={setIsModalSMS}
+      setIsOpenModalInvoiceBar={setIsOpenModalInvoiceBar}
+      isTabletOrMobile={isTabletOrMobile}
+    />
+  );
 
   return (
     <>
-      {/* filter */} 
-      <Collapse 
-        items={items}  
+      {/* filter */}
+      <Collapse
+        items={[
+          {
+            key: "1",
+            label: "Tìm kiếm",
+            children: <FormSearchInvoice />,
+          },
+        ]}
         size="small"
       />
 
@@ -138,16 +152,11 @@ const Invoice = () => {
           position: "relative",
         }}
       >
-        <Table 
+        <Table
           bordered
           dataSource={data}
           columns={columns}
           size="small"
-          pagination={{
-            current: 1,
-            total: 10000,
-            pageSize: 50,
-          }}
           scroll={{
             x: 1500,
             y: 365,
@@ -163,37 +172,12 @@ const Invoice = () => {
             placement="bottomRight"
             rootClassName="fix-popover-z-index"
             trigger="click"
-            // content={<TabList isTabletOrMobile={isTabletOrMobile} />}
-            content={
-              <FooterInvoice
-                setIsOpenModalBill={setIsOpenModalBill}
-                setIsModalInstalmentsOpen={setIsModalInstalmentsOpen}
-                setIsOpenModalAddInvoice={setIsOpenModalAddInvoice}
-                setIsOpenModalEditInvoice={setIsOpenModalEditInvoice}
-                setIsOpenModalWaterStatus={setIsOpenModalWaterStatus}
-                setIsModalEmail={setIsModalEmail}
-                setIsModalSMS={setIsModalSMS}
-                setIsOpenModalInvoiceBar={setIsOpenModalInvoiceBar}
-                isTabletOrMobile={isTabletOrMobile}
-              /> 
-            }
+            content={renderFooter()}
           >
             <PlusOutlined />
           </Popover>
         ) : (
-          <div className="contract-bottom">
-            <FooterInvoice
-              setIsOpenModalBill={setIsOpenModalBill}
-              setIsModalInstalmentsOpen={setIsModalInstalmentsOpen}
-              setIsOpenModalAddInvoice={setIsOpenModalAddInvoice}
-              setIsOpenModalEditInvoice={setIsOpenModalEditInvoice}
-              setIsOpenModalWaterStatus={setIsOpenModalWaterStatus}
-              setIsModalEmail={setIsModalEmail}
-              setIsModalSMS={setIsModalSMS}
-              setIsOpenModalInvoiceBar={setIsOpenModalInvoiceBar}
-              isTabletOrMobile={isTabletOrMobile}
-            />
-          </div>
+          <div className="contract-bottom">{renderFooter()}</div>
         )}
       </div>
 
@@ -213,7 +197,7 @@ const Invoice = () => {
         isOpen={isOpenModalAddInvoice}
       />
       <EditInvoice
-        isOpenEdit={isOpenModalEditInvoice} 
+        isOpenEdit={isOpenModalEditInvoice}
         setIsOpenModalEditInvoice={setIsOpenModalEditInvoice}
       />
       <ModalMessage

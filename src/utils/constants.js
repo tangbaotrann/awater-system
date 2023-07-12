@@ -27,7 +27,7 @@ const constants = {
     key: "RECORD_INDEX_PARENT",
   },
   READINGS_INDEX: {
-    label: "Số đọc chỉ số",
+    label: "Sổ đọc chỉ số",
     key: "READINGS_INDEX",
   },
   ENTER_INDEX: {

@@ -16,17 +16,18 @@ const LogNotice = () => {
   const [isOpenModalNoticeDetail, setIsOpenModalNoticeDetail] = useState(false);
   const [isOpenModalMoneyWater, setIsOpenMoneyWater] = useState(false);
   const [isOpenModalCskh, setIsOpenModalCskh] = useState(false);
-  const [isOpenModalNoticeMoneyWater, setIsOpenModalNoticeMoneyWater] = useState(false);
+  const [isOpenModalNoticeMoneyWater, setIsOpenModalNoticeMoneyWater] =
+    useState(false);
   const [isOpenTakeCareCustomer, setIsOpenTakeCareCustomer] = useState(false);
-  const [isOpenModalIndexBar, setIsOpenModalIndexBar] = useState(false); 
+  const [isOpenModalIndexBar, setIsOpenModalIndexBar] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const hanldeShowDetailRecord = (item) => {
     setIsOpenModalNoticeDetail(true);
     console.log(item);
-  };  
+  };
 
-  const dataSource = Array.from(Array(10000).keys()).map((item) => ({
+  const dataSource = Array.from(Array(1000).keys()).map((item) => ({
     key: item,
     stt: item + 1,
     ht: "HT" + item,
@@ -71,7 +72,7 @@ const LogNotice = () => {
       dataIndex: "nameSend",
       key: "nameSend",
     },
-    { 
+    {
       title: "Tiến trình",
       dataIndex: "process",
       key: "process",
@@ -95,17 +96,29 @@ const LogNotice = () => {
     },
   ];
 
-  const items = [
-    {
-      key: "1",
-      label: "Tìm kiếm",
-      children: <HeaderSearchLogNotice />,
-    },
-  ];
+  const renderFooter = () => (
+    <FooterLogNotice
+      setIsOpenMoneyWater={setIsOpenMoneyWater}
+      isTabletOrMobile={isTabletOrMobile}
+      setIsOpenModalCskh={setIsOpenModalCskh}
+      setIsOpenModalNoticeMoneyWater={setIsOpenModalNoticeMoneyWater}
+      setIsOpenTakeCareCustomer={setIsOpenTakeCareCustomer}
+      setIsOpenModalIndexBar={setIsOpenModalIndexBar}
+    />
+  );
 
   return (
     <>
-      <Collapse items={items} size="small" />
+      <Collapse
+        items={[
+          {
+            key: "1",
+            label: "Tìm kiếm",
+            children: <HeaderSearchLogNotice />,
+          },
+        ]}
+        size="small"
+      />
       <div
         style={{
           lineHeight: "200px",
@@ -119,16 +132,11 @@ const LogNotice = () => {
           dataSource={dataSource}
           columns={columns}
           size="small"
-          pagination={{
-            current: 1,
-            total: 10000,
-            pageSize: 50,
-          }}
           scroll={{
             x: 1000,
             y: 330,
           }}
-        /> 
+        />
       </div>
       <div className="contract-bottom">
         <div className="contract-bottom-func">
@@ -137,28 +145,12 @@ const LogNotice = () => {
               rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
-              content={
-                <FooterLogNotice
-                  setIsOpenMoneyWater={setIsOpenMoneyWater}
-                  isTabletOrMobile={isTabletOrMobile}
-                  setIsOpenModalCskh={setIsOpenModalCskh}
-                  setIsOpenModalNoticeMoneyWater={setIsOpenModalNoticeMoneyWater}
-                  setIsOpenTakeCareCustomer={setIsOpenTakeCareCustomer}
-                  setIsOpenModalIndexBar={setIsOpenModalIndexBar} 
-                />
-              }
+              content={renderFooter()}
             >
               <PlusOutlined />
             </Popover>
           ) : (
-            <FooterLogNotice
-              setIsOpenMoneyWater={setIsOpenMoneyWater} 
-              isTabletOrMobile={isTabletOrMobile}
-              setIsOpenModalCskh={setIsOpenModalCskh}
-              setIsOpenModalNoticeMoneyWater={setIsOpenModalNoticeMoneyWater}
-              setIsOpenTakeCareCustomer={setIsOpenTakeCareCustomer}
-              setIsOpenModalIndexBar={setIsOpenModalIndexBar}
-            />
+            <>{renderFooter()}</>
           )}
         </div>
       </div>
@@ -178,7 +170,7 @@ const LogNotice = () => {
       <TakeCareCustomer
         isOpen={isOpenTakeCareCustomer}
         setIsOpen={setIsOpenTakeCareCustomer}
-      /> 
+      />
       <ModalIndexBarLogNotice
         isOpen={isOpenModalIndexBar}
         setIsOpen={setIsOpenModalIndexBar}
