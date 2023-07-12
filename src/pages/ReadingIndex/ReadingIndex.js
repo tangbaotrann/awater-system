@@ -5,7 +5,14 @@ import { CreateMultipleBook } from "./CreateMultipleBook/CreateMultipleBook";
 import { AdvancedSearchForm as FormSearchReadingIndex } from "../../components/FormSearchReadingIndex/FormSearchReadingIndex";
 import { FooterReadingIndex } from "../../components/Footer/FooterReadingIndex";
 import { useMediaQuery } from "react-responsive";
-import { CloseCircleOutlined, EditOutlined, EnvironmentOutlined, EyeOutlined, PlusOutlined, SettingOutlined } from "@ant-design/icons";
+import {
+  CloseCircleOutlined,
+  EditOutlined,
+  EnvironmentOutlined,
+  EyeOutlined,
+  PlusOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
 import { ModalIndexBar } from "./ModalIndexBar/ModalIndexBar";
 import "./ReadingIndex.css";
 
@@ -21,7 +28,7 @@ const ReadingIndex = () => {
     if (type === "multiple") {
       setIsModalOpenMCreate(false);
     }
-    if (type === "indexBar") { 
+    if (type === "indexBar") {
       setIsModalOpenIndexBar(false);
     }
   };
@@ -34,9 +41,9 @@ const ReadingIndex = () => {
     if (type === "indexBar") {
       setIsModalOpenIndexBar(false);
     }
-  }; 
+  };
 
-  const dataSource = Array.from({ length: 100 }, (_, index) => ({
+  const dataSource = Array.from({ length: 500 }, (_, index) => ({
     key: index,
     "#": index + 1,
     name: `Tuyến ${index}`,
@@ -47,13 +54,15 @@ const ReadingIndex = () => {
     status: `Trạng thái ${index}`,
     dateClose: `Ngày chốt ${index}`,
     invoice: `Hóa đơn ${index}`,
-    action: <div>
-      <EditOutlined className="iconReadingIndex editIcon"/>
-      <EyeOutlined  className="iconReadingIndex"/>
-      <CloseCircleOutlined className="iconReadingIndex"/>
-      <SettingOutlined className="iconReadingIndex"/>
-      <EnvironmentOutlined className="iconReadingIndex"/>
-    </div>
+    action: (
+      <div>
+        <EditOutlined className="iconReadingIndex editIcon" />
+        <EyeOutlined className="iconReadingIndex" />
+        <CloseCircleOutlined className="iconReadingIndex" />
+        <SettingOutlined className="iconReadingIndex" />
+        <EnvironmentOutlined className="iconReadingIndex" />
+      </div>
+    ),
   }));
 
   const columns = [
@@ -61,7 +70,7 @@ const ReadingIndex = () => {
       title: "#",
       dataIndex: "#",
       key: "#",
-      width: 100
+      width: 100,
     },
     {
       title: "Tuyến đọc",
@@ -110,14 +119,6 @@ const ReadingIndex = () => {
     },
   ];
 
-  const items = [
-    {
-      key: "1",
-      label: "Tìm kiếm",
-      children: <FormSearchReadingIndex />,
-    },
-  ];
-
   const renderFooter = () => (
     <FooterReadingIndex
       setIsOpenModalCreate={setIsOpenModalCreate}
@@ -129,7 +130,16 @@ const ReadingIndex = () => {
 
   return (
     <>
-      <Collapse items={items} size="small" />
+      <Collapse
+        items={[
+          {
+            key: "1",
+            label: "Tìm kiếm",
+            children: <FormSearchReadingIndex />,
+          },
+        ]}
+        size="small"
+      />
       <div
         style={{
           lineHeight: "200px",
@@ -143,12 +153,7 @@ const ReadingIndex = () => {
           dataSource={dataSource}
           columns={columns}
           size="small"
-          pagination={{
-            current: 1,
-            total: 10000,
-            pageSize: 50,
-          }}
-          scroll={{ 
+          scroll={{
             x: 1500,
             y: 330,
           }}
@@ -159,11 +164,9 @@ const ReadingIndex = () => {
           {isTabletOrMobile ? (
             <Popover
               rootClassName="fix-popover-z-index"
-              placement="bottomRight" 
+              placement="bottomRight"
               trigger="click"
-              content={
-                renderFooter()
-              }
+              content={renderFooter()}
             >
               <PlusOutlined />
             </Popover>
@@ -174,7 +177,7 @@ const ReadingIndex = () => {
       </div>
 
       <CreateBook
-        handleCancel={handleCancel} 
+        handleCancel={handleCancel}
         handleOk={handleOk}
         isOpen={isOpenModalCreate}
       />

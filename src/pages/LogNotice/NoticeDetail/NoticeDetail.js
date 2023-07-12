@@ -1,22 +1,15 @@
 import {
   CloseOutlined,
-  EyeOutlined,
-  PlusCircleFilled,
   SendOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
 import {
   Button,
-  Checkbox,
   Col,
   Collapse,
-  DatePicker,
-  Form,
   Modal,
   Row,
-  Select,
   Table,
-  theme,
 } from "antd";
 import { useState } from "react";
 import { SearchForm } from "./SearchForm";
@@ -24,22 +17,21 @@ import { useMediaQuery } from "react-responsive";
 
 export const NoticeDetail = (props) => {
   const { isOpen, setIsOpenModalNoticeDetail } = props;
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const { token } = theme.useToken();
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]); 
   const isMobile = useMediaQuery({ maxWidth: 767 });
   console.log("render modal Notice Detail");
 
-  const dataSource = Array.from({ length: 50 }, (_, key) => ({
-    key: key + 1,
+  const dataSource = Array.from({ length: 500 }, (_, key) => ({
+    key,
     stt: key + 1,
-    type: "abc",
-    address: "abc",
-    info: "abc",
-    content: "abc",
-    timeSent: "abc",
-    result: "abc",
-    number: "abc",
-    netHouse: "abc",
+    type: "Loại " + key,
+    address: "Địa chỉ nhận " + key,
+    info: "Thông tin " + key,
+    content: "Nội dung " + key,
+    timeSent: "Thời gian gửi " + key,
+    result: "Kết quả " + key,
+    number: "Số tin " + key,
+    netHouse: "Nhà mạng " + key,
   }));
 
   const columns = [
@@ -101,14 +93,6 @@ export const NoticeDetail = (props) => {
     onChange: onSelectChange,
   };
 
-  const items = [
-    {
-      key: "1",
-      label: "Tìm kiếm",
-      children: <SearchForm />,
-    },
-  ];
-
   return (
     <Modal
       title="Chi tiết thông báo"
@@ -119,57 +103,62 @@ export const NoticeDetail = (props) => {
       footer={null}
       centered
     >
-      <Collapse items={items} size="small" />
-      <div
-        style={{
-          lineHeight: "200px",
-          textAlign: "center",
-          background: token.colorFillAlter,
-          borderRadius: token.borderRadiusLG,
-          marginTop: 16,
-          padding: "10px 10px",
+      <Collapse
+        items={[
+          {
+            key: "1",
+            label: "Tìm kiếm",
+            children: <SearchForm />,
+          },
+        ]}
+        size="small"
+      />
+      <Table
+        bordered
+        rowSelection={rowSelection}
+        dataSource={dataSource}
+        columns={columns}
+        size="small"
+        scroll={{
+          x: 1200,
+          y: 240,
         }}
-      >
-        <Table
-          rowSelection={rowSelection}
-          dataSource={dataSource}
-          columns={columns}
-          size="small"
-          pagination={{
-            current: 1,
-            // total: 10000,
-            // pageSize: 50,
-          }}
-          scroll={{
-            x: 1200,
-            y: 240,
-          }}
-        />
-      </div>
-
-      <div style={{ marginLeft: "auto" }}>
-        <Button
-          type="primary"
-          icon={<SyncOutlined />}
-          style={{ margin: "10px 5px 0px 0px" }}
-        >
-          Cập nhật nhà mạng từ phiên gửi - TT khách hàng
-        </Button>
-        <Button
-          type="primary"
-          icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
-          style={{ margin: "10px 5px 0px 0px" }}
-        >
-          Gửi lại
-        </Button>
-        <Button
-          className="custom-btn-close"
-          onClick={() => setIsOpenModalNoticeDetail(false)}
-        >
-          <CloseOutlined />
-          Đóng
-        </Button>
-      </div>
+        style={{
+          marginTop: "10px",
+        }}
+      />
+      <Row>
+        <Col lg={8}>
+          <Button
+            type="primary"
+            icon={<SyncOutlined />}
+            style={{ margin: "10px 5px 0px 0px" }}
+          >
+            Cập nhật nhà mạng từ phiên gửi - TTKH
+          </Button>
+        </Col>
+        <Col lg={8}>
+          <Button
+            type="primary"
+            icon={<SendOutlined style={{ transform: "rotate(310deg)" }} />}
+            style={{ margin: "10px 5px 0px 0px" }}
+          >
+            Gửi lại
+          </Button>
+        </Col>
+        {/* <Col lg={8}> */}
+          <Button
+            className="custom-btn-close"
+            onClick={() => setIsOpenModalNoticeDetail(false)}
+            style={{
+              marginLeft: "auto",
+            }}
+          >
+            <CloseOutlined />
+            Đóng
+          </Button>
+        {/* </Col> */}
+      </Row>
     </Modal>
   );
 };

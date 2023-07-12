@@ -59,7 +59,7 @@ function Manager() {
         currentPage === constants.CATEGORY_MANAGEMENT_READING.key ? (
         <ManagementReading />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ||
-        currentPage === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ? (
+        currentPage === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ? ( 
         <ManagementPriceList />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4

@@ -7,17 +7,17 @@ export const DetailInvoice = (props) => {
 
   const dataSource = Array.from({ length: 10 }).map((_, index) => ({
     key: index,
-    name: "Hạng mục " + index,
-    quantity: 10,
-    price: 100000,
-    total: 1000000,
-    vat: 100000,
-    bvmt: 100000,
+    name: `Hạng mục ${index}`,
+    quantity: `Số lượng ${index}`,
+    price: `Đơn giá ${index}`,
+    total: `Thành tiền ${index}`,
+    vat: `Tiền VAT ${index}`,
+    bvmt: `Phí BVMT ${index}`    
   }));
 
   const columns = [
     {
-      title: "Hạng mục",
+      title: "Hạng mục", 
       dataIndex: "name",
       key: "name",
     },
@@ -84,9 +84,9 @@ export const DetailInvoice = (props) => {
             size="small"
             bordered
             scroll={{
+              x: 1000,
               y: 240,
             }}
-            pagination={false}
           />
           <Divider type="vertical" style={{height: '200px'}}/>
           <Table
@@ -96,9 +96,9 @@ export const DetailInvoice = (props) => {
             size="small"
             bordered
             scroll={{
+              x: 1000,
               y: 240,
             }}
-            pagination={false}
           />
         </div>
       </Drawer>

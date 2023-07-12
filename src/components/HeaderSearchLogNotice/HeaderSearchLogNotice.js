@@ -9,7 +9,7 @@ export const AdvancedSearchForm = () => {
 
   const layout = {
     labelCol: {
-      span: 8,
+      span: 6,
     },
     // wrapperCol: {
     //   span: 22,
@@ -22,7 +22,7 @@ export const AdvancedSearchForm = () => {
       form={form}
       name="advanced_search"
       onFinish={onFinish}
-      //   size="small"
+      //   size="small" 
     >
       <Row gutter={24}>
         <Col span={8} xs={24} sm={12} md={12} lg={8}>
@@ -109,7 +109,7 @@ export const AdvancedSearchForm = () => {
         <Col span={6} xs={24} sm={12} md={12} lg={8}>
           <div
             style={{
-              textAlign: "center",
+              textAlign: "end",
             }}
           >
             <Button

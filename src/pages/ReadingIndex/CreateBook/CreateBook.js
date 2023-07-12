@@ -15,7 +15,6 @@ import {
   Row,
   Select,
   Table,
-  theme,
 } from "antd";
 import { useState } from "react";
 import { SearchForm } from "./SearchForm";
@@ -33,7 +32,7 @@ export const CreateBook = (props) => {
     console.log("Received values of form: ", values);
   };
 
-  const dataSource = Array.from({ length: 100 }, (_, index) => ({
+  const dataSource = Array.from({ length: 500 }, (_, index) => ({
     key: index,
     name: `Số HĐ ${index}`,
     age: `Mã ĐH ${index}`,
@@ -88,14 +87,7 @@ export const CreateBook = (props) => {
     selectedRowKeys,
     onChange: onSelectChange,
   };
-  const items = [
-    {
-      key: "1",
-      label: "Tìm kiếm",
-      children: <SearchForm />,
-    },
-  ];
- 
+
   return (
     <Modal
       title="Tạo sổ ghi chỉ số"
@@ -106,17 +98,21 @@ export const CreateBook = (props) => {
       footer={null}
       centered
     >
-      <Collapse items={items} size="small" />
+      <Collapse
+        items={[
+          {
+            key: "1",
+            label: "Tìm kiếm",
+            children: <SearchForm />,
+          },
+        ]}
+        size="small"
+      />
       <Table
         rowSelection={rowSelection}
         dataSource={dataSource}
         columns={columns}
         size="small"
-        pagination={{
-          current: 1,
-          // total: 10000,
-          // pageSize: 50,
-        }}
         scroll={{
           x: 1200,
           y: 240,
@@ -349,7 +345,7 @@ export const CreateBook = (props) => {
             style={{
               marginRight: 5,
               width: `${isMobile ? "100%" : ""}`,
-              marginTop: `${isMobile ? "10px" : ""}`,
+              marginTop: `${isMobile ? "10px" : ""}`
             }}
           >
             <CloseOutlined />
