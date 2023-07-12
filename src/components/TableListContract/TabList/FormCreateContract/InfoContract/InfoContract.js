@@ -1,14 +1,5 @@
 import { RedoOutlined } from "@ant-design/icons";
-import {
-  Button,
-  Checkbox,
-  Col,
-  DatePicker,
-  Form,
-  Input,
-  Row,
-  Select,
-} from "antd";
+import { Button, Col, Form, Input, Row, Select } from "antd";
 
 function InfoContract() {
   const formItemLayout = {
