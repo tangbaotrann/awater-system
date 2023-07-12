@@ -31,7 +31,7 @@ function InfoDetailClock() {
     <div className="container-detail-clock">
       <Row>
         {/* Đơn vị HC */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Đơn vị HC" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -42,7 +42,7 @@ function InfoDetailClock() {
               placeholder="Chọn đơn vị"
             />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="ĐV" {...formItemLayout}>
@@ -58,7 +58,7 @@ function InfoDetailClock() {
         </Col>
 
         {/*  */}
-        <Col xs={24} sm={24} md={7} lg={7}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Đơn vị" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -68,6 +68,13 @@ function InfoDetailClock() {
               ]}
               placeholder="Chọn đơn vị"
             />
+          </Form.Item>
+        </Col>
+
+        {/* Người đại diện */}
+        <Col xs={24} sm={24} md={7} lg={7}>
+          <Form.Item name="" label="Người ĐD" {...formItemLayout}>
+            <Input name="" placeholder="Nhập người đại diện" />
           </Form.Item>
         </Col>
       </Row>
@@ -169,9 +176,16 @@ function InfoDetailClock() {
         </Col>
 
         {/* Là đồng hồ phụ */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Chọn" {...formItemLayout}>
             <Checkbox name="" /> Là đồng hồ phụ
+          </Form.Item>
+        </Col> */}
+
+        {/* Ống dẫn */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="" label="Ống dẫn" {...formItemLayout}>
+            <Input name="" placeholder="Nhập ống dẫn" />
           </Form.Item>
         </Col>
 
@@ -259,7 +273,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Địa chỉ */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Địa chỉ (*)" {...formItemLayout}>
             <div className="container-label-input">
               <Input
@@ -270,7 +284,7 @@ function InfoDetailClock() {
               <Checkbox />
             </div>
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Đai khởi thủy */}
         <Col xs={24} sm={24} md={8} lg={8}>
@@ -280,12 +294,23 @@ function InfoDetailClock() {
         </Col>
 
         {/* Trạng thái */}
-        <Col xs={24} sm={24} md={7} lg={7}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Trạng thái" {...formItemLayout}>
             <Select
               fieldNames=""
               options={[{ value: "1", label: "Đang sử dụng" }]}
               placeholder="Chọn trạng thái"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Trạng thái ĐH lấp */}
+        <Col xs={24} sm={24} md={7} lg={7}>
+          <Form.Item name="" label="Trạng thái ĐH" {...formItemLayout}>
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Trạng thái ĐH lấp 1" }]}
+              placeholder="Chọn trạng thái ĐH lấp"
             />
           </Form.Item>
         </Col>
@@ -295,7 +320,11 @@ function InfoDetailClock() {
         {/* Lý do hủy */}
         <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Lý do hủy" {...formItemLayout}>
-            <Input name="" placeholder="Nhập lý do hủy" />
+            <Select
+              fieldNames=""
+              placeholder="Chọn lý do hủy"
+              options={[{ value: "1", label: "LD 1" }]}
+            />
           </Form.Item>
         </Col>
 
@@ -465,24 +494,8 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
-        {/* Kinh độ */}
-        <Col xs={24} sm={24} md={7} lg={7}>
-          <Form.Item name="" label="Kinh độ" {...formItemLayout}>
-            <Input name="" placeholder="Nhập kinh độ" />
-          </Form.Item>
-        </Col>
-      </Row>
-
-      <Row>
-        {/* Vĩ độ */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="" label="Vĩ độ" {...formItemLayout}>
-            <Input name="" placeholder="Nhập vĩ độ" />
-          </Form.Item>
-        </Col>
-
         {/* Loại KM */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={7} lg={7}>
           <Form.Item name="" label="Loại KM" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -492,8 +505,35 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        {/* Kinh độ */}
+        {/* <Col xs={24} sm={24} md={7} lg={7}>
+          <Form.Item name="" label="Kinh độ" {...formItemLayout}>
+            <Input name="" placeholder="Nhập kinh độ" />
+          </Form.Item>
+        </Col> */}
+      </Row>
+
+      <Row>
+        {/* Vĩ độ */}
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="" label="Vĩ độ" {...formItemLayout}>
+            <Input name="" placeholder="Nhập vĩ độ" />
+          </Form.Item>
+        </Col> */}
+
+        {/* Loại KM */}
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="" label="Loại KM" {...formItemLayout}>
+            <Select
+              fieldNames=""
+              options={[{ value: "1", label: "Loại KM 1" }]}
+              placeholder="Chọn loại KM"
+            />
+          </Form.Item>
+        </Col> */}
+
         {/* Khuyến mãi + text */}
-        <Col xs={24} sm={24} md={7} lg={7}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Khuyến mãi" {...formItemLayout}>
             <div className="container-label-input">
               <InputNumber
@@ -509,7 +549,7 @@ function InfoDetailClock() {
 
       <Row>
         {/* Trạng thái ĐH lấp */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="" label="Trạng thái ĐH" {...formItemLayout}>
             <Select
               fieldNames=""
@@ -517,14 +557,7 @@ function InfoDetailClock() {
               placeholder="Chọn trạng thái ĐH lấp"
             />
           </Form.Item>
-        </Col>
-
-        {/* Ống dẫn */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="" label="Ống dẫn" {...formItemLayout}>
-            <Input name="" placeholder="Nhập ống dẫn" />
-          </Form.Item>
-        </Col>
+        </Col> */}
       </Row>
     </div>
   );
