@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { Modal, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
@@ -10,6 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./listpayment.css";
+import AddList_Payment_Method from "./AddList_Payment_Method";
+import EditPaymentMethod from "./EditList_Payment_Method";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -37,7 +40,10 @@ const tabs_bc = [
 
 function TableListPC({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalAddBlock, setAddBlock] = useState(false);
+  const [isOpenPayment, setPaymentMethod] = useState(false);
+  const [isOpenEditPaymentMethod, setEditPaymentMethod] = useState(false);
+
+
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
@@ -46,9 +52,9 @@ function TableListPC({ isTabletOrMobile }) {
     if (key === "1") {
       message.error("Tính năng chưa khả dụng!");
     } else if (key === "2") {
-      message.error("Tính năng chưa khả dụng!");
+      setPaymentMethod(true);
     } else if (key === "3") {
-      message.error("Tính năng chưa khả dụng!");
+      setEditPaymentMethod(true)
     } else if (key === "4") {
       message.error("Tính năng chưa khả dụng!");
     }
@@ -57,7 +63,8 @@ function TableListPC({ isTabletOrMobile }) {
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setAddBlock(false);
+    setPaymentMethod(false);
+    setEditPaymentMethod(false)
 
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
@@ -101,20 +108,30 @@ function TableListPC({ isTabletOrMobile }) {
         onChange={handleChangeTabs}
       />
 
-      {/* Modal (Thêm đồng hồ vào block) */}
       <Modal
-        open={modalAddBlock ? modalAddBlock : openModal}
+        open={isOpenPayment ? isOpenPayment : openModal}
         onCancel={hideModal}
-        width={1800}
+        width={700}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">Thêm đồng hồ vào block</h2>
-
-        {/* <AddBlockClock tabListbc={tabListbc} hideModal={hideModal} /> */}
+        <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
+        <AddList_Payment_Method tabListbc={tabListbc} hideModal={hideModal}/>
       </Modal>
-      {/* Modal ( In Sửa Block) */}
+
+      <Modal
+        open={isOpenEditPaymentMethod ? isOpenEditPaymentMethod : openModal}
+        onCancel={hideModal}
+        width={700}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
+
+        <EditPaymentMethod tabListbc={tabListbc} hideModal={hideModal} />
+      </Modal>
     </>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { Modal, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
@@ -10,6 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./listscope.css";
+import AddList_Scope from "./AddList_Scope";
+import EditListScope from "./EditList_Scope";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -37,7 +40,8 @@ const tabs_bc = [
 
 function TableListPC({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalAddBlock, setAddBlock] = useState(false);
+  const [isOpenModalAdd, setIsOpenModalAdd] = useState(false);
+  const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
@@ -46,9 +50,9 @@ function TableListPC({ isTabletOrMobile }) {
     if (key === "1") {
       message.error("Tính năng chưa khả dụng!");
     } else if (key === "2") {
-      message.error("Tính năng chưa khả dụng!");
+      setIsOpenModalAdd(true);
     } else if (key === "3") {
-      message.error("Tính năng chưa khả dụng!");
+      setIsOpenModalEdit(true);
     } else if (key === "4") {
       message.error("Tính năng chưa khả dụng!");
     }
@@ -57,7 +61,8 @@ function TableListPC({ isTabletOrMobile }) {
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setAddBlock(false);
+    setIsOpenModalAdd(false);
+    setIsOpenModalEdit(false);
 
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
@@ -101,20 +106,31 @@ function TableListPC({ isTabletOrMobile }) {
         onChange={handleChangeTabs}
       />
 
-      {/* Modal (Thêm đồng hồ vào block) */}
       <Modal
-        open={modalAddBlock ? modalAddBlock : openModal}
+        open={isOpenModalAdd ? isOpenModalAdd : openModal}
         onCancel={hideModal}
-        width={1800}
+        width={700}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">Thêm đồng hồ vào block</h2>
+        <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        {/* <AddBlockClock tabListbc={tabListbc} hideModal={hideModal} /> */}
+        <AddList_Scope tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
-      {/* Modal ( In Sửa Block) */}
+
+      <Modal
+        open={isOpenModalEdit ? isOpenModalEdit : openModal}
+        onCancel={hideModal}
+        width={700}
+        centered={true}
+        cancelButtonProps={{ style: { display: "none" } }}
+        okButtonProps={{ style: { display: "none" } }}
+      >
+        <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
+
+        <EditListScope tabListbc={tabListbc} hideModal={hideModal} />
+      </Modal>
     </>
   );
 }

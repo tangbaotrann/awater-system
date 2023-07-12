@@ -118,7 +118,7 @@ function List_Location() {
         dataSource={data1}
         // onChange={handleData1Change}
       />
-      {isTabletOrMobile && (
+      {isTabletOrMobile && ( 
         <div className="contract-bottom">
           {/* check mobile */}
           {isTabletOrMobile ? (

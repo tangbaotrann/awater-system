@@ -8,7 +8,7 @@ import {
 
 import { useMediaQuery } from "react-responsive";
 
-const AddList_Location = ({ hideModal }) => { 
+const AddList_Scope = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -42,7 +42,7 @@ const AddList_Location = ({ hideModal }) => {
           maxWidth: "none",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
-          padding: 24,
+          padding: 10,
         }}
       >
         <Row gutter={24}>
@@ -54,7 +54,35 @@ const AddList_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Khu Vực">
+            <Form.Item
+              label="Mã phạm vi"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input style={{ width: "100%" }} />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
+            <Form.Item
+              label="Tên phạm vi"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -68,35 +96,19 @@ const AddList_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên Khu Vực">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên thu tiền">
+              <Input
+                style={{ width: "100%" }}
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              />
             </Form.Item>
           </Col>
         </Row>
 
-        <Row>
-          <Col
-            xs={24}
-            sm={12}
-            md={12}
-            lg={24}
-            span={24}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Form.Item label="Vùng">
-              <Select style={{ width: "100%" }}>
-                <Option value="A">A</Option>
-                <Option value="B">B</Option>
-              </Select>
-            </Form.Item>
-            <Form.Item label="Khu Vực Cha">
-              <Select style={{ width: "100%" }}>
-                <Option value="A">A</Option>
-                <Option value="B">B</Option>
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
         <Row
           style={{
             display: "flex",
@@ -112,7 +124,6 @@ const AddList_Location = ({ hideModal }) => {
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Thêm Tiếp
           </Button>
@@ -125,7 +136,6 @@ const AddList_Location = ({ hideModal }) => {
             htmlType="submit"
             icon={<SaveOutlined />}
             className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Đóng
           </Button>
@@ -137,7 +147,6 @@ const AddList_Location = ({ hideModal }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng
@@ -148,4 +157,4 @@ const AddList_Location = ({ hideModal }) => {
   );
 };
 
-export default AddList_Location;
+export default AddList_Scope;
