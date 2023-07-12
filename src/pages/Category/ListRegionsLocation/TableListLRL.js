@@ -5,13 +5,18 @@ import {
   RetweetOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
+import {
+  btnClickTabListInvoicePrintSelector,
+  fetchApiAllFactorySelector,
+} from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import "./List_Regions_Location.css";
-import Add_List_Region_Location from "./Add_List_Region_Location";
-import Edit_List_Region_Location from "./Edit_List_Region_Location";
+import "./ListRegionsLocation.css";
+import ListRegionsLocation from "./AddListRegionLocation";
+import EditListRegionLocation from "./EditListRegionLocation";
+import { fetchApiAllFactory } from "../../../redux/slices/factorySlice/factorySlice";
+
 // Tabs bottom
 const tabs_bc = [
   {
@@ -44,6 +49,12 @@ function TableListLRL({ isTabletOrMobile }) {
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+  const factoryNames = useSelector(fetchApiAllFactorySelector);
+
+  useEffect(() => {
+    dispatch(fetchApiAllFactory());
+  }, []);
+
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
@@ -114,7 +125,7 @@ function TableListLRL({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <Add_List_Region_Location tabListbc={tabListbc} hideModal={hideModal} />
+        <ListRegionsLocation tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
       <Modal
         open={modalEditLRL ? modalEditLRL : openModal}
@@ -126,9 +137,10 @@ function TableListLRL({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-        <Edit_List_Region_Location
+        <EditListRegionLocation
           tabListbc={tabListbc}
           hideModal={hideModal}
+          factoryNames={factoryNames}
         />
       </Modal>
     </>

@@ -10,7 +10,13 @@ export const btnClickTabListContractSelector = (state) =>
   state.tabListContractSlice.tabList;
 //click tab list  (Invoice Print)
 export const btnClickTabListInvoicePrintSelector = (state) =>
-  state.tabListInvoicePrintSlice.tabListIP;
+  state.tabListInvoicePrintSlice.tabList;
 //click tab list  (Invoice Print)
 export const btnClickTabListEnterIndexPageSelector = (state) =>
   state.tabListEnterIndexPageSlice.tabListIP;
+
+// get all region
+export const fetchApiAllRegionSelector = (state) => state.regionSlice.data;
+
+// get all factory
+export const fetchApiAllFactorySelector = (state) => state.factorySlice.data;
