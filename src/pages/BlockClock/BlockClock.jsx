@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 // import { initialData } from "../../utils/dataBlock";
-import TabListBC from "./TableListBC";
+import TabListBC from "./FormBlockClock/TableListBC";
 import { BlockClockDetail } from "./BlockClockDetail";
 import "../../components/GlobalStyles/GlobalStyles.css";
 import "../Manager/Contract/Contract.css";

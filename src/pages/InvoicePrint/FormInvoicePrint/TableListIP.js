@@ -47,7 +47,7 @@ const tabs = [
   },
   {
     id: "6",
-    label: "Chỉ số",
+    label: "Trạng thái",
     icon: <BarChartOutlined />,
   },
   {
@@ -209,7 +209,7 @@ function TableListIP({ isTabletOrMobile }) {
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
-        <h2 className="title-update-info-contract">Các chỉ số </h2>
+        <h2 className="title-update-info-contract">Tình hình trạng thái </h2>
         {/* Form Reprint Button */}
         <FormProgress tabList={tabList} hideModal={hideModal} />
       </Modal>

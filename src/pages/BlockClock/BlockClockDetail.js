@@ -1,7 +1,7 @@
 import { SendOutlined, SyncOutlined } from "@ant-design/icons";
 import { Button, Modal, Table, theme } from "antd";
 import { useState } from "react";
-import "./BlockClock.css";
+import "./FormBlockClock/BlockClock.css";
 export const BlockClockDetail = (props) => {
   const { isOpen, setIsOpenModalNoticeDetail } = props;
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);

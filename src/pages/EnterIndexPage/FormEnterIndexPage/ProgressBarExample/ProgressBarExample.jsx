@@ -1,5 +1,5 @@
 import React from "react";
-import { Progress, Row, Col, Form, theme } from "antd";
+import { Progress, Row, Col, Form, theme, Tooltip } from "antd";
 const ProgressBarExample = (hideModal) => {
   // handle submit form (main)
   const handleSubmit = (values) => {
@@ -23,6 +23,17 @@ const ProgressBarExample = (hideModal) => {
   const percents = [10, 20, 30, 40, 50, 60, 70, 80, 90];
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+  const titles = [
+    "Nội dung một",
+    "Nội dung hai",
+    "Nội dung ba",
+    "Nội dung 4",
+    "Nội dung 5",
+    "Nội dung 6",
+    "Nội dung 7",
+    "Nội dung 8",
+    "Nội dung 9",
+  ];
   return (
     <Form
       form={form1}
@@ -36,45 +47,17 @@ const ProgressBarExample = (hideModal) => {
       }}
     >
       <Row>
-        <Col span={24}>
-          <Row>
-            {colors.map((color, index) => (
-              <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-                <Progress
-                  percent={percents[index]}
-                  strokeColor={color}
-                  format={(percent) => `${percent * 10}`}
-                />
-              </Col>
-            ))}
-          </Row>
-          {/* <Row>
-            <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-              <Progress percent={10} format={(percent) => `${percent * 10}`} />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+        {colors.map((color, index) => (
+          <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
+            <Tooltip title={titles[index]}>
               <Progress
-                percent={60}
-                strokeColor="yellow"
+                percent={percents[index]}
+                strokeColor={color}
                 format={(percent) => `${percent * 10}`}
               />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-              <Progress
-                percent={70}
-                strokeColor="red"
-                format={(percent) => `${percent * 10}`}
-              />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={6} xl={6} xxl={6}>
-              <Progress
-                percent={30}
-                strokeColor="#ff8033"
-                format={(percent) => `${percent * 10}`}
-              />
-            </Col>
-          </Row> */}
-        </Col>
+            </Tooltip>
+          </Col>
+        ))}
       </Row>
     </Form>
   );

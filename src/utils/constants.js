@@ -52,16 +52,20 @@ const constants = {
     key: "CATEGORY",
   },
   CATEGORY_MANAGEMENT_PRICE_SUBJECT: {
-    label: "Quản lý danh mục đối tượng giá",
+    label: "QLDM đối tượng giá",
     key: "CATEGORY_MANAGEMENT_PRICE_SUBJECT",
   },
   CATEGORY_MANAGEMENT_READING: {
-    label: "Quản lý danh mục đối tuyến đọc",
+    label: "QLDM đối tuyến đọc",
     key: "CATEGORY_MANAGEMENT_READING",
   },
   CATEGORY_MANAGEMENT_PRICE_LIST: {
-    label: "Quản lý danh mục đối bảng giá",
+    label: "QLDM đối bảng giá",
     key: "CATEGORY_MANAGEMENT_PRICE_LIST",
+  },
+  CATEGORY_MANAGEMENT_LRL: {
+    label: "DM Vùng, Địa bàn",
+    key: "CATEGORY_MANAGEMENT_LRL",
   },
   COLLECT_MONEY: {
     label: "Thu tiền",
@@ -91,5 +95,4 @@ const constants = {
     key: "NOTICE_OF_CUSTOMS",
   },
 };
-
 export default constants;

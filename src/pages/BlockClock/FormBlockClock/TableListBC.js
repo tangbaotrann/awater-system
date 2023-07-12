@@ -10,8 +10,8 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { btnClickTabListInvoicePrintSelector } from "../../redux/selector";
-import tabListInvoicePrintSlice from "../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
+import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./BlockClock.css";
 import AddBlockClock from "./AddBlockClock";
 import EditBlockClock from "./EditBlockClock";

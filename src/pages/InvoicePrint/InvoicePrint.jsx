@@ -21,12 +21,7 @@ import {
   Popover,
   Collapse,
 } from "antd";
-import {
-  SearchOutlined,
-  FormOutlined,
-  PrinterOutlined,
-  PlusOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined, FormOutlined, PlusOutlined } from "@ant-design/icons";
 import moment from "moment";
 import "moment/locale/vi";
 import { useMediaQuery } from "react-responsive";

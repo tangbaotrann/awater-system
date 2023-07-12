@@ -16,7 +16,7 @@ import ManagementPriceList from "../Category/ManagementPriceList/ManagementPrice
 import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
-
+import List_Regions_Location from "../Category/List_Regions_Location/List_Regions_Location.jsx";
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -61,6 +61,10 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ? (
         <ManagementPriceList />
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LRL.key ||
+        currentPage === constants.CATEGORY_MANAGEMENT_LRL.key ? (
+        // <h1>Danh muc vung</h1>
+        <List_Regions_Location />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />
@@ -74,5 +78,4 @@ function Manager() {
     </DefaultLayout>
   );
 }
-
 export default Manager;

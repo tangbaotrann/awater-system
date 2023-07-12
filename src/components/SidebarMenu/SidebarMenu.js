@@ -135,6 +135,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_MANAGEMENT_PRICE_LIST.label,
               key: constants.CATEGORY_MANAGEMENT_PRICE_LIST.key,
             },
+            {
+              label: constants.CATEGORY_MANAGEMENT_LRL.label,
+              key: constants.CATEGORY_MANAGEMENT_LRL.key,
+            },
           ],
         },
       ]}
@@ -222,6 +226,13 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           sessionStorage.setItem(
             "currentPage",
             constants.CATEGORY_MANAGEMENT_PRICE_LIST.key
+          );
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_MANAGEMENT_LRL.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_MANAGEMENT_LRL.key
           );
           isTabletOrMobile && onCloseDrawer();
         }
