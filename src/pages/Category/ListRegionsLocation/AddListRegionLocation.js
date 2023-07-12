@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Col, Form, Input, Row, Select, theme } from "antd";
 import {
   CloseOutlined,
   FileAddOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
-
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
-const Edit_List_Region_Location = ({ hideModal }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+import { fetchApiAllFactorySelector } from "../../../redux/selector";
+import { fetchApiAllFactory } from "../../../redux/slices/factorySlice/factorySlice";
+import { fetchApiAddRegion } from "../../../redux/slices/regionSlice/regionSlice";
 
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    console.log("values", values);
-  };
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
-  const { Option } = Select;
+const ListRegionsLocation = ({ hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+
+  const dispatch = useDispatch();
+
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
+  const factoryNames = useSelector(fetchApiAllFactorySelector);
 
   const layout = {
     labelCol: {
@@ -31,6 +31,27 @@ const Edit_List_Region_Location = ({ hideModal }) => {
     //   span: 40,
     // },
   };
+
+  useEffect(() => {
+    dispatch(fetchApiAllFactory());
+  }, []);
+
+  // handle submit form (main)
+  const handleSubmit = (values) => {
+    if (values) {
+      dispatch(fetchApiAddRegion(values));
+
+      form1.resetFields();
+      toast.success("Thêm thành công vùng.");
+      hideModal();
+    }
+  };
+
+  // handle submit error (main)
+  const handleFailed = (error) => {
+    console.log({ error });
+  };
+
   return (
     <>
       <Form
@@ -54,8 +75,34 @@ const Edit_List_Region_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Vùng">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên nhà máy" name="nhaMayId">
+              <Select placeholder="Chọn tên nhà máy" fieldNames="nhaMayId">
+                {factoryNames.map((_factory) => {
+                  return (
+                    <Select.Option key={_factory.id} value={_factory.id}>
+                      {_factory.tenNhaMay}
+                    </Select.Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
+            <Form.Item label="Mã Vùng" name="id">
+              <Input
+                style={{ width: "100%" }}
+                name="id"
+                placeholder="Nhập mã vùng"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -68,8 +115,8 @@ const Edit_List_Region_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên Vùng">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên Vùng" name="tenVung">
+              <Input style={{ width: "100%" }} name="tenVung" />
             </Form.Item>
           </Col>
         </Row>
@@ -88,6 +135,7 @@ const Edit_List_Region_Location = ({ hideModal }) => {
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
+            htmlType="submit"
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Thêm Tiếp
@@ -124,4 +172,4 @@ const Edit_List_Region_Location = ({ hideModal }) => {
   );
 };
 
-export default Edit_List_Region_Location;
+export default ListRegionsLocation;
