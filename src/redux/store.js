@@ -5,6 +5,9 @@ import reportContractSlice from "./slices/reportContractSlice/reportContractSlic
 import tabListContractSlice from "./slices/tabListContractSlice/tabListContractSlice";
 import tabListInvoicePrintSlice from "./slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import tabListEnterIndexPageSlice from "./slices/tabListEnterIndexPageSlice/tabListEnterIndexPageSlice";
+import regionSlice from "./slices/regionSlice/regionSlice";
+import factorySlice from "./slices/factorySlice/factorySlice";
+
 const store = configureStore({
   reducer: {
     sidebarSlice: sidebarSlice.reducer,
@@ -12,6 +15,8 @@ const store = configureStore({
     tabListContractSlice: tabListContractSlice.reducer,
     tabListInvoicePrintSlice: tabListInvoicePrintSlice.reducer,
     tabListEnterIndexPageSlice: tabListEnterIndexPageSlice.reducer,
+    regionSlice: regionSlice.reducer,
+    factorySlice: factorySlice.reducer,
   },
 });
 

@@ -7,25 +7,32 @@ import {
 } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
+import { useSelector } from "react-redux";
+import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 
-const Edit_List_Region_Location = ({ hideModal }) => {
+const EditListRegionLocation = ({ hideModal, factoryNames }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
+  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+
+  console.log(tabListbc);
 
   // handle submit form (main)
   const handleSubmit = (values) => {
     console.log("values", values);
   };
+
   // handle submit error (main)
   const handleFailed = (error) => {
     console.log({ error });
   };
-  const { Option } = Select;
+
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
 
   const layout = {
     labelCol: {
-      span: 5,
+      span: 4,
     },
     // wrapperCol: {
     //   span: 40,
@@ -44,6 +51,11 @@ const Edit_List_Region_Location = ({ hideModal }) => {
           borderRadius: token.borderRadiusLG,
           padding: 24,
         }}
+        fields={[
+          { name: "nhaMayId", value: tabListbc ? tabListbc?.nhaMayId : null },
+          { name: "id", value: tabListbc ? tabListbc?.id : null },
+          { name: "tenVung", value: tabListbc ? tabListbc?.tenVung : null },
+        ]}
       >
         <Row gutter={24}>
           <Col
@@ -54,8 +66,31 @@ const Edit_List_Region_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Vùng">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên nhà máy" name="nhaMayId">
+              <Select placeholder="Chọn tên nhà máy" fieldNames="nhaMayId">
+                {factoryNames.map((_factory) => {
+                  return (
+                    <Select.Option key={_factory.id} value={_factory.id}>
+                      {_factory.tenNhaMay}
+                    </Select.Option>
+                  );
+                })}
+              </Select>
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row gutter={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
+            <Form.Item label="Mã Vùng" name="id">
+              <Input style={{ width: "100%" }} name="id" />
             </Form.Item>
           </Col>
         </Row>
@@ -68,8 +103,8 @@ const Edit_List_Region_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên Vùng">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên Vùng" name="tenVung">
+              <Input style={{ width: "100%" }} name="tenVung" />
             </Form.Item>
           </Col>
         </Row>
@@ -124,4 +159,4 @@ const Edit_List_Region_Location = ({ hideModal }) => {
   );
 };
 
-export default Edit_List_Region_Location;
+export default EditListRegionLocation;
