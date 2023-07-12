@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Modal, Table } from "antd";
-import { UnlockOutlined } from "@ant-design/icons";
+import { Button, Modal, Table, Tooltip } from "antd";
+import { RedoOutlined, UnlockOutlined } from "@ant-design/icons";
 
 import "./TableListPayment.css";
 import { dataOnModalDoubleClick, dataPayment } from "../../utils/dataPayment";
@@ -175,6 +175,11 @@ function TableListPayment() {
     );
   };
 
+  // handle un-check radio
+  const handleUncheckRadio = () => {
+    dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
+  };
+
   return (
     <>
       <div className="container-tbl-payment">
@@ -218,13 +223,23 @@ function TableListPayment() {
               },
               onClick: () => {
                 dispatch(
-                  tabListContractSlice.actions.btnClickTabListContract(null)
+                  tabListContractSlice.actions.btnClickTabListContract(record) // clicked row to check radio
                 );
               },
             };
           }}
           rowSelection={{
             type: "radio",
+            columnTitle: () => {
+              return (
+                <Tooltip title="Bỏ chọn hàng hiện tại.">
+                  <RedoOutlined
+                    className="icon-reset-rad-btn"
+                    onClick={handleUncheckRadio}
+                  />
+                </Tooltip>
+              );
+            },
             onChange: (selectedRowKeys, selectedRows) =>
               handleRowSelection(selectedRowKeys, selectedRows),
             selectedRowKeys: tabList ? [tabList.index] : [],

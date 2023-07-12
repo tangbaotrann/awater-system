@@ -399,3 +399,26 @@
     height: 42vh;
     overflow-y: scroll;
 }
+
+.icon-reset-rad-btn {
+    font-size: 1.7rem;
+    color: var(--blue-btn);
+    cursor: pointer;
+}
+
+.icon-reset-rad-btn:hover {
+    color: var(--blue-btn-hover);
+    opacity: 0.6;
+    transition: all 0.3s;
+    animation: resetButton 1s linear;
+}
+
+@keyframes resetButton {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

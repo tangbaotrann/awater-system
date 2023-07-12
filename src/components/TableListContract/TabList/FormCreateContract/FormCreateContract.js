@@ -20,11 +20,11 @@ const tabs = [
   },
   {
     id: "2",
-    label: "Đồng hồ",
+    label: "Thông tin hợp đồng",
   },
   {
     id: "3",
-    label: "Thông tin hợp đồng",
+    label: "Đồng hồ",
   },
   {
     id: "4",
@@ -47,6 +47,11 @@ function FormCreateContract({ tabList, hideModal }) {
     console.log({ error });
   };
 
+  // const handleChangeTabs = (activeKey) => {
+  //   console.log(activeKey);
+  //   setTabKey(activeKey);
+  // };
+
   return (
     <>
       <div className="wrapper-tab-modal-create-contract">
@@ -56,11 +61,13 @@ function FormCreateContract({ tabList, hideModal }) {
             <Tabs
               type="card"
               size="small"
+              // onChange={handleChangeTabs}
               defaultActiveKey={tabs[0]}
               items={tabs.map((_tab) => {
                 return {
-                  label: <div>{_tab.label}</div>,
+                  label: _tab.label,
                   key: _tab.id,
+                  tabKey: _tab.id,
                   children: (
                     <Form
                       colon={true}
@@ -108,6 +115,15 @@ function FormCreateContract({ tabList, hideModal }) {
                             <InfoCustomer />
                           </Col>
                         ) : _tab.id === "2" ? (
+                          <Col xs={24} sm={24} md={24} lg={24}>
+                            <InfoContract />
+                          </Col>
+                        ) : null}
+                      </Row>
+
+                      {/* Thông tin hợp đồng + Chi tiết đồng hồ */}
+                      <Row className="space-col">
+                        {_tab.id === "3" ? (
                           <Col
                             xs={24}
                             sm={24}
@@ -119,16 +135,7 @@ function FormCreateContract({ tabList, hideModal }) {
                                 : "collapse-space-top-mobile-item"
                             }
                           >
-                            <InfoClock />
-                          </Col>
-                        ) : null}
-                      </Row>
-
-                      {/* Thông tin hợp đồng + Chi tiết đồng hồ */}
-                      <Row className="space-col">
-                        {_tab.id === "3" ? (
-                          <Col xs={24} sm={24} md={24} lg={24}>
-                            <InfoContract />
+                            <InfoClock _tab={_tab.id} />
                           </Col>
                         ) : _tab.id === "4" ? (
                           <Col
