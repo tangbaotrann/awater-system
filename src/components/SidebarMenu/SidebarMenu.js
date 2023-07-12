@@ -6,7 +6,7 @@ import {
   ProfileOutlined,
   WarningOutlined,
 } from "@ant-design/icons/lib/icons";
-import { Menu } from "antd";
+import { Menu } from "antd"; 
 import { useDispatch } from "react-redux";
 
 import "./SidebarMenu.css";
@@ -143,6 +143,14 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_MANAGEMENT_LOCATION.label,
               key: constants.CATEGORY_MANAGEMENT_LOCATION.key,
             },
+            {
+              label: constants.CATEGORY_PAYMENT_METHOD.label,
+              key: constants.CATEGORY_PAYMENT_METHOD.key,
+            },
+            { 
+              label: constants.CATEGORY_SCOPE.label,
+              key: constants.CATEGORY_SCOPE.key,
+            },
           ],
         },
       ]}
@@ -244,6 +252,20 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           sessionStorage.setItem(
             "currentPage",
             constants.CATEGORY_MANAGEMENT_LOCATION.key
+          );
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_PAYMENT_METHOD.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_PAYMENT_METHOD.key
+          );
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_SCOPE.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_SCOPE.key
           );
           isTabletOrMobile && onCloseDrawer();
         }

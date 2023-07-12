@@ -71,6 +71,14 @@ const constants = {
     label: "DM Khu vực",
     key: "CATEGORY_MANAGEMENT_LOCATION",
   },
+  CATEGORY_PAYMENT_METHOD: {
+    label: "DM Phương thức TT",
+    key: "CATEGORY_PAYMENT_METHOD",
+  },
+  CATEGORY_SCOPE: {
+    label: "DM phạm vi",
+    key: "CATEGORY_SCOPE",
+  },
   COLLECT_MONEY: {
     label: "Thu tiền",
     key: "COLLECT_MONEY",
