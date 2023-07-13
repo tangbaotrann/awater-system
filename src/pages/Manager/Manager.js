@@ -23,6 +23,10 @@ import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 
 import ListLocation from "../Category/ListLocation/ListLocation";
 
+import ListScope from "../Category/ListScope/ListScope";
+import ListReasons from "../Category/ListReasons/ListReasons";
+import ListCancel from "../Category/ListCancel/ListCancel";
+import ListWatch from "../Category/ListWatch/ListWatch";
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -74,12 +78,18 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
         <ListLocation />
-      ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
-        currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
-        <ListPaymentMethod />
-      ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
-        currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
-        <CustomerType />
+      ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
+        currentPage === constants.CATEGORY_SCOPE.key ? (
+        <ListScope />
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||
+        currentPage === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ? (
+        <ListReasons />
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key ||
+        currentPage === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key ? (
+        <ListCancel />
+      ) : sidebarMenu === constants.CATEGORY_WATCH.key ||
+        currentPage === constants.CATEGORY_WATCH.key ? (
+        <ListWatch />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />
