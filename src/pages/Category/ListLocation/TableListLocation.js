@@ -14,21 +14,9 @@ import {
   fetchApiAllRegionSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-<<<<<<< HEAD:src/pages/Category/List_Location/TableListLocation.js
-import "./List_Location.css";
-import AddListLocation from "./AddList_Location";
-import EditListLocation from "./Edit_List_Location";
-=======
 import "./ListLocation.css";
 import AddListLocation from "./AddListLocation";
-import { fetchApiAllRegion } from "../../../redux/slices/regionSlice/regionSlice";
-import {
-  fetchApiAllArea,
-  fetchApiDeleteArea,
-} from "../../../redux/slices/areaSlice/areaSlice";
 import EditListLocation from "./EditListLocation";
-
->>>>>>> db2f1b86aa435a9aab5293a887695af8780dfc54:src/pages/Category/ListLocation/TableListLocation.js
 // Tabs bottom
 const tabs_bc = [
   {
@@ -66,27 +54,27 @@ function TableListLocation({ isTabletOrMobile }) {
 
   // console.log("regions", regions);
 
-  useEffect(() => {
-    dispatch(fetchApiAllRegion());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchApiAllRegion());
+  // }, []);
 
-  // handle change tabs
-  const handleChangeTabs = (key) => {
-    if (key === "1") {
-      dispatch(fetchApiAllArea());
-    } else if (key === "2") {
-      setAddList_Location(true);
-    } else if (key === "3") {
-      setEdit_List_Location(true);
-    }
-  };
+  // // handle change tabs
+  // const handleChangeTabs = (key) => {
+  //   if (key === "1") {
+  //     dispatch(fetchApiAllArea());
+  //   } else if (key === "2") {
+  //     setAddList_Location(true);
+  //   } else if (key === "3") {
+  //     setEdit_List_Location(true);
+  //   }
+  // };
 
-  // handle delete area
-  const handleConfirmDeleteRegion = () => {
-    if (tabListbc) {
-      dispatch(fetchApiDeleteArea(tabListbc));
-    }
-  };
+  // // handle delete area
+  // const handleConfirmDeleteRegion = () => {
+  //   if (tabListbc) {
+  //     dispatch(fetchApiDeleteArea(tabListbc));
+  //   }
+  // };
 
   // hide modal
   const hideModal = () => {
@@ -117,7 +105,7 @@ function TableListLocation({ isTabletOrMobile }) {
                     placement="bottom"
                     title="Bạn có chắc chắn muốn xóa khu vực này không?"
                     // description={description}
-                    onConfirm={handleConfirmDeleteRegion}
+                    // onConfirm={handleConfirmDeleteRegion}
                     okText="Yes"
                     cancelText="No"
                   >
@@ -133,7 +121,7 @@ function TableListLocation({ isTabletOrMobile }) {
             key: _tab.id,
           };
         })}
-        onChange={handleChangeTabs}
+        // onChange={handleChangeTabs}
       />
 
       <Modal
@@ -146,11 +134,7 @@ function TableListLocation({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-<<<<<<< HEAD:src/pages/Category/List_Location/TableListLocation.js
         <AddListLocation tabListbc={tabListbc} hideModal={hideModal} />
-=======
-        <AddListLocation regions={regions} hideModal={hideModal} />
->>>>>>> db2f1b86aa435a9aab5293a887695af8780dfc54:src/pages/Category/ListLocation/TableListLocation.js
       </Modal>
       <Modal
         open={modalEdit_List_Location ? modalEdit_List_Location : openModal}
@@ -162,15 +146,7 @@ function TableListLocation({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-<<<<<<< HEAD:src/pages/Category/List_Location/TableListLocation.js
         <EditListLocation tabListbc={tabListbc} hideModal={hideModal} />
-=======
-        <EditListLocation
-          tabListbc={tabListbc}
-          regions={regions}
-          hideModal={hideModal}
-        />
->>>>>>> db2f1b86aa435a9aab5293a887695af8780dfc54:src/pages/Category/ListLocation/TableListLocation.js
       </Modal>
 
       {/* Notification */}
