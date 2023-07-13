@@ -1,36 +1,40 @@
 import React from "react";
-import { Button, Col, Form, Input, Row, Select, theme } from "antd";
+import { Button, Col, Form, Input, Row, theme } from "antd";
 import { CloseOutlined, FileAddOutlined } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
-import { fetchApiUpdateRegion } from "../../../redux/slices/regionSlice/regionSlice";
+import { fetchApiUpdatePriceObject } from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
 import { toast } from "react-toastify";
 
-const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
+const EditListRegionLocation = ({ tabListPO, hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+
   const dispatch = useDispatch();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const layout = {
     labelCol: {
       span: 4,
     },
-
   };
+
   // handle submit form (main)
   const handleSubmit = (values) => {
     if (values) {
-      dispatch(fetchApiUpdateRegion(values));
+      dispatch(fetchApiUpdatePriceObject(values));
+
       form1.resetFields();
       hideModal();
-      toast.success("Cập nhật vùng thành công.");
+      toast.success("Cập nhật thành công.");
     }
   };
+
   // handle submit error (main)
   const handleFailed = (error) => {
     console.log({ error });
   };
+
   return (
     <>
       <Form
@@ -45,9 +49,10 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
           padding: 24,
         }}
         fields={[
-          { name: "nhaMayId", value: tabListbc ? tabListbc?.nhaMayId : null },
-          { name: "id", value: tabListbc ? tabListbc?.id : null },
-          { name: "tenVung", value: tabListbc ? tabListbc?.tenVung : null },
+          { name: "id", value: tabListPO ? tabListPO?.id : null },
+          { name: "kyHieu", value: tabListPO ? tabListPO?.kyHieu : null },
+          { name: "moTa", value: tabListPO ? tabListPO?.moTa : null },
+          { name: "donViTinh", value: tabListPO ? tabListPO?.donViTinh : null },
         ]}
       >
         <Row gutter={24}>
@@ -59,20 +64,15 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên nhà máy" name="nhaMayId">
-              <Select placeholder="Chọn tên nhà máy" fieldNames="nhaMayId">
-                {factoryNames.map((_factory) => {
-                  return (
-                    <Select.Option key={_factory.id} value={_factory.id}>
-                      {_factory.tenNhaMay}
-                    </Select.Option>
-                  );
-                })}
-              </Select>
+            <Form.Item label="ID" name="id">
+              <Input
+                style={{ width: "100%" }}
+                name="id"
+                placeholder="Nhập ID"
+              />
             </Form.Item>
           </Col>
         </Row>
-
         <Row gutter={24}>
           <Col
             xs={24}
@@ -82,8 +82,30 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Vùng" name="id">
-              <Input style={{ width: "100%" }} name="id" />
+            <Form.Item label="Mã/Ký hiệu" name="kyHieu">
+              <Input
+                style={{ width: "100%" }}
+                name="kyHieu"
+                placeholder="Ký hiệu"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Row gutter={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
+            <Form.Item label="Tên/Mô tả" name="moTa">
+              <Input
+                style={{ width: "100%" }}
+                name="moTa"
+                placeholder="Nhập mô tả"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -96,8 +118,12 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên Vùng" name="tenVung">
-              <Input style={{ width: "100%" }} name="tenVung" />
+            <Form.Item label="Đơn vị tính" name="donViTinh">
+              <Input
+                style={{ width: "100%" }}
+                name="donViTinh"
+                placeholder="Nhập đơn vị"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -118,23 +144,8 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
           >
-            {/* Lưu Và Thêm Tiếp */}
             Cập nhật
           </Button>
-
-          {/* <Button
-            key="submit"
-            style={{
-              marginLeft: "10px",
-            }}
-            htmlType="submit"
-            icon={<SaveOutlined />}
-            className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
-          >
-            Lưu Và Đóng
-          </Button> */}
-
           <Button
             style={{
               marginLeft: "10px",

@@ -7,7 +7,7 @@ import tabListInvoicePrintSlice from "./slices/tabListInvoicePrintSlice/tabListI
 import tabListEnterIndexPageSlice from "./slices/tabListEnterIndexPageSlice/tabListEnterIndexPageSlice";
 import regionSlice from "./slices/regionSlice/regionSlice";
 import factorySlice from "./slices/factorySlice/factorySlice";
-
+import priceObjectSlice from "./slices/priceObjectSlice/priceObjectSlice";
 const store = configureStore({
   reducer: {
     sidebarSlice: sidebarSlice.reducer,
@@ -17,6 +17,7 @@ const store = configureStore({
     tabListEnterIndexPageSlice: tabListEnterIndexPageSlice.reducer,
     regionSlice: regionSlice.reducer,
     factorySlice: factorySlice.reducer,
+    priceObjectSlice: priceObjectSlice.reducer,
   },
 });
 
