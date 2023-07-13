@@ -8,32 +8,28 @@ import {
 import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import "react-toastify/dist/ReactToastify.css";
 
-import TableListLRL from "./TableListLRL";
+import TableListLocation from "./TableListLocation.js";
 import "../../../components/GlobalStyles/GlobalStyles.css";
 import "../../Manager/Contract/Contract.css";
 import "moment/locale/vi";
-import { fetchApiAllRegion } from "../../../redux/slices/regionSlice/regionSlice";
+import { fetchApiAllArea } from "../../../redux/slices/areaSlice/areaSlice.js";
 import {
   btnClickTabListInvoicePrintSelector,
-  fetchApiAllRegionSelector,
-} from "../../../redux/selector";
-import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+  fetchApiAllAreaSelector,
+} from "../../../redux/selector.js";
+import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice.js";
 
 moment.locale("vi");
 
-function ListRegionsLocation() {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
+function ListLocation() {
   const dispatch = useDispatch();
 
-  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
-  const regions = useSelector(fetchApiAllRegionSelector);
+  const areas = useSelector(fetchApiAllAreaSelector);
 
-  useEffect(() => {
-    dispatch(fetchApiAllRegion());
-  }, []);
+  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const columns = [
     {
@@ -43,16 +39,9 @@ function ListRegionsLocation() {
       width: 70,
     },
     {
-      title: "Id",
+      title: " Mã Khu Vực",
       dataIndex: "id",
       key: "id",
-      // width: 70,
-    },
-    {
-      title: " Mã Vùng",
-      dataIndex: "nhaMayId",
-      key: "nhaMayId",
-      // width: 170,
       render: (text, record) => (
         <>
           <SnippetsOutlined />
@@ -61,11 +50,20 @@ function ListRegionsLocation() {
       ),
     },
     {
-      title: "Tên Vùng",
-      dataIndex: "tenVung",
-      key: "tenVung",
+      title: "Tên Khu Vực",
+      dataIndex: "tenKhuVuc",
+      key: "tenKhuVuc",
+    },
+    {
+      title: "Vùng",
+      dataIndex: "vungId",
+      key: "vungId",
     },
   ];
+
+  useEffect(() => {
+    dispatch(fetchApiAllArea());
+  }, []);
 
   // handle row select
   const handleRowSelection = (selectedRowKeys, selectedRows) => {
@@ -96,7 +94,7 @@ function ListRegionsLocation() {
           {!isTabletOrMobile && (
             <Col span={8}>
               <Form.Item>
-                <TableListLRL />
+                <TableListLocation />
               </Form.Item>
             </Col>
           )}
@@ -122,6 +120,7 @@ function ListRegionsLocation() {
   return (
     <>
       <AdvancedSearchForm />
+
       <Table
         style={{ marginTop: "10px" }}
         size="small"
@@ -133,19 +132,20 @@ function ListRegionsLocation() {
           className: "cell-wrap",
         }))}
         dataSource={
-          regions?.length <= 0
+          areas?.length <= 0
             ? []
-            : regions.map((_region, index) => ({
+            : areas.map((_area, index) => ({
                 index: index + 1,
-                id: _region.id,
-                nhaMayId: _region.nhaMayId,
-                tenVung: _region.tenVung,
+                id: _area.id,
+                tenKhuVuc: _area.tenKhuVuc,
+                vungId: _area.vungId,
               }))
         }
         onRow={(record, index) => {
           return {
             onClick: () => {
               // clicked row to check radio
+              console.log(record);
               dispatch(
                 tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(
                   record
@@ -180,7 +180,9 @@ function ListRegionsLocation() {
               rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
-              content={<TableListLRL isTabletOrMobile={isTabletOrMobile} />}
+              content={
+                <TableListLocation isTabletOrMobile={isTabletOrMobile} />
+              }
             >
               <div className="contract-bottom-func">
                 <PlusOutlined />
@@ -188,7 +190,7 @@ function ListRegionsLocation() {
             </Popover>
           ) : (
             <div className="contract-bottom-func">
-              <TableListLRL />
+              <TableListLocation />
             </div>
           )}
         </div>
@@ -196,4 +198,4 @@ function ListRegionsLocation() {
     </>
   );
 }
-export default ListRegionsLocation;
+export default ListLocation;

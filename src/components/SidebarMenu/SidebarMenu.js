@@ -6,13 +6,14 @@ import {
   ProfileOutlined,
   WarningOutlined,
 } from "@ant-design/icons/lib/icons";
-import { Menu } from "antd"; 
+import { Menu } from "antd";
 import { useDispatch } from "react-redux";
 
 import "./SidebarMenu.css";
 import constants from "../../utils/constants";
 import sidebarSlice from "../../redux/slices/sidebarSlice/sidebarSlice";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
+import tabListInvoicePrintSlice from "../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 
 function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
   const dispatch = useDispatch();
@@ -147,7 +148,7 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_PAYMENT_METHOD.label,
               key: constants.CATEGORY_PAYMENT_METHOD.key,
             },
-            { 
+            {
               label: constants.CATEGORY_SCOPE.label,
               key: constants.CATEGORY_SCOPE.key,
             },
@@ -246,6 +247,9 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_MANAGEMENT_LRL.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          dispatch(
+            tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+          );
           sessionStorage.setItem(
             "currentPage",
             constants.CATEGORY_MANAGEMENT_LRL.key
@@ -253,6 +257,9 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_MANAGEMENT_LOCATION.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          dispatch(
+            tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+          );
           sessionStorage.setItem(
             "currentPage",
             constants.CATEGORY_MANAGEMENT_LOCATION.key
@@ -267,10 +274,7 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_SCOPE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          sessionStorage.setItem(
-            "currentPage",
-            constants.CATEGORY_SCOPE.key
-          );
+          sessionStorage.setItem("currentPage", constants.CATEGORY_SCOPE.key);
           isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_CUSTOMER_TYPE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
