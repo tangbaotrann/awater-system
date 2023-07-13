@@ -12,7 +12,7 @@ const regionSlice = createSlice({
     });
   },
 });
-
+ 
 // fetch api all region
 const fetchApiAllRegion = createAsyncThunk(
   "region/fetchApiAllRegion",

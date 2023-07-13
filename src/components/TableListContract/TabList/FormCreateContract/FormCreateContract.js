@@ -10,7 +10,7 @@ import { useMediaQuery } from "react-responsive";
 import InfoContract from "./InfoContract/InfoContract";
 import InfoClock from "./InfoClock/InfoClock";
 import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
-import InfoCustomer from "./InfoCustomer/InfoCustomer";
+import InfoCustomer from "./InfoCustomer/InfoCustomer"; 
 
 // Tabs
 const tabs = [
@@ -39,7 +39,9 @@ function FormCreateContract({ tabList, hideModal }) {
 
   // handle submit form (main)
   const handleSubmit = (values) => {
-    console.log("values", values);
+    const data = {...values}
+    data.nhaMayId = 2;
+    console.log("data", data);
   };
 
   // handle submit error (main)
@@ -97,7 +99,7 @@ function FormCreateContract({ tabList, hideModal }) {
                       ]}
                     >
                       {/* Mã khách hàng */}
-                      <Row>
+                      {/* <Row>
                         <Col xs={24} sm={24} md={12} lg={10}>
                           <Form.Item name="code_customer" label="Mã khách hàng">
                             <Input
@@ -106,7 +108,7 @@ function FormCreateContract({ tabList, hideModal }) {
                             />
                           </Form.Item>
                         </Col>
-                      </Row>
+                      </Row> */}
 
                       {/* Thông tin khách hàng + Đồng hồ */}
                       <Row>
