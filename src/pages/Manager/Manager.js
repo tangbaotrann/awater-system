@@ -18,6 +18,9 @@ import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
 import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
+import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
+import CustomerType from "../Category/Category_Customer_Type/CustomerType";
+
 import ListLocation from "../Category/ListLocation/ListLocation";
 
 function Manager() {
@@ -67,12 +70,16 @@ function Manager() {
         <ManagementPriceList />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LRL.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LRL.key ? (
-        // <h1>Danh muc vung</h1>
         <ListRegionsLocation />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
-        // <h1>Danh muc vung</h1>
         <ListLocation />
+      ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
+        currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
+        <ListPaymentMethod />
+      ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
+        currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
+        <CustomerType />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />

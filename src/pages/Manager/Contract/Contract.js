@@ -15,7 +15,7 @@ function Contract() {
     {
       key: "1",
       label: "Thông tin tìm kiếm",
-      children: <FormFilterContract />,
+      children: <FormFilterContract />, 
     },
   ];
 
