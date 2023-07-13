@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { Modal, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
@@ -9,9 +10,9 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import "./List_Location.css";
-import AddListLocation from "./AddList_Location";
-import EditListLocation from "./Edit_List_Location";
+import "./listscope.css";
+import EditListReasons from "./EditListReasons";
+import AddListReasons from "./AddListReasons";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -37,10 +38,10 @@ const tabs_bc = [
   },
 ];
 
-function TableListLocation({ isTabletOrMobile }) {
+function TableListPC({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalAddList_Location, setAddList_Location] = useState(false);
-  const [modalEdit_List_Location, setEdit_List_Location] = useState(false);
+  const [isOpenModalAdd, setIsOpenModalAdd] = useState(false);
+  const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
@@ -49,9 +50,9 @@ function TableListLocation({ isTabletOrMobile }) {
     if (key === "1") {
       message.error("Tính năng chưa khả dụng!");
     } else if (key === "2") {
-      setAddList_Location(true);
+      setIsOpenModalAdd(true);
     } else if (key === "3") {
-      setEdit_List_Location(true);
+      setIsOpenModalEdit(true);
     } else if (key === "4") {
       message.error("Tính năng chưa khả dụng!");
     }
@@ -60,8 +61,9 @@ function TableListLocation({ isTabletOrMobile }) {
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setAddList_Location(false);
-    setEdit_List_Location(false);
+    setIsOpenModalAdd(false);
+    setIsOpenModalEdit(false);
+
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
@@ -105,7 +107,7 @@ function TableListLocation({ isTabletOrMobile }) {
       />
 
       <Modal
-        open={modalAddList_Location ? modalAddList_Location : openModal}
+        open={isOpenModalAdd ? isOpenModalAdd : openModal}
         onCancel={hideModal}
         width={700}
         centered={true}
@@ -114,10 +116,11 @@ function TableListLocation({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <AddListLocation tabListbc={tabListbc} hideModal={hideModal} />
+        <AddListReasons tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
+
       <Modal
-        open={modalEdit_List_Location ? modalEdit_List_Location : openModal}
+        open={isOpenModalEdit ? isOpenModalEdit : openModal}
         onCancel={hideModal}
         width={700}
         centered={true}
@@ -126,10 +129,10 @@ function TableListLocation({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-        <EditListLocation tabListbc={tabListbc} hideModal={hideModal} />
+        <EditListReasons tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
     </>
   );
 }
 
-export default TableListLocation;
+export default TableListPC;

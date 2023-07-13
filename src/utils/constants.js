@@ -83,6 +83,18 @@ const constants = {
     label: "DM phạm vi",
     key: "CATEGORY_SCOPE",
   },
+  CATEGORY_MANAGEMEN_REASONS_INSTEAD: {
+    label: "DM Lý do thay",
+    key: "CATEGORY_MANAGEMEN_REASONS_INSTEAD",
+  },
+  CATEGORY_MANAGEMEN_REASONS_CANCEL: {
+    label: "DM Lý do hủy",
+    key: "CATEGORY_MANAGEMEN_REASONS_CANCEL",
+  },
+  CATEGORY_WATCH: {
+    label: "DM kiểu đồng hồ",
+    key: "CATEGORY_WATCH",
+  },
   COLLECT_MONEY: {
     label: "Thu tiền",
     key: "COLLECT_MONEY",
