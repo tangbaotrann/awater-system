@@ -1,27 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Button, Col, Form, Input, Row, Select, theme } from "antd";
 import {
   CloseOutlined,
   FileAddOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
-import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
-
-import { fetchApiAllFactorySelector } from "../../../redux/selector";
-import { fetchApiAllFactory } from "../../../redux/slices/factorySlice/factorySlice";
 import { fetchApiAddRegion } from "../../../redux/slices/regionSlice/regionSlice";
 
-const ListRegionsLocation = ({ hideModal }) => {
+const ListRegionsLocation = ({ hideModal, factoryNames }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
 
   const firstInputRef = useRef();
 
   const dispatch = useDispatch();
-
-  const factoryNames = useSelector(fetchApiAllFactorySelector);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
@@ -34,10 +28,6 @@ const ListRegionsLocation = ({ hideModal }) => {
     // },
   };
 
-  useEffect(() => {
-    dispatch(fetchApiAllFactory());
-  }, []);
-
   // handle save and close modal
   const handleSaveAndClose = () => {
     form1.validateFields().then((values) => {
@@ -46,7 +36,6 @@ const ListRegionsLocation = ({ hideModal }) => {
 
         form1.resetFields();
         hideModal();
-        toast.success("Thêm thành công vùng.");
       }
     });
   };
@@ -59,7 +48,6 @@ const ListRegionsLocation = ({ hideModal }) => {
 
         form1.resetFields();
         firstInputRef.current.focus();
-        toast.success("Thêm thành công vùng.");
       }
     });
   };
@@ -94,10 +82,14 @@ const ListRegionsLocation = ({ hideModal }) => {
             <Form.Item label="Tên nhà máy" name="nhaMayId">
               <Select
                 ref={firstInputRef}
-                options={factoryNames.map((_factory) => ({
-                  label: _factory.tenNhaMay,
-                  value: _factory.id,
-                }))}
+                options={
+                  factoryNames?.length <= 0
+                    ? []
+                    : factoryNames.map((_factory) => ({
+                        label: _factory.tenNhaMay,
+                        value: _factory.id,
+                      }))
+                }
                 fieldNames="nhaMayId"
                 placeholder="Chọn tên nhà máy"
               />

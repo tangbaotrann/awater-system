@@ -5,26 +5,25 @@ import { CloseOutlined, FileAddOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { fetchApiUpdateRegion } from "../../../redux/slices/regionSlice/regionSlice";
-import { toast } from "react-toastify";
 
 const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
   const dispatch = useDispatch();
+
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const layout = {
     labelCol: {
       span: 4,
     },
-
   };
-  // handle submit form (main)
+
+  // handle submit form (update region)
   const handleSubmit = (values) => {
     if (values) {
       dispatch(fetchApiUpdateRegion(values));
       form1.resetFields();
       hideModal();
-      toast.success("Cập nhật vùng thành công.");
     }
   };
   // handle submit error (main)
@@ -61,13 +60,15 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
           >
             <Form.Item label="Tên nhà máy" name="nhaMayId">
               <Select placeholder="Chọn tên nhà máy" fieldNames="nhaMayId">
-                {factoryNames.map((_factory) => {
-                  return (
-                    <Select.Option key={_factory.id} value={_factory.id}>
-                      {_factory.tenNhaMay}
-                    </Select.Option>
-                  );
-                })}
+                {factoryNames?.length <= 0
+                  ? []
+                  : factoryNames.map((_factory) => {
+                      return (
+                        <Select.Option key={_factory.id} value={_factory.id}>
+                          {_factory.tenNhaMay}
+                        </Select.Option>
+                      );
+                    })}
               </Select>
             </Form.Item>
           </Col>

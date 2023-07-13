@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getRequest, postRequest } from "../../../services";
+import { toast } from "react-toastify";
 
 const regionSlice = createSlice({
   name: "region",
@@ -40,6 +41,8 @@ const fetchApiAddRegion = createAsyncThunk(
         tenVung,
       });
 
+      toast.success("Thêm thành công vùng.");
+
       return res.data.data;
     } catch (error) {
       console.log({ error });
@@ -60,6 +63,8 @@ const fetchApiUpdateRegion = createAsyncThunk(
         tenVung,
       });
 
+      toast.success("Cập nhật vùng thành công.");
+
       return res.data.data;
     } catch (error) {
       console.log({ error });
@@ -75,6 +80,8 @@ const fetchApiDeleteRegion = createAsyncThunk(
       const { id } = tabListbc;
 
       const res = await postRequest(`vung/delete?id=${id}`, null);
+
+      toast.success("Xóa vùng thành công.");
 
       return res.data.data;
     } catch (error) {
