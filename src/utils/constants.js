@@ -60,7 +60,7 @@ const constants = {
     key: "CATEGORY_MANAGEMENT_READING",
   },
   CATEGORY_MANAGEMENT_PRICE_LIST: {
-    label: "QLDM đối bảng giá",
+    label: "DM bảng giá",
     key: "CATEGORY_MANAGEMENT_PRICE_LIST",
   },
   CATEGORY_MANAGEMENT_LRL: {
@@ -74,6 +74,10 @@ const constants = {
   CATEGORY_PAYMENT_METHOD: {
     label: "DM Phương thức TT",
     key: "CATEGORY_PAYMENT_METHOD",
+  },
+  CATEGORY_CUSTOMER_TYPE: {
+    label: "DM loại KH",
+    key: "CATEGORY_CUSTOMER_TYPE",
   },
   CATEGORY_SCOPE: {
     label: "DM phạm vi",

@@ -13,8 +13,8 @@ axiosInstance.defaults.headers = {
 
 // all request will wait 1 seconds before timeout
 // axiosInstance.defaults.timeout = 1000;
-
+ 
 // credentials
-axiosInstance.defaults.withCredentials = true;
+// axiosInstance.defaults.withCredentials = true;
 
 export { axiosInstance as axiosClient };

@@ -151,6 +151,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_SCOPE.label,
               key: constants.CATEGORY_SCOPE.key,
             },
+            { 
+              label: constants.CATEGORY_CUSTOMER_TYPE.label,
+              key: constants.CATEGORY_CUSTOMER_TYPE.key,
+            },
           ],
         },
       ]}
@@ -266,6 +270,13 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           sessionStorage.setItem(
             "currentPage",
             constants.CATEGORY_SCOPE.key
+          );
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_CUSTOMER_TYPE.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_CUSTOMER_TYPE.key
           );
           isTabletOrMobile && onCloseDrawer();
         }

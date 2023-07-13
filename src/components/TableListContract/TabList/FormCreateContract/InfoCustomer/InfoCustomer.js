@@ -40,7 +40,7 @@ function InfoCustomer() {
               fieldNames="type_customer"
               options={[
                 { value: "1", label: "1 - Cá nhân" },
-                { value: "2", label: "2 - Cá nhân" },
+                { value: "2", label: "2 - Đơn vị, tổ chức" },
               ]}
               placeholder="Chọn loại khách hàng"
             />
