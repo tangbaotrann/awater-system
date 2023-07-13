@@ -20,6 +20,7 @@ import ListLocation from "../Category/List_Location/List_Location.jsx";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
 import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
 import CustomerType from "../Category/Category_Customer_Type/CustomerType";
+import List_Location from "../Category/List_Location/List_Location.jsx";
 
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
@@ -78,7 +79,6 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
         currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
         <CustomerType />
-        // <h1>Danh muc vung</h1>
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />
