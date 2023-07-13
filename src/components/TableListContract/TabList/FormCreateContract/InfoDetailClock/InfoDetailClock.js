@@ -86,8 +86,23 @@ function InfoDetailClock() {
             <Select
               fieldNames=""
               options={[
-                { value: "1", label: "Vùng 1" },
-                { value: "2", label: "Vùng 2" },
+                { value: "1", label: "baovinh - Bảo Vinh" },
+                { value: "2", label: "hungdao - Hưng Đạo_TB" },
+                { value: "3", label: "lienha - Liên Hà" },
+                { value: "4", label: "lamsan - Lâm Sản" },
+                { value: "5", label: "leloiQ - Lê Lợi_Quang_TB" },
+                { value: "6", label: "leloiT - Lê Lợi_Tuấn_TB" },
+                { value: "7", label: "nguyetlu - Nguyệt Lũ_TB" },
+                { value: "8", label: "thuongkiet - Thường Kiệt_TB" },
+                { value: "9", label: "trungvuong - Trung Vương_TB" },
+                { value: "10", label: "Tuyến 1 - Đông Lỗ - Tuyến 1 - Đông Lỗ" },
+                { value: "11", label: "tanan - Tân An" },
+                { value: "12", label: "tanlap - Tân Lập_TB" },
+                { value: "13", label: "Taytien - Tây Tiến" },
+                { value: "14", label: "Vulang - Vũ Lăng" },
+                { value: "15", label: "dongcao1 - Đông Cao 1_TB" },
+                { value: "16", label: "dongcao2T - Đông Cao 2_Tường_TB" },
+                { value: "17", label: "dongcao2D - Đông Cao 2_Đảm_TB" },
               ]}
               placeholder="Chọn vùng"
             />
@@ -100,8 +115,16 @@ function InfoDetailClock() {
             <Select
               fieldNames=""
               options={[
-                { value: "1", label: "Khu vực 1" },
-                { value: "2", label: "Khu vực 2" },
+                { value: "1", label: "Bảo Vinh" },
+                { value: "2", label: "Lâm Sản" },
+                { value: "3", label: "Liên Hà 2" },
+                { value: "4", label: "Liên Hà 3" },
+                { value: "5", label: "Liên Hà 4" },
+                { value: "6", label: "Liên Hà 5" },
+                { value: "7", label: "Tân An 1" },
+                { value: "8", label: "Tân An 2" },
+                { value: "9", label: "Tây Tiến_TB" },
+                { value: "10", label: "Vũ Lăng_TB" },
               ]}
               placeholder="Chọn khu vực"
             />
@@ -114,8 +137,9 @@ function InfoDetailClock() {
             <Select
               fieldNames=""
               options={[
-                { value: "1", label: "Nhân viên 1" },
-                { value: "2", label: "Nhân viên 2" },
+                { value: "1", label: "Duy Thành" },
+                { value: "2", label: "Nguyễn Văn Hiệp" },
+                { value: "3", label: "Trịnh Ngọc Tuấn" },
               ]}
               placeholder="Chọn nhân viên"
             />
@@ -130,8 +154,13 @@ function InfoDetailClock() {
             <Select
               fieldNames=""
               options={[
-                { value: "1", label: "Tuyến đọc 1" },
-                { value: "2", label: "Tuyến đọc 2" },
+                { value: "1", label: "baovinh - Bảo Vinh" },
+                { value: "2", label: "bosung1 - tuyến bổ sung" },
+                { value: "3", label: "CatnuocBH - tuyến cắt nước" },
+                { value: "4", label: "DN250baoha - Đồng hồ tổng Bảo Hà" },
+                { value: "5", label: "lamsan - lâm Sản" },
+                { value: "6", label: "lienha - Liên Hà" },
+                { value: "7", label: "tanan - Tân An" },
               ]}
               placeholder="Chọn tuyến đọc"
             />

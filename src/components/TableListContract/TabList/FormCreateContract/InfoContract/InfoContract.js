@@ -60,8 +60,38 @@ function InfoContract() {
             <Select
               fieldNames=""
               options={[
-                { value: "1", label: "100000" },
-                { value: "2", label: "200000" },
+                { value: "1", label: "SH - Sinh hoạt Lào Cai" },
+                { value: "2", label: "UT - Ưu đãi LC" },
+                { value: "3", label: "HC - Tổ Chức LC" },
+                { value: "4", label: "SH_TB - Sinh hoạt Tây Tiến" },
+                { value: "5", label: "KD - Kinh Doanh LC" },
+                { value: "6", label: "SH_LV - Sinh hoạt Vũ Lăng" },
+                { value: "7", label: "SH_KTT - sinh hoạt không mức tối thiểu" },
+                { value: "8", label: "SH_ĐL - Nhà máy Đông Lỗ tối thiểu" },
+                { value: "9", label: "SH_DL_KM - SH Khuyến mại" },
+                { value: "10", label: "SH 10k - sinh hoạt Bảo Hà 10k" },
+                { value: "11", label: "HC_DL - Tổ chức sự nghiệp ĐL" },
+                { value: "12", label: "HDSX_DL - hoạt động sản xuất vật chất" },
+                { value: "13", label: "KDDV_DL - kinh doanh dịch vụ Đông Lỗ" },
+                { value: "14", label: "SH_DLCS - COVID19" },
+                { value: "15", label: "KD_TT - Kinh Doanh Tây Tiến" },
+                {
+                  value: "16",
+                  label: "HC_SN Vũ Lăng - Hành chính sự nghiệp Vũ Lăng",
+                },
+                {
+                  value: "17",
+                  label: "HC_SN Tây Tiến - Hành chính sự nghiệp Tây Tiến",
+                },
+                { value: "18", label: "SXVC_TB - Sản xuất vật chất Thái Bình" },
+                { value: "19", label: "SH.1 - Sinh hoạt 1 giá" },
+                {
+                  value: "20",
+                  label: "SH_VL_TT - Sinh hoạt Vũ Lăng tối thiểu",
+                },
+                { value: "21", label: "KCN - Khu công nghiệp Đoan Bái" },
+                { value: "22", label: "SX_VL - Trại Gà" },
+                { value: "23", label: "HDSX_LC - Sản xuất Lào Cai" },
               ]}
               placeholder="Chọn giá"
             />
@@ -74,8 +104,10 @@ function InfoContract() {
             <Select
               fieldNames=""
               options={[
-                { value: "1", label: "SD 1" },
-                { value: "2", label: "SD 2" },
+                { value: "1", label: "Hành Chính, Sự Nghiệp" },
+                { value: "2", label: "Sinh hoạt" },
+                { value: "3", label: "Sinh Hoạt_TB" },
+                { value: "4", label: "Sản xuất" },
               ]}
               placeholder="Chọn mục đích SD"
             />
@@ -104,8 +136,10 @@ function InfoContract() {
             <Select
               fieldNames=""
               options={[
-                { value: "1", label: "HT 1" },
-                { value: "2", label: "HT 2" },
+                { value: "1", label: "1 - TM hoặc CK" },
+                { value: "2", label: "2 - Chuyển khoản" },
+                { value: "3", label: "3 - Tiền mặt" },
+                { value: "4", label: "4 - Trừ lương" },
               ]}
               placeholder="Chọn hình thức TT"
             />
@@ -260,17 +294,10 @@ function InfoContract() {
           </Form.Item>
         </Col> */}
 
-        {/* Đơn vị HC */}
+        {/* Kinh độ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="" label="Đơn vị HC" {...formItemLayout}>
-            <Select
-              fieldNames=""
-              options={[
-                { value: "1", label: "Đơn vị 1" },
-                { value: "2", label: "Đơn vị 2" },
-              ]}
-              placeholder="Chọn đơn vị"
-            />
+          <Form.Item name="" label="Kinh độ" {...formItemLayout}>
+            <Input name="" placeholder="Nhập kinh độ" />
           </Form.Item>
         </Col>
 
@@ -287,24 +314,15 @@ function InfoContract() {
       </Row>
 
       <Row>
-        {/* Kinh độ */}
-        <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="" label="Kinh độ" {...formItemLayout}>
-            <Input name="" placeholder="Nhập kinh độ" />
-          </Form.Item>
-        </Col>
-
         {/* Vĩ độ */}
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="" label="Vĩ độ" {...formItemLayout}>
             <Input name="" placeholder="Nhập vĩ độ" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
-        {/* Ghi chú */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+         {/* Ghi chú */}
+         <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item name="" label="Ghi chú: " {...formItemLayout}>
             <Input name="" placeholder="Nhập ghi chú" />
           </Form.Item>
