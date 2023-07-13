@@ -1,27 +1,13 @@
 import React from "react";
 import { Button, Col, Form, Input, Row, Select, theme } from "antd";
-import {
-  CloseOutlined,
-  FileAddOutlined,
-  SaveOutlined,
-} from "@ant-design/icons";
-
+import { CloseOutlined, FileAddOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 
-const AddList_Location = ({ hideModal }) => { 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    console.log("values", values);
-  };
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
-  const { Option } = Select;
+const EditListLocation = ({ tabListbc, regions, hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const layout = {
     labelCol: {
@@ -31,6 +17,19 @@ const AddList_Location = ({ hideModal }) => {
     //   span: 40,
     // },
   };
+
+  console.log(tabListbc);
+
+  // handle submit form (main)
+  const handleSubmit = (values) => {
+    console.log("values", values);
+  };
+
+  // handle submit error (main)
+  const handleFailed = (error) => {
+    console.log({ error });
+  };
+
   return (
     <>
       <Form
@@ -44,6 +43,11 @@ const AddList_Location = ({ hideModal }) => {
           borderRadius: token.borderRadiusLG,
           padding: 24,
         }}
+        fields={[
+          { name: "id", value: tabListbc ? tabListbc?.id : null },
+          { name: "tenKhuVuc", value: tabListbc ? tabListbc?.tenKhuVuc : null },
+          { name: "vungId", value: tabListbc ? tabListbc?.vungId : null },
+        ]}
       >
         <Row gutter={24}>
           <Col
@@ -54,22 +58,12 @@ const AddList_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Khu Vực">
-              <Input style={{ width: "100%" }} />
-            </Form.Item>
-          </Col>
-        </Row>
-        <Row>
-          <Col
-            xs={24}
-            sm={12}
-            md={12}
-            lg={24}
-            span={24}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Form.Item label="Tên Khu Vực">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Mã Khu Vực" name="id">
+              <Input
+                style={{ width: "100%" }}
+                name="id"
+                placeholder="Nhập mã khu vực"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -83,18 +77,48 @@ const AddList_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Vùng">
+            <Form.Item label="Tên Khu Vực" name="tenKhuVuc">
+              <Input
+                style={{ width: "100%" }}
+                name="tenKhuVuc"
+                placeholder="Nhập tên khu vực"
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
+            <Form.Item label="Vùng" name="vungId">
+              <Select
+                style={{ width: "100%" }}
+                fieldNames="vungId"
+                options={
+                  regions?.length <= 0
+                    ? []
+                    : regions.map((_regoin) => ({
+                        label: _regoin.tenVung,
+                        value: _regoin.id,
+                      }))
+                }
+                placeholder="Chọn vùng"
+                disabled
+              />
+            </Form.Item>
+
+            {/* <Form.Item label="Khu Vực Cha">
               <Select style={{ width: "100%" }}>
                 <Option value="A">A</Option>
                 <Option value="B">B</Option>
               </Select>
-            </Form.Item>
-            <Form.Item label="Khu Vực Cha">
-              <Select style={{ width: "100%" }}>
-                <Option value="A">A</Option>
-                <Option value="B">B</Option>
-              </Select>
-            </Form.Item>
+            </Form.Item> */}
           </Col>
         </Row>
         <Row
@@ -106,18 +130,18 @@ const AddList_Location = ({ hideModal }) => {
           }}
         >
           <Button
-            key="reset"
+            key="update"
+            htmlType="submit"
             style={{
               marginLeft: "10px",
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
-            Lưu Và Thêm Tiếp
+            Cập nhật
           </Button>
 
-          <Button
+          {/* <Button
             key="submit"
             style={{
               marginLeft: "10px",
@@ -125,19 +149,16 @@ const AddList_Location = ({ hideModal }) => {
             htmlType="submit"
             icon={<SaveOutlined />}
             className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Đóng
-          </Button>
+          </Button> */}
 
           <Button
             style={{
               marginLeft: "10px",
             }}
             icon={<CloseOutlined />}
-            htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng
@@ -148,4 +169,4 @@ const AddList_Location = ({ hideModal }) => {
   );
 };
 
-export default AddList_Location;
+export default EditListLocation;

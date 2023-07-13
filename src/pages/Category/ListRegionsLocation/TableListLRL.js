@@ -7,6 +7,8 @@ import {
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+
 import {
   btnClickTabListInvoicePrintSelector,
   fetchApiAllFactorySelector,
@@ -20,7 +22,6 @@ import {
   fetchApiAllRegion,
   fetchApiDeleteRegion,
 } from "../../../redux/slices/regionSlice/regionSlice";
-import { ToastContainer, toast } from "react-toastify";
 
 // Tabs bottom
 const tabs_bc = [
@@ -90,7 +91,6 @@ function TableListLRL({ isTabletOrMobile }) {
     console.log(tabListbc);
     if (tabListbc) {
       dispatch(fetchApiDeleteRegion(tabListbc));
-      toast.success("Xóa vùng thành công.");
     }
   };
 
@@ -142,7 +142,10 @@ function TableListLRL({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <ListRegionsLocation hideModal={hideModal} />
+        <ListRegionsLocation
+          hideModal={hideModal}
+          factoryNames={factoryNames}
+        />
       </Modal>
       <Modal
         open={modalEditLRL ? modalEditLRL : openModal}
@@ -162,7 +165,7 @@ function TableListLRL({ isTabletOrMobile }) {
       </Modal>
 
       {/* Notification */}
-      <ToastContainer position="top-right" autoClose="2000" />
+      <ToastContainer position="top-right" autoClose="1000" />
     </>
   );
 }
