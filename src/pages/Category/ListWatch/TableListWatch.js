@@ -10,8 +10,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./List_Location.css";
-import AddListLocation from "./AddList_Location";
-import EditListLocation from "./Edit_List_Location";
+import AddListLocation from "./AddListWatch";
+import EditListLocation from "./EditAddListWatch";
 // Tabs bottom
 const tabs_bc = [
   {

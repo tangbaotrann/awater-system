@@ -6,7 +6,7 @@ import {
   ProfileOutlined,
   WarningOutlined,
 } from "@ant-design/icons/lib/icons";
-import { Menu } from "antd"; 
+import { Menu } from "antd";
 import { useDispatch } from "react-redux";
 
 import "./SidebarMenu.css";
@@ -147,9 +147,21 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_PAYMENT_METHOD.label,
               key: constants.CATEGORY_PAYMENT_METHOD.key,
             },
-            { 
+            {
               label: constants.CATEGORY_SCOPE.label,
               key: constants.CATEGORY_SCOPE.key,
+            },
+            {
+              label: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.label,
+              key: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key,
+            },
+            {
+              label: constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.label,
+              key: constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key,
+            },
+            {
+              label: constants.CATEGORY_WATCH.label,
+              key: constants.CATEGORY_WATCH.key,
             },
           ],
         },
@@ -254,6 +266,28 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
             constants.CATEGORY_MANAGEMENT_LOCATION.key
           );
           isTabletOrMobile && onCloseDrawer();
+        } else if (
+          item.key === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key
+        ) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key
+          );
+          isTabletOrMobile && onCloseDrawer();
+        } else if (
+          item.key === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key
+        ) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key
+          );
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_WATCH.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_PAYMENT_METHOD.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem(
@@ -263,12 +297,14 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_SCOPE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          sessionStorage.setItem(
-            "currentPage",
-            constants.CATEGORY_SCOPE.key
-          );
+          sessionStorage.setItem("currentPage", constants.CATEGORY_SCOPE.key);
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_WATCH.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
           isTabletOrMobile && onCloseDrawer();
         }
+
         // menu 5
         else if (item.key === constants.FAILURE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
