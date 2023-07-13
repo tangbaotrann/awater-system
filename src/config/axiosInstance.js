@@ -15,6 +15,6 @@ axiosInstance.defaults.headers = {
 // axiosInstance.defaults.timeout = 1000;
 
 // credentials
-axiosInstance.defaults.withCredentials = true;
+// axiosInstance.defaults.withCredentials = true;
 
 export { axiosInstance as axiosClient };
