@@ -9,12 +9,25 @@ import {
   Select,
   Space,
 } from "antd";
-import React, { useEffect, useId } from "react";
+import React, { useEffect } from "react";
 
 import "./ModalAddReading.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchApiAllFactory } from "../../../../../redux/slices/factorySlice/factorySlice";
+import {
+  fetchApiAllAreaSelector,
+  fetchApiAllFactorySelector,
+} from "../../../../../redux/selector";
+import { fetchApiAllArea } from "../../../../../redux/slices/areaSlice/areaSlice";
 
 const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
+  const dispatch = useDispatch();
+
+  const factorys = useSelector(fetchApiAllFactorySelector);
+  const areas = useSelector(fetchApiAllAreaSelector);
+
+  console.log(areas);
+
   const employeeOptions = [];
   for (let i = 1; i < 36; i++) {
     employeeOptions.push({
@@ -48,6 +61,7 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
     form.setFieldValue("cashier", tabList?.cashier || "");
     form.setFieldValue("indexingPeriod", tabList?.indexingPeriod || "");
   }, [tabList]);
+
   useEffect(() => {
     if (!isOpen) return;
     return () => {
@@ -59,6 +73,14 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
       form.setFieldValue("indexingPeriod", "");
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    dispatch(fetchApiAllFactory());
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchApiAllArea());
+  }, []);
 
   return (
     <Modal
@@ -80,10 +102,114 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
         initialValues={{ remember: true }}
         autoComplete="off"
       >
+        {/* Id */}
+        <Form.Item
+          label="Id:"
+          name="id"
+          rules={[{ required: true, message: "Nhập id!" }]}
+        >
+          <Input
+            name="id"
+            size="middle"
+            placeholder="Nhập id"
+            style={{ width: "100%" }}
+          />
+        </Form.Item>
+
+        {/* Nhà máy id  */}
+        <Form.Item
+          label="Nhà máy id:"
+          name="nhaMayId"
+          rules={[{ required: true, message: "Hãy chọn nhà máy!" }]}
+        >
+          <Select
+            fieldNames="nhaMayId"
+            size="middle"
+            placeholder="Chọn nhà máy"
+            style={{ width: "100%" }}
+            options={
+              factorys?.length <= 0
+                ? []
+                : factorys.map((_factory) => ({
+                    label: _factory.tenNhaMay,
+                    value: _factory.id,
+                  }))
+            }
+          />
+        </Form.Item>
+
+        {/* Người quản lý id  */}
+        <Form.Item
+          label="Người quản lý id:"
+          name="nguoiQuanLyId"
+          rules={[{ required: true, message: "Nhập id người quản lý!" }]}
+        >
+          <Input
+            name="nguoiQuanLyId"
+            size="middle"
+            placeholder="Nhập id người quản lý"
+            style={{ width: "100%" }}
+          />
+        </Form.Item>
+
+        {/* Mã tuyến  */}
+        <Form.Item
+          label="Mã tuyến:"
+          name="maTuyen"
+          rules={[{ required: true, message: "Nhập mã tuyến!" }]}
+        >
+          <Input
+            name="maTuyen"
+            size="middle"
+            placeholder="Nhập mã tuyến"
+            style={{ width: "100%" }}
+          />
+        </Form.Item>
+
+        {/* Tên tuyến */}
+        <Form.Item
+          label="Tên tuyến:"
+          name="tenTuyen"
+          rules={[{ required: true, message: "Nhập tên tuyến!" }]}
+        >
+          <Input placeholder="Tên tuyến" name="tenTuyen" />
+        </Form.Item>
+
+        {/* Người thu tiền id */}
+        <Form.Item
+          label="Người thu tiền id:"
+          name="nguoiThuTienId"
+          rules={[{ required: true, message: "Nhập id người thu tiền!" }]}
+        >
+          <Input placeholder="Nhập id người thu tiền" name="nguoiThuTienId" />
+        </Form.Item>
+
+        {/* Khu vực id */}
+        <Form.Item
+          label="Khu vực id:"
+          name="khuVucId"
+          rules={[{ required: true, message: "Hãy chọn khu vực!" }]}
+        >
+          <Select
+            fieldNames="khuVucId"
+            size="middle"
+            placeholder="Chọn khu vực"
+            style={{ width: "100%" }}
+            options={
+              areas?.length <= 0
+                ? []
+                : areas.map((_area) => ({
+                    label: _area.tenKhuVuc,
+                    value: _area.id,
+                  }))
+            }
+          />
+        </Form.Item>
+
         <Form.Item
           label="Nhân viên:"
           name="employee"
-          rules={[{ required: true, message: "Hãy chọn nhân viên!" }]}
+          // rules={[{ required: true, message: "Hãy chọn nhân viên!" }]}
         >
           <Select
             name="employee"
@@ -96,7 +222,7 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
         <Form.Item
           label="Số thứ tự:"
           name="index"
-          rules={[{ required: true, message: "Hãy nhập số thứ tự!" }]}
+          // rules={[{ required: true, message: "Hãy nhập số thứ tự!" }]}
         >
           <InputNumber
             min={1}
@@ -104,20 +230,6 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
             placeholder="Số thứ tự"
             style={{ width: "100%" }}
           />
-        </Form.Item>
-        <Form.Item
-          label="Mã tuyến:"
-          name="codeLine"
-          rules={[{ required: true, message: "Hãy nhập vào mã tuyến!" }]}
-        >
-          <Input placeholder="Mã tuyến" name="codeLine" />
-        </Form.Item>
-        <Form.Item
-          label="Tên tuyến:"
-          name="nameLine"
-          rules={[{ required: true, message: "Hãy nhập vào tên tuyến!" }]}
-        >
-          <Input placeholder="Tên tuyến" name="nameLine" />
         </Form.Item>
         <Form.Item label="Nhân viên thu tiền:" name="cashier">
           <Select
@@ -215,8 +327,16 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
           </div>
         )}
 
-        <Form.Item className="form-item-button">
-          <Space size={5} className="modal-button-actions">
+        <Form.Item
+          className="form-item-button"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "14px 0",
+          }}
+        >
+          <Space size={12} className="modal-button-actions">
             <Button
               className="button"
               type="primary"

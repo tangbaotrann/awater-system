@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-import { deleteRequest, getRequest, postRequest } from "../../../services";
+import {
+  deleteRequest,
+  getRequest,
+  postRequest,
+  putRequest,
+} from "../../../services";
 
 const areaSlice = createSlice({
   name: "area",
@@ -51,6 +56,28 @@ const fetchApiAddArea = createAsyncThunk(
   }
 );
 
+// fetch api update area
+const fetchApiUpdateArea = createAsyncThunk(
+  "area/fetchApiUpdateArea",
+  async ({ values, tabListbc }) => {
+    try {
+      const { id, tenKhuVuc, vungId } = values;
+
+      const res = await putRequest(`khu-vuc/update/${tabListbc.id}`, {
+        id,
+        tenKhuVuc,
+        vungId,
+      });
+
+      toast.success("Cập nhật khu vực thành công.");
+
+      return res.data.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
 // fetch api delete area
 const fetchApiDeleteArea = createAsyncThunk(
   "area/fetchApiDeleteArea",
@@ -69,6 +96,11 @@ const fetchApiDeleteArea = createAsyncThunk(
   }
 );
 
-export { fetchApiAllArea, fetchApiAddArea, fetchApiDeleteArea };
+export {
+  fetchApiAllArea,
+  fetchApiAddArea,
+  fetchApiUpdateArea,
+  fetchApiDeleteArea,
+};
 
 export default areaSlice;

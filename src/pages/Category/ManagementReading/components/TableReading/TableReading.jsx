@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
 import { btnClickTabListContract } from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
 import "./TableReading.css";
+import {
+  btnClickTabListContractSelector,
+  fetchApiAllReadingSelector,
+} from "../../../../../redux/selector";
+import { fetchApiAllReading } from "../../../../../redux/slices/readingSlice/readingSlice";
 
 const readingColumns = (showHeader) => [
   {
@@ -58,30 +63,41 @@ const readingColumns = (showHeader) => [
 ];
 
 const TableReading = () => {
-  const readingData = [];
-  for (let i = 0; i <= 10; i++) {
-    readingData.push({
-      gmail: `${i}@gmail.com`,
-      key: i,
-      data: [
-        {
-          key: i,
-          index: i,
-          codeLine: `Mã tuyến ${i}`,
-          nameLine: `Tên tuyến ${i}`,
-          cashier: `Nhân viên thu tiền ${i}`,
-          indexingPeriod: `Kỳ ghi ${i}`,
-          area: `Khu vực ${i}`,
-          unit: `Đơn vị ${i}`,
-        },
-      ],
-    });
-  }
   const dispatch = useDispatch();
-  const tabList = useSelector((state) => state.tabListContractSlice.tabList);
+
+  const tabList = useSelector(btnClickTabListContractSelector);
+  const readings = useSelector(fetchApiAllReadingSelector);
+
+  console.log(readings);
+
+  useEffect(() => {
+    dispatch(fetchApiAllReading());
+  }, []);
+
+  // const readingData = [];
+  // for (let i = 0; i <= 10; i++) {
+  //   readingData.push({
+  //     gmail: `${i}@gmail.com`,
+  //     key: i,
+  //     data: [
+  //       {
+  //         key: i,
+  //         index: i,
+  //         codeLine: `Mã tuyến ${i}`,
+  //         nameLine: `Tên tuyến ${i}`,
+  //         cashier: `Nhân viên thu tiền ${i}`,
+  //         indexingPeriod: `Kỳ ghi ${i}`,
+  //         area: `Khu vực ${i}`,
+  //         unit: `Đơn vị ${i}`,
+  //       },
+  //     ],
+  //   });
+  // }
+
   const handleRowSelection = (selectedRowKeys, selectedRows) => {
     dispatch(btnClickTabListContract(selectedRows[0]));
   };
+
   const paginationOptions = {
     defaultPageSize: 10,
     pageSizeOptions: ["10", "25", "50"],
@@ -92,7 +108,7 @@ const TableReading = () => {
     <Table
       className="parent-table"
       columns={readingColumns(true)}
-      dataSource={readingData}
+      dataSource={[]}
       scroll={{
         y: 380,
         x: 1100,

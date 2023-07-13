@@ -45,6 +45,7 @@ const fetchApiAddRegion = createAsyncThunk(
 
       return res.data.data;
     } catch (error) {
+      toast.error("Tên vùng đã tồn tại!");
       console.log({ error });
     }
   }
