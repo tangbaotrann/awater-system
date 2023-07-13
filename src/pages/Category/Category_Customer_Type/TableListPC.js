@@ -10,18 +10,15 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-<<<<<<< HEAD:src/pages/Category/Category_Customer_Type/TableListPC.js
 import "./listCustomerType.css";
 import EditCustomerType from "./Edit_Customer_Type";
 import AddCustomerType from "./Add_Customer_Type";
 // import AddList_Payment_Method from "./AddList_Payment_Method";
 // import EditPaymentMethod from "./EditList_Payment_Method";
 
-=======
-import "./List_Location.css";
-import AddListLocation from "./AddList_Location";
-import EditListLocation from "./Edit_List_Location";
->>>>>>> api/priceObject:src/pages/Category/List_Location/TableListLocation.js
+// import "./List_Location.css";
+// import AddListLocation from "./AddList_Location";
+// import EditListLocation from "./Edit_List_Location";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -125,12 +122,9 @@ function TableListPC({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
-<<<<<<< HEAD:src/pages/Category/Category_Customer_Type/TableListPC.js
         <AddCustomerType tabListbc={tabListbc} hideModal={hideModal}/>
-=======
 
-        <AddListLocation tabListbc={tabListbc} hideModal={hideModal} />
->>>>>>> api/priceObject:src/pages/Category/List_Location/TableListLocation.js
+        {/* <AddListLocation tabListbc={tabListbc} hideModal={hideModal} /> */}
       </Modal>
 
       <Modal
@@ -143,11 +137,8 @@ function TableListPC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-<<<<<<< HEAD:src/pages/Category/Category_Customer_Type/TableListPC.js
         <EditCustomerType tabListbc={tabListbc} hideModal={hideModal} />
-=======
-        <EditListLocation tabListbc={tabListbc} hideModal={hideModal} />
->>>>>>> api/priceObject:src/pages/Category/List_Location/TableListLocation.js
+        {/* <EditListLocation tabListbc={tabListbc} hideModal={hideModal} /> */}
       </Modal>
     </>
   );
