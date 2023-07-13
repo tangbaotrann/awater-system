@@ -63,7 +63,7 @@ function ListPaymentMethod() {
           className: "cell-wrap",
         }))}
         dataSource={data1}
-      />
+      /> 
       {isTabletOrMobile && (
         <div className="contract-bottom">
           {/* check mobile */}

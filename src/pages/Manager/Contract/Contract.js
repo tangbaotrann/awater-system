@@ -15,7 +15,7 @@ function Contract() {
     {
       key: "1",
       label: "Thông tin tìm kiếm",
-      children: <FormFilterContract />,
+      children: <FormFilterContract />, 
     },
   ];
 
@@ -32,7 +32,7 @@ function Contract() {
 
       {/* render table */}
       <TableListContract />
-
+ 
       {/* func bottom */}
       <div className="contract-bottom">
         {/* check mobile */}

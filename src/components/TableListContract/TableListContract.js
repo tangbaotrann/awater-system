@@ -7,7 +7,7 @@ import { dataContract, dataContractOnModal } from "../../utils/dataContract";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 import { btnClickTabListContractSelector } from "../../redux/selector";
 import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
-import { RedoOutlined } from "@ant-design/icons";
+import { RedoOutlined } from "@ant-design/icons"; 
 
 function TableListContract() {
   const [open, setOpen] = useState(false);
@@ -17,7 +17,7 @@ function TableListContract() {
   const tabList = useSelector(btnClickTabListContractSelector);
 
   // cols table main
-  const cols = [
+  const cols = [ 
     {
       key: "index",
       title: "#",

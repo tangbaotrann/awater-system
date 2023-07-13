@@ -4,7 +4,7 @@ import {
   DashboardOutlined,
   DownloadOutlined,
   FormOutlined,
-  PlusCircleOutlined,
+  PlusCircleOutlined, 
   UploadOutlined,
 } from "@ant-design/icons";
 import { Button, Col, Divider, Modal, Row, Table, Tooltip, Tree } from "antd";
@@ -133,7 +133,7 @@ function InfoClock({ _tab, tabKey }) {
                 status: _clock.status,
                 code: _clock.code,
                 seri: _clock.seri,
-                date_use: _clock.date_use,
+                // date_use: _clock.date_use,
               }))}
               pagination={{
                 pageSize: 10,
