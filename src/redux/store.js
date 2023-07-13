@@ -8,6 +8,8 @@ import tabListEnterIndexPageSlice from "./slices/tabListEnterIndexPageSlice/tabL
 import regionSlice from "./slices/regionSlice/regionSlice";
 import factorySlice from "./slices/factorySlice/factorySlice";
 import priceObjectSlice from "./slices/priceObjectSlice/priceObjectSlice";
+import areaSlice from "./slices/areaSlice/areaSlice";
+
 const store = configureStore({
   reducer: {
     sidebarSlice: sidebarSlice.reducer,
@@ -18,6 +20,7 @@ const store = configureStore({
     regionSlice: regionSlice.reducer,
     factorySlice: factorySlice.reducer,
     priceObjectSlice: priceObjectSlice.reducer,
+    areaSlice: areaSlice.reducer,
   },
 });
 

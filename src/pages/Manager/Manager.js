@@ -16,9 +16,10 @@ import ManagementPriceList from "../Category/ManagementPriceList/ManagementPrice
 import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
-import ListLocation from "../Category/List_Location/List_Location.jsx";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
 import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
+import ListLocation from "../Category/ListLocation/ListLocation";
+
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 

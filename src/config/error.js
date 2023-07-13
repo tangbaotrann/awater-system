@@ -1,5 +1,10 @@
 const handleError = (error) => {
   if (error.response) {
+    // Xử lý lỗi 400 (Not Found)
+    if (error.response.status === 400) {
+      console.log("400 - Lỗi", error);
+    }
+
     // Xử lý lỗi 404 (Not Found)
     if (error.response.status === 404) {
       console.log("404 - Not Found", error);
