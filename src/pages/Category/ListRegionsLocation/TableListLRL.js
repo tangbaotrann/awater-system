@@ -1,4 +1,4 @@
-import { Modal, Popover, Tabs, message } from "antd";
+import { Modal, Popconfirm, Tabs } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -16,6 +16,11 @@ import "./ListRegionsLocation.css";
 import ListRegionsLocation from "./AddListRegionLocation";
 import EditListRegionLocation from "./EditListRegionLocation";
 import { fetchApiAllFactory } from "../../../redux/slices/factorySlice/factorySlice";
+import {
+  fetchApiAllRegion,
+  fetchApiDeleteRegion,
+} from "../../../redux/slices/regionSlice/regionSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 // Tabs bottom
 const tabs_bc = [
@@ -46,6 +51,7 @@ function TableListLRL({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalAddLRL, setAddLRL] = useState(false);
   const [modalEditLRL, setEditLRL] = useState(false);
+
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
@@ -58,13 +64,14 @@ function TableListLRL({ isTabletOrMobile }) {
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
-      message.error("Tính năng chưa khả dụng!");
+      dispatch(fetchApiAllRegion());
+      dispatch(
+        tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+      );
     } else if (key === "2") {
       setAddLRL(true);
     } else if (key === "3") {
       setEditLRL(true);
-    } else if (key === "4") {
-      message.error("Tính năng chưa khả dụng!");
     }
   };
 
@@ -76,6 +83,15 @@ function TableListLRL({ isTabletOrMobile }) {
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
+  };
+
+  // handle delete region
+  const handleConfirmDeleteRegion = () => {
+    console.log(tabListbc);
+    if (tabListbc) {
+      dispatch(fetchApiDeleteRegion(tabListbc));
+      toast.success("Xóa vùng thành công.");
+    }
   };
 
   return (
@@ -92,16 +108,17 @@ function TableListLRL({ isTabletOrMobile }) {
                   tabListbc === null && _tab.id === "2"
                 }`}
               >
-                {_tab.id === "7" ? (
-                  <>
-                    <Popover
-                      rootClassName="fix-popover-z-index"
-                      placement={isTabletOrMobile ? "right" : "topRight"}
-                      className={tabListbc === null ? "popover-debt" : null}
-                    >
-                      {_tab.icon} {_tab.label} {_tab.iconRight}
-                    </Popover>
-                  </>
+                {_tab.id === "4" ? (
+                  <Popconfirm
+                    placement="bottom"
+                    title="Bạn có chắc chắn muốn xóa vùng này không?"
+                    // description={description}
+                    onConfirm={handleConfirmDeleteRegion}
+                    okText="Yes"
+                    cancelText="No"
+                  >
+                    {_tab.icon} {_tab.label}
+                  </Popconfirm>
                 ) : (
                   <>
                     {_tab.icon} {_tab.label}
@@ -125,7 +142,7 @@ function TableListLRL({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <ListRegionsLocation tabListbc={tabListbc} hideModal={hideModal} />
+        <ListRegionsLocation hideModal={hideModal} />
       </Modal>
       <Modal
         open={modalEditLRL ? modalEditLRL : openModal}
@@ -143,6 +160,9 @@ function TableListLRL({ isTabletOrMobile }) {
           factoryNames={factoryNames}
         />
       </Modal>
+
+      {/* Notification */}
+      <ToastContainer position="top-right" autoClose="2000" />
     </>
   );
 }

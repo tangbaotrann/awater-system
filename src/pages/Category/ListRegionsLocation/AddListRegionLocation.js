@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button, Col, Form, Input, Row, Select, theme } from "antd";
 import {
   CloseOutlined,
@@ -17,11 +17,13 @@ const ListRegionsLocation = ({ hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
 
+  const firstInputRef = useRef();
+
   const dispatch = useDispatch();
 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
   const factoryNames = useSelector(fetchApiAllFactorySelector);
+
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const layout = {
     labelCol: {
@@ -36,15 +38,30 @@ const ListRegionsLocation = ({ hideModal }) => {
     dispatch(fetchApiAllFactory());
   }, []);
 
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    if (values) {
-      dispatch(fetchApiAddRegion(values));
+  // handle save and close modal
+  const handleSaveAndClose = () => {
+    form1.validateFields().then((values) => {
+      if (values) {
+        dispatch(fetchApiAddRegion(values));
 
-      form1.resetFields();
-      toast.success("Thêm thành công vùng.");
-      hideModal();
-    }
+        form1.resetFields();
+        hideModal();
+        toast.success("Thêm thành công vùng.");
+      }
+    });
+  };
+
+  // handle save and continue add
+  const handleSaveAndAdd = () => {
+    form1.validateFields().then((values) => {
+      if (values) {
+        dispatch(fetchApiAddRegion(values));
+
+        form1.resetFields();
+        firstInputRef.current.focus();
+        toast.success("Thêm thành công vùng.");
+      }
+    });
   };
 
   // handle submit error (main)
@@ -57,7 +74,6 @@ const ListRegionsLocation = ({ hideModal }) => {
       <Form
         {...layout}
         form={form1}
-        onFinish={handleSubmit}
         onFinishFailed={handleFailed}
         style={{
           maxWidth: "none",
@@ -76,15 +92,15 @@ const ListRegionsLocation = ({ hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item label="Tên nhà máy" name="nhaMayId">
-              <Select placeholder="Chọn tên nhà máy" fieldNames="nhaMayId">
-                {factoryNames.map((_factory) => {
-                  return (
-                    <Select.Option key={_factory.id} value={_factory.id}>
-                      {_factory.tenNhaMay}
-                    </Select.Option>
-                  );
-                })}
-              </Select>
+              <Select
+                ref={firstInputRef}
+                options={factoryNames.map((_factory) => ({
+                  label: _factory.tenNhaMay,
+                  value: _factory.id,
+                }))}
+                fieldNames="nhaMayId"
+                placeholder="Chọn tên nhà máy"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -129,27 +145,27 @@ const ListRegionsLocation = ({ hideModal }) => {
           }}
         >
           <Button
-            key="reset"
+            key="saveAndAdd"
             style={{
               marginLeft: "10px",
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            htmlType="submit"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            // htmlType="submit"
+            onClick={handleSaveAndAdd}
           >
             Lưu Và Thêm Tiếp
           </Button>
 
           <Button
-            key="submit"
+            key="saveAndClose"
             style={{
               marginLeft: "10px",
             }}
             htmlType="submit"
             icon={<SaveOutlined />}
             className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            onClick={handleSaveAndClose}
           >
             Lưu Và Đóng
           </Button>
@@ -161,7 +177,6 @@ const ListRegionsLocation = ({ hideModal }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng

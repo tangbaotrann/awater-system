@@ -14,13 +14,11 @@ const factorySlice = createSlice({
 });
 
 // fetch api all factory
-export const fetchApiAllFactory = createAsyncThunk(
+const fetchApiAllFactory = createAsyncThunk(
   "factory/fetchApiAllFactory",
   async () => {
     try {
       const res = await getRequest(`nha-may/get-all`);
-
-      console.log(res.data.data);
 
       return res.data.data;
     } catch (error) {
@@ -28,5 +26,7 @@ export const fetchApiAllFactory = createAsyncThunk(
     }
   }
 );
+
+export { fetchApiAllFactory };
 
 export default factorySlice;

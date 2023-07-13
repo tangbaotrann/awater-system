@@ -1,34 +1,23 @@
 import React from "react";
 import { Button, Col, Form, Input, Row, Select, theme } from "antd";
-import {
-  CloseOutlined,
-  FileAddOutlined,
-  SaveOutlined,
-} from "@ant-design/icons";
+import { CloseOutlined, FileAddOutlined } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
-import { useSelector } from "react-redux";
-import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
+import { useDispatch } from "react-redux";
+import { fetchApiUpdateRegion } from "../../../redux/slices/regionSlice/regionSlice";
+import { toast } from "react-toastify";
 
-const EditListRegionLocation = ({ hideModal, factoryNames }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
-  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
-
-  console.log(tabListbc);
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    console.log("values", values);
-  };
-
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
-
+const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+
+  const dispatch = useDispatch();
+
+  // const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
+  // console.log(tabListbc);
 
   const layout = {
     labelCol: {
@@ -38,6 +27,23 @@ const EditListRegionLocation = ({ hideModal, factoryNames }) => {
     //   span: 40,
     // },
   };
+
+  // handle submit form (main)
+  const handleSubmit = (values) => {
+    if (values) {
+      dispatch(fetchApiUpdateRegion(values));
+
+      form1.resetFields();
+      hideModal();
+      toast.success("Cập nhật vùng thành công.");
+    }
+  };
+
+  // handle submit error (main)
+  const handleFailed = (error) => {
+    console.log({ error });
+  };
+
   return (
     <>
       <Form
@@ -117,18 +123,19 @@ const EditListRegionLocation = ({ hideModal, factoryNames }) => {
           }}
         >
           <Button
-            key="reset"
+            key="update"
+            htmlType="submit"
             style={{
               marginLeft: "10px",
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
-            Lưu Và Thêm Tiếp
+            {/* Lưu Và Thêm Tiếp */}
+            Cập nhật
           </Button>
 
-          <Button
+          {/* <Button
             key="submit"
             style={{
               marginLeft: "10px",
@@ -139,7 +146,7 @@ const EditListRegionLocation = ({ hideModal, factoryNames }) => {
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Đóng
-          </Button>
+          </Button> */}
 
           <Button
             style={{
@@ -148,7 +155,6 @@ const EditListRegionLocation = ({ hideModal, factoryNames }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng

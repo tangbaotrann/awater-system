@@ -14,7 +14,7 @@ const regionSlice = createSlice({
 });
 
 // fetch api all region
-export const fetchApiAllRegion = createAsyncThunk(
+const fetchApiAllRegion = createAsyncThunk(
   "region/fetchApiAllRegion",
   async () => {
     try {
@@ -28,7 +28,7 @@ export const fetchApiAllRegion = createAsyncThunk(
 );
 
 // fetch api add region
-export const fetchApiAddRegion = createAsyncThunk(
+const fetchApiAddRegion = createAsyncThunk(
   "region/fetchApiAddRegion",
   async (values) => {
     try {
@@ -40,7 +40,25 @@ export const fetchApiAddRegion = createAsyncThunk(
         tenVung,
       });
 
-      console.log("res add region ->", res.data.data);
+      return res.data.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
+// fetch api update region
+const fetchApiUpdateRegion = createAsyncThunk(
+  "region/fetchApiUpdateRegion",
+  async (values) => {
+    try {
+      const { id, nhaMayId, tenVung } = values;
+
+      const res = await postRequest("vung/update", {
+        id,
+        nhaMayId,
+        tenVung,
+      });
 
       return res.data.data;
     } catch (error) {
@@ -48,5 +66,28 @@ export const fetchApiAddRegion = createAsyncThunk(
     }
   }
 );
+
+// fetch api delete region
+const fetchApiDeleteRegion = createAsyncThunk(
+  "region/fetchApiDeleteRegion",
+  async (tabListbc) => {
+    try {
+      const { id } = tabListbc;
+
+      const res = await postRequest(`vung/delete?id=${id}`, null);
+
+      return res.data.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
+export {
+  fetchApiAllRegion,
+  fetchApiAddRegion,
+  fetchApiUpdateRegion,
+  fetchApiDeleteRegion,
+};
 
 export default regionSlice;

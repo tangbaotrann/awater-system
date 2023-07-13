@@ -8,7 +8,6 @@ import {
   RedoOutlined,
   SnippetsOutlined,
 } from "@ant-design/icons";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 import "moment/locale/vi";
@@ -28,7 +27,6 @@ function ListRegionsLocation() {
 
   const dispatch = useDispatch();
 
-  // const tabList = useSelector(btnClickTabListContractSelector);
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
   const regions = useSelector(fetchApiAllRegionSelector);
 
@@ -190,9 +188,6 @@ function ListRegionsLocation() {
           )}
         </div>
       )}
-
-      {/* Notification */}
-      <ToastContainer position="top-right" autoClose="2000" />
     </>
   );
 }
