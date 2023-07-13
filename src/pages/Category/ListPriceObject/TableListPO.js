@@ -1,17 +1,27 @@
-import { Modal, Popover, Tabs, message } from "antd";
+import { Modal, Popconfirm, Tabs } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
   RetweetOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
+import {
+  btnClickTabListInvoicePrintSelector,
+  fetchApiAllPriceObjectSelector,
+} from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import "./List_Location.css";
-// import AddList_Location from "./AddList_Location";
-// import Edit_List_Location from "./Edit_List_Location";
+import "./ListRegionsLocation.css";
+import AddListPriceObject from "./AddListPriceObject";
+import EditListPriceObject from "./EditListPriceObject";
+import {
+  fetchApiAllPriceObject,
+  fetchApiDeletePriceObject,
+} from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
+
+import { ToastContainer, toast } from "react-toastify";
+
 // Tabs bottom
 const tabs_bc = [
   {
@@ -37,34 +47,51 @@ const tabs_bc = [
   },
 ];
 
-function TableListMPS({ isTabletOrMobile }) {
+function TableListPO({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalAddList_Location, setAddList_Location] = useState(false);
-  const [modalEdit_List_Location, setEdit_List_Location] = useState(false);
+  const [modalAddPO, setAddPO] = useState(false);
+  const [modalEditPO, setEditPO] = useState(false);
+
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+  const priceObject = useSelector(fetchApiAllPriceObjectSelector);
+
+  // useEffect(() => {
+  //   dispatch(fetchApiAllPriceObject());
+  // }, []);
+
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
-      message.error("Tính năng chưa khả dụng!");
+      dispatch(fetchApiAllPriceObject());
+      dispatch(
+        tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+      );
     } else if (key === "2") {
-      setAddList_Location(true);
+      setAddPO(true);
     } else if (key === "3") {
-      setEdit_List_Location(true);
-    } else if (key === "4") {
-      message.error("Tính năng chưa khả dụng!");
+      setEditPO(true);
     }
   };
 
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setAddList_Location(false);
-    setEdit_List_Location(false);
+    setAddPO(false);
+    setEditPO(false);
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
+  };
+
+  // handle delete region
+  const handleConfirmDeleteRegion = () => {
+    console.log(tabListbc);
+    if (tabListbc) {
+      dispatch(fetchApiDeletePriceObject(tabListbc));
+      toast?.success("Xóa vùng thành công.");
+    }
   };
 
   return (
@@ -73,7 +100,7 @@ function TableListMPS({ isTabletOrMobile }) {
         type={isTabletOrMobile ? "line" : "card"}
         tabPosition={isTabletOrMobile ? "left" : "top"}
         activeKey="0"
-        items={tabs_bc.map((_tab) => {
+        items={tabs_bc?.map((_tab) => {
           return {
             label: (
               <div
@@ -81,16 +108,17 @@ function TableListMPS({ isTabletOrMobile }) {
                   tabListbc === null && _tab.id === "2"
                 }`}
               >
-                {_tab.id === "7" ? (
-                  <>
-                    <Popover
-                      rootClassName="fix-popover-z-index"
-                      placement={isTabletOrMobile ? "right" : "topRight"}
-                      className={tabListbc === null ? "popover-debt" : null}
-                    >
-                      {_tab.icon} {_tab.label} {_tab.iconRight}
-                    </Popover>
-                  </>
+                {_tab.id === "4" ? (
+                  <Popconfirm
+                    placement="bottom"
+                    title="Bạn có chắc chắn muốn xóa vùng này không?"
+                    // description={description}
+                    onConfirm={handleConfirmDeleteRegion}
+                    okText="Có"
+                    cancelText="Không"
+                  >
+                    {_tab.icon} {_tab.label}
+                  </Popconfirm>
                 ) : (
                   <>
                     {_tab.icon} {_tab.label}
@@ -103,33 +131,40 @@ function TableListMPS({ isTabletOrMobile }) {
         })}
         onChange={handleChangeTabs}
       />
-      {/* 
+
       <Modal
-        open={modalAddList_Location ? modalAddList_Location : openModal}
+        open={modalAddPO ? modalAddPO : openModal}
         onCancel={hideModal}
-        width={700}
+        width={600}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <AddList_Location tabListbc={tabListbc} hideModal={hideModal} />
+        <AddListPriceObject hideModal={hideModal} />
       </Modal>
       <Modal
-        open={modalEdit_List_Location ? modalEdit_List_Location : openModal}
+        open={modalEditPO ? modalEditPO : openModal}
         onCancel={hideModal}
-        width={700}
+        width={600}
         centered={true}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-        <Edit_List_Location tabListbc={tabListbc} hideModal={hideModal} />
-      </Modal> */}
+        <EditListPriceObject
+          tabListbc={tabListbc}
+          hideModal={hideModal}
+          priceObject={priceObject}
+        />
+      </Modal>
+
+      {/* Notification */}
+      <ToastContainer position="top-right" autoClose="2000" />
     </>
   );
 }
 
-export default TableListMPS;
+export default TableListPO;

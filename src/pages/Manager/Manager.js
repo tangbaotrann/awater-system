@@ -10,15 +10,15 @@ import CustomerList from "./CustomerList/CustomerList";
 import EnterIndexPage from "../EnterIndexPage/EnterIndexPage.jsx";
 import Invoice from "../Invoice/Invoice";
 import InvoicePrint from "../InvoicePrint/InvoicePrint";
-import ManagementPriceSubject from "../Category/ManagementPriceSubject/ManagementPriceSubject";
+// import ManagementPriceSubject from "../Category/ManagementPriceSubject/ManagementPriceSubject";
 import ManagementReading from "../Category/ManagementReading/ManagementReading";
 import ManagementPriceList from "../Category/ManagementPriceList/ManagementPriceList";
 import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
-import List_Location from "../Category/List_Location/List_Location.jsx";
+import ListLocation from "../Category/List_Location/List_Location.jsx";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
-
+import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -56,7 +56,8 @@ function Manager() {
         <h1>EXPORT_PRINT_BILL_ORDER</h1>
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key ? ( //menu 3
-        <ManagementPriceSubject />
+        // <ManagementPriceSubject />
+        <ListPriceObject />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_READING.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_READING.key ? (
         <ManagementReading />
@@ -70,7 +71,7 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
         // <h1>Danh muc vung</h1>
-        <List_Location />
+        <ListLocation />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />
