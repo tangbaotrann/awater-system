@@ -8,6 +8,10 @@
     border-radius: 6px;
 }
 
+.tab-item-disabled {
+    background-color: gray !important;
+}
+
 .tab-item-bc:hover {
     transition: 0.3s all;
 }

@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
-import { btnClickTabListContract } from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
+import tabListContractSlice, {
+  btnClickTabListContract,
+} from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
 import "./TableReading.css";
+import {
+  btnClickTabListContractSelector,
+  fetchApiAllReadingSelector,
+} from "../../../../../redux/selector";
+import { fetchApiAllReading } from "../../../../../redux/slices/readingSlice/readingSlice";
 
 const readingColumns = (showHeader) => [
   {
-    key: showHeader ? "gmail" : "key",
-    dataIndex: showHeader ? "gmail" : "key",
+    key: showHeader ? "nguoiQuanLyId" : "key",
+    dataIndex: showHeader ? "nguoiQuanLyId" : "key",
     align: "center",
     width: 140,
   },
@@ -21,67 +28,58 @@ const readingColumns = (showHeader) => [
     width: 70,
   },
   {
-    key: "codeLine",
+    key: "maTuyen",
     title: showHeader ? "Mã tuyến" : "",
-    dataIndex: "codeLine",
+    dataIndex: "maTuyen",
     width: 140,
   },
   {
-    key: "nameLine",
+    key: "tenTuyen",
     title: showHeader ? "Tên tuyến" : "",
-    dataIndex: "nameLine",
+    dataIndex: "tenTuyen",
     width: 140,
   },
   {
-    key: "cashier",
+    key: "nguoiThuTienId",
     title: showHeader ? "Nhân viên thu tiền" : "",
-    dataIndex: "cashier",
+    dataIndex: "nguoiThuTienId",
     width: 180,
   },
+  // {
+  //   key: "indexingPeriod",
+  //   title: showHeader ? "Kỳ ghi chỉ số" : "",
+  //   dataIndex: "indexingPeriod",
+  //   width: 130,
+  // },
   {
-    key: "indexingPeriod",
-    title: showHeader ? "Kỳ ghi chỉ số" : "",
-    dataIndex: "indexingPeriod",
-    width: 130,
-  },
-  {
-    key: "area",
+    key: "khuVucId",
     title: showHeader ? "Khu vực" : "",
-    dataIndex: "area",
+    dataIndex: "khuVucId",
     width: 130,
   },
-  {
-    key: "unit",
-    title: showHeader ? "Đơn vị" : "",
-    dataIndex: "unit",
-  },
+  // {
+  //   key: "unit",
+  //   title: showHeader ? "Đơn vị" : "",
+  //   dataIndex: "unit",
+  // },
 ];
 
 const TableReading = () => {
-  const readingData = [];
-  for (let i = 0; i <= 10; i++) {
-    readingData.push({
-      gmail: `${i}@gmail.com`,
-      key: i,
-      data: [
-        {
-          key: i,
-          index: i,
-          codeLine: `Mã tuyến ${i}`,
-          nameLine: `Tên tuyến ${i}`,
-          cashier: `Nhân viên thu tiền ${i}`,
-          indexingPeriod: `Kỳ ghi ${i}`,
-          area: `Khu vực ${i}`,
-          unit: `Đơn vị ${i}`,
-        },
-      ],
-    });
-  }
   const dispatch = useDispatch();
-  const tabList = useSelector((state) => state.tabListContractSlice.tabList);
+
+  const tabList = useSelector(btnClickTabListContractSelector);
+  const readings = useSelector(fetchApiAllReadingSelector);
+
+  // console.log(readings);
+
+  useEffect(() => {
+    dispatch(fetchApiAllReading());
+  }, []);
+
   const handleRowSelection = (selectedRowKeys, selectedRows) => {
     dispatch(btnClickTabListContract(selectedRows[0]));
   };
+
   const paginationOptions = {
     defaultPageSize: 10,
     pageSizeOptions: ["10", "25", "50"],
@@ -90,9 +88,17 @@ const TableReading = () => {
 
   return (
     <Table
+      rowKey="index"
       className="parent-table"
       columns={readingColumns(true)}
-      dataSource={readingData}
+      dataSource={
+        readings?.length <= 0
+          ? []
+          : readings.map((_reading, index) => ({
+              index: index + 1,
+              nguoiQuanLyId: _reading.nguoiQuanLyId,
+            }))
+      }
       scroll={{
         y: 380,
         x: 1100,
@@ -103,11 +109,22 @@ const TableReading = () => {
         expandedRowRender: (record) => {
           return (
             <Table
+              rowKey={record.index}
               className="child-table"
               columns={readingColumns(false)}
-              dataSource={record.data}
+              dataSource={
+                readings?.length <= 0
+                  ? []
+                  : readings.map((_reading, index) => ({
+                      index: index + 1,
+                      id: _reading.id,
+                      maTuyen: _reading.maTuyen,
+                      tenTuyen: _reading.tenTuyen,
+                      nguoiThuTienId: _reading.nguoiThuTienId,
+                      khuVucId: _reading.khuVucId,
+                    }))
+              }
               pagination={false}
-              rowKey="key"
               scroll={{
                 x: 1100,
               }}
@@ -115,6 +132,11 @@ const TableReading = () => {
                 return {
                   onClick: (event) => {
                     handleRowSelection(rowIndex, record);
+                    dispatch(
+                      tabListContractSlice.actions.btnClickTabListContract(
+                        record
+                      )
+                    );
                   }, // click row
                 };
               }}

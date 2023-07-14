@@ -10,16 +10,14 @@ import CustomerList from "./CustomerList/CustomerList";
 import EnterIndexPage from "../EnterIndexPage/EnterIndexPage.jsx";
 import Invoice from "../Invoice/Invoice";
 import InvoicePrint from "../InvoicePrint/InvoicePrint";
-// import ManagementPriceSubject from "../Category/ManagementPriceSubject/ManagementPriceSubject";
 import ManagementReading from "../Category/ManagementReading/ManagementReading";
 import ManagementPriceList from "../Category/ManagementPriceList/ManagementPriceList";
 import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
-import ListPriceObject from "../Category/ListPriceObject/ListPriceObject"; 
+import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
 import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
-// import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 import ListClock from "../Category/ListClock/ListClock";
 import ListLocation from "../Category/ListLocation/ListLocation";
 import CustomerType from "../Category/Category_Customer_Type/CustomerType";
@@ -28,7 +26,8 @@ import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
 import ListSigning from "../Category/ListSigning/ListSigning";
-import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber"
+import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
+
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -38,7 +37,7 @@ function Manager() {
   return (
     <DefaultLayout currentPage={currentPage}>
       {sidebarMenu === constants.CONTRACT_MANAGER.key || // menu 1
-        currentPage === constants.CONTRACT_MANAGER.key ? (
+      currentPage === constants.CONTRACT_MANAGER.key ? (
         <Contract />
       ) : sidebarMenu === constants.DEV_CUSTOMER.key || // sub menu 1.1
         currentPage === constants.DEV_CUSTOMER.key ? (
@@ -81,7 +80,11 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
         <ListLocation />
-      ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
+      ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
+        currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
+        <ListPaymentMethod />
+      ) : // <h1>Danh muc vung</h1>
+      sidebarMenu === constants.CATEGORY_SCOPE.key ||
         currentPage === constants.CATEGORY_SCOPE.key ? (
         <ListScope />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||
@@ -122,4 +125,3 @@ function Manager() {
   );
 }
 export default Manager;
-  
