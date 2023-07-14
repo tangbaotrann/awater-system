@@ -9,9 +9,9 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import "./List_Location.css";
-import AddListLocation from "./AddListWatch";
-import EditListLocation from "./EditAddListWatch";
+import "./ListWatch.css";
+import AddListWatch from "./AddListWatch";
+import EditListLocation from "./EditListWatch";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -37,7 +37,7 @@ const tabs_bc = [
   },
 ];
 
-function TableListLocation({ isTabletOrMobile }) {
+function TableListWatch({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalAddList_Location, setAddList_Location] = useState(false);
   const [modalEdit_List_Location, setEdit_List_Location] = useState(false);
@@ -114,7 +114,7 @@ function TableListLocation({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <AddListLocation tabListbc={tabListbc} hideModal={hideModal} />
+        <AddListWatch tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
       <Modal
         open={modalEdit_List_Location ? modalEdit_List_Location : openModal}
@@ -132,4 +132,4 @@ function TableListLocation({ isTabletOrMobile }) {
   );
 }
 
-export default TableListLocation;
+export default TableListWatch;

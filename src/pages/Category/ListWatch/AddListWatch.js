@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Form, Input, Row, Select, theme } from "antd";
+import { Button, Col, Form, Input, Row, theme } from "antd";
 import {
   CloseOutlined,
   FileAddOutlined,
@@ -8,7 +8,7 @@ import {
 
 import { useMediaQuery } from "react-responsive";
 
-const AddList_Location = ({ hideModal }) => {
+const AddListWatch = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -19,7 +19,7 @@ const AddList_Location = ({ hideModal }) => {
   const handleFailed = (error) => {
     console.log({ error });
   };
-  const { Option } = Select;
+
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
 
@@ -27,9 +27,6 @@ const AddList_Location = ({ hideModal }) => {
     labelCol: {
       span: 5,
     },
-    // wrapperCol: {
-    //   span: 40,
-    // },
   };
   return (
     <>
@@ -88,7 +85,6 @@ const AddList_Location = ({ hideModal }) => {
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Thêm Tiếp
           </Button>
@@ -101,7 +97,6 @@ const AddList_Location = ({ hideModal }) => {
             htmlType="submit"
             icon={<SaveOutlined />}
             className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Đóng
           </Button>
@@ -113,7 +108,6 @@ const AddList_Location = ({ hideModal }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng
@@ -124,4 +118,4 @@ const AddList_Location = ({ hideModal }) => {
   );
 };
 
-export default AddList_Location;
+export default AddListWatch;
