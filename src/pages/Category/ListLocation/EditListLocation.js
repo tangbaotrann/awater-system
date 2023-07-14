@@ -2,10 +2,14 @@ import React from "react";
 import { Button, Col, Form, Input, Row, Select, theme } from "antd";
 import { CloseOutlined, FileAddOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
+import { useDispatch } from "react-redux";
+import { fetchApiUpdateArea } from "../../../redux/slices/areaSlice/areaSlice";
 
 const EditListLocation = ({ tabListbc, regions, hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+
+  const dispatch = useDispatch();
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
@@ -22,7 +26,15 @@ const EditListLocation = ({ tabListbc, regions, hideModal }) => {
 
   // handle submit form (main)
   const handleSubmit = (values) => {
-    console.log("values", values);
+    if (values && tabListbc) {
+      dispatch(
+        fetchApiUpdateArea({
+          values,
+          tabListbc,
+        })
+      );
+      hideModal();
+    }
   };
 
   // handle submit error (main)
