@@ -10,8 +10,8 @@ import { toast } from "react-toastify";
 const EditListRegionLocation = ({ tabListPO, hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
-
   const dispatch = useDispatch();
+
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const layout = {
     labelCol: {
@@ -23,7 +23,6 @@ const EditListRegionLocation = ({ tabListPO, hideModal }) => {
   const handleSubmit = (values) => {
     if (values) {
       dispatch(fetchApiUpdatePriceObject(values));
-
       form1.resetFields();
       hideModal();
       toast.success("Cập nhật thành công.");

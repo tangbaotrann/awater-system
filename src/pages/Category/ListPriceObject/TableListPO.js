@@ -54,7 +54,7 @@ function TableListPO({ isTabletOrMobile }) {
 
   const dispatch = useDispatch();
 
-  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+  const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
   const priceObject = useSelector(fetchApiAllPriceObjectSelector);
 
   // useEffect(() => {
@@ -87,9 +87,9 @@ function TableListPO({ isTabletOrMobile }) {
 
   // handle delete region
   const handleConfirmDeleteRegion = () => {
-    console.log(tabListbc);
-    if (tabListbc) {
-      dispatch(fetchApiDeletePriceObject(tabListbc));
+    console.log(tabListPO);
+    if (tabListPO) {
+      dispatch(fetchApiDeletePriceObject(tabListPO));
       toast?.success("Xóa vùng thành công.");
     }
   };
@@ -105,7 +105,7 @@ function TableListPO({ isTabletOrMobile }) {
             label: (
               <div
                 className={`tab-item-bc tab-item-bc-${_tab.id} ${
-                  tabListbc === null && _tab.id === "2"
+                  tabListPO === null && _tab.id === "2"
                 }`}
               >
                 {_tab.id === "4" ? (
@@ -155,7 +155,7 @@ function TableListPO({ isTabletOrMobile }) {
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
         <EditListPriceObject
-          tabListbc={tabListbc}
+          tabListPO={tabListPO}
           hideModal={hideModal}
           priceObject={priceObject}
         />
