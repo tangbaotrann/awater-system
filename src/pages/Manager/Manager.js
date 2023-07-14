@@ -20,15 +20,13 @@ import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLoca
 import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
 import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
 import CustomerType from "../Category/Category_Customer_Type/CustomerType";
-
 import ListLocation from "../Category/ListLocation/ListLocation";
-
 import ListScope from "../Category/ListScope/ListScope";
 import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
-import Listlocation from "../Category/ListLocation/ListLocation";
-import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber"
+import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
+
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -38,7 +36,7 @@ function Manager() {
   return (
     <DefaultLayout currentPage={currentPage}>
       {sidebarMenu === constants.CONTRACT_MANAGER.key || // menu 1
-        currentPage === constants.CONTRACT_MANAGER.key ? (
+      currentPage === constants.CONTRACT_MANAGER.key ? (
         <Contract />
       ) : sidebarMenu === constants.DEV_CUSTOMER.key || // sub menu 1.1
         currentPage === constants.DEV_CUSTOMER.key ? (
@@ -80,18 +78,15 @@ function Manager() {
         <ListRegionsLocation />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
-<<<<<<<<< Temporary merge branch 1
-        <List_Location />
+        <ListLocation />
       ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
       ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
         currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
         <CustomerType />
-=========
-        // <h1>Danh muc vung</h1>
-        <ListLocation />
-      ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
+      ) : // <h1>Danh muc vung</h1>
+      sidebarMenu === constants.CATEGORY_SCOPE.key ||
         currentPage === constants.CATEGORY_SCOPE.key ? (
         <ListScope />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||
@@ -120,4 +115,3 @@ function Manager() {
   );
 }
 export default Manager;
-  
