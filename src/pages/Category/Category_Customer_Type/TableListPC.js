@@ -13,12 +13,6 @@ import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintS
 import "./listCustomerType.css";
 import EditCustomerType from "./Edit_Customer_Type";
 import AddCustomerType from "./Add_Customer_Type";
-// import AddList_Payment_Method from "./AddList_Payment_Method";
-// import EditPaymentMethod from "./EditList_Payment_Method";
-
-// import "./List_Location.css";
-// import AddListLocation from "./AddList_Location";
-// import EditListLocation from "./Edit_List_Location";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -122,7 +116,7 @@ function TableListPC({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
-        <AddCustomerType tabListbc={tabListbc} hideModal={hideModal}/>
+        <AddCustomerType tabListbc={tabListbc} hideModal={hideModal} />
 
         {/* <AddListLocation tabListbc={tabListbc} hideModal={hideModal} /> */}
       </Modal>
@@ -138,7 +132,6 @@ function TableListPC({ isTabletOrMobile }) {
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
         <EditCustomerType tabListbc={tabListbc} hideModal={hideModal} />
-        {/* <EditListLocation tabListbc={tabListbc} hideModal={hideModal} /> */}
       </Modal>
     </>
   );

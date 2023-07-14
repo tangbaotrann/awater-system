@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Form, Input, Row, Select, theme } from "antd";
+import { Button, Col, Form, Input, Row, theme } from "antd";
 import {
   CloseOutlined,
   FileAddOutlined,
@@ -8,7 +8,7 @@ import {
 
 import { useMediaQuery } from "react-responsive";
 
-const Edit_List_Location = ({ hideModal }) => {
+const EditListCancel = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -19,7 +19,7 @@ const Edit_List_Location = ({ hideModal }) => {
   const handleFailed = (error) => {
     console.log({ error });
   };
-  const { Option } = Select;
+
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
 
@@ -27,9 +27,6 @@ const Edit_List_Location = ({ hideModal }) => {
     labelCol: {
       span: 5,
     },
-    // wrapperCol: {
-    //   span: 40,
-    // },
   };
   return (
     <>
@@ -54,12 +51,19 @@ const Edit_List_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Kiểu Đồng Hồ">
+            <Form.Item
+              label="Mã lý do hủy"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
-        <Row>
+        <Row gutter={24}>
           <Col
             xs={24}
             sm={12}
@@ -68,7 +72,14 @@ const Edit_List_Location = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên Kiểu Đồng Hồ">
+            <Form.Item
+              label="Tên lý do hủy"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -124,4 +135,4 @@ const Edit_List_Location = ({ hideModal }) => {
   );
 };
 
-export default Edit_List_Location;
+export default EditListCancel;

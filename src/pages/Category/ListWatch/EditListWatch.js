@@ -8,7 +8,7 @@ import {
 
 import { useMediaQuery } from "react-responsive";
 
-const EditListReasons = ({ hideModal }) => {
+const EditListWatch = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -19,7 +19,6 @@ const EditListReasons = ({ hideModal }) => {
   const handleFailed = (error) => {
     console.log({ error });
   };
-
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
 
@@ -27,6 +26,9 @@ const EditListReasons = ({ hideModal }) => {
     labelCol: {
       span: 5,
     },
+    // wrapperCol: {
+    //   span: 40,
+    // },
   };
   return (
     <>
@@ -51,19 +53,12 @@ const EditListReasons = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item
-              label="Mã lý do hủy"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
+            <Form.Item label="Mã Kiểu Đồng Hồ">
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={24}>
+        <Row>
           <Col
             xs={24}
             sm={12}
@@ -72,14 +67,7 @@ const EditListReasons = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item
-              label="Tên lý do hủy"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
+            <Form.Item label="Tên Kiểu Đồng Hồ">
               <Input style={{ width: "100%" }} />
             </Form.Item>
           </Col>
@@ -135,4 +123,4 @@ const EditListReasons = ({ hideModal }) => {
   );
 };
 
-export default EditListReasons;
+export default EditListWatch;

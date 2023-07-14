@@ -16,13 +16,7 @@ import {
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./ListLocation.css";
 import AddListLocation from "./AddListLocation";
-import { fetchApiAllRegion } from "../../../redux/slices/regionSlice/regionSlice";
-import {
-  fetchApiAllArea,
-  fetchApiDeleteArea,
-} from "../../../redux/slices/areaSlice/areaSlice";
 import EditListLocation from "./EditListLocation";
-
 // Tabs bottom
 const tabs_bc = [
   {
@@ -60,27 +54,27 @@ function TableListLocation({ isTabletOrMobile }) {
 
   // console.log("regions", regions);
 
-  useEffect(() => {
-    dispatch(fetchApiAllRegion());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchApiAllRegion());
+  // }, []);
 
-  // handle change tabs
-  const handleChangeTabs = (key) => {
-    if (key === "1") {
-      dispatch(fetchApiAllArea());
-    } else if (key === "2") {
-      setAddList_Location(true);
-    } else if (key === "3") {
-      setEdit_List_Location(true);
-    }
-  };
+  // // handle change tabs
+  // const handleChangeTabs = (key) => {
+  //   if (key === "1") {
+  //     dispatch(fetchApiAllArea());
+  //   } else if (key === "2") {
+  //     setAddList_Location(true);
+  //   } else if (key === "3") {
+  //     setEdit_List_Location(true);
+  //   }
+  // };
 
-  // handle delete area
-  const handleConfirmDeleteRegion = () => {
-    if (tabListbc) {
-      dispatch(fetchApiDeleteArea(tabListbc));
-    }
-  };
+  // // handle delete area
+  // const handleConfirmDeleteRegion = () => {
+  //   if (tabListbc) {
+  //     dispatch(fetchApiDeleteArea(tabListbc));
+  //   }
+  // };
 
   // hide modal
   const hideModal = () => {
@@ -111,7 +105,7 @@ function TableListLocation({ isTabletOrMobile }) {
                     placement="bottom"
                     title="Bạn có chắc chắn muốn xóa khu vực này không?"
                     // description={description}
-                    onConfirm={handleConfirmDeleteRegion}
+                    // onConfirm={handleConfirmDeleteRegion}
                     okText="Yes"
                     cancelText="No"
                   >
@@ -127,7 +121,7 @@ function TableListLocation({ isTabletOrMobile }) {
             key: _tab.id,
           };
         })}
-        onChange={handleChangeTabs}
+        // onChange={handleChangeTabs}
       />
 
       <Modal
@@ -140,7 +134,7 @@ function TableListLocation({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <AddListLocation regions={regions} hideModal={hideModal} />
+        <AddListLocation tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
       <Modal
         open={modalEdit_List_Location ? modalEdit_List_Location : openModal}
@@ -152,11 +146,7 @@ function TableListLocation({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-        <EditListLocation
-          tabListbc={tabListbc}
-          regions={regions}
-          hideModal={hideModal}
-        />
+        <EditListLocation tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
 
       {/* Notification */}

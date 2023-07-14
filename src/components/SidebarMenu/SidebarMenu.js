@@ -164,6 +164,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_WATCH.label,
               key: constants.CATEGORY_WATCH.key,
             },
+            {
+              label: constants.CATEGORY_CUSTOMER_TYPE.label,
+              key: constants.CATEGORY_CUSTOMER_TYPE.key,
+            },
           ],
         },
       ]}
@@ -273,28 +277,6 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
             constants.CATEGORY_MANAGEMENT_LOCATION.key
           );
           isTabletOrMobile && onCloseDrawer();
-        } else if (
-          item.key === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key
-        ) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          sessionStorage.setItem(
-            "currentPage",
-            constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key
-          );
-          isTabletOrMobile && onCloseDrawer();
-        } else if (
-          item.key === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key
-        ) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          sessionStorage.setItem(
-            "currentPage",
-            constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key
-          );
-          isTabletOrMobile && onCloseDrawer();
-        } else if (item.key === constants.CATEGORY_WATCH.key) {
-          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
-          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_PAYMENT_METHOD.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem(
@@ -317,7 +299,6 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
           isTabletOrMobile && onCloseDrawer();
         }
-
         // menu 5
         else if (item.key === constants.FAILURE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));

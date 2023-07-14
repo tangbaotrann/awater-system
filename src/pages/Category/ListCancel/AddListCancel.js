@@ -8,7 +8,7 @@ import {
 
 import { useMediaQuery } from "react-responsive";
 
-const AddListReasons = ({ hideModal }) => {
+const AddListCancel = ({ hideModal }) => {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
@@ -135,4 +135,4 @@ const AddListReasons = ({ hideModal }) => {
   );
 };
 
-export default AddListReasons;
+export default AddListCancel;

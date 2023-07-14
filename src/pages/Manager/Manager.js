@@ -27,6 +27,7 @@ import ListScope from "../Category/ListScope/ListScope";
 import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
+import Listlocation from "../Category/ListLocation/ListLocation";
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -74,6 +75,7 @@ function Manager() {
         <ManagementPriceList />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LRL.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LRL.key ? (
+        // <h1>Danh muc vung</h1>
         <ListRegionsLocation />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
