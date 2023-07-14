@@ -164,6 +164,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               key: constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key,
             },
             {
+              label: constants.CATEGORY_SIGNING.label,
+              key: constants.CATEGORY_SIGNING.key,
+            },
+            {
               label: constants.CATEGORY_CUSTOMER_TYPE.label,
               key: constants.CATEGORY_CUSTOMER_TYPE.key,
             },
@@ -298,6 +302,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
             "currentPage",
             constants.CATEGORY_PAYMENT_METHOD.key
           );
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_SIGNING.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY_SIGNING.key);
           isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_SCOPE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));

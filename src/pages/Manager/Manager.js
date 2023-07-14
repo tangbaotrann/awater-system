@@ -27,7 +27,7 @@ import ListScope from "../Category/ListScope/ListScope";
 import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
-import Listlocation from "../Category/ListLocation/ListLocation";
+import ListSigning from "../Category/ListSigning/ListSigning";
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -92,6 +92,9 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_WATCH.key ||
         currentPage === constants.CATEGORY_WATCH.key ? (
         <ListWatch />
+      ) : sidebarMenu === constants.CATEGORY_SIGNING.key ||
+        currentPage === constants.CATEGORY_SIGNING.key ? (
+        <ListSigning />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />

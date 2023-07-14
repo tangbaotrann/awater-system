@@ -95,6 +95,10 @@ const constants = {
     label: "DM kiểu đồng hồ",
     key: "CATEGORY_WATCH",
   },
+  CATEGORY_SIGNING: {
+    label: "DM ký",
+    key: "CATEGORY_SIGNING",
+  },
   COLLECT_MONEY: {
     label: "Thu tiền",
     key: "COLLECT_MONEY",
