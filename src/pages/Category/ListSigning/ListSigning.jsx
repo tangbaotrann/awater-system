@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import TableListLocation from "./TableListWatch.js";
+import TableListLocation from "./TableListSigning.js";
 import "../../../components/GlobalStyles/GlobalStyles.css";
 import "../../Manager/Contract/Contract.css";
 import { Form, Input, Table, Popover, Col, Row, DatePicker } from "antd";
