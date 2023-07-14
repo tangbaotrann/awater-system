@@ -83,6 +83,10 @@ const constants = {
     label: "DM phạm vi",
     key: "CATEGORY_SCOPE",
   },
+  CATEGORY_STATUS_READ_NUMBER: {
+    label: "DM Trạng thái chỉ số",
+    key: "CATEGORY_STATUS_READ_NUMBER",
+  },
   CATEGORY_MANAGEMEN_REASONS_INSTEAD: {
     label: "DM Lý do thay",
     key: "CATEGORY_MANAGEMEN_REASONS_INSTEAD",
