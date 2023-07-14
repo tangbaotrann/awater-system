@@ -1,5 +1,5 @@
 const primaryLogo = {
-  logo: require("./logo-amazing-water.png"),
+  logo: require("./awa logo@20-01-01.png"),
 };
 
 export { primaryLogo };

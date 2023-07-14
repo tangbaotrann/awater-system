@@ -32,7 +32,7 @@ function Contract() {
 
       {/* render table */}
       <TableListContract />
-
+ 
       {/* func bottom */}
       <div className="contract-bottom">
         {/* check mobile */}

@@ -20,9 +20,25 @@ function InfoContract() {
   return (
     <div className="container-info-contract">
       <Row>
+        {/* Số hợp đồng + Button reset (mã khách hàng) */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item name="Id" label="Hợp đồng Id (*)" {...formItemLayout}>
+            <div className="container-label-input">
+              <Input
+                name="Id"
+                placeholder="Nhập số hợp đồng"
+                className="space-right-10"
+              />
+              <Button className="custom-btn-reset-form-contract custom-btn-reset">
+                <RedoOutlined />
+              </Button>
+            </div>
+          </Form.Item>
+        </Col>
+
         {/* Mã đăng ký + Button ... (Mã đăng ký) */}
-        <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="" label="Mã đăng ký" {...formItemLayout}>
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
+          <Form.Item name="" label="Mã đăng ký" {...formItemLayout} hidden>
             <div className="container-label-input">
               <Input
                 name=""
@@ -34,14 +50,17 @@ function InfoContract() {
               </Button>
             </div>
           </Form.Item>
-        </Col>
-
-        {/* Số hợp đồng + Button reset (mã khách hàng) */}
-        <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="" label="Số HĐ (*)" {...formItemLayout}>
+        </Col> */}
+        <Col xs={24} sm={24} md={12} lg={10}>
+          {/* KH id */}
+          <Form.Item
+            name="KhachHangId"
+            label="Khách hàng Id (*)" 
+            {...formItemLayout}
+          >
             <div className="container-label-input">
               <Input
-                name=""
+                name="KhachHangId"
                 placeholder="Nhập số hợp đồng"
                 className="space-right-10"
               />
@@ -56,9 +75,13 @@ function InfoContract() {
       <Row>
         {/* ĐT giá */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="" label="ĐT giá (*)" {...formItemLayout}>
+          <Form.Item
+            name="DoiTuongGiaId"
+            label="ĐT giá (*)"
+            {...formItemLayout}
+          >
             <Select
-              fieldNames=""
+              fieldNames="DoiTuongGiaId"
               options={[
                 { value: "1", label: "SH - Sinh hoạt Lào Cai" },
                 { value: "2", label: "UT - Ưu đãi LC" },
@@ -100,9 +123,13 @@ function InfoContract() {
 
         {/* Mục đích SD */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="" label="Mục đích SD" {...formItemLayout}>
+          <Form.Item
+            name="MucDichSuDung"
+            label="Mục đích SD"
+            {...formItemLayout}
+          >
             <Select
-              fieldNames=""
+              fieldNames="MucDichSuDung"
               options={[
                 { value: "1", label: "Hành Chính, Sự Nghiệp" },
                 { value: "2", label: "Sinh hoạt" },
@@ -118,9 +145,13 @@ function InfoContract() {
       <Row>
         {/* Khu vực TT */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="" label="Khu vực TT: " {...formItemLayout}>
+          <Form.Item
+            name="KhuVucThanhToan"
+            label="Khu vực TT: "
+            {...formItemLayout}
+          >
             <Select
-              fieldNames=""
+              fieldNames="KhuVucThanhToan"
               options={[
                 { value: "1", label: "KV 1" },
                 { value: "2", label: "KV 2" },
@@ -132,9 +163,13 @@ function InfoContract() {
 
         {/* Hình thức TT */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="" label="Hình thức TT: " {...formItemLayout}>
+          <Form.Item
+            name="PhuongThucThanhToanId"
+            label="Hình thức TT: "
+            {...formItemLayout}
+          >
             <Select
-              fieldNames=""
+              fieldNames="PhuongThucThanhToanId"
               options={[
                 { value: "1", label: "1 - TM hoặc CK" },
                 { value: "2", label: "2 - Chuyển khoản" },
@@ -296,16 +331,16 @@ function InfoContract() {
 
         {/* Kinh độ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="" label="Kinh độ" {...formItemLayout}>
-            <Input name="" placeholder="Nhập kinh độ" />
+          <Form.Item name="KinhDo" label="Kinh độ" {...formItemLayout}>
+            <Input name="KinhDo" placeholder="Nhập kinh độ" />
           </Form.Item>
         </Col>
 
         {/* Địa chỉ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="" label="Địa chỉ (*)" {...formItemLayout}>
+          <Form.Item name="Diachi" label="Địa chỉ (*)" {...formItemLayout}>
             <Input
-              name=""
+              name="Diachi"
               placeholder="Nhập địa chỉ"
               className="space-right-10"
             />
@@ -316,15 +351,64 @@ function InfoContract() {
       <Row>
         {/* Vĩ độ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="" label="Vĩ độ" {...formItemLayout}>
-            <Input name="" placeholder="Nhập vĩ độ" />
+          <Form.Item name="ViDo" label="Vĩ độ" {...formItemLayout}>
+            <Input name="ViDo" placeholder="Nhập vĩ độ" />
           </Form.Item>
         </Col>
 
-         {/* Ghi chú */}
-         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="" label="Ghi chú: " {...formItemLayout}>
-            <Input name="" placeholder="Nhập ghi chú" />
+        {/* Ghi chú */}
+        <Col xs={24} sm={24} md={12} lg={10}>
+          <Form.Item name="GhiChu" label="Ghi chú: " {...formItemLayout}>
+            <Input name="GhiChu" placeholder="Nhập ghi chú" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Ngày kí hợp đồng */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item
+            name="NgayKyHopDong"
+            label="Ngày kí hợp đồng"
+            {...formItemLayout}
+          >
+            <Input name="NgayKyHopDong" placeholder="Nhập vĩ độ" />
+          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item
+            name="NgayCoHieuLuc"
+            label="Ngày có hiệu lực"
+            {...formItemLayout}
+          >
+            <Input name="NgayCoHieuLuc" placeholder="Nhập vĩ độ" />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row>
+        {/* Ngày lắp đặt */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item name="NgayLapDat" label="Ngày lắp đặt" {...formItemLayout}>
+            <Input name="NgayLapDat" placeholder="Nhập vĩ độ" />
+          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item name="" label="Tuyến đọc (*)" {...formItemLayout}>
+            <Select
+              fieldNames=""
+              options={[
+                { value: "1", label: "baovinh - Bảo Vinh" },
+                { value: "2", label: "bosung1 - tuyến bổ sung" },
+                { value: "3", label: "CatnuocBH - tuyến cắt nước" },
+                { value: "4", label: "DN250baoha - Đồng hồ tổng Bảo Hà" },
+                { value: "5", label: "lamsan - lâm Sản" },
+                { value: "6", label: "lienha - Liên Hà" },
+                { value: "7", label: "tanan - Tân An" },
+              ]}
+              placeholder="Chọn tuyến đọc"
+            />
           </Form.Item>
         </Col>
       </Row>

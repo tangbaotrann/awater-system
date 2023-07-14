@@ -17,7 +17,7 @@ function InfoCustomer() {
       sm: { span: 5 },
       md: { span: 7 },
       lg: { span: 10 },
-    },
+    }, 
     wrapperCol: {
       xs: { span: 24 },
       sm: { span: 24 },
@@ -32,27 +32,36 @@ function InfoCustomer() {
         {/* Loại khách hàng */}
         <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
-            name="type_customer"
+            name="loaiKhachHang"
             label="Loại khách hàng"
             {...formItemLayout}
           >
             <Select
-              fieldNames="type_customer"
+              fieldNames="loaiKhachHang"
               options={[
-                { value: "1", label: "1 - Cá nhân" },
-                { value: "2", label: "2 - Đơn vị, tổ chức" },
+                { value: "Cá nhân", label: "1 - Cá nhân" },
+                { value: "Đơn vị, tổ chức", label: "2 - Đơn vị, tổ chức" },
               ]}
               placeholder="Chọn loại khách hàng"
             />
+          </Form.Item>
+
+          <Form.Item
+            name="nhaMayId"
+            label="Loại khách hàng"
+            {...formItemLayout}
+            hidden
+          >
+            <Input  name="nhaMayId" value='1'/>
           </Form.Item>
         </Col>
 
         {/* Mã khách hàng + Button reset */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="code_cus" label="Mã KH (*)" {...formItemLayout}>
+          <Form.Item name="id" label="Mã KH (*)" {...formItemLayout}>
             <div className="container-label-input">
               <Input
-                name="code_cus"
+                name="id"
                 placeholder="Nhập mã khách hàng"
                 className="space-right-10"
               />
@@ -67,10 +76,10 @@ function InfoCustomer() {
       <Row>
         {/* Tên khách hàng + + Button ... (tên khách hàng) */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="fullName" label="Tên KH (*)" {...formItemLayout}>
+          <Form.Item name="tenKhachHang" label="Tên KH (*)" {...formItemLayout}>
             <div className="container-label-input">
               <Input
-                name="fullName"
+                name="tenKhachHang"
                 placeholder="Nhập tên khách hàng"
                 className="space-right-10"
               />
@@ -83,10 +92,10 @@ function InfoCustomer() {
 
         {/* Địa chỉ + Checkbox */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="address_cus" label="Địa chỉ: " {...formItemLayout}>
+          <Form.Item name="address" label="Địa chỉ: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
-                name="address_cus"
+                name="address"
                 placeholder="Nhập địa chỉ"
                 className="space-right-10"
               />
@@ -99,15 +108,15 @@ function InfoCustomer() {
       <Row>
         {/* Tên thường gọi */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="name_cus" label="Tên thường gọi" {...formItemLayout}>
-            <Input name="name_cus" placeholder="Nhập tên thường gọi" />
+          <Form.Item name="tenThuongGoi" label="Tên thường gọi" {...formItemLayout}>
+            <Input name="tenThuongGoi" placeholder="Nhập tên thường gọi" />
           </Form.Item>
         </Col>
 
         {/* Số hộ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="num_house" label="Số hộ: " {...formItemLayout}>
-            <Input name="num_house" placeholder="Nhập số hộ" />
+          <Form.Item name="soHo" label="Số hộ: " {...formItemLayout}>
+            <Input name="soHo" placeholder="Nhập số hộ" />
           </Form.Item>
         </Col>
       </Row>
@@ -115,10 +124,10 @@ function InfoCustomer() {
       <Row>
         {/* Số khẩu + Button ... (số khẩu) */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="num_guns" label="Số khẩu: " {...formItemLayout}>
+          <Form.Item name="soKhau" label="Số khẩu: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
-                name="num_guns"
+                name="soKhau"
                 placeholder="Nhập số khẩu"
                 className="space-right-10"
               />
@@ -147,19 +156,29 @@ function InfoCustomer() {
       <Row>
         {/* Điện thoại */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="phone" label="Điện thoại: " {...formItemLayout}>
+          <Form.Item name="dienThoai" label="Điện thoại: " {...formItemLayout}>
             <Select
-              fieldNames="phone"
+              fieldNames="dienThoai"
               options={[{ value: "023104921", label: "023104921" }]}
             />
           </Form.Item>
         </Col>
 
         {/* Xác nhận + Button ... (số khẩu) */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="no1" label="Xác nhận" {...formItemLayout}>
             <div className="container-label-input">
               <Input name="no1" className="space-right-10" />
+              <Checkbox name="" />
+            </div>
+          </Form.Item>
+        </Col> */}
+
+        {/* Xác nhận + Button ... (số khẩu) */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item name="nguonNuoc" label="Nguồn nước" {...formItemLayout}>
+            <div className="container-label-input">
+              <Input name="nguonNuoc" placeholder="nguồn nước" className="space-right-10" />
               <Checkbox name="" />
             </div>
           </Form.Item>
@@ -169,10 +188,10 @@ function InfoCustomer() {
       <Row>
         {/* Số CMND + Checkbox (số CMND) */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="num_identity" label="Số CMND: " {...formItemLayout}>
+          <Form.Item name="soCmnd" label="Số CMND: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
-                name="num_identity"
+                name="soCmnd"
                 placeholder="Nhập CMND"
                 className="space-right-10"
               />
@@ -183,11 +202,12 @@ function InfoCustomer() {
 
         {/* Ngày cấp */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="date_range" label="Ngày cấp: " {...formItemLayout}>
+          <Form.Item name="ngayCapCmnd" label="Ngày cấp: " {...formItemLayout}>
             <DatePicker
-              name="date_range"
+              name="ngayCapCmnd"
               placeholder="Chọn ngày cấp"
               className="gutter-item-date-picker"
+              format="DD/MM/YYYY"
             />
           </Form.Item>
         </Col>
@@ -196,15 +216,15 @@ function InfoCustomer() {
       <Row>
         {/* Nơi cấp */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="place_range" label="Nơi cấp: " {...formItemLayout}>
-            <Input name="place_range" placeholder="Nhập nơi cấp" />
+          <Form.Item name="noiCapCmnd" label="Nơi cấp: " {...formItemLayout}>
+            <Input name="noiCapCmnd" placeholder="Nhập nơi cấp" />
           </Form.Item>
         </Col>
 
         {/* Mã số thuế */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="tax_code" label="Mã số thuế: " {...formItemLayout}>
-            <Input name="tax_code" placeholder="Nhập mã số thuế" />
+          <Form.Item name="maSoThue" label="Mã số thuế: " {...formItemLayout}>
+            <Input name="maSoThue" placeholder="Nhập mã số thuế" />
           </Form.Item>
         </Col>
       </Row>
@@ -281,20 +301,20 @@ function InfoCustomer() {
 
         {/* Ghi chú */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="note" label="Ghi chú: " {...formItemLayout}>
-            <Input name="note" placeholder="Nhập ghi chú" />
+          <Form.Item name="ghiChu" label="Ghi chú: " {...formItemLayout}>
+            <Input name="ghiChu" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
 
         {/* Người ĐD */}
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
-            name="representative_name"
+            name="nguoiDaiDien"
             label="Người đại diện: "
             {...formItemLayout}
           >
             <Input
-              name="representative_name"
+              name="nguoiDaiDien"
               placeholder="Nhập tên người đại điện"
             />
           </Form.Item>
@@ -303,11 +323,11 @@ function InfoCustomer() {
 
       <Row>
         {/* Ghi chú */}
-        {/* <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="note" label="Ghi chú: " {...formItemLayout}>
-            <Input name="note" placeholder="Nhập ghi chú" />
+        <Col xs={24} sm={24} md={12} lg={10}>
+          <Form.Item name="soGcn" label="Số GCN" {...formItemLayout}>
+            <Input name="soGcn" placeholder="Nhập Số GCN" />
           </Form.Item>
-        </Col> */}
+        </Col>
 
         {/* Đối tượng */}
         {/* <Col xs={24} sm={24} md={11} lg={10}>
