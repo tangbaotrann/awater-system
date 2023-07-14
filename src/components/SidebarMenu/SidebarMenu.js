@@ -314,9 +314,12 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
         } else if (item.key === constants.CATEGORY_WATCH.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
-        } else if (item.key === constants.CATEGORY_WATCH.key) {
+        } else if (item.key === constants.CATEGORY_CUSTOMER_TYPE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_CUSTOMER_TYPE.key
+          );
           isTabletOrMobile && onCloseDrawer();
         }
 

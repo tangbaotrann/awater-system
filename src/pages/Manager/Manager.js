@@ -22,7 +22,7 @@ import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
 // import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 
 import ListLocation from "../Category/ListLocation/ListLocation";
-
+import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 import ListScope from "../Category/ListScope/ListScope";
 import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
@@ -95,6 +95,9 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_SIGNING.key ||
         currentPage === constants.CATEGORY_SIGNING.key ? (
         <ListSigning />
+      ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
+        currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
+        <CustomerType />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />
