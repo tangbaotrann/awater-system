@@ -13,7 +13,7 @@ const regionSlice = createSlice({
     });
   },
 });
- 
+
 // fetch api all region
 const fetchApiAllRegion = createAsyncThunk(
   "region/fetchApiAllRegion",
@@ -91,11 +91,28 @@ const fetchApiDeleteRegion = createAsyncThunk(
   }
 );
 
+// fetch api search region by id
+const fetchApiSearchByIdRegion = createAsyncThunk(
+  "region/fetchApiSearchByIdRegion",
+  async (idRegion) => {
+    try {
+      const res = await getRequest(`vung/get-singe?id=${idRegion}`);
+
+      console.log("res search", res.data.data);
+
+      return res.data.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
 export {
   fetchApiAllRegion,
   fetchApiAddRegion,
   fetchApiUpdateRegion,
   fetchApiDeleteRegion,
+  fetchApiSearchByIdRegion,
 };
 
 export default regionSlice;

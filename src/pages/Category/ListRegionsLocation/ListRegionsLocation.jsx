@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { Form, Input, Table, Popover, Col, Row, Tooltip } from "antd";
 import {
   PlusOutlined,
@@ -24,12 +24,20 @@ import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintS
 moment.locale("vi");
 
 function ListRegionsLocation() {
+  const [resultSearch, setResultSearch] = useState("");
+
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
   const regions = useSelector(fetchApiAllRegionSelector);
+
+  const layout = {
+    labelCol: {
+      span: 9,
+    },
+  };
 
   useEffect(() => {
     dispatch(fetchApiAllRegion());
@@ -46,13 +54,15 @@ function ListRegionsLocation() {
       title: "Id",
       dataIndex: "id",
       key: "id",
-      // width: 70,
+      filteredValue: [resultSearch],
+      onFilter: (value, record) => {
+        return String(record.id).toLowerCase().includes(value.toLowerCase());
+      },
     },
     {
       title: " Mã Vùng",
       dataIndex: "nhaMayId",
       key: "nhaMayId",
-      // width: 170,
       render: (text, record) => (
         <>
           <SnippetsOutlined />
@@ -83,14 +93,9 @@ function ListRegionsLocation() {
     );
   };
 
-  const AdvancedSearchForm = () => {
-    const layout = {
-      labelCol: {
-        span: 9,
-      },
-    };
-
-    return (
+  return (
+    <>
+      {/* <AdvancedSearchForm /> */}
       <Form {...layout}>
         <Row>
           {!isTabletOrMobile && (
@@ -104,24 +109,26 @@ function ListRegionsLocation() {
           <Col span={16}>
             <Form.Item
               className="custom-form-item"
-              label="Nhập và Enter để tìm kiếm"
+              label="Nhập id để tìm kiếm"
               name="9"
             >
-              <Input
+              <Input.Search
                 style={{
                   width: "100%",
                 }}
+                onSearch={(value) => {
+                  setResultSearch(value);
+                }}
+                onChange={(e) => {
+                  setResultSearch(e.target.value);
+                }}
+                placeholder="Nhập id"
               />
             </Form.Item>
           </Col>
         </Row>
       </Form>
-    );
-  };
 
-  return (
-    <>
-      <AdvancedSearchForm />
       <Table
         style={{ marginTop: "10px" }}
         size="small"

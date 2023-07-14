@@ -6,6 +6,7 @@ import "./Contract.css";
 import TableListContract from "../../../components/TableListContract/TableListContract";
 import TabList from "../../../components/TableListContract/TabList/TabList";
 import FormFilterContract from "../../../components/TableListContract/FormFilterContract/FormFilterContract";
+import { ToastContainer } from "react-toastify";
 
 function Contract() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
@@ -15,7 +16,7 @@ function Contract() {
     {
       key: "1",
       label: "Thông tin tìm kiếm",
-      children: <FormFilterContract />, 
+      children: <FormFilterContract />,
     },
   ];
 
@@ -32,7 +33,7 @@ function Contract() {
 
       {/* render table */}
       <TableListContract />
- 
+
       {/* func bottom */}
       <div className="contract-bottom">
         {/* check mobile */}
@@ -53,9 +54,11 @@ function Contract() {
           </div>
         )}
       </div>
+
+      {/* Notification */}
+      <ToastContainer position="top-right" autoClose="1000" />
     </div>
   );
 }
 
 export default Contract;
- 

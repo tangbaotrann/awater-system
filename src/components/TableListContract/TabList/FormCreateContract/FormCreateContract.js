@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input, Row, Tabs } from "antd";
+import { Button, Col, Form, Row, Tabs } from "antd";
 import {
   CloseOutlined,
   FormOutlined,
@@ -10,7 +10,12 @@ import { useMediaQuery } from "react-responsive";
 import InfoContract from "./InfoContract/InfoContract";
 import InfoClock from "./InfoClock/InfoClock";
 import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
-import InfoCustomer from "./InfoCustomer/InfoCustomer"; 
+import InfoCustomer from "./InfoCustomer/InfoCustomer";
+import { useDispatch } from "react-redux";
+import {
+  fetchApiCreateCustomer,
+  fetchApiCreateInfoContract,
+} from "../../../../redux/slices/contractSlice/contractSlice";
 
 // Tabs
 const tabs = [
@@ -33,26 +38,27 @@ const tabs = [
 ];
 
 function FormCreateContract({ tabList, hideModal }) {
+  const [formMain] = Form.useForm();
+
+  const dispatch = useDispatch();
+
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
-  // console.log(isTabletOrMobile);
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    const data = {...values}
-    data.nhaMayId = 2;
-    console.log("data", data);
-  };
 
   // handle submit error (main)
   const handleFailed = (error) => {
     console.log({ error });
   };
 
-  // const handleChangeTabs = (activeKey) => {
-  //   console.log(activeKey);
-  //   setTabKey(activeKey);
-  // };
+  // handle create contract
+  const handleSaveContract = () => {
+    formMain.validateFields().then((values) => {
+      if (values) {
+        console.log(values);
+        // dispatch(fetchApiCreateCustomer(values));
+        dispatch(fetchApiCreateInfoContract(values));
+      }
+    });
+  };
 
   return (
     <>
@@ -72,8 +78,8 @@ function FormCreateContract({ tabList, hideModal }) {
                   tabKey: _tab.id,
                   children: (
                     <Form
-                      colon={true}
-                      onFinish={handleSubmit}
+                      form={formMain}
+                      // onFinish={handleSubmit}
                       onFinishFailed={handleFailed}
                       fields={[
                         {
@@ -227,7 +233,9 @@ function FormCreateContract({ tabList, hideModal }) {
                           </Button>
 
                           <Button
-                            htmlType="submit"
+                            // htmlType="submit"
+                            key="createContract"
+                            onClick={handleSaveContract}
                             className={
                               isTabletOrMobile
                                 ? "footer-func-btn-item-save custom-btn-add"

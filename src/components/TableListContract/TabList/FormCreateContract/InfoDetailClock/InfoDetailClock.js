@@ -2,7 +2,6 @@ import {
   Button,
   Checkbox,
   Col,
-  DatePicker,
   Form,
   Input,
   InputNumber,
@@ -30,6 +29,13 @@ function InfoDetailClock() {
   return (
     <div className="container-detail-clock">
       <Row>
+        {/* Id */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="Id" label="Id" {...formItemLayout}>
+            <Input name="Id" placeholder="Nhập id" />
+          </Form.Item>
+        </Col>
+
         {/* Đơn vị HC */}
         <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="DonViHC" label="Đơn vị HC" {...formItemLayout}>
@@ -45,43 +51,27 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        {/* Loại đồng hồ */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="" label=" " {...formItemLayout}>
-            <Select
-              fieldNames=""
-              options={[
-                { value: "Hiệp hòa", label: "Hiệp hòa" },
-                { value: "Huyện Bảo Yên", label: "Huyện Bảo Yên" },
-                { value: "Tiền Hải", label: "Tiền Hải" },
-              ]}
-              placeholder="Chọn huyện"
-            />
+          <Form.Item name="LoaiDongHo" label="Loại ĐH" {...formItemLayout}>
+            <Input name="LoaiDongHo" placeholder="Loại đồng hồ" />
           </Form.Item>
         </Col>
 
-        <Col xs={24} sm={24} md={7} lg={7}>
-          <Form.Item name="" label=" " {...formItemLayout}>
-            <Select
-              fieldNames=""
-              options={[
-                { value: "Nam Chính", label: "Nam Chính" },
-                { value: "Tây Tiến", label: "Tây Tiến" },
-                { value: "Vũ Lăng", label: "Vũ Lăng" },
-                { value: "Xã Bảo Hà", label: "Xã Bảo Hà" },
-                { value: "Xã Lương Phong", label: "Xã Lương Phong" },
-                { value: "Xã Đoan Bái", label: "Xã Đoan Bái" },
-                { value: "Xã Đông Lỗ", label: "Xã Đông Lỗ" },
-              ]}
-              placeholder="Chọn xã"
-            />
+        {/* Người quản lý id */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="NguoiQuanLyId"
+            label="Người QL id"
+            {...formItemLayout}
+          >
+            <Input name="NguoiQuanLyId" placeholder="Người quản lý" />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
-        {/* Vùng */}
+        {/* Phạm vi */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="PhamVi" label="PhamVi" {...formItemLayout}>
+          <Form.Item name="PhamVi" label="Phạm vi" {...formItemLayout}>
             <Select
               fieldNames="PhamVi"
               options={[
@@ -108,83 +98,24 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
-        {/* Khu vực */}
-        {/* <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="" label="Khu vực: " {...formItemLayout} hidden>
-            <Select
-              fieldNames=""
-              options={[
-                { value: "1", label: "Bảo Vinh" },
-                { value: "2", label: "Lâm Sản" },
-                { value: "3", label: "Liên Hà 2" },
-                { value: "4", label: "Liên Hà 3" },
-                { value: "5", label: "Liên Hà 4" },
-                { value: "6", label: "Liên Hà 5" },
-                { value: "7", label: "Tân An 1" },
-                { value: "8", label: "Tân An 2" },
-                { value: "9", label: "Tây Tiến_TB" },
-                { value: "10", label: "Vũ Lăng_TB" },
-              ]}
-              placeholder="Chọn khu vực"
-            />
-          </Form.Item>
-        </Col> */}
+        {/* Seri + Checkbox (Seri) */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="DongHoChaId" label="ĐH block" {...formItemLayout}>
-            <Select
-              fieldNames="DongHoChaId"
-              options={[
-                { value: "1", label: "Đồng hồ block 1" },
-                { value: "2", label: "Đồng hồ block 2" },
-              ]}
-              placeholder="Chọn đồng hồ block"
-            />
-          </Form.Item>
-        </Col>
-
-        {/* Nhân viên */}
-        <Col xs={24} sm={24} md={7} lg={7}>
-          <Form.Item
-            name="NguoiQuanLyId"
-            label="Nhân viên (*)"
-            {...formItemLayout}
-          >
-            <Select
-              fieldNames="NguoiQuanLyId"
-              options={[
-                { value: "1", label: "Duy Thành" },
-                { value: "2", label: "Nguyễn Văn Hiệp" },
-                { value: "3", label: "Trịnh Ngọc Tuấn" },
-              ]}
-              placeholder="Chọn nhân viên"
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row>
-        {/* Là đồng hồ phụ */}
-        {/* <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="" label="Chọn" {...formItemLayout}>
-            <Checkbox name="" /> Là đồng hồ phụ
-          </Form.Item>
-        </Col> */}
-
-        {/* Ống dẫn */}
-        {/* <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="" label="Ống dẫn" {...formItemLayout}>
-            <Input name="" placeholder="Nhập ống dẫn" />
-          </Form.Item>
-        </Col> */}
-
-        {/* Thứ tự + button (Thứ tự) */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="SoThuTu" label="Thứ tự: " {...formItemLayout}>
+          <Form.Item name="SeriDongHo" label="Seri" {...formItemLayout}>
             <div className="container-label-input">
-              <Input placeholder="Nhập thứ tự" className="space-right-10" />
-              <Button className="custom-btn-reset-form-contract custom-btn-reset">
-                <RedoOutlined />
-              </Button>
+              <Input
+                name="SeriDongHo"
+                placeholder="Nhập seri"
+                className="space-right-10"
+              />
+              <Checkbox />
             </div>
+          </Form.Item>
+        </Col>
+
+        {/* Seri chì */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="SeriChi" label="Seri chì" {...formItemLayout}>
+            <Input name="SeriChi" placeholder="Nhập seri chì" />
           </Form.Item>
         </Col>
 
@@ -204,7 +135,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Lý do hủy */}
-        <Col xs={24} sm={24} md={7} lg={7}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="LyDoHuy" label="Lý do hủy" {...formItemLayout}>
             <Select
               fieldNames="LyDoHuy"
@@ -213,20 +144,27 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
-        {/* Seri + Checkbox (Seri) */}
+        {/* Thứ tự + button (Thứ tự) */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="SeriDongHo" label="Seri" {...formItemLayout}>
+          <Form.Item name="SoThuTu" label="Thứ tự: " {...formItemLayout}>
             <div className="container-label-input">
               <Input
-                name="SeriDongHo"
-                placeholder="Nhập seri"
+                name="SoThuTu"
+                placeholder="Nhập thứ tự"
                 className="space-right-10"
               />
-              <Checkbox />
+              <Button className="custom-btn-reset-form-contract custom-btn-reset">
+                <RedoOutlined />
+              </Button>
             </div>
+          </Form.Item>
+        </Col>
+
+        {/* Hợp đồng id */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="HopDongId" label="Hợp đồng Id" {...formItemLayout}>
+            <Input name="HopDongId" placeholder="Nhập id" />
           </Form.Item>
         </Col>
 
@@ -242,7 +180,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Chỉ số cuối */}
-        <Col xs={24} sm={24} md={7} lg={7}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="ChiSoCuoi" label="CS cuối" {...formItemLayout}>
             <InputNumber
               name="ChiSoCuoi"
@@ -251,6 +189,88 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col>
+
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="DongHoChaId" label="ĐH block" {...formItemLayout}>
+            <Select
+              fieldNames="DongHoChaId"
+              options={[
+                { value: "1", label: "Đồng hồ block 1" },
+                { value: "2", label: "Đồng hồ block 2" },
+              ]}
+              placeholder="Chọn đồng hồ block"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="" label=" " {...formItemLayout}>
+            <Select
+              fieldNames=""
+              options={[
+                { value: "Hiệp hòa", label: "Hiệp hòa" },
+                { value: "Huyện Bảo Yên", label: "Huyện Bảo Yên" },
+                { value: "Tiền Hải", label: "Tiền Hải" },
+              ]}
+              placeholder="Chọn huyện"
+            />
+          </Form.Item>
+        </Col> */}
+
+        {/* <Col xs={24} sm={24} md={7} lg={7}>
+          <Form.Item name="" label=" " {...formItemLayout}>
+            <Select
+              fieldNames=""
+              options={[
+                { value: "Nam Chính", label: "Nam Chính" },
+                { value: "Tây Tiến", label: "Tây Tiến" },
+                { value: "Vũ Lăng", label: "Vũ Lăng" },
+                { value: "Xã Bảo Hà", label: "Xã Bảo Hà" },
+                { value: "Xã Lương Phong", label: "Xã Lương Phong" },
+                { value: "Xã Đoan Bái", label: "Xã Đoan Bái" },
+                { value: "Xã Đông Lỗ", label: "Xã Đông Lỗ" },
+              ]}
+              placeholder="Chọn xã"
+            />
+          </Form.Item>
+        </Col> */}
+      </Row>
+
+      <Row>
+        {/* Nhân viên */}
+        {/* <Col xs={24} sm={24} md={7} lg={7}>
+          <Form.Item
+            name="NguoiQuanLyId"
+            label="Nhân viên (*)"
+            {...formItemLayout}
+          >
+            <Select
+              fieldNames="NguoiQuanLyId"
+              options={[
+                { value: "1", label: "Duy Thành" },
+                { value: "2", label: "Nguyễn Văn Hiệp" },
+                { value: "3", label: "Trịnh Ngọc Tuấn" },
+              ]}
+              placeholder="Chọn nhân viên"
+            />
+          </Form.Item>
+        </Col> */}
+      </Row>
+
+      <Row>
+        {/* Là đồng hồ phụ */}
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="" label="Chọn" {...formItemLayout}>
+            <Checkbox name="" /> Là đồng hồ phụ
+          </Form.Item>
+        </Col> */}
+
+        {/* Ống dẫn */}
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item name="" label="Ống dẫn" {...formItemLayout}>
+            <Input name="" placeholder="Nhập ống dẫn" />
+          </Form.Item>
+        </Col> */}
       </Row>
 
       <Row>
@@ -417,6 +437,7 @@ function InfoDetailClock() {
               options={[{ value: "1", label: "Van một chiều 1" }]}
               placeholder="Chọn van một chiều"
             />
+
           </Form.Item>
         </Col> */}
 
@@ -542,27 +563,6 @@ function InfoDetailClock() {
             />
           </Form.Item>
         </Col> */}
-      </Row>
-
-      <Row>
-        {/* Seri chì */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="SeriChi" label="Seri chì" {...formItemLayout}>
-            <Input name="SeriChi" placeholder="Nhập seri chì" />
-          </Form.Item>
-        </Col>
-
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="Id" label="Id" {...formItemLayout}>
-            <Input name="Id" placeholder="Nhập id" />
-          </Form.Item>
-        </Col>
-        
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="HopDongId" label="Hợp Đồng Id" {...formItemLayout}>
-            <Input name="HopDongId" placeholder="Nhập id" />
-          </Form.Item>
-        </Col>
       </Row>
     </div>
   );
