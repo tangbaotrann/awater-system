@@ -163,7 +163,7 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_WATCH.label,
               key: constants.CATEGORY_WATCH.key,
             },
-            { 
+            {
               label: constants.CATEGORY_STATUS_READ_NUMBER.label,
               key: constants.CATEGORY_STATUS_READ_NUMBER.key,
             },
@@ -303,6 +303,12 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.CATEGORY_SCOPE.key);
           isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_CUSTOMER_TYPE.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_CUSTOMER_TYPE.key
+          );
         } else if (item.key === constants.CATEGORY_WATCH.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
@@ -334,10 +340,12 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.LOG_NOTICE.key);
           isTabletOrMobile && onCloseDrawer();
-        }
-        else if (item.key === constants.CATEGORY_STATUS_READ_NUMBER.key) {
+        } else if (item.key === constants.CATEGORY_STATUS_READ_NUMBER.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          sessionStorage.setItem("currentPage", constants.CATEGORY_STATUS_READ_NUMBER.key);
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_STATUS_READ_NUMBER.key
+          );
           isTabletOrMobile && onCloseDrawer();
         }
       }}

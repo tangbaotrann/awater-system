@@ -21,6 +21,16 @@ const postRequest = async (url, payload) => {
   }
 };
 
+// [POST] - with Headers ContentType: 'multipart/form-data'
+const postFormDataRequest = async (url, payload) => {
+  try {
+    const res = axiosClient.post(`${url}`, payload);
+    return res;
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
 // [DELETE]
 const deleteRequest = async (url) => {
   try {
@@ -51,4 +61,11 @@ const patchRequest = async (url, payload) => {
   }
 };
 
-export { getRequest, postRequest, deleteRequest, putRequest, patchRequest };
+export {
+  getRequest,
+  postRequest,
+  postFormDataRequest,
+  deleteRequest,
+  putRequest,
+  patchRequest,
+};

@@ -105,7 +105,11 @@ function TableListLRL({ isTabletOrMobile }) {
             label: (
               <div
                 className={`tab-item-bc tab-item-bc-${_tab.id} ${
-                  tabListbc === null && _tab.id === "2"
+                  tabListbc === null && _tab.id === "3"
+                    ? "tab-item-disabled"
+                    : tabListbc === null && _tab.id === "4"
+                    ? "tab-item-disabled"
+                    : ""
                 }`}
               >
                 {_tab.id === "4" ? (
@@ -127,6 +131,11 @@ function TableListLRL({ isTabletOrMobile }) {
               </div>
             ),
             key: _tab.id,
+            disabled:
+              (tabListbc === null && _tab.id === "3") ||
+              (tabListbc === null && _tab.id === "4")
+                ? true
+                : false,
           };
         })}
         onChange={handleChangeTabs}

@@ -17,7 +17,12 @@ import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
-import ListPriceObject from "../Category/ListPriceObject/ListPriceObject"; 
+import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
+import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
+import CustomerType from "../Category/Category_Customer_Type/CustomerType";
+
+import ListLocation from "../Category/ListLocation/ListLocation";
+
 import ListScope from "../Category/ListScope/ListScope";
 import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
@@ -75,8 +80,17 @@ function Manager() {
         <ListRegionsLocation />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
+<<<<<<<<< Temporary merge branch 1
+        <List_Location />
+      ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
+        currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
+        <ListPaymentMethod />
+      ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
+        currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
+        <CustomerType />
+=========
         // <h1>Danh muc vung</h1>
-        <Listlocation />
+        <ListLocation />
       ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
         currentPage === constants.CATEGORY_SCOPE.key ? (
         <ListScope />

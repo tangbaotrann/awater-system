@@ -119,7 +119,7 @@ function TableListPC({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
-        <AddCustomerType tabListbc={tabListbc} hideModal={hideModal}/>
+        <AddCustomerType tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
 
       <Modal
