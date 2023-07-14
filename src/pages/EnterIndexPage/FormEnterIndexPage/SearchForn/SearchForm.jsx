@@ -31,9 +31,9 @@ const SearchForm = ({ hideModal }) => {
     labelCol: {
       span: 9,
     },
-    wrapperCol: {
-      span: 100,
-    },
+    // wrapperCol: {
+    //   span: 100,
+    // },
   };
   // Đoạn mã của bạn ở đây
   return (

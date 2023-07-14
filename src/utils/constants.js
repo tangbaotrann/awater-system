@@ -95,6 +95,10 @@ const constants = {
     label: "DM kiểu đồng hồ",
     key: "CATEGORY_WATCH",
   },
+  CATEGORY_CLOCK: {
+    label: "DM đồng hồ tổng",
+    key: "CATEGORY_CLOCK",
+  },
   CATEGORY_SIGNING: {
     label: "DM ký",
     key: "CATEGORY_SIGNING",

@@ -20,7 +20,7 @@ import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLoca
 import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
 import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
 // import CustomerType from "../Category/Category_Customer_Type/CustomerType";
-
+import ListClock from "../Category/ListClock/ListClock";
 import ListLocation from "../Category/ListLocation/ListLocation";
 import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 import ListScope from "../Category/ListScope/ListScope";
@@ -98,6 +98,9 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
         currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
         <CustomerType />
+      ) : sidebarMenu === constants.CATEGORY_CLOCK.key ||
+        currentPage === constants.CATEGORY_CLOCK.key ? (
+        <ListClock />
       ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
