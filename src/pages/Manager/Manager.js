@@ -18,9 +18,10 @@ import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
 import ListLocation from "../Category/List_Location/List_Location.jsx";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
-import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
+import ListPriceObject from "../Category/ListPriceObject/ListPriceObject"; import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
 import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 import List_Location from "../Category/List_Location/List_Location.jsx";
+import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber"
 
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
@@ -31,7 +32,7 @@ function Manager() {
   return (
     <DefaultLayout currentPage={currentPage}>
       {sidebarMenu === constants.CONTRACT_MANAGER.key || // menu 1
-      currentPage === constants.CONTRACT_MANAGER.key ? (
+        currentPage === constants.CONTRACT_MANAGER.key ? (
         <Contract />
       ) : sidebarMenu === constants.DEV_CUSTOMER.key || // sub menu 1.1
         currentPage === constants.DEV_CUSTOMER.key ? (
@@ -79,6 +80,9 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
         currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
         <CustomerType />
+      ) : sidebarMenu === constants.CATEGORY_STATUS_READ_NUMBER.key ||
+        currentPage === constants.CATEGORY_STATUS_READ_NUMBER.key ? (
+        <Category_Status_ReadNumber />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />

@@ -155,6 +155,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_CUSTOMER_TYPE.label,
               key: constants.CATEGORY_CUSTOMER_TYPE.key,
             },
+            { 
+              label: constants.CATEGORY_STATUS_READ_NUMBER.label,
+              key: constants.CATEGORY_STATUS_READ_NUMBER.key,
+            },
           ],
         },
       ]}
@@ -304,6 +308,11 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
         } else if (item.key === constants.LOG_NOTICE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.LOG_NOTICE.key);
+          isTabletOrMobile && onCloseDrawer();
+        }
+        else if (item.key === constants.CATEGORY_STATUS_READ_NUMBER.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY_STATUS_READ_NUMBER.key);
           isTabletOrMobile && onCloseDrawer();
         }
       }}
