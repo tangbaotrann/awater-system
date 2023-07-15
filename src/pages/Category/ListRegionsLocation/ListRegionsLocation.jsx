@@ -51,18 +51,13 @@ function ListRegionsLocation() {
       width: 70,
     },
     {
-      title: "Id",
-      dataIndex: "id",
-      key: "id",
+      title: " Mã Vùng",
+      dataIndex: "keyId",
+      key: "keyId",
       filteredValue: [resultSearch],
       onFilter: (value, record) => {
-        return String(record.id).toLowerCase().includes(value.toLowerCase());
+        return String(record.keyId).toLowerCase().includes(value.toLowerCase());
       },
-    },
-    {
-      title: " Mã Vùng",
-      dataIndex: "nhaMayId",
-      key: "nhaMayId",
       render: (text, record) => (
         <>
           <SnippetsOutlined />
@@ -107,11 +102,7 @@ function ListRegionsLocation() {
           )}
 
           <Col span={16}>
-            <Form.Item
-              className="custom-form-item"
-              label="Nhập id để tìm kiếm"
-              name="9"
-            >
+            <Form.Item className="custom-form-item" label="Tìm kiếm" name="9">
               <Input.Search
                 style={{
                   width: "100%",
@@ -122,7 +113,7 @@ function ListRegionsLocation() {
                 onChange={(e) => {
                   setResultSearch(e.target.value);
                 }}
-                placeholder="Nhập id"
+                placeholder="Nhập mã vùng"
               />
             </Form.Item>
           </Col>
@@ -144,7 +135,7 @@ function ListRegionsLocation() {
             ? []
             : regions.map((_region, index) => ({
                 index: index + 1,
-                id: _region.id,
+                keyId: _region.keyId,
                 nhaMayId: _region.nhaMayId,
                 tenVung: _region.tenVung,
               }))

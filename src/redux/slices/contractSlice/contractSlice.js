@@ -1,12 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { postRequest } from "../../../services";
+import { getRequest, postRequest } from "../../../services";
 import { toast } from "react-toastify";
 import axios from "axios";
+import moment from "moment";
 
 const contractSlice = createSlice({
   name: "contract",
   initialState: {
-    data: [],
+    dataCustomer: [],
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchApiAllCustomer.fulfilled, (state, action) => {
+      state.dataCustomer = action.payload;
+    });
   },
 });
 
@@ -16,7 +22,7 @@ const fetchApiCreateCustomer = createAsyncThunk(
   async (values) => {
     try {
       const {
-        id,
+        keyIdOfCustomer,
         nhaMayId,
         nguonNuoc,
         loaiKhachHang,
@@ -37,7 +43,7 @@ const fetchApiCreateCustomer = createAsyncThunk(
       } = values;
 
       const res = await postRequest("khach-hang/add", {
-        id,
+        keyId: keyIdOfCustomer,
         nhaMayId,
         nguonNuoc,
         loaiKhachHang,
@@ -66,66 +72,46 @@ const fetchApiCreateCustomer = createAsyncThunk(
   }
 );
 
-// create form data -> info contract
-const createFormData = (values) => {
-  const {
-    Id,
-    DoiTuongGiaId,
-    KhachHangId,
-    TuyenDocId,
-    NhaMayId,
-    PhuongThucThanhToanId,
-    KhuVucThanhToan,
-    NgayKyHopDong,
-    NgayLapDat,
-    GhiChu,
-    Diachi,
-    KinhDo,
-    ViDo,
-    NgayCoHieuLuc,
-    MucDichSuDung,
-  } = values;
-
-  const formData = new FormData();
-
-  // append form
-  formData.append("Id", Id);
-  formData.append("DoiTuongGiaId", DoiTuongGiaId);
-  formData.append("KhachHangId", KhachHangId);
-  formData.append("TuyenDocId", TuyenDocId);
-  formData.append("NhaMayId", NhaMayId);
-  formData.append("PhuongThucThanhToanId", PhuongThucThanhToanId);
-  formData.append("KhuVucThanhToan", KhuVucThanhToan);
-  formData.append("NgayKyHopDong", NgayKyHopDong);
-  formData.append("NgayLapDat", NgayLapDat);
-  formData.append("GhiChu", GhiChu);
-  formData.append("Diachi", Diachi);
-  formData.append("KinhDo", KinhDo);
-  formData.append("ViDo", ViDo);
-  formData.append("NgayCoHieuLuc", NgayCoHieuLuc);
-  formData.append("MucDichSuDung", MucDichSuDung);
-
-  return formData;
-};
-
 // fetch api create info contract
 const fetchApiCreateInfoContract = createAsyncThunk(
   "contract/fetchApiCreateInfoContract",
   async (values) => {
     try {
-      let formData = createFormData(values);
+      const {
+        keyIdOfContract,
+        doiTuongGiaId,
+        khachHangId,
+        tuyenDocId,
+        nhaMayId,
+        phuongThucThanhToanId,
+        khuVucThanhToan,
+        ngayKyHopDong,
+        ngayLapDat,
+        ghiChu,
+        diachi,
+        kinhDo,
+        viDo,
+        ngayCoHieuLuc,
+        mucDichSuDung,
+      } = values;
 
-      const res = await axios.post(
-        "http://45.119.84.227:6688/api/hop-dong/add",
-        formData,
-        {
-          headers: {
-            // Accept: "application/json, text/plain, */*",
-            // "Content-Type": "application/json",
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const res = await postRequest("hop-dong/add", {
+        keyId: keyIdOfContract,
+        doiTuongGiaId,
+        khachHangId,
+        tuyenDocId,
+        nhaMayId,
+        phuongThucThanhToanId,
+        khuVucThanhToan,
+        ngayKyHopDong,
+        ngayLapDat,
+        ghiChu,
+        diachi,
+        kinhDo,
+        viDo,
+        ngayCoHieuLuc,
+        mucDichSuDung,
+      });
 
       console.log("res create contract ->", res.data.data);
 
@@ -136,6 +122,24 @@ const fetchApiCreateInfoContract = createAsyncThunk(
   }
 );
 
-export { fetchApiCreateCustomer, fetchApiCreateInfoContract };
+// fetch api load all customer
+const fetchApiAllCustomer = createAsyncThunk(
+  "contract/fetchApiAllCustomer",
+  async () => {
+    try {
+      const res = await getRequest("khach-hang/get-all");
+
+      return res.data.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
+export {
+  fetchApiAllCustomer,
+  fetchApiCreateCustomer,
+  fetchApiCreateInfoContract,
+};
 
 export default contractSlice;

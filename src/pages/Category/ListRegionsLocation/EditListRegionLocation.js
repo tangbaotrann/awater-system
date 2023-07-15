@@ -45,7 +45,7 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
         }}
         fields={[
           { name: "nhaMayId", value: tabListbc ? tabListbc?.nhaMayId : null },
-          { name: "id", value: tabListbc ? tabListbc?.id : null },
+          { name: "keyId", value: tabListbc ? tabListbc?.keyId : null },
           { name: "tenVung", value: tabListbc ? tabListbc?.tenVung : null },
         ]}
       >
@@ -83,8 +83,8 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Vùng" name="id">
-              <Input style={{ width: "100%" }} name="id" />
+            <Form.Item label="Mã Vùng" name="keyId">
+              <Input style={{ width: "100%" }} name="keyId" />
             </Form.Item>
           </Col>
         </Row>

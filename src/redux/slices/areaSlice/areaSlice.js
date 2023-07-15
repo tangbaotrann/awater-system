@@ -38,10 +38,10 @@ const fetchApiAddArea = createAsyncThunk(
   "area/fetchApiAddArea",
   async (values) => {
     try {
-      const { id, tenKhuVuc, vungId } = values;
+      const { keyId, tenKhuVuc, vungId } = values;
 
       const res = await postRequest("khu-vuc/add", {
-        id,
+        keyId,
         tenKhuVuc,
         vungId,
       });
@@ -61,10 +61,10 @@ const fetchApiUpdateArea = createAsyncThunk(
   "area/fetchApiUpdateArea",
   async ({ values, tabListbc }) => {
     try {
-      const { id, tenKhuVuc, vungId } = values;
+      const { keyId, tenKhuVuc, vungId } = values;
 
-      const res = await putRequest(`khu-vuc/update/${tabListbc.id}`, {
-        id,
+      const res = await putRequest(`khu-vuc/update/${tabListbc.keyId}`, {
+        keyId,
         tenKhuVuc,
         vungId,
       });
@@ -83,9 +83,9 @@ const fetchApiDeleteArea = createAsyncThunk(
   "area/fetchApiDeleteArea",
   async (tabListbc) => {
     try {
-      const { id } = tabListbc;
+      const { keyId } = tabListbc;
 
-      const res = await deleteRequest(`khu-vuc/delete/${id}`, null);
+      const res = await deleteRequest(`khu-vuc/delete/${keyId}`, null);
 
       toast.success("Xóa khu vực thành công.");
 

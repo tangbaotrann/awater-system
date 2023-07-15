@@ -31,3 +31,14 @@ export const fetchApiAllAreaSelector = (state) => state.areaSlice.data;
 
 // get all reading
 export const fetchApiAllReadingSelector = (state) => state.readingSlice.data;
+
+// get all customer
+export const fetchApiAllCustomerSelector = (state) =>
+  state.contractSlice.dataCustomer;
+
+// get all price obj
+export const fetchApiAllPriceObjSelector = (state) => state.priceObjSlice.data;
+
+// get all payment method
+export const fetchApiAllPaymentMethodSelector = (state) =>
+  state.paymentMethodSlice.data;

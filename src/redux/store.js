@@ -11,6 +11,8 @@ import priceObjectSlice from "./slices/priceObjectSlice/priceObjectSlice";
 import areaSlice from "./slices/areaSlice/areaSlice";
 import readingSlice from "./slices/readingSlice/readingSlice";
 import contractSlice from "./slices/contractSlice/contractSlice";
+import priceObjSlice from "./slices/priceObjSlice/priceObjSlice";
+import paymentMethodSlice from "./slices/paymentMethodSlice/paymentMethodSlice";
 
 const store = configureStore({
   reducer: {
@@ -25,6 +27,8 @@ const store = configureStore({
     areaSlice: areaSlice.reducer,
     readingSlice: readingSlice.reducer,
     contractSlice: contractSlice.reducer,
+    priceObjSlice: priceObjSlice.reducer,
+    paymentMethodSlice: paymentMethodSlice.reducer,
   },
 });
 

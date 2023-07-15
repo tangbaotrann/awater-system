@@ -16,6 +16,7 @@ import {
   fetchApiCreateCustomer,
   fetchApiCreateInfoContract,
 } from "../../../../redux/slices/contractSlice/contractSlice";
+import moment from "moment";
 
 // Tabs
 const tabs = [
@@ -79,7 +80,6 @@ function FormCreateContract({ tabList, hideModal }) {
                   children: (
                     <Form
                       form={formMain}
-                      // onFinish={handleSubmit}
                       onFinishFailed={handleFailed}
                       fields={[
                         {
