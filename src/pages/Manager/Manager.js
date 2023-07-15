@@ -100,8 +100,6 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_WATCH.key ||
         currentPage === constants.CATEGORY_WATCH.key ? (
         <ListWatch />
-<<<<<<<<< Temporary merge branch 1
-=========
       ) : sidebarMenu === constants.CATEGORY_STATUS_READ_NUMBER.key ||
         currentPage === constants.CATEGORY_STATUS_READ_NUMBER.key ? (
         <Category_Status_ReadNumber />

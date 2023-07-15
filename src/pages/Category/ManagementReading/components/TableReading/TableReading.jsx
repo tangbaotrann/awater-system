@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Table } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
-import tabListContractSlice, {
-  btnClickTabListContract,
-} from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
+import { btnClickTabListContract } from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
 import "./TableReading.css";
 import tabListInvoicePrintSlice from "../../../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import {
-  btnClickTabListContractSelector,
-  fetchApiAllReadingSelector,
-} from "../../../../../redux/selector";
-import { fetchApiAllReading } from "../../../../../redux/slices/readingSlice/readingSlice";
 
 const readingColumns = (showHeader) => [
   {
-    key: showHeader ? "nguoiQuanLyId" : "key",
-    dataIndex: showHeader ? "nguoiQuanLyId" : "key",
+    key: showHeader ? "gmail" : "key",
+    dataIndex: showHeader ? "gmail" : "key",
     align: "center",
     width: 140,
     ellipsis: {
@@ -25,7 +18,7 @@ const readingColumns = (showHeader) => [
     },
   },
   {
-    key: "maTuyen",
+    key: "codeLine",
     title: showHeader ? "Mã tuyến" : "",
     dataIndex: "codeLine",
     width: 165,
@@ -34,18 +27,18 @@ const readingColumns = (showHeader) => [
     },
   },
   {
-    key: "tenTuyen",
+    key: "nameLine",
     title: showHeader ? "Tên tuyến" : "",
-    dataIndex: "tenTuyen",
+    dataIndex: "nameLine",
     width: 140,
     ellipsis: {
       showTitle: false,
     },
   },
   {
-    key: "nguoiThuTienId",
+    key: "cashier",
     title: showHeader ? "Nhân viên thu tiền" : "",
-    dataIndex: "nguoiThuTienId",
+    dataIndex: "cashier",
     width: 180,
     ellipsis: {
       showTitle: false,
@@ -60,7 +53,7 @@ const readingColumns = (showHeader) => [
   {
     key: "area",
     title: showHeader ? "Khu vực" : "",
-    dataIndex: "khuVucId",
+    dataIndex: "area",
     width: 130,
     ellipsis: {
       showTitle: false,
@@ -127,7 +120,6 @@ const TableReading = () => {
   // console.log('danh sach TuyenDoc', danhSachTuyenDoc);
   return (
     <Table
-      rowKey="index"
       className="parent-table"
       columns={readingColumns(true)}
       dataSource={data}
@@ -140,7 +132,6 @@ const TableReading = () => {
         expandedRowRender: (record) => {
           return (
             <Table
-              rowKey={record.index}
               className="child-table"
               columns={readingColumns(false).map((column) => ({
                 ...column,
@@ -148,6 +139,7 @@ const TableReading = () => {
               }))}
               dataSource={record.data}
               pagination={false}
+              rowKey="key"
               scroll={{
                 x: 1100,
               }}
