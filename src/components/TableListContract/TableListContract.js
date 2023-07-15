@@ -1,13 +1,17 @@
-import { Button, Modal, Table, Tooltip } from "antd";
-import { useState } from "react";
+import { Modal, Table, Tooltip } from "antd";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./TableListContract.css";
-import { dataContract, dataContractOnModal } from "../../utils/dataContract";
+import { dataContractOnModal } from "../../utils/dataContract";
 import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabListContractSlice";
-import { btnClickTabListContractSelector } from "../../redux/selector";
+import {
+  btnClickTabListContractSelector,
+  fetchApiAllCustomerSelector,
+} from "../../redux/selector";
 import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
-import { RedoOutlined } from "@ant-design/icons"; 
+import { RedoOutlined } from "@ant-design/icons";
+import { fetchApiAllCustomer } from "../../redux/slices/contractSlice/contractSlice";
 
 function TableListContract() {
   const [open, setOpen] = useState(false);
@@ -15,38 +19,34 @@ function TableListContract() {
   const dispatch = useDispatch();
 
   const tabList = useSelector(btnClickTabListContractSelector);
+  const customers = useSelector(fetchApiAllCustomerSelector);
 
   // cols table main
-  const cols = [ 
+  const cols = [
     {
       key: "index",
       title: "#",
       dataIndex: "index",
     },
     {
-      key: "type_customer",
+      key: "loaiKhachHang",
       title: "Loại KH",
-      dataIndex: "type_customer",
+      dataIndex: "loaiKhachHang",
     },
     {
-      key: "fullName",
+      key: "tenKhachHang",
       title: "Tên khách hàng",
-      dataIndex: "fullName",
+      dataIndex: "tenKhachHang",
     },
     {
-      key: "code_customer",
+      key: "keyId",
       title: "Mã khách hàng",
-      dataIndex: "code_customer",
+      dataIndex: "keyId",
     },
     {
-      key: "address",
-      title: "Địa chỉ",
-      dataIndex: "address",
-    },
-    {
-      key: "phone",
+      key: "dienThoai",
       title: "Điện thoại",
-      dataIndex: "phone",
+      dataIndex: "dienThoai",
     },
     {
       key: "email",
@@ -54,11 +54,6 @@ function TableListContract() {
       dataIndex: "email",
     },
   ];
-
-  // hide modal
-  const hideModal = () => {
-    setOpen(false);
-  };
 
   // cols table modal
   const colsTableModal = [
@@ -124,6 +119,15 @@ function TableListContract() {
     },
   ];
 
+  useEffect(() => {
+    dispatch(fetchApiAllCustomer());
+  }, []);
+
+  // hide modal
+  const hideModal = () => {
+    setOpen(false);
+  };
+
   // handle row select
   const handleRowSelection = (selectedRowKeys, selectedRows) => {
     dispatch(
@@ -144,14 +148,13 @@ function TableListContract() {
           rowKey="index"
           size="small"
           columns={cols}
-          dataSource={dataContract.map((_contract, index) => ({
+          dataSource={customers.map((_customer, index) => ({
             index: index + 1,
-            type_customer: _contract.type_customer,
-            fullName: _contract.fullName,
-            code_customer: _contract.code_customer,
-            address: _contract.address,
-            phone: _contract.phone,
-            email: _contract.email,
+            loaiKhachHang: _customer.loaiKhachHang,
+            tenKhachHang: _customer.tenKhachHang,
+            keyId: _customer.keyId,
+            dienThoai: _customer.dienThoai,
+            email: _customer.email,
           }))}
           pagination={{
             pageSize: 10,

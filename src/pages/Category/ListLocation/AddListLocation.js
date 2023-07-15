@@ -5,7 +5,6 @@ import {
   FileAddOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
-import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
@@ -81,10 +80,10 @@ const AddListLocation = ({ regions, hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Khu Vực" name="id">
+            <Form.Item label="Mã Khu Vực" name="keyId">
               <Input
                 style={{ width: "100%" }}
-                name="id"
+                name="keyId"
                 ref={firstInputRef}
                 placeholder="Nhập mã khu vực"
               />

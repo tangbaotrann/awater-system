@@ -12,6 +12,8 @@ import areaSlice from "./slices/areaSlice/areaSlice";
 import bangGiaSlice from "./slices/bangGiaSlice/bangGiaSlice";
 import tuyenDocSlice from "./slices/DMTuyenDoc/tuyenDocSlice";
 import nguoidungSlice from "./slices/NguoiDungSlice/nguoidungSlice";
+import priceObjSlice from "./slices/priceObjSlice/priceObjSlice";
+import paymentMethodSlice from "./slices/paymentMethodSlice/paymentMethodSlice";
 
 const store = configureStore({
   reducer: {
@@ -27,6 +29,8 @@ const store = configureStore({
     bangGia: bangGiaSlice.reducer,
     tuyendoc: tuyenDocSlice.reducer,
     nguoidung: nguoidungSlice.reducer,
+    priceObjSlice: priceObjSlice.reducer,
+    paymentMethodSlice: paymentMethodSlice.reducer,
   },
 });
 

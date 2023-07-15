@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { fetchApiUpdateArea } from "../../../redux/slices/areaSlice/areaSlice";
 
-const EditListLocation = ({ tabListbc, regions, hideModal }) => {
+const EditListLocation = ({ tabListbc, hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
 
@@ -56,7 +56,7 @@ const EditListLocation = ({ tabListbc, regions, hideModal }) => {
           padding: 24,
         }}
         fields={[
-          { name: "id", value: tabListbc ? tabListbc?.id : null },
+          { name: "keyId", value: tabListbc ? tabListbc?.keyId : null },
           { name: "tenKhuVuc", value: tabListbc ? tabListbc?.tenKhuVuc : null },
           { name: "vungId", value: tabListbc ? tabListbc?.vungId : null },
         ]}
@@ -70,10 +70,10 @@ const EditListLocation = ({ tabListbc, regions, hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Khu Vực" name="id">
+            <Form.Item label="Mã Khu Vực" name="keyId">
               <Input
                 style={{ width: "100%" }}
-                name="id"
+                name="keyId"
                 placeholder="Nhập mã khu vực"
               />
             </Form.Item>
@@ -108,21 +108,8 @@ const EditListLocation = ({ tabListbc, regions, hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Vùng" name="vungId">
-              <Select
-                style={{ width: "100%" }}
-                fieldNames="vungId"
-                options={
-                  regions?.length <= 0
-                    ? []
-                    : regions.map((_regoin) => ({
-                        label: _regoin.tenVung,
-                        value: _regoin.id,
-                      }))
-                }
-                placeholder="Chọn vùng"
-                disabled
-              />
+            <Form.Item label="Vùng" name="vungId" hidden>
+              <Input name="vungId" />
             </Form.Item>
 
             {/* <Form.Item label="Khu Vực Cha">

@@ -42,11 +42,11 @@ function ListLocation() {
     },
     {
       title: " Mã Khu Vực",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "keyId",
+      key: "keyId",
       filteredValue: [resultSearch],
       onFilter: (value, record) => {
-        return String(record.id).toLowerCase().includes(value.toLowerCase());
+        return String(record.keyId).toLowerCase().includes(value.toLowerCase());
       },
       render: (text, record) => (
         <>
@@ -60,11 +60,11 @@ function ListLocation() {
       dataIndex: "tenKhuVuc",
       key: "tenKhuVuc",
     },
-    {
-      title: "Vùng",
-      dataIndex: "vungId",
-      key: "vungId",
-    },
+    // {
+    //   title: "Vùng",
+    //   dataIndex: "vungId",
+    //   key: "vungId",
+    // },
   ];
 
   const layout = {
@@ -106,11 +106,7 @@ function ListLocation() {
           )}
 
           <Col span={16}>
-            <Form.Item
-              className="custom-form-item"
-              label="Nhập id để tìm kiếm"
-              name="9"
-            >
+            <Form.Item className="custom-form-item" label="Tìm kiếm" name="9">
               <Input.Search
                 style={{
                   width: "100%",
@@ -121,7 +117,7 @@ function ListLocation() {
                 onChange={(e) => {
                   setResultSearch(e.target.value);
                 }}
-                placeholder="Nhập id"
+                placeholder="Nhập mã khu vực"
               />
             </Form.Item>
           </Col>
@@ -143,7 +139,7 @@ function ListLocation() {
             ? []
             : areas.map((_area, index) => ({
                 index: index + 1,
-                id: _area.id,
+                keyId: _area.keyId,
                 tenKhuVuc: _area.tenKhuVuc,
                 vungId: _area.vungId,
               }))
