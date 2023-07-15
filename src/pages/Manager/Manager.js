@@ -16,8 +16,8 @@ import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
-<<<<<<<<< Temporary merge branch 1
-import ListPriceObject from "../Category/ListPriceObject/ListPriceObject"; 
+
+import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
 import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
 import ListClock from "../Category/ListClock/ListClock";
 import ListLocation from "../Category/ListLocation/ListLocation";
