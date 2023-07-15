@@ -13,7 +13,7 @@ const priceObjectSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchApiAllPriceObject.fulfilled, (state, action) => {
-      state.data = action.payload;
+      state.data = action.payload; 
     });
   },
 });

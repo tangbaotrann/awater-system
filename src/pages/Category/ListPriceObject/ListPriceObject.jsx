@@ -16,9 +16,9 @@ import {
   fetchApiAllPriceObjectSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-
+ 
 moment.locale("vi");
-
+ 
 function ListPriceObject() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
@@ -128,7 +128,7 @@ function ListPriceObject() {
           ...column,
           className: "cell-wrap",
         }))}
-        dataSource={priceObject.map((_priceObject, index) => ({
+        dataSource={priceObject?.map((_priceObject, index) => ({
           index: index + 1,
           id: _priceObject.id,
           kyHieu: _priceObject.kyHieu,

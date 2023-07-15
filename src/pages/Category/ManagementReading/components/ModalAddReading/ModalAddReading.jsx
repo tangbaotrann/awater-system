@@ -8,58 +8,86 @@ import {
   Modal,
   Select,
   Space,
+  message,
 } from "antd";
-import React, { useEffect, useId } from "react";
-
+import React, { useEffect } from "react";
 import "./ModalAddReading.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from 'uuid';
+import { AddDMTuyenDoc } from "../../../../../redux/slices/DMTuyenDoc/tuyenDocSlice";
+import { fetchApiAllArea } from "../../../../../redux/slices/areaSlice/areaSlice";
 
 const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
-  const employeeOptions = [];
-  for (let i = 1; i < 36; i++) {
-    employeeOptions.push({
-      value: `NV${i}`,
-      label: `Nhân viên ${i}`,
-    });
-  }
-  const indexingPeriodOptions = [];
-  for (let i = 1; i < 36; i++) {
-    indexingPeriodOptions.push({
-      value: `KG${i}`,
-      label: `Kỳ ghi ${i}`,
-    });
-  }
-  const areaOptions = [];
-  for (let i = 1; i < 36; i++) {
-    areaOptions.push({
-      value: `KG${i}`,
-      label: `Kỳ ghi ${i}`,
-    });
-  }
-  const [form] = Form.useForm();
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
+  const { Option } = Select;
+  const dispatch = useDispatch();
+  const listAreas = useSelector(state => state.areaSlice.data);
+  const isAddedSuccess = useSelector(state => state.tuyendoc.isAddedSuccess);
+  const danhSachNguoiDung = useSelector(state => state.nguoidung.danhSachNguoiDung)
+
+  // const employeeOptions = [];
+  // for (let i = 1; i < 36; i++) {
+  //   employeeOptions.push({
+  //     value: `NV${i}`,
+  //     label: `Nhân viên ${i}`,
+  //   });
+  // }
+  // const indexingPeriodOptions = [];
+  // for (let i = 1; i < 36; i++) {
+  //   indexingPeriodOptions.push({
+  //     value: `KG${i}`,
+  //     label: `Kỳ ghi ${i}`,
+  //   });
+  // }
+  // const areaOptions = [];
+  // for (let i = 1; i < 36; i++) {
+  //   areaOptions.push({
+  //     value: `KG${i}`,
+  //     label: `Kỳ ghi ${i}`,
+  //   });
+  // }
+
+
+  // useEffect(() => {
+  //   form.setFieldValue("employee", tabList?.cashier || "");
+  //   form.setFieldValue("index", tabList?.index || "");
+  //   form.setFieldValue("codeLine", tabList?.codeLine || "");
+  //   form.setFieldValue("nameLine", tabList?.nameLine || "");
+  //   form.setFieldValue("cashier", tabList?.cashier || "");
+  //   form.setFieldValue("indexingPeriod", tabList?.indexingPeriod || "");
+  // }, [tabList]);
+
+  // useEffect(() => {
+  //   if (!isOpen) return;
+  //   return () => {
+  //     form.setFieldValue("employee", "");
+  //     form.setFieldValue("index", "");
+  //     form.setFieldValue("codeLine", "");
+  //     form.setFieldValue("nameLine", "");
+  //     form.setFieldValue("cashier", "");
+  //     form.setFieldValue("indexingPeriod", "");
+  //   };
+  // }, [isOpen]);
 
   useEffect(() => {
-    form.setFieldValue("employee", tabList?.cashier || "");
-    form.setFieldValue("index", tabList?.index || "");
-    form.setFieldValue("codeLine", tabList?.codeLine || "");
-    form.setFieldValue("nameLine", tabList?.nameLine || "");
-    form.setFieldValue("cashier", tabList?.cashier || "");
-    form.setFieldValue("indexingPeriod", tabList?.indexingPeriod || "");
-  }, [tabList]);
-  useEffect(() => {
-    if (!isOpen) return;
-    return () => {
-      form.setFieldValue("employee", "");
-      form.setFieldValue("index", "");
-      form.setFieldValue("codeLine", "");
-      form.setFieldValue("nameLine", "");
-      form.setFieldValue("cashier", "");
-      form.setFieldValue("indexingPeriod", "");
-    };
-  }, [isOpen]);
+    dispatch(fetchApiAllArea())
+  }, [])
 
+  const onFinish = (values) => {
+    const data = { ...values };
+    data.KeyId = uuidv4();
+    data.nhaMayId = 'nhamaycuangan';
+    if (data) {
+      dispatch(AddDMTuyenDoc(data)) 
+    }
+    if (isAddedSuccess) {
+      handleCancel("addReading")
+      message.success({ content: 'Thêm thành công' })
+    }
+  };
+
+  // console.log(danhSachNguoiDung);
   return (
     <Modal
       title={!tabList ? "Thêm dữ liệu" : "Sửa dữ liệu"}
@@ -72,123 +100,145 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
       footer={null}
     >
       <Form
-        form={form}
-        name="basic"
+        onFinish={onFinish}
         labelCol={{ span: 7 }}
         wrapperCol={{ span: 15 }}
-        style={{ maxWidth: 800 }}
         initialValues={{ remember: true }}
-        autoComplete="off"
       >
         <Form.Item
-          label="Nhân viên:"
-          name="employee"
+          label="Nhân viên"
+          name="Id"
+          hidden
+        >
+          <Input value={() => uuidv4()} />
+        </Form.Item>
+        <Form.Item
+          label="Nhân viên"
+          name="nguoiQuanLyId"
           rules={[{ required: true, message: "Hãy chọn nhân viên!" }]}
         >
           <Select
-            name="employee"
+            name="nguoiQuanLyId"
             size="middle"
             placeholder="Chọn nhân viên"
             style={{ width: "100%" }}
-            options={employeeOptions}
-          />
+          >
+            {
+              danhSachNguoiDung && danhSachNguoiDung.length > 0 && danhSachNguoiDung?.map((item) => (
+                <Option value={item.id}>{item.keyId}</Option>
+              ))
+            }
+          </Select>
         </Form.Item>
         <Form.Item
-          label="Số thứ tự:"
+          label="Số thứ tự"
           name="index"
           rules={[{ required: true, message: "Hãy nhập số thứ tự!" }]}
         >
           <InputNumber
             min={1}
             size="middle"
+            name="index"
             placeholder="Số thứ tự"
             style={{ width: "100%" }}
           />
         </Form.Item>
-        <Form.Item
-          label="Mã tuyến:"
-          name="codeLine"
-          rules={[{ required: true, message: "Hãy nhập vào mã tuyến!" }]}
+        {/* <Form.Item
+          label="Mã tuyến"
+          name="maTuyen"
+          // rules={[{ required: true, message: "Hãy nhập vào mã tuyến!" }]}
         >
-          <Input placeholder="Mã tuyến" name="codeLine" />
-        </Form.Item>
+          <Input placeholder="Mã tuyến" name="maTuyen" />
+        </Form.Item> */}
         <Form.Item
-          label="Tên tuyến:"
-          name="nameLine"
+          label="Tên tuyến"
+          name="tenTuyen"
           rules={[{ required: true, message: "Hãy nhập vào tên tuyến!" }]}
         >
-          <Input placeholder="Tên tuyến" name="nameLine" />
+          <Input placeholder="Tên tuyến" name="tenTuyen" />
         </Form.Item>
-        <Form.Item label="Nhân viên thu tiền:" name="cashier">
+        <Form.Item
+          label="Nhân viên thu tiền"
+          name="nguoiThuTienId"
+          rules={[{ required: true, message: "Hãy chọn nhân viên thu tiền!" }]}
+        >
           <Select
-            name="cashier"
+            name="nguoiThuTienId"
             size="middle"
             placeholder="Chọn nhân viên"
             style={{ width: "100%" }}
-            options={employeeOptions}
-          />
+          >
+            <Option value="nhân viên 1">nhân viên 1</Option>
+            <Option value="nhân viên 2">nhân viên 2</Option>
+            <Option value="nhân viên 3">nhân viên 3</Option>
+          </Select>
         </Form.Item>
-        <Form.Item label="Số ĐT người thu:" name="phoneNumberCashier">
+        <Form.Item label="Số ĐT người thu" name="phoneNumberCashier">
           <Input placeholder="Số ĐT người thu" name="phoneNumberCashier" />
         </Form.Item>
-        <Form.Item label="Địa chỉ thu:" name="address">
+        <Form.Item label="Địa chỉ thu" name="address">
           <Input placeholder="Địa chỉ thu" name="address" />
         </Form.Item>
-        <Form.Item label="Thời gian thu:" name="time">
+        <Form.Item label="Thời gian thu" name="time">
           <Input placeholder="Thời gian thu" name="time" />
         </Form.Item>
-        <Form.Item label="Số ĐT hóa đơn:" name="phoneNumberInvoice">
+        <Form.Item label="Số ĐT hóa đơn" name="phoneNumberInvoice">
           <Input placeholder="Số ĐT hóa đơn" name="phoneNumberInvoice" />
         </Form.Item>
-        <Form.Item label="Số ĐT sửa chữa:" name="phoneNumberRepair">
+        <Form.Item label="Số ĐT sửa chữa" name="phoneNumberRepair">
           <Input placeholder="Số ĐT sửa chữa" name="phoneNumberRepair" />
         </Form.Item>
-        <Form.Item label="Kỳ ghi chỉ số:" name="indexingPeriod">
+        <Form.Item label="Kỳ ghi chỉ số" name="indexingPeriod">
           <Select
             name="indexingPeriod"
             size="middle"
             placeholder="Kỳ ghi chỉ số"
             style={{ width: "100%" }}
-            options={indexingPeriodOptions}
+          // options={indexingPeriodOptions}
           />
         </Form.Item>
-        <Form.Item label="Khu vực:" name="area">
+        <Form.Item label="Khu vực" name="khuVucId">
           <Select
-            name="area"
+            name="khuVucId"
             size="middle"
             placeholder="Chọn khu vực"
             style={{ width: "100%" }}
-            options={areaOptions}
-          />
+          >
+            {
+              listAreas && listAreas.length > 0 && listAreas.map((area) => (
+                <Option value={area.id}>{area?.tenKhuVuc}</Option>
+              ))
+            }
+          </Select>
         </Form.Item>
-        <Form.Item label="NV xem biểu mẫu:" name="employeeViewForm">
+        <Form.Item label="NV xem biểu mẫu" name="employeeViewForm">
           <Select
             name="employeeViewForm"
             size="middle"
             placeholder="Chọn nhân viên xem biểu mẫu"
             style={{ width: "100%" }}
-            options={employeeOptions}
+          // options={employeeOptions}
           />
         </Form.Item>
-        <Form.Item label="NV sửa biểu mẫu:" name="employeeEditForm">
+        <Form.Item label="NV sửa biểu mẫu" name="employeeEditForm">
           <Select
             name="employeeEditForm"
             size="middle"
             placeholder="Chọn nhân viên sửa biểu mẫu"
             style={{ width: "100%" }}
-            options={employeeOptions}
+          // options={employeeOptions}
           />
         </Form.Item>
-        <Form.Item label="Đơn vị:" name="unit">
+        <Form.Item label="Đơn vị" name="unit">
           <Select
             name="unit"
             size="middle"
             placeholder="Chọn đơn vị"
             style={{ width: "100%" }}
-            options={employeeOptions}
+          // options={employeeOptions}
           />
         </Form.Item>
-        <Form.Item label="Ngày ghi CS từ:" name="fromDate">
+        <Form.Item label="Ngày ghi CS từ" name="fromDate">
           <DatePicker
             name="fromDate"
             placeholder="Chọn ngày ghi từ"
@@ -196,7 +246,7 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
             format={dateFormatList}
           />
         </Form.Item>
-        <Form.Item label="Ngày ghi CS đến:" name="toDate">
+        <Form.Item label="Ngày ghi CS đến" name="toDate">
           <DatePicker
             name="toDate"
             placeholder="Chọn ngày ghi từ"
@@ -204,6 +254,7 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
             format={dateFormatList}
           />
         </Form.Item>
+
         {tabList && (
           <div style={{ marginBottom: "10px" }}>
             <span style={{ fontWeight: "600" }}>
@@ -215,45 +266,34 @@ const ModalAddReading = ({ isOpen, handleCancel, handleOk }) => {
           </div>
         )}
 
-        <Form.Item className="form-item-button">
-          <Space size={5} className="modal-button-actions">
+        <Form.Item className="form-item-button footer">
+          <Space>
             <Button
-              className="button"
               type="primary"
               icon={<SaveOutlined />}
-              style={{ marginRight: 5, width: "100%" }}
-              size="middle"
-              //   disabled={!(valueSymbol && valueDescribe)}
+              style={{ marginRight: 5 }}
             >
               Lưu và thêm tiếp
             </Button>
             <Button
-              className="button"
-              type="primary"
+              htmlType="submit"
               icon={<SaveOutlined />}
               style={{
                 marginRight: 5,
-                width: "100%",
                 backgroundColor: "#fbf2ef",
                 color: "#fa8a6d",
               }}
-              size="middle"
-              //   disabled={!(valueSymbol && valueDescribe)}
             >
               Lưu và đóng
             </Button>
             <Button
-              className="button"
-              key="submit"
               icon={<CloseCircleOutlined />}
               onClick={() => handleCancel("addReading")}
               style={{
-                width: "100%",
                 backgroundColor: "#fa896b",
                 color: "#ffffff",
                 border: "none",
               }}
-              size="middle"
             >
               Đóng
             </Button>

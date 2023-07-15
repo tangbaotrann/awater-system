@@ -20,7 +20,7 @@ const fetchApiAllArea = createAsyncThunk("area/fetchApiAllArea", async () => {
   try {
     const res = await getRequest("khu-vuc/get-all");
 
-    console.log("res all area", res.data.data);
+    // console.log("res all Area", res);
 
     return res.data.data;
   } catch (error) {
