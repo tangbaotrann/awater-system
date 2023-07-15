@@ -11,12 +11,17 @@ import InfoContract from "./InfoContract/InfoContract";
 import InfoClock from "./InfoClock/InfoClock";
 import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
 import InfoCustomer from "./InfoCustomer/InfoCustomer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchApiCreateCustomer,
   fetchApiCreateInfoContract,
+  fetchApiFindByKeyIdCustomer,
 } from "../../../../redux/slices/contractSlice/contractSlice";
-import moment from "moment";
+import {
+  fetchApiCreateCustomerSelector,
+  fetchApiFindByKeyIdCustomerSelector,
+} from "../../../../redux/selector";
+import { useEffect, useState } from "react";
 
 // Tabs
 const tabs = [
@@ -40,23 +45,50 @@ const tabs = [
 
 function FormCreateContract({ tabList, hideModal }) {
   const [formMain] = Form.useForm();
+  const [dataContract, setDataContract] = useState({});
 
   const dispatch = useDispatch();
 
+  const isCreateCustomer = useSelector(fetchApiCreateCustomerSelector);
+  const customer = useSelector(fetchApiFindByKeyIdCustomerSelector);
+
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
+  console.log("isCreateCustomer ->", isCreateCustomer);
+  console.log("customer ->", customer);
 
   // handle submit error (main)
   const handleFailed = (error) => {
     console.log({ error });
   };
 
+  useEffect(() => {
+    if (
+      isCreateCustomer.statusCode === 200 ||
+      isCreateCustomer.statusCode === 201
+    ) {
+      console.log("running......");
+      // find customer
+      dispatch(fetchApiFindByKeyIdCustomer(isCreateCustomer.data));
+
+      if (customer?.id) {
+        dispatch(
+          fetchApiCreateInfoContract({
+            dataContract: dataContract,
+            id: customer?.id,
+          })
+        );
+      }
+    }
+  }, [isCreateCustomer.statusCode, customer?.id]);
+
   // handle create contract
   const handleSaveContract = () => {
     formMain.validateFields().then((values) => {
       if (values) {
         console.log(values);
-        // dispatch(fetchApiCreateCustomer(values));
-        dispatch(fetchApiCreateInfoContract(values));
+        dispatch(fetchApiCreateCustomer(values));
+        setDataContract(values);
       }
     });
   };
@@ -81,28 +113,12 @@ function FormCreateContract({ tabList, hideModal }) {
                     <Form
                       form={formMain}
                       onFinishFailed={handleFailed}
-                      fields={[
-                        {
-                          name: "type_customer",
-                          value: tabList ? tabList?.type_customer : "",
-                        },
-                        {
-                          name: "code_cus",
-                          value: tabList ? tabList?.code_customer : "",
-                        },
-                        {
-                          name: "fullName",
-                          value: tabList ? tabList?.fullName : "",
-                        },
-                        {
-                          name: "address_cus",
-                          value: tabList ? tabList?.address : "",
-                        },
-                        {
-                          name: "phone",
-                          value: tabList ? tabList?.phone : "",
-                        },
-                      ]}
+                      // fields={[
+                      //   {
+                      //     name: "khachHangId",
+                      //     value: customer ? customer.id : "",
+                      //   },
+                      // ]}
                     >
                       {/* Mã khách hàng */}
                       {/* <Row>

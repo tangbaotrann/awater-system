@@ -89,9 +89,9 @@ function InfoContract() {
             name="khachHangId"
             label="Khách hàng Id (*)"
             {...formItemLayout}
+            hidden
           >
-            {/* <div className="container-label-input"> */}
-            <Select
+            {/* <Select
               fieldNames="khachHangId"
               options={
                 customers?.length <= 0
@@ -103,11 +103,8 @@ function InfoContract() {
               }
               className="space-right-10"
               placeholder="Chọn tên khách hàng"
-            />
-            {/* <Button className="custom-btn-reset-form-contract custom-btn-reset">
-                <RedoOutlined />
-              </Button> */}
-            {/* </div> */}
+            /> */}
+            <Input name="khachHangId" />
           </Form.Item>
         </Col>
 
@@ -325,8 +322,12 @@ function InfoContract() {
 
         {/* Ghi chú */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="ghiChu" label="Ghi chú: " {...formItemLayout}>
-            <Input name="ghiChu" placeholder="Nhập ghi chú" />
+          <Form.Item
+            name="ghiChuOfContract"
+            label="Ghi chú: "
+            {...formItemLayout}
+          >
+            <Input name="ghiChuOfContract" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
       </Row>

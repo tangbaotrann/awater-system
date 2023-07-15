@@ -8,11 +8,21 @@ const contractSlice = createSlice({
   name: "contract",
   initialState: {
     dataCustomer: [],
+    createCustomer: [],
+    findByKeyIdCustomer: null,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchApiAllCustomer.fulfilled, (state, action) => {
-      state.dataCustomer = action.payload;
-    });
+    builder
+      .addCase(fetchApiAllCustomer.fulfilled, (state, action) => {
+        state.dataCustomer = action.payload;
+      })
+      .addCase(fetchApiCreateCustomer.fulfilled, (state, action) => {
+        // find and add
+        state.createCustomer = action.payload;
+      })
+      .addCase(fetchApiFindByKeyIdCustomer.fulfilled, (state, action) => {
+        state.findByKeyIdCustomer = action.payload;
+      });
   },
 });
 
@@ -63,7 +73,23 @@ const fetchApiCreateCustomer = createAsyncThunk(
         nguoiDaiDien,
       });
 
-      console.log("res create customer ->", res.data.data);
+      console.log("res create customer ->", res.data);
+
+      return res.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
+// fetch api find by keyId customer
+const fetchApiFindByKeyIdCustomer = createAsyncThunk(
+  "contract/fetchApiFindByKeyIdCustomer",
+  async (keyId) => {
+    try {
+      const res = await getRequest(`khach-hang/get-single/${keyId}`);
+
+      console.log("res find by id customer ->", res.data);
 
       return res.data.data;
     } catch (error) {
@@ -75,37 +101,42 @@ const fetchApiCreateCustomer = createAsyncThunk(
 // fetch api create info contract
 const fetchApiCreateInfoContract = createAsyncThunk(
   "contract/fetchApiCreateInfoContract",
-  async (values) => {
+  async ({ dataContract, id }) => {
+    console.log("dataContract slice", dataContract);
+    console.log("customer id slice", id);
+
     try {
       const {
         keyIdOfContract,
         doiTuongGiaId,
-        khachHangId,
+        // khachHangId,
         tuyenDocId,
         nhaMayId,
         phuongThucThanhToanId,
         khuVucThanhToan,
         ngayKyHopDong,
         ngayLapDat,
-        ghiChu,
+        ghiChuOfContract,
         diachi,
         kinhDo,
         viDo,
         ngayCoHieuLuc,
         mucDichSuDung,
-      } = values;
+      } = dataContract;
+
+      // const { id } = customer;
 
       const res = await postRequest("hop-dong/add", {
         keyId: keyIdOfContract,
         doiTuongGiaId,
-        khachHangId,
+        khachHangId: id,
         tuyenDocId,
         nhaMayId,
         phuongThucThanhToanId,
         khuVucThanhToan,
         ngayKyHopDong,
         ngayLapDat,
-        ghiChu,
+        ghiChu: ghiChuOfContract,
         diachi,
         kinhDo,
         viDo,
@@ -138,6 +169,7 @@ const fetchApiAllCustomer = createAsyncThunk(
 
 export {
   fetchApiAllCustomer,
+  fetchApiFindByKeyIdCustomer,
   fetchApiCreateCustomer,
   fetchApiCreateInfoContract,
 };

@@ -15,6 +15,7 @@ export const btnClickTabListInvoicePrintSelector = (state) =>
 export const btnClickTabListEnterIndexPageSelector = (state) =>
   state.tabListEnterIndexPageSlice.tabListIP;
 
+/* GET DATA */
 // get all region
 export const fetchApiAllRegionSelector = (state) => state.regionSlice.data;
 
@@ -42,3 +43,11 @@ export const fetchApiAllPriceObjSelector = (state) => state.priceObjSlice.data;
 // get all payment method
 export const fetchApiAllPaymentMethodSelector = (state) =>
   state.paymentMethodSlice.data;
+
+// get create customer
+export const fetchApiCreateCustomerSelector = (state) =>
+  state.contractSlice.createCustomer;
+
+// get find by keyId customer
+export const fetchApiFindByKeyIdCustomerSelector = (state) =>
+  state.contractSlice.findByKeyIdCustomer;
