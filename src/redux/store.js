@@ -9,8 +9,8 @@ import regionSlice from "./slices/regionSlice/regionSlice";
 import factorySlice from "./slices/factorySlice/factorySlice";
 import priceObjectSlice from "./slices/priceObjectSlice/priceObjectSlice";
 import areaSlice from "./slices/areaSlice/areaSlice";
-import readingSlice from "./slices/readingSlice/readingSlice";
-import contractSlice from "./slices/contractSlice/contractSlice";
+import tuyenDocSlice from "./slices/DMTuyenDoc/tuyenDocSlice";
+import nguoidungSlice from "./slices/NguoiDungSlice/nguoidungSlice";
 
 const store = configureStore({
   reducer: {
@@ -23,8 +23,8 @@ const store = configureStore({
     factorySlice: factorySlice.reducer,
     priceObjectSlice: priceObjectSlice.reducer,
     areaSlice: areaSlice.reducer,
-    readingSlice: readingSlice.reducer,
-    contractSlice: contractSlice.reducer,
+    tuyendoc: tuyenDocSlice.reducer,
+    nguoidung: nguoidungSlice.reducer,
   },
 });
 

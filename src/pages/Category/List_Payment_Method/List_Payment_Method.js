@@ -16,8 +16,8 @@ function ListPaymentMethod() {
     return {
       key: "1",
       stt: i + 1,
-      kihieu: `Mã Vùng ${i + 1}`,
-      description: `Tên Vùng ${i + 1}`,
+      kihieu: `Ký hiệu ${i + 1}`,
+      description: `Mô tả ${i + 1}`,
     };
   });
   const [data1] = useState(initialData);
@@ -63,7 +63,7 @@ function ListPaymentMethod() {
           className: "cell-wrap",
         }))}
         dataSource={data1}
-      /> 
+      />
       {isTabletOrMobile && (
         <div className="contract-bottom">
           {/* check mobile */}

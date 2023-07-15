@@ -19,14 +19,16 @@ import LogNotice from "../LogNotice/LogNotice";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
 import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
 import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
-import CustomerType from "../Category/Category_Customer_Type/CustomerType";
+// import CustomerType from "../Category/Category_Customer_Type/CustomerType";
+import ListClock from "../Category/ListClock/ListClock";
 import ListLocation from "../Category/ListLocation/ListLocation";
+import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 import ListScope from "../Category/ListScope/ListScope";
 import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
-import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
-
+import ListSigning from "../Category/ListSigning/ListSigning";
+import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber"
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -98,9 +100,23 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_WATCH.key ||
         currentPage === constants.CATEGORY_WATCH.key ? (
         <ListWatch />
+<<<<<<<<< Temporary merge branch 1
+=========
       ) : sidebarMenu === constants.CATEGORY_STATUS_READ_NUMBER.key ||
         currentPage === constants.CATEGORY_STATUS_READ_NUMBER.key ? (
         <Category_Status_ReadNumber />
+      ) : sidebarMenu === constants.CATEGORY_SIGNING.key ||
+        currentPage === constants.CATEGORY_SIGNING.key ? (
+        <ListSigning />
+      ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
+        currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
+        <CustomerType />
+      ) : sidebarMenu === constants.CATEGORY_CLOCK.key ||
+        currentPage === constants.CATEGORY_CLOCK.key ? (
+        <ListClock />
+      ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
+        currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
+        <ListPaymentMethod />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />

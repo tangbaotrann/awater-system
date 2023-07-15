@@ -166,7 +166,7 @@ const CategoryHeaderAction = ({
   );
 };
 
-const CategoryHeader = ({
+const Header = ({
   setIsOpenModalAddSubject,
   setIsOpenModalAddReading,
   setIsOpenModalDelete,
@@ -198,6 +198,7 @@ const CategoryHeader = ({
     }
     setOpenPopover(false);
   };
+
   const handleOpenModalTransfer = (e, typeTransfer) => {
     e.preventDefault();
     if (sidebarMenu === "CATEGORY_MANAGEMENT_READING") {
@@ -210,13 +211,29 @@ const CategoryHeader = ({
     }
     setOpenPopover(false);
   };
+
   const handleViewTableDetail = (e) => {
     e.preventDefault();
     setViewTableDetail(true);
   };
+
   const handleOpenChange = (newOpen) => {
     setOpenPopover(newOpen);
   };
+
+  const renderCategoryAction = () => {
+    return (
+      <CategoryHeaderAction
+        sidebarMenu={sidebarMenu}
+        handleOpenModalAdd={handleOpenModalAdd}
+        handleViewTableDetail={handleViewTableDetail}
+        setIsOpenModalDelete={setIsOpenModalDelete}
+        handleOpenModalTransfer={handleOpenModalTransfer}
+        tabList={tabList}
+      />
+    )
+  }
+
   return (
     <div className="category-header-wrapper">
       <div className="category-header-content">
@@ -228,27 +245,13 @@ const CategoryHeader = ({
             open={openPopover}
             onOpenChange={handleOpenChange}
             content={
-              <CategoryHeaderAction
-                sidebarMenu={sidebarMenu}
-                handleOpenModalAdd={handleOpenModalAdd}
-                handleViewTableDetail={handleViewTableDetail}
-                setIsOpenModalDelete={setIsOpenModalDelete}
-                handleOpenModalTransfer={handleOpenModalTransfer}
-                tabList={tabList}
-              />
+              renderCategoryAction()
             }
           >
             <PlusOutlined />
           </Popover>
         ) : (
-          <CategoryHeaderAction
-            sidebarMenu={sidebarMenu}
-            handleOpenModalAdd={handleOpenModalAdd}
-            handleViewTableDetail={handleViewTableDetail}
-            setIsOpenModalDelete={setIsOpenModalDelete}
-            handleOpenModalTransfer={handleOpenModalTransfer}
-            tabList={tabList}
-          />
+          renderCategoryAction()
         )}
       </div>
       <div className="category-header-filter">
@@ -265,4 +268,4 @@ const CategoryHeader = ({
   );
 };
 
-export default CategoryHeader;
+export default Header;

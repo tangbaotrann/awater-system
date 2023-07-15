@@ -7,6 +7,7 @@ import tabListContractSlice, {
 } from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
 import "./TableReading.css";
+import tabListInvoicePrintSlice from "../../../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import {
   btnClickTabListContractSelector,
   fetchApiAllReadingSelector,
@@ -19,31 +20,36 @@ const readingColumns = (showHeader) => [
     dataIndex: showHeader ? "nguoiQuanLyId" : "key",
     align: "center",
     width: 140,
-  },
-  {
-    key: "index",
-    title: showHeader ? "STT" : "",
-    dataIndex: "index",
-    align: "center",
-    width: 70,
+    ellipsis: {
+      showTitle: false,
+    },
   },
   {
     key: "maTuyen",
     title: showHeader ? "Mã tuyến" : "",
-    dataIndex: "maTuyen",
-    width: 140,
+    dataIndex: "codeLine",
+    width: 165,
+    ellipsis: {
+      showTitle: false,
+    },
   },
   {
     key: "tenTuyen",
     title: showHeader ? "Tên tuyến" : "",
     dataIndex: "tenTuyen",
     width: 140,
+    ellipsis: {
+      showTitle: false,
+    },
   },
   {
     key: "nguoiThuTienId",
     title: showHeader ? "Nhân viên thu tiền" : "",
     dataIndex: "nguoiThuTienId",
     width: 180,
+    ellipsis: {
+      showTitle: false,
+    },
   },
   // {
   //   key: "indexingPeriod",
@@ -52,10 +58,13 @@ const readingColumns = (showHeader) => [
   //   width: 130,
   // },
   {
-    key: "khuVucId",
+    key: "area",
     title: showHeader ? "Khu vực" : "",
     dataIndex: "khuVucId",
     width: 130,
+    ellipsis: {
+      showTitle: false,
+    },
   },
   // {
   //   key: "unit",
@@ -66,92 +75,109 @@ const readingColumns = (showHeader) => [
 
 const TableReading = () => {
   const dispatch = useDispatch();
-
-  const tabList = useSelector(btnClickTabListContractSelector);
-  const readings = useSelector(fetchApiAllReadingSelector);
-
-  // console.log(readings);
-
-  useEffect(() => {
-    dispatch(fetchApiAllReading());
-  }, []);
+  const tabList = useSelector((state) => state.tabListContractSlice.tabList);
+  const danhSachNguoiDung = useSelector(state => state.nguoidung.danhSachNguoiDung)
+  const danhSachTuyenDoc = useSelector(state => state.tuyendoc.danhSachTuyenDoc)
+  const listAreas = useSelector(state => state.areaSlice.data);
 
   const handleRowSelection = (selectedRowKeys, selectedRows) => {
     dispatch(btnClickTabListContract(selectedRows[0]));
   };
 
-  const paginationOptions = {
-    defaultPageSize: 10,
-    pageSizeOptions: ["10", "25", "50"],
-    showSizeChanger: true,
-  };
+  const data = danhSachNguoiDung.map((nguoiDung, i) => {
 
+    let tuyenDocNguoiDung;
+    if (danhSachTuyenDoc && danhSachTuyenDoc.length > 0) {
+      tuyenDocNguoiDung = danhSachTuyenDoc.filter((tuyenDoc) => {
+        return tuyenDoc.nguoiQuanLyId === nguoiDung.id;
+      });
+    }
+
+    // const areas = listAreas.filter(() => {})
+    const tuyenDocNguoiDungMoi = tuyenDocNguoiDung.map((nguoiDung) => {
+      let name = '';
+      listAreas.forEach((area) => {
+        if (nguoiDung.khuVucId === area.id) {
+          name = area.tenKhuVuc;
+        }
+      });
+      return { ...nguoiDung, name };
+    });
+
+    return {
+      gmail: nguoiDung.email,
+      key: nguoiDung.id,
+      data: tuyenDocNguoiDungMoi && tuyenDocNguoiDungMoi.length > 0 && tuyenDocNguoiDungMoi?.map((tuyenDoc, i) => {
+        return {
+          key: i,
+          index: i,
+          codeLine: tuyenDoc.keyId,
+          nameLine: tuyenDoc.tenTuyen,
+          cashier: tuyenDoc.nguoiThuTienId,
+          indexingPeriod: `Kỳ ghi ${i}`,
+          area: tuyenDoc.name,
+          unit: `Đơn vị ${i}`,
+        }
+      })
+    }
+  })
+
+  // console.log('danh sach KhuVuc', listAreas);
+  // console.log('danh sach NguoiDung', danhSachNguoiDung);
+  // console.log('danh sach TuyenDoc', danhSachTuyenDoc);
   return (
     <Table
       rowKey="index"
       className="parent-table"
       columns={readingColumns(true)}
-      dataSource={
-        readings?.length <= 0
-          ? []
-          : readings.map((_reading, index) => ({
-              index: index + 1,
-              nguoiQuanLyId: _reading.nguoiQuanLyId,
-            }))
-      }
+      dataSource={data}
       scroll={{
-        y: 380,
+        // y: 380,
         x: 1100,
         scrollToFirstRowOnChange: true,
       }}
-      pagination={paginationOptions}
       expandable={{
         expandedRowRender: (record) => {
           return (
             <Table
               rowKey={record.index}
               className="child-table"
-              columns={readingColumns(false)}
-              dataSource={
-                readings?.length <= 0
-                  ? []
-                  : readings.map((_reading, index) => ({
-                      index: index + 1,
-                      id: _reading.id,
-                      maTuyen: _reading.maTuyen,
-                      tenTuyen: _reading.tenTuyen,
-                      nguoiThuTienId: _reading.nguoiThuTienId,
-                      khuVucId: _reading.khuVucId,
-                    }))
-              }
+              columns={readingColumns(false).map((column) => ({
+                ...column,
+                render: (text) => <div style={{ wordWrap: 'break-word', wordBreak: 'break-all' }}>{text}</div>,
+              }))}
+              dataSource={record.data}
               pagination={false}
               scroll={{
                 x: 1100,
               }}
-              onRow={(record, rowIndex) => {
+              onRow={(record, index) => {
                 return {
-                  onClick: (event) => {
-                    handleRowSelection(rowIndex, record);
+                  onClick: () => {
+                    // clicked row to check radio
                     dispatch(
-                      tabListContractSlice.actions.btnClickTabListContract(
+                      tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(
                         record
                       )
                     );
-                  }, // click row
+                  },
                 };
               }}
               rowSelection={{
                 type: "radio",
-                onChange: (selectedRowKeys, selectedRows) =>
-                  handleRowSelection(selectedRowKeys, selectedRows),
+                onClick: (selectedRowKeys, selectedRows) => {
+                  console.log(selectedRows)
+                  // handleRowSelection(selectedRowKeys, selectedRows)
+                },
                 selectedRowKeys: tabList ? [tabList.key] : [],
               }}
+              bordered
             />
           );
         },
-        onExpand: (expanded, record) => {
-          console.log(expanded, record);
-        },
+        // onExpand: (expanded, record) => {
+        //   console.log(record);
+        // },
       }}
     />
   );

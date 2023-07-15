@@ -2,3 +2,9 @@
   padding-bottom: 0px;
   top: 5%;
 }
+
+.footer {
+  margin-left: auto;
+  width: fit-content;
+  margin-right: 20px;
+}

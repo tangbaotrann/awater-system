@@ -52,11 +52,11 @@ const constants = {
     key: "CATEGORY",
   },
   CATEGORY_MANAGEMENT_PRICE_SUBJECT: {
-    label: "QLDM đối tượng giá",
+    label: "DM đối tượng giá",
     key: "CATEGORY_MANAGEMENT_PRICE_SUBJECT",
   },
   CATEGORY_MANAGEMENT_READING: {
-    label: "QLDM đối tuyến đọc",
+    label: "DM đối tuyến đọc",
     key: "CATEGORY_MANAGEMENT_READING",
   },
   CATEGORY_MANAGEMENT_PRICE_LIST: {
@@ -98,6 +98,14 @@ const constants = {
   CATEGORY_WATCH: {
     label: "DM kiểu đồng hồ",
     key: "CATEGORY_WATCH",
+  },
+  CATEGORY_CLOCK: {
+    label: "DM đồng hồ tổng",
+    key: "CATEGORY_CLOCK",
+  },
+  CATEGORY_SIGNING: {
+    label: "DM ký",
+    key: "CATEGORY_SIGNING",
   },
   COLLECT_MONEY: {
     label: "Thu tiền",

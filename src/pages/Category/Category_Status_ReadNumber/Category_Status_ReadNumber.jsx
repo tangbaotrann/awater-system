@@ -39,7 +39,7 @@ const columns = [
     {
         title: 'Mã trạng thái',
         dataIndex: 'maTT',
-        width: 100
+        width: 200
     },
     {
         title: 'Tên trạng thái',
@@ -49,27 +49,25 @@ const columns = [
     {
         title: 'Mã màu',
         dataIndex: 'maMau',
-        width: 170
+        width: 100
     },
     {
         title: 'Không cho phép ghi',
         dataIndex: 'khongChoPhepGhi',
-        width: 170
+
     },
     {
         title: 'Không cho cho hiển thị',
         dataIndex: 'khongChoHienThi',
-        width: 170
+
     },
     {
         title: 'Số TT',
         dataIndex: 'soTT',
-        width: 70
     },
     {
         title: 'Mô tả ngắn',
         dataIndex: 'moTaNgan',
-        width: 270
     },
 ];
 
