@@ -31,10 +31,14 @@ function InfoCustomer() {
       <Row>
         {/* Mã khách hàng + Button reset */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="id" label="Mã KH (*)" {...formItemLayout}>
+          <Form.Item
+            name="keyIdOfCustomer"
+            label="Mã KH (*)"
+            {...formItemLayout}
+          >
             <div className="container-label-input">
               <Input
-                name="id"
+                name="keyIdOfCustomer"
                 placeholder="Nhập mã khách hàng"
                 className="space-right-10"
               />

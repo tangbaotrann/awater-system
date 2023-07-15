@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getRequest, postRequest } from "../../../services";
+import {
+  deleteRequest,
+  getRequest,
+  postRequest,
+  putRequest,
+} from "../../../services";
 import { toast } from "react-toastify";
 
 const regionSlice = createSlice({
@@ -33,10 +38,10 @@ const fetchApiAddRegion = createAsyncThunk(
   "region/fetchApiAddRegion",
   async (values) => {
     try {
-      const { id, nhaMayId, tenVung } = values;
+      const { keyId, nhaMayId, tenVung } = values;
 
       const res = await postRequest("vung/add", {
-        id,
+        keyId,
         nhaMayId,
         tenVung,
       });
@@ -56,10 +61,10 @@ const fetchApiUpdateRegion = createAsyncThunk(
   "region/fetchApiUpdateRegion",
   async (values) => {
     try {
-      const { id, nhaMayId, tenVung } = values;
+      const { keyId, nhaMayId, tenVung } = values;
 
-      const res = await postRequest("vung/update", {
-        id,
+      const res = await putRequest(`vung/update/${keyId}`, {
+        keyId,
         nhaMayId,
         tenVung,
       });
@@ -77,9 +82,9 @@ const fetchApiDeleteRegion = createAsyncThunk(
   "region/fetchApiDeleteRegion",
   async (tabListbc) => {
     try {
-      const { id } = tabListbc;
+      const { keyId } = tabListbc;
 
-      const res = await postRequest(`vung/delete?id=${id}`, null);
+      const res = await deleteRequest(`vung/delete/${keyId}`, null);
 
       toast.success("Xóa vùng thành công.");
 

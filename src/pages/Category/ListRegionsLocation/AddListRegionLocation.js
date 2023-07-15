@@ -105,10 +105,10 @@ const ListRegionsLocation = ({ hideModal, factoryNames }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã Vùng" name="id">
+            <Form.Item label="Mã Vùng" name="keyId">
               <Input
                 style={{ width: "100%" }}
-                name="id"
+                name="keyId"
                 placeholder="Nhập mã vùng"
               />
             </Form.Item>
