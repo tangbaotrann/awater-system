@@ -78,6 +78,8 @@ for (let i = 0; i <= 5; i++) {
   });
 }
 
+// ================================> 
+
 const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
   const priceObjectOptions = [];
@@ -106,6 +108,18 @@ const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
       // form.setFieldValue("toDate", "");
     };
   }, [isOpen]);
+
+  const [coVAT, setCoVAT] = useState(false);
+  const [coToiThieu, setCoToiThieu] = useState(false);
+
+  // handle có VAT
+  const handleOnClickCoVAT = (e) => {
+    setCoVAT(prev => !prev);
+  }
+  // handle có tối thiểu 
+  const handleOnClickCoToiThieu = (e) => {
+    setCoToiThieu(prev => !prev);
+  }
 
   return (
     <Modal
@@ -162,8 +176,20 @@ const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
                         format={dateFormatList}
                       />
                     </Form.Item>
-                    <Form.Item label="Có VAT:" name="taxVAT">
-                      <Checkbox style={{ marginRight: "5px" }} />
+                    <Form.Item label="Có VAT:" name="hasVAT">
+                      <Checkbox onClick={handleOnClickCoVAT} style={{ marginRight: "5px" }} />
+                      {coVAT && (
+                        <Form.Item label="Thuế VAT" name="thueVAT">
+                          <InputNumber
+                          defaultValue={0}
+                            min={0}
+                            max={1}
+                            step="0.1"
+                            size="middle"
+                            style={{ width: "100%" }}
+                          />
+                        </Form.Item>
+                      )}
                     </Form.Item>
                     <Form.Item label="ĐT tính giá:" name="pricingPriceObject">
                       <Select
@@ -175,7 +201,7 @@ const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
                       />
                     </Form.Item>
                     <Form.Item label="Có tối thiểu:" name="minimum">
-                      <Checkbox style={{ marginRight: "5px" }} />
+                      <Checkbox onClick={handleOnClickCoToiThieu} style={{ marginRight: "5px" }} />
                     </Form.Item>
                   </div>
                   <div className="form-item-right">

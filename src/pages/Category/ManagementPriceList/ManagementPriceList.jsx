@@ -15,6 +15,7 @@ const ManagementPriceList = () => {
   useEffect(() => {
     dispatch(btnClickTabListContract(null));
   }, []);
+
   const handleOk = (type) => {
     if (type === "addPriceList") {
       setIsOpenModalAddPriceList(false);

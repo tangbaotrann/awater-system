@@ -17,16 +17,22 @@ import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
+<<<<<<<<< Temporary merge branch 1
 import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
 import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
 import CustomerType from "../Category/Category_Customer_Type/CustomerType";
+
 import ListLocation from "../Category/ListLocation/ListLocation";
+import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 import ListScope from "../Category/ListScope/ListScope";
 import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
-import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
-
+<<<<<<<<< Temporary merge branch 1
+=========
+import Listlocation from "../Category/ListLocation/ListLocation";
+import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber"
+>>>>>>>>> Temporary merge branch 2
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -101,6 +107,15 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_STATUS_READ_NUMBER.key ||
         currentPage === constants.CATEGORY_STATUS_READ_NUMBER.key ? (
         <Category_Status_ReadNumber />
+      ) : sidebarMenu === constants.CATEGORY_SIGNING.key ||
+        currentPage === constants.CATEGORY_SIGNING.key ? (
+        <ListSigning />
+      ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
+        currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
+        <CustomerType />
+      ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
+        currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
+        <ListPaymentMethod />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? ( // menu 4
         <Payment />

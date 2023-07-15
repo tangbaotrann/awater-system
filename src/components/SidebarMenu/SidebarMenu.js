@@ -152,6 +152,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               key: constants.CATEGORY_SCOPE.key,
             },
             {
+              label: constants.CATEGORY_WATCH.label,
+              key: constants.CATEGORY_WATCH.key,
+            },
+            {
               label: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.label,
               key: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key,
             },
@@ -160,8 +164,12 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               key: constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key,
             },
             {
-              label: constants.CATEGORY_WATCH.label,
-              key: constants.CATEGORY_WATCH.key,
+              label: constants.CATEGORY_SIGNING.label,
+              key: constants.CATEGORY_SIGNING.key,
+            },
+            {
+              label: constants.CATEGORY_CUSTOMER_TYPE.label,
+              key: constants.CATEGORY_CUSTOMER_TYPE.key,
             },
             {
               label: constants.CATEGORY_STATUS_READ_NUMBER.label,
@@ -299,16 +307,25 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
             constants.CATEGORY_PAYMENT_METHOD.key
           );
           isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_SIGNING.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY_SIGNING.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_SCOPE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.CATEGORY_SCOPE.key);
           isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_WATCH.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
         } else if (item.key === constants.CATEGORY_CUSTOMER_TYPE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem(
             "currentPage",
             constants.CATEGORY_CUSTOMER_TYPE.key
           );
+=========
+>>>>>>>>> Temporary merge branch 2
         } else if (item.key === constants.CATEGORY_WATCH.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
