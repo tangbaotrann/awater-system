@@ -7,7 +7,7 @@ import tabListInvoicePrintSlice from "./slices/tabListInvoicePrintSlice/tabListI
 import tabListEnterIndexPageSlice from "./slices/tabListEnterIndexPageSlice/tabListEnterIndexPageSlice";
 import regionSlice from "./slices/regionSlice/regionSlice";
 import factorySlice from "./slices/factorySlice/factorySlice";
-import priceObjectSlice from "./slices/priceObjectSlice/priceObjectSlice";
+import priceListObjectSlice from "./slices/priceListObjectSlice/priceListObjectSlice";
 import areaSlice from "./slices/areaSlice/areaSlice";
 import tuyenDocSlice from "./slices/DMTuyenDoc/tuyenDocSlice";
 import nguoidungSlice from "./slices/NguoiDungSlice/nguoidungSlice";
@@ -21,7 +21,7 @@ const store = configureStore({
     tabListEnterIndexPageSlice: tabListEnterIndexPageSlice.reducer,
     regionSlice: regionSlice.reducer,
     factorySlice: factorySlice.reducer,
-    priceObjectSlice: priceObjectSlice.reducer,
+    priceListObjectSlice: priceListObjectSlice.reducer,
     areaSlice: areaSlice.reducer,
     tuyendoc: tuyenDocSlice.reducer,
     nguoidung: nguoidungSlice.reducer,

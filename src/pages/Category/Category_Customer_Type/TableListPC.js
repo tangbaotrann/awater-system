@@ -120,6 +120,8 @@ function TableListPC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
         <AddCustomerType tabListbc={tabListbc} hideModal={hideModal} />
+
+        {/* <AddListLocation tabListbc={tabListbc} hideModal={hideModal} /> */}
       </Modal>
 
       <Modal

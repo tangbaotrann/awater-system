@@ -9,16 +9,16 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   btnClickTabListInvoicePrintSelector,
-  fetchApiAllPriceObjectSelector,
+  fetchApiAllPriceListObjectSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./ListRegionsLocation.css";
 import AddListPriceObject from "./AddListPriceObject";
 import EditListPriceObject from "./EditListPriceObject";
 import {
-  fetchApiAllPriceObject,
-  fetchApiDeletePriceObject,
-} from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
+  fetchApiAllPriceListObject,
+  fetchApiDeletePriceListObject,
+} from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -54,17 +54,15 @@ function TableListPO({ isTabletOrMobile }) {
 
   const dispatch = useDispatch();
 
-  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
-  const priceObject = useSelector(fetchApiAllPriceObjectSelector);
+  const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
+  const priceObject = useSelector(fetchApiAllPriceListObjectSelector);
 
-  // useEffect(() => {
-  //   dispatch(fetchApiAllPriceObject());
-  // }, []);
+
 
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
-      dispatch(fetchApiAllPriceObject());
+      dispatch(fetchApiAllPriceListObject());
       dispatch(
         tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
       );
@@ -87,9 +85,9 @@ function TableListPO({ isTabletOrMobile }) {
 
   // handle delete region
   const handleConfirmDeleteRegion = () => {
-    console.log(tabListbc);
-    if (tabListbc) {
-      dispatch(fetchApiDeletePriceObject(tabListbc));
+    console.log(tabListPO);
+    if (tabListPO) {
+      dispatch(fetchApiDeletePriceListObject(tabListPO));
       toast?.success("Xóa vùng thành công.");
     }
   };
@@ -105,7 +103,11 @@ function TableListPO({ isTabletOrMobile }) {
             label: (
               <div
                 className={`tab-item-bc tab-item-bc-${_tab.id} ${
-                  tabListbc === null && _tab.id === "2"
+                  tabListPO === null && _tab.id === "3"
+                    ? "tab-item-disabled"
+                    : tabListPO === null && _tab.id === "4"
+                    ? "tab-item-disabled"
+                    : ""
                 }`}
               >
                 {_tab.id === "4" ? (
@@ -127,6 +129,11 @@ function TableListPO({ isTabletOrMobile }) {
               </div>
             ),
             key: _tab.id,
+            disabled:
+              (tabListPO === null && _tab.id === "3") ||
+              (tabListPO === null && _tab.id === "4")
+                ? true
+                : false,
           };
         })}
         onChange={handleChangeTabs}
@@ -155,7 +162,7 @@ function TableListPO({ isTabletOrMobile }) {
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
         <EditListPriceObject
-          tabListbc={tabListbc}
+          tabListPO={tabListPO}
           hideModal={hideModal}
           priceObject={priceObject}
         />

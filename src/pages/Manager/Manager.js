@@ -10,16 +10,15 @@ import CustomerList from "./CustomerList/CustomerList";
 import EnterIndexPage from "../EnterIndexPage/EnterIndexPage.jsx";
 import Invoice from "../Invoice/Invoice";
 import InvoicePrint from "../InvoicePrint/InvoicePrint";
-// import ManagementPriceSubject from "../Category/ManagementPriceSubject/ManagementPriceSubject";
 import ManagementReading from "../Category/ManagementReading/ManagementReading";
 import ManagementPriceList from "../Category/ManagementPriceList/ManagementPriceList";
 import Payment from "./Payment/Payment";
 import BlockClock from "../BlockClock/BlockClock";
 import LogNotice from "../LogNotice/LogNotice";
 import ListRegionsLocation from "../Category/ListRegionsLocation/ListRegionsLocation";
-import ListPriceObject from "../Category/ListPriceObject/ListPriceObject";
+<<<<<<<<< Temporary merge branch 1
+import ListPriceObject from "../Category/ListPriceObject/ListPriceObject"; 
 import ListPaymentMethod from "../Category/List_Payment_Method/List_Payment_Method";
-// import CustomerType from "../Category/Category_Customer_Type/CustomerType";
 import ListClock from "../Category/ListClock/ListClock";
 import ListLocation from "../Category/ListLocation/ListLocation";
 import CustomerType from "../Category/Category_Customer_Type/CustomerType";
@@ -28,7 +27,8 @@ import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
 import ListSigning from "../Category/ListSigning/ListSigning";
-import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber"
+import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
+
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -84,9 +84,6 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
-      ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
-        currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
-        <CustomerType />
       ) : // <h1>Danh muc vung</h1>
       sidebarMenu === constants.CATEGORY_SCOPE.key ||
         currentPage === constants.CATEGORY_SCOPE.key ? (
