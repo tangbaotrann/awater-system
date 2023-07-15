@@ -5,7 +5,7 @@ import {
   putRequest,
   deleteRequest,
 } from "../../../services";
-
+import { toast } from "react-toastify";
 const priceListObjectSlice = createSlice({
   name: "priceListObject",
   initialState: {
@@ -65,7 +65,7 @@ const fetchApiUpdatePriceListObject = createAsyncThunk(
         moTa,
         donViTinh,
       });
-
+      toast.success("Cập nhật danh mục thành công.");
       return res.data.data;
     } catch (error) {
       console.log({ error });

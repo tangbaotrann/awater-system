@@ -57,9 +57,7 @@ function TableListPO({ isTabletOrMobile }) {
   const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
   const priceObject = useSelector(fetchApiAllPriceListObjectSelector);
 
-  // useEffect(() => {
-  //   dispatch(fetchApiAllPriceObject());
-  // }, []);
+
 
   // handle change tabs
   const handleChangeTabs = (key) => {
@@ -105,7 +103,11 @@ function TableListPO({ isTabletOrMobile }) {
             label: (
               <div
                 className={`tab-item-bc tab-item-bc-${_tab.id} ${
-                  tabListPO === null && _tab.id === "2"
+                  tabListPO === null && _tab.id === "3"
+                    ? "tab-item-disabled"
+                    : tabListPO === null && _tab.id === "4"
+                    ? "tab-item-disabled"
+                    : ""
                 }`}
               >
                 {_tab.id === "4" ? (
@@ -127,6 +129,11 @@ function TableListPO({ isTabletOrMobile }) {
               </div>
             ),
             key: _tab.id,
+            disabled:
+              (tabListPO === null && _tab.id === "3") ||
+              (tabListPO === null && _tab.id === "4")
+                ? true
+                : false,
           };
         })}
         onChange={handleChangeTabs}

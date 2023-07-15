@@ -84,7 +84,7 @@ const AddListPriceObject = ({ hideModal }) => {
           padding: 24,
         }}
       >
-        <Row gutter={24}>
+        {/* <Row gutter={24}>
           <Col
             xs={24}
             sm={12}
@@ -101,7 +101,7 @@ const AddListPriceObject = ({ hideModal }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
+        </Row> */}
         <Row gutter={24}>
           <Col
             xs={24}
@@ -111,10 +111,10 @@ const AddListPriceObject = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã/Ký hiệu" name="kyHieu">
+            <Form.Item label="Mã/Ký hiệu" name="keyId">
               <Input
                 style={{ width: "100%" }}
-                name="kyHieu"
+                name="keyId"
                 placeholder="Ký hiệu"
               />
             </Form.Item>

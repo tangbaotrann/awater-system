@@ -19,7 +19,7 @@ const EditListRegionLocation = ({ tabListPO, hideModal }) => {
     },
   };
 
-  // handle submit form (main)
+  // handle submit form (update price List Object)
   const handleSubmit = (values) => {
     if (values) {
       dispatch(fetchApiUpdatePriceListObject(values));
@@ -54,7 +54,7 @@ const EditListRegionLocation = ({ tabListPO, hideModal }) => {
           { name: "donViTinh", value: tabListPO ? tabListPO?.donViTinh : null },
         ]}
       >
-        <Row gutter={24}>
+        {/* <Row gutter={24}>
           <Col
             xs={24}
             sm={12}
@@ -71,7 +71,7 @@ const EditListRegionLocation = ({ tabListPO, hideModal }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
+        </Row> */}
         <Row gutter={24}>
           <Col
             xs={24}
