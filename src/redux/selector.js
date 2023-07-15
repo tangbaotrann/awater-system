@@ -28,3 +28,6 @@ export const fetchApiAllPriceObjectSelector = (state) =>
 
 // get all area
 export const fetchApiAllAreaSelector = (state) => state.areaSlice.data;
+
+// get all bang gia
+export const fetchApiAllBangGiaSelector = (state) => state.bangGiaSlice.data;
