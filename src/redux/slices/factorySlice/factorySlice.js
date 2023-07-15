@@ -8,7 +8,7 @@ const factorySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchApiAllFactory.fulfilled, (state, action) => {
-      state.data = action.payload;
+      state.data = action.payload; 
     });
   },
 });

@@ -156,6 +156,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               key: constants.CATEGORY_WATCH.key,
             },
             {
+              label: constants.CATEGORY_CLOCK.label,
+              key: constants.CATEGORY_CLOCK.key,
+            },
+            {
               label: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.label,
               key: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key,
             },
@@ -311,6 +315,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.CATEGORY_SIGNING.key);
           isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_CLOCK.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY_CLOCK.key);
+          isTabletOrMobile && onCloseDrawer();
         } else if (item.key === constants.CATEGORY_SCOPE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.CATEGORY_SCOPE.key);
@@ -324,8 +332,6 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
             "currentPage",
             constants.CATEGORY_CUSTOMER_TYPE.key
           );
-=========
->>>>>>>>> Temporary merge branch 2
         } else if (item.key === constants.CATEGORY_WATCH.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
           sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);

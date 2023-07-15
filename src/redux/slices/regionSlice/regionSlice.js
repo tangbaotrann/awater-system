@@ -63,7 +63,6 @@ const fetchApiUpdateRegion = createAsyncThunk(
         nhaMayId,
         tenVung,
       });
-
       toast.success("Cập nhật vùng thành công.");
 
       return res.data.data;

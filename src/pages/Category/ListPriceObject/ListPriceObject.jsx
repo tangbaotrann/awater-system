@@ -10,25 +10,25 @@ import "moment/locale/vi";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import TableListPO from "./TableListPO.js";
-import { fetchApiAllPriceObject } from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
+import { fetchApiAllPriceListObject } from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
 import {
   btnClickTabListInvoicePrintSelector,
-  fetchApiAllPriceObjectSelector,
+  fetchApiAllPriceListObjectSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-
+ 
 moment.locale("vi");
-
+ 
 function ListPriceObject() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const dispatch = useDispatch();
 
   const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
-  const priceObject = useSelector(fetchApiAllPriceObjectSelector);
-  console.log(priceObject);
+  const priceListObject = useSelector(fetchApiAllPriceListObjectSelector);
+  console.log(priceListObject);
   useEffect(() => {
-    dispatch(fetchApiAllPriceObject());
+    dispatch(fetchApiAllPriceListObject());
   }, []);
 
   const columns = [
@@ -39,15 +39,15 @@ function ListPriceObject() {
       width: 70,
     },
     {
-      title: "Id",
+      title: "ID",
       dataIndex: "id",
       key: "id",
-      width: 70,
+      // width: 70,
     },
     {
-      key: "kyHieu",
+      key: "keyId",
       title: "Ký hiệu",
-      dataIndex: "kyHieu",
+      dataIndex: "keyId",
       // width: 140,
     },
     {
@@ -128,12 +128,12 @@ function ListPriceObject() {
           ...column,
           className: "cell-wrap",
         }))}
-        dataSource={priceObject.map((_priceObject, index) => ({
+        dataSource={priceListObject.map((_priceListObject, index) => ({
           index: index + 1,
-          id: _priceObject.id,
-          kyHieu: _priceObject.kyHieu,
-          moTa: _priceObject.moTa,
-          donViTinh: _priceObject.donViTinh,
+          id: _priceListObject.id,
+          keyId: _priceListObject.keyId,
+          moTa: _priceListObject.moTa,
+          donViTinh: _priceListObject.donViTinh,
         }))}
         onRow={(record, index) => {
           return {

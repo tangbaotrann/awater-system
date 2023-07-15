@@ -9,9 +9,9 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
-import { fetchApiAllPriceObjectSelector } from "../../../redux/selector";
-import { fetchApiAllPriceObject } from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
-import { fetchApiAddPriceObject } from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
+import { fetchApiAllPriceListObjectSelector } from "../../../redux/selector";
+import { fetchApiAllPriceListObject } from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
+import { fetchApiAddPriceListObject } from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
 // import { fetchApiAllFactorySelector } from "../../../redux/selector";
 // import { fetchApiAllFactory } from "../../../redux/slices/factorySlice/factorySlice";
 // import { fetchApiAddRegion } from "../../../redux/slices/regionSlice/regionSlice";
@@ -23,7 +23,7 @@ const AddListPriceObject = ({ hideModal }) => {
 
   const dispatch = useDispatch();
 
-  const priceObject = useSelector(fetchApiAllPriceObjectSelector);
+  const priceListObject = useSelector(fetchApiAllPriceListObjectSelector);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
@@ -44,7 +44,7 @@ const AddListPriceObject = ({ hideModal }) => {
   const handleSaveAndClose = () => {
     form1.validateFields().then((values) => {
       if (values) {
-        dispatch(fetchApiAddPriceObject(values));
+        dispatch(fetchApiAddPriceListObject(values));
 
         form1.resetFields();
         hideModal();
@@ -57,7 +57,7 @@ const AddListPriceObject = ({ hideModal }) => {
   const handleSaveAndAdd = () => {
     form1.validateFields().then((values) => {
       if (values) {
-        dispatch(fetchApiAddPriceObject(values));
+        dispatch(fetchApiAddPriceListObject(values));
 
         form1.resetFields();
         hideModal();
@@ -84,7 +84,7 @@ const AddListPriceObject = ({ hideModal }) => {
           padding: 24,
         }}
       >
-        <Row gutter={24}>
+        {/* <Row gutter={24}>
           <Col
             xs={24}
             sm={12}
@@ -93,15 +93,15 @@ const AddListPriceObject = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="ID" name="id">
+            <Form.Item label="keyId" name="keyId">
               <Input
                 style={{ width: "100%" }}
-                name="id"
-                placeholder="Nhập ID"
+                name="keyId"
+                placeholder="Nhập keyId"
               />
             </Form.Item>
           </Col>
-        </Row>
+        </Row> */}
         <Row gutter={24}>
           <Col
             xs={24}
@@ -111,10 +111,10 @@ const AddListPriceObject = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã/Ký hiệu" name="kyHieu">
+            <Form.Item label="Mã/Ký hiệu" name="keyId">
               <Input
                 style={{ width: "100%" }}
-                name="kyHieu"
+                name="keyId"
                 placeholder="Ký hiệu"
               />
             </Form.Item>

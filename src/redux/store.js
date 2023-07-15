@@ -7,11 +7,11 @@ import tabListInvoicePrintSlice from "./slices/tabListInvoicePrintSlice/tabListI
 import tabListEnterIndexPageSlice from "./slices/tabListEnterIndexPageSlice/tabListEnterIndexPageSlice";
 import regionSlice from "./slices/regionSlice/regionSlice";
 import factorySlice from "./slices/factorySlice/factorySlice";
-import priceObjectSlice from "./slices/priceObjectSlice/priceObjectSlice";
+import priceListObjectSlice from "./slices/priceListObjectSlice/priceListObjectSlice";
 import areaSlice from "./slices/areaSlice/areaSlice";
 import bangGiaSlice from "./slices/bangGiaSlice/bangGiaSlice";
-import readingSlice from "./slices/readingSlice/readingSlice";
-import contractSlice from "./slices/contractSlice/contractSlice";
+import tuyenDocSlice from "./slices/DMTuyenDoc/tuyenDocSlice";
+import nguoidungSlice from "./slices/NguoiDungSlice/nguoidungSlice";
 
 const store = configureStore({
   reducer: {
@@ -22,11 +22,11 @@ const store = configureStore({
     tabListEnterIndexPageSlice: tabListEnterIndexPageSlice.reducer,
     regionSlice: regionSlice.reducer,
     factorySlice: factorySlice.reducer,
-    priceObjectSlice: priceObjectSlice.reducer,
+    priceListObjectSlice: priceListObjectSlice.reducer,
     areaSlice: areaSlice.reducer,
     bangGia: bangGiaSlice.reducer,
-    readingSlice: readingSlice.reducer,
-    contractSlice: contractSlice.reducer,
+    tuyendoc: tuyenDocSlice.reducer,
+    nguoidung: nguoidungSlice.reducer,
   },
 });
 
