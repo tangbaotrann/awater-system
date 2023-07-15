@@ -4,7 +4,7 @@ import { CloseOutlined, FileAddOutlined } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
-import { fetchApiUpdatePriceObject } from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
+import { fetchApiUpdatePriceListObject } from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
 import { toast } from "react-toastify";
 
 const EditListRegionLocation = ({ tabListPO, hideModal }) => {
@@ -22,7 +22,7 @@ const EditListRegionLocation = ({ tabListPO, hideModal }) => {
   // handle submit form (main)
   const handleSubmit = (values) => {
     if (values) {
-      dispatch(fetchApiUpdatePriceObject(values));
+      dispatch(fetchApiUpdatePriceListObject(values));
       form1.resetFields();
       hideModal();
       toast.success("Cập nhật thành công.");
@@ -49,7 +49,7 @@ const EditListRegionLocation = ({ tabListPO, hideModal }) => {
         }}
         fields={[
           { name: "id", value: tabListPO ? tabListPO?.id : null },
-          { name: "kyHieu", value: tabListPO ? tabListPO?.kyHieu : null },
+          { name: "keyId", value: tabListPO ? tabListPO?.keyId : null },
           { name: "moTa", value: tabListPO ? tabListPO?.moTa : null },
           { name: "donViTinh", value: tabListPO ? tabListPO?.donViTinh : null },
         ]}
@@ -81,10 +81,10 @@ const EditListRegionLocation = ({ tabListPO, hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã/Ký hiệu" name="kyHieu">
+            <Form.Item label="Mã/Ký hiệu" name="keyId">
               <Input
                 style={{ width: "100%" }}
-                name="kyHieu"
+                name="keyId"
                 placeholder="Ký hiệu"
               />
             </Form.Item>

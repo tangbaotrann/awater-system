@@ -6,21 +6,21 @@ import {
   deleteRequest,
 } from "../../../services";
 
-const priceObjectSlice = createSlice({
-  name: "priceObject",
+const priceListObjectSlice = createSlice({
+  name: "priceListObject",
   initialState: {
     data: [],
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchApiAllPriceObject.fulfilled, (state, action) => {
+    builder.addCase(fetchApiAllPriceListObject.fulfilled, (state, action) => {
       state.data = action.payload;
     });
   },
 });
 
 // fetch api all priceObject
-const fetchApiAllPriceObject = createAsyncThunk(
-  "priceObject/fetchApiAllpriceObject",
+const fetchApiAllPriceListObject = createAsyncThunk(
+  "priceListObject/fetchApiAllPriceListObject",
   async () => {
     try {
       const res = await getRequest("danh-sach-doi-tuong-gia/get-all");
@@ -33,15 +33,15 @@ const fetchApiAllPriceObject = createAsyncThunk(
 );
 
 // fetch api add priceObject
-const fetchApiAddPriceObject = createAsyncThunk(
-  "priceObject/fetchApiAddPriceObject",
+const fetchApiAddPriceListObject = createAsyncThunk(
+  "priceListObject/fetchApiAddPriceListObject",
   async (values) => {
     try {
-      const { id, kyHieu, moTa, donViTinh } = values;
+      const { id, keyId, moTa, donViTinh } = values;
 
       const res = await postRequest("danh-sach-doi-tuong-gia/add", {
         id,
-        kyHieu,
+        keyId,
         moTa,
         donViTinh,
       });
@@ -54,15 +54,14 @@ const fetchApiAddPriceObject = createAsyncThunk(
 );
 
 // fetch api update priceObject
-const fetchApiUpdatePriceObject = createAsyncThunk(
-  "priceObject/fetchApiUpdatePriceObject",
+const fetchApiUpdatePriceListObject = createAsyncThunk(
+  "priceListObject/fetchApiUpdatePriceListObject",
   async (values) => {
     try {
-      const { id, kyHieu, moTa, donViTinh } = values;
+      const { keyId, moTa, donViTinh } = values;
 
-      const res = await putRequest(`danh-sach-doi-tuong-gia/update/${id}`, {
-        id,
-        kyHieu,
+      const res = await putRequest(`danh-sach-doi-tuong-gia/update/${keyId}`, {
+        keyId,
         moTa,
         donViTinh,
       });
@@ -75,14 +74,14 @@ const fetchApiUpdatePriceObject = createAsyncThunk(
 );
 
 // fetch api delete priceObject
-const fetchApiDeletePriceObject = createAsyncThunk(
-  "priceObject/fetchApiDeletePriceObject",
+const fetchApiDeletePriceListObject = createAsyncThunk(
+  "priceListObject/fetchApiDeletePriceListObject",
   async (tabListPO) => {
     try {
-      const { id } = tabListPO;
+      const { keyId } = tabListPO;
 
       const res = await deleteRequest(
-        `danh-sach-doi-tuong-gia/delete/${id}`,
+        `danh-sach-doi-tuong-gia/delete/${keyId}`,
         // `danh-sach-doi-tuong-gia/delete?id=${id}`,
         null
       );
@@ -95,10 +94,10 @@ const fetchApiDeletePriceObject = createAsyncThunk(
 );
 
 export {
-  fetchApiAllPriceObject,
-  fetchApiAddPriceObject,
-  fetchApiUpdatePriceObject,
-  fetchApiDeletePriceObject,
+  fetchApiAllPriceListObject,
+  fetchApiAddPriceListObject,
+  fetchApiUpdatePriceListObject,
+  fetchApiDeletePriceListObject,
 };
 
-export default priceObjectSlice;
+export default priceListObjectSlice;

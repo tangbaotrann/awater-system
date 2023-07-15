@@ -9,16 +9,16 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   btnClickTabListInvoicePrintSelector,
-  fetchApiAllPriceObjectSelector,
+  fetchApiAllPriceListObjectSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./ListRegionsLocation.css";
 import AddListPriceObject from "./AddListPriceObject";
 import EditListPriceObject from "./EditListPriceObject";
 import {
-  fetchApiAllPriceObject,
-  fetchApiDeletePriceObject,
-} from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
+  fetchApiAllPriceListObject,
+  fetchApiDeletePriceListObject,
+} from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -55,7 +55,7 @@ function TableListPO({ isTabletOrMobile }) {
   const dispatch = useDispatch();
 
   const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
-  const priceObject = useSelector(fetchApiAllPriceObjectSelector);
+  const priceObject = useSelector(fetchApiAllPriceListObjectSelector);
 
   // useEffect(() => {
   //   dispatch(fetchApiAllPriceObject());
@@ -64,7 +64,7 @@ function TableListPO({ isTabletOrMobile }) {
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
-      dispatch(fetchApiAllPriceObject());
+      dispatch(fetchApiAllPriceListObject());
       dispatch(
         tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
       );
@@ -89,7 +89,7 @@ function TableListPO({ isTabletOrMobile }) {
   const handleConfirmDeleteRegion = () => {
     console.log(tabListPO);
     if (tabListPO) {
-      dispatch(fetchApiDeletePriceObject(tabListPO));
+      dispatch(fetchApiDeletePriceListObject(tabListPO));
       toast?.success("Xóa vùng thành công.");
     }
   };
