@@ -52,24 +52,5 @@ export const fetchApiCreateCustomerSelector = (state) =>
 export const fetchApiFindByKeyIdCustomerSelector = (state) =>
   state.contractSlice.findByKeyIdCustomer;
 
-// get all customer
-export const fetchApiAllCustomerSelector = (state) =>
-  state.contractSlice.dataCustomer;
-
-// get all price obj
-export const fetchApiAllPriceObjSelector = (state) => state.priceObjSlice.data;
-
-// get all payment method
-export const fetchApiAllPaymentMethodSelector = (state) =>
-  state.paymentMethodSlice.data;
-
-// get create customer
-export const fetchApiCreateCustomerSelector = (state) =>
-  state.contractSlice.createCustomer;
-
-// get find by keyId customer
-export const fetchApiFindByKeyIdCustomerSelector = (state) =>
-  state.contractSlice.findByKeyIdCustomer;
-
 // get all bang gia
 export const fetchApiAllBangGiaSelector = (state) => state.bangGiaSlice.data;
