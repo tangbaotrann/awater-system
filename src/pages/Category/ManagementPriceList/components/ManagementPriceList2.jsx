@@ -7,7 +7,7 @@ import TablePriceList from "./components/TablePriceList/TablePriceList";
 import { btnClickTabListContract } from "../../../redux/slices/tabListContractSlice/tabListContractSlice";
 import ModalAddPriceList from "./components/ModalAddPriceList/ModalAddPriceList";
 import { getAllDetailPrice } from "../../../redux/slices/detailPriceSlice/detailPriceSlice";
-import { getAllPriceObject } from "../../../redux/slices/priceObjectSlice/priceObjectSlice";
+import { fetchApiAllPriceObj } from "../../../redux/slices/priceObjSlice/priceObjSlice";
 const ManagementPriceList = () => {
   const [isOpenModalAddPriceList, setIsOpenModalAddPriceList] = useState(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
@@ -15,7 +15,7 @@ const ManagementPriceList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(btnClickTabListContract(null));
-    dispatch(getAllPriceObject());
+    dispatch(fetchApiAllPriceObj());
   }, []);
 
   const handleOk = (type) => {
@@ -43,7 +43,7 @@ const ManagementPriceList = () => {
         />
       </div>
       <div className="management-price-subject-table">
-        <TablePriceList />
+        <TablePriceList viewTableDetail={viewTableDetail} />
       </div>
       <ModalAddPriceList
         handleCancel={handleCancel}

@@ -14,11 +14,8 @@ import viVN from "antd/es/date-picker/locale/vi_VN";
 import "./CategoryHeader.css";
 import { btnClickTabListContract } from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 import { useMediaQuery } from "react-responsive";
-import { getAllDMTuyenDoc } from "../../redux/slices/DMTuyenDoc/tuyenDocSlice";
-import { getAllNguoiDung } from "../../redux/slices/NguoiDungSlice/nguoidungSlice";
 import { getAllDetailPrice } from "../../redux/slices/detailPriceSlice/detailPriceSlice";
 import { fetchApiAllPriceObj } from "../../redux/slices/priceObjSlice/priceObjSlice";
-import ModalAddReading from "../../pages/Category/ManagementReading/components/ModalAddReading/ModalAddReading";
 import ModalConfirmDelete from "../ModalConfirmDelete/ModalConfirmDelete";
 import { btnDelete } from "../../redux/slices/tabListReading/tabListReaingSlice";
 import ModalEditReading from "../../pages/Category/ManagementReading/components/ModalEditReading/ModalEditReading";
@@ -29,8 +26,6 @@ const CategoryHeaderAction = ({
   handleOpenModalTransfer,
   tabList,
 }) => {
-  const [isOpenModalAddReading, setIsOpenModalAddReading] = useState(false);
-  const [isOpenModalEditReading, setIsOpenModalEditReading] = useState(false);
   const [isOpenModalAddPriceList, setIsOpenModalAddPriceList] = useState(false);
   const [isOpenModalEditPriceList, setIsOpenModalEditPriceList] =
     useState(false);
@@ -41,8 +36,6 @@ const CategoryHeaderAction = ({
     (state) => state.tabListReadingSlice.rowSelected
   );
   const hanldeRefresh = () => {
-    dispatch(getAllDMTuyenDoc());
-    dispatch(getAllNguoiDung());
     dispatch(getAllDetailPrice());
     dispatch(fetchApiAllPriceObj());
   };
@@ -70,7 +63,7 @@ const CategoryHeaderAction = ({
           className="button"
           type="primary"
           icon={<PlusCircleOutlined />}
-          onClick={() => setIsOpenModalAddReading(true)}
+          onClick={() => setIsOpenModalAddPriceList(true)}
           style={{
             backgroundColor: "#FA896B",
             height: "34px",
@@ -84,7 +77,7 @@ const CategoryHeaderAction = ({
       <div className="button-update">
         <Button
           icon={<EditOutlined />}
-          onClick={() => setIsOpenModalEditReading(true)}
+          onClick={() => setIsOpenModalEditPriceList(true)}
           className={
             rowSelected
               ? "category-reading-edit-button"
@@ -147,16 +140,6 @@ const CategoryHeaderAction = ({
         </>
       )}
 
-      <ModalAddReading
-        setIsOpenModalAddReading={setIsOpenModalAddReading}
-        isOpenModalAddReading={isOpenModalAddReading}
-      />
-
-      <ModalEditReading
-        isOpenModalEditReading={isOpenModalEditReading}
-        setIsOpenModalEditReading={setIsOpenModalEditReading}
-      />
-
       <ModalConfirmDelete
         isModalOpen={isOpenModalDelete}
         setIsOpenModalDelete={setIsOpenModalDelete}
@@ -169,12 +152,8 @@ const CategoryHeaderAction = ({
   );
 };
 
-const Header = ({
-  setIsOpenModalAddSubject,
-  setIsOpenModalAddReading,
+const HeaderPriceObj = ({
   setIsOpenModalDelete,
-  setIsOpenModalTransfer,
-  setOpenTransferManagers,
   setViewTableDetail,
   setIsOpenModalAddPriceList,
 }) => {
@@ -187,30 +166,11 @@ const Header = ({
 
   const handleOpenModalAdd = (e, isEdit) => {
     e.preventDefault();
-    if (sidebarMenu === "CATEGORY_MANAGEMENT_PRICE_SUBJECT") {
-      setIsOpenModalAddSubject(true);
-    }
-    if (sidebarMenu === "CATEGORY_MANAGEMENT_READING") {
-      setIsOpenModalAddReading(true);
-    }
     if (sidebarMenu === "CATEGORY_MANAGEMENT_PRICE_LIST") {
       setIsOpenModalAddPriceList(true);
     }
     if (!isEdit) {
       dispatch(btnClickTabListContract(null));
-    }
-    setOpenPopover(false);
-  };
-
-  const handleOpenModalTransfer = (e, typeTransfer) => {
-    e.preventDefault();
-    if (sidebarMenu === "CATEGORY_MANAGEMENT_READING") {
-      setIsOpenModalTransfer(true);
-    }
-    if (typeTransfer === "manager") {
-      setOpenTransferManagers(true);
-    } else if (typeTransfer === "billCollector") {
-      setOpenTransferManagers(false);
     }
     setOpenPopover(false);
   };
@@ -231,7 +191,6 @@ const Header = ({
         handleOpenModalAdd={handleOpenModalAdd}
         handleViewTableDetail={handleViewTableDetail}
         setIsOpenModalDelete={setIsOpenModalDelete}
-        handleOpenModalTransfer={handleOpenModalTransfer}
         tabList={tabList}
       />
     );
@@ -269,4 +228,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default HeaderPriceObj;
