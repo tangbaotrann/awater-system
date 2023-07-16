@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 import {
-  fetchApiAllCustomerSelector,
+  fetchApiAllFactorySelector,
   fetchApiAllPaymentMethodSelector,
   fetchApiAllPriceObjSelector,
   fetchApiAllReadingSelector,
@@ -21,14 +21,15 @@ import {
 import { fetchApiAllPriceObj } from "../../../../../redux/slices/priceObjSlice/priceObjSlice";
 import { fetchApiAllPaymentMethod } from "../../../../../redux/slices/paymentMethodSlice/paymentMethodSlice";
 import { fetchApiAllReading } from "../../../../../redux/slices/readingSlice/readingSlice";
+import { fetchApiAllFactory } from "../../../../../redux/slices/factorySlice/factorySlice";
 
 function InfoContract() {
   const dispatch = useDispatch();
 
-  const customers = useSelector(fetchApiAllCustomerSelector);
   const objPrices = useSelector(fetchApiAllPriceObjSelector);
   const paymentMethods = useSelector(fetchApiAllPaymentMethodSelector);
   const readings = useSelector(fetchApiAllReadingSelector);
+  const factorys = useSelector(fetchApiAllFactorySelector);
 
   const formItemLayout = {
     labelCol: {
@@ -60,6 +61,11 @@ function InfoContract() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    dispatch(fetchApiAllFactory());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="container-info-contract">
       <Row>
@@ -67,13 +73,19 @@ function InfoContract() {
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="keyIdOfContract"
-            label="Hợp đồng Id (*)"
+            label="Mã hợp đồng"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập mã hợp đồng.",
+              },
+            ]}
           >
             <div className="container-label-input">
               <Input
                 name="keyIdOfContract"
-                placeholder="Nhập số hợp đồng"
+                placeholder="Nhập mã hợp đồng"
                 className="space-right-10"
               />
               <Button className="custom-btn-reset-form-contract custom-btn-reset">
@@ -83,35 +95,43 @@ function InfoContract() {
           </Form.Item>
         </Col>
 
-        <Col xs={24} sm={24} md={12} lg={10}>
-          {/* KH id */}
+        {/* KH id */}
+        {/* <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
             name="khachHangId"
             label="Khách hàng Id (*)"
             {...formItemLayout}
             hidden
           >
-            {/* <Select
-              fieldNames="khachHangId"
-              options={
-                customers?.length <= 0
-                  ? []
-                  : customers.map((_customer) => ({
-                      label: _customer.tenKhachHang,
-                      value: _customer.id,
-                    }))
-              }
-              className="space-right-10"
-              placeholder="Chọn tên khách hàng"
-            /> */}
             <Input name="khachHangId" />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Nhà máy id */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="NhaMayId" label="Nhà máy id" {...formItemLayout}>
-            <Input name="NhaMayId" />
+          <Form.Item
+            name="nhaMayId"
+            label="Nhà máy"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn tên nhà máy.",
+              },
+            ]}
+          >
+            <Select
+              fieldNames="nhaMayId"
+              options={
+                factorys?.length <= 0
+                  ? []
+                  : factorys.map((_factory) => ({
+                      label: _factory.tenNhaMay,
+                      value: _factory.id,
+                    }))
+              }
+              placeholder="Chọn tên nhà máy"
+            />
           </Form.Item>
         </Col>
 
@@ -119,8 +139,14 @@ function InfoContract() {
         <Col xs={24} sm={24} md={12} lg={10}>
           <Form.Item
             name="doiTuongGiaId"
-            label="ĐT giá (*)"
+            label="ĐT giá"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn đối tượng giá.",
+              },
+            ]}
           >
             {/* <Select
               fieldNames="doiTuongGiaId"
@@ -181,6 +207,12 @@ function InfoContract() {
             name="mucDichSuDung"
             label="Mục đích SD"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn mục đích sử dụng.",
+              },
+            ]}
           >
             <Select
               fieldNames="mucDichSuDung"
@@ -201,6 +233,12 @@ function InfoContract() {
             name="phuongThucThanhToanId"
             label="Phương thức TT"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn phương thức thanh toán.",
+              },
+            ]}
           >
             <Select
               fieldNames="phuongThucThanhToanId"
@@ -223,6 +261,12 @@ function InfoContract() {
             name="khuVucThanhToan"
             label="Khu vực TT: "
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn khu vực thanh toán.",
+              },
+            ]}
           >
             <Select
               fieldNames="khuVucThanhToan"
@@ -239,8 +283,14 @@ function InfoContract() {
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="tuyenDocId"
-            label="Tuyến đọc (*)"
+            label="Tuyến đọc"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn tuyến đọc.",
+              },
+            ]}
           >
             <Select
               fieldNames="tuyenDocId"
@@ -263,6 +313,12 @@ function InfoContract() {
             name="ngayKyHopDong"
             label="Ngày ký hợp đồng"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn ngày ký hợp đồng.",
+              },
+            ]}
           >
             <DatePicker
               name="ngayKyHopDong"
@@ -274,10 +330,41 @@ function InfoContract() {
 
         {/* Ngày lắp đặt */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="ngayLapDat" label="Ngày lắp đặt" {...formItemLayout}>
+          <Form.Item
+            name="ngayLapDat"
+            label="Ngày lắp đặt"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn ngày lắp đặt.",
+              },
+            ]}
+          >
             <DatePicker
               name="ngayLapDat"
               placeholder="Nhập ngày lắp đặt"
+              style={{ width: "100%" }}
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Ngày có hiệu lực */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item
+            name="ngayCoHieuLuc"
+            label="Ngày có hiệu lực"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn ngày có hiệu lực.",
+              },
+            ]}
+          >
+            <DatePicker
+              name="ngayCoHieuLuc"
+              placeholder="Chọn ngày có hiệu lực"
               style={{ width: "100%" }}
             />
           </Form.Item>
@@ -287,7 +374,17 @@ function InfoContract() {
       <Row>
         {/* Kinh độ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="kinhDo" label="Kinh độ" {...formItemLayout}>
+          <Form.Item
+            name="kinhDo"
+            label="Kinh độ"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập kinh độ.",
+              },
+            ]}
+          >
             <InputNumber
               name="kinhDo"
               style={{ width: "100%" }}
@@ -298,7 +395,17 @@ function InfoContract() {
 
         {/* Địa chỉ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="diachi" label="Địa chỉ (*)" {...formItemLayout}>
+          <Form.Item
+            name="diachi"
+            label="Địa chỉ"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập địa chỉ.",
+              },
+            ]}
+          >
             <Input
               name="diachi"
               placeholder="Nhập địa chỉ"
@@ -311,7 +418,17 @@ function InfoContract() {
       <Row>
         {/* Vĩ độ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="viDo" label="Vĩ độ" {...formItemLayout}>
+          <Form.Item
+            name="viDo"
+            label="Vĩ độ"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập vĩ độ.",
+              },
+            ]}
+          >
             <InputNumber
               name="viDo"
               style={{ width: "100%" }}
@@ -326,24 +443,14 @@ function InfoContract() {
             name="ghiChuOfContract"
             label="Ghi chú: "
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập ghi chú.",
+              },
+            ]}
           >
             <Input name="ghiChuOfContract" placeholder="Nhập ghi chú" />
-          </Form.Item>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item
-            name="ngayCoHieuLuc"
-            label="Ngày có hiệu lực"
-            {...formItemLayout}
-          >
-            <DatePicker
-              name="ngayCoHieuLuc"
-              placeholder="Chọn ngày có hiệu lực"
-              style={{ width: "100%" }}
-            />
           </Form.Item>
         </Col>
       </Row>

@@ -135,9 +135,10 @@ function TableListContract() {
     );
   };
 
-  // handle un-check radio
+  // handle un-check radio + reset table
   const handleUncheckRadio = () => {
     dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
+    dispatch(fetchApiAllCustomer());
   };
 
   return (
@@ -177,7 +178,7 @@ function TableListContract() {
             type: "radio",
             columnTitle: () => {
               return (
-                <Tooltip title="Bỏ chọn hàng hiện tại.">
+                <Tooltip title="Làm mới">
                   <RedoOutlined
                     className="icon-reset-rad-btn"
                     onClick={handleUncheckRadio}
