@@ -14,14 +14,32 @@ import viVN from "antd/es/date-picker/locale/vi_VN";
 import "./CategoryHeader.css";
 import { btnClickTabListContract } from "../../redux/slices/tabListContractSlice/tabListContractSlice";
 import { useMediaQuery } from "react-responsive";
+import { getAllDMTuyenDoc } from "../../redux/slices/DMTuyenDoc/tuyenDocSlice";
+import { getAllNguoiDung } from "../../redux/slices/NguoiDungSlice/nguoidungSlice";
+import ModalAddReading from "../../pages/Category/ManagementReading/components/ModalAddReading/ModalAddReading";
+import ModalConfirmDelete from "../ModalConfirmDelete/ModalConfirmDelete";
+import { btnDelete } from "../../redux/slices/tabListReading/tabListReaingSlice";
+import ModalEditReading from "../../pages/Category/ManagementReading/components/ModalEditReading/ModalEditReading";
 
 const CategoryHeaderAction = ({
   sidebarMenu,
   handleOpenModalAdd,
-  setIsOpenModalDelete,
   handleOpenModalTransfer,
   tabList,
 }) => {
+  const [isOpenModalAddReading, setIsOpenModalAddReading] = useState(false);
+  const [isOpenModalEditReading, setIsOpenModalEditReading] = useState(false);
+  const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
+
+  const dispatch = useDispatch();
+  const rowSelected = useSelector(state => state.tabListReadingSlice.rowSelected);
+
+  const hanldeRefresh = () => {
+    dispatch(getAllDMTuyenDoc())
+    dispatch(getAllNguoiDung())
+  }
+
+  // console.log(rowSelected);
   return (
     <div className="category-header-actions">
       <div className="button-refresh">
@@ -29,18 +47,12 @@ const CategoryHeaderAction = ({
           className="button"
           type="primary"
           icon={<RetweetOutlined />}
-          // style={{
-          //   backgroundColor: "#E6FFFA",
-          //   color: "#72E8C9",
-          // }}
           style={{
-            // backgroundColor: "#E6FFFA",
-            // color: "#72E8C9",
             height: "34px",
             borderRadius: "6px",
           }}
-          // onClick={() => setIsOpenModalBill(true)}
           size="small"
+          onClick={hanldeRefresh}
         >
           Làm mới
         </Button>
@@ -50,7 +62,7 @@ const CategoryHeaderAction = ({
           className="button"
           type="primary"
           icon={<PlusCircleOutlined />}
-          onClick={(e) => handleOpenModalAdd(e, false)}
+          onClick={() => setIsOpenModalAddReading(true)}
           style={{
             backgroundColor: "#FA896B",
             height: "34px",
@@ -61,63 +73,23 @@ const CategoryHeaderAction = ({
           Thêm mới
         </Button>
       </div>
-      {/* {sidebarMenu === "CATEGORY_MANAGEMENT_PRICE_LIST" && (
-        <div className="button-watch">
-          <Button
-            className="button"
-            type="primary"
-            icon={<FormOutlined />}
-            onClick={(e) => handleViewTableDetail(e)}
-            disable
-            size="small"
-             style={{
-                backgroundColor: "#5D87FF",
-                color: "#FFFFFF",
-              }}
-            disabled={!tabList}
-          >
-            Xem
-          </Button>
-        </div>
-      )} */}
       <div className="button-update">
         <Button
-          className="button"
-          type="primary"
           icon={<EditOutlined />}
-          onClick={(e) => handleOpenModalAdd(e, true)}
-          size="small"
-          // style={{
-          //   backgroundColor: "#FEF5E5",
-          //   color: "#FFC882",
-          // }}
-          style={{
-            backgroundColor: "#0ce3bc",
-            color: "#FFFFFF",
-            height: "34px",
-            borderRadius: "6px",
-          }}
-          disabled={!tabList}
+          onClick={() => setIsOpenModalEditReading(true)}
+          className={rowSelected ? 'category-reading-edit-button' : 'category-reading-edit-button__disabled'}
+          disabled={!rowSelected}
         >
           Sửa
         </Button>
       </div>
       <div className="button-delete">
         <Button
-          className="button"
           type="primary"
           icon={<DeleteOutlined />}
           onClick={() => setIsOpenModalDelete(true)}
-          size="small"
-          style={{
-            backgroundColor: "#f64848",
-            color: "white",
-            height: "34px",
-            borderRadius: "6px",
-            // font-size: 1.4rem,
-            // font-weight: 500,
-          }}
-          disabled={!tabList}
+          disabled={!rowSelected}
+          danger
         >
           Xóa
         </Button>
@@ -162,6 +134,21 @@ const CategoryHeaderAction = ({
           </div>
         </>
       )}
+
+      <ModalAddReading
+        setIsOpenModalAddReading={setIsOpenModalAddReading}
+        isOpenModalAddReading={isOpenModalAddReading}
+      />
+
+      <ModalEditReading
+        isOpenModalEditReading={isOpenModalEditReading}
+        setIsOpenModalEditReading={setIsOpenModalEditReading}
+      />
+
+      <ModalConfirmDelete
+        isModalOpen={isOpenModalDelete}
+        setIsOpenModalDelete={setIsOpenModalDelete}
+      />
     </div>
   );
 };
@@ -181,6 +168,7 @@ const Header = ({
   const sidebarMenu = useSelector((state) => state.sidebarSlice.data);
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
   const [openPopover, setOpenPopover] = useState(false);
+
 
   const handleOpenModalAdd = (e, isEdit) => {
     e.preventDefault();

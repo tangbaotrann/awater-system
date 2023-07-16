@@ -19,20 +19,31 @@
   width: 300px;
 }
 
+.category-reading-edit-button {
+  background-color: #0ce3bc;
+  color: #FFFFFF;
+  height: "34px";
+  border-radius: "6px"
+}
+
+.category-reading-edit-button:hover {
+  background-color: #0ce3bc;
+  color: #FFFFFF;
+  height: "34px";
+  border-radius: "6px"
+}
+
+.category-reading-edit-button__disabled {
+  background-color: #ebebeb;
+  color: #b0b0b0;
+}
+
 .button {
   font-size: 1.4rem;
     font-weight: 500;
     color: var(--white);
     padding: 6px;
     border-radius: 6px;
-  /* font-size: 1.4rem !important;
-  font-weight: 500;
-  display: flex;
-  width: 100%;
-  padding: 15px !important;
-  height: 33px;
-  text-align: center;
-  align-items: center; */
 }
 /* phone: width < 740px */
 @media (max-width: 46.1875em) {

@@ -1,28 +1,37 @@
 import { Modal } from "antd";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./ModalConfirmDelete.css";
+import { deleteDMTuyenDoc } from "../../redux/slices/DMTuyenDoc/tuyenDocSlice";
 
 const ModalConfirmDelete = ({
-  title,
   isModalOpen,
-  handleOk,
-  handleCancel,
+  setIsOpenModalDelete,
   confirmLoading,
 }) => {
+  const rowSelected = useSelector(state => state.tabListReadingSlice.rowSelected);
+  const dispatch = useDispatch();
+
+  const hanldeDeleteTuyenDoc = () => {
+    console.log(rowSelected.KeyId);
+    dispatch(deleteDMTuyenDoc(rowSelected.KeyId))
+    setIsOpenModalDelete(false)
+  }
+
   return (
     <Modal
       destroyOnClose={true}
       className="popup-delete"
-      title={title}
+      title='Thông báo'
       bodyStyle={{
-        borderTop: "1px solid",
+        borderTop: "1px solid #ccc",
         paddingTop: "10px",
       }}
       open={isModalOpen}
-      onOk={handleOk}
+      onOk={hanldeDeleteTuyenDoc}
       okText="Xác Nhận"
-      onCancel={() => handleCancel("closeModalDeleteSubject")}
+      onCancel={() => setIsOpenModalDelete(false)}
       confirmLoading={confirmLoading}
       okButtonProps={{
         style: {
@@ -38,7 +47,7 @@ const ModalConfirmDelete = ({
         },
       }}
     >
-      Bạn chắc chắn muốn xóa không?
+      <p>{`Bạn chắc chắn muốn xóa Tuyến đọc ${rowSelected?.KeyId} không?`}</p>
     </Modal>
   );
 };

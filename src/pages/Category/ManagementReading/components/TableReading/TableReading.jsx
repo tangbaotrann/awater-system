@@ -1,11 +1,10 @@
 import React from "react";
-import { Table } from "antd";
-
+import { Table, Tooltip } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { btnClickTabListContract } from "../../../../../redux/slices/tabListContractSlice/tabListContractSlice";
 
+import { btnClickTabListReading, tabListReadingSlice } from "../../../../../redux/slices/tabListReading/tabListReaingSlice";
+import { RedoOutlined } from "@ant-design/icons";
 import "./TableReading.css";
-import tabListInvoicePrintSlice from "../../../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 
 const readingColumns = (showHeader) => [
   {
@@ -18,27 +17,27 @@ const readingColumns = (showHeader) => [
     },
   },
   {
-    key: "codeLine",
-    title: showHeader ? "Mã tuyến" : "",
-    dataIndex: "codeLine",
-    width: 165,
+    key: "KeyId",
+    title: showHeader ? "" : "Mã tuyến",
+    dataIndex: "KeyId",
+    width: 100,
     ellipsis: {
       showTitle: false,
     },
   },
   {
-    key: "nameLine",
-    title: showHeader ? "Tên tuyến" : "",
-    dataIndex: "nameLine",
+    key: "tenTuyen",
+    title: showHeader ? "" : "Tên tuyến",
+    dataIndex: "tenTuyen",
     width: 140,
     ellipsis: {
       showTitle: false,
     },
   },
   {
-    key: "cashier",
-    title: showHeader ? "Nhân viên thu tiền" : "",
-    dataIndex: "cashier",
+    key: "nguoiThuTienId",
+    title: showHeader ? "" : "Nhân viên thu tiền",
+    dataIndex: "nguoiThuTienId",
     width: 180,
     ellipsis: {
       showTitle: false,
@@ -51,9 +50,9 @@ const readingColumns = (showHeader) => [
   //   width: 130,
   // },
   {
-    key: "area",
-    title: showHeader ? "Khu vực" : "",
-    dataIndex: "area",
+    key: "tenKhuVuc",
+    title: showHeader ? "" : "Khu vực",
+    dataIndex: "tenKhuVuc",
     width: 130,
     ellipsis: {
       showTitle: false,
@@ -68,16 +67,20 @@ const readingColumns = (showHeader) => [
 
 const TableReading = () => {
   const dispatch = useDispatch();
-  const tabList = useSelector((state) => state.tabListContractSlice.tabList);
   const danhSachNguoiDung = useSelector(state => state.nguoidung.danhSachNguoiDung)
   const danhSachTuyenDoc = useSelector(state => state.tuyendoc.danhSachTuyenDoc)
   const listAreas = useSelector(state => state.areaSlice.data);
+  const rowSelected = useSelector(state => state.tabListReadingSlice.rowSelected);
 
   const handleRowSelection = (selectedRowKeys, selectedRows) => {
-    dispatch(btnClickTabListContract(selectedRows[0]));
+    dispatch(btnClickTabListReading(selectedRows[0]));
   };
 
-  const data = danhSachNguoiDung.map((nguoiDung, i) => {
+  const handleUncheckRadio = () => {
+    dispatch(tabListReadingSlice.actions.btnClickTabListReading(null))
+  }
+
+  const data = danhSachNguoiDung && danhSachNguoiDung.length > 0 && danhSachNguoiDung.map((nguoiDung, i) => {
 
     let tuyenDocNguoiDung;
     if (danhSachTuyenDoc && danhSachTuyenDoc.length > 0) {
@@ -86,8 +89,7 @@ const TableReading = () => {
       });
     }
 
-    // const areas = listAreas.filter(() => {})
-    const tuyenDocNguoiDungMoi = tuyenDocNguoiDung.map((nguoiDung) => {
+    const tuyenDocNguoiDungMoi = tuyenDocNguoiDung?.map((nguoiDung) => {
       let name = '';
       listAreas.forEach((area) => {
         if (nguoiDung.khuVucId === area.id) {
@@ -101,23 +103,23 @@ const TableReading = () => {
       gmail: nguoiDung.email,
       key: nguoiDung.id,
       data: tuyenDocNguoiDungMoi && tuyenDocNguoiDungMoi.length > 0 && tuyenDocNguoiDungMoi?.map((tuyenDoc, i) => {
+        // console.log({tuyenDoc});
         return {
           key: i,
           index: i,
-          codeLine: tuyenDoc.keyId,
-          nameLine: tuyenDoc.tenTuyen,
-          cashier: tuyenDoc.nguoiThuTienId,
-          indexingPeriod: `Kỳ ghi ${i}`,
-          area: tuyenDoc.name,
-          unit: `Đơn vị ${i}`,
+          KeyId: tuyenDoc.keyId,
+          tenTuyen: tuyenDoc.tenTuyen,
+          nguoiThuTienId: tuyenDoc.nguoiThuTienId,
+          nguoiQuanLyId: tuyenDoc.nguoiQuanLyId,
+          // indexingPeriod: `Kỳ ghi ${i}`,
+          tenKhuVuc: tuyenDoc.name,
+          khuVucId: tuyenDoc.khuVucId
+          // unit: `Đơn vị ${i}`,
         }
       })
     }
   })
 
-  // console.log('danh sach KhuVuc', listAreas);
-  // console.log('danh sach NguoiDung', danhSachNguoiDung);
-  // console.log('danh sach TuyenDoc', danhSachTuyenDoc);
   return (
     <Table
       className="parent-table"
@@ -139,37 +141,40 @@ const TableReading = () => {
               }))}
               dataSource={record.data}
               pagination={false}
-              rowKey="key"
+              rowKey="index"
               scroll={{
                 x: 1100,
               }}
               onRow={(record, index) => {
                 return {
                   onClick: () => {
-                    // clicked row to check radio
-                    dispatch(
-                      tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(
-                        record
-                      )
+                    // clicked row to dispatch key to store
+                    // console.log('record dispatch: ', record);
+                    dispatch(tabListReadingSlice.actions.btnClickTabListReading(record)
                     );
                   },
                 };
               }}
               rowSelection={{
                 type: "radio",
-                onClick: (selectedRowKeys, selectedRows) => {
-                  console.log(selectedRows)
-                  // handleRowSelection(selectedRowKeys, selectedRows)
+                columnTitle: () => {
+                  return (
+                    <Tooltip title="Bỏ chọn hàng hiện tại.">
+                      <RedoOutlined
+                        className="icon-reset-rad-btn"
+                        onClick={handleUncheckRadio}
+                      />
+                    </Tooltip>
+                  );
                 },
-                selectedRowKeys: tabList ? [tabList.key] : [],
+                // onChange: (selectedRowKeys, selectedRows) => handleRowSelection(selectedRowKeys, selectedRows),
+                // get rowSelected after dispatch to tabListReadingSlice
+                selectedRowKeys: rowSelected ? [rowSelected.index] : [],
               }}
               bordered
             />
           );
         },
-        // onExpand: (expanded, record) => {
-        //   console.log(record);
-        // },
       }}
     />
   );
