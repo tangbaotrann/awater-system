@@ -24,7 +24,6 @@ const fetchApiAllPriceListObject = createAsyncThunk(
   async () => {
     try {
       const res = await getRequest("danh-sach-doi-tuong-gia/get-all");
-
       return res.data.data;
     } catch (error) {
       console.log({ error });
@@ -45,7 +44,7 @@ const fetchApiAddPriceListObject = createAsyncThunk(
         moTa,
         donViTinh,
       });
-
+      toast.success("Thêm thành công.");
       return res.data.data;
     } catch (error) {
       console.log({ error });
@@ -85,7 +84,7 @@ const fetchApiDeletePriceListObject = createAsyncThunk(
         // `danh-sach-doi-tuong-gia/delete?id=${id}`,
         null
       );
-
+      toast.success("Xóa thành công.");
       return res.data.data;
     } catch (error) {
       console.log({ error });

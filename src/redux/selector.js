@@ -54,3 +54,7 @@ export const fetchApiFindByKeyIdCustomerSelector = (state) =>
 
 // get all bang gia
 export const fetchApiAllBangGiaSelector = (state) => state.bangGiaSlice.data;
+
+// get all chi tiet gia
+export const fetchApiAllDetailPriceSelector = (state) =>
+  state.detailPriceSlice.data;
