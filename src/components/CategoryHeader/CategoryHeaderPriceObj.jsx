@@ -18,7 +18,7 @@ import { getAllDetailPrice } from "../../redux/slices/detailPriceSlice/detailPri
 import { fetchApiAllPriceObj } from "../../redux/slices/priceObjSlice/priceObjSlice";
 import ModalConfirmDelete from "../ModalConfirmDelete/ModalConfirmDelete";
 import { btnDelete } from "../../redux/slices/tabListReading/tabListReaingSlice";
-import ModalEditReading from "../../pages/Category/ManagementReading/components/ModalEditReading/ModalEditReading";
+import ModalEditPriceList from "../../pages/Category/ManagementPriceList/components/ModalAddPriceList/ModalEditPriceList";
 import ModalAddPriceList from "../../pages/Category/ManagementPriceList/components/ModalAddPriceList/ModalAddPriceList";
 const CategoryHeaderAction = ({
   sidebarMenu,
@@ -78,12 +78,13 @@ const CategoryHeaderAction = ({
         <Button
           icon={<EditOutlined />}
           onClick={() => setIsOpenModalEditPriceList(true)}
-          className={
-            rowSelected
-              ? "category-reading-edit-button"
-              : "category-reading-edit-button__disabled"
-          }
-          disabled={!rowSelected}
+          className="category-reading-edit-button"
+          // className={
+          //   rowSelected
+          //     ? "category-reading-edit-button"
+          //     : "category-reading-edit-button__disabled"
+          // }
+          // disabled={!rowSelected}
         >
           Sửa
         </Button>
@@ -99,47 +100,6 @@ const CategoryHeaderAction = ({
           Xóa
         </Button>
       </div>
-      {sidebarMenu === "CATEGORY_MANAGEMENT_READING" && (
-        <>
-          <div className="button-transfer-managers">
-            <Button
-              className="button"
-              type="primary"
-              icon={<SwapOutlined />}
-              onClick={(e) => handleOpenModalTransfer(e, "manager")}
-              size="small"
-              style={{
-                backgroundColor: "#5D87FF",
-                color: "#FFFFFF",
-                height: "34px",
-                borderRadius: "6px",
-              }}
-              disabled={!tabList}
-            >
-              Chuyển cán bộ quản lý
-            </Button>
-          </div>
-          <div className="button-transfer-bill-collectors">
-            <Button
-              className="button"
-              type="primary"
-              icon={<RetweetOutlined />}
-              onClick={(e) => handleOpenModalTransfer(e, "billCollector")}
-              size="small"
-              style={{
-                backgroundColor: "#5D87FF",
-                color: "#FFFFFF",
-                height: "34px",
-                borderRadius: "6px",
-              }}
-              disabled={!tabList}
-            >
-              Chuyển cán bộ thu
-            </Button>
-          </div>
-        </>
-      )}
-
       <ModalConfirmDelete
         isModalOpen={isOpenModalDelete}
         setIsOpenModalDelete={setIsOpenModalDelete}
@@ -147,6 +107,10 @@ const CategoryHeaderAction = ({
       <ModalAddPriceList
         setIsOpenModalAddPriceList={setIsOpenModalAddPriceList}
         isOpenModalAddPriceList={isOpenModalAddPriceList}
+      />
+      <ModalEditPriceList
+        setIsOpenModalEditPriceList={setIsOpenModalEditPriceList}
+        isOpenModalEditPriceList={isOpenModalEditPriceList}
       />
     </div>
   );

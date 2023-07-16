@@ -66,7 +66,10 @@ export const fetchApiAllBangGiaSelector = (state) => state.bangGiaSlice.data;
 // get all chi tiet gia
 export const fetchApiAllDetailPriceSelector = (state) =>
   state.detailPriceSlice.data;
-
-// get all price obj
+// // get all price obj
 export const fetchApiAllPriceObjectSelector = (state) =>
-  state.priceObject.ListPriceOject;
+  state.priceObjectSlice.data;
+
+// // get all price obj
+// export const fetchApiAllPriceObjectSelector = (state) =>
+//   state.priceObject.ListPriceOject;

@@ -1,33 +1,26 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getRequest, postRequest } from "../../../services";
+import {
+  getRequest,
+  postRequest,
+  putRequest,
+  deleteRequest,
+} from "../../../services";
 import { toast } from "react-toastify";
-import { message } from "antd";
-
-const initialState = {
-  ListPriceOject: [],
-  isAddedSuccess: false,
-  isDeletedSuccess: false,
-};
-const priceObjectSlice = createSlice({
-  name: "PriceObject",
-  initialState,
+const PriceObjectSlice = createSlice({
+  name: "priceObject",
+  initialState: {
+    data: [],
+  },
   extraReducers: (builder) => {
-    builder
-      .addCase(getAllPriceObject.fulfilled, (state, action) => {
-        state.ListPriceOject = action.payload;
-      })
-      .addCase(postPriceObject.fulfilled, (state, action) => {
-        state.isAddedSuccess = action.payload;
-      })
-      .addCase(deletePriceObject.fulfilled, (state, action) => {
-        state.isDeletedSuccess = true;
-      });
+    builder.addCase(fetchApiAllPriceObject.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
   },
 });
 
-// fetch api all bang gia
-const getAllPriceObject = createAsyncThunk(
-  "PriceObject/getAllPriceObject",
+// fetch api all priceObject
+const fetchApiAllPriceObject = createAsyncThunk(
+  "priceObject/fetchApiAllPriceObject",
   async () => {
     try {
       const res = await getRequest("doi-tuong-gia/get-all");
@@ -38,45 +31,20 @@ const getAllPriceObject = createAsyncThunk(
   }
 );
 
-// fetch api add region
-const postPriceObject = createAsyncThunk(
-  "PriceObject/postPriceObject",
+// fetch api add priceObject
+const fetchApiAddPriceObject = createAsyncThunk(
+  "priceObject/fetchApiAddPriceObject",
   async (values) => {
     try {
-      const {
-        keyId,
-        ngayBatDau,
-        ngayKetThuc,
-        vat,
-        bvmt,
-        phiBvmt,
-        dtTinhGia,
-        kieuTinh,
-        coToiThieu,
-        tinhTu,
-        toiThieu,
-        phiDuyTriId,
-        danhSachDoiTuongGiaId,
-      } = values;
+      const { id, keyId, moTa, donViTinh } = values;
 
       const res = await postRequest("doi-tuong-gia/add", {
+        id,
         keyId,
-        ngayBatDau,
-        ngayKetThuc,
-        vat,
-        bvmt,
-        phiBvmt,
-        dtTinhGia,
-        kieuTinh,
-        coToiThieu,
-        tinhTu,
-        toiThieu,
-        phiDuyTriId,
-        danhSachDoiTuongGiaId,
+        moTa,
+        donViTinh,
       });
-
-      toast.success("Thêm đối tượng giá thành công.");
-
+      toast.success("Thêm thành công.");
       return res.data.data;
     } catch (error) {
       console.log({ error });
@@ -84,45 +52,19 @@ const postPriceObject = createAsyncThunk(
   }
 );
 
-// fetch api update region
-const putPriceObject = createAsyncThunk(
-  "PriceObject/putPriceObject",
+// fetch api update priceObject
+const fetchApiUpdatePriceObject = createAsyncThunk(
+  "priceObject/fetchApiUpdatePriceObject",
   async (values) => {
     try {
-      const {
-        keyId,
-        ngayBatDau,
-        ngayKetThuc,
-        vat,
-        bvmt,
-        phiBvmt,
-        dtTinhGia,
-        kieuTinh,
-        coToiThieu,
-        tinhTu,
-        toiThieu,
-        phiDuyTriId,
-        danhSachDoiTuongGiaId,
-      } = values;
+      const { keyId, moTa, donViTinh } = values;
 
-      const res = await postRequest("doi-tuong-gia/update", {
+      const res = await putRequest(`doi-tuong-gia/update/${keyId}`, {
         keyId,
-        ngayBatDau,
-        ngayKetThuc,
-        vat,
-        bvmt,
-        phiBvmt,
-        dtTinhGia,
-        kieuTinh,
-        coToiThieu,
-        tinhTu,
-        toiThieu,
-        phiDuyTriId,
-        danhSachDoiTuongGiaId,
+        moTa,
+        donViTinh,
       });
-
-      toast.success("Cập nhật đổi tượng giá thành công.");
-
+      toast.success("Cập nhật danh mục thành công.");
       return res.data.data;
     } catch (error) {
       console.log({ error });
@@ -130,15 +72,20 @@ const putPriceObject = createAsyncThunk(
   }
 );
 
-// fetch api delete region
-const deletePriceObject = createAsyncThunk(
-  "PriceObject/deletePriceObject",
-  async (keyId) => {
+// fetch api delete priceObject
+const fetchApiDeletePriceObject = createAsyncThunk(
+  "priceObject/fetchApiDeletePriceObject",
+  async (tabListPO) => {
     try {
-      const res = await postRequest(`doi-tuong-gia/delete/${keyId}`);
-      console.log(res);
-      if (res.data.statusCode === 202)
-        message.success({ content: "Xóa thành công" });
+      const { keyId } = tabListPO;
+
+      const res = await deleteRequest(
+        `doi-tuong-gia/delete/${keyId}`,
+        // `doi-tuong-gia/delete?id=${id}`,
+        null
+      );
+      toast.success("Xóa thành công.");
+      return res.data.data;
     } catch (error) {
       console.log({ error });
     }
@@ -146,10 +93,10 @@ const deletePriceObject = createAsyncThunk(
 );
 
 export {
-  getAllPriceObject,
-  postPriceObject,
-  putPriceObject,
-  deletePriceObject,
+  fetchApiAllPriceObject,
+  fetchApiAddPriceObject,
+  fetchApiUpdatePriceObject,
+  fetchApiDeletePriceObject,
 };
 
-export default priceObjectSlice;
+export default PriceObjectSlice;

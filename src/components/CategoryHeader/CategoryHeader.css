@@ -25,6 +25,12 @@
   height: "34px";
   border-radius: "6px"
 }
+.category-reading-edit-button :hover {
+  background-color: #0ce3bc;
+  color: #FFFFFF;
+  height: "34px";
+  border-radius: "6px"
+}
 
 .category-reading-edit-button:hover {
   background-color: #0ce3bc;
