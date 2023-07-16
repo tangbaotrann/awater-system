@@ -78,7 +78,7 @@ for (let i = 0; i <= 5; i++) {
   });
 }
 
-// ================================> 
+// ================================>
 
 const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
@@ -114,13 +114,23 @@ const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
 
   // handle có VAT
   const handleOnClickCoVAT = (e) => {
-    setCoVAT(prev => !prev);
-  }
-  // handle có tối thiểu 
+    setCoVAT((prev) => !prev);
+  };
+  // handle có tối thiểu
   const handleOnClickCoToiThieu = (e) => {
-    setCoToiThieu(prev => !prev);
-  }
+    setCoToiThieu((prev) => !prev);
+  };
+  // const [priceListData, setPriceListData] = useState([]);
 
+  // const handleAddRow = () => {
+  //   // Tạo đối tượng mới với các giá trị mặc định
+  //   const newRow = {
+  //     key: priceListData.length,
+  //     // Điền các giá trị mặc định cho các cột khác ở đây
+  //   };
+  //   // Thêm đối tượng mới vào mảng dữ liệu
+  //   setPriceListData((prevData) => [...prevData, newRow]);
+  // };
   return (
     <Modal
       title={!tabList ? "Thêm dữ liệu" : "Sửa dữ liệu"}
@@ -176,21 +186,34 @@ const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
                         format={dateFormatList}
                       />
                     </Form.Item>
-                    <Form.Item label="Có VAT:" name="hasVAT">
-                      <Checkbox onClick={handleOnClickCoVAT} style={{ marginRight: "5px" }} />
-                      {coVAT && (
-                        <Form.Item label="Thuế VAT" name="thueVAT">
-                          <InputNumber
-                          defaultValue={0}
-                            min={0}
-                            max={1}
-                            step="0.1"
-                            size="middle"
-                            style={{ width: "100%" }}
-                          />
-                        </Form.Item>
-                      )}
+                    <Form.Item
+                      label="Có VAT:"
+                      name="hasVAT"
+                      style={{ marginBottom: -5, marginTop: -5 }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          minHeight: "50px",
+                        }}
+                      >
+                        <Checkbox onClick={handleOnClickCoVAT} />
+                        {coVAT && (
+                          <Form.Item label="Thuế VAT" name="thueVAT">
+                            <InputNumber
+                              defaultValue={0}
+                              min={0}
+                              max={1}
+                              step="0.1"
+                              size="middle"
+                              style={{ width: "100%" }}
+                            />
+                          </Form.Item>
+                        )}
+                      </div>
                     </Form.Item>
+
                     <Form.Item label="ĐT tính giá:" name="pricingPriceObject">
                       <Select
                         name="pricingPriceObject"
@@ -201,7 +224,24 @@ const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
                       />
                     </Form.Item>
                     <Form.Item label="Có tối thiểu:" name="minimum">
-                      <Checkbox onClick={handleOnClickCoToiThieu} style={{ marginRight: "5px" }} />
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          minHeight: "50px",
+                        }}
+                      >
+                        <Checkbox onClick={handleOnClickCoToiThieu} />
+                        {coToiThieu && (
+                          <Form.Item label="Tính từ" name="tinhTu">
+                            <InputNumber
+                              defaultValue={0}
+                              max={1}
+                              style={{ width: "100%" }}
+                            />
+                          </Form.Item>
+                        )}
+                      </div>
                     </Form.Item>
                   </div>
                   <div className="form-item-right">
@@ -243,6 +283,21 @@ const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
                         style={{ width: "100%" }}
                         options={priceObjectOptions}
                       />
+                    </Form.Item>
+                    <Form.Item>
+                      {coToiThieu && (
+                        <Form.Item
+                          label="Tối thiểu"
+                          name="tinhTu"
+                          // style={{ marginBottom: -20, marginTop: -5 }}
+                        >
+                          <InputNumber
+                            defaultValue={0}
+                            max={1}
+                            style={{ width: "100%" }}
+                          />
+                        </Form.Item>
+                      )}
                     </Form.Item>
                   </div>
                 </div>
