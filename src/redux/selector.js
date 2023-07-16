@@ -22,7 +22,7 @@ export const fetchApiAllRegionSelector = (state) => state.regionSlice.data;
 // get all factory
 export const fetchApiAllFactorySelector = (state) => state.factorySlice.data;
 
-// get all priceObject
+// get all price List Object
 
 export const fetchApiAllPriceListObjectSelector = (state) =>
   state.priceListObjectSlice.data;
@@ -66,3 +66,10 @@ export const fetchApiAllBangGiaSelector = (state) => state.bangGiaSlice.data;
 // get all chi tiet gia
 export const fetchApiAllDetailPriceSelector = (state) =>
   state.detailPriceSlice.data;
+// // get all price obj
+export const fetchApiAllPriceObjectSelector = (state) =>
+  state.priceObjectSlice.data;
+
+// // get all price obj
+// export const fetchApiAllPriceObjectSelector = (state) =>
+//   state.priceObject.ListPriceOject;

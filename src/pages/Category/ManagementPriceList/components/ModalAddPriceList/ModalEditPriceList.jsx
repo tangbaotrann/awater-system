@@ -81,9 +81,9 @@ for (let i = 0; i <= 5; i++) {
 // ================================>
 
 // const ModalAddPriceList = ({ isOpen, handleCancel, handleOk }) => {
-const ModalAddPriceList = ({
-  isOpenModalAddPriceList,
-  setIsOpenModalAddPriceList,
+const ModalEditPriceList = ({
+  isOpenModalEditPriceList,
+  setIsOpenModalEditPriceList,
 }) => {
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
@@ -142,9 +142,9 @@ const ModalAddPriceList = ({
 
   return (
     <Modal
-      title={"Thêm dữ liệu"}
-      open={isOpenModalAddPriceList}
-      onCancel={() => setIsOpenModalAddPriceList(false)}
+      title={"Sửa dữ liệu"}
+      open={isOpenModalEditPriceList}
+      onCancel={() => setIsOpenModalEditPriceList(false)}
       className="popup-add-price-list"
       bodyStyle={{ height: "610px", overflow: "auto" }}
       width={1100}
@@ -410,7 +410,7 @@ const ModalAddPriceList = ({
               key="submit"
               icon={<CloseCircleOutlined />}
               // onClick={() => handleCancel("addPriceList")}
-              onClick={() => setIsOpenModalAddPriceList(false)}
+              onClick={() => setIsOpenModalEditPriceList(false)}
               style={{
                 width: "100%",
                 backgroundColor: "#fa896b",
@@ -428,4 +428,4 @@ const ModalAddPriceList = ({
   );
 };
 
-export default ModalAddPriceList;
+export default ModalEditPriceList;

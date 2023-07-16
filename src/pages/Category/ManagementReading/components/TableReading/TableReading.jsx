@@ -2,7 +2,10 @@ import React from "react";
 import { Table, Tooltip } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
-import { btnClickTabListReading, tabListReadingSlice } from "../../../../../redux/slices/tabListReading/tabListReaingSlice";
+import {
+  btnClickTabListReading,
+  tabListReadingSlice,
+} from "../../../../../redux/slices/tabListReading/tabListReaingSlice";
 import { RedoOutlined } from "@ant-design/icons";
 import "./TableReading.css";
 
@@ -67,58 +70,69 @@ const readingColumns = (showHeader) => [
 
 const TableReading = () => {
   const dispatch = useDispatch();
-  const danhSachNguoiDung = useSelector(state => state.nguoidung.danhSachNguoiDung)
-  const danhSachTuyenDoc = useSelector(state => state.tuyendoc.danhSachTuyenDoc)
-  const listAreas = useSelector(state => state.areaSlice.data);
-  const rowSelected = useSelector(state => state.tabListReadingSlice.rowSelected);
+  const danhSachNguoiDung = useSelector(
+    (state) => state.nguoidung.danhSachNguoiDung
+  );
+  const danhSachTuyenDoc = useSelector(
+    (state) => state.tuyendoc.danhSachTuyenDoc
+  );
+  const listAreas = useSelector((state) => state.areaSlice.data);
+  const rowSelected = useSelector(
+    (state) => state.tabListReadingSlice.rowSelected
+  );
 
   const handleRowSelection = (selectedRowKeys, selectedRows) => {
     dispatch(btnClickTabListReading(selectedRows[0]));
   };
 
   const handleUncheckRadio = () => {
-    dispatch(tabListReadingSlice.actions.btnClickTabListReading(null))
-  }
+    dispatch(tabListReadingSlice.actions.btnClickTabListReading(null));
+  };
 
-  const data = danhSachNguoiDung && danhSachNguoiDung.length > 0 && danhSachNguoiDung.map((nguoiDung, i) => {
+  const data =
+    danhSachNguoiDung &&
+    danhSachNguoiDung.length > 0 &&
+    danhSachNguoiDung.map((nguoiDung, i) => {
+      let tuyenDocNguoiDung;
+      if (danhSachTuyenDoc && danhSachTuyenDoc.length > 0) {
+        tuyenDocNguoiDung = danhSachTuyenDoc.filter((tuyenDoc) => {
+          return tuyenDoc.nguoiQuanLyId === nguoiDung.id;
+        });
+      }
 
-    let tuyenDocNguoiDung;
-    if (danhSachTuyenDoc && danhSachTuyenDoc.length > 0) {
-      tuyenDocNguoiDung = danhSachTuyenDoc.filter((tuyenDoc) => {
-        return tuyenDoc.nguoiQuanLyId === nguoiDung.id;
+      const tuyenDocNguoiDungMoi = tuyenDocNguoiDung?.map((nguoiDung) => {
+        let name = "";
+        listAreas.forEach((area) => {
+          if (nguoiDung.khuVucId === area.id) {
+            name = area.tenKhuVuc;
+          }
+        });
+        return { ...nguoiDung, name };
       });
-    }
 
-    const tuyenDocNguoiDungMoi = tuyenDocNguoiDung?.map((nguoiDung) => {
-      let name = '';
-      listAreas.forEach((area) => {
-        if (nguoiDung.khuVucId === area.id) {
-          name = area.tenKhuVuc;
-        }
-      });
-      return { ...nguoiDung, name };
+      return {
+        gmail: nguoiDung.email,
+        key: nguoiDung.id,
+        data:
+          tuyenDocNguoiDungMoi &&
+          tuyenDocNguoiDungMoi.length > 0 &&
+          tuyenDocNguoiDungMoi?.map((tuyenDoc, i) => {
+            // console.log({tuyenDoc});
+            return {
+              key: i,
+              index: i,
+              KeyId: tuyenDoc.keyId,
+              tenTuyen: tuyenDoc.tenTuyen,
+              nguoiThuTienId: tuyenDoc.nguoiThuTienId,
+              nguoiQuanLyId: tuyenDoc.nguoiQuanLyId,
+              // indexingPeriod: `Kỳ ghi ${i}`,
+              tenKhuVuc: tuyenDoc.name,
+              khuVucId: tuyenDoc.khuVucId,
+              // unit: `Đơn vị ${i}`,
+            };
+          }),
+      };
     });
-
-    return {
-      gmail: nguoiDung.email,
-      key: nguoiDung.id,
-      data: tuyenDocNguoiDungMoi && tuyenDocNguoiDungMoi.length > 0 && tuyenDocNguoiDungMoi?.map((tuyenDoc, i) => {
-        // console.log({tuyenDoc});
-        return {
-          key: i,
-          index: i,
-          KeyId: tuyenDoc.keyId,
-          tenTuyen: tuyenDoc.tenTuyen,
-          nguoiThuTienId: tuyenDoc.nguoiThuTienId,
-          nguoiQuanLyId: tuyenDoc.nguoiQuanLyId,
-          // indexingPeriod: `Kỳ ghi ${i}`,
-          tenKhuVuc: tuyenDoc.name,
-          khuVucId: tuyenDoc.khuVucId
-          // unit: `Đơn vị ${i}`,
-        }
-      })
-    }
-  })
 
   return (
     <Table
@@ -137,7 +151,13 @@ const TableReading = () => {
               className="child-table"
               columns={readingColumns(false).map((column) => ({
                 ...column,
-                render: (text) => <div style={{ wordWrap: 'break-word', wordBreak: 'break-all' }}>{text}</div>,
+                render: (text) => (
+                  <div
+                    style={{ wordWrap: "break-word", wordBreak: "break-all" }}
+                  >
+                    {text}
+                  </div>
+                ),
               }))}
               dataSource={record.data}
               pagination={false}
@@ -150,7 +170,8 @@ const TableReading = () => {
                   onClick: () => {
                     // clicked row to dispatch key to store
                     // console.log('record dispatch: ', record);
-                    dispatch(tabListReadingSlice.actions.btnClickTabListReading(record)
+                    dispatch(
+                      tabListReadingSlice.actions.btnClickTabListReading(record)
                     );
                   },
                 };
@@ -167,8 +188,6 @@ const TableReading = () => {
                     </Tooltip>
                   );
                 },
-                // onChange: (selectedRowKeys, selectedRows) => handleRowSelection(selectedRowKeys, selectedRows),
-                // get rowSelected after dispatch to tabListReadingSlice
                 selectedRowKeys: rowSelected ? [rowSelected.index] : [],
               }}
               bordered
