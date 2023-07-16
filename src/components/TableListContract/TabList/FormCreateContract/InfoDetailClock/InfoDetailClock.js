@@ -1,16 +1,15 @@
-import {
-  Button,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-} from "antd";
+import { Button, Col, Form, Input, InputNumber, Row, Select } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+
+import { getAllNguoiDung } from "../../../../../redux/slices/NguoiDungSlice/nguoidungSlice";
+import { fetchApiGetAllManagerSelector } from "../../../../../redux/selector";
 
 function InfoDetailClock() {
+  const dispatch = useDispatch();
+
+  const nameManagers = useSelector(fetchApiGetAllManagerSelector);
+
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -26,21 +25,45 @@ function InfoDetailClock() {
     },
   };
 
+  const handleGetNameManager = () => {
+    dispatch(getAllNguoiDung());
+  };
+
   return (
     <div className="container-detail-clock">
       <Row>
         {/* Id */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="Id" label="Id" {...formItemLayout}>
-            <Input name="Id" placeholder="Nhập id" />
+          <Form.Item
+            name="keyIdOfClockDetail"
+            label="Mã đồng hồ"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập mã đồng hồ.",
+              },
+            ]}
+          >
+            <Input name="keyIdOfClockDetail" placeholder="Nhập mã đồng hồ" />
           </Form.Item>
         </Col>
 
         {/* Đơn vị HC */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="DonViHC" label="Đơn vị HC" {...formItemLayout}>
+          <Form.Item
+            name="donViHC"
+            label="Đơn vị HC"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn đơn vị HC.",
+              },
+            ]}
+          >
             <Select
-              fieldNames="DonViHC"
+              fieldNames="donViHC"
               options={[
                 { value: "Bắc Giang", label: "Bắc Giang" },
                 { value: "Thái Bình", label: "Thái Bình" },
@@ -53,27 +76,65 @@ function InfoDetailClock() {
 
         {/* Loại đồng hồ */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="LoaiDongHo" label="Loại ĐH" {...formItemLayout}>
-            <Input name="LoaiDongHo" placeholder="Loại đồng hồ" />
+          <Form.Item
+            name="loaiDongHo"
+            label="Loại ĐH"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập loại đồng hồ.",
+              },
+            ]}
+          >
+            <Input name="loaiDongHo" placeholder="Loại đồng hồ" />
           </Form.Item>
         </Col>
 
         {/* Người quản lý id */}
         <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
-            name="NguoiQuanLyId"
-            label="Người QL id"
+            name="nguoiQuanLyId"
+            label="Người QL"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn người quản lý.",
+              },
+            ]}
           >
-            <Input name="NguoiQuanLyId" placeholder="Người quản lý" />
+            <Select
+              fieldNames="nguoiQuanLyId"
+              options={
+                nameManagers?.length <= 0
+                  ? []
+                  : nameManagers.map((_nameManager) => ({
+                      label: _nameManager.dangNhapId,
+                      value: _nameManager.id,
+                    }))
+              }
+              onClick={handleGetNameManager}
+              placeholder="Chọn người quản lý"
+            />
           </Form.Item>
         </Col>
 
         {/* Phạm vi */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="PhamVi" label="Phạm vi" {...formItemLayout}>
+          <Form.Item
+            name="phamVi"
+            label="Phạm vi"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn phạm vi.",
+              },
+            ]}
+          >
             <Select
-              fieldNames="PhamVi"
+              fieldNames="phamVi"
               options={[
                 { value: "1", label: "baovinh - Bảo Vinh" },
                 { value: "2", label: "hungdao - Hưng Đạo_TB" },
@@ -100,34 +161,60 @@ function InfoDetailClock() {
 
         {/* Seri + Checkbox (Seri) */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="SeriDongHo" label="Seri" {...formItemLayout}>
-            <div className="container-label-input">
-              <Input
-                name="SeriDongHo"
-                placeholder="Nhập seri"
-                className="space-right-10"
-              />
-              <Checkbox />
-            </div>
+          <Form.Item
+            name="seriDongHo"
+            label="Seri"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập seri đồng hồ.",
+              },
+            ]}
+          >
+            {/* <div className="container-label-input"> */}
+            <Input
+              name="seriDongHo"
+              placeholder="Nhập seri"
+              className="space-right-10"
+            />
+            {/* <Checkbox /> */}
+            {/* </div> */}
           </Form.Item>
         </Col>
 
         {/* Seri chì */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="SeriChi" label="Seri chì" {...formItemLayout}>
-            <Input name="SeriChi" placeholder="Nhập seri chì" />
+          <Form.Item
+            name="seriChi"
+            label="Seri chì"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập seri chì.",
+              },
+            ]}
+          >
+            <Input name="seriChi" placeholder="Nhập seri chì" />
           </Form.Item>
         </Col>
 
         {/* Trạng thái */}
         <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
-            name="TrangThaiSuDung"
+            name="trangThaiSuDung"
             label="Trạng thái"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn trạng thái sử dụng.",
+              },
+            ]}
           >
             <Select
-              fieldNames="TrangThaiSuDung"
+              fieldNames="trangThaiSuDung"
               options={[{ value: "1", label: "Đang sử dụng" }]}
               placeholder="Chọn trạng thái"
             />
@@ -136,9 +223,19 @@ function InfoDetailClock() {
 
         {/* Lý do hủy */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="LyDoHuy" label="Lý do hủy" {...formItemLayout}>
+          <Form.Item
+            name="lyDoHuy"
+            label="Lý do hủy"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn lý do hủy.",
+              },
+            ]}
+          >
             <Select
-              fieldNames="LyDoHuy"
+              fieldNames="lyDoHuy"
               placeholder="Chọn lý do hủy"
               options={[{ value: "1", label: "LD 1" }]}
             />
@@ -147,10 +244,20 @@ function InfoDetailClock() {
 
         {/* Thứ tự + button (Thứ tự) */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="SoThuTu" label="Thứ tự: " {...formItemLayout}>
+          <Form.Item
+            name="soThuTu"
+            label="Thứ tự: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số thứ tự.",
+              },
+            ]}
+          >
             <div className="container-label-input">
               <Input
-                name="SoThuTu"
+                name="soThuTu"
                 placeholder="Nhập thứ tự"
                 className="space-right-10"
               />
@@ -162,17 +269,27 @@ function InfoDetailClock() {
         </Col>
 
         {/* Hợp đồng id */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item name="HopDongId" label="Hợp đồng Id" {...formItemLayout}>
             <Input name="HopDongId" placeholder="Nhập id" />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* Chỉ số bắt đầu */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="ChiSoDau" label="CS đầu" {...formItemLayout}>
+          <Form.Item
+            name="chiSoDau"
+            label="CS đầu"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập chỉ số đầu.",
+              },
+            ]}
+          >
             <InputNumber
-              name="ChiSoDau"
+              name="chiSoDau"
               placeholder="Chỉ số đầu"
               style={{ width: "100%" }}
             />
@@ -181,9 +298,19 @@ function InfoDetailClock() {
 
         {/* Chỉ số cuối */}
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="ChiSoCuoi" label="CS cuối" {...formItemLayout}>
+          <Form.Item
+            name="chiSoCuoi"
+            label="CS cuối"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập chỉ số cuối.",
+              },
+            ]}
+          >
             <InputNumber
-              name="ChiSoCuoi"
+              name="chiSoCuoi"
               placeholder="Chỉ số cuối"
               style={{ width: "100%" }}
             />
@@ -191,9 +318,9 @@ function InfoDetailClock() {
         </Col>
 
         <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item name="DongHoChaId" label="ĐH block" {...formItemLayout}>
+          <Form.Item name="dongHoChaId" label="ĐH block" {...formItemLayout}>
             <Select
-              fieldNames="DongHoChaId"
+              fieldNames="dongHoChaId"
               options={[
                 { value: "1", label: "Đồng hồ block 1" },
                 { value: "2", label: "Đồng hồ block 2" },

@@ -48,6 +48,14 @@ export const fetchApiAllPaymentMethodSelector = (state) =>
 export const fetchApiCreateCustomerSelector = (state) =>
   state.contractSlice.createCustomer;
 
+// get create info contract
+export const fetchApiCreateInfoContractSelector = (state) =>
+  state.contractSlice.createInfoContract;
+
+// get all manager
+export const fetchApiGetAllManagerSelector = (state) =>
+  state.nguoidung.danhSachNguoiDung;
+
 // get find by keyId customer
 export const fetchApiFindByKeyIdCustomerSelector = (state) =>
   state.contractSlice.findByKeyIdCustomer;

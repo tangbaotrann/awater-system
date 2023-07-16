@@ -17,6 +17,7 @@ import paymentMethodSlice from "./slices/paymentMethodSlice/paymentMethodSlice";
 import contractSlice from "./slices/contractSlice/contractSlice";
 import detailPriceSlice from "./slices/detailPriceSlice/detailPriceSlice";
 import tabListReadingSlice from "./slices/tabListReading/tabListReaingSlice";
+import readingSlice from "./slices/readingSlice/readingSlice";
 
 const store = configureStore({
   reducer: {
@@ -37,6 +38,7 @@ const store = configureStore({
     contractSlice: contractSlice.reducer,
     detailPriceSlice: detailPriceSlice.reducer,
     tabListReadingSlice: tabListReadingSlice.reducer,
+    readingSlice: readingSlice.reducer,
   },
 });
 

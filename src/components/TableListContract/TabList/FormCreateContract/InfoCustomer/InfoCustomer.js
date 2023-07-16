@@ -1,16 +1,25 @@
 import { RedoOutlined } from "@ant-design/icons";
 import {
   Button,
-  Checkbox,
   Col,
+  DatePicker,
   Form,
   Input,
   InputNumber,
   Row,
   Select,
 } from "antd";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchApiAllFactory } from "../../../../../redux/slices/factorySlice/factorySlice";
+import { fetchApiAllFactorySelector } from "../../../../../redux/selector";
 
 function InfoCustomer() {
+  const dispatch = useDispatch();
+
+  const factorys = useSelector(fetchApiAllFactorySelector);
+
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -26,6 +35,10 @@ function InfoCustomer() {
     },
   };
 
+  useEffect(() => {
+    dispatch(fetchApiAllFactory());
+  }, []);
+
   return (
     <div className="container-info-customer">
       <Row>
@@ -33,8 +46,14 @@ function InfoCustomer() {
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="keyIdOfCustomer"
-            label="Mã KH (*)"
+            label="Mã KH"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập mã khách hàng.",
+              },
+            ]}
           >
             <div className="container-label-input">
               <Input
@@ -55,6 +74,12 @@ function InfoCustomer() {
             name="loaiKhachHang"
             label="Loại khách hàng"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn loại khách hàng.",
+              },
+            ]}
           >
             <Select
               fieldNames="loaiKhachHang"
@@ -69,22 +94,53 @@ function InfoCustomer() {
 
         {/* Nhà máy id */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="nhaMayId" label="Nhà máy id" {...formItemLayout}>
-            <Input name="nhaMayId" value="1" />
+          <Form.Item
+            name="nhaMayId"
+            label="Nhà máy"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn tên nhà máy.",
+              },
+            ]}
+          >
+            <Select
+              fieldNames="nhaMayId"
+              options={
+                factorys?.length <= 0
+                  ? []
+                  : factorys.map((_factory) => ({
+                      label: _factory.tenNhaMay,
+                      value: _factory.id,
+                    }))
+              }
+              placeholder="Chọn tên nhà máy"
+            />
           </Form.Item>
         </Col>
 
         {/* Xác nhận + Button ... (số khẩu) */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="nguonNuoc" label="Nguồn nước" {...formItemLayout}>
-            <div className="container-label-input">
-              <Input
-                name="nguonNuoc"
-                placeholder="nguồn nước"
-                className="space-right-10"
-              />
-              <Checkbox name="" />
-            </div>
+          <Form.Item
+            name="nguonNuoc"
+            label="Nguồn nước"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập nguồn nước.",
+              },
+            ]}
+          >
+            {/* <div className="container-label-input"> */}
+            <Input
+              name="nguonNuoc"
+              placeholder="nguồn nước"
+              className="space-right-10"
+            />
+            {/* <Checkbox name="" /> */}
+            {/* </div> */}
           </Form.Item>
         </Col>
       </Row>
@@ -92,7 +148,17 @@ function InfoCustomer() {
       <Row>
         {/* Tên khách hàng + + Button ... (tên khách hàng) */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="tenKhachHang" label="Tên KH (*)" {...formItemLayout}>
+          <Form.Item
+            name="tenKhachHang"
+            label="Tên KH"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập tên khách hàng.",
+              },
+            ]}
+          >
             <div className="container-label-input">
               <Input
                 name="tenKhachHang"
@@ -108,8 +174,18 @@ function InfoCustomer() {
 
         {/* Số GCN */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="soGcn" label="Số GCN" {...formItemLayout}>
-            <Input name="soGcn" placeholder="Nhập Số GCN" />
+          <Form.Item
+            name="soGcn"
+            label="Số GCN"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số GCN.",
+              },
+            ]}
+          >
+            <Input name="soGcn" placeholder="Nhập số GCN" />
           </Form.Item>
         </Col>
 
@@ -135,6 +211,12 @@ function InfoCustomer() {
             name="tenThuongGoi"
             label="Tên thường gọi"
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập tên thường gọi.",
+              },
+            ]}
           >
             <Input name="tenThuongGoi" placeholder="Nhập tên thường gọi" />
           </Form.Item>
@@ -142,7 +224,17 @@ function InfoCustomer() {
 
         {/* Số hộ */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="soHo" label="Số hộ: " {...formItemLayout}>
+          <Form.Item
+            name="soHo"
+            label="Số hộ: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số hộ.",
+              },
+            ]}
+          >
             <InputNumber
               name="soHo"
               placeholder="Nhập số hộ"
@@ -155,7 +247,17 @@ function InfoCustomer() {
       <Row>
         {/* Số khẩu + Button ... (số khẩu) */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="soKhau" label="Số khẩu: " {...formItemLayout}>
+          <Form.Item
+            name="soKhau"
+            label="Số khẩu: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số khẩu.",
+              },
+            ]}
+          >
             {/* <div className="container-label-input"> */}
             <InputNumber
               name="soKhau"
@@ -172,15 +274,25 @@ function InfoCustomer() {
 
         {/* Email + button (email) */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="email" label="Email: " {...formItemLayout}>
-            <div className="container-label-input">
-              <Input
-                name="email"
-                placeholder="Nhập email"
-                className="space-right-10"
-              />
-              <Checkbox name="" />
-            </div>
+          <Form.Item
+            name="email"
+            label="Email: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập email.",
+              },
+            ]}
+          >
+            {/* <div className="container-label-input"> */}
+            <Input
+              name="email"
+              placeholder="Nhập email"
+              className="space-right-10"
+            />
+            {/* <Checkbox name="" /> */}
+            {/* </div> */}
           </Form.Item>
         </Col>
       </Row>
@@ -188,17 +300,34 @@ function InfoCustomer() {
       <Row>
         {/* Điện thoại */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="dienThoai" label="Điện thoại: " {...formItemLayout}>
-            <Select
-              fieldNames="dienThoai"
-              options={[{ value: "023104921", label: "023104921" }]}
-            />
+          <Form.Item
+            name="dienThoai"
+            label="Điện thoại: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số điện thoại.",
+              },
+            ]}
+          >
+            <Input name="dienThoai" placeholder="Nhập số điện thoại" />
           </Form.Item>
         </Col>
 
         {/* Đối tượng */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="doiTuong" label="Đối tượng: " {...formItemLayout}>
+          <Form.Item
+            name="doiTuong"
+            label="Đối tượng: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn đối tượng.",
+              },
+            ]}
+          >
             <Select
               fieldNames="doiTuong"
               options={[
@@ -224,28 +353,48 @@ function InfoCustomer() {
       <Row>
         {/* Số CMND + Checkbox (số CMND) */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="soCmnd" label="Số CMND: " {...formItemLayout}>
-            <div className="container-label-input">
-              <Input
-                name="soCmnd"
-                placeholder="Nhập CMND"
-                className="space-right-10"
-              />
-              <Checkbox />
-            </div>
+          <Form.Item
+            name="soCmnd"
+            label="Số CMND: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số CMND.",
+              },
+            ]}
+          >
+            {/* <div className="container-label-input"> */}
+            <Input
+              name="soCmnd"
+              placeholder="Nhập CMND"
+              className="space-right-10"
+            />
+            {/* <Checkbox /> */}
+            {/* </div> */}
           </Form.Item>
         </Col>
 
         {/* Ngày cấp */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="ngayCapCmnd" label="Ngày cấp: " {...formItemLayout}>
-            {/* <DatePicker
+          <Form.Item
+            name="ngayCapCmnd"
+            label="Ngày cấp"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn ngày cấp CMND.",
+              },
+            ]}
+          >
+            <DatePicker
               name="ngayCapCmnd"
               placeholder="Chọn ngày cấp"
               className="gutter-item-date-picker"
-              format="DD/MM/YYYY"
-            /> */}
-            <Input name="ngayCapCmnd" placeholder="Nhập ngày cấp" />
+              format="YYYY-MM-DD"
+            />
+            {/* <Input name="ngayCapCmnd" placeholder="Nhập ngày cấp" /> */}
           </Form.Item>
         </Col>
       </Row>
@@ -253,14 +402,34 @@ function InfoCustomer() {
       <Row>
         {/* Nơi cấp */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="noiCapCmnd" label="Nơi cấp: " {...formItemLayout}>
+          <Form.Item
+            name="noiCapCmnd"
+            label="Nơi cấp: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập nơi cấp CMND.",
+              },
+            ]}
+          >
             <Input name="noiCapCmnd" placeholder="Nhập nơi cấp" />
           </Form.Item>
         </Col>
 
         {/* Mã số thuế */}
         <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item name="maSoThue" label="Mã số thuế: " {...formItemLayout}>
+          <Form.Item
+            name="maSoThue"
+            label="Mã số thuế: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập mã số thuế.",
+              },
+            ]}
+          >
             <Input name="maSoThue" placeholder="Nhập mã số thuế" />
           </Form.Item>
         </Col>
@@ -338,7 +507,17 @@ function InfoCustomer() {
 
         {/* Ghi chú */}
         <Col xs={24} sm={24} md={12} lg={10}>
-          <Form.Item name="ghiChu" label="Ghi chú: " {...formItemLayout}>
+          <Form.Item
+            name="ghiChu"
+            label="Ghi chú: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập ghi chú.",
+              },
+            ]}
+          >
             <Input name="ghiChu" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
@@ -349,6 +528,12 @@ function InfoCustomer() {
             name="nguoiDaiDien"
             label="Người đại diện: "
             {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập tên người đại diện.",
+              },
+            ]}
           >
             <Input name="nguoiDaiDien" placeholder="Nhập tên người đại điện" />
           </Form.Item>

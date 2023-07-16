@@ -9,10 +9,12 @@ const contractSlice = createSlice({
   initialState: {
     dataCustomer: [],
     createCustomer: [],
+    createInfoContract: [],
     findByKeyIdCustomer: null,
   },
   extraReducers: (builder) => {
     builder
+      // customer
       .addCase(fetchApiAllCustomer.fulfilled, (state, action) => {
         state.dataCustomer = action.payload;
       })
@@ -22,6 +24,10 @@ const contractSlice = createSlice({
       })
       .addCase(fetchApiFindByKeyIdCustomer.fulfilled, (state, action) => {
         state.findByKeyIdCustomer = action.payload;
+      })
+      // info contract
+      .addCase(fetchApiCreateInfoContract.fulfilled, (state, action) => {
+        state.createInfoContract = action.payload;
       });
   },
 });
@@ -52,6 +58,9 @@ const fetchApiCreateCustomer = createAsyncThunk(
         ngayCapCmnd,
       } = values;
 
+      // format field
+      const formatNgayCapCmnd = moment(ngayCapCmnd).format("YYYY-MM-DD");
+
       const res = await postRequest("khach-hang/add", {
         keyId: keyIdOfCustomer,
         nhaMayId,
@@ -63,7 +72,7 @@ const fetchApiCreateCustomer = createAsyncThunk(
         email,
         dienThoai,
         soCmnd,
-        ngayCapCmnd,
+        ngayCapCmnd: formatNgayCapCmnd,
         noiCapCmnd,
         maSoThue,
         soGcn,
@@ -102,14 +111,10 @@ const fetchApiFindByKeyIdCustomer = createAsyncThunk(
 const fetchApiCreateInfoContract = createAsyncThunk(
   "contract/fetchApiCreateInfoContract",
   async ({ dataContract, id }) => {
-    console.log("dataContract slice", dataContract);
-    console.log("customer id slice", id);
-
     try {
       const {
         keyIdOfContract,
         doiTuongGiaId,
-        // khachHangId,
         tuyenDocId,
         nhaMayId,
         phuongThucThanhToanId,
@@ -123,8 +128,6 @@ const fetchApiCreateInfoContract = createAsyncThunk(
         ngayCoHieuLuc,
         mucDichSuDung,
       } = dataContract;
-
-      // const { id } = customer;
 
       const res = await postRequest("hop-dong/add", {
         keyId: keyIdOfContract,
@@ -144,10 +147,59 @@ const fetchApiCreateInfoContract = createAsyncThunk(
         mucDichSuDung,
       });
 
-      console.log("res create contract ->", res.data.data);
+      console.log("res create contract ->", res.data);
 
-      return res.data.data;
+      return res.data;
     } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
+// fetch api create detail clock
+const fetchApiCreateClockDetail = createAsyncThunk(
+  "contract/fetchApiCreateClockDetail",
+  async ({ dataContract, id }) => {
+    try {
+      const {
+        keyIdOfClockDetail,
+        donViHC,
+        loaiDongHo,
+        nguoiQuanLyId,
+        phamVi,
+        seriDongHo,
+        seriChi,
+        trangThaiSuDung,
+        lyDoHuy,
+        chiSoDau,
+        chiSoCuoi,
+        soThuTu,
+        dongHoChaId,
+      } = dataContract;
+
+      const res = await postRequest("dong-ho-nuoc/add", {
+        keyId: keyIdOfClockDetail,
+        donViHC,
+        loaiDongHo,
+        nguoiQuanLyId,
+        phamVi,
+        seriDongHo,
+        seriChi,
+        trangThaiSuDung,
+        lyDoHuy,
+        chiSoDau,
+        chiSoCuoi,
+        soThuTu,
+        hopDongId: id,
+        dongHoChaId,
+      });
+
+      console.log("res create block detail", res.data);
+      toast.success("Tạo hợp đồng thành công.");
+
+      return res.data;
+    } catch (error) {
+      toast.error("Tạo hợp đồng không thành công!");
       console.log({ error });
     }
   }
@@ -172,6 +224,7 @@ export {
   fetchApiFindByKeyIdCustomer,
   fetchApiCreateCustomer,
   fetchApiCreateInfoContract,
+  fetchApiCreateClockDetail,
 };
 
 export default contractSlice;
