@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getRequest, postRequest } from "../../../services";
+import { deleteRequest, getRequest, postRequest, putRequest } from "../../../services";
+import { message } from "antd";
 
 const initialState = {
   danhSachTuyenDoc: [],
   isAddedSuccess: false,
+  isDeletedSuccess: false,
 };
 
 export const tuyenDocSlice = createSlice({
@@ -14,8 +16,12 @@ export const tuyenDocSlice = createSlice({
       state.danhSachTuyenDoc = action.payload;
     })
 
-    .addCase(AddDMTuyenDoc.fulfilled, (state, action) => {
+    .addCase(addDMTuyenDoc.fulfilled, (state, action) => {
       state.isAddedSuccess = true;
+    })
+
+    .addCase(deleteDMTuyenDoc.fulfilled, (state, action) => {
+      state.isDeletedSuccess = true;
     });
 
     // .addMatcher(
@@ -27,7 +33,7 @@ export const tuyenDocSlice = createSlice({
   },
 });
 
-export const AddDMTuyenDoc = createAsyncThunk(
+export const addDMTuyenDoc = createAsyncThunk(
   "tuyendoc/AddDMTuyenDoc",
   async (values) => {
     try {
@@ -49,8 +55,24 @@ export const AddDMTuyenDoc = createAsyncThunk(
         khuVucId,
       });
 
-      // console.log(res);
+      if(res.data.statusCode === 201) message.success({ content: 'Thêm thành công' })
+
       return res.data.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
+export const deleteDMTuyenDoc = createAsyncThunk(
+  "tuyendoc/deleteDMTuyenDoc",
+  async (KeyId) => {
+    try {
+      const res = await deleteRequest(`tuyen-doc/delete/${KeyId}`);
+      console.log(res);
+
+      if(res.data.statusCode === 202) message.success({ content: 'Xóa thành công' })
+
     } catch (error) {
       console.log({ error });
     }
@@ -70,5 +92,35 @@ export const getAllDMTuyenDoc = createAsyncThunk(
     }
   }
 );
+
+export const updateTuyenDoc = createAsyncThunk(
+  "tuyendoc/updateTuyenDoc",
+  async (values) => {
+    try {
+      const {
+        KeyId,
+        nhaMayId,
+        nguoiQuanLyId,
+        tenTuyen,
+        nguoiThuTienId,
+        khuVucId,
+      } = values;
+
+      const res = await putRequest(`tuyen-doc/update/${KeyId}`, {
+        KeyId,
+        nhaMayId,
+        nguoiQuanLyId,
+        tenTuyen,
+        nguoiThuTienId,
+        khuVucId,
+      });
+
+      if(res.data.statusCode === 202) message.success({ content: 'Cập nhật thành công' })
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
+
 
 export default tuyenDocSlice;
