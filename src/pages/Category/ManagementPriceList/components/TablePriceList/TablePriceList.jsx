@@ -19,9 +19,9 @@ const priceListColumns = (showHeader) => [
     width: 150,
   },
   {
-    key: "namePriceObject",
+    key: "keyId",
     title: showHeader ? "Tên đối tượng giá" : "",
-    dataIndex: "namePriceObject",
+    dataIndex: "keyId",
     width: 220,
 
     filters: showHeader
@@ -44,7 +44,7 @@ const priceListColumns = (showHeader) => [
               },
               {
                 text: "Tên đối tượng giá",
-                value: "nameObjectPrice",
+                value: "keyId",
               },
               {
                 text: "Từ ngày",

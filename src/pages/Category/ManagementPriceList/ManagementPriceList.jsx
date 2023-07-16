@@ -6,7 +6,8 @@ import ModalConfirmDelete from "../../../components/ModalConfirmDelete/ModalConf
 import TablePriceList from "./components/TablePriceList/TablePriceList";
 import { btnClickTabListContract } from "../../../redux/slices/tabListContractSlice/tabListContractSlice";
 import ModalAddPriceList from "./components/ModalAddPriceList/ModalAddPriceList";
-
+import { getAllDetailPrice } from "../../../redux/slices/detailPriceSlice/detailPriceSlice";
+import { fetchApiAllPriceObj } from "../../../redux/slices/priceObjSlice/priceObjSlice";
 const ManagementPriceList = () => {
   const [isOpenModalAddPriceList, setIsOpenModalAddPriceList] = useState(false);
   const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
@@ -14,6 +15,7 @@ const ManagementPriceList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(btnClickTabListContract(null));
+    dispatch(fetchApiAllPriceObj());
   }, []);
 
   const handleOk = (type) => {
