@@ -104,7 +104,7 @@ const constants = {
     key: "CATEGORY_CLOCK",
   },
   CATEGORY_SIGNING: {
-    label: "DM ký",
+    label: "DM kỳ",
     key: "CATEGORY_SIGNING",
   },
   COLLECT_MONEY: {
