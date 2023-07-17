@@ -18,6 +18,7 @@ import { fetchApiAllRegion } from "../../../redux/slices/regionSlice/regionSlice
 import {
   btnClickTabListInvoicePrintSelector,
   fetchApiAllRegionSelector,
+  isLoadingAllRegionSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 
@@ -32,6 +33,7 @@ function ListRegionsLocation() {
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
   const regions = useSelector(fetchApiAllRegionSelector);
+  const isLoading = useSelector(isLoadingAllRegionSelector);
 
   const layout = {
     labelCol: {
@@ -140,6 +142,7 @@ function ListRegionsLocation() {
                 tenVung: _region.tenVung,
               }))
         }
+        loading={isLoading}
         onRow={(record, index) => {
           return {
             onClick: () => {

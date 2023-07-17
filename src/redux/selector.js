@@ -66,3 +66,12 @@ export const fetchApiAllBangGiaSelector = (state) => state.bangGiaSlice.data;
 // get all chi tiet gia
 export const fetchApiAllDetailPriceSelector = (state) =>
   state.detailPriceSlice.data;
+
+/* IS LOADING */
+export const isLoadingAllCustomerSelector = (state) =>
+  state.contractSlice.isLoading;
+
+export const isLoadingAllAreaSelector = (state) => state.areaSlice.isLoading;
+
+export const isLoadingAllRegionSelector = (state) =>
+  state.regionSlice.isLoading;

@@ -17,6 +17,7 @@ import { fetchApiAllArea } from "../../../redux/slices/areaSlice/areaSlice.js";
 import {
   btnClickTabListInvoicePrintSelector,
   fetchApiAllAreaSelector,
+  isLoadingAllAreaSelector,
 } from "../../../redux/selector.js";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice.js";
 
@@ -28,7 +29,7 @@ function ListLocation() {
   const dispatch = useDispatch();
 
   const areas = useSelector(fetchApiAllAreaSelector);
-
+  const isLoading = useSelector(isLoadingAllAreaSelector);
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
@@ -144,6 +145,7 @@ function ListLocation() {
                 vungId: _area.vungId,
               }))
         }
+        loading={isLoading}
         onRow={(record, index) => {
           return {
             onClick: () => {
