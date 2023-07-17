@@ -8,6 +8,7 @@ import tabListContractSlice from "../../redux/slices/tabListContractSlice/tabLis
 import {
   btnClickTabListContractSelector,
   fetchApiAllCustomerSelector,
+  isLoadingAllCustomerSelector,
 } from "../../redux/selector";
 import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
 import { RedoOutlined } from "@ant-design/icons";
@@ -20,6 +21,7 @@ function TableListContract() {
 
   const tabList = useSelector(btnClickTabListContractSelector);
   const customers = useSelector(fetchApiAllCustomerSelector);
+  const isLoading = useSelector(isLoadingAllCustomerSelector);
 
   // cols table main
   const cols = [
@@ -157,6 +159,7 @@ function TableListContract() {
             dienThoai: _customer.dienThoai,
             email: _customer.email,
           }))}
+          loading={isLoading}
           pagination={{
             pageSize: 10,
           }}

@@ -12,11 +12,23 @@ const areaSlice = createSlice({
   name: "area",
   initialState: {
     data: [],
+    isLoading: false,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchApiAllArea.fulfilled, (state, action) => {
-      state.data = action.payload;
-    });
+    builder
+      .addCase(fetchApiAllArea.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchApiAllArea.fulfilled, (state, action) => {
+        console.log("ac.pay", action.payload);
+        state.data = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(fetchApiAddArea.fulfilled, (state, action) => {
+        const newArea = action.payload;
+
+        console.log("new area slice ->", newArea);
+      });
   },
 });
 

@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getRequest, postRequest } from "../../../services";
 import { toast } from "react-toastify";
-import axios from "axios";
 import moment from "moment";
+
+import { getRequest, postRequest } from "../../../services";
 
 const contractSlice = createSlice({
   name: "contract",
   initialState: {
     dataCustomer: [],
+    isLoading: false,
     createCustomer: [],
     createInfoContract: [],
     findByKeyIdCustomer: null,
@@ -15,8 +16,12 @@ const contractSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // customer
+      .addCase(fetchApiAllCustomer.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(fetchApiAllCustomer.fulfilled, (state, action) => {
         state.dataCustomer = action.payload;
+        state.isLoading = false;
       })
       .addCase(fetchApiCreateCustomer.fulfilled, (state, action) => {
         // find and add

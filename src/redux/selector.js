@@ -73,3 +73,12 @@ export const fetchApiAllPriceObjectSelector = (state) =>
 // // get all price obj
 // export const fetchApiAllPriceObjectSelector = (state) =>
 //   state.priceObject.ListPriceOject;
+
+/* IS LOADING */
+export const isLoadingAllCustomerSelector = (state) =>
+  state.contractSlice.isLoading;
+
+export const isLoadingAllAreaSelector = (state) => state.areaSlice.isLoading;
+
+export const isLoadingAllRegionSelector = (state) =>
+  state.regionSlice.isLoading;

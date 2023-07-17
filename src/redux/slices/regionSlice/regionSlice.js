@@ -11,11 +11,17 @@ const regionSlice = createSlice({
   name: "region",
   initialState: {
     data: [],
+    isLoading: false,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchApiAllRegion.fulfilled, (state, action) => {
-      state.data = action.payload;
-    });
+    builder
+      .addCase(fetchApiAllRegion.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchApiAllRegion.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.isLoading = false;
+      });
   },
 });
 
