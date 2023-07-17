@@ -94,16 +94,16 @@ const CategoryHeaderAction = ({
           type="primary"
           icon={<DeleteOutlined />}
           onClick={() => setIsOpenModalDelete(true)}
-          disabled={!rowSelected}
+          // disabled={!rowSelected}
           danger
         >
           Xóa
         </Button>
       </div>
-      <ModalConfirmDelete
+      {/* <ModalConfirmDelete
         isModalOpen={isOpenModalDelete}
         setIsOpenModalDelete={setIsOpenModalDelete}
-      />
+      /> */}
       <ModalAddPriceList
         setIsOpenModalAddPriceList={setIsOpenModalAddPriceList}
         isOpenModalAddPriceList={isOpenModalAddPriceList}
