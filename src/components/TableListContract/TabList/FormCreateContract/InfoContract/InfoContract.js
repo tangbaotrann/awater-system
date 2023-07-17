@@ -31,6 +31,8 @@ function InfoContract() {
   const readings = useSelector(fetchApiAllReadingSelector);
   const factorys = useSelector(fetchApiAllFactorySelector);
 
+  // console.log(objPrices);
+
   const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
@@ -148,45 +150,25 @@ function InfoContract() {
               },
             ]}
           >
-            {/* <Select
+            <Select
               fieldNames="doiTuongGiaId"
               options={[
-                { value: "1", label: "SH - Sinh hoạt Lào Cai" },
-                { value: "2", label: "UT - Ưu đãi LC" },
-                { value: "3", label: "HC - Tổ Chức LC" },
-                { value: "4", label: "SH_TB - Sinh hoạt Tây Tiến" },
-                { value: "5", label: "KD - Kinh Doanh LC" },
-                { value: "6", label: "SH_LV - Sinh hoạt Vũ Lăng" },
-                { value: "7", label: "SH_KTT - sinh hoạt không mức tối thiểu" },
-                { value: "8", label: "SH_ĐL - Nhà máy Đông Lỗ tối thiểu" },
-                { value: "9", label: "SH_DL_KM - SH Khuyến mại" },
-                { value: "10", label: "SH 10k - sinh hoạt Bảo Hà 10k" },
-                { value: "11", label: "HC_DL - Tổ chức sự nghiệp ĐL" },
-                { value: "12", label: "HDSX_DL - hoạt động sản xuất vật chất" },
-                { value: "13", label: "KDDV_DL - kinh doanh dịch vụ Đông Lỗ" },
-                { value: "14", label: "SH_DLCS - COVID19" },
-                { value: "15", label: "KD_TT - Kinh Doanh Tây Tiến" },
                 {
-                  value: "16",
-                  label: "HC_SN Vũ Lăng - Hành chính sự nghiệp Vũ Lăng",
+                  value: "5fdd8745-de3e-4aec-8eb7-34691c8fa50a",
+                  label: "SH - Sinh hoạt Lào Cai",
                 },
                 {
-                  value: "17",
-                  label: "HC_SN Tây Tiến - Hành chính sự nghiệp Tây Tiến",
+                  value: "889a01e9-2140-46d4-81a8-87a32f995792",
+                  label: "UT - Ưu đãi LC",
                 },
-                { value: "18", label: "SXVC_TB - Sản xuất vật chất Thái Bình" },
-                { value: "19", label: "SH.1 - Sinh hoạt 1 giá" },
                 {
-                  value: "20",
-                  label: "SH_VL_TT - Sinh hoạt Vũ Lăng tối thiểu",
+                  value: "f7089569-24a1-45cb-81ea-10d69a4e5000",
+                  label: "HC - Tổ Chức LC",
                 },
-                { value: "21", label: "KCN - Khu công nghiệp Đoan Bái" },
-                { value: "22", label: "SX_VL - Trại Gà" },
-                { value: "23", label: "HDSX_LC - Sản xuất Lào Cai" },
               ]}
               placeholder="Chọn giá"
-            /> */}
-            <Select
+            />
+            {/* <Select
               fieldNames="doiTuongGiaId"
               options={
                 objPrices?.length <= 0
@@ -197,7 +179,7 @@ function InfoContract() {
                     }))
               }
               placeholder="Chọn đối tượng giá"
-            />
+            /> */}
           </Form.Item>
         </Col>
 

@@ -63,8 +63,8 @@ function FormCreateContract({ tabList, hideModal }) {
 
   useEffect(() => {
     if (
-      isCreateCustomer.statusCode === 200 ||
-      isCreateCustomer.statusCode === 201
+      isCreateCustomer?.statusCode === 200 ||
+      isCreateCustomer?.statusCode === 201
     ) {
       // find customer
       // dispatch(fetchApiFindByKeyIdCustomer(isCreateCustomer.data));
@@ -73,22 +73,22 @@ function FormCreateContract({ tabList, hideModal }) {
       dispatch(
         fetchApiCreateInfoContract({
           dataContract: dataContract,
-          id: isCreateCustomer.data,
+          id: isCreateCustomer?.data,
         })
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isCreateCustomer.statusCode, isCreateCustomer.data]);
+  }, [isCreateCustomer?.statusCode, isCreateCustomer?.data]);
 
   useEffect(() => {
     if (
-      isCreateContract.statusCode === 200 ||
-      isCreateContract.statusCode === 201
+      isCreateContract?.statusCode === 200 ||
+      isCreateContract?.statusCode === 201
     ) {
       dispatch(
         fetchApiCreateClockDetail({
           dataContract: dataContract,
-          id: isCreateContract.data,
+          id: isCreateContract?.data,
         })
       );
 
@@ -102,7 +102,7 @@ function FormCreateContract({ tabList, hideModal }) {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isCreateContract.statusCode, isCreateContract.data]);
+  }, [isCreateContract?.statusCode, isCreateContract?.data]);
 
   // handle create contract
   const handleSaveContract = () => {

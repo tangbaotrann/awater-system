@@ -91,6 +91,7 @@ const fetchApiCreateCustomer = createAsyncThunk(
 
       return res.data;
     } catch (error) {
+      toast.error(error.response.message);
       console.log({ error });
     }
   }
@@ -156,6 +157,7 @@ const fetchApiCreateInfoContract = createAsyncThunk(
 
       return res.data;
     } catch (error) {
+      toast.error(error.response.message);
       console.log({ error });
     }
   }
@@ -204,7 +206,7 @@ const fetchApiCreateClockDetail = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      toast.error("Tạo hợp đồng không thành công!");
+      toast.error(error.response.message);
       console.log({ error });
     }
   }
@@ -216,6 +218,8 @@ const fetchApiAllCustomer = createAsyncThunk(
   async () => {
     try {
       const res = await getRequest("khach-hang/get-all");
+
+      console.log("res all cus ->", res.data.data);
 
       return res.data.data;
     } catch (error) {
