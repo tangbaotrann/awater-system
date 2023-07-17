@@ -103,6 +103,7 @@ const ManagementPriceList = () => {
       {/* <div className="management-price-subject-table"> */}
       <div>
         {/* <TablePriceList /> */}
+
         <Table
           style={{ marginTop: "10px" }}
           size="small"

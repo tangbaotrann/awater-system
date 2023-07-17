@@ -52,21 +52,22 @@ const constants = {
     key: "CATEGORY",
   },
   CATEGORY_MANAGEMENT_PRICE_SUBJECT: {
-    label: "DM đối tượng giá",
+    label: "DM Đối Tượng giá",
     key: "CATEGORY_MANAGEMENT_PRICE_SUBJECT",
-  },
-  CATEGORY_MANAGEMENT_READING: {
-    label: "DM đối tuyến đọc",
-    key: "CATEGORY_MANAGEMENT_READING",
-  },
-  CATEGORY_MANAGEMENT_PRICE_LIST: {
-    label: "DM bảng giá",
-    key: "CATEGORY_MANAGEMENT_PRICE_LIST",
   },
   CATEGORY_MANAGEMENT_LRL: {
     label: "DM Vùng, Địa bàn",
     key: "CATEGORY_MANAGEMENT_LRL",
   },
+  CATEGORY_MANAGEMENT_READING: {
+    label: "DM Đối tuyến đọc",
+    key: "CATEGORY_MANAGEMENT_READING",
+  },
+  CATEGORY_MANAGEMENT_PRICE_LIST: {
+    label: "DM Bảng giá",
+    key: "CATEGORY_MANAGEMENT_PRICE_LIST",
+  },
+
   CATEGORY_MANAGEMENT_LOCATION: {
     label: "DM Khu vực",
     key: "CATEGORY_MANAGEMENT_LOCATION",
@@ -76,11 +77,11 @@ const constants = {
     key: "CATEGORY_PAYMENT_METHOD",
   },
   CATEGORY_CUSTOMER_TYPE: {
-    label: "DM loại KH",
+    label: "DM Loại KH",
     key: "CATEGORY_CUSTOMER_TYPE",
   },
   CATEGORY_SCOPE: {
-    label: "DM phạm vi",
+    label: "DM Phạm vi",
     key: "CATEGORY_SCOPE",
   },
   CATEGORY_STATUS_READ_NUMBER: {
@@ -96,11 +97,11 @@ const constants = {
     key: "CATEGORY_MANAGEMEN_REASONS_CANCEL",
   },
   CATEGORY_WATCH: {
-    label: "DM kiểu đồng hồ",
+    label: "DM Kiểu đồng hồ",
     key: "CATEGORY_WATCH",
   },
   CATEGORY_CLOCK: {
-    label: "DM đồng hồ tổng",
+    label: "DM Đồng hồ tổng",
     key: "CATEGORY_CLOCK",
   },
   CATEGORY_SIGNING: {

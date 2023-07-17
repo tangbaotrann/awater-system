@@ -68,26 +68,23 @@ function Manager() {
         <h1>EXPORT_PRINT_BILL_ORDER</h1>
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key ? ( //menu 3
-        // <ManagementPriceSubject />
         <ListPriceObject />
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LRL.key ||
+        currentPage === constants.CATEGORY_MANAGEMENT_LRL.key ? (
+        <ListRegionsLocation />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_READING.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_READING.key ? (
         <ManagementReading />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_PRICE_LIST.key ? (
         <ManagementPriceList />
-      ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LRL.key ||
-        currentPage === constants.CATEGORY_MANAGEMENT_LRL.key ? (
-        // <h1>Danh muc vung</h1>
-        <ListRegionsLocation />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMENT_LOCATION.key ||
         currentPage === constants.CATEGORY_MANAGEMENT_LOCATION.key ? (
         <ListLocation />
       ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
-      ) : // <h1>Danh muc vung</h1>
-      sidebarMenu === constants.CATEGORY_SCOPE.key ||
+      ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
         currentPage === constants.CATEGORY_SCOPE.key ? (
         <ListScope />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||

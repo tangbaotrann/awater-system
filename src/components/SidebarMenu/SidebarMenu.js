@@ -128,14 +128,6 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               key: constants.CATEGORY_MANAGEMENT_PRICE_SUBJECT.key,
             },
             {
-              label: constants.CATEGORY_MANAGEMENT_READING.label,
-              key: constants.CATEGORY_MANAGEMENT_READING.key,
-            },
-            {
-              label: constants.CATEGORY_MANAGEMENT_PRICE_LIST.label,
-              key: constants.CATEGORY_MANAGEMENT_PRICE_LIST.key,
-            },
-            {
               label: constants.CATEGORY_MANAGEMENT_LRL.label,
               key: constants.CATEGORY_MANAGEMENT_LRL.key,
             },
@@ -144,20 +136,37 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               key: constants.CATEGORY_MANAGEMENT_LOCATION.key,
             },
             {
+              label: constants.CATEGORY_MANAGEMENT_READING.label,
+              key: constants.CATEGORY_MANAGEMENT_READING.key,
+            },
+
+            {
+              label: constants.CATEGORY_MANAGEMENT_PRICE_LIST.label,
+              key: constants.CATEGORY_MANAGEMENT_PRICE_LIST.key,
+            },
+            {
+              label: constants.CATEGORY_CUSTOMER_TYPE.label,
+              key: constants.CATEGORY_CUSTOMER_TYPE.key,
+            },
+            {
               label: constants.CATEGORY_PAYMENT_METHOD.label,
               key: constants.CATEGORY_PAYMENT_METHOD.key,
             },
             {
-              label: constants.CATEGORY_SCOPE.label,
-              key: constants.CATEGORY_SCOPE.key,
+              label: constants.CATEGORY_STATUS_READ_NUMBER.label,
+              key: constants.CATEGORY_STATUS_READ_NUMBER.key,
             },
             {
-              label: constants.CATEGORY_WATCH.label,
-              key: constants.CATEGORY_WATCH.key,
+              label: constants.CATEGORY_SIGNING.label,
+              key: constants.CATEGORY_SIGNING.key,
             },
             {
               label: constants.CATEGORY_CLOCK.label,
               key: constants.CATEGORY_CLOCK.key,
+            },
+            {
+              label: constants.CATEGORY_SCOPE.label,
+              key: constants.CATEGORY_SCOPE.key,
             },
             {
               label: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.label,
@@ -168,16 +177,8 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               key: constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key,
             },
             {
-              label: constants.CATEGORY_SIGNING.label,
-              key: constants.CATEGORY_SIGNING.key,
-            },
-            {
-              label: constants.CATEGORY_CUSTOMER_TYPE.label,
-              key: constants.CATEGORY_CUSTOMER_TYPE.key,
-            },
-            {
-              label: constants.CATEGORY_STATUS_READ_NUMBER.label,
-              key: constants.CATEGORY_STATUS_READ_NUMBER.key,
+              label: constants.CATEGORY_WATCH.label,
+              key: constants.CATEGORY_WATCH.key,
             },
           ],
         },
