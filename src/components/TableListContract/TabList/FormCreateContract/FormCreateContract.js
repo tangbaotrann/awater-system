@@ -7,16 +7,18 @@ import {
 } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import dayjs from "dayjs";
 
 import InfoContract from "./InfoContract/InfoContract";
 import InfoClock from "./InfoClock/InfoClock";
 import InfoDetailClock from "./InfoDetailClock/InfoDetailClock";
 import InfoCustomer from "./InfoCustomer/InfoCustomer";
-import { useDispatch, useSelector } from "react-redux";
 import {
   fetchApiCreateClockDetail,
   fetchApiCreateCustomer,
   fetchApiCreateInfoContract,
+  fetchApiUpdateCustomer,
 } from "../../../../redux/slices/contractSlice/contractSlice";
 import {
   fetchApiCreateCustomerSelector,
@@ -43,7 +45,7 @@ const tabs = [
   },
 ];
 
-function FormCreateContract({ tabList, hideModal }) {
+function FormCreateContract({ tabList, hideModal, isUpdate }) {
   const [formMain] = Form.useForm();
   const [dataContract, setDataContract] = useState({});
   const [saveAndAdd, setSaveAndAdd] = useState(false);
@@ -55,6 +57,9 @@ function FormCreateContract({ tabList, hideModal }) {
   // const customer = useSelector(fetchApiFindByKeyIdCustomerSelector);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+
+  // console.log(tabList);
+  // console.log(dayjs("2022-10-10"));
 
   // handle submit error (main)
   const handleFailed = (error) => {
@@ -128,8 +133,27 @@ function FormCreateContract({ tabList, hideModal }) {
         if (values) {
           console.log(values);
           dispatch(fetchApiCreateCustomer(values));
+
           setDataContract(values);
           setSaveAndAdd(true);
+        }
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+  };
+
+  // handle update contract (Customer)
+  const handleUpdateContract = () => {
+    formMain
+      .validateFields()
+      .then((values) => {
+        if (values) {
+          console.log("vals update", values);
+          dispatch(fetchApiUpdateCustomer(values));
+
+          hideModal();
+          formMain.resetFields();
         }
       })
       .catch((error) => {
@@ -154,7 +178,81 @@ function FormCreateContract({ tabList, hideModal }) {
                   key: _tab.id,
                   tabKey: _tab.id,
                   children: (
-                    <Form form={formMain} onFinishFailed={handleFailed}>
+                    <Form
+                      form={formMain}
+                      onFinishFailed={handleFailed}
+                      fields={[
+                        {
+                          name: "keyIdOfCustomer",
+                          value: tabList ? tabList?.keyId : "",
+                        },
+                        {
+                          name: "loaiKhachHang",
+                          value: tabList ? tabList?.loaiKhachHang : "",
+                        },
+                        {
+                          name: "nhaMayId",
+                          value: tabList ? tabList?.nhaMayId : "",
+                        },
+                        {
+                          name: "nguonNuoc",
+                          value: tabList ? tabList?.nguonNuoc : "",
+                        },
+                        {
+                          name: "tenKhachHang",
+                          value: tabList ? tabList?.tenKhachHang : "",
+                        },
+                        {
+                          name: "soGcn",
+                          value: tabList ? tabList?.soGcn : "",
+                        },
+                        {
+                          name: "tenThuongGoi",
+                          value: tabList ? tabList?.tenThuongGoi : "",
+                        },
+                        { name: "soHo", value: tabList ? tabList?.soHo : "" },
+                        {
+                          name: "soKhau",
+                          value: tabList ? tabList?.soKhau : "",
+                        },
+                        {
+                          name: "email",
+                          value: tabList ? tabList?.email : "",
+                        },
+                        {
+                          name: "dienThoai",
+                          value: tabList ? tabList?.dienThoai : "",
+                        },
+                        {
+                          name: "doiTuong",
+                          value: tabList ? tabList?.doiTuong : "",
+                        },
+                        {
+                          name: "soCmnd",
+                          value: tabList ? tabList?.soCmnd : "",
+                        },
+                        {
+                          name: "ngayCapCmnd",
+                          value: tabList ? dayjs(tabList?.ngayCapCmnd) : "",
+                        },
+                        {
+                          name: "noiCapCmnd",
+                          value: tabList ? tabList?.noiCapCmnd : "",
+                        },
+                        {
+                          name: "maSoThue",
+                          value: tabList ? tabList?.maSoThue : "",
+                        },
+                        {
+                          name: "ghiChu",
+                          value: tabList ? tabList?.ghiChu : "",
+                        },
+                        {
+                          name: "nguoiDaiDien",
+                          value: tabList ? tabList?.nguoiDaiDien : "",
+                        },
+                      ]}
+                    >
                       {/* Mã khách hàng */}
                       {/* <Row>
                         <Col xs={24} sm={24} md={12} lg={10}>
@@ -286,7 +384,11 @@ function FormCreateContract({ tabList, hideModal }) {
 
                           <Button
                             key="createContract"
-                            onClick={handleSaveContract}
+                            onClick={
+                              isUpdate
+                                ? handleUpdateContract
+                                : handleSaveContract
+                            }
                             className={
                               isTabletOrMobile
                                 ? "footer-func-btn-item-save custom-btn-add"
@@ -294,7 +396,7 @@ function FormCreateContract({ tabList, hideModal }) {
                             }
                           >
                             <SaveOutlined />
-                            Lưu
+                            {isUpdate ? "Cập nhật" : "Lưu"}
                           </Button>
 
                           <Button

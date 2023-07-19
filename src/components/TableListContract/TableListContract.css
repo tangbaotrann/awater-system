@@ -422,3 +422,7 @@
         transform: rotate(360deg);
     }
 }
+
+.space-left-6 {
+    margin-left: 6px;
+}

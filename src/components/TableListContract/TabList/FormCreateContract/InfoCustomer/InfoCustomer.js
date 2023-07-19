@@ -55,17 +55,20 @@ function InfoCustomer() {
               },
             ]}
           >
-            <div className="container-label-input">
-              <Input
-                name="keyIdOfCustomer"
-                placeholder="Nhập mã khách hàng"
-                className="space-right-10"
-              />
-              <Button className="custom-btn-reset-form-contract custom-btn-reset">
-                <RedoOutlined />
-              </Button>
-            </div>
+            {/* <div className="container-label-input"> */}
+            <Input
+              name="keyIdOfCustomer"
+              placeholder="Nhập mã khách hàng"
+              className="space-right-10"
+            />
+            {/* </div> */}
           </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={24} md={11} lg={1}>
+          <Button className="custom-btn-reset-form-contract custom-btn-reset space-left-6">
+            <RedoOutlined />
+          </Button>
         </Col>
 
         {/* Loại khách hàng */}
@@ -120,6 +123,8 @@ function InfoCustomer() {
           </Form.Item>
         </Col>
 
+        <Col xs={24} sm={24} md={11} lg={1}></Col>
+
         {/* Xác nhận + Button ... (số khẩu) */}
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
@@ -159,16 +164,23 @@ function InfoCustomer() {
               },
             ]}
           >
-            <div className="container-label-input">
-              <Input
-                name="tenKhachHang"
-                placeholder="Nhập tên khách hàng"
-                className="space-right-10"
-              />
-              <Button type="primary" className="custom-btn-3-form-contract">
-                ...
-              </Button>
-            </div>
+            {/* <div className="container-label-input"> */}
+            <Input
+              name="tenKhachHang"
+              placeholder="Nhập tên khách hàng"
+              className="space-right-10"
+            />
+          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={24} md={12} lg={1}>
+          <Form.Item {...formItemLayout}>
+            <Button
+              type="primary"
+              className="custom-btn-3-form-contract space-left-6"
+            >
+              ...
+            </Button>
           </Form.Item>
         </Col>
 
@@ -222,6 +234,8 @@ function InfoCustomer() {
           </Form.Item>
         </Col>
 
+        <Col xs={24} sm={24} md={11} lg={1}></Col>
+
         {/* Số hộ */}
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
@@ -272,6 +286,8 @@ function InfoCustomer() {
           </Form.Item>
         </Col>
 
+        <Col xs={24} sm={24} md={11} lg={1}></Col>
+
         {/* Email + button (email) */}
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
@@ -314,6 +330,8 @@ function InfoCustomer() {
             <Input name="dienThoai" placeholder="Nhập số điện thoại" />
           </Form.Item>
         </Col>
+
+        <Col xs={24} sm={24} md={11} lg={1}></Col>
 
         {/* Đối tượng */}
         <Col xs={24} sm={24} md={11} lg={10}>
@@ -375,6 +393,8 @@ function InfoCustomer() {
           </Form.Item>
         </Col>
 
+        <Col xs={24} sm={24} md={11} lg={1}></Col>
+
         {/* Ngày cấp */}
         <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
@@ -392,7 +412,8 @@ function InfoCustomer() {
               name="ngayCapCmnd"
               placeholder="Chọn ngày cấp"
               className="gutter-item-date-picker"
-              format="YYYY-MM-DD"
+              picker="date"
+              format="YYYY/MM/DD"
             />
             {/* <Input name="ngayCapCmnd" placeholder="Nhập ngày cấp" /> */}
           </Form.Item>
@@ -416,6 +437,8 @@ function InfoCustomer() {
             <Input name="noiCapCmnd" placeholder="Nhập nơi cấp" />
           </Form.Item>
         </Col>
+
+        <Col xs={24} sm={24} md={11} lg={1}></Col>
 
         {/* Mã số thuế */}
         <Col xs={24} sm={24} md={11} lg={10}>
@@ -521,6 +544,8 @@ function InfoCustomer() {
             <Input name="ghiChu" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
+
+        <Col xs={24} sm={24} md={11} lg={1}></Col>
 
         {/* Người ĐD */}
         <Col xs={24} sm={24} md={11} lg={10}>

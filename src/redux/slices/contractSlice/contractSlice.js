@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import moment from "moment";
 
-import { getRequest, postRequest } from "../../../services";
+import { getRequest, postRequest, putRequest } from "../../../services";
 
 const contractSlice = createSlice({
   name: "contract",
@@ -92,6 +92,64 @@ const fetchApiCreateCustomer = createAsyncThunk(
       return res.data;
     } catch (error) {
       toast.error(error.response.message);
+      console.log({ error });
+    }
+  }
+);
+
+// fetch api update Customer
+const fetchApiUpdateCustomer = createAsyncThunk(
+  "contract/fetchApiUpdateCustomer",
+  async (values) => {
+    try {
+      const {
+        keyIdOfCustomer,
+        nhaMayId,
+        nguonNuoc,
+        loaiKhachHang,
+        tenKhachHang,
+        tenThuongGoi,
+        soHo,
+        email,
+        dienThoai,
+        soCmnd,
+        noiCapCmnd,
+        maSoThue,
+        soGcn,
+        ghiChu,
+        doiTuong,
+        soKhau,
+        nguoiDaiDien,
+        ngayCapCmnd,
+      } = values;
+
+      const res = await putRequest(`khach-hang/update/${keyIdOfCustomer}`, {
+        keyId: keyIdOfCustomer,
+        nhaMayId,
+        nguonNuoc,
+        loaiKhachHang,
+        tenKhachHang,
+        tenThuongGoi,
+        soHo,
+        email,
+        dienThoai,
+        soCmnd,
+        noiCapCmnd,
+        maSoThue,
+        soGcn,
+        ghiChu,
+        doiTuong,
+        soKhau,
+        nguoiDaiDien,
+        ngayCapCmnd,
+      });
+
+      console.log("res update customer ->", res.data);
+
+      toast.success("Cập nhật khách hàng thành công.");
+
+      return res.data;
+    } catch (error) {
       console.log({ error });
     }
   }
@@ -232,6 +290,7 @@ export {
   fetchApiAllCustomer,
   fetchApiFindByKeyIdCustomer,
   fetchApiCreateCustomer,
+  fetchApiUpdateCustomer,
   fetchApiCreateInfoContract,
   fetchApiCreateClockDetail,
 };
