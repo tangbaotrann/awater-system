@@ -1,12 +1,12 @@
 import React from "react";
 import { Table, Tooltip } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import { RedoOutlined } from "@ant-design/icons";
 
 import {
   btnClickTabListReading,
   tabListReadingSlice,
 } from "../../../../../redux/slices/tabListReading/tabListReaingSlice";
-import { RedoOutlined } from "@ant-design/icons";
 import "./TableReading.css";
 
 const readingColumns = (showHeader) => [
@@ -14,10 +14,7 @@ const readingColumns = (showHeader) => [
     key: showHeader ? "gmail" : "key",
     dataIndex: showHeader ? "gmail" : "key",
     align: "center",
-    width: 140,
-    ellipsis: {
-      showTitle: false,
-    },
+    width: 80
   },
   {
     key: "KeyId",

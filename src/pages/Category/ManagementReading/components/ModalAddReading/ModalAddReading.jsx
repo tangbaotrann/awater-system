@@ -16,7 +16,6 @@ import "./ModalAddReading.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addDMTuyenDoc } from "../../../../../redux/slices/DMTuyenDoc/tuyenDocSlice";
 import { fetchApiAllArea } from "../../../../../redux/slices/areaSlice/areaSlice";
-import { btnDelete } from "../../../../../redux/slices/tabListReading/tabListReaingSlice";
 
 const ModalAddReading = ({ isOpenModalAddReading, setIsOpenModalAddReading }) => {
   const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
@@ -51,6 +50,7 @@ const ModalAddReading = ({ isOpenModalAddReading, setIsOpenModalAddReading }) =>
       className="popup-add-reading"
       width={1200}
       footer={null}
+      centered
     >
       <Form
         onFinish={onFinish}
