@@ -10,7 +10,7 @@ import {
   btnClickTabListInvoicePrintSelector,
   fetchApiAllPriceObjectSelector,
 } from "../../../redux/selector";
-
+import moment from "moment";
 import { Tooltip, Table } from "antd";
 import { RedoOutlined } from "@ant-design/icons";
 const ManagementPriceList = () => {
@@ -121,8 +121,8 @@ const ManagementPriceList = () => {
             index: index + 1,
             keyId: _priceObject.keyId,
             danhSachDoiTuongGiaId: _priceObject.danhSachDoiTuongGiaId,
-            ngayBatDau: _priceObject.ngayBatDau,
-            ngayKetThuc: _priceObject.ngayKetThuc,
+            ngayBatDau: moment(_priceObject.ngayBatDau).format("DD/MM/YYYY"),
+            ngayKetThuc: moment(_priceObject.ngayKetThuc).format("DD/MM/YYYY"),
             vat: _priceObject.vat,
             phiBvmt: _priceObject.phiBvmt,
           }))}
