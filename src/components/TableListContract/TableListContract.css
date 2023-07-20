@@ -227,28 +227,28 @@
 .container-detail-clock {
     height: 65vh;
     overflow-y: scroll;
-    padding: 6px;
+    padding: 10px;
     border-radius: 6px;
     box-shadow: 2px 2px 5px #ccc;
 }
 
 .container-info-contract {
     height: 65vh;
-    padding: 6px;
+    padding: 10px;
     border-radius: 6px;
     box-shadow: 2px 2px 5px #ccc;
 }
 
 .container-info-clock {
     height: 65vh;
-    padding: 6px;
+    padding: 10px;
     border-radius: 6px;
     box-shadow: 2px 2px 5px #ccc;
 }
 
 .container-info-customer {
     height: 65vh;
-    padding: 6px;
+    padding: 10px;
     border-radius: 6px;
     box-shadow: 2px 2px 5px #ccc;
 }

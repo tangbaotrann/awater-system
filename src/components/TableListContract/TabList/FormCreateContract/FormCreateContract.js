@@ -47,13 +47,13 @@ const tabs = [
 
 function FormCreateContract({ tabList, hideModal, isUpdate }) {
   const [formMain] = Form.useForm();
-  const [dataContract, setDataContract] = useState({});
+  // const [dataContract, setDataContract] = useState({});
   const [saveAndAdd, setSaveAndAdd] = useState(false);
 
   const dispatch = useDispatch();
 
-  const isCreateCustomer = useSelector(fetchApiCreateCustomerSelector);
-  const isCreateContract = useSelector(fetchApiCreateInfoContractSelector);
+  // const isCreateCustomer = useSelector(fetchApiCreateCustomerSelector);
+  // const isCreateContract = useSelector(fetchApiCreateInfoContractSelector);
   // const customer = useSelector(fetchApiFindByKeyIdCustomerSelector);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
@@ -66,58 +66,59 @@ function FormCreateContract({ tabList, hideModal, isUpdate }) {
     console.log({ error });
   };
 
-  useEffect(() => {
-    if (
-      isCreateCustomer?.statusCode === 200 ||
-      isCreateCustomer?.statusCode === 201
-    ) {
-      // find customer
-      // dispatch(fetchApiFindByKeyIdCustomer(isCreateCustomer.data));
-      // if (customer?.id) {}
+  // useEffect(() => {
+  //   if (
+  //     isCreateCustomer?.statusCode === 200 ||
+  //     isCreateCustomer?.statusCode === 201
+  //   ) {
+  //     // find customer
+  //     // dispatch(fetchApiFindByKeyIdCustomer(isCreateCustomer.data));
+  //     // if (customer?.id) {}
 
-      dispatch(
-        fetchApiCreateInfoContract({
-          dataContract: dataContract,
-          id: isCreateCustomer?.data,
-        })
-      );
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isCreateCustomer?.statusCode, isCreateCustomer?.data]);
+  //     dispatch(
+  //       fetchApiCreateInfoContract({
+  //         dataContract: dataContract,
+  //         id: isCreateCustomer?.data,
+  //       })
+  //     );
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isCreateCustomer?.statusCode, isCreateCustomer?.data]);
 
-  useEffect(() => {
-    if (
-      isCreateContract?.statusCode === 200 ||
-      isCreateContract?.statusCode === 201
-    ) {
-      dispatch(
-        fetchApiCreateClockDetail({
-          dataContract: dataContract,
-          id: isCreateContract?.data,
-        })
-      );
+  // useEffect(() => {
+  //   if (
+  //     isCreateContract?.statusCode === 200 ||
+  //     isCreateContract?.statusCode === 201
+  //   ) {
+  //     dispatch(
+  //       fetchApiCreateClockDetail({
+  //         dataContract: dataContract,
+  //         id: isCreateContract?.data,
+  //       })
+  //     );
 
-      // check button
-      if (saveAndAdd) {
-        formMain.resetFields();
-        setSaveAndAdd(false);
-      } else {
-        formMain.resetFields();
-        hideModal();
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isCreateContract?.statusCode, isCreateContract?.data]);
+  //     // check button
+  //     if (saveAndAdd) {
+  //       formMain.resetFields();
+  //       setSaveAndAdd(false);
+  //     } else {
+  //       formMain.resetFields();
+  //       hideModal();
+  //     }
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isCreateContract?.statusCode, isCreateContract?.data]);
 
   // handle create contract
+
   const handleSaveContract = () => {
     formMain
       .validateFields()
       .then((values) => {
         if (values) {
           console.log(values);
-          dispatch(fetchApiCreateCustomer(values));
-          setDataContract(values);
+          // dispatch(fetchApiCreateCustomer(values));
+          // setDataContract(values);
         }
       })
       .catch((error) => {
@@ -132,9 +133,9 @@ function FormCreateContract({ tabList, hideModal, isUpdate }) {
       .then((values) => {
         if (values) {
           console.log(values);
-          dispatch(fetchApiCreateCustomer(values));
+          // dispatch(fetchApiCreateCustomer(values));
 
-          setDataContract(values);
+          // setDataContract(values);
           setSaveAndAdd(true);
         }
       })
@@ -150,10 +151,10 @@ function FormCreateContract({ tabList, hideModal, isUpdate }) {
       .then((values) => {
         if (values) {
           console.log("vals update", values);
-          dispatch(fetchApiUpdateCustomer(values));
+          // dispatch(fetchApiUpdateCustomer(values));
 
-          hideModal();
-          formMain.resetFields();
+          // hideModal();
+          // formMain.resetFields();
         }
       })
       .catch((error) => {
