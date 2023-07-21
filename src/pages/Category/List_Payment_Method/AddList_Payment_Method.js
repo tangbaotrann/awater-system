@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button, Col, Form, Input, Row, Select, theme } from "antd";
 import {
   CloseOutlined,
@@ -7,36 +7,61 @@ import {
 } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
+import { fetchApiAddPaymentMethod } from "../../../redux/slices/paymentMethodSlice/paymentMethodSlice";
+import { useDispatch } from "react-redux";
 
-const AddList_Payment_Method = ({ hideModal }) => { 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    console.log("values", values);
-  };
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
-  const { Option } = Select;
+const AddList_Payment_Method = ({ hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+  const firstInputRef = useRef();
 
+  const dispatch = useDispatch();
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const layout = {
     labelCol: {
       span: 5,
     },
-    // wrapperCol: {
-    //   span: 40,
-    // },
   };
+  // // handle submit form (main)
+  // const handleSubmit = (values) => {
+  //   console.log("values", values);
+  // };
+
+  // handle save and close modal
+  const handleSaveAndClose = () => {
+    form1.validateFields().then((values) => {
+      if (values) {
+        dispatch(fetchApiAddPaymentMethod(values));
+
+        form1.resetFields();
+        hideModal();
+      }
+    });
+  };
+
+  // handle save and continue add
+  const handleSaveAndAdd = () => {
+    form1.validateFields().then((values) => {
+      if (values) {
+        dispatch(fetchApiAddPaymentMethod(values));
+
+        form1.resetFields();
+        firstInputRef.current.focus();
+      }
+    });
+  };
+
+  // handle submit error (main)
+  const handleFailed = (error) => {
+    console.log({ error });
+  };
+
   return (
     <>
       <Form
         {...layout}
         form={form1}
-        onFinish={handleSubmit}
+        // onFinish={handleSubmit}
         onFinishFailed={handleFailed}
         style={{
           maxWidth: "none",
@@ -54,8 +79,12 @@ const AddList_Payment_Method = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã/Ký hiệu">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Mã/Ký hiệu" name="keyId">
+              <Input
+                style={{ width: "100%" }}
+                name="keyId"
+                placeholder="Nhập ký hiệu"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -68,8 +97,12 @@ const AddList_Payment_Method = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên/Mô tả">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên/Mô tả" name="moTaPhuongThuc">
+              <Input
+                style={{ width: "100%" }}
+                name="moTaPhuongThuc"
+                placeholder="Nhập mô tả"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -83,26 +116,26 @@ const AddList_Payment_Method = ({ hideModal }) => {
           }}
         >
           <Button
-            key="reset"
+            key="saveAndAdd"
             style={{
               marginLeft: "10px",
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            onClick={handleSaveAndAdd}
           >
             Lưu Và Thêm Tiếp
           </Button>
 
           <Button
-            key="submit"
+            key="saveAndClose"
             style={{
               marginLeft: "10px",
             }}
             htmlType="submit"
             icon={<SaveOutlined />}
             className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+            onClick={handleSaveAndClose}
           >
             Lưu Và Đóng
           </Button>
@@ -114,7 +147,6 @@ const AddList_Payment_Method = ({ hideModal }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng

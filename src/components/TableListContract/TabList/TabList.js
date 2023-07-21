@@ -76,6 +76,7 @@ function TabList({ isTabletOrMobile }) {
   const [modalUpdateContract, setModalUpdateContract] = useState(false);
   const [modalHistoryWater, setModalHistoryWater] = useState(false);
   const [modalChangeClock, setModalChangeClock] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -100,6 +101,7 @@ function TabList({ isTabletOrMobile }) {
       setOpenModal(true);
     } else if (key === "2") {
       setModalUpdateContract(true);
+      setIsUpdate(true);
     } else if (key === "3") {
       console.log("deleted.");
       dispatch(tabListContractSlice.actions.btnClickTabListContract(null));
@@ -195,7 +197,11 @@ function TabList({ isTabletOrMobile }) {
         </h2>
 
         {/* Form create contract */}
-        <FormCreateContract tabList={tabList} hideModal={hideModal} />
+        <FormCreateContract
+          tabList={tabList}
+          hideModal={hideModal}
+          isUpdate={isUpdate}
+        />
       </Modal>
 
       {/* Modal (Lịch sử sử dụng nước) */}

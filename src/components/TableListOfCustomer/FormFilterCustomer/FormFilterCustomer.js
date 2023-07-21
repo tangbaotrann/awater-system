@@ -86,7 +86,7 @@ function FormFilterCustomer() {
       </Row>
 
       {/* Tìm kiếm tuyến + Tuyến dọc */}
-      <Row>
+      {/* <Row>
         <Col xs={24} sm={12} md={12} lg={12}>
           <Form.Item name="online_search" label="Tìm tuyến: ">
             <Input name="online_search" placeholder="Tìm kiếm tuyến" />
@@ -98,25 +98,78 @@ function FormFilterCustomer() {
             <Select options={[{ value: "all", label: "Tất cả" }]} />
           </Form.Item>
         </Col>
-      </Row>
+      </Row> */}
 
-      {/* Từ ngày + Đến ngày */}
       <Row>
+        {/* Từ ngày (Ngày lắp đặt) */}
         <Col xs={24} sm={12} md={12} lg={12}>
-          <Form.Item name="start_date" label="Từ ngày: ">
-            <DatePicker className="date-time-inp" placeholder="Chọn ngày" />
+          <Form.Item name="ngayLapDatTuNgay" label="Từ ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày lắp đặt"
+            />
           </Form.Item>
         </Col>
 
+        {/*  Đến ngày (Ngày lắp đặt) */}
         <Col xs={24} sm={12} md={12} lg={12}>
-          <Form.Item name="end_start" label="Đến ngày: ">
-            <DatePicker className="date-time-inp" placeholder="Chọn ngày" />
+          <Form.Item name="ngayLapDatDenNgay" label="Đến ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày lắp đặt"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Từ ngày (Ngày đăng ký hợp đồng) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngayDKHDTuNgay" label="Từ ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày đăng ký hợp đồng"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Đến ngày (Ngày đăng ký hợp đồng) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngayDKHDDenNgay" label="Đến ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày đăng ký hợp đồng"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Từ ngày (Ngày sử dụng) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngaySDTuNgay" label="Từ ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày sử dụng"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Đến ngày (Ngày sử dụng) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngaySDDenNgay" label="Đến ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày sử dụng"
+            />
           </Form.Item>
         </Col>
       </Row>
 
       {/* Checkbox */}
-      <Row>
+      {/* <Row>
         <Col xs={24} sm={12} md={12} lg={12}>
           <Form.Item
             valuePropName="checked"
@@ -138,7 +191,7 @@ function FormFilterCustomer() {
             <Checkbox>Không có giá trị</Checkbox>
           </Form.Item>
         </Col>
-      </Row>
+      </Row> */}
 
       {/* Kiểu đồng hồ + Kích cở */}
       <Row>
@@ -156,7 +209,7 @@ function FormFilterCustomer() {
       </Row>
 
       {/* Quận huyện + Xã phường */}
-      <Row>
+      {/* <Row>
         <Col xs={24} sm={12} md={12} lg={12}>
           <Form.Item name="district" label="Quận huyện: ">
             <Select options={[{ value: "all", label: "Tất cả" }]} />
@@ -168,10 +221,10 @@ function FormFilterCustomer() {
             <Select options={[{ value: "all", label: "Tất cả" }]} />
           </Form.Item>
         </Col>
-      </Row>
+      </Row> */}
 
       {/* Khu vực TT + Loại khách hàng */}
-      <Row>
+      {/* <Row>
         <Col xs={24} sm={12} md={12} lg={12}>
           <Form.Item name="area_tt" label="Khu vực TT: ">
             <Select options={[{ value: "all", label: "Tất cả" }]} />
@@ -183,15 +236,15 @@ function FormFilterCustomer() {
             <Select options={[{ value: "all", label: "Tất cả" }]} />
           </Form.Item>
         </Col>
-      </Row>
+      </Row> */}
 
       {/* Hình thức TT */}
       <Row>
-        <Col xs={24} sm={12} md={12} lg={12}>
+        {/* <Col xs={24} sm={12} md={12} lg={12}>
           <Form.Item name="form_tt" label="Hình thức TT: ">
             <Select options={[{ value: "all", label: "Tất cả" }]} />
           </Form.Item>
-        </Col>
+        </Col> */}
         <Col xs={24} sm={12} md={12} lg={12}></Col>
 
         <Col xs={24} sm={24} md={24} lg={24}>
