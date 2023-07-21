@@ -23,6 +23,7 @@ function TableReportCustomer() {
       key: "full_name",
       title: "Tên KH",
       dataIndex: "full_name",
+      width: "12%",
       responsive: ["xs", "sm", "md", "lg"],
     },
     {
@@ -38,22 +39,15 @@ function TableReportCustomer() {
       responsive: ["xs", "sm", "md", "lg"],
     },
     {
-      key: "num_gcn",
-      title: "Số GCN",
-      dataIndex: "num_gcn",
-      responsive: ["xs", "sm", "md", "lg"],
-      width: "10%",
-    },
-    {
-      key: "num_house",
-      title: "Số hộ dùng chung",
+      key: "doiTuongGia",
+      title: "Đối tượng giá",
       dataIndex: "num_house",
       responsive: ["xs", "sm", "md", "lg"],
     },
     {
-      key: "num_people",
-      title: "Số nhân khẩu",
-      dataIndex: "num_people",
+      key: "kichCo",
+      title: "Kích cở",
+      dataIndex: "kichCo",
       responsive: ["xs", "sm", "md", "lg"],
     },
     {
@@ -63,21 +57,45 @@ function TableReportCustomer() {
       responsive: ["xs", "sm", "md", "lg"],
     },
     {
-      key: "num_cmt",
-      title: "Số CMT",
-      dataIndex: "num_cmt",
+      key: "tinhTrang",
+      title: "Tình trạng",
+      dataIndex: "tinhTrang",
       responsive: ["xs", "sm", "md", "lg"],
     },
     {
-      key: "date_range",
-      title: "Ngày cấp",
-      dataIndex: "date_range",
+      key: "loaiDongHo",
+      title: "Loại đồng hồ",
+      dataIndex: "loaiDongHo",
       responsive: ["xs", "sm", "md", "lg"],
     },
     {
-      key: "issued_by",
-      title: "Nơi cấp",
-      dataIndex: "issued_by",
+      key: "maDongHo",
+      title: "Mã đồng hồ",
+      dataIndex: "maDongHo",
+      responsive: ["xs", "sm", "md", "lg"],
+    },
+    {
+      key: "ghiChu",
+      title: "Ghi chú",
+      dataIndex: "ghiChu",
+      responsive: ["xs", "sm", "md", "lg"],
+    },
+    {
+      key: "canBoDoc",
+      title: "Cán bộ đọc",
+      dataIndex: "canBoDoc",
+      responsive: ["xs", "sm", "md", "lg"],
+    },
+    {
+      key: "tuyenDoc",
+      title: "Tuyến đọc",
+      dataIndex: "tuyenDoc",
+      responsive: ["xs", "sm", "md", "lg"],
+    },
+    {
+      key: "chiSoCuoi",
+      title: "Chỉ số cuối",
+      dataIndex: "chiSoCuoi",
       responsive: ["xs", "sm", "md", "lg"],
     },
   ];
@@ -96,6 +114,8 @@ function TableReportCustomer() {
       <div className="container-tbl-report-cus">
         <Table
           id="table"
+          showHeader={false}
+          bordered={true}
           columns={cols}
           dataSource={dataTableReportCustomer.map((_customer, index) => ({
             key: _customer.key,
