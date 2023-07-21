@@ -109,25 +109,124 @@ function FormFilterReportCustomer() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      {/* Từ ngày + Đến ngày */}
-      <Row>
+        {/* Đối tượng giá */}
         <Col xs={24} sm={12} md={12} lg={12}>
-          <Form.Item name="start_date" label="Từ ngày: ">
-            <DatePicker className="date-time-inp" placeholder="Chọn ngày" />
+          <Form.Item name="doiTuongGia" label="Đối tượng giá">
+            <Input name="doiTuongGia" placeholder="Nhập đối tượng giá" />
           </Form.Item>
         </Col>
 
+        {/* Tình trạng đồng hồ */}
         <Col xs={24} sm={12} md={12} lg={12}>
-          <Form.Item name="end_start" label="Đến ngày: ">
-            <DatePicker className="date-time-inp" placeholder="Chọn ngày" />
+          <Form.Item name="tinhTrangDongHo" label="Tình trạng">
+            <Select
+              fieldNames="tinhTrangDongHo"
+              options={[{ label: "TT 1", value: "tt1" }]}
+              placeholder="Chọn tình trạng của đồng hồ"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Quận/ Huyện */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="quanHuyen" label="Quận/ Huyện">
+            <Input name="quanHuyen" placeholder="Nhập quận - huyện" />
+          </Form.Item>
+        </Col>
+
+        {/* Xã/ Phường */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="xaPhuong" label="Xã/ Phường">
+            <Input name="xaPhuong" placeholder="Nhập xã - phường" />
+          </Form.Item>
+        </Col>
+
+        {/* Khu vực thanh toán */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="khuVucTT" label="Khu vực TT">
+            <Input name="khuVucTT" placeholder="Nhập khu vực thanh toán" />
+          </Form.Item>
+        </Col>
+
+        {/* Hình thức thanh toán */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="hinhThucTT" label="Hình thức TT">
+            <Input name="hinhThucTT" placeholder="Nhập hình thức thanh toán" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row>
+        {/* Từ ngày (Ngày lắp đặt) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngayLapDatTuNgay" label="Từ ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày lắp đặt"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Đến ngày (Ngày lắp đặt) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngayLapDatDenNgay" label="Đến ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày lắp đặt"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Từ ngày (Ngày đăng ký hợp đồng) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngayDKHDTuNgay" label="Từ ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày đăng ký hợp đồng"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Đến ngày (Ngày đăng ký hợp đồng) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngayDKHDDenNgay" label="Đến ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày đăng ký hợp đồng"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Từ ngày (Ngày sử dụng) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngaySDTuNgay" label="Từ ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày sử dụng"
+            />
+          </Form.Item>
+        </Col>
+
+        {/*  Đến ngày (Ngày sử dụng) */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="ngaySDDenNgay" label="Đến ngày: ">
+            <DatePicker
+              name=""
+              className="date-time-inp"
+              placeholder="Chọn ngày sử dụng"
+            />
           </Form.Item>
         </Col>
       </Row>
 
       {/* Checkbox */}
-      <Row>
+      {/* <Row>
         <Col xs={24} sm={12} md={12} lg={12}>
           <Form.Item
             rules={[
@@ -160,7 +259,7 @@ function FormFilterReportCustomer() {
             <Checkbox>Không có giá trị</Checkbox>
           </Form.Item>
         </Col>
-      </Row>
+      </Row> */}
 
       {/* Kiểu đồng hồ + Kích cở */}
       <Row>
@@ -180,6 +279,13 @@ function FormFilterReportCustomer() {
         <Col xs={24} sm={12} md={12} lg={12}>
           <Form.Item name="size" label="Kích cỡ: ">
             <Input placeholder="Kích cỡ" />
+          </Form.Item>
+        </Col>
+
+        {/* Loại khách hàng */}
+        <Col xs={24} sm={12} md={12} lg={12}>
+          <Form.Item name="loaiKH" label="Loại KH">
+            <Input name="loaiKH" placeholder="Nhập loại khách hàng" />
           </Form.Item>
         </Col>
 

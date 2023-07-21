@@ -7,30 +7,34 @@ import {
 } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
+import { useDispatch } from "react-redux";
+import { fetchApiUpdatePaymentMethod } from "../../../redux/slices/paymentMethodSlice/paymentMethodSlice";
 
-const EditPaymentMethod = ({ hideModal }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    console.log("values", values);
-  };
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
-  const { Option } = Select;
+const EditPaymentMethod = ({ tabListbc, hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+  const dispatch = useDispatch();
 
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const layout = {
     labelCol: {
       span: 5,
     },
-    // wrapperCol: {
-    //   span: 40,
-    // },
   };
+
+  // handle submit form
+  const handleSubmit = (values) => {
+    if (values) {
+      dispatch(fetchApiUpdatePaymentMethod(values));
+      form1.resetFields();
+      hideModal();
+    }
+  };
+  // handle submit error
+  const handleFailed = (error) => {
+    console.log({ error });
+  };
+
   return (
     <>
       <Form
@@ -44,6 +48,13 @@ const EditPaymentMethod = ({ hideModal }) => {
           borderRadius: token.borderRadiusLG,
           padding: 24,
         }}
+        fields={[
+          { name: "keyId", value: tabListbc ? tabListbc?.keyId : null },
+          {
+            name: "moTaPhuongThuc",
+            value: tabListbc ? tabListbc?.moTaPhuongThuc : null,
+          },
+        ]}
       >
         <Row gutter={24}>
           <Col
@@ -56,13 +67,18 @@ const EditPaymentMethod = ({ hideModal }) => {
           >
             <Form.Item
               label="Mã/Ký hiệu"
+              name="keyId"
               rules={[
                 {
                   required: true,
                 },
               ]}
             >
-              <Input style={{ width: "100%" }} />
+              <Input
+                style={{ width: "100%" }}
+                name="keyId"
+                placeholder="Nhập ký hiệu"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -77,13 +93,18 @@ const EditPaymentMethod = ({ hideModal }) => {
           >
             <Form.Item
               label="Tên/Mô tả"
+              name="moTaPhuongThuc"
               rules={[
                 {
                   required: true,
                 },
               ]}
             >
-              <Input style={{ width: "100%" }} />
+              <Input
+                style={{ width: "100%" }}
+                name="moTaPhuongThuc"
+                placeholder="Nhập mô tả"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -95,7 +116,7 @@ const EditPaymentMethod = ({ hideModal }) => {
             marginTop: "10px",
           }}
         >
-          <Button
+          {/* <Button
             key="reset"
             style={{
               marginLeft: "10px",
@@ -118,8 +139,19 @@ const EditPaymentMethod = ({ hideModal }) => {
             // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Đóng
+          </Button> */}
+          <Button
+            key="update"
+            htmlType="submit"
+            style={{
+              marginLeft: "10px",
+            }}
+            icon={<FileAddOutlined />}
+            className="custom-btn-reset-d"
+          >
+            {/* Lưu Và Thêm Tiếp */}
+            Cập nhật
           </Button>
-
           <Button
             style={{
               marginLeft: "10px",

@@ -82,3 +82,5 @@ export const isLoadingAllAreaSelector = (state) => state.areaSlice.isLoading;
 
 export const isLoadingAllRegionSelector = (state) =>
   state.regionSlice.isLoading;
+export const isLoadingAllPaymentMethodSelector = (state) =>
+  state.paymentMethodSlice.isLoading;

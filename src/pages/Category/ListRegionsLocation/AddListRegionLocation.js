@@ -79,7 +79,7 @@ const ListRegionsLocation = ({ hideModal, factoryNames }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên nhà máy" name="nhaMayId">
+            <Form.Item label="Nhà máy" name="nhaMayId">
               <Select
                 ref={firstInputRef}
                 options={
@@ -124,7 +124,11 @@ const ListRegionsLocation = ({ hideModal, factoryNames }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item label="Tên Vùng" name="tenVung">
-              <Input style={{ width: "100%" }} name="tenVung" />
+              <Input
+                style={{ width: "100%" }}
+                name="tenVung"
+                placeholder="Nhập tên vùng"
+              />
             </Form.Item>
           </Col>
         </Row>

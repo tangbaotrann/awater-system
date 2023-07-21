@@ -1,3 +1,4 @@
+import { RedoOutlined } from "@ant-design/icons";
 import { Modal, Table, Tooltip } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +12,6 @@ import {
   isLoadingAllCustomerSelector,
 } from "../../redux/selector";
 import CustomRowTooltip from "../CustomRowTooltip/CustomRowTooltip";
-import { RedoOutlined } from "@ant-design/icons";
 import { fetchApiAllCustomer } from "../../redux/slices/contractSlice/contractSlice";
 
 function TableListContract() {
@@ -158,6 +158,19 @@ function TableListContract() {
             keyId: _customer.keyId,
             dienThoai: _customer.dienThoai,
             email: _customer.email,
+            nhaMayId: _customer.nhaMayId,
+            nguonNuoc: _customer.nguonNuoc,
+            tenThuongGoi: _customer.tenThuongGoi,
+            soHo: _customer.soHo,
+            soKhau: _customer.soKhau,
+            soCmnd: _customer.soCmnd,
+            ngayCapCmnd: _customer.ngayCapCmnd,
+            noiCapCmnd: _customer.noiCapCmnd,
+            maSoThue: _customer.maSoThue,
+            soGcn: _customer.soGcn,
+            ghiChu: _customer.ghiChu,
+            doiTuong: _customer.doiTuong,
+            nguoiDaiDien: _customer.nguoiDaiDien,
           }))}
           loading={isLoading}
           pagination={{
