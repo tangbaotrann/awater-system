@@ -92,6 +92,7 @@ function TableListPO({ isTabletOrMobile }) {
     }
   };
 
+  console.log(tabListPO);
   return (
     <>
       <Tabs
@@ -103,11 +104,7 @@ function TableListPO({ isTabletOrMobile }) {
             label: (
               <div
                 className={`tab-item-bc tab-item-bc-${_tab.id} ${
-                  tabListPO === null && _tab.id === "3"
-                    ? "tab-item-disabled"
-                    : tabListPO === null && _tab.id === "4"
-                    ? "tab-item-disabled"
-                    : ""
+                  tabListPO === null && _tab.id === "3" ? "tab-item-disabled" : tabListPO === null && _tab.id === "4" ? "tab-item-disabled" : ""
                 }`}
               >
                 {_tab.id === "4" ? (

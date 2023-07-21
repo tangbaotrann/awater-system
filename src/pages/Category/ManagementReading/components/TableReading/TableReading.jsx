@@ -131,6 +131,7 @@ const TableReading = () => {
       };
     });
 
+    console.log(rowSelected);
   return (
     <Table
       className="parent-table"
