@@ -1,4 +1,4 @@
-import { Modal, Popconfirm, Popover, Tabs, message } from "antd";
+import { Modal, Popconfirm, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -44,7 +44,7 @@ function TableListWatch({ isTabletOrMobile }) {
   const [modalEditKy, setModalEditKy] = useState(false);
   const dispatch = useDispatch();
 
-  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+  const tabKy = useSelector(btnClickTabListInvoicePrintSelector);
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
@@ -71,9 +71,9 @@ function TableListWatch({ isTabletOrMobile }) {
 
   // handle delete region
   const handleConfirmDeleteRegion = () => {
-    console.log(tabListbc.keyId);
-    if (tabListbc) {
-      dispatch(deleteKy(tabListbc.keyId));
+    console.log(tabKy.keyId);
+    if (tabKy) {
+      dispatch(deleteKy(tabKy.keyId));
       message?.success("Xóa Kỳ thành công.");
       dispatch(getAllKy());
       dispatch(
@@ -92,9 +92,9 @@ function TableListWatch({ isTabletOrMobile }) {
           return {
             label: (
               <div
-                className={`tab-item-bc tab-item-bc-${_tab.id} ${tabListbc === null && _tab.id === "3"
+                className={`tab-item-bc tab-item-bc-${_tab.id} ${tabKy === null && _tab.id === "3"
                   ? "tab-item-disabled"
-                  : tabListbc === null && _tab.id === "4"
+                  : tabKy === null && _tab.id === "4"
                     ? "tab-item-disabled"
                     : ""
                   }`}
@@ -119,8 +119,8 @@ function TableListWatch({ isTabletOrMobile }) {
             ),
             key: _tab.id,
             disabled:
-              (tabListbc === null && _tab.id === "3") ||
-                (tabListbc === null && _tab.id === "4")
+              (tabKy === null && _tab.id === "3") ||
+                (tabKy === null && _tab.id === "4")
                 ? true
                 : false,
           };
@@ -138,7 +138,7 @@ function TableListWatch({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <AddListWatch tabListbc={tabListbc} hideModal={hideModal} />
+        <AddListWatch tabKy={tabKy} hideModal={hideModal} />
       </Modal>
       <Modal
         open={modalEditKy ? modalEditKy : openModal}
@@ -150,7 +150,7 @@ function TableListWatch({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-        <EditListSigning tabListbc={tabListbc} hideModal={hideModal} />
+        <EditListSigning tabKy={tabKy} hideModal={hideModal} />
       </Modal>
     </>
   );

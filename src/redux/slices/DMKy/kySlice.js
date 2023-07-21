@@ -71,7 +71,7 @@ export const updateKy = createAsyncThunk(
         try {
             const { keyId, moTa, ngaySuDungTu, ngaySuDungDen, ngayHoaDon, nhaMayId } = values
 
-            const res = await putRequest('ky-ghi-chi-so/update/${KeyId}', {
+            const res = await putRequest(`ky-ghi-chi-so/update/${keyId}`, {
                 keyId, moTa, ngaySuDungTu, ngaySuDungDen, ngayHoaDon, nhaMayId
             });
 

@@ -14,6 +14,7 @@ import { getAllKy } from "../../../redux/slices/DMKy/kySlice.js";
 // import kỳ lạ của Dương: 
 import { btnClickTabListInvoicePrintSelector, getAllKySelector } from "../../../redux/selector.js";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+import dayjs from "dayjs";
 
 moment.locale("vi");
 function DMKy() {
@@ -23,6 +24,7 @@ function DMKy() {
 
   // import kỳ lạ của Dương 
   const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
+
   // handle row select
   const handleRowSelection = (selectedRowKeys, selectedRows) => {
     dispatch(
@@ -148,9 +150,9 @@ function DMKy() {
           index: index + 1,
           keyId: _dataAllKy.keyId,
           moTa: _dataAllKy.moTa,
-          ngaySuDungTu: moment(_dataAllKy.ngaySuDungTu).format("DD/MM/YYYY"),
-          ngaySuDungDen: moment(_dataAllKy.ngaySuDungDen).format("DD/MM/YYYY"),
-          ngayHoaDon: moment(_dataAllKy.ngayHoaDon).format("DD/MM/YYYY"),
+          ngaySuDungTu: dayjs(_dataAllKy.ngaySuDungTu).format("YYYY-MM-DD"),
+          ngaySuDungDen: dayjs(_dataAllKy.ngaySuDungDen).format("YYYY-MM-DD"),
+          ngayHoaDon: dayjs(_dataAllKy.ngayHoaDon).format("YYYY-MM-DD"),
         }))}
         // import kỳ lạ của Dương
         onRow={(record, index) => {

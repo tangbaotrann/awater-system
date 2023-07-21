@@ -9,15 +9,18 @@ import {
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import { updateKy } from "../../../redux/slices/DMKy/kySlice";
+import dayjs from "dayjs";
 
-const EditListSigning = ({ tabListbc, hideModal }) => {
+const EditListSigning = ({ tabKy, hideModal }) => {
   const dispatch = useDispatch();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
   const handleSubmit = (values) => {
     if (values) {
-      dispatch(updateKy(values));
+      const data = { ...values };
+      data.nhaMayId = 'NH1';
+      dispatch(updateKy(data));
       form.resetFields();
       hideModal();
       message.success("Cập nhật thành công.");
@@ -36,7 +39,6 @@ const EditListSigning = ({ tabListbc, hideModal }) => {
     },
   };
 
-  console.log(tabListbc);
 
   return (
     <>
@@ -52,11 +54,11 @@ const EditListSigning = ({ tabListbc, hideModal }) => {
           padding: 24,
         }}
         fields={[
-          { name: "keyId", value: tabListbc ? tabListbc?.keyId : null },
-          { name: "moTa", value: tabListbc ? tabListbc?.moTa : null },
-          { name: "ngaySuDungTu", value: tabListbc ? tabListbc?.ngaySuDungTu : null },
-          { name: "ngaySuDungDen", value: tabListbc ? tabListbc?.ngaySuDungDen : null },
-          { name: "ngayHoaDon", value: tabListbc ?  tabListbc?.ngayHoaDon : null },
+          { name: "keyId", value: tabKy ? tabKy?.keyId : null },
+          { name: "moTa", value: tabKy ? tabKy?.moTa : null },
+          { name: "ngaySuDungTu", value: tabKy ? dayjs(tabKy?.ngaySuDungTu) : null },
+          { name: "ngaySuDungDen", value: tabKy ? dayjs(tabKy?.ngaySuDungDen) : null },
+          { name: "ngayHoaDon", value: tabKy ? dayjs(tabKy?.ngayHoaDon) : null },
         ]}
       >
         <Row gutter={24}>
@@ -69,7 +71,7 @@ const EditListSigning = ({ tabListbc, hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item label="Mã/Ký hiệu" name="keyId">
-              <Input name="keyId" style={{ width: "100%" }} />
+              <Input name="keyId" style={{ width: "100%" }} readOnly/>
             </Form.Item>
           </Col>
         </Row>
@@ -97,7 +99,7 @@ const EditListSigning = ({ tabListbc, hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item label="Ngày sử dụng từ" name="ngaySuDungTu">
-              <DatePicker name="ngaySuDungTu" placeholder="Chọn ngày" style={{ width: "100%" }} />
+              <DatePicker picker="date" format='YYYY-MM-DD' name="ngaySuDungTu" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -111,7 +113,7 @@ const EditListSigning = ({ tabListbc, hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item label="Ngày sử dụng đến" name="ngaySuDungDen">
-              <DatePicker name="ngaySuDungDen" placeholder="Chọn ngày" style={{ width: "100%" }} />
+              <DatePicker picker="date" format='YYYY-MM-DD' name="ngaySuDungDen" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>{" "}
@@ -125,7 +127,7 @@ const EditListSigning = ({ tabListbc, hideModal }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item label="Ngày hóa đơn" name="ngayHoaDon">
-              <DatePicker name="ngayHoaDon" placeholder="Chọn ngày" style={{ width: "100%" }} />
+              <DatePicker picker="date" format='YYYY-MM-DD' name="ngayHoaDon" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
