@@ -16,9 +16,9 @@ import {
   fetchApiAllPriceListObjectSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
- 
+
 moment.locale("vi");
- 
+
 function ListPriceObject() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
@@ -38,12 +38,12 @@ function ListPriceObject() {
       key: "index",
       width: 70,
     },
-    {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
-      // width: 70,
-    },
+    // {
+    //   title: "ID",
+    //   dataIndex: "id",
+    //   key: "id",
+    //   // width: 70,
+    // },
     {
       key: "keyId",
       title: "Ký hiệu",

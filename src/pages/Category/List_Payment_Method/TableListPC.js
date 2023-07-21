@@ -1,18 +1,23 @@
 /* eslint-disable react/jsx-pascal-case */
-import { Modal, Popover, Tabs, message } from "antd";
+import { Modal, Popconfirm, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
   RetweetOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./listpayment.css";
+import { ToastContainer } from "react-toastify";
 import AddList_Payment_Method from "./AddList_Payment_Method";
 import EditPaymentMethod from "./EditList_Payment_Method";
+import {
+  fetchApiAllPaymentMethod,
+  fetchApiDeletePaymentMethod,
+} from "../../../redux/slices/paymentMethodSlice/paymentMethodSlice";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -43,20 +48,23 @@ function TableListPC({ isTabletOrMobile }) {
   const [isOpenPayment, setPaymentMethod] = useState(false);
   const [isOpenEditPaymentMethod, setEditPaymentMethod] = useState(false);
 
-
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
   // handle change tabs
+  useEffect(() => {
+    dispatch(fetchApiAllPaymentMethod());
+  }, []);
   const handleChangeTabs = (key) => {
     if (key === "1") {
-      message.error("Tính năng chưa khả dụng!");
+      dispatch(fetchApiAllPaymentMethod());
+      dispatch(
+        tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+      );
     } else if (key === "2") {
       setPaymentMethod(true);
     } else if (key === "3") {
-      setEditPaymentMethod(true)
-    } else if (key === "4") {
-      message.error("Tính năng chưa khả dụng!");
+      setEditPaymentMethod(true);
     }
   };
 
@@ -64,13 +72,19 @@ function TableListPC({ isTabletOrMobile }) {
   const hideModal = () => {
     setOpenModal(false);
     setPaymentMethod(false);
-    setEditPaymentMethod(false)
+    setEditPaymentMethod(false);
 
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
   };
-
+  // handle delete region
+  const handleConfirmDeletePaymentMethod = () => {
+    console.log(tabListbc);
+    if (tabListbc) {
+      dispatch(fetchApiDeletePaymentMethod(tabListbc));
+    }
+  };
   return (
     <>
       <Tabs
@@ -82,19 +96,24 @@ function TableListPC({ isTabletOrMobile }) {
             label: (
               <div
                 className={`tab-item-bc tab-item-bc-${_tab.id} ${
-                  tabListbc === null && _tab.id === "2"
+                  tabListbc === null && _tab.id === "3"
+                    ? "tab-item-disabled"
+                    : tabListbc === null && _tab.id === "4"
+                    ? "tab-item-disabled"
+                    : ""
                 }`}
               >
-                {_tab.id === "7" ? (
-                  <>
-                    <Popover
-                      rootClassName="fix-popover-z-index"
-                      placement={isTabletOrMobile ? "right" : "topRight"}
-                      className={tabListbc === null ? "popover-debt" : null}
-                    >
-                      {_tab.icon} {_tab.label} {_tab.iconRight}
-                    </Popover>
-                  </>
+                {_tab.id === "4" ? (
+                  <Popconfirm
+                    placement="bottom"
+                    title="Bạn có chắc chắn muốn xóa vùng này không?"
+                    // description={description}
+                    onConfirm={handleConfirmDeletePaymentMethod}
+                    okText="Yes"
+                    cancelText="No"
+                  >
+                    {_tab.icon} {_tab.label}
+                  </Popconfirm>
                 ) : (
                   <>
                     {_tab.icon} {_tab.label}
@@ -103,6 +122,11 @@ function TableListPC({ isTabletOrMobile }) {
               </div>
             ),
             key: _tab.id,
+            disabled:
+              (tabListbc === null && _tab.id === "3") ||
+              (tabListbc === null && _tab.id === "4")
+                ? true
+                : false,
           };
         })}
         onChange={handleChangeTabs}
@@ -117,7 +141,7 @@ function TableListPC({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
-        <AddList_Payment_Method tabListbc={tabListbc} hideModal={hideModal}/>
+        <AddList_Payment_Method tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
 
       <Modal
@@ -132,6 +156,8 @@ function TableListPC({ isTabletOrMobile }) {
 
         <EditPaymentMethod tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
+      {/* Notification */}
+      <ToastContainer position="top-right" autoClose="1000" />
     </>
   );
 }
