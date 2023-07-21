@@ -1,4 +1,4 @@
-import { Modal, Popover, Tabs, message } from "antd";
+import { Modal, Popconfirm, Popover, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -11,7 +11,8 @@ import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./ListSigning.css";
 import AddListWatch from "./AddListSigning";
-import EditListLocation from "./EditListSigning";
+import { getAllKy, deleteKy } from "../../../redux/slices/DMKy/kySlice.js";
+import EditListSigning from "./EditListSigning";
 // Tabs bottom
 const tabs_bc = [
   {
@@ -39,32 +40,46 @@ const tabs_bc = [
 
 function TableListWatch({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
-  const [modalAddList_Location, setAddList_Location] = useState(false);
-  const [modalEdit_List_Location, setEdit_List_Location] = useState(false);
+  const [modalAddKy, setModalAddKy] = useState(false);
+  const [modalEditKy, setModalEditKy] = useState(false);
   const dispatch = useDispatch();
 
   const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
-      message.error("Tính năng chưa khả dụng!");
+      dispatch(getAllKy());
+      dispatch(
+        tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+      );
     } else if (key === "2") {
-      setAddList_Location(true);
+      setModalAddKy(true);
     } else if (key === "3") {
-      setEdit_List_Location(true);
-    } else if (key === "4") {
-      message.error("Tính năng chưa khả dụng!");
+      setModalEditKy(true);
     }
   };
 
   // hide modal
   const hideModal = () => {
     setOpenModal(false);
-    setAddList_Location(false);
-    setEdit_List_Location(false);
+    setModalAddKy(false);
+    setModalEditKy(false);
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
+  };
+
+  // handle delete region
+  const handleConfirmDeleteRegion = () => {
+    console.log(tabListbc.keyId);
+    if (tabListbc) {
+      dispatch(deleteKy(tabListbc.keyId));
+      message?.success("Xóa Kỳ thành công.");
+      dispatch(getAllKy());
+      dispatch(
+        tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+      );
+    }
   };
 
   return (
@@ -73,24 +88,28 @@ function TableListWatch({ isTabletOrMobile }) {
         type={isTabletOrMobile ? "line" : "card"}
         tabPosition={isTabletOrMobile ? "left" : "top"}
         activeKey="0"
-        items={tabs_bc.map((_tab) => {
+        items={tabs_bc?.map((_tab) => {
           return {
             label: (
               <div
-                className={`tab-item-bc tab-item-bc-${_tab.id} ${
-                  tabListbc === null && _tab.id === "2"
-                }`}
+                className={`tab-item-bc tab-item-bc-${_tab.id} ${tabListbc === null && _tab.id === "3"
+                  ? "tab-item-disabled"
+                  : tabListbc === null && _tab.id === "4"
+                    ? "tab-item-disabled"
+                    : ""
+                  }`}
               >
-                {_tab.id === "7" ? (
-                  <>
-                    <Popover
-                      rootClassName="fix-popover-z-index"
-                      placement={isTabletOrMobile ? "right" : "topRight"}
-                      className={tabListbc === null ? "popover-debt" : null}
-                    >
-                      {_tab.icon} {_tab.label} {_tab.iconRight}
-                    </Popover>
-                  </>
+                {_tab.id === "4" ? (
+                  <Popconfirm
+                    placement="bottom"
+                    title="Bạn có chắc chắn muốn xóa Kỳ này không?"
+                    // description={description}
+                    onConfirm={handleConfirmDeleteRegion}
+                    okText="Có"
+                    cancelText="Không"
+                  >
+                    {_tab.icon} {_tab.label}
+                  </Popconfirm>
                 ) : (
                   <>
                     {_tab.icon} {_tab.label}
@@ -99,13 +118,18 @@ function TableListWatch({ isTabletOrMobile }) {
               </div>
             ),
             key: _tab.id,
+            disabled:
+              (tabListbc === null && _tab.id === "3") ||
+                (tabListbc === null && _tab.id === "4")
+                ? true
+                : false,
           };
         })}
         onChange={handleChangeTabs}
       />
 
       <Modal
-        open={modalAddList_Location ? modalAddList_Location : openModal}
+        open={modalAddKy ? modalAddKy : openModal}
         onCancel={hideModal}
         width={700}
         centered={true}
@@ -117,7 +141,7 @@ function TableListWatch({ isTabletOrMobile }) {
         <AddListWatch tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
       <Modal
-        open={modalEdit_List_Location ? modalEdit_List_Location : openModal}
+        open={modalEditKy ? modalEditKy : openModal}
         onCancel={hideModal}
         width={700}
         centered={true}
@@ -126,7 +150,7 @@ function TableListWatch({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-        <EditListLocation tabListbc={tabListbc} hideModal={hideModal} />
+        <EditListSigning tabListbc={tabListbc} hideModal={hideModal} />
       </Modal>
     </>
   );

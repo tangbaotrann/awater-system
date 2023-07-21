@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, DatePicker, Form, Input, Row, theme } from "antd";
+import { Button, Col, DatePicker, Form, Input, Row, theme, message } from "antd";
 import {
   CloseOutlined,
   FileAddOutlined,
@@ -7,19 +7,27 @@ import {
 } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
+import { useDispatch } from "react-redux";
+import { updateKy } from "../../../redux/slices/DMKy/kySlice";
 
-const EditListSigning = ({ hideModal }) => {
+const EditListSigning = ({ tabListbc, hideModal }) => {
+  const dispatch = useDispatch();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
   const handleSubmit = (values) => {
-    console.log("values", values);
+    if (values) {
+      dispatch(updateKy(values));
+      form.resetFields();
+      hideModal();
+      message.success("Cập nhật thành công.");
+    }
   };
   // handle submit error (main)
   const handleFailed = (error) => {
     console.log({ error });
   };
-  const [form1] = Form.useForm();
+  const [form] = Form.useForm();
   const { token } = theme.useToken();
 
   const layout = {
@@ -27,11 +35,14 @@ const EditListSigning = ({ hideModal }) => {
       span: 5,
     },
   };
+
+  console.log(tabListbc);
+
   return (
     <>
       <Form
         {...layout}
-        form={form1}
+        form={form}
         onFinish={handleSubmit}
         onFinishFailed={handleFailed}
         style={{
@@ -40,6 +51,13 @@ const EditListSigning = ({ hideModal }) => {
           borderRadius: token.borderRadiusLG,
           padding: 24,
         }}
+        fields={[
+          { name: "keyId", value: tabListbc ? tabListbc?.keyId : null },
+          { name: "moTa", value: tabListbc ? tabListbc?.moTa : null },
+          { name: "ngaySuDungTu", value: tabListbc ? tabListbc?.ngaySuDungTu : null },
+          { name: "ngaySuDungDen", value: tabListbc ? tabListbc?.ngaySuDungDen : null },
+          { name: "ngayHoaDon", value: tabListbc ?  tabListbc?.ngayHoaDon : null },
+        ]}
       >
         <Row gutter={24}>
           <Col
@@ -50,8 +68,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã/Ký hiệu">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Mã/Ký hiệu" name="keyId">
+              <Input name="keyId" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -64,8 +82,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên/Mô tả">
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên/Mô tả" name="moTa">
+              <Input name="moTa" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -78,8 +96,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Ngày sử dụng từ">
-              <DatePicker placeholder="Chọn ngày" style={{ width: "100%" }} />
+            <Form.Item label="Ngày sử dụng từ" name="ngaySuDungTu">
+              <DatePicker name="ngaySuDungTu" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -92,8 +110,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Ngày sử dụng đến">
-              <DatePicker placeholder="Chọn ngày" style={{ width: "100%" }} />
+            <Form.Item label="Ngày sử dụng đến" name="ngaySuDungDen">
+              <DatePicker name="ngaySuDungDen" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>{" "}
@@ -106,8 +124,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Ngày hóa đơn">
-              <DatePicker placeholder="Chọn ngày" style={{ width: "100%" }} />
+            <Form.Item label="Ngày hóa đơn" name="ngayHoaDon">
+              <DatePicker name="ngayHoaDon" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -126,7 +144,6 @@ const EditListSigning = ({ hideModal }) => {
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Thêm Tiếp
           </Button>
@@ -139,7 +156,6 @@ const EditListSigning = ({ hideModal }) => {
             htmlType="submit"
             icon={<SaveOutlined />}
             className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Đóng
           </Button>
@@ -151,7 +167,6 @@ const EditListSigning = ({ hideModal }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng
