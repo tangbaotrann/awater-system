@@ -20,6 +20,7 @@ import ModalConfirmDelete from "../ModalConfirmDelete/ModalConfirmDelete";
 import { btnDelete } from "../../redux/slices/tabListReading/tabListReaingSlice";
 import ModalEditPriceList from "../../pages/Category/ManagementPriceList/components/ModalAddPriceList/ModalEditPriceList";
 import ModalAddPriceList from "../../pages/Category/ManagementPriceList/components/ModalAddPriceList/ModalAddPriceList";
+
 const CategoryHeaderAction = ({
   sidebarMenu,
   handleOpenModalAdd,

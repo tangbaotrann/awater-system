@@ -15,13 +15,34 @@ import { useSelector } from "react-redux";
 import "./ModalTransferEmployee.css";
 
 const ModalTransferEmployee = ({
-  isOpen,
+  isOpenBillCollector,
   handleCancel,
   handleOk,
   openTransferManagers,
 }) => {
   const tabList = useSelector((state) => state.tabListContractSlice.tabList);
+  const [form] = Form.useForm();
   const [valueNewEmployee, setValueNewEmployee] = useState();
+
+  useEffect(() => {
+    form.setFieldValue("oldEmployee", tabList?.cashier || "");
+    form.setFieldValue("codeLine", tabList?.codeLine || "");
+    form.setFieldValue("nameLine", tabList?.nameLine || "");
+  }, [tabList, openTransferManagers, form]);
+
+  useEffect(() => {
+    if (!isOpenBillCollector) return;
+    return () => {
+      form.setFieldValue("oldEmployee", "");
+      form.setFieldValue("codeLine", "");
+      form.setFieldValue("nameLine", "");
+    };
+  }, [isOpenBillCollector]);
+
+  const handleChangeValue = (e) => {
+    form.setFieldValue(e.target.name, e.target.value);
+  };
+
   const employeeOptions = [];
   for (let i = 1; i < 36; i++) {
     employeeOptions.push({
@@ -29,23 +50,6 @@ const ModalTransferEmployee = ({
       label: `Nhân viên ${i}`,
     });
   }
-  const [form] = Form.useForm();
-  useEffect(() => {
-    form.setFieldValue("oldEmployee", tabList?.cashier || "");
-    form.setFieldValue("codeLine", tabList?.codeLine || "");
-    form.setFieldValue("nameLine", tabList?.nameLine || "");
-  }, [tabList, openTransferManagers]);
-  const handleChangeValue = (e) => {
-    form.setFieldValue(e.target.name, e.target.value);
-  };
-  useEffect(() => {
-    if (!isOpen) return;
-    return () => {
-      form.setFieldValue("oldEmployee", "");
-      form.setFieldValue("codeLine", "");
-      form.setFieldValue("nameLine", "");
-    };
-  }, [isOpen]);
 
   return (
     <Modal
@@ -54,7 +58,7 @@ const ModalTransferEmployee = ({
           ? "Chuyển cán bộ quản lý tuyến"
           : "Chuyển cán bộ quản lý thu"
       }
-      open={isOpen}
+      open={isOpenBillCollector}
       onOk={() => handleOk("transferEmployee")}
       onCancel={() => handleCancel("transferEmployee")}
       className="popup-add-transfer-employee"
@@ -127,7 +131,7 @@ const ModalTransferEmployee = ({
               size="middle"
               placeholder="Chọn hóa đơn"
               style={{ width: "100%" }}
-              // options={employeeOptions}
+            // options={employeeOptions}
             />
           </Form.Item>
         )}
@@ -158,7 +162,6 @@ const ModalTransferEmployee = ({
         <Form.Item className="form-item-button">
           <Space size={5} className="modal-button-actions">
             <Button
-              className="button"
               type="primary"
               icon={<SaveOutlined />}
               style={{
@@ -168,12 +171,11 @@ const ModalTransferEmployee = ({
                 color: "#FFFFFF",
               }}
               size="middle"
-              // disabled={!(valueSymbol && valueDescribe)}
+            // disabled={!(valueSymbol && valueDescribe)}
             >
               Thực hiện
             </Button>
             <Button
-              className="button"
               key="submit"
               icon={<CloseCircleOutlined />}
               onClick={() => handleCancel("transferEmployee")}
