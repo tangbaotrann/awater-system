@@ -1,12 +1,12 @@
 import { Collapse, Popover } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
+import { ToastContainer } from "react-toastify";
 
 import "./Contract.css";
 import TableListContract from "../../../components/TableListContract/TableListContract";
 import TabList from "../../../components/TableListContract/TabList/TabList";
 import FormFilterContract from "../../../components/TableListContract/FormFilterContract/FormFilterContract";
-import { ToastContainer } from "react-toastify";
 
 function Contract() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });

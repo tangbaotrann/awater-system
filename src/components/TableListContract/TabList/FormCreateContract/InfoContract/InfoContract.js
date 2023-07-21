@@ -1,6 +1,7 @@
 import { RedoOutlined } from "@ant-design/icons";
 import {
   Button,
+  Checkbox,
   Col,
   DatePicker,
   Form,
@@ -16,7 +17,6 @@ import {
   fetchApiAllFactorySelector,
   fetchApiAllPaymentMethodSelector,
   fetchApiAllPriceObjSelector,
-  fetchApiAllReadingSelector,
 } from "../../../../../redux/selector";
 import { fetchApiAllPriceObj } from "../../../../../redux/slices/priceObjSlice/priceObjSlice";
 import { fetchApiAllPaymentMethod } from "../../../../../redux/slices/paymentMethodSlice/paymentMethodSlice";
@@ -28,7 +28,6 @@ function InfoContract() {
 
   const objPrices = useSelector(fetchApiAllPriceObjSelector);
   const paymentMethods = useSelector(fetchApiAllPaymentMethodSelector);
-  const readings = useSelector(fetchApiAllReadingSelector);
   const factorys = useSelector(fetchApiAllFactorySelector);
 
   // console.log(objPrices);
@@ -37,8 +36,8 @@ function InfoContract() {
     labelCol: {
       xs: { span: 24 },
       sm: { span: 5 },
-      md: { span: 7 },
-      lg: { span: 10 },
+      md: { span: 10 },
+      lg: { span: 8 },
     },
     wrapperCol: {
       xs: { span: 24 },
@@ -71,8 +70,25 @@ function InfoContract() {
   return (
     <div className="container-info-contract">
       <Row>
+        {/* Mã đăng ký */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="maDangKy"
+            label="Mã đăng ký"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập mã đăng ký.",
+              },
+            ]}
+          >
+            <Input name="maDangKy" placeholder="Nhập mã đăng ký" />
+          </Form.Item>
+        </Col>
+
         {/* Số hợp đồng + Button reset (mã khách hàng) */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="keyIdOfContract"
             label="Mã hợp đồng"
@@ -97,20 +113,25 @@ function InfoContract() {
           </Form.Item>
         </Col>
 
-        {/* KH id */}
-        {/* <Col xs={24} sm={24} md={12} lg={10}>
+        {/* Mã vạch */}
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
-            name="khachHangId"
-            label="Khách hàng Id (*)"
+            name="maVach"
+            label="Mã vạch"
             {...formItemLayout}
-            hidden
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập mã vạch.",
+              },
+            ]}
           >
-            <Input name="khachHangId" />
+            <Input name="maVach" placeholder="Nhập mã vạch" />
           </Form.Item>
-        </Col> */}
+        </Col>
 
         {/* Nhà máy id */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        {/* <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="nhaMayId"
             label="Nhà máy"
@@ -135,10 +156,10 @@ function InfoContract() {
               placeholder="Chọn tên nhà máy"
             />
           </Form.Item>
-        </Col>
+        </Col> */}
 
         {/* ĐT giá (load from api) */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="doiTuongGiaId"
             label="ĐT giá"
@@ -184,7 +205,7 @@ function InfoContract() {
         </Col>
 
         {/* Mục đích SD */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="mucDichSuDung"
             label="Mục đích SD"
@@ -210,7 +231,7 @@ function InfoContract() {
         </Col>
 
         {/* Hình thức TT */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="phuongThucThanhToanId"
             label="Phương thức TT"
@@ -238,7 +259,7 @@ function InfoContract() {
         </Col>
 
         {/* Khu vực TT */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="khuVucThanhToan"
             label="Khu vực TT: "
@@ -261,39 +282,11 @@ function InfoContract() {
           </Form.Item>
         </Col>
 
-        {/* Tuyến đọc id (load from api) */}
-        <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item
-            name="tuyenDocId"
-            label="Tuyến đọc"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải chọn tuyến đọc.",
-              },
-            ]}
-          >
-            <Select
-              fieldNames="tuyenDocId"
-              options={
-                readings?.length <= 0
-                  ? []
-                  : readings.map((_reading) => ({
-                      label: _reading.tenTuyen,
-                      value: _reading.id,
-                    }))
-              }
-              placeholder="Chọn tuyến đọc"
-            />
-          </Form.Item>
-        </Col>
-
         {/* Ngày ký hợp đồng */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="ngayKyHopDong"
-            label="Ngày ký hợp đồng"
+            label="Ngày ký HĐ"
             {...formItemLayout}
             rules={[
               {
@@ -304,14 +297,14 @@ function InfoContract() {
           >
             <DatePicker
               name="ngayKyHopDong"
-              placeholder="Ngày ký hợp đồng"
+              placeholder="Chọn ngày ký hợp đồng"
               style={{ width: "100%" }}
             />
           </Form.Item>
         </Col>
 
         {/* Ngày lắp đặt */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="ngayLapDat"
             label="Ngày lắp đặt"
@@ -325,37 +318,161 @@ function InfoContract() {
           >
             <DatePicker
               name="ngayLapDat"
-              placeholder="Nhập ngày lắp đặt"
+              placeholder="Chọn ngày lắp đặt"
               style={{ width: "100%" }}
             />
           </Form.Item>
         </Col>
 
-        {/* Ngày có hiệu lực */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        {/* Người lắp đặt */}
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
-            name="ngayCoHieuLuc"
-            label="Ngày có hiệu lực"
+            name="nguoiLapDat"
+            label="Người lắp đặt"
             {...formItemLayout}
             rules={[
               {
                 required: true,
-                message: "Bạn cần phải chọn ngày có hiệu lực.",
+                message: "Bạn cần phải nhập tên người lắp đặt.",
+              },
+            ]}
+          >
+            <Input name="nguoiLapDat" placeholder="Nhập tên người lắp đặt" />
+          </Form.Item>
+        </Col>
+
+        {/* Ngày nộp tiền */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="ngayNopTien"
+            label="Ngày nộp tiền"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn ngày nộp tiền.",
               },
             ]}
           >
             <DatePicker
-              name="ngayCoHieuLuc"
-              placeholder="Chọn ngày có hiệu lực"
+              name="ngayNopTien"
+              placeholder="Chọn ngày nộp tiền"
               style={{ width: "100%" }}
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
+        {/* Tiền lắp đặt */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="tienLapDat"
+            label="Tiền lắp đặt"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số tiền lắp đặt.",
+              },
+            ]}
+          >
+            <Input name="tienLapDat" placeholder="Nhập số tiền lắp đặt" />
+          </Form.Item>
+        </Col>
+
+        {/* Người nộp */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="nguoiNop"
+            label="Người nộp"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập tên người nộp.",
+              },
+            ]}
+          >
+            <Input name="nguoiNop" placeholder="Nhập tên người nộp" />
+          </Form.Item>
+        </Col>
+
+        {/* Tiền cọc */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="tienCoc"
+            label="Tiền cọc"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số tiền cọc.",
+              },
+            ]}
+          >
+            <Input name="tienCoc" placeholder="Nhập số tiền cọc" />
+          </Form.Item>
+        </Col>
+
+        {/* Ngày đặt cọc */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="ngayDatCoc"
+            label="Ngày đặt cọc"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn ngày đặt cọc.",
+              },
+            ]}
+          >
+            <DatePicker
+              name="ngayDatCoc"
+              placeholder="Chọn ngày đặt cọc"
+              style={{ width: "100%" }}
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Cam kết sử dụng nước */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="camKetSDNuoc"
+            label="Cam kết SD nước"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải cam kết sử dụng nước.",
+              },
+            ]}
+          >
+            <Checkbox name="camKetSDNuoc" />
+          </Form.Item>
+        </Col>
+
+        {/* Khối lượng cam kết */}
+        <Col xs={24} sm={24} md={8} lg={8}>
+          <Form.Item
+            name="khoiLuongCamKet"
+            label="KL cam kết"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số tiền cọc.",
+              },
+            ]}
+          >
+            <Input
+              name="khoiLuongCamKet"
+              placeholder="Nhập khối lượng cam kết"
+            />
+          </Form.Item>
+        </Col>
+
         {/* Kinh độ */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="kinhDo"
             label="Kinh độ"
@@ -375,31 +492,8 @@ function InfoContract() {
           </Form.Item>
         </Col>
 
-        {/* Địa chỉ */}
-        <Col xs={24} sm={24} md={11} lg={10}>
-          <Form.Item
-            name="diachi"
-            label="Địa chỉ"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải nhập địa chỉ.",
-              },
-            ]}
-          >
-            <Input
-              name="diachi"
-              placeholder="Nhập địa chỉ"
-              className="space-right-10"
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-
-      <Row>
         {/* Vĩ độ */}
-        <Col xs={24} sm={24} md={11} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="viDo"
             label="Vĩ độ"
@@ -420,7 +514,7 @@ function InfoContract() {
         </Col>
 
         {/* Ghi chú */}
-        <Col xs={24} sm={24} md={12} lg={10}>
+        <Col xs={24} sm={24} md={8} lg={8}>
           <Form.Item
             name="ghiChuOfContract"
             label="Ghi chú: "

@@ -548,7 +548,7 @@ html *::-webkit-scrollbar-track {
     .container-info-clock {
         height: 41vh;
         overflow-y: scroll;
-        padding: 4px;
+        padding: 10px;
         border-radius: 6px;
         box-shadow: 2px 2px 5px #ccc;
     }
@@ -556,7 +556,7 @@ html *::-webkit-scrollbar-track {
     .container-info-customer {
         height: 42vh;
         overflow-y: scroll;
-        padding: 4px;
+        padding: 10px;
         border-radius: 6px;
         box-shadow: 2px 2px 5px #ccc;
     }
@@ -564,7 +564,7 @@ html *::-webkit-scrollbar-track {
     .container-detail-clock {
         height: 41vh;
         overflow-y: scroll;
-        padding: 4px;
+        padding: 10px;
         border-radius: 6px;
         box-shadow: 2px 2px 5px #ccc;
     }
@@ -773,6 +773,10 @@ html *::-webkit-scrollbar-track {
         width: 100%;
         resize: horizontal;
         overflow: hidden;
+    }
+
+    .space-top-40 {
+        margin-top: 40px;
     }
 }
   
@@ -1086,6 +1090,10 @@ html *::-webkit-scrollbar-track {
     /* Số đồng hồ */
     .info-his-item-val-sdt {
         margin-left: 60px;
+    }
+
+    .container-info-customer {
+        padding: 10px;
     }
 }
   

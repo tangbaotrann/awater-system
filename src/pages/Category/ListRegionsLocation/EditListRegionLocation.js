@@ -58,7 +58,7 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên nhà máy" name="nhaMayId">
+            <Form.Item label="Nhà máy" name="nhaMayId">
               <Select placeholder="Chọn tên nhà máy" fieldNames="nhaMayId">
                 {factoryNames?.length <= 0
                   ? []
@@ -98,7 +98,11 @@ const EditListRegionLocation = ({ tabListbc, hideModal, factoryNames }) => {
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
             <Form.Item label="Tên Vùng" name="tenVung">
-              <Input style={{ width: "100%" }} name="tenVung" />
+              <Input
+                style={{ width: "100%" }}
+                name="tenVung"
+                placeholder="Nhập tên vùng"
+              />
             </Form.Item>
           </Col>
         </Row>
