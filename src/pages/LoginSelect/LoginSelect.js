@@ -30,7 +30,7 @@ function LoginSelect() {
         type="primary"
         onClick={handleLoginClick}
       >
-        Đăng nhập
+        Tiếp tục
       </Button>
     </div>
   );
