@@ -3,7 +3,7 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons/lib/icons";
 import { UserOutlined, MenuOutlined } from "@ant-design/icons";
-import { Drawer, Layout, Popover } from "antd";
+import { Drawer, Layout, Popover, Select } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -21,7 +21,8 @@ function DefaultLayout({ children, currentPage }) {
   const [collapsed, setCollapsed] = useState(false);
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState("left");
-
+  const { Option } = Select;
+  const factories = ["Nhà máy 1", "Nhà máy 2", "Nhà máy 3", "Nhà máy 4"];
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
@@ -85,6 +86,13 @@ function DefaultLayout({ children, currentPage }) {
               </Drawer>
             </>
           )}
+          <div className="select-container">
+            <Select placeholder="Chọn nhà máy" style={{ width: 500 }}>
+              {factories.map((factory) => (
+                <Option value={factory}>{factory}</Option>
+              ))}
+            </Select>
+          </div>
 
           <div
             className={
