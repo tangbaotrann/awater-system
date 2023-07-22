@@ -3,7 +3,7 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons/lib/icons";
 import { UserOutlined, MenuOutlined } from "@ant-design/icons";
-import { Drawer, Layout, Popover, Select } from "antd";
+import { Button, Drawer, Layout, Popover, Select } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -40,6 +40,10 @@ function DefaultLayout({ children, currentPage }) {
     setOpen(false);
   };
 
+  const onSearch = (value) => {
+    console.log("search:", value);
+  };
+
   return (
     <Layout>
       {/* Screen tablet */}
@@ -66,7 +70,7 @@ function DefaultLayout({ children, currentPage }) {
       )}
 
       <Layout className="site-layout">
-        <Header className="header-top">
+        <Header className="header-top position-relative">
           {/* Tablet or mobile */}
           {isTabletOrMobile && (
             <>
@@ -86,13 +90,35 @@ function DefaultLayout({ children, currentPage }) {
               </Drawer>
             </>
           )}
-          <div className="select-container">
-            <Select placeholder="Chọn nhà máy" style={{ width: 500 }}>
-              {factories.map((factory) => (
-                <Option value={factory}>{factory}</Option>
-              ))}
-            </Select>
-          </div>
+
+          {!isTabletOrMobile && (
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: "16px",
+                width: 60,
+                height: 60,
+              }}
+            />
+          )}
+
+          <Select
+            className="position-absolute top-50 start-50 translate-middle w-100"
+            showSearch
+            placeholder="Chọn nhà máy"
+            optionFilterProp="children"
+            onChange={onChange}
+            onSearch={onSearch}
+            filterOption={(input, option) =>
+              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
+            }
+          >
+            {factories.map((factory) => (
+              <Option value={factory}>{factory}</Option>
+            ))}
+          </Select>
 
           <div
             className={
@@ -106,15 +132,6 @@ function DefaultLayout({ children, currentPage }) {
 
             <h4>Manager Name</h4>
           </div>
-
-          {!isTabletOrMobile &&
-            React.createElement(
-              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-              {
-                className: "trigger",
-                onClick: () => setCollapsed(!collapsed),
-              }
-            )}
         </Header>
         <Content
           style={{
