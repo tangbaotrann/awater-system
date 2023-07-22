@@ -1,67 +1,86 @@
-import { React, useState } from "react";
+import { React, useEffect } from "react";
 import TableListLocation from "./TableListSigning.js";
 import "../../../components/GlobalStyles/GlobalStyles.css";
 import "../../Manager/Contract/Contract.css";
-import { Form, Input, Table, Popover, Col, Row, DatePicker } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { Form, Input, Table, Popover, Col, Row, DatePicker, Tooltip } from "antd";
+import { PlusOutlined, RedoOutlined } from "@ant-design/icons";
 import moment from "moment";
 import "moment/locale/vi";
 import viVN from "antd/es/date-picker/locale/vi_VN";
 import { useMediaQuery } from "react-responsive";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllKy } from "../../../redux/slices/DMKy/kySlice.js";
+
+// import kỳ lạ của Dương: 
+import { btnClickTabListInvoicePrintSelector, getAllKySelector } from "../../../redux/selector.js";
+import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+import dayjs from "dayjs";
+
 moment.locale("vi");
-
-function ListSigning() {
+function DMKy() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-  // const { token } = theme.useToken();
+  const dispatch = useDispatch();
+  const dataAllKy = useSelector(getAllKySelector);
 
-  const initialData = Array.from({ length: 100 }, (_, i) => {
-    return {
-      key: "1",
-      stt: i + 1,
-      kh: `  Ký hiệu ${i + 1}`,
-      mt: `Mô tả ${i + 1}`,
-      nsdt: `  Thời gian từ ${i + 1}`,
-      nsdd: `Thời gian đến ${i + 1}`,
-      nhd: `  Thời gian hóa đơn ${i + 1}`,
-    };
-  });
-  
-  const [data1] = useState(initialData);
+  // import kỳ lạ của Dương 
+  const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
+
+  // handle row select
+  const handleRowSelection = (selectedRowKeys, selectedRows) => {
+    dispatch(
+      tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(
+        selectedRows[0]
+      )
+    );
+  };
+
+  // handle un-check radio
+  const handleUncheckRadio = () => {
+    dispatch(
+      tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+    );
+  };
+  // Kết thúc import kỳ lạ của Dương
+
+  useEffect(() => {
+    dispatch(getAllKy());
+  }, [dispatch]);
 
   const columns = [
     {
       title: "#",
-      dataIndex: "stt",
-      key: "stt",
+      dataIndex: "index",
+      key: "index",
       width: 70,
     },
     {
       title: "Ký hiệu",
-      dataIndex: "kh",
-      key: "kh",
+      dataIndex: "keyId",
+      key: "keyId",
       width: 170,
     },
     {
       title: "Mô tả",
-      dataIndex: "mt",
-      key: "mt",
+      dataIndex: "moTa",
+      key: "moTa",
     },
     {
       title: "Ngày sử dụng từ",
-      dataIndex: "nsdt",
-      key: "nsdt",
+      dataIndex: "ngaySuDungTu",
+      key: "ngaySuDungTu",
     },
     {
       title: "Ngày sử dụng đến",
-      dataIndex: "nsdd",
-      key: "nsdd",
+      dataIndex: "ngaySuDungDen",
+      key: "ngaySuDungDen",
     },
     {
       title: "Ngày hóa đơn",
-      dataIndex: "nhd",
-      key: "nhd",
+      dataIndex: "ngayHoaDon",
+      key: "ngayHoaDon",
     },
   ];
+
   const AdvancedSearchForm = () => {
     const layout = {
       labelCol: {
@@ -127,8 +146,44 @@ function ListSigning() {
           ...column,
           className: "cell-wrap",
         }))}
-        dataSource={data1}
-        // onChange={handleData1Change}
+        dataSource={dataAllKy.map((_dataAllKy, index) => ({
+          index: index + 1,
+          keyId: _dataAllKy.keyId,
+          moTa: _dataAllKy.moTa,
+          ngaySuDungTu: dayjs(_dataAllKy.ngaySuDungTu).format("YYYY-MM-DD"),
+          ngaySuDungDen: dayjs(_dataAllKy.ngaySuDungDen).format("YYYY-MM-DD"),
+          ngayHoaDon: dayjs(_dataAllKy.ngayHoaDon).format("YYYY-MM-DD"),
+        }))}
+        // import kỳ lạ của Dương
+        onRow={(record, index) => {
+          return {
+            onClick: () => {
+              // clicked row to check radio
+              dispatch(
+                tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(
+                  record
+                )
+              );
+            },
+          };
+        }}
+        rowSelection={{
+          type: "radio",
+          columnTitle: () => {
+            return (
+              <Tooltip title="Bỏ chọn hàng hiện tại.">
+                <RedoOutlined
+                  className="icon-reset-rad-btn"
+                  onClick={handleUncheckRadio}
+                />
+              </Tooltip>
+            );
+          },
+          onChange: (selectedRowKeys, selectedRows) =>
+            handleRowSelection(selectedRowKeys, selectedRows),
+          selectedRowKeys: tabListPO ? [tabListPO.index] : [],
+        }}
+      // kết thúc import kỳ lạ của Dương
       />
       {isTabletOrMobile && (
         <div className="contract-bottom">
@@ -157,4 +212,4 @@ function ListSigning() {
     </>
   );
 }
-export default ListSigning;
+export default DMKy;

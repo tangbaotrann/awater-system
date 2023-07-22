@@ -20,6 +20,7 @@ import tabListReadingSlice from "./slices/tabListReading/tabListReaingSlice";
 import readingSlice from "./slices/readingSlice/readingSlice";
 import priceObjectSlice from "./slices/priceObjectSlice/priceObjectSlice";
 import trangThaiChiSo from "./slices/DMTrangThaiChiSo/trangThaiChiSoSlice";
+import kySlice from "./slices/DMKy/kySlice";
 const store = configureStore({
   reducer: {
     sidebarSlice: sidebarSlice.reducer,
@@ -33,6 +34,7 @@ const store = configureStore({
     areaSlice: areaSlice.reducer,
     bangGia: bangGiaSlice.reducer,
     tuyendoc: tuyenDocSlice.reducer,
+    ky_ghi_chi_so: kySlice.reducer,
     nguoidung: nguoidungSlice.reducer,
     priceObjSlice: priceObjSlice.reducer,
     paymentMethodSlice: paymentMethodSlice.reducer,

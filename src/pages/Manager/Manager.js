@@ -27,7 +27,7 @@ import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
 
-import ListSigning from "../Category/ListSigning/ListSigning";
+import DMKy from "../Category/DMKy/DMKy";
 
 import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
 
@@ -101,7 +101,7 @@ function Manager() {
         <Category_Status_ReadNumber />
       ) : sidebarMenu === constants.CATEGORY_SIGNING.key ||
         currentPage === constants.CATEGORY_SIGNING.key ? (
-        <ListSigning />
+        <DMKy />
       ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
         currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
         <CustomerType />

@@ -7,19 +7,30 @@ import {
 } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
+import { useDispatch } from "react-redux";
+import { addKy } from "../../../redux/slices/DMKy/kySlice";
 
-const EditListSigning = ({ hideModal }) => {
+const AddDMKy = ({ hideModal }) => {
+  const dispatch = useDispatch();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   // handle submit form (main)
   const handleSubmit = (values) => {
-    console.log("values", values);
+    const data = { ...values };
+    data.nhaMayId = 'NH1';
+    if (data) {
+      dispatch(addKy(data));
+    }
+    hideModal();
+    form.resetFields();
   };
+
   // handle submit error (main)
   const handleFailed = (error) => {
     console.log({ error });
   };
-  const [form1] = Form.useForm();
+
+  const [form] = Form.useForm();
   const { token } = theme.useToken();
 
   const layout = {
@@ -31,7 +42,7 @@ const EditListSigning = ({ hideModal }) => {
     <>
       <Form
         {...layout}
-        form={form1}
+        form={form}
         onFinish={handleSubmit}
         onFinishFailed={handleFailed}
         style={{
@@ -50,8 +61,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã/Ký hiệu">
-              <Input style={{ width: "100%" }} />
+            <Form.Item name="keyId" label="Mã/Ký hiệu">
+              <Input name="keyId" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -64,8 +75,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên/Mô tả">
-              <Input style={{ width: "100%" }} />
+            <Form.Item name="moTa" label="Tên/Mô tả">
+              <Input name="moTa" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -78,8 +89,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Ngày sử dụng từ">
-              <DatePicker placeholder="Chọn ngày" style={{ width: "100%" }} />
+            <Form.Item name="ngaySuDungTu" label="Ngày sử dụng từ">
+              <DatePicker name="ngaySuDungTu" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -92,8 +103,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Ngày sử dụng đến">
-              <DatePicker placeholder="Chọn ngày" style={{ width: "100%" }} />
+            <Form.Item name="ngaySuDungDen" label="Ngày sử dụng đến">
+              <DatePicker name="ngaySuDungDen" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>{" "}
@@ -106,8 +117,8 @@ const EditListSigning = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Ngày hóa đơn">
-              <DatePicker placeholder="Chọn ngày" style={{ width: "100%" }} />
+            <Form.Item name="ngayHoaDon" label="Ngày hóa đơn">
+              <DatePicker name="ngayHoaDon" placeholder="Chọn ngày" style={{ width: "100%" }} />
             </Form.Item>
           </Col>
         </Row>
@@ -126,20 +137,19 @@ const EditListSigning = ({ hideModal }) => {
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
             Lưu Và Thêm Tiếp
           </Button>
 
           <Button
-            key="submit"
+
             style={{
               marginLeft: "10px",
             }}
             htmlType="submit"
             icon={<SaveOutlined />}
             className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
+
           >
             Lưu Và Đóng
           </Button>
@@ -151,7 +161,6 @@ const EditListSigning = ({ hideModal }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng
@@ -162,4 +171,4 @@ const EditListSigning = ({ hideModal }) => {
   );
 };
 
-export default EditListSigning;
+export default AddDMKy;

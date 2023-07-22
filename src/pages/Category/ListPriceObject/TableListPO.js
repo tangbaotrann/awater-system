@@ -22,6 +22,7 @@ import {
 
 import { ToastContainer, toast } from "react-toastify";
 
+
 // Tabs bottom
 const tabs_bc = [
   {
@@ -60,7 +61,7 @@ function TableListPO({ isTabletOrMobile }) {
 
 
   // handle change tabs
-  const handleChangeTabs = (key) => {
+  const handleChangeTabs = (key) => { 
     if (key === "1") {
       dispatch(fetchApiAllPriceListObject());
       dispatch(
@@ -164,6 +165,7 @@ function TableListPO({ isTabletOrMobile }) {
           priceObject={priceObject}
         />
       </Modal>
+      
 
       {/* Notification */}
       <ToastContainer position="top-right" autoClose="2000" />
