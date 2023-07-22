@@ -3,7 +3,7 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons/lib/icons";
 import { UserOutlined, MenuOutlined } from "@ant-design/icons";
-import { Drawer, Layout, Popover } from "antd";
+import { Button, Drawer, Layout, Popover, Select } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -39,6 +39,10 @@ function DefaultLayout({ children, currentPage }) {
     setOpen(false);
   };
 
+  const onSearch = (value) => {
+    console.log("search:", value);
+  };
+
   return (
     <Layout>
       {/* Screen tablet */}
@@ -65,7 +69,7 @@ function DefaultLayout({ children, currentPage }) {
       )}
 
       <Layout className="site-layout">
-        <Header className="header-top">
+        <Header className="header-top position-relative">
           {/* Tablet or mobile */}
           {isTabletOrMobile && (
             <>
@@ -86,6 +90,53 @@ function DefaultLayout({ children, currentPage }) {
             </>
           )}
 
+          {!isTabletOrMobile && (
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: "16px",
+                width: 60,
+                height: 60,
+              }}
+            />
+          )}
+
+          <Select
+            className="position-absolute top-50 start-50 translate-middle w-100"
+            showSearch
+            placeholder="Chọn nhà máy"
+            optionFilterProp="children"
+            onChange={onChange}
+            onSearch={onSearch}
+            filterOption={(input, option) =>
+              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
+            }
+            options={[
+              {
+                value: "NM1",
+                label: "NM1",
+              },
+              {
+                value: "MN2",
+                label: "MN2",
+              },
+              {
+                value: "NM3",
+                label: "NM3",
+              },
+              {
+                value: "NM4",
+                label: "NM4",
+              },
+              {
+                value: "NM5",
+                label: "NM5",
+              },
+            ]}
+          />
+
           <div
             className={
               isTabletOrMobile ? "site-layout-info-mobile" : "site-layout-info"
@@ -99,14 +150,6 @@ function DefaultLayout({ children, currentPage }) {
             <h4>Manager Name</h4>
           </div>
 
-          {!isTabletOrMobile &&
-            React.createElement(
-              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-              {
-                className: "trigger",
-                onClick: () => setCollapsed(!collapsed),
-              }
-            )}
         </Header>
         <Content
           style={{
