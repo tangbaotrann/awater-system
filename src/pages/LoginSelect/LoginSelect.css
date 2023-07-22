@@ -1,0 +1,22 @@
+/* LoginSelect.css */
+.login-select-container {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+    background-image: url('../../asset/images/bia.gif');
+    background-size: cover;
+  }
+  
+  .login-select-title {
+    color: white;
+  }
+  
+  .login-select {
+    width: 200px;
+  }
+  
+  .login-button {
+    margin-top: 20px;
+  }
