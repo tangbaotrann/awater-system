@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import TableListLocation from "./TableListSigning.js";
 import "../../../components/GlobalStyles/GlobalStyles.css";
 import "../../Manager/Contract/Contract.css";
