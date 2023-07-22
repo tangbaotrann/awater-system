@@ -63,9 +63,12 @@ const Login = () => {
   //     }
   // };
 
+  const handleLoginClick = () => {
+    navigate("/");
+  };
+
   return (
-    <Form className="form position-relative">
-      <img src={background} alt="background" className="background-gif" />
+    <Form className="login-select-container position-relative">
       <br></br>
       <main className="login position-absolute top-50 start-50 translate-middle blur">
         <h1 className="text-center fw-bold text-white">Đăng nhập</h1>
@@ -108,6 +111,7 @@ const Login = () => {
             type="primary"
             htmlType="submit"
             className="login-form-button"
+            onClick={handleLoginClick}
           >
             Đăng nhập
           </Button>
