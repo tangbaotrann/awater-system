@@ -1,22 +1,35 @@
 /* LoginSelect.css */
 .login-select-container {
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-    background-image: url('../../asset/images/bia.gif');
-    background-size: cover;
-  }
-  
-  .login-select-title {
-    color: white; 
-  }
-  
-  .login-select {
-    width: 200px;
-  }
-  
-  .login-button {
-    margin-top: 20px;
-  }
+  background-image: url('../../asset/images/bia.gif');
+  background-size: cover;
+}
+
+.login-select-box {
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px 30px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.login-select-title {
+  color: white;
+  font-size: 30px;
+}
+
+.login-select {
+  width: 200px;
+  font-size: 18px;
+}
+
+.login-button {
+  margin-top: 9px;
+  font-size: 15px;
+  margin-left: 10px;
+}
