@@ -3,7 +3,7 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons/lib/icons";
 import { UserOutlined, MenuOutlined } from "@ant-design/icons";
-import { Drawer, Layout, Popover, Select } from "antd";
+import { Button, Drawer, Layout, Popover, Select } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
@@ -90,13 +90,6 @@ function DefaultLayout({ children, currentPage }) {
               </Drawer>
             </>
           )}
-          <div className="select-container">
-            <Select placeholder="Chọn nhà máy" style={{ width: 500 }}>
-              {factories.map((factory) => (
-                <Option value={factory}>{factory}</Option>
-              ))}
-            </Select>
-          </div>
 
           {!isTabletOrMobile && (
             <Button
@@ -121,29 +114,11 @@ function DefaultLayout({ children, currentPage }) {
             filterOption={(input, option) =>
               (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
             }
-            options={[
-              {
-                value: "NM1",
-                label: "NM1",
-              },
-              {
-                value: "MN2",
-                label: "MN2",
-              },
-              {
-                value: "NM3",
-                label: "NM3",
-              },
-              {
-                value: "NM4",
-                label: "NM4",
-              },
-              {
-                value: "NM5",
-                label: "NM5",
-              },
-            ]}
-          />
+          >
+            {factories.map((factory) => (
+              <Option value={factory}>{factory}</Option>
+            ))}
+          </Select>
 
           <div
             className={
@@ -157,7 +132,6 @@ function DefaultLayout({ children, currentPage }) {
 
             <h4>Manager Name</h4>
           </div>
-
         </Header>
         <Content
           style={{
