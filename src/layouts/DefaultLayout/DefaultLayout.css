@@ -90,3 +90,27 @@
     width: 100%;
     object-fit: cover;
 }
+.select-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 991px) {
+    .select-container {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      margin-top: 10px;
+      width: 200px;
+ 
+    }
+  }
+  
+  .site-layout-info-mobile {
+    position: absolute;
+    right: 10px;
+    top: 60px;
+  }
+  
+  
