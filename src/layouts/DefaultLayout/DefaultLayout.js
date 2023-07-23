@@ -4,8 +4,8 @@ import {
 } from "@ant-design/icons/lib/icons";
 import { UserOutlined, MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer, Layout, Popover, Select } from "antd";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
 import "./DefaultLayout.css";
@@ -14,10 +14,19 @@ import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
 import { primaryLogo } from "../../asset/images";
 import { Link } from "react-router-dom";
 import endPoints from "../../routers";
-
+import { fetchApiAllFactory } from "../../redux/slices/factorySlice/factorySlice";
+import { fetchApiAllFactorySelector } from "../../redux/selector";
 const { Header, Sider, Content } = Layout;
 
 function DefaultLayout({ children, currentPage }) {
+
+  const factoryNames = useSelector(fetchApiAllFactorySelector);
+  const firstInputRef = useRef();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchApiAllFactory());
+  }, []);
+
   const [collapsed, setCollapsed] = useState(false);
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState("left");
@@ -104,7 +113,7 @@ function DefaultLayout({ children, currentPage }) {
             />
           )}
 
-          <Select
+          {/* <Select
             className="position-absolute top-50 start-50 translate-middle w-100"
             showSearch
             placeholder="Chọn nhà máy"
@@ -118,8 +127,21 @@ function DefaultLayout({ children, currentPage }) {
             {factories.map((factory) => (
               <Option value={factory}>{factory}</Option>
             ))}
-          </Select>
-
+          </Select> */}
+          <Select
+            className="login-select"
+            ref={firstInputRef}
+            options={
+              factoryNames?.length <= 0
+                ? []
+                : factoryNames.map((_factory) => ({
+                    label: _factory.tenNhaMay,
+                    value: _factory.id,
+                  }))
+            }
+            fieldNames="nhaMayId"
+            placeholder="Chọn nhà máy"
+          />
           <div
             className={
               isTabletOrMobile ? "site-layout-info-mobile" : "site-layout-info"

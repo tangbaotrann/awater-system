@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Select, Button, Form, Row } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./LoginSelect.css";
-
-const { Option } = Select;
+import { fetchApiAllFactory } from "../../redux/slices/factorySlice/factorySlice";
+import { fetchApiAllFactorySelector } from "../../redux/selector";
+import { useDispatch, useSelector } from "react-redux";
 
 function LoginSelect() {
-  const factories = ["Nhà máy 1", "Nhà máy 2", "Nhà máy 3", "Nhà máy 4"];
+  const factoryNames = useSelector(fetchApiAllFactorySelector);
+  const firstInputRef = useRef();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchApiAllFactory());
+  }, []);
   const navigate = useNavigate();
-
   const handleLoginClick = () => {
     navigate("/login");
   };
@@ -20,13 +25,18 @@ function LoginSelect() {
         <Row>
           <Select
             className="login-select"
+            ref={firstInputRef}
+            options={
+              factoryNames?.length <= 0
+                ? []
+                : factoryNames.map((_factory) => ({
+                    label: _factory.tenNhaMay,
+                    value: _factory.id,
+                  }))
+            }
+            fieldNames="nhaMayId"
             placeholder="Chọn nhà máy"
-            style={{ marginTop: "10px" }}
-          >
-            {factories.map((factory) => (
-              <Option value={factory}>{factory}</Option>
-            ))}
-          </Select>
+          />
           <Button
             className="login-button"
             type="primary"
