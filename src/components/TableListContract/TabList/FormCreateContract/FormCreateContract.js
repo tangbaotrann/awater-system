@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row, Tabs } from "antd";
+import { Button, Col, Collapse, Form, Row } from "antd";
 import {
   CloseOutlined,
   FormOutlined,
@@ -26,24 +26,25 @@ import {
 } from "../../../../redux/selector";
 
 // Tabs
-const tabs = [
-  {
-    id: "1",
-    label: "Thông tin khách hàng",
-  },
-  {
-    id: "2",
-    label: "Thông tin hợp đồng",
-  },
-  {
-    id: "3",
-    label: "Đồng hồ",
-  },
-  {
-    id: "4",
-    label: "Chi tiết đồng hồ",
-  },
-];
+// const itemsCollapse = [
+//   {
+//     id: "1",
+//     label: "Thông tin khách hàng",
+//     children: <InfoCustomer />,
+//   },
+//   {
+//     id: "2",
+//     label: "Thông tin hợp đồng",
+//   },
+//   {
+//     id: "3",
+//     label: "Đồng hồ",
+//   },
+//   {
+//     id: "4",
+//     label: "Chi tiết đồng hồ",
+//   },
+// ];
 
 function FormCreateContract({ tabList, hideModal, isUpdate }) {
   const [formMain] = Form.useForm();
@@ -166,260 +167,215 @@ function FormCreateContract({ tabList, hideModal, isUpdate }) {
     <>
       <div className="wrapper-tab-modal-create-contract">
         {/* Tabs options */}
-        <Row>
-          <Col xs={24} sm={24} md={24} lg={24}>
-            <Tabs
-              type="card"
-              size="small"
-              // onChange={handleChangeTabs}
-              defaultActiveKey={tabs[0]}
-              items={tabs.map((_tab) => {
-                return {
-                  label: _tab.label,
-                  key: _tab.id,
-                  tabKey: _tab.id,
-                  children: (
-                    <Form
-                      form={formMain}
-                      onFinishFailed={handleFailed}
-                      fields={[
-                        {
-                          name: "keyIdOfCustomer",
-                          value: tabList ? tabList?.keyId : "",
-                        },
-                        {
-                          name: "loaiKhachHang",
-                          value: tabList ? tabList?.loaiKhachHang : "",
-                        },
-                        {
-                          name: "nhaMayId",
-                          value: tabList ? tabList?.nhaMayId : "",
-                        },
-                        {
-                          name: "nguonNuoc",
-                          value: tabList ? tabList?.nguonNuoc : "",
-                        },
-                        {
-                          name: "tenKhachHang",
-                          value: tabList ? tabList?.tenKhachHang : "",
-                        },
-                        {
-                          name: "soGcn",
-                          value: tabList ? tabList?.soGcn : "",
-                        },
-                        {
-                          name: "tenThuongGoi",
-                          value: tabList ? tabList?.tenThuongGoi : "",
-                        },
-                        { name: "soHo", value: tabList ? tabList?.soHo : "" },
-                        {
-                          name: "soKhau",
-                          value: tabList ? tabList?.soKhau : "",
-                        },
-                        {
-                          name: "email",
-                          value: tabList ? tabList?.email : "",
-                        },
-                        {
-                          name: "dienThoai",
-                          value: tabList ? tabList?.dienThoai : "",
-                        },
-                        {
-                          name: "doiTuong",
-                          value: tabList ? tabList?.doiTuong : "",
-                        },
-                        {
-                          name: "soCmnd",
-                          value: tabList ? tabList?.soCmnd : "",
-                        },
-                        {
-                          name: "ngayCapCmnd",
-                          value: tabList ? dayjs(tabList?.ngayCapCmnd) : "",
-                        },
-                        {
-                          name: "noiCapCmnd",
-                          value: tabList ? tabList?.noiCapCmnd : "",
-                        },
-                        {
-                          name: "maSoThue",
-                          value: tabList ? tabList?.maSoThue : "",
-                        },
-                        {
-                          name: "ghiChu",
-                          value: tabList ? tabList?.ghiChu : "",
-                        },
-                        {
-                          name: "nguoiDaiDien",
-                          value: tabList ? tabList?.nguoiDaiDien : "",
-                        },
-                      ]}
-                    >
-                      {/* Mã khách hàng */}
-                      {/* <Row>
-                        <Col xs={24} sm={24} md={12} lg={10}>
-                          <Form.Item name="code_customer" label="Mã khách hàng">
-                            <Input
-                              name="code_customer"
-                              placeholder="Nhập mã khách hàng"
-                            />
-                          </Form.Item>
-                        </Col>
-                      </Row> */}
+        <Form
+          form={formMain}
+          onFinishFailed={handleFailed}
+          fields={[
+            {
+              name: "keyIdOfCustomer",
+              value: tabList ? tabList?.keyId : "",
+            },
+            {
+              name: "loaiKhachHang",
+              value: tabList ? tabList?.loaiKhachHang : "",
+            },
+            {
+              name: "nhaMayId",
+              value: tabList ? tabList?.nhaMayId : "",
+            },
+            {
+              name: "nguonNuoc",
+              value: tabList ? tabList?.nguonNuoc : "",
+            },
+            {
+              name: "tenKhachHang",
+              value: tabList ? tabList?.tenKhachHang : "",
+            },
+            {
+              name: "soGcn",
+              value: tabList ? tabList?.soGcn : "",
+            },
+            {
+              name: "tenThuongGoi",
+              value: tabList ? tabList?.tenThuongGoi : "",
+            },
+            { name: "soHo", value: tabList ? tabList?.soHo : "" },
+            {
+              name: "soKhau",
+              value: tabList ? tabList?.soKhau : "",
+            },
+            {
+              name: "email",
+              value: tabList ? tabList?.email : "",
+            },
+            {
+              name: "dienThoai",
+              value: tabList ? tabList?.dienThoai : "",
+            },
+            {
+              name: "doiTuong",
+              value: tabList ? tabList?.doiTuong : "",
+            },
+            {
+              name: "soCmnd",
+              value: tabList ? tabList?.soCmnd : "",
+            },
+            {
+              name: "ngayCapCmnd",
+              value: tabList ? dayjs(tabList?.ngayCapCmnd) : "",
+            },
+            {
+              name: "noiCapCmnd",
+              value: tabList ? tabList?.noiCapCmnd : "",
+            },
+            {
+              name: "maSoThue",
+              value: tabList ? tabList?.maSoThue : "",
+            },
+            {
+              name: "ghiChu",
+              value: tabList ? tabList?.ghiChu : "",
+            },
+            {
+              name: "nguoiDaiDien",
+              value: tabList ? tabList?.nguoiDaiDien : "",
+            },
+          ]}
+        >
+          {/* Mã khách hàng */}
+          {/* <Row>
+            <Col xs={24} sm={24} md={12} lg={10}>
+              <Form.Item name="code_customer" label="Mã khách hàng">
+                <Input name="code_customer" placeholder="Nhập mã khách hàng" />
+              </Form.Item>
+            </Col>
+          </Row> */}
 
-                      {/* Thông tin khách hàng + Đồng hồ */}
-                      <Row>
-                        {_tab.id === "1" ? (
-                          <Col xs={24} sm={24} md={24} lg={24}>
-                            <InfoCustomer />
-                          </Col>
-                        ) : _tab.id === "2" ? (
-                          <Col xs={24} sm={24} md={24} lg={24}>
-                            <InfoContract />
-                          </Col>
-                        ) : null}
-                      </Row>
+          <Row>
+            <Col xs={24} sm={24} md={24} lg={12}>
+              <InfoCustomer />
+            </Col>
 
-                      {/* Thông tin hợp đồng + Chi tiết đồng hồ */}
-                      <Row className="space-col">
-                        {_tab.id === "3" ? (
-                          <Col
-                            xs={24}
-                            sm={24}
-                            md={24}
-                            lg={24}
-                            className={
-                              !isTabletOrMobile
-                                ? ""
-                                : "collapse-space-top-mobile-item"
-                            }
-                          >
-                            <InfoClock _tab={_tab.id} />
-                          </Col>
-                        ) : _tab.id === "4" ? (
-                          <Col
-                            xs={24}
-                            sm={24}
-                            md={24}
-                            lg={24}
-                            className={
-                              !isTabletOrMobile
-                                ? ""
-                                : "collapse-space-top-mobile-item"
-                            }
-                          >
-                            <InfoDetailClock />
-                          </Col>
-                        ) : null}
-                      </Row>
+            <Col
+              xs={24}
+              sm={24}
+              md={24}
+              lg={12}
+              className={
+                !isTabletOrMobile ? "" : "collapse-space-top-mobile-item"
+              }
+            >
+              <InfoClock />
+            </Col>
 
-                      {/* Bottom */}
-                      <Row>
-                        <Col
-                          xs={24}
-                          sm={24}
-                          md={12}
-                          lg={12}
-                          className={
-                            isTabletOrMobile
-                              ? "func-form-create-contract-mobile"
-                              : ""
-                          }
-                        >
-                          <Button
-                            htmlType="submit"
-                            className="custom-btn-attachment"
-                          >
-                            <FormOutlined />
-                            Tệp đính kèm
-                          </Button>
-                        </Col>
+            <Col xs={24} sm={24} md={24} lg={12}>
+              <InfoContract />
+            </Col>
 
-                        {/* Buttons */}
-                        <Col
-                          xs={24}
-                          sm={24}
-                          md={12}
-                          lg={12}
-                          className={
-                            isTabletOrMobile
-                              ? "func-form-create-contract-mobile"
-                              : ""
-                          }
-                        >
-                          <Button
-                            htmlType="submit"
-                            className={
-                              isTabletOrMobile
-                                ? "footer-func-btn-item-report custom-btn-agreement"
-                                : "gutter-item custom-btn-agreement"
-                            }
-                          >
-                            <FormOutlined />
-                            Biên bản thỏa thuận
-                          </Button>
+            <Col
+              xs={24}
+              sm={24}
+              md={24}
+              lg={12}
+              className={
+                !isTabletOrMobile ? "" : "collapse-space-top-mobile-item"
+              }
+            >
+              <InfoDetailClock />
+            </Col>
+          </Row>
 
-                          <Button
-                            htmlType="submit"
-                            className={
-                              isTabletOrMobile
-                                ? "footer-func-btn-item-print custom-btn-export"
-                                : "gutter-item custom-btn-export"
-                            }
-                          >
-                            <PrinterOutlined />
-                            In hợp đồng
-                          </Button>
+          {/* Bottom */}
+          <Row>
+            <Col
+              xs={24}
+              sm={24}
+              md={12}
+              lg={12}
+              className={
+                isTabletOrMobile ? "func-form-create-contract-mobile" : ""
+              }
+            >
+              <Button htmlType="submit" className="custom-btn-attachment">
+                <FormOutlined />
+                Tệp đính kèm
+              </Button>
+            </Col>
 
-                          <Button
-                            key="createContractSaveAndAdd"
-                            onClick={handleSaveAndAddContract}
-                            className={
-                              isTabletOrMobile
-                                ? "footer-func-btn-item-save-add custom-btn-save-and-add"
-                                : "gutter-item custom-btn-save-and-add"
-                            }
-                          >
-                            <SaveOutlined />
-                            Lưu và thêm tiếp
-                          </Button>
+            {/* Buttons */}
+            <Col
+              xs={24}
+              sm={24}
+              md={12}
+              lg={12}
+              className={
+                isTabletOrMobile ? "func-form-create-contract-mobile" : ""
+              }
+            >
+              <Button
+                htmlType="submit"
+                className={
+                  isTabletOrMobile
+                    ? "footer-func-btn-item-report custom-btn-agreement"
+                    : "gutter-item custom-btn-agreement"
+                }
+              >
+                <FormOutlined />
+                Biên bản thỏa thuận
+              </Button>
 
-                          <Button
-                            key="createContract"
-                            onClick={
-                              isUpdate
-                                ? handleUpdateContract
-                                : handleSaveContract
-                            }
-                            className={
-                              isTabletOrMobile
-                                ? "footer-func-btn-item-save custom-btn-add"
-                                : "gutter-item custom-btn-add"
-                            }
-                          >
-                            <SaveOutlined />
-                            {isUpdate ? "Cập nhật" : "Lưu"}
-                          </Button>
+              <Button
+                htmlType="submit"
+                className={
+                  isTabletOrMobile
+                    ? "footer-func-btn-item-print custom-btn-export"
+                    : "gutter-item custom-btn-export"
+                }
+              >
+                <PrinterOutlined />
+                In hợp đồng
+              </Button>
 
-                          <Button
-                            className={
-                              isTabletOrMobile
-                                ? "footer-func-btn-item-close custom-btn-close"
-                                : "gutter-item custom-btn-close"
-                            }
-                            onClick={() => hideModal()}
-                          >
-                            <CloseOutlined />
-                            Đóng
-                          </Button>
-                        </Col>
-                      </Row>
-                    </Form>
-                  ),
-                };
-              })}
-            ></Tabs>
-          </Col>
-        </Row>
+              <Button
+                key="createContractSaveAndAdd"
+                onClick={handleSaveAndAddContract}
+                className={
+                  isTabletOrMobile
+                    ? "footer-func-btn-item-save-add custom-btn-save-and-add"
+                    : "gutter-item custom-btn-save-and-add"
+                }
+              >
+                <SaveOutlined />
+                Lưu và thêm tiếp
+              </Button>
+
+              <Button
+                key="createContract"
+                onClick={isUpdate ? handleUpdateContract : handleSaveContract}
+                className={
+                  isTabletOrMobile
+                    ? "footer-func-btn-item-save custom-btn-add"
+                    : "gutter-item custom-btn-add"
+                }
+              >
+                <SaveOutlined />
+                {isUpdate ? "Cập nhật" : "Lưu"}
+              </Button>
+
+              <Button
+                className={
+                  isTabletOrMobile
+                    ? "footer-func-btn-item-close custom-btn-close"
+                    : "gutter-item custom-btn-close"
+                }
+                onClick={() => hideModal()}
+              >
+                <CloseOutlined />
+                Đóng
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       </div>
     </>
   );
