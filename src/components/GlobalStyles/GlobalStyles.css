@@ -538,35 +538,43 @@ html *::-webkit-scrollbar-track {
     }
 
     .container-info-contract {
-        height: 42vh;
+        height: 50vh;
         overflow-y: scroll;
         padding: 4px;
         border-radius: 6px;
         box-shadow: 2px 2px 5px #ccc;
+        margin-right: 0;
     }
 
     .container-info-clock {
-        height: 41vh;
+        height: 50vh;
         overflow-y: scroll;
         padding: 10px;
         border-radius: 6px;
         box-shadow: 2px 2px 5px #ccc;
+        margin-bottom: 10px;
+        margin-top: -10px;
     }
     
     .container-info-customer {
-        height: 42vh;
+        height: 50vh;
+        overflow-y: scroll;
+        padding: 10px;
+        border-radius: 6px;
+        box-shadow: 2px 2px 5px #ccc;
+        margin-right: 0;
+    }
+
+    .container-detail-clock {
+        height: 50vh;
         overflow-y: scroll;
         padding: 10px;
         border-radius: 6px;
         box-shadow: 2px 2px 5px #ccc;
     }
 
-    .container-detail-clock {
-        height: 41vh;
-        overflow-y: scroll;
-        padding: 10px;
-        border-radius: 6px;
-        box-shadow: 2px 2px 5px #ccc;
+    .custom-btn-attachment {
+        margin-top: 20px;
     }
 
     .tablist-func-clock-btn-mobile {
@@ -949,6 +957,21 @@ html *::-webkit-scrollbar-track {
     .info-his-item-val-sdt {
         margin-left: 60px;
     }
+
+    /* contract */
+    .container-info-customer {
+        height: 56vh;
+        margin-right: 0;
+    }
+
+    .container-info-clock {
+        margin-bottom: 10px;
+    }
+
+    .container-info-contract {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }
   
 /* Thiết kế cho kích thước màn hình từ 768px trở lên (desktop) */
@@ -1094,6 +1117,25 @@ html *::-webkit-scrollbar-track {
 
     .container-info-customer {
         padding: 10px;
+    }
+
+    /* contract */
+    .container-info-customer {
+        height: 56vh;
+        margin-right: 0;
+    }
+
+    .container-info-contract {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .container-info-clock {
+        margin-bottom: 10px;
+    }
+
+    .container-detail-clock {
+        margin-bottom: 10px;
     }
 }
   

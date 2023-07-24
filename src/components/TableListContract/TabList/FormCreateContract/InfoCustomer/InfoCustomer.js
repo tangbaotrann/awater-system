@@ -3,6 +3,7 @@ import {
   Button,
   Col,
   DatePicker,
+  Divider,
   Form,
   Input,
   InputNumber,
@@ -25,7 +26,7 @@ function InfoCustomer() {
       xs: { span: 22 },
       sm: { span: 5 },
       md: { span: 7 },
-      lg: { span: 10 },
+      lg: { span: 8 },
     },
     wrapperCol: {
       xs: { span: 22 },
@@ -42,6 +43,10 @@ function InfoCustomer() {
   return (
     <div className="container-info-customer">
       <Row>
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Divider orientation="left">Thông tin khách hàng</Divider>
+        </Col>
+
         {/* Mã khách hàng + Button reset */}
         <Col xs={20} sm={22} md={11} lg={10}>
           <Form.Item
@@ -74,7 +79,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Loại khách hàng */}
-        <Col xs={24} sm={22} md={12} lg={10}>
+        <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
             name="loaiKhachHang"
             label="Loại KH"
@@ -169,7 +174,7 @@ function InfoCustomer() {
         <Col xs={24} sm={22} md={1} lg={1}></Col>
 
         {/* Ghi chú */}
-        <Col xs={24} sm={22} md={12} lg={10}>
+        <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
             name="ghiChu"
             label="Ghi chú: "
@@ -222,10 +227,10 @@ function InfoCustomer() {
         </Col>
 
         {/* Người ĐD */}
-        <Col xs={24} sm={22} md={12} lg={10}>
+        <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
             name="nguoiDaiDien"
-            label="Người đại diện: "
+            label="Người ĐD: "
             {...formItemLayout}
             rules={[
               {
@@ -261,7 +266,7 @@ function InfoCustomer() {
         <Col xs={24} sm={22} md={11} lg={10}>
           <Form.Item
             name="tenThuongGoi"
-            label="Tên thường gọi"
+            label="Tên TG"
             {...formItemLayout}
             rules={[
               {
@@ -277,7 +282,7 @@ function InfoCustomer() {
         <Col xs={24} sm={22} md={1} lg={1}></Col>
 
         {/* Số hộ */}
-        <Col xs={24} sm={22} md={12} lg={10}>
+        <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
             name="soHo"
             label="Số hộ: "
@@ -329,7 +334,7 @@ function InfoCustomer() {
         <Col xs={24} sm={22} md={1} lg={1}></Col>
 
         {/* Email + button (email) */}
-        <Col xs={24} sm={22} md={12} lg={10}>
+        <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
             name="email"
             label="Email: "
@@ -374,7 +379,7 @@ function InfoCustomer() {
         <Col xs={24} sm={22} md={1} lg={1}></Col>
 
         {/* Đối tượng */}
-        <Col xs={24} sm={22} md={12} lg={10}>
+        <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
             name="doiTuong"
             label="Đối tượng: "
@@ -426,7 +431,7 @@ function InfoCustomer() {
         <Col xs={24} sm={22} md={1} lg={1}></Col>
 
         {/* Ngày cấp */}
-        <Col xs={24} sm={22} md={12} lg={10}>
+        <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
             name="ngayCapCmnd"
             label="Ngày cấp"
@@ -471,7 +476,7 @@ function InfoCustomer() {
         <Col xs={24} sm={22} md={1} lg={1}></Col>
 
         {/* Mã số thuế */}
-        <Col xs={24} sm={22} md={12} lg={10}>
+        <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
             name="maSoThue"
             label="Mã số thuế: "
