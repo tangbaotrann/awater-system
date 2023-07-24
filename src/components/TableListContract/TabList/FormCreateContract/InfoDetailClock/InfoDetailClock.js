@@ -2,6 +2,7 @@ import {
   Button,
   Col,
   DatePicker,
+  Divider,
   Form,
   Input,
   InputNumber,
@@ -25,16 +26,16 @@ function InfoDetailClock() {
 
   const formItemLayout = {
     labelCol: {
-      xs: { span: 24 },
-      sm: { span: 4 },
-      md: { span: 10 },
+      xs: { span: 22 },
+      sm: { span: 5 },
+      md: { span: 7 },
       lg: { span: 8 },
     },
     wrapperCol: {
-      xs: { span: 24 },
-      sm: { span: 24 },
-      md: { span: 24 },
-      lg: { span: 24 },
+      xs: { span: 22 },
+      sm: { span: 22 },
+      md: { span: 22 },
+      lg: { span: 22 },
     },
   };
 
@@ -45,8 +46,12 @@ function InfoDetailClock() {
   return (
     <div className="container-detail-clock">
       <Row>
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Divider orientation="left">Thông tin chi tiết đồng hồ</Divider>
+        </Col>
+
         {/* Id */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="keyIdOfClockDetail"
             label="Mã đồng hồ"
@@ -62,8 +67,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Đơn vị HC (Xã) */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="donViHCXa"
             label="ĐVHC ở xã"
@@ -87,97 +94,8 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
-        {/* Đơn vị HC (Huyện) */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item
-            name="donViHCHuyen"
-            label="ĐVHC ở huyện"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải chọn đơn vị HC ở huyện.",
-              },
-            ]}
-          >
-            <Select
-              fieldNames="donViHCHuyen"
-              options={[
-                { value: "Bắc Giang", label: "Bắc Giang" },
-                { value: "Thái Bình", label: "Thái Bình" },
-                { value: "Tỉnh Lào Cai", label: "Tỉnh Lào Cai" },
-              ]}
-              placeholder="Chọn đơn vị hành chính ở huyện"
-            />
-          </Form.Item>
-        </Col>
-
-        {/* Đơn vị HC (Tỉnh) */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item
-            name="donViHCTinh"
-            label="ĐVHC ở tỉnh"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải chọn đơn vị HC ở tỉnh.",
-              },
-            ]}
-          >
-            <Select
-              fieldNames="donViHCTinh"
-              options={[
-                { value: "Bắc Giang", label: "Bắc Giang" },
-                { value: "Thái Bình", label: "Thái Bình" },
-                { value: "Tỉnh Lào Cai", label: "Tỉnh Lào Cai" },
-              ]}
-              placeholder="Chọn đơn vị hành chính ở tỉnh"
-            />
-          </Form.Item>
-        </Col>
-
-        {/* Vùng -> load from api */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item
-            name="phamVi"
-            label="Phạm vi"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải chọn phạm vi.",
-              },
-            ]}
-          >
-            <Select
-              fieldNames="phamVi"
-              options={[
-                { value: "1", label: "baovinh - Bảo Vinh" },
-                { value: "2", label: "hungdao - Hưng Đạo_TB" },
-                { value: "3", label: "lienha - Liên Hà" },
-                { value: "4", label: "lamsan - Lâm Sản" },
-                { value: "5", label: "leloiQ - Lê Lợi_Quang_TB" },
-                { value: "6", label: "leloiT - Lê Lợi_Tuấn_TB" },
-                { value: "7", label: "nguyetlu - Nguyệt Lũ_TB" },
-                { value: "8", label: "thuongkiet - Thường Kiệt_TB" },
-                { value: "9", label: "trungvuong - Trung Vương_TB" },
-                { value: "10", label: "Tuyến 1 - Đông Lỗ - Tuyến 1 - Đông Lỗ" },
-                { value: "11", label: "tanan - Tân An" },
-                { value: "12", label: "tanlap - Tân Lập_TB" },
-                { value: "13", label: "Taytien - Tây Tiến" },
-                { value: "14", label: "Vulang - Vũ Lăng" },
-                { value: "15", label: "dongcao1 - Đông Cao 1_TB" },
-                { value: "16", label: "dongcao2T - Đông Cao 2_Tường_TB" },
-                { value: "17", label: "dongcao2D - Đông Cao 2_Đảm_TB" },
-              ]}
-              placeholder="Chọn vùng"
-            />
-          </Form.Item>
-        </Col>
-
         {/* Khu vực -> load from api */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="khuVuc"
             label="Khu vực"
@@ -215,8 +133,101 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
+        {/* Đơn vị HC (Tỉnh) */}
+        <Col xs={24} sm={24} md={11} lg={12}>
+          <Form.Item
+            name="donViHCTinh"
+            label="ĐVHC ở tỉnh"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn đơn vị HC ở tỉnh.",
+              },
+            ]}
+          >
+            <Select
+              fieldNames="donViHCTinh"
+              options={[
+                { value: "Bắc Giang", label: "Bắc Giang" },
+                { value: "Thái Bình", label: "Thái Bình" },
+                { value: "Tỉnh Lào Cai", label: "Tỉnh Lào Cai" },
+              ]}
+              placeholder="Chọn đơn vị hành chính ở tỉnh"
+            />
+          </Form.Item>
+        </Col>
+
+        {/* Vùng -> load from api */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item
+            name="phamVi"
+            label="Phạm vi"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn phạm vi.",
+              },
+            ]}
+          >
+            <Select
+              fieldNames="phamVi"
+              options={[
+                { value: "1", label: "baovinh - Bảo Vinh" },
+                { value: "2", label: "hungdao - Hưng Đạo_TB" },
+                { value: "3", label: "lienha - Liên Hà" },
+                { value: "4", label: "lamsan - Lâm Sản" },
+                { value: "5", label: "leloiQ - Lê Lợi_Quang_TB" },
+                { value: "6", label: "leloiT - Lê Lợi_Tuấn_TB" },
+                { value: "7", label: "nguyetlu - Nguyệt Lũ_TB" },
+                { value: "8", label: "thuongkiet - Thường Kiệt_TB" },
+                { value: "9", label: "trungvuong - Trung Vương_TB" },
+                { value: "10", label: "Tuyến 1 - Đông Lỗ - Tuyến 1 - Đông Lỗ" },
+                { value: "11", label: "tanan - Tân An" },
+                { value: "12", label: "tanlap - Tân Lập_TB" },
+                { value: "13", label: "Taytien - Tây Tiến" },
+                { value: "14", label: "Vulang - Vũ Lăng" },
+                { value: "15", label: "dongcao1 - Đông Cao 1_TB" },
+                { value: "16", label: "dongcao2T - Đông Cao 2_Tường_TB" },
+                { value: "17", label: "dongcao2D - Đông Cao 2_Đảm_TB" },
+              ]}
+              placeholder="Chọn vùng"
+            />
+          </Form.Item>
+        </Col>
+
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
+        {/* Đơn vị HC (Huyện) */}
+        <Col xs={24} sm={24} md={11} lg={12}>
+          <Form.Item
+            name="donViHCHuyen"
+            label="ĐVHC ở huyện"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn đơn vị HC ở huyện.",
+              },
+            ]}
+          >
+            <Select
+              fieldNames="donViHCHuyen"
+              options={[
+                { value: "Bắc Giang", label: "Bắc Giang" },
+                { value: "Thái Bình", label: "Thái Bình" },
+                { value: "Tỉnh Lào Cai", label: "Tỉnh Lào Cai" },
+              ]}
+              placeholder="Chọn đơn vị hành chính ở huyện"
+            />
+          </Form.Item>
+        </Col>
+
         {/* Người quản lý id */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="nguoiQuanLyId"
             label="Người QL"
@@ -244,8 +255,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Tuyến đọc id (load from api) */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="tuyenDocId"
             label="Tuyến đọc"
@@ -273,10 +286,10 @@ function InfoDetailClock() {
         </Col>
 
         {/* Ngày lắp đặt */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="ngayLapDatOfDetailClock"
-            label="Ngày lắp đặt"
+            label="Ngày LĐ"
             {...formItemLayout}
             rules={[
               {
@@ -293,8 +306,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Ngày sử dụng */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="ngaySDOfDetailClock"
             label="Ngày sử dụng"
@@ -315,7 +330,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Địa chỉ */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="diachi"
             label="Địa chỉ"
@@ -335,8 +350,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Nước sản xuất */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="nuocSX"
             label="Nước sản xuất"
@@ -356,8 +373,27 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        {/* Loại đồng hồ */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item
+            name="loaiDongHo"
+            label="Loại ĐH"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập loại đồng hồ.",
+              },
+            ]}
+          >
+            <Input name="loaiDongHo" placeholder="Loại đồng hồ" />
+          </Form.Item>
+        </Col>
+
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Hãng sản xuất */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="hangSX"
             label="Hãng sản xuất"
@@ -377,25 +413,8 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
-        {/* Loại đồng hồ */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item
-            name="loaiDongHo"
-            label="Loại ĐH"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải nhập loại đồng hồ.",
-              },
-            ]}
-          >
-            <Input name="loaiDongHo" placeholder="Loại đồng hồ" />
-          </Form.Item>
-        </Col>
-
         {/* Đường kính */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="duongKinh"
             label="Đường kính"
@@ -415,8 +434,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Hộp bảo vệ */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="hopBaoVe"
             label="Hộp bảo vệ"
@@ -444,10 +465,10 @@ function InfoDetailClock() {
         </Col>
 
         {/* Vị trí lắp đặt */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="viTriLapDat"
-            label="Vị trí lắp đặt"
+            label="Vị trí LĐ"
             {...formItemLayout}
             rules={[
               {
@@ -464,8 +485,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Ngày kiểm định */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="ngayKiemDinh"
             label="Ngày KĐ"
@@ -486,7 +509,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Hiệu lực kiểm định */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="hieuLucKiemDinh"
             label="Hiệu lực KĐ"
@@ -506,8 +529,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Lý do kiểm định */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="lyDoKiemDinh"
             label="Lý do KĐ"
@@ -532,10 +557,10 @@ function InfoDetailClock() {
         </Col>
 
         {/* Van 1 chiều */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="vanMotChieu"
-            label="Van một chiều"
+            label="Van 1 chiều"
             {...formItemLayout}
             rules={[
               {
@@ -552,8 +577,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Số tem */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="soTem"
             label="Số tem"
@@ -573,8 +600,31 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        {/* Hình thức xử lý */}
+        <Col xs={24} sm={24} md={11} lg={10}>
+          <Form.Item
+            name="hinhThucXuLy"
+            label="HT xử lý"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập hình thức xử lý.",
+              },
+            ]}
+          >
+            <Input
+              name="hinhThucXuLy"
+              placeholder="Nhập hình thức xử lý"
+              className="space-right-10"
+            />
+          </Form.Item>
+        </Col>
+
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Số phiếu thay */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="soPhieuThay"
             label="Số phiếu thay"
@@ -594,29 +644,8 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
-        {/* Hình thức xử lý */}
-        <Col xs={24} sm={24} md={8} lg={8}>
-          <Form.Item
-            name="hinhThucXuLy"
-            label="Hình thức xử lý"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải nhập hình thức xử lý.",
-              },
-            ]}
-          >
-            <Input
-              name="hinhThucXuLy"
-              placeholder="Nhập hình thức xử lý"
-              className="space-right-10"
-            />
-          </Form.Item>
-        </Col>
-
         {/* Lý do thay */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="lyDoThay"
             label="Lý do thay"
@@ -636,8 +665,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Lý do hủy */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="lyDoHuy"
             label="Lý do hủy"
@@ -658,7 +689,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Seri + Checkbox (Seri) */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="seriDongHo"
             label="Seri"
@@ -681,8 +712,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Seri chì */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="seriChi"
             label="Seri chì"
@@ -699,7 +732,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Trạng thái */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="trangThaiSuDung"
             label="Trạng thái"
@@ -719,8 +752,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Thứ tự + button (Thứ tự) */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="soThuTu"
             label="Thứ tự: "
@@ -746,7 +781,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Chỉ số bắt đầu */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item
             name="chiSoDau"
             label="CS đầu"
@@ -766,8 +801,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Chỉ số cuối */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="chiSoCuoi"
             label="CS cuối"
@@ -788,7 +825,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Đồng hồ block */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="dongHoChaId" label="ĐH block" {...formItemLayout}>
             <Select
               fieldNames="dongHoChaId"
@@ -801,15 +838,17 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Mã ĐH thay */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item name="maDHThay" label="Mã ĐH thay" {...formItemLayout}>
             <Input name="maDHThay" placeholder="Nhập mã đồng hồ thay" />
           </Form.Item>
         </Col>
 
         {/* Người thay */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="nguoiThay" label="Người thay" {...formItemLayout}>
             <Select
               fieldNames="nguoiThay"
@@ -819,8 +858,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Loại khuyến mãi */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item name="loaiKhuyenMai" label="Loại KM" {...formItemLayout}>
             <Select
               fieldNames="loaiKhuyenMai"
@@ -836,7 +877,7 @@ function InfoDetailClock() {
         </Col>
 
         {/* Khuyến mãi + text */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="khuyenMai" label="Khuyến mãi" {...formItemLayout}>
             <div className="container-label-input">
               <InputNumber
@@ -849,8 +890,10 @@ function InfoDetailClock() {
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Trạng thái ĐH lấp */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="trangThaiDHLap"
             label="Trạng thái ĐH"
@@ -865,14 +908,16 @@ function InfoDetailClock() {
         </Col>
 
         {/* Ống dẫn */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={10}>
           <Form.Item name="ongDan" label="Ống dẫn" {...formItemLayout}>
             <Input name="ongDan" placeholder="Nhập ống dẫn" />
           </Form.Item>
         </Col>
 
+        <Col xs={1} sm={1} md={1} lg={1}></Col>
+
         {/* Đai khởi thủy */}
-        <Col xs={24} sm={24} md={8} lg={8}>
+        <Col xs={24} sm={24} md={11} lg={12}>
           <Form.Item
             name="daiKhoiThuy"
             label="Đai khởi thủy"

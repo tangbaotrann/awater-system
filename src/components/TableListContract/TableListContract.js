@@ -151,27 +151,31 @@ function TableListContract() {
           rowKey="index"
           size="small"
           columns={cols}
-          dataSource={customers.map((_customer, index) => ({
-            index: index + 1,
-            loaiKhachHang: _customer.loaiKhachHang,
-            tenKhachHang: _customer.tenKhachHang,
-            keyId: _customer.keyId,
-            dienThoai: _customer.dienThoai,
-            email: _customer.email,
-            nhaMayId: _customer.nhaMayId,
-            nguonNuoc: _customer.nguonNuoc,
-            tenThuongGoi: _customer.tenThuongGoi,
-            soHo: _customer.soHo,
-            soKhau: _customer.soKhau,
-            soCmnd: _customer.soCmnd,
-            ngayCapCmnd: _customer.ngayCapCmnd,
-            noiCapCmnd: _customer.noiCapCmnd,
-            maSoThue: _customer.maSoThue,
-            soGcn: _customer.soGcn,
-            ghiChu: _customer.ghiChu,
-            doiTuong: _customer.doiTuong,
-            nguoiDaiDien: _customer.nguoiDaiDien,
-          }))}
+          dataSource={
+            customers?.length <= 0
+              ? []
+              : customers.map((_customer, index) => ({
+                  index: index + 1,
+                  loaiKhachHang: _customer.loaiKhachHang,
+                  tenKhachHang: _customer.tenKhachHang,
+                  keyId: _customer.keyId,
+                  dienThoai: _customer.dienThoai,
+                  email: _customer.email,
+                  nhaMayId: _customer.nhaMayId,
+                  nguonNuoc: _customer.nguonNuoc,
+                  tenThuongGoi: _customer.tenThuongGoi,
+                  soHo: _customer.soHo,
+                  soKhau: _customer.soKhau,
+                  soCmnd: _customer.soCmnd,
+                  ngayCapCmnd: _customer.ngayCapCmnd,
+                  noiCapCmnd: _customer.noiCapCmnd,
+                  maSoThue: _customer.maSoThue,
+                  soGcn: _customer.soGcn,
+                  ghiChu: _customer.ghiChu,
+                  doiTuong: _customer.doiTuong,
+                  nguoiDaiDien: _customer.nguoiDaiDien,
+                }))
+          }
           loading={isLoading}
           pagination={{
             pageSize: 10,

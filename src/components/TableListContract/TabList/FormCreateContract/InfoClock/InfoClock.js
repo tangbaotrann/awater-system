@@ -4,7 +4,7 @@ import {
   DashboardOutlined,
   DownloadOutlined,
   FormOutlined,
-  PlusCircleOutlined, 
+  PlusCircleOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
 import { Button, Col, Divider, Modal, Row, Table, Tooltip, Tree } from "antd";
@@ -13,11 +13,10 @@ import { useState } from "react";
 
 import { dataContractClockOnModal } from "../../../../../utils/dataContract";
 import CustomRowTooltip from "../../../../CustomRowTooltip/CustomRowTooltip";
-import InfoDetailClock from "../InfoDetailClock/InfoDetailClock";
 
 const { DirectoryTree } = Tree;
 
-function InfoClock({ _tab, tabKey }) {
+function InfoClock() {
   const [openModal, setOpenModal] = useState(false);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
@@ -28,6 +27,7 @@ function InfoClock({ _tab, tabKey }) {
       key: "index",
       title: "#",
       dataIndex: "index",
+      width: "6%",
     },
     {
       key: "status",
@@ -123,8 +123,12 @@ function InfoClock({ _tab, tabKey }) {
   return (
     <div className="container-info-clock">
       <Row>
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <Divider orientation="left">Đồng hồ</Divider>
+        </Col>
+
         {/* Table */}
-        <Col xs={24} sm={24} md={24} lg={22}>
+        <Col xs={24} sm={24} md={24} lg={20}>
           <div className="tablist-tbl-clock-on-modal">
             <Table
               columns={colsClock}
@@ -136,26 +140,12 @@ function InfoClock({ _tab, tabKey }) {
                 // date_use: _clock.date_use,
               }))}
               pagination={{
-                pageSize: 10,
+                pageSize: 5,
               }}
               rowKey="index"
               size="small"
               scroll={{
-                x: 500,
-                y: 350,
-              }}
-              onRow={(record, index) => {
-                return {
-                  onDoubleClick: () => {
-                    console.log(_tab, tabKey);
-                    return _tab === tabKey && <InfoDetailClock />;
-                  },
-                };
-              }}
-              components={{
-                body: {
-                  row: CustomRowTooltip,
-                },
+                x: 550,
               }}
               style={{ marginRight: "10px" }}
             ></Table>
@@ -167,7 +157,7 @@ function InfoClock({ _tab, tabKey }) {
           xs={24}
           sm={24}
           md={24}
-          lg={2}
+          lg={4}
           className={isTabletOrMobile ? "func-info-clock-btn-mobile" : ""}
         >
           <Button
