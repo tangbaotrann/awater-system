@@ -84,9 +84,9 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
-      ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
-        currentPage === constants.CATEGORY_SCOPE.key ? (
-        <ListScope />
+      // ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
+      //   currentPage === constants.CATEGORY_SCOPE.key ? (
+      //   <ListScope />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||
         currentPage === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ? (
         <ListReasons />

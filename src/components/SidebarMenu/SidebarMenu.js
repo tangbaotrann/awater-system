@@ -164,10 +164,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_CLOCK.label,
               key: constants.CATEGORY_CLOCK.key,
             },
-            {
-              label: constants.CATEGORY_SCOPE.label,
-              key: constants.CATEGORY_SCOPE.key,
-            },
+            // {
+            //   label: constants.CATEGORY_SCOPE.label,
+            //   key: constants.CATEGORY_SCOPE.key,
+            // },
             {
               label: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.label,
               key: constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key,
