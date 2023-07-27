@@ -180,6 +180,24 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               label: constants.CATEGORY_WATCH.label,
               key: constants.CATEGORY_WATCH.key,
             },
+            {
+              label: constants.CATEGORY_ADMINISTRATIVE.label,
+              key: constants.CATEGORY_ADMINISTRATIVE.key,
+              children: [
+                {
+                  label: constants.CATEGORY_CITY.label,
+                  key: constants.CATEGORY_CITY.key,
+                },
+                {
+                  label: constants.CATEGORY_DISTRICT.label,
+                  key: constants.CATEGORY_DISTRICT.key,
+                },
+                {
+                  label: constants.CATEGORY_WARD.label,
+                  key: constants.CATEGORY_WARD.key,
+                },
+              ],
+            },
           ],
         },
       ]}
@@ -333,12 +351,22 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
             "currentPage",
             constants.CATEGORY_CUSTOMER_TYPE.key
           );
-        } else if (item.key === constants.CATEGORY_WATCH.key) {
+        } else if (item.key === constants.CATEGORY_CITY.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
-          sessionStorage.setItem("currentPage", constants.CATEGORY_WATCH.key);
+          sessionStorage.setItem("currentPage", constants.CATEGORY_CITY.key);
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_DISTRICT.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_DISTRICT.key
+          );
+          isTabletOrMobile && onCloseDrawer();
+        } else if (item.key === constants.CATEGORY_WARD.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem("currentPage", constants.CATEGORY_WARD.key);
           isTabletOrMobile && onCloseDrawer();
         }
-
         // menu 5
         else if (item.key === constants.FAILURE.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));

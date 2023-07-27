@@ -108,6 +108,22 @@ const constants = {
     label: "DM Kỳ",
     key: "CATEGORY_SIGNING",
   },
+  CATEGORY_ADMINISTRATIVE: {
+    label: "DM Hành Chính",
+    key: "CATEGORY_ADMINISTRATIVE",
+  },
+  CATEGORY_CITY: {
+    label: "Tên Thành Phố/Tỉnh",
+    key: "CATEGORY_CITY",
+  },
+  CATEGORY_DISTRICT: {
+    label: "Tên Thành Quận/Huyện",
+    key: "CATEGORY_DISTRICT",
+  },
+  CATEGORY_WARD: {
+    label: "Tên Thành Phường/Xã",
+    key: "CATEGORY_WARD",
+  },
   COLLECT_MONEY: {
     label: "Thu tiền",
     key: "COLLECT_MONEY",

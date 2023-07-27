@@ -84,10 +84,10 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
-      // ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
+      ) : // ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
       //   currentPage === constants.CATEGORY_SCOPE.key ? (
       //   <ListScope />
-      ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||
+      sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||
         currentPage === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ? (
         <ListReasons />
       ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key ||
@@ -111,8 +111,17 @@ function Manager() {
       ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
+      ) : sidebarMenu === constants.CATEGORY_CITY.key ||
+        currentPage === constants.CATEGORY_CITY.key ? (
+        <h1>CATEGORY_CITY</h1>
+      ) : sidebarMenu === constants.CATEGORY_DISTRICT.key ||
+        currentPage === constants.CATEGORY_DISTRICT.key ? (
+        <h1>CATEGORY_DISTRICT</h1>
+      ) : sidebarMenu === constants.CATEGORY_WARD.key ||
+        currentPage === constants.CATEGORY_WARD.key ? (
+        <h1>CATEGORY_WARD</h1>
       ) : sidebarMenu === constants.PAYMENT.key ||
-        currentPage === constants.PAYMENT.key ? ( 
+        currentPage === constants.PAYMENT.key ? (
         <Payment />
       ) : sidebarMenu === constants.BLOCK_CLOCK_MANAGEMENT.key ||
         currentPage === constants.BLOCK_CLOCK_MANAGEMENT.key ? ( // menu 5
