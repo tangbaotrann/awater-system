@@ -19,7 +19,6 @@ import { fetchApiAllFactorySelector } from "../../redux/selector";
 const { Header, Sider, Content } = Layout;
 
 function DefaultLayout({ children, currentPage }) {
-
   const factoryNames = useSelector(fetchApiAllFactorySelector);
   const firstInputRef = useRef();
   const dispatch = useDispatch();
@@ -30,8 +29,8 @@ function DefaultLayout({ children, currentPage }) {
   const [collapsed, setCollapsed] = useState(false);
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState("left");
-  const { Option } = Select;
-  const factories = ["Nhà máy 1", "Nhà máy 2", "Nhà máy 3", "Nhà máy 4"];
+  // const { Option } = Select;
+  // const factories = ["Nhà máy 1", "Nhà máy 2", "Nhà máy 3", "Nhà máy 4"];
   const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
@@ -44,13 +43,12 @@ function DefaultLayout({ children, currentPage }) {
   const onChange = (e) => {
     setPlacement(e.target.value);
   };
+  const onSearch = (value) => {
+    console.log("search:", value);
+  };
 
   const onClose = () => {
     setOpen(false);
-  };
-
-  const onSearch = (value) => {
-    console.log("search:", value);
   };
 
   return (
