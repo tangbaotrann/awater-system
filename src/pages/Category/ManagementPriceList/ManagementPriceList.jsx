@@ -46,9 +46,9 @@ const ManagementPriceList = () => {
       title: "Tên đối tượng giá",
       dataIndex: "keyId",
       key: "keyId",
-      render: (text) => (
-        <span style={{ fontWeight: "bold", fontSize: "140%" }}>{text}</span>
-      ),
+      // render: (text) => (
+      //   <span style={{ fontWeight: "bold", fontSize: "140%" }}>{text}</span>
+      // ),
       // width: 70,
     },
     {
