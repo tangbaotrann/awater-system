@@ -1,9 +1,13 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 
 import "../../../components/GlobalStyles/GlobalStyles.css";
 import "../../Manager/Contract/Contract.css";
 import { Form, Input, Table, Popover, Col, Row, Tooltip } from "antd";
-import { PlusOutlined, RedoOutlined } from "@ant-design/icons";
+import {
+  PlusOutlined,
+  RedoOutlined,
+  SnippetsOutlined,
+} from "@ant-design/icons";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
 import "moment/locale/vi";
@@ -13,6 +17,7 @@ import TableListPO from "./TableListPO.js";
 import { fetchApiAllPriceListObject } from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
 import {
   btnClickTabListInvoicePrintSelector,
+  isLoadingAllPriceListObjectSelector,
   fetchApiAllPriceListObjectSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
@@ -20,13 +25,18 @@ import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintS
 moment.locale("vi");
 
 function ListPriceObject() {
+  const [resultSearchLPO, setResultSearchLPO] = useState("");
+
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const dispatch = useDispatch();
 
   const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
   const priceListObject = useSelector(fetchApiAllPriceListObjectSelector);
+  const isLoading = useSelector(isLoadingAllPriceListObjectSelector);
+
   console.log(priceListObject);
+
   useEffect(() => {
     dispatch(fetchApiAllPriceListObject());
   }, []);
@@ -45,9 +55,19 @@ function ListPriceObject() {
     //   // width: 70,
     // },
     {
-      key: "keyId",
       title: "Ký hiệu",
+      key: "keyId",
       dataIndex: "keyId",
+      filteredValue: [resultSearchLPO],
+      onFilter: (value, record) => {
+        return String(record.keyId).toLowerCase().includes(value.toLowerCase());
+      },
+      render: (text, record) => (
+        <>
+          <SnippetsOutlined />
+          {text}
+        </>
+      ),
       // width: 140,
     },
     {
@@ -96,17 +116,19 @@ function ListPriceObject() {
               </Form.Item>
             </Col>
           )}
-
           <Col span={16}>
-            <Form.Item
-              className="custom-form-item"
-              label="Nhập và Enter để tìm kiếm"
-              name="9"
-            >
-              <Input
+            <Form.Item className="custom-form-item" label="Tìm kiếm" name="9">
+              <Input.Search
                 style={{
                   width: "100%",
                 }}
+                onSearch={(value) => {
+                  setResultSearchLPO(value);
+                }}
+                onChange={(e) => {
+                  setResultSearchLPO(e.target.value);
+                }}
+                placeholder="Nhập mã đối tượng"
               />
             </Form.Item>
           </Col>
@@ -135,6 +157,7 @@ function ListPriceObject() {
           moTa: _priceListObject.moTa,
           donViTinh: _priceListObject.donViTinh,
         }))}
+        loading={isLoading}
         onRow={(record, index) => {
           return {
             onClick: () => {

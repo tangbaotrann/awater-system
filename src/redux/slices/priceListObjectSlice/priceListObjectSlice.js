@@ -6,15 +6,22 @@ import {
   deleteRequest,
 } from "../../../services";
 import { toast } from "react-toastify";
+
 const priceListObjectSlice = createSlice({
   name: "priceListObject",
   initialState: {
     data: [],
+    isLoading: false,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchApiAllPriceListObject.fulfilled, (state, action) => {
-      state.data = action.payload;
-    });
+    builder
+      .addCase(fetchApiAllPriceListObject.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchApiAllPriceListObject.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.isLoading = false;
+      });
   },
 });
 
@@ -91,12 +98,29 @@ const fetchApiDeletePriceListObject = createAsyncThunk(
     }
   }
 );
+// fetch api search PaymentMethod by id
+const fetchApiSearchByIdPriceListObject = createAsyncThunk(
+  "priceListObject/fetchApiSearchByIdPriceListObject",
+  async (idPriceListObject) => {
+    try {
+      const res = await getRequest(
+        `danh-sach-doi-tuong-gia/get-singe?id=${idPriceListObject}`
+      );
 
+      console.log("res search", res.data.data);
+
+      return res.data.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+);
 export {
   fetchApiAllPriceListObject,
   fetchApiAddPriceListObject,
   fetchApiUpdatePriceListObject,
   fetchApiDeletePriceListObject,
+  fetchApiSearchByIdPriceListObject,
 };
 
 export default priceListObjectSlice;

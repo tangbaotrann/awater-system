@@ -35,6 +35,7 @@ function ListPaymentMethod() {
   useEffect(() => {
     dispatch(fetchApiAllPaymentMethod());
   }, []);
+
   const columns = [
     {
       title: "#",
@@ -99,11 +100,7 @@ function ListPaymentMethod() {
           )}
 
           <Col span={16}>
-            <Form.Item
-              lassName="custom-form-item"
-              label="Nhập và Enter để tìm kiếm"
-              name="9"
-            >
+            <Form.Item lassName="custom-form-item" label="Tìm kiếm" name="9">
               <Input.Search
                 style={{
                   width: "100%",
@@ -114,7 +111,7 @@ function ListPaymentMethod() {
                 onChange={(e) => {
                   setResultSearch(e.target.value);
                 }}
-                placeholder="Nhập "
+                placeholder="Nhập phương thức thanh toán"
               />
             </Form.Item>
           </Col>

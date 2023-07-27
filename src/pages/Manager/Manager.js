@@ -112,7 +112,7 @@ function Manager() {
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
       ) : sidebarMenu === constants.PAYMENT.key ||
-        currentPage === constants.PAYMENT.key ? ( // menu 4
+        currentPage === constants.PAYMENT.key ? ( 
         <Payment />
       ) : sidebarMenu === constants.BLOCK_CLOCK_MANAGEMENT.key ||
         currentPage === constants.BLOCK_CLOCK_MANAGEMENT.key ? ( // menu 5
