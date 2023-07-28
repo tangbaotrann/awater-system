@@ -29,6 +29,7 @@ import ListWatch from "../Category/ListWatch/ListWatch";
 import DMKy from "../Category/DMKy/DMKy";
 import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
 import CategoryInstaller from "../Category/Category_Installer/CategoryInstaller";
+import CategoryCity from "../Category/Category_City/CategoryCity";
 
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
@@ -115,7 +116,7 @@ function Manager() {
           <CategoryInstaller />
         ) : sidebarMenu === constants.CATEGORY_CITY.key ||
           currentPage === constants.CATEGORY_CITY.key ? (
-          <h1>CATEGORY_CITY</h1>
+          <CategoryCity />
         ) : sidebarMenu === constants.CATEGORY_DISTRICT.key ||
           currentPage === constants.CATEGORY_DISTRICT.key ? (
           <h1>CATEGORY_DISTRICT</h1>
