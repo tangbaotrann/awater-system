@@ -8,7 +8,7 @@ import {
 
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
-// import { updateKy } from "../../../redux/slices/DMKy/kySlice";
+import { updateCity } from "../../../redux/slices/citySlice/citySlice";
 
 const EditCity = ({ tabCity, hideModal }) => {
 
@@ -24,7 +24,7 @@ const EditCity = ({ tabCity, hideModal }) => {
 
     const handleSubmit = (values) => {
         if (values) {
-            // dispatch(updateKy(values));
+            dispatch(updateCity(values));
             form.resetFields();
             hideModal();
             message.success("Cập nhật thành công.");
@@ -64,7 +64,7 @@ const EditCity = ({ tabCity, hideModal }) => {
                         className={isTabletOrMobile ? "" : "gutter-item"}
                     >
                         <Form.Item name="keyId" label="Mã Thành Phố/ Tỉnh">
-                            <Input name="keyId" style={{ width: "100%" }} />
+                            <Input name="keyId" style={{ width: "100%" }} readOnly/>
                         </Form.Item>
                     </Col>
                 </Row>
@@ -77,8 +77,8 @@ const EditCity = ({ tabCity, hideModal }) => {
                         span={24}
                         className={isTabletOrMobile ? "" : "gutter-item"}
                     >
-                        <Form.Item name="moTa" label="Tên Thành Phố/ Tỉnh">
-                            <Input name="moTa" style={{ width: "100%" }} />
+                        <Form.Item name="ten" label="Tên Thành Phố/ Tỉnh">
+                            <Input name="ten" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
                 </Row>

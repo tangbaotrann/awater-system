@@ -76,7 +76,7 @@ export const updateKy = createAsyncThunk(
             });
 
             if (res.data.statusCode === 201) {
-                message.success("Đã thêm mới thành công");
+                message.success("Đã cập nhật thành công");
             }
             return res.data.data;
         } catch (err) {

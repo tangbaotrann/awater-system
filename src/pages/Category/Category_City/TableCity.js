@@ -11,6 +11,7 @@ import { btnClickTabListInvoicePrintSelector } from '../../../redux/selector';
 import tabListInvoicePrintSlice from '../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice';
 import AddCity from "./AddCity";
 import EditCity from "./EditCity";
+import { getAllCities, deleteCity } from '../../../redux/slices/citySlice/citySlice';
 
 // Tabs bottom
 const tabs_city = [
@@ -48,7 +49,10 @@ const TableCity = ({ isTabletOrMobile }) => {
 
     const handleChangeTabs = (key) => {
         if (key === "1") {
-            message.warning("Not support now!");
+            dispatch(getAllCities());
+            dispatch(
+                tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+            );
         } else if (key === "2") {
             setModalAddCity(true);
         } else if (key === "3") {
@@ -65,9 +69,16 @@ const TableCity = ({ isTabletOrMobile }) => {
         );
     };
 
-    // handle delete region
-    const handleConfirmDeleteRegion = () => {
+    const handleConfirmDeleteCity = () => {
         console.log(tabCity.keyId);
+        if (tabCity) {
+            dispatch(deleteCity(tabCity.keyId));
+            message?.success("Xóa Kỳ thành công.");
+            dispatch(getAllCities());
+            dispatch(
+                tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+            );
+        }
     };
 
     return (
@@ -91,7 +102,7 @@ const TableCity = ({ isTabletOrMobile }) => {
                                     <Popconfirm
                                         placement="bottom"
                                         title="Bạn có chắc chắn muốn xóa Thành Phố/ tỉnh này không?"
-                                        onConfirm={handleConfirmDeleteRegion}
+                                        onConfirm={handleConfirmDeleteCity}
                                         okText="Có"
                                         cancelText="Không"
                                     >

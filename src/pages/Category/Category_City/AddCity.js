@@ -7,7 +7,7 @@ import {
 } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
-// import { addKy } from "../../../redux/slices/DMKy/kySlice";
+import { addCity } from "../../../redux/slices/citySlice/citySlice";
 
 const AddCity = ({ hideModal }) => {
     const dispatch = useDispatch();
@@ -22,10 +22,9 @@ const AddCity = ({ hideModal }) => {
 
     // handle submit form (main)
     const handleSubmit = (values) => {
-        const data = { ...values };
-        data.nhaMayId = 'NH1';
-        if (data) {
-            // dispatch(addKy(data));
+        console.log(values);
+        if (values) {
+            dispatch(addCity(values));
         }
         hideModal();
         form.resetFields();
@@ -72,8 +71,8 @@ const AddCity = ({ hideModal }) => {
                         span={24}
                         className={isTabletOrMobile ? "" : "gutter-item"}
                     >
-                        <Form.Item name="moTa" label="Tên Thành Phố/ Tỉnh">
-                            <Input name="moTa" style={{ width: "100%" }} />
+                        <Form.Item name="ten" label="Tên Thành Phố/ Tỉnh">
+                            <Input name="ten" style={{ width: "100%" }} />
                         </Form.Item>
                     </Col>
                 </Row>
