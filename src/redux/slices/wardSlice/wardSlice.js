@@ -49,7 +49,7 @@ const fetchApiAddWard = createAsyncThunk(
         huyenId,
       });
 
-      toast.success("Thêm thành công vùng.");
+      toast.success("Thêm thành công.");
 
       return res.data.data;
     } catch (error) {
@@ -71,7 +71,7 @@ const fetchApiUpdateWard = createAsyncThunk(
         ten,
         huyenId,
       });
-      toast.success("Cập nhật vùng thành công.");
+      toast.success("Cập nhật thành công.");
 
       return res.data.data;
     } catch (error) {
@@ -89,7 +89,7 @@ const fetchApiDeleteWard = createAsyncThunk(
 
       const res = await deleteRequest(`xa/delete/${keyId}`, null);
 
-      toast.success("Xóa vùng thành công.");
+      toast.success("Xóa thành công.");
 
       return res.data.data;
     } catch (error) {

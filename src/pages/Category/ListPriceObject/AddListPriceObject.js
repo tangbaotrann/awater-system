@@ -77,24 +77,6 @@ const AddListPriceObject = ({ hideModal }) => {
           padding: 24,
         }}
       >
-        {/* <Row gutter={24}>
-          <Col
-            xs={24}
-            sm={12}
-            md={12}
-            lg={24}
-            span={24}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Form.Item label="keyId" name="keyId">
-              <Input
-                style={{ width: "100%" }}
-                name="keyId"
-                placeholder="Nhập keyId"
-              />
-            </Form.Item>
-          </Col>
-        </Row> */}
         <Row gutter={24}>
           <Col
             xs={24}

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import { Modal, Popover, Tabs, message } from "antd";
+import { Modal, Popconfirm, Tabs } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -8,11 +8,20 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
+import { ToastContainer } from "react-toastify";
+import {
+  btnClickTabListInvoicePrintSelector,
+  fetchApiAllListCancelSelector,
+} from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import "./listscope.css";
-import EditListReasons from "./EditListCancel";
-import AddListReasons from "./AddListCancel";
+import "./listCancel.css";
+import EditListCancel from "./EditListCancel";
+import AddListCancel from "./AddListCancel";
+import {
+  fetchApiAllCancel,
+  fetchApiDeleteCancel,
+} from "../../../redux/slices/listCancelSlice/listCancelSlice";
+
 // Tabs bottom
 const tabs_bc = [
   {
@@ -38,23 +47,25 @@ const tabs_bc = [
   },
 ];
 
-function TableListPC({ isTabletOrMobile }) {
+function TableListCancel({ isTabletOrMobile }) {
   const [openModal, setOpenModal] = useState(false);
   const [isOpenModalAdd, setIsOpenModalAdd] = useState(false);
   const [isOpenModalEdit, setIsOpenModalEdit] = useState(false);
+  const listCancel = useSelector(fetchApiAllListCancelSelector);
   const dispatch = useDispatch();
 
-  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+  const tabListCancel = useSelector(btnClickTabListInvoicePrintSelector);
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
-      message.error("Tính năng chưa khả dụng!");
+      dispatch(fetchApiAllCancel());
+      dispatch(
+        tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
+      );
     } else if (key === "2") {
       setIsOpenModalAdd(true);
     } else if (key === "3") {
       setIsOpenModalEdit(true);
-    } else if (key === "4") {
-      message.error("Tính năng chưa khả dụng!");
     }
   };
 
@@ -63,12 +74,17 @@ function TableListPC({ isTabletOrMobile }) {
     setOpenModal(false);
     setIsOpenModalAdd(false);
     setIsOpenModalEdit(false);
-
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
   };
-
+  // handle delete region
+  const handleConfirmDeleteRegion = () => {
+    console.log(tabListCancel);
+    if (tabListCancel) {
+      dispatch(fetchApiDeleteCancel(tabListCancel));
+    }
+  };
   return (
     <>
       <Tabs
@@ -80,19 +96,24 @@ function TableListPC({ isTabletOrMobile }) {
             label: (
               <div
                 className={`tab-item-bc tab-item-bc-${_tab.id} ${
-                  tabListbc === null && _tab.id === "2"
+                  tabListCancel === null && _tab.id === "3"
+                    ? "tab-item-disabled"
+                    : tabListCancel === null && _tab.id === "4"
+                    ? "tab-item-disabled"
+                    : ""
                 }`}
               >
-                {_tab.id === "7" ? (
-                  <>
-                    <Popover
-                      rootClassName="fix-popover-z-index"
-                      placement={isTabletOrMobile ? "right" : "topRight"}
-                      className={tabListbc === null ? "popover-debt" : null}
-                    >
-                      {_tab.icon} {_tab.label} {_tab.iconRight}
-                    </Popover>
-                  </>
+                {_tab.id === "4" ? (
+                  <Popconfirm
+                    placement="bottom"
+                    title="Bạn có chắc chắn muốn xóa vùng này không?"
+                    // description={description}
+                    onConfirm={handleConfirmDeleteRegion}
+                    okText="Yes"
+                    cancelText="No"
+                  >
+                    {_tab.icon} {_tab.label}
+                  </Popconfirm>
                 ) : (
                   <>
                     {_tab.icon} {_tab.label}
@@ -101,6 +122,11 @@ function TableListPC({ isTabletOrMobile }) {
               </div>
             ),
             key: _tab.id,
+            disabled:
+              (tabListCancel === null && _tab.id === "3") ||
+              (tabListCancel === null && _tab.id === "4")
+                ? true
+                : false,
           };
         })}
         onChange={handleChangeTabs}
@@ -116,7 +142,11 @@ function TableListPC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Thêm dữ liệu</h2>
 
-        <AddListReasons tabListbc={tabListbc} hideModal={hideModal} />
+        <AddListCancel
+          tabListCancel={tabListCancel}
+          hideModal={hideModal}
+          listCancel={listCancel}
+        />
       </Modal>
 
       <Modal
@@ -129,10 +159,16 @@ function TableListPC({ isTabletOrMobile }) {
       >
         <h2 className="title-update-info-contract">Sửa dữ liệu</h2>
 
-        <EditListReasons tabListbc={tabListbc} hideModal={hideModal} />
+        <EditListCancel
+          tabListCancel={tabListCancel}
+          hideModal={hideModal}
+          listCancel={listCancel}
+        />
       </Modal>
+      {/* Notification */}
+      <ToastContainer position="top-right" autoClose="2000" />
     </>
   );
 }
 
-export default TableListPC;
+export default TableListCancel;

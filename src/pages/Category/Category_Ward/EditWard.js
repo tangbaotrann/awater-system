@@ -18,7 +18,7 @@ const EditWard = ({ tabListbc, hideModal }) => {
     },
   };
 
-  // handle submit form (update region)
+  // handle submit form (update )
   const handleSubmit = (values) => {
     if (values) {
       dispatch(fetchApiUpdateWard(values));

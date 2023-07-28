@@ -77,6 +77,8 @@ export const fetchApiAllPriceObjectSelector = (state) =>
 
 export const fetchApiAllWardSelector = (state) => state.wardSlice.data;
 
+export const fetchApiAllListCancelSelector = (state) =>
+  state.listCancelSlice.data;
 // // get all price obj
 // export const fetchApiAllPriceObjectSelector = (state) =>
 //   state.priceObject.ListPriceOject;
@@ -97,3 +99,5 @@ export const isLoadingAllPriceListObjectSelector = (state) =>
   state.priceListObjectSlice.isLoading;
 
 export const isLoadingAllWardSelector = (state) => state.wardSlice.isLoading;
+export const isLoadingAllListCancelSelector = (state) =>
+  state.listCancelSlice.isLoading;

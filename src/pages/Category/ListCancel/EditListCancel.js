@@ -1,33 +1,38 @@
 import React from "react";
 import { Button, Col, Form, Input, Row, theme } from "antd";
-import {
-  CloseOutlined,
-  FileAddOutlined,
-  SaveOutlined,
-} from "@ant-design/icons";
+import { CloseOutlined, FileAddOutlined } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
+import { useDispatch } from "react-redux";
+import { fetchApiUpdateCancel } from "../../../redux/slices/listCancelSlice/listCancelSlice";
+import { toast } from "react-toastify";
 
-const EditListCancel = ({ hideModal }) => {
+const EditListCancel = ({ tabListCancel, hideModal }) => {
+  const [form1] = Form.useForm();
+  const { token } = theme.useToken();
+  const dispatch = useDispatch();
+
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    console.log("values", values);
+  const layout = {
+    labelCol: {
+      span: 4,
+    },
   };
+
+  // handle submit form (update price List Object)
+  const handleSubmit = (values) => {
+    if (values) {
+      dispatch(fetchApiUpdateCancel(values));
+      form1.resetFields();
+      hideModal();
+    }
+  };
+
   // handle submit error (main)
   const handleFailed = (error) => {
     console.log({ error });
   };
 
-  const [form1] = Form.useForm();
-  const { token } = theme.useToken();
-
-  const layout = {
-    labelCol: {
-      span: 5,
-    },
-  };
   return (
     <>
       <Form
@@ -41,7 +46,29 @@ const EditListCancel = ({ hideModal }) => {
           borderRadius: token.borderRadiusLG,
           padding: 24,
         }}
+        fields={[
+          { name: "keyId", value: tabListCancel ? tabListCancel?.keyId : null },
+          { name: "lyDo", value: tabListCancel ? tabListCancel?.lyDo : null },
+        ]}
       >
+        {/* <Row gutter={24}>
+          <Col
+            xs={24}
+            sm={12}
+            md={12}
+            lg={24}
+            span={24}
+            className={isTabletOrMobile ? "" : "gutter-item"}
+          >
+            <Form.Item label="ID" name="id">
+              <Input
+                style={{ width: "100%" }}
+                name="id"
+                placeholder="Nhập ID"
+              />
+            </Form.Item>
+          </Col>
+        </Row> */}
         <Row gutter={24}>
           <Col
             xs={24}
@@ -51,15 +78,12 @@ const EditListCancel = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item
-              label="Mã lý do hủy"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Mã lý do hủy" name="keyId">
+              <Input
+                style={{ width: "100%" }}
+                name="keyId"
+                placeholder="Nhập mã lý do hủy"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -72,15 +96,12 @@ const EditListCancel = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item
-              label="Tên lý do hủy"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên lý do hủy" name="lyDo">
+              <Input
+                style={{ width: "100%" }}
+                name="lyDo"
+                placeholder="Nhập tên lý do hủy"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -93,30 +114,16 @@ const EditListCancel = ({ hideModal }) => {
           }}
         >
           <Button
-            key="reset"
+            key="update"
+            htmlType="submit"
             style={{
               marginLeft: "10px",
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
           >
-            Lưu Và Thêm Tiếp
+            Cập nhật
           </Button>
-
-          <Button
-            key="submit"
-            style={{
-              marginLeft: "10px",
-            }}
-            htmlType="submit"
-            icon={<SaveOutlined />}
-            className="custom-btn-attachment-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
-          >
-            Lưu Và Đóng
-          </Button>
-
           <Button
             style={{
               marginLeft: "10px",
@@ -124,7 +131,6 @@ const EditListCancel = ({ hideModal }) => {
             icon={<CloseOutlined />}
             htmlType="submit"
             className="custom-btn-close-d"
-            // className={isTabletOrMobile ? "gutter-item-btn" : "gutter-item"}
             onClick={() => hideModal()}
           >
             Đóng

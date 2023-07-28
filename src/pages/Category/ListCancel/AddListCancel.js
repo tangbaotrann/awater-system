@@ -6,42 +6,63 @@ import {
   SaveOutlined,
 } from "@ant-design/icons";
 
+import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 
-const AddListCancel = ({ hideModal }) => {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+import { fetchApiAddCancel } from "../../../redux/slices/listCancelSlice/listCancelSlice";
 
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    console.log("values", values);
-  };
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
+const AddListCancel = ({ hideModal }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
+  const dispatch = useDispatch();
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const layout = {
     labelCol: {
       span: 5,
     },
-    // wrapperCol: {
-    //   span: 40,
-    // },
   };
+
+  // handle save and close modal
+  const handleSaveAndClose = () => {
+    form1.validateFields().then((values) => {
+      if (values) {
+        dispatch(fetchApiAddCancel(values));
+
+        form1.resetFields();
+        hideModal();
+      }
+    });
+  };
+
+  // handle save and continue add
+  const handleSaveAndAdd = () => {
+    form1.validateFields().then((values) => {
+      if (values) {
+        dispatch(fetchApiAddCancel(values));
+
+        form1.resetFields();
+        hideModal();
+      }
+    });
+  };
+
+  // handle submit error (main)
+  const handleFailed = (error) => {
+    console.log({ error });
+  };
+
   return (
     <>
       <Form
         {...layout}
         form={form1}
-        onFinish={handleSubmit}
         onFinishFailed={handleFailed}
         style={{
           maxWidth: "none",
           background: token.colorFillAlter,
           borderRadius: token.borderRadiusLG,
-          padding: 10,
+          padding: 24,
         }}
       >
         <Row gutter={24}>
@@ -53,15 +74,12 @@ const AddListCancel = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item
-              label="Mã lý do hủy"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Mã lý do hủy" name="keyId">
+              <Input
+                style={{ width: "100%" }}
+                name="keyId"
+                placeholder="Nhập mã lý do hủy"
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -74,19 +92,15 @@ const AddListCancel = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item
-              label="Tên lý do hủy"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input style={{ width: "100%" }} />
+            <Form.Item label="Tên lý do hủy" name="lyDo">
+              <Input
+                style={{ width: "100%" }}
+                name="lyDo"
+                placeholder="Nhập tên lý do hủy"
+              />
             </Form.Item>
           </Col>
         </Row>
-
         <Row
           style={{
             display: "flex",
@@ -96,24 +110,27 @@ const AddListCancel = ({ hideModal }) => {
           }}
         >
           <Button
-            key="reset"
+            key="saveAndAdd"
             style={{
               marginLeft: "10px",
             }}
             icon={<FileAddOutlined />}
             className="custom-btn-reset-d"
+            // htmlType="submit"
+            onClick={handleSaveAndAdd}
           >
             Lưu Và Thêm Tiếp
           </Button>
 
           <Button
-            key="submit"
+            key="saveAndClose"
             style={{
               marginLeft: "10px",
             }}
             htmlType="submit"
             icon={<SaveOutlined />}
             className="custom-btn-attachment-d"
+            onClick={handleSaveAndClose}
           >
             Lưu Và Đóng
           </Button>
