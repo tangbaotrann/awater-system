@@ -134,7 +134,7 @@ function DefaultLayout({ children, currentPage }) {
             options={
               factoryNames?.length <= 0
                 ? []
-                : factoryNames.map((_factory) => ({
+                : factoryNames?.map((_factory) => ({
                     label: _factory.tenNhaMay,
                     value: _factory.id,
                   }))

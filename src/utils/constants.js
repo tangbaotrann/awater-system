@@ -113,15 +113,15 @@ const constants = {
     key: "CATEGORY_ADMINISTRATIVE",
   },
   CATEGORY_CITY: {
-    label: "Tên Thành Phố/Tỉnh",
+    label: "Thành Phố/Tỉnh",
     key: "CATEGORY_CITY",
   },
   CATEGORY_DISTRICT: {
-    label: "Tên Thành Quận/Huyện",
+    label: "Quận/Huyện",
     key: "CATEGORY_DISTRICT",
   },
   CATEGORY_WARD: {
-    label: "Tên Thành Phường/Xã",
+    label: "Phường/Xã",
     key: "CATEGORY_WARD",
   },
   COLLECT_MONEY: {
