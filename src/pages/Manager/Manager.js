@@ -30,8 +30,8 @@ import ListWatch from "../Category/ListWatch/ListWatch";
 import DMKy from "../Category/DMKy/DMKy";
 
 import DistrictCategory from "../Category/DMHanhChinh/District/DistrictCategory";
-import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
 import CategoryWard from "../Category/Category_Ward/CategoryWard";
+import Category_Status_ReadIndex from "../Category/DMTrangThaiChiSo/Category_Status_ReadNumber";
 
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
@@ -100,7 +100,7 @@ function Manager() {
         <ListWatch />
       ) : sidebarMenu === constants.CATEGORY_STATUS_READ_NUMBER.key ||
         currentPage === constants.CATEGORY_STATUS_READ_NUMBER.key ? (
-        <Category_Status_ReadNumber />
+        <Category_Status_ReadIndex />
       ) : sidebarMenu === constants.CATEGORY_SIGNING.key ||
         currentPage === constants.CATEGORY_SIGNING.key ? (
         <DMKy />

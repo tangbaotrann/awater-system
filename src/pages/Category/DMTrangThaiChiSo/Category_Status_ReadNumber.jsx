@@ -61,7 +61,7 @@ const columns = [
   },
 ];
 
-const Category_Status_ReadNumber = () => {
+const Category_Status_ReadIndex = () => {
   const dispatch = useDispatch();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const danhSachtrangThaiChiSo = useSelector(state => state.trangThaiChiSo.danhSachtrangThaiChiSo);
@@ -180,4 +180,4 @@ const Category_Status_ReadNumber = () => {
   );
 };
 
-export default Category_Status_ReadNumber;
+export default Category_Status_ReadIndex;
