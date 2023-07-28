@@ -193,7 +193,7 @@ function TabList({ isTabletOrMobile }) {
         okButtonProps={{ style: { display: "none" } }}
       >
         <h2 className="title-update-info-contract">
-          Cập nhật thông tin hợp đồng
+          {isUpdate ? "Cập nhật thông tin hợp đồng" : "Thêm thông tin hợp đồng"}
         </h2>
 
         {/* Form create contract */}

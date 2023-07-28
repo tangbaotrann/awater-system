@@ -154,7 +154,7 @@ function TableListContract() {
           dataSource={
             customers?.length <= 0
               ? []
-              : customers.map((_customer, index) => ({
+              : customers?.map((_customer, index) => ({
                   index: index + 1,
                   loaiKhachHang: _customer.loaiKhachHang,
                   tenKhachHang: _customer.tenKhachHang,
