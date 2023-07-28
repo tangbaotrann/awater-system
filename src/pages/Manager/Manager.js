@@ -29,7 +29,7 @@ import ListWatch from "../Category/ListWatch/ListWatch";
 
 import DMKy from "../Category/DMKy/DMKy";
 
-import DistrictCategory from "../Category/DMHanhChinh/DistrictCategory";
+import DistrictCategory from "../Category/DMHanhChinh/District/DistrictCategory";
 import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
 import CategoryWard from "../Category/Category_Ward/CategoryWard";
 

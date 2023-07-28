@@ -8,9 +8,9 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
-import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import { deleteDMTrangThaiChiSo, getAllDMTrangThaiChiSo } from "../../../redux/slices/DMTrangThaiChiSo/trangThaiChiSoSlice";
+import { btnClickTabListInvoicePrintSelector } from "../../../../redux/selector";
+import tabListInvoicePrintSlice from "../../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+import { deleteDMTrangThaiChiSo, getAllDMTrangThaiChiSo } from "../../../../redux/slices/DMTrangThaiChiSo/trangThaiChiSoSlice";
 import AddAndEditDistrict from "./Add&EditDistrict";
 
 // Tabs bottom
