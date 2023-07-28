@@ -30,6 +30,9 @@ export const fetchApiAllPriceListObjectSelector = (state) =>
 // maybe here DM Ky -> Phu Phuoc
 export const getAllKySelector = (state) => state.ky_ghi_chi_so.danhSachKy;
 
+// maybe here DM Ky -> Phu Phuoc
+export const getAllCitySelector = (state) => state.tinh.listCities;
+
 // get all area
 export const fetchApiAllAreaSelector = (state) => state.areaSlice.data;
 
@@ -42,8 +45,6 @@ export const fetchApiAllCustomerSelector = (state) =>
 
 // get all price obj
 export const fetchApiAllPriceObjSelector = (state) => state.priceObjSlice.data;
-
-// maybe here DM Ky -> Phu Phuoc
 
 // get all payment method
 export const fetchApiAllPaymentMethodSelector = (state) =>

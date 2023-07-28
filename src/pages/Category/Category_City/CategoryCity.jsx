@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "../../../components/GlobalStyles/GlobalStyles.css";
 import "../../Manager/Contract/Contract.css";
 import { Table, Popover, Tooltip } from "antd";
@@ -7,11 +7,17 @@ import { SearchForm } from "./SearchForm";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
+import { btnClickTabListInvoicePrintSelector, getAllCitySelector } from "../../../redux/selector";
+import { getAllCities } from "../../../redux/slices/citySlice/citySlice";
 
 const CategoryCity = () => {
     const dispatch = useDispatch();
     const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+    const dataCities = useSelector(getAllCitySelector);
+
+    useEffect(() => {
+        dispatch(getAllCities());
+    }, [dispatch]);
 
     const initialData = Array.from({ length: 100 }, (_, i) => {
         return {
@@ -31,8 +37,8 @@ const CategoryCity = () => {
 
         {
             title: "Mã Thành Phố/ Tỉnh",
-            dataIndex: "keyID",
-            key: "keyID",
+            dataIndex: "keyId",
+            key: "keyId",
         },
         {
             title: "Tên Thành Phố/ Tỉnh",
@@ -71,9 +77,9 @@ const CategoryCity = () => {
                 rowKey="index"
                 scroll={{ x: 1000, y: 480 }}
                 columns={columns}
-                dataSource={cities.map((_cities, index) => ({
+                dataSource={dataCities.map((_cities, index) => ({
                     index: index + 1,
-                    keyID: _cities.keyID,
+                    keyId: _cities.keyId,
                     ten: _cities.ten
                 }))}
                 // import kỳ lạ của Dương
