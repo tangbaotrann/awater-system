@@ -151,47 +151,6 @@ function InfoCustomer() {
           </Form.Item>
         </Col> */}
 
-        {/* Địa chỉ khách hàng */}
-        <Col xs={24} sm={22} md={11} lg={10}>
-          <Form.Item
-            name="addressOfCustomer"
-            label="Địa chỉ KH"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải nhập địa chỉ khách hàng.",
-              },
-            ]}
-          >
-            <Input
-              name="addressOfCustomer"
-              placeholder="Nhập địa chỉ khách hàng"
-            />
-          </Form.Item>
-        </Col>
-
-        <Col xs={24} sm={22} md={1} lg={1}></Col>
-
-        {/* Ghi chú */}
-        <Col xs={24} sm={22} md={12} lg={12}>
-          <Form.Item
-            name="ghiChu"
-            label="Ghi chú: "
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải nhập ghi chú.",
-              },
-            ]}
-          >
-            <Input name="ghiChu" placeholder="Nhập ghi chú" />
-          </Form.Item>
-        </Col>
-      </Row>
-
-      <Row>
         {/* Tên khách hàng + */}
         <Col xs={20} sm={22} md={11} lg={10}>
           <Form.Item
@@ -215,7 +174,7 @@ function InfoCustomer() {
         </Col>
 
         {/* Button ... (tên khách hàng) */}
-        <Col xs={1} sm={1} md={1} lg={1}>
+        {/* <Col xs={1} sm={1} md={1} lg={1}>
           <Form.Item {...formItemLayout}>
             <Button
               type="primary"
@@ -224,44 +183,30 @@ function InfoCustomer() {
               ...
             </Button>
           </Form.Item>
-        </Col>
+        </Col> */}
 
-        {/* Người ĐD */}
+        {/* Địa chỉ khách hàng */}
         <Col xs={24} sm={22} md={12} lg={12}>
           <Form.Item
-            name="nguoiDaiDien"
-            label="Người ĐD: "
+            name="addressOfCustomer"
+            label="Địa chỉ"
             {...formItemLayout}
             rules={[
               {
                 required: true,
-                message: "Bạn cần phải nhập tên người đại diện.",
+                message: "Bạn cần phải nhập địa chỉ khách hàng.",
               },
             ]}
           >
-            <Input name="nguoiDaiDien" placeholder="Nhập tên người đại điện" />
+            <Input
+              name="addressOfCustomer"
+              placeholder="Nhập địa chỉ khách hàng"
+            />
           </Form.Item>
         </Col>
 
-        {/* Số GCN */}
-        {/* <Col xs={22} sm={22} md={12} lg={10}>
-          <Form.Item
-            name="soGcn"
-            label="Số GCN"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải nhập số GCN.",
-              },
-            ]}
-          >
-            <Input name="soGcn" placeholder="Nhập số GCN" />
-          </Form.Item>
-        </Col> */}
-      </Row>
+        <Col xs={24} sm={22} md={1} lg={1}></Col>
 
-      <Row>
         {/* Tên thường gọi */}
         <Col xs={24} sm={22} md={11} lg={10}>
           <Form.Item
@@ -301,9 +246,7 @@ function InfoCustomer() {
             />
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Số khẩu + Button ... (số khẩu) */}
         <Col xs={24} sm={22} md={11} lg={10}>
           <Form.Item
@@ -356,9 +299,7 @@ function InfoCustomer() {
             {/* </div> */}
           </Form.Item>
         </Col>
-      </Row>
 
-      <Row>
         {/* Điện thoại */}
         <Col xs={24} sm={22} md={11} lg={10}>
           <Form.Item
@@ -373,6 +314,130 @@ function InfoCustomer() {
             ]}
           >
             <Input name="dienThoai" placeholder="Nhập số điện thoại" />
+          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={22} md={1} lg={1}></Col>
+
+        {/* Số CMND + Checkbox (số CMND) */}
+        <Col xs={24} sm={22} md={12} lg={12}>
+          <Form.Item
+            name="soCmnd"
+            label="Số CMND: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập số CMND.",
+              },
+            ]}
+          >
+            {/* <div className="container-label-input"> */}
+            <Input
+              name="soCmnd"
+              placeholder="Nhập CMND"
+              className="space-right-10"
+            />
+            {/* <Checkbox /> */}
+            {/* </div> */}
+          </Form.Item>
+        </Col>
+
+        {/* Ngày cấp */}
+        <Col xs={24} sm={22} md={11} lg={10}>
+          <Form.Item
+            name="ngayCapCmnd"
+            label="Ngày cấp"
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải chọn ngày cấp CMND.",
+              },
+            ]}
+          >
+            <DatePicker
+              name="ngayCapCmnd"
+              placeholder="Chọn ngày cấp"
+              className="gutter-item-date-picker"
+              picker="date"
+              format="YYYY/MM/DD"
+            />
+            {/* <Input name="ngayCapCmnd" placeholder="Nhập ngày cấp" /> */}
+          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={22} md={1} lg={1}></Col>
+
+        {/* Nơi cấp */}
+        <Col xs={24} sm={22} md={12} lg={12}>
+          <Form.Item
+            name="noiCapCmnd"
+            label="Nơi cấp: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập nơi cấp CMND.",
+              },
+            ]}
+          >
+            <Input name="noiCapCmnd" placeholder="Nhập nơi cấp" />
+          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={22} md={1} lg={1}></Col>
+
+        {/* Mã số thuế */}
+        <Col xs={24} sm={22} md={11} lg={10}>
+          <Form.Item
+            name="maSoThue"
+            label="Mã số thuế: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập mã số thuế.",
+              },
+            ]}
+          >
+            <Input name="maSoThue" placeholder="Nhập mã số thuế" />
+          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={22} md={1} lg={1}></Col>
+
+        {/* Người ĐD */}
+        <Col xs={24} sm={22} md={12} lg={12}>
+          <Form.Item
+            name="nguoiDaiDien"
+            label="Người ĐD: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập tên người đại diện.",
+              },
+            ]}
+          >
+            <Input name="nguoiDaiDien" placeholder="Nhập tên người đại điện" />
+          </Form.Item>
+        </Col>
+
+        {/* Ghi chú */}
+        <Col xs={24} sm={22} md={11} lg={10}>
+          <Form.Item
+            name="ghiChu"
+            label="Ghi chú: "
+            {...formItemLayout}
+            rules={[
+              {
+                required: true,
+                message: "Bạn cần phải nhập ghi chú.",
+              },
+            ]}
+          >
+            <Input name="ghiChu" placeholder="Nhập ghi chú" />
           </Form.Item>
         </Col>
 
@@ -404,93 +469,22 @@ function InfoCustomer() {
       </Row>
 
       <Row>
-        {/* Số CMND + Checkbox (số CMND) */}
-        <Col xs={24} sm={22} md={11} lg={10}>
+        {/* Số GCN */}
+        {/* <Col xs={22} sm={22} md={12} lg={10}>
           <Form.Item
-            name="soCmnd"
-            label="Số CMND: "
+            name="soGcn"
+            label="Số GCN"
             {...formItemLayout}
             rules={[
               {
                 required: true,
-                message: "Bạn cần phải nhập số CMND.",
+                message: "Bạn cần phải nhập số GCN.",
               },
             ]}
           >
-            {/* <div className="container-label-input"> */}
-            <Input
-              name="soCmnd"
-              placeholder="Nhập CMND"
-              className="space-right-10"
-            />
-            {/* <Checkbox /> */}
-            {/* </div> */}
+            <Input name="soGcn" placeholder="Nhập số GCN" />
           </Form.Item>
-        </Col>
-
-        <Col xs={24} sm={22} md={1} lg={1}></Col>
-
-        {/* Ngày cấp */}
-        <Col xs={24} sm={22} md={12} lg={12}>
-          <Form.Item
-            name="ngayCapCmnd"
-            label="Ngày cấp"
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải chọn ngày cấp CMND.",
-              },
-            ]}
-          >
-            <DatePicker
-              name="ngayCapCmnd"
-              placeholder="Chọn ngày cấp"
-              className="gutter-item-date-picker"
-              picker="date"
-              format="YYYY/MM/DD"
-            />
-            {/* <Input name="ngayCapCmnd" placeholder="Nhập ngày cấp" /> */}
-          </Form.Item>
-        </Col>
-      </Row>
-
-      <Row>
-        {/* Nơi cấp */}
-        <Col xs={24} sm={22} md={11} lg={10}>
-          <Form.Item
-            name="noiCapCmnd"
-            label="Nơi cấp: "
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải nhập nơi cấp CMND.",
-              },
-            ]}
-          >
-            <Input name="noiCapCmnd" placeholder="Nhập nơi cấp" />
-          </Form.Item>
-        </Col>
-
-        <Col xs={24} sm={22} md={1} lg={1}></Col>
-
-        {/* Mã số thuế */}
-        <Col xs={24} sm={22} md={12} lg={12}>
-          <Form.Item
-            name="maSoThue"
-            label="Mã số thuế: "
-            {...formItemLayout}
-            rules={[
-              {
-                required: true,
-                message: "Bạn cần phải nhập mã số thuế.",
-              },
-            ]}
-          >
-            <Input name="maSoThue" placeholder="Nhập mã số thuế" />
-          </Form.Item>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>

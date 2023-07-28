@@ -275,7 +275,7 @@ function InfoDetailClock() {
               options={
                 readings?.length <= 0
                   ? []
-                  : readings.map((_reading) => ({
+                  : readings?.map((_reading) => ({
                       label: _reading.tenTuyen,
                       value: _reading.id,
                     }))
