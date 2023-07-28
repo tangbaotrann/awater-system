@@ -1,29 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Button, Col, Form, Input, Row, Select, theme } from "antd";
 import {
   CloseOutlined,
   FileAddOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
-import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useMediaQuery } from "react-responsive";
+import { fetchApiAddWard } from "../../../redux/slices/wardSlice/wardSlice";
 
-import { fetchApiAllPriceListObjectSelector } from "../../../redux/selector";
-import { fetchApiAllPriceListObject } from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
-import { fetchApiAddPriceListObject } from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
-// import { fetchApiAllFactorySelector } from "../../../redux/selector";
-// import { fetchApiAllFactory } from "../../../redux/slices/factorySlice/factorySlice";
-// import { fetchApiAddRegion } from "../../../redux/slices/regionSlice/regionSlice";
-const AddListPriceObject = ({ hideModal }) => {
+const AddWard = ({ hideModal, factoryNames }) => {
   const [form1] = Form.useForm();
   const { token } = theme.useToken();
 
   const firstInputRef = useRef();
 
   const dispatch = useDispatch();
-
-  const priceListObject = useSelector(fetchApiAllPriceListObjectSelector);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
@@ -37,11 +29,10 @@ const AddListPriceObject = ({ hideModal }) => {
   const handleSaveAndClose = () => {
     form1.validateFields().then((values) => {
       if (values) {
-        dispatch(fetchApiAddPriceListObject(values));
+        dispatch(fetchApiAddWard(values));
 
         form1.resetFields();
         hideModal();
-        // toast?.success("Thêm thành công.");
       }
     });
   };
@@ -50,11 +41,10 @@ const AddListPriceObject = ({ hideModal }) => {
   const handleSaveAndAdd = () => {
     form1.validateFields().then((values) => {
       if (values) {
-        dispatch(fetchApiAddPriceListObject(values));
+        dispatch(fetchApiAddWard(values));
 
         form1.resetFields();
-        hideModal();
-        toast?.success("Thêm thành công.");
+        firstInputRef.current.focus();
       }
     });
   };
@@ -77,24 +67,6 @@ const AddListPriceObject = ({ hideModal }) => {
           padding: 24,
         }}
       >
-        {/* <Row gutter={24}>
-          <Col
-            xs={24}
-            sm={12}
-            md={12}
-            lg={24}
-            span={24}
-            className={isTabletOrMobile ? "" : "gutter-item"}
-          >
-            <Form.Item label="keyId" name="keyId">
-              <Input
-                style={{ width: "100%" }}
-                name="keyId"
-                placeholder="Nhập keyId"
-              />
-            </Form.Item>
-          </Col>
-        </Row> */}
         <Row gutter={24}>
           <Col
             xs={24}
@@ -104,15 +76,16 @@ const AddListPriceObject = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Mã/Ký hiệu" name="keyId">
+            <Form.Item label="Tp/Tỉnh" name="keyId">
               <Input
                 style={{ width: "100%" }}
                 name="keyId"
-                placeholder="Ký hiệu"
+                placeholder="Nhập thành phố/tỉnh"
               />
             </Form.Item>
           </Col>
         </Row>
+
         <Row gutter={24}>
           <Col
             xs={24}
@@ -122,11 +95,11 @@ const AddListPriceObject = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Tên/Mô tả" name="moTa">
+            <Form.Item label="Quận/Huyện" name="huyenId">
               <Input
                 style={{ width: "100%" }}
-                name="moTa"
-                placeholder="Nhập mô tả"
+                name="huyenId"
+                placeholder="Nhập quận/huyện"
               />
             </Form.Item>
           </Col>
@@ -140,11 +113,11 @@ const AddListPriceObject = ({ hideModal }) => {
             span={24}
             className={isTabletOrMobile ? "" : "gutter-item"}
           >
-            <Form.Item label="Đơn vị tính" name="donViTinh">
+            <Form.Item label="Phường/Xã" name="ten">
               <Input
                 style={{ width: "100%" }}
-                name="donViTinh"
-                placeholder="Nhập đơn vị"
+                name="ten"
+                placeholder="Nhập phường/xã"
               />
             </Form.Item>
           </Col>
@@ -200,4 +173,4 @@ const AddListPriceObject = ({ hideModal }) => {
   );
 };
 
-export default AddListPriceObject;
+export default AddWard;

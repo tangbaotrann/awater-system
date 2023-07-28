@@ -21,6 +21,7 @@ import readingSlice from "./slices/readingSlice/readingSlice";
 import priceObjectSlice from "./slices/priceObjectSlice/priceObjectSlice";
 import trangThaiChiSo from "./slices/DMTrangThaiChiSo/trangThaiChiSoSlice";
 import kySlice from "./slices/DMKy/kySlice";
+import wardSlice from "./slices/wardSlice/wardSlice";
 const store = configureStore({
   reducer: {
     sidebarSlice: sidebarSlice.reducer,
@@ -43,7 +44,8 @@ const store = configureStore({
     tabListReadingSlice: tabListReadingSlice.reducer,
     readingSlice: readingSlice.reducer,
     priceObjectSlice: priceObjectSlice.reducer,
-    trangThaiChiSo: trangThaiChiSo.reducer
+    trangThaiChiSo: trangThaiChiSo.reducer,
+    wardSlice: wardSlice.reducer,
   },
 });
 
