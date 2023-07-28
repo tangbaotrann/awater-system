@@ -6,7 +6,6 @@ import {
   Input,
   Row,
   theme,
-  message,
 } from "antd";
 import {
   CloseOutlined,
@@ -15,29 +14,10 @@ import {
 } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
-import { useDispatch } from "react-redux";
-import { updateKy } from "../../../redux/slices/DMKy/kySlice"; // Update sửa lại sau 
-
 
 const EditInstaller = ({ tabInstaller, hideModal }) => {
-  const dispatch = useDispatch();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    if (values) {
-      const data = { ...values };
-      data.nhaMayId = "NH1";
-      dispatch(updateKy(data));
-      form.resetFields();
-      hideModal();
-      message.success("Cập nhật thành công.");
-    }
-  };
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
+  
   const [form] = Form.useForm();
   const { token } = theme.useToken();
 
@@ -52,8 +32,6 @@ const EditInstaller = ({ tabInstaller, hideModal }) => {
       <Form
         {...layout}
         form={form}
-        onFinish={handleSubmit}
-        onFinishFailed={handleFailed}
         style={{
           maxWidth: "none",
           background: token.colorFillAlter,

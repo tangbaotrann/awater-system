@@ -1,4 +1,4 @@
-import { Modal, Popconfirm, Popover, Tabs, message } from "antd";
+import { Modal, Tabs, message } from "antd";
 import {
   PlusCircleOutlined,
   EditOutlined,
@@ -10,7 +10,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 import "./categoryInstaller.css";
-import { getAllKy, deleteKy } from "../../../redux/slices/DMKy/kySlice.js";
 import AddInstaller from "./AddInstaller";
 import EditInstaller from "./EditInstaller";
 
@@ -48,14 +47,13 @@ function TableInstaller({ isTabletOrMobile }) {
   // handle change tabs
   const handleChangeTabs = (key) => {
     if (key === "1") {
-      dispatch(getAllKy());
-      dispatch(
-        tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
-      );
+      message.error("Tính năng không khả dụng");
     } else if (key === "2") {
       setModalAddInstaller(true);
     } else if (key === "3") {
       setModalEditInstaller(true);
+    } else if (key === "4") {
+      message.error("Tính năng không khả dụng");
     }
   };
 
@@ -67,19 +65,6 @@ function TableInstaller({ isTabletOrMobile }) {
     dispatch(
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
-  };
-
-  // handle delete installer
-  const handleConfirmDeleteInstaller = () => {
-    console.log(tabInstaller.keyId);
-    if (tabInstaller) {
-      dispatch(deleteKy(tabInstaller.keyId));
-      message?.success("Xóa người lắp đặt thành công.");
-      dispatch(getAllKy());
-      dispatch(
-        tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
-      );
-    }
   };
 
   return (
@@ -101,16 +86,9 @@ function TableInstaller({ isTabletOrMobile }) {
                 }`}
               >
                 {_tab.id === "4" ? (
-                  <Popconfirm
-                    placement="bottom"
-                    title="Bạn có chắc chắn muốn xóa Người Lắp Đặt này không?"
-                    // description={description}
-                    onConfirm={handleConfirmDeleteInstaller}
-                    okText="Có"
-                    cancelText="Không"
-                  >
+                  <>
                     {_tab.icon} {_tab.label}
-                  </Popconfirm>
+                  </>
                 ) : (
                   <>
                     {_tab.icon} {_tab.label}

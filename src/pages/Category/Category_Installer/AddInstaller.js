@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, DatePicker, Form, Input, Row, theme } from "antd";
+import { Button, Col, Form, Input, Row, theme } from "antd";
 import {
   CloseOutlined,
   FileAddOutlined,
@@ -7,28 +7,9 @@ import {
 } from "@ant-design/icons";
 
 import { useMediaQuery } from "react-responsive";
-import { useDispatch } from "react-redux";
-import { addKy } from "../../../redux/slices/DMKy/kySlice";
 
 const AddInstaller = ({ hideModal }) => {
-  const dispatch = useDispatch();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
-
-  // handle submit form (main)
-  const handleSubmit = (values) => {
-    const data = { ...values };
-    data.nhaMayId = "NH1";
-    if (data) {
-      dispatch(addKy(data));
-    }
-    hideModal();
-    form.resetFields();
-  };
-
-  // handle submit error (main)
-  const handleFailed = (error) => {
-    console.log({ error });
-  };
 
   const [form] = Form.useForm();
   const { token } = theme.useToken();
@@ -44,8 +25,6 @@ const AddInstaller = ({ hideModal }) => {
       <Form
         {...layout}
         form={form}
-        onFinish={handleSubmit}
-        onFinishFailed={handleFailed}
         style={{
           maxWidth: "none",
           background: token.colorFillAlter,

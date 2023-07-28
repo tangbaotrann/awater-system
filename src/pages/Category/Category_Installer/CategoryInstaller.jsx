@@ -8,12 +8,10 @@ import moment from "moment";
 import "moment/locale/vi";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllKy } from "../../../redux/slices/DMKy/kySlice.js";
 
 // import kỳ lạ của Dương:
 import {
   btnClickTabListInvoicePrintSelector,
-  getAllKySelector,
 } from "../../../redux/selector.js";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 moment.locale("vi");
@@ -21,7 +19,6 @@ moment.locale("vi");
 function DMinstaller() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
   const dispatch = useDispatch();
-  const dataAllKy = useSelector(getAllKySelector);
 
   // import kỳ lạ của Dương
   const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
@@ -115,11 +112,6 @@ function DMinstaller() {
           ...column,
           className: "cell-wrap",
         }))}
-        // dataSource={dataAllKy.map((_dataAllKy, index) => ({
-        //   index: index + 1,
-        //   keyId: _dataAllKy.keyId,
-        //   tenNguoiLapDat: _dataAllKy.tenNguoiLapDat,
-        // }))}
         dataSource={data1}
           // import kỳ lạ của Dương
           onRow={(record, index) => {
@@ -152,7 +144,6 @@ function DMinstaller() {
         }}
       // kết thúc import kỳ lạ của Dương
         >
-
     </Table>
     {isTabletOrMobile && (
         <div className="contract-bottom">
