@@ -5,7 +5,7 @@ const axiosInstance = axios.create();
 // base url
 // axiosInstance.defaults.baseURL = "http://45.119.84.227:2266/api/"; // http
 axiosInstance.defaults.baseURL = "https://api-awa-v2.amazingtech.vn/api/"; // https
-// axiosInstance.defaults.baseURL = "https://api-awa.amazingtech.vn/api/"; // https
+
 // headers
 axiosInstance.defaults.headers = {
   "Content-Type": "application/json",
