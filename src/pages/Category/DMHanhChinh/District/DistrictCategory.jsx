@@ -6,9 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { PlusOutlined, RedoOutlined } from "@ant-design/icons";
 
 // import "./CSS_Category_Status_ReadNumber.css";
-import { getAllDMTrangThaiChiSo } from "../../../redux/slices/DMTrangThaiChiSo/trangThaiChiSoSlice";
-import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
-import { btnClickTabListInvoicePrintSelector } from "../../../redux/selector";
+import tabListInvoicePrintSlice from "../../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
+import { btnClickTabListInvoicePrintSelector } from "../../../../redux/selector";
 import HeaderActionButton from "./HeaderActionButton";
 
 
@@ -50,7 +49,6 @@ const DistrictCategory = () => {
   const rowSelected = useSelector(btnClickTabListInvoicePrintSelector);
 
   useEffect(() => {
-    dispatch(getAllDMTrangThaiChiSo())
   }, [])
 
   const rowClass = (record) => {
