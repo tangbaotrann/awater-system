@@ -20,6 +20,7 @@ const ManagementPriceList = () => {
   const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
   const priceObject = useSelector(fetchApiAllPriceObjectSelector);
   console.log(priceObject);
+
   useEffect(() => {
     dispatch(fetchApiAllPriceObject());
   }, []);
