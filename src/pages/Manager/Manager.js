@@ -27,7 +27,7 @@ import ListReasons from "../Category/ListReasons/ListReasons";
 import ListCancel from "../Category/ListCancel/ListCancel";
 import ListWatch from "../Category/ListWatch/ListWatch";
 import DMKy from "../Category/DMKy/DMKy";
-import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
+import Category_Status_ReadNumber from "../Category/DMTrangThaiChiSo/Category_Status_ReadNumber";
 import CategoryInstaller from "../Category/Category_Installer/CategoryInstaller";
 import CategoryCity from "../Category/Category_City/CategoryCity";
 
