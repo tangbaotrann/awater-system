@@ -30,7 +30,7 @@ import ListWatch from "../Category/ListWatch/ListWatch";
 import DMKy from "../Category/DMKy/DMKy";
 
 import Category_Status_ReadNumber from "../Category/DMTrangThaiChiSo/Category_Status_ReadNumber";
-import DistrictCategory from "../Category/DMHanhChinh/DistrictCategory";
+import DistrictCategory from "../Category/DMHanhChinh/District/DistrictCategory";
 
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
