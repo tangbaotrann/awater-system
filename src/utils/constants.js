@@ -60,7 +60,7 @@ const constants = {
     key: "CATEGORY_MANAGEMENT_LRL",
   },
   CATEGORY_MANAGEMENT_READING: {
-    label: "DM Đối tuyến đọc",
+    label: "DM Tuyến đọc",
     key: "CATEGORY_MANAGEMENT_READING",
   },
   CATEGORY_MANAGEMENT_PRICE_LIST: {
@@ -130,7 +130,7 @@ const constants = {
   },
   CATEGORY_INSTALLER: {
     label: "DM Người lắp đặt",
-    key: "CATEGORY_INSTALLER"
+    key: "CATEGORY_INSTALLER",
   },
   // menu 4
   PAYMENT: {

@@ -30,7 +30,8 @@ import DMKy from "../Category/DMKy/DMKy";
 import Category_Status_ReadNumber from "../Category/DMTrangThaiChiSo/Category_Status_ReadNumber";
 import CategoryInstaller from "../Category/Category_Installer/CategoryInstaller";
 import CategoryCity from "../Category/Category_City/CategoryCity";
-
+import CategoryWard from "../Category/Category_Ward/CategoryWard";
+import DistrictCatogory from "../Category/DMHanhChinh/District/DistrictCategory.jsx";
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
 
@@ -40,7 +41,7 @@ function Manager() {
   return (
     <DefaultLayout currentPage={currentPage}>
       {sidebarMenu === constants.CONTRACT_MANAGER.key || // menu 1
-        currentPage === constants.CONTRACT_MANAGER.key ? (
+      currentPage === constants.CONTRACT_MANAGER.key ? (
         <Contract />
       ) : sidebarMenu === constants.DEV_CUSTOMER.key || // sub menu 1.1
         currentPage === constants.DEV_CUSTOMER.key ? (
@@ -85,54 +86,54 @@ function Manager() {
         currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
         <ListPaymentMethod />
       ) : // ) : sidebarMenu === constants.CATEGORY_SCOPE.key ||
-        //   currentPage === constants.CATEGORY_SCOPE.key ? (
-        //   <ListScope />
-        sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||
-          currentPage === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ? (
-          <ListReasons />
-        ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key ||
-          currentPage === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key ? (
-          <ListCancel />
-        ) : sidebarMenu === constants.CATEGORY_WATCH.key ||
-          currentPage === constants.CATEGORY_WATCH.key ? (
-          <ListWatch />
-        ) : sidebarMenu === constants.CATEGORY_STATUS_READ_NUMBER.key ||
-          currentPage === constants.CATEGORY_STATUS_READ_NUMBER.key ? (
-          <Category_Status_ReadNumber />
-        ) : sidebarMenu === constants.CATEGORY_SIGNING.key ||
-          currentPage === constants.CATEGORY_SIGNING.key ? (
-          <DMKy />
-        ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
-          currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
-          <CustomerType />
-        ) : sidebarMenu === constants.CATEGORY_CLOCK.key ||
-          currentPage === constants.CATEGORY_CLOCK.key ? (
-          <ListClock />
-        ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
-          currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
-          <ListPaymentMethod />
-        ) : sidebarMenu === constants.CATEGORY_INSTALLER.key ||
-          currentPage === constants.CATEGORY_INSTALLER.key ? (
-          <CategoryInstaller />
-        ) : sidebarMenu === constants.CATEGORY_CITY.key ||
-          currentPage === constants.CATEGORY_CITY.key ? (
-          <CategoryCity />
-        ) : sidebarMenu === constants.CATEGORY_DISTRICT.key ||
-          currentPage === constants.CATEGORY_DISTRICT.key ? (
-          <h1>CATEGORY_DISTRICT</h1>
-        ) : sidebarMenu === constants.CATEGORY_WARD.key ||
-          currentPage === constants.CATEGORY_WARD.key ? (
-          <h1>CATEGORY_WARD</h1>
-        ) : sidebarMenu === constants.PAYMENT.key ||
-          currentPage === constants.PAYMENT.key ? (
-          <Payment />
-        ) : sidebarMenu === constants.BLOCK_CLOCK_MANAGEMENT.key ||
-          currentPage === constants.BLOCK_CLOCK_MANAGEMENT.key ? ( // menu 5
-          <BlockClock />
-        ) : sidebarMenu === constants.LOG_NOTICE.key ||
-          currentPage === constants.LOG_NOTICE.key ? ( // menu 6
-          <LogNotice />
-        ) : null}
+      //   currentPage === constants.CATEGORY_SCOPE.key ? (
+      //   <ListScope />
+      sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ||
+        currentPage === constants.CATEGORY_MANAGEMEN_REASONS_INSTEAD.key ? (
+        <ListReasons />
+      ) : sidebarMenu === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key ||
+        currentPage === constants.CATEGORY_MANAGEMEN_REASONS_CANCEL.key ? (
+        <ListCancel />
+      ) : sidebarMenu === constants.CATEGORY_WATCH.key ||
+        currentPage === constants.CATEGORY_WATCH.key ? (
+        <ListWatch />
+      ) : sidebarMenu === constants.CATEGORY_STATUS_READ_NUMBER.key ||
+        currentPage === constants.CATEGORY_STATUS_READ_NUMBER.key ? (
+        <Category_Status_ReadNumber />
+      ) : sidebarMenu === constants.CATEGORY_SIGNING.key ||
+        currentPage === constants.CATEGORY_SIGNING.key ? (
+        <DMKy />
+      ) : sidebarMenu === constants.CATEGORY_CUSTOMER_TYPE.key ||
+        currentPage === constants.CATEGORY_CUSTOMER_TYPE.key ? (
+        <CustomerType />
+      ) : sidebarMenu === constants.CATEGORY_CLOCK.key ||
+        currentPage === constants.CATEGORY_CLOCK.key ? (
+        <ListClock />
+      ) : sidebarMenu === constants.CATEGORY_PAYMENT_METHOD.key ||
+        currentPage === constants.CATEGORY_PAYMENT_METHOD.key ? (
+        <ListPaymentMethod />
+      ) : sidebarMenu === constants.CATEGORY_INSTALLER.key ||
+        currentPage === constants.CATEGORY_INSTALLER.key ? (
+        <CategoryInstaller />
+      ) : sidebarMenu === constants.CATEGORY_CITY.key ||
+        currentPage === constants.CATEGORY_CITY.key ? (
+        <CategoryCity />
+      ) : sidebarMenu === constants.CATEGORY_DISTRICT.key ||
+        currentPage === constants.CATEGORY_DISTRICT.key ? (
+        <DistrictCatogory />
+      ) : sidebarMenu === constants.CATEGORY_WARD.key ||
+        currentPage === constants.CATEGORY_WARD.key ? (
+        <CategoryWard />
+      ) : sidebarMenu === constants.PAYMENT.key ||
+        currentPage === constants.PAYMENT.key ? (
+        <Payment />
+      ) : sidebarMenu === constants.BLOCK_CLOCK_MANAGEMENT.key ||
+        currentPage === constants.BLOCK_CLOCK_MANAGEMENT.key ? ( // menu 5
+        <BlockClock />
+      ) : sidebarMenu === constants.LOG_NOTICE.key ||
+        currentPage === constants.LOG_NOTICE.key ? ( // menu 6
+        <LogNotice />
+      ) : null}
     </DefaultLayout>
   );
 }
