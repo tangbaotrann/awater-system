@@ -30,7 +30,7 @@ import ListWatch from "../Category/ListWatch/ListWatch";
 import DMKy from "../Category/DMKy/DMKy";
 
 import DistrictCategory from "../Category/DMHanhChinh/DistrictCategory";
-import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
+import Category_Status_ReadNumber from "../Category/DMTrangThaiChiSo/Category_Status_ReadNumber.jsx";
 import CategoryWard from "../Category/Category_Ward/CategoryWard";
 
 function Manager() {
