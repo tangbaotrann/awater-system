@@ -1,45 +1,45 @@
 import { React, useEffect, useState } from "react";
-
-import "../../../components/GlobalStyles/GlobalStyles.css";
-import "../../Manager/Contract/Contract.css";
 import { Form, Input, Table, Popover, Col, Row, Tooltip } from "antd";
-import {
-  PlusOutlined,
-  RedoOutlined,
-  SnippetsOutlined,
-} from "@ant-design/icons";
-import "react-toastify/dist/ReactToastify.css";
-import moment from "moment";
-import "moment/locale/vi";
+import { PlusOutlined, RedoOutlined } from "@ant-design/icons";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
-import TableListPO from "./TableListPO.js";
-import { fetchApiAllPriceListObject } from "../../../redux/slices/priceListObjectSlice/priceListObjectSlice";
+import moment from "moment";
+import "react-toastify/dist/ReactToastify.css";
+
+import TableListWard from "./TableListWard";
+import "./CategoryWard.css";
+import "../../../components/GlobalStyles/GlobalStyles.css";
+import "../../Manager/Contract/Contract.css";
+import "moment/locale/vi";
+import { fetchApiAllWard } from "../../../redux/slices/wardSlice/wardSlice";
 import {
   btnClickTabListInvoicePrintSelector,
-  isLoadingAllPriceListObjectSelector,
-  fetchApiAllPriceListObjectSelector,
+  fetchApiAllWardSelector,
+  isLoadingAllWardSelector,
 } from "../../../redux/selector";
 import tabListInvoicePrintSlice from "../../../redux/slices/tabListInvoicePrintSlice/tabListInvoicePrintSlice";
 
 moment.locale("vi");
 
-function ListPriceObject() {
-  const [resultSearchLPO, setResultSearchLPO] = useState("");
+function CategoryWard() {
+  const [resultSearch, setResultSearch] = useState("");
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
 
   const dispatch = useDispatch();
 
-  const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
-  const priceListObject = useSelector(fetchApiAllPriceListObjectSelector);
-  const isLoading = useSelector(isLoadingAllPriceListObjectSelector);
+  const tabListbc = useSelector(btnClickTabListInvoicePrintSelector);
+  const wards = useSelector(fetchApiAllWardSelector);
+  const isLoading = useSelector(isLoadingAllWardSelector);
 
-  // console.log(priceListObject);
-  console.log("resultSearchLPO", resultSearchLPO);
+  const layout = {
+    labelCol: {
+      span: 9,
+    },
+  };
 
   useEffect(() => {
-    dispatch(fetchApiAllPriceListObject());
+    dispatch(fetchApiAllWard());
   }, []);
 
   const columns = [
@@ -49,40 +49,24 @@ function ListPriceObject() {
       key: "index",
       width: 70,
     },
-    // {
-    //   title: "ID",
-    //   dataIndex: "id",
-    //   key: "id",
-    //   // width: 70,
-    // },
     {
-      title: "Ký hiệu",
-      key: "keyId",
+      title: "Thành phố/Tỉnh",
+      dataIndex: "ten",
+      key: "ten",
+    },
+    {
+      title: "Quận/Huyện",
+      dataIndex: "huyenId",
+      key: "huyenId",
+    },
+    {
+      title: "Phường/Xã",
       dataIndex: "keyId",
-      filteredValue: [resultSearchLPO],
+      key: "keyId",
+      filteredValue: [resultSearch],
       onFilter: (value, record) => {
-        // console.log("value", value);
-        console.log("record", record);
         return String(record.keyId).toLowerCase().includes(value.toLowerCase());
       },
-      render: (text, record) => (
-        <>
-          <SnippetsOutlined />
-          {text}
-        </>
-      ),
-      // width: 140,
-    },
-    {
-      key: "moTa",
-      title: "Mô tả",
-      dataIndex: "moTa",
-      // width: 140,
-    },
-    {
-      key: "donViTinh",
-      title: "Đơn vị tính",
-      dataIndex: "donViTinh",
     },
   ];
 
@@ -101,28 +85,20 @@ function ListPriceObject() {
       tabListInvoicePrintSlice.actions.btnClickTabListInvoicePrint(null)
     );
   };
-  const layout = {
-    labelCol: {
-      span: 9,
-    },
-  };
-  // const AdvancedSearchForm = () => {
-  //   return (
-
-  //   );
-  // };
 
   return (
     <>
+      {/* <AdvancedSearchForm /> */}
       <Form {...layout}>
         <Row>
           {!isTabletOrMobile && (
             <Col span={8}>
               <Form.Item>
-                <TableListPO />
+                <TableListWard />
               </Form.Item>
             </Col>
           )}
+
           <Col span={16}>
             <Form.Item className="custom-form-item" label="Tìm kiếm" name="9">
               <Input.Search
@@ -130,19 +106,18 @@ function ListPriceObject() {
                   width: "100%",
                 }}
                 onSearch={(value) => {
-                  console.log("---->", value);
-                  setResultSearchLPO(value);
+                  setResultSearch(value);
                 }}
                 onChange={(e) => {
-                  console.log("e", e.target.value);
-                  setResultSearchLPO(e.target.value);
+                  setResultSearch(e.target.value);
                 }}
-                placeholder="Nhập mã đối tượng"
+                placeholder="Nhập mã phường/xã"
               />
             </Form.Item>
           </Col>
         </Row>
       </Form>
+
       <Table
         style={{ marginTop: "10px" }}
         size="small"
@@ -153,13 +128,16 @@ function ListPriceObject() {
           ...column,
           className: "cell-wrap",
         }))}
-        dataSource={priceListObject.map((_priceListObject, index) => ({
-          index: index + 1,
-          id: _priceListObject.id,
-          keyId: _priceListObject.keyId,
-          moTa: _priceListObject.moTa,
-          donViTinh: _priceListObject.donViTinh,
-        }))}
+        dataSource={
+          wards?.length <= 0
+            ? []
+            : wards.map((_ward, index) => ({
+                index: index + 1,
+                keyId: _ward.keyId,
+                ten: _ward.ten,
+                huyenId: _ward.huyenId,
+              }))
+        }
         loading={isLoading}
         onRow={(record, index) => {
           return {
@@ -187,7 +165,7 @@ function ListPriceObject() {
           },
           onChange: (selectedRowKeys, selectedRows) =>
             handleRowSelection(selectedRowKeys, selectedRows),
-          selectedRowKeys: tabListPO ? [tabListPO.index] : [],
+          selectedRowKeys: tabListbc ? [tabListbc.index] : [],
         }}
       />
       {isTabletOrMobile && (
@@ -199,7 +177,7 @@ function ListPriceObject() {
               rootClassName="fix-popover-z-index"
               placement="bottomRight"
               trigger="click"
-              content={<TableListPO isTabletOrMobile={isTabletOrMobile} />}
+              content={<TableListWard isTabletOrMobile={isTabletOrMobile} />}
             >
               <div className="contract-bottom-func">
                 <PlusOutlined />
@@ -207,7 +185,7 @@ function ListPriceObject() {
             </Popover>
           ) : (
             <div className="contract-bottom-func">
-              <TableListPO />
+              <TableListWard />
             </div>
           )}
         </div>
@@ -215,4 +193,4 @@ function ListPriceObject() {
     </>
   );
 }
-export default ListPriceObject;
+export default CategoryWard;

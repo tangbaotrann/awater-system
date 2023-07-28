@@ -75,6 +75,8 @@ export const fetchApiAllDetailPriceSelector = (state) =>
 export const fetchApiAllPriceObjectSelector = (state) =>
   state.priceObjectSlice.data;
 
+export const fetchApiAllWardSelector = (state) => state.wardSlice.data;
+
 // // get all price obj
 // export const fetchApiAllPriceObjectSelector = (state) =>
 //   state.priceObject.ListPriceOject;
@@ -93,3 +95,5 @@ export const isLoadingAllPaymentMethodSelector = (state) =>
 
 export const isLoadingAllPriceListObjectSelector = (state) =>
   state.priceListObjectSlice.isLoading;
+
+export const isLoadingAllWardSelector = (state) => state.wardSlice.isLoading;
