@@ -117,11 +117,11 @@ const constants = {
     key: "CATEGORY_CITY",
   },
   CATEGORY_DISTRICT: {
-    label: "Thành Quận/Huyện",
+    label: "Quận/Huyện",
     key: "CATEGORY_DISTRICT",
   },
   CATEGORY_WARD: {
-    label: "Thành Phường/Xã",
+    label: "Phường/Xã",
     key: "CATEGORY_WARD",
   },
   COLLECT_MONEY: {
