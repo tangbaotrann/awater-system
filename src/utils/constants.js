@@ -109,7 +109,7 @@ const constants = {
     key: "CATEGORY_SIGNING",
   },
   CATEGORY_ADMINISTRATIVE: {
-    label: "DM Hành Chính",
+    label: "DM Hành chính",
     key: "CATEGORY_ADMINISTRATIVE",
   },
   CATEGORY_CITY: {
@@ -127,6 +127,10 @@ const constants = {
   COLLECT_MONEY: {
     label: "Thu tiền",
     key: "COLLECT_MONEY",
+  },
+  CATEGORY_INSTALLER: {
+    label: "DM Người lắp đặt",
+    key: "CATEGORY_INSTALLER"
   },
   // menu 4
   PAYMENT: {
