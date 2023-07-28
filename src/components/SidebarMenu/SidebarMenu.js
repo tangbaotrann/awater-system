@@ -181,6 +181,10 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
               key: constants.CATEGORY_WATCH.key,
             },
             {
+              label: constants.CATEGORY_INSTALLER.label,
+              key: constants.CATEGORY_INSTALLER.key,
+            },
+            {
               label: constants.CATEGORY_ADMINISTRATIVE.label,
               key: constants.CATEGORY_ADMINISTRATIVE.key,
               children: [
@@ -350,6 +354,12 @@ function SidebarMenu({ onCloseDrawer, isTabletOrMobile }) {
           sessionStorage.setItem(
             "currentPage",
             constants.CATEGORY_CUSTOMER_TYPE.key
+          );
+        } else if (item.key === constants.CATEGORY_INSTALLER.key) {
+          dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
+          sessionStorage.setItem(
+            "currentPage",
+            constants.CATEGORY_INSTALLER.key
           );
         } else if (item.key === constants.CATEGORY_CITY.key) {
           dispatch(sidebarSlice.actions.btnClickSidebarMenu(item.key));
