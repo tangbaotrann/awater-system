@@ -29,8 +29,9 @@ import ListWatch from "../Category/ListWatch/ListWatch";
 
 import DMKy from "../Category/DMKy/DMKy";
 
-import Category_Status_ReadNumber from "../Category/DMTrangThaiChiSo/Category_Status_ReadNumber";
 import DistrictCategory from "../Category/DMHanhChinh/DistrictCategory";
+import Category_Status_ReadNumber from "../Category/Category_Status_ReadNumber/Category_Status_ReadNumber";
+import CategoryWard from "../Category/Category_Ward/CategoryWard";
 
 function Manager() {
   const currentPage = sessionStorage.getItem("currentPage");
@@ -117,10 +118,10 @@ function Manager() {
         <h1>CATEGORY_CITY</h1>
       ) : sidebarMenu === constants.CATEGORY_DISTRICT.key ||
         currentPage === constants.CATEGORY_DISTRICT.key ? (
-        <DistrictCategory/>
+        <DistrictCategory />
       ) : sidebarMenu === constants.CATEGORY_WARD.key ||
         currentPage === constants.CATEGORY_WARD.key ? (
-        <h1>CATEGORY_WARD</h1>
+        <CategoryWard />
       ) : sidebarMenu === constants.PAYMENT.key ||
         currentPage === constants.PAYMENT.key ? (
         <Payment />

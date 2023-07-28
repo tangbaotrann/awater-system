@@ -20,6 +20,7 @@ const ManagementPriceList = () => {
   const tabListPO = useSelector(btnClickTabListInvoicePrintSelector);
   const priceObject = useSelector(fetchApiAllPriceObjectSelector);
   console.log(priceObject);
+
   useEffect(() => {
     dispatch(fetchApiAllPriceObject());
   }, []);
@@ -46,9 +47,9 @@ const ManagementPriceList = () => {
       title: "Tên đối tượng giá",
       dataIndex: "keyId",
       key: "keyId",
-      render: (text) => (
-        <span style={{ fontWeight: "bold", fontSize: "140%" }}>{text}</span>
-      ),
+      // render: (text) => (
+      //   <span style={{ fontWeight: "bold", fontSize: "140%" }}>{text}</span>
+      // ),
       // width: 70,
     },
     {
