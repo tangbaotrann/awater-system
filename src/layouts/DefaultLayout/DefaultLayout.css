@@ -109,19 +109,17 @@
   }
   @media (max-width: 991px) {
     .login-select {
-      margin-left: 10px;
-      top: -3px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        top: -3px;
+      }
     }
-  }
-  
-  .site-layout-info-mobile {
-    position: absolute;
-    right: 10px;
-    top: 60px;
-  }
-  
-  
-
+    
+    /* .site-layout-info-mobile {
+      position: absolute;
+      right: 10px;
+      top: 60px;
+    } */
 .w-100 {
     width: 400px;
 }

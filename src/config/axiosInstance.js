@@ -3,8 +3,8 @@ import axios from "axios";
 const axiosInstance = axios.create();
 
 // base url
-axiosInstance.defaults.baseURL = "https://api-awa-v2.amazingtech.vn/api/"; // https
-
+axiosInstance.defaults.baseURL = "https://api-awa-dev.amazingtech.vn/api/";
+// axiosInstance.defaults.baseURL = "https://api-awa-v2.amazingtech.vn/api/";
 // headers
 axiosInstance.defaults.headers = {
   "Content-Type": "application/json",

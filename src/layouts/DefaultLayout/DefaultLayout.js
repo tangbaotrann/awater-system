@@ -1,55 +1,55 @@
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-} from "@ant-design/icons/lib/icons";
-import { UserOutlined, MenuOutlined } from "@ant-design/icons";
-import { Button, Drawer, Layout, Popover, Select } from "antd";
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useMediaQuery } from "react-responsive";
+} from '@ant-design/icons/lib/icons'
+import { UserOutlined, MenuOutlined } from '@ant-design/icons'
+import { Button, Drawer, Layout, Popover, Select } from 'antd'
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useMediaQuery } from 'react-responsive'
 
-import "./DefaultLayout.css";
-import { btnClickSidebarMenuSelector } from "../../redux/selector";
-import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
-import { primaryLogo } from "../../asset/images";
-import { Link } from "react-router-dom";
-import endPoints from "../../routers";
-import { fetchApiAllFactory } from "../../redux/slices/factorySlice/factorySlice";
-import { fetchApiAllFactorySelector } from "../../redux/selector";
-const { Header, Sider, Content } = Layout;
+import './DefaultLayout.css'
+import { btnClickSidebarMenuSelector } from '../../redux/selector'
+import SidebarMenu from '../../components/SidebarMenu/SidebarMenu'
+import { primaryLogo } from '../../asset/images'
+import { Link } from 'react-router-dom'
+import endPoints from '../../routers'
+import { fetchApiAllFactory } from '../../redux/slices/factorySlice/factorySlice'
+import { fetchApiAllFactorySelector } from '../../redux/selector'
+const { Header, Sider, Content } = Layout
 
 function DefaultLayout({ children, currentPage }) {
-  const factoryNames = useSelector(fetchApiAllFactorySelector);
-  const firstInputRef = useRef();
-  const dispatch = useDispatch();
+  const factoryNames = useSelector(fetchApiAllFactorySelector)
+  const firstInputRef = useRef()
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchApiAllFactory());
-  }, []);
+    dispatch(fetchApiAllFactory())
+  }, [])
 
-  const [collapsed, setCollapsed] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [placement, setPlacement] = useState("left");
+  const [collapsed, setCollapsed] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [placement, setPlacement] = useState('left')
   // const { Option } = Select;
   // const factories = ["Nhà máy 1", "Nhà máy 2", "Nhà máy 3", "Nhà máy 4"];
-  const sidebarMenu = useSelector(btnClickSidebarMenuSelector);
+  const sidebarMenu = useSelector(btnClickSidebarMenuSelector)
 
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 991px)" });
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 991px)' })
 
   const showDrawer = () => {
-    setOpen(true);
-    setCollapsed(false);
-  };
+    setOpen(true)
+    setCollapsed(false)
+  }
 
   const onChange = (e) => {
-    setPlacement(e.target.value);
-  };
+    setPlacement(e.target.value)
+  }
   const onSearch = (value) => {
-    console.log("search:", value);
-  };
+    console.log('search:', value)
+  }
 
   const onClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <Layout>
@@ -71,7 +71,6 @@ function DefaultLayout({ children, currentPage }) {
               />
             </Link>
           )}
-
           <SidebarMenu />
         </Sider>
       )}
@@ -90,6 +89,20 @@ function DefaultLayout({ children, currentPage }) {
                 onClose={onClose}
                 open={open}
               >
+                <Select
+                  className="login-select"
+                  ref={firstInputRef}
+                  options={
+                    factoryNames?.length <= 0
+                      ? []
+                      : factoryNames?.map((_factory) => ({
+                          label: _factory.tenNhaMay,
+                          value: _factory.id,
+                        }))
+                  }
+                  fieldNames="nhaMayId"
+                  placeholder="Chọn nhà máy"
+                />
                 <SidebarMenu
                   onCloseDrawer={onClose}
                   isTabletOrMobile={isTabletOrMobile}
@@ -104,7 +117,7 @@ function DefaultLayout({ children, currentPage }) {
               icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               onClick={() => setCollapsed(!collapsed)}
               style={{
-                fontSize: "16px",
+                fontSize: '16px',
                 width: 60,
                 height: 60,
               }}
@@ -126,23 +139,25 @@ function DefaultLayout({ children, currentPage }) {
               <Option value={factory}>{factory}</Option>
             ))}
           </Select> */}
-          <Select
-            className="login-select"
-            ref={firstInputRef}
-            options={
-              factoryNames?.length <= 0
-                ? []
-                : factoryNames?.map((_factory) => ({
-                    label: _factory.tenNhaMay,
-                    value: _factory.id,
-                  }))
-            }
-            fieldNames="nhaMayId"
-            placeholder="Chọn nhà máy"
-          />
+          {!isTabletOrMobile && (
+            <Select
+              className="login-select"
+              ref={firstInputRef}
+              options={
+                factoryNames?.length <= 0
+                  ? []
+                  : factoryNames?.map((_factory) => ({
+                      label: _factory.tenNhaMay,
+                      value: _factory.id,
+                    }))
+              }
+              fieldNames="nhaMayId"
+              placeholder="Chọn nhà máy"
+            />
+          )}
           <div
             className={
-              isTabletOrMobile ? "site-layout-info-mobile" : "site-layout-info"
+              isTabletOrMobile ? 'site-layout-info-mobile' : 'site-layout-info'
             }
           >
             <Popover content="Đăng xuất">
@@ -155,12 +170,12 @@ function DefaultLayout({ children, currentPage }) {
         </Header>
         <Content
           style={{
-            margin: "13px",
+            margin: '13px',
           }}
         >
           {sidebarMenu === null &&
           currentPage === null &&
-          currentPage !== "" ? (
+          currentPage !== '' ? (
             <h1 className="text-welcome">
               CHÀO MỪNG BẠN ĐẾN VỚI AWATER CỦA CHÚNG TÔI.
             </h1>
@@ -170,7 +185,7 @@ function DefaultLayout({ children, currentPage }) {
         </Content>
       </Layout>
     </Layout>
-  );
+  )
 }
 
-export default DefaultLayout;
+export default DefaultLayout
